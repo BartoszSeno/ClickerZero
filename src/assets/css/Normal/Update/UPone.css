@@ -1,0 +1,10 @@
+#UpgradeOne {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 30px;
+  height: 50px;
+  width: 300px;
+}

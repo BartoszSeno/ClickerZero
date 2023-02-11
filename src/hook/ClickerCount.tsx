@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "../assets/css/Normal/ClickerMain/clicker.css";
 
-const Clicker = () => {
-  const [count, setCount] = useState(() =>
-    Number(localStorage.getItem("count") || 0)
-  );
-
+const Clicker = ({
+  setCount,
+  count,
+  lvlOne,
+}: {
+  setCount: any;
+  count: number;
+  lvlOne: number;
+}) => {
   useEffect(() => {
     localStorage.setItem("count", count.toString());
   }, [count]);
 
   return (
     <div>
-      <p>{count} Spirit's</p>
-      <button onClick={() => setCount(count + 1)} id="Click"></button>
+      <p>{count} times</p>
+      <button onClick={() => setCount(count + lvlOne)} id="Click"></button>
     </div>
   );
 };
