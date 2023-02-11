@@ -1,9 +1,14 @@
 import "./App.css";
+import Clicker from "./hook/ClickerCount";
+import ClearLocalStorageButton from "./hook/RemoveLS";
 
 function App() {
   return (
     <>
-      <div className="App"></div>
+      <div className="App">
+        <Clicker />
+        <ClearLocalStorageButton />
+      </div>
     </>
   );
 }
