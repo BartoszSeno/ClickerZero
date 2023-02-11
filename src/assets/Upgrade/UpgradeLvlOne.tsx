@@ -12,16 +12,21 @@ const UpdateLvlOne = ({
   lvlOne: number;
   setLvlOne: any;
 }) => {
-  // Get the count from local storage
+  // number that increases after buying an upgrade
 
-  // Subtracts a number for each click
+  const minusCost = 10 * lvlOne;
+  const minusCostTwo = 0.9 * minusCost;
+  const finalCost = minusCost + minusCostTwo;
 
   function PayForUpgrade() {
-    count -= 10;
-    lvlOne += 1;
+    // Get the count from local storage
+
+    count -= finalCost;
     localStorage.setItem("count", count.toString());
+    // Subtracts a number for each click
+
+    lvlOne += 1;
     localStorage.setItem("count-upgrade-one", lvlOne.toString());
-    console.log(count);
   }
 
   return (
@@ -37,6 +42,7 @@ const UpdateLvlOne = ({
         One
       </div>
       <div className="count-number">count:{lvlOne}</div>
+      <div className="count-price">Price:{finalCost}</div>
     </>
   );
 };
