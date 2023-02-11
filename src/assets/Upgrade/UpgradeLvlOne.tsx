@@ -29,18 +29,29 @@ const UpdateLvlOne = ({
     localStorage.setItem("count-upgrade-one", lvlOne.toString());
   }
 
+  const [active, setActive] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (finalCost >= count) {
+      setActive(true);
+    } else {
+      setActive(false);
+    }
+  });
+
   return (
     <>
-      <div
+      <button
         id="UpgradeOne"
         onClick={(e) => {
           PayForUpgrade();
           setCount(count);
           setLvlOne(lvlOne);
         }}
+        disabled={active}
       >
         One
-      </div>
+      </button>
       <div className="count-number">count:{lvlOne}</div>
       <div className="count-price">Price:{finalCost}</div>
     </>
