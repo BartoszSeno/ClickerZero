@@ -29,6 +29,7 @@
   border-radius: 5px;
   width: 44px;
   height: 44px;
+  cursor: pointer;
 }
 
 #option-container {
@@ -53,6 +54,7 @@
   width: 100%;
   height: 30px;
   padding: 5px;
+  cursor: pointer;
 }
 
 .option:active,
@@ -67,6 +69,14 @@
 .itemName {
   margin-left: 10px;
   color: white;
+}
+
+.close {
+  display: none !important;
+}
+
+.open {
+  display: flex !important;
 }
 
 /*====================================================*/
