@@ -14,9 +14,12 @@ function MainWeapon() {
     const item = MainWeaponImageAndNameAndCost[index];
     setSelectedItemId(item.id);
     setSelectedItemName(item.name);
+    localStorage.setItem("selectedItemId", item.id.toString());
     console.log(item.id);
     //selected item
   }
+
+  const savedId = localStorage.getItem("selectedItemId");
 
   const [OpenAndClose, setOpenAndClose] = useState<boolean>(false);
   function OpenClose() {
@@ -27,7 +30,7 @@ function MainWeapon() {
     <>
       <div className="items-box MainWeapon" onClick={() => OpenClose()}>
         <div className="selectedItem">
-          {selectedItemId}
+          {savedId}
           {selectedItemName}
         </div>
         <div id="option-container" className={OpenAndClose ? "open" : "close"}>
