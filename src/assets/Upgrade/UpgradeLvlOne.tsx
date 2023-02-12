@@ -6,33 +6,39 @@ const UpdateLvlOne = ({
   count,
   lvlOne,
   setLvlOne,
+  UpgradeOne,
+  setUpgradeOne,
 }: {
   setCount: any;
   count: number;
   lvlOne: number;
   setLvlOne: any;
+  UpgradeOne: number;
+  setUpgradeOne: any;
 }) => {
   // number that increases after buying an upgrade
-
-  const minusCost = 10 * lvlOne;
-  const minusCostTwo = 0.9 * minusCost;
-  const finalCost = minusCost + minusCostTwo * 2;
+  const AmoutCostForBuy = lvlOne * 2;
+  const minusCost = 10 + AmoutCostForBuy;
 
   function PayForUpgrade() {
     // Get the count from local storage
 
-    count -= finalCost;
+    count -= minusCost;
     localStorage.setItem("count", count.toString());
     // Subtracts a number for each click
 
     lvlOne += 1;
-    localStorage.setItem("count-upgrade-one", lvlOne.toString());
+    localStorage.setItem("upgradeOneLvl", lvlOne.toString());
+
+    //amount pre click
+    UpgradeOne += 0.1;
+    localStorage.setItem("UpgradeOneCount", UpgradeOne.toString());
   }
 
   const [active, setActive] = useState<boolean>(true);
 
   useEffect(() => {
-    if (finalCost >= count) {
+    if (minusCost >= count) {
       setActive(true);
     } else {
       setActive(false);
@@ -47,11 +53,12 @@ const UpdateLvlOne = ({
           PayForUpgrade();
           setCount(count);
           setLvlOne(lvlOne);
+          setUpgradeOne(UpgradeOne);
         }}
-        disabled={active}
+        //disabled={active}
       >
-        <div className="count-price">{finalCost.toFixed(0)}</div>
-        <div className="count-number">{lvlOne}</div>
+        <div className="count-price">{minusCost.toFixed(0)}</div>
+        <div className="count-number">{lvlOne.toFixed(0)}</div>
       </button>
     </>
   );

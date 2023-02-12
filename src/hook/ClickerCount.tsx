@@ -5,10 +5,12 @@ const Clicker = ({
   setCount,
   count,
   lvlOne,
+  FullCountPerClick,
 }: {
   setCount: any;
   count: number;
   lvlOne: number;
+  FullCountPerClick: number;
 }) => {
   useEffect(() => {
     localStorage.setItem("count", count.toString());
@@ -16,8 +18,11 @@ const Clicker = ({
 
   return (
     <div>
-      <p>{count.toFixed(0)} times</p>
-      <button onClick={() => setCount(count + lvlOne)} id="Click"></button>
+      <p>{count.toFixed(0)} silver</p>
+      <button
+        onClick={() => setCount(count + 1 + FullCountPerClick)}
+        id="Click"
+      ></button>
     </div>
   );
 };
