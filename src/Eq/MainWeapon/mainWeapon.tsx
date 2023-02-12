@@ -11,6 +11,7 @@ function MainWeapon() {
     localStorage.setItem("selectedItemName", item.name.toString());
     localStorage.setItem("selectedItemImg", item.image.toString());
     localStorage.setItem("selectedItemDmg", item.dmgLvl0.toString());
+    localStorage.setItem("selectedItemTier", item.tier.toString());
   }
 
   //load items from localstorage
@@ -18,6 +19,7 @@ function MainWeapon() {
   const savedImage = localStorage.getItem("selectedItemImg");
   const savedName = localStorage.getItem("selectedItemName");
   const savedDmg = localStorage.getItem("selectedItemDmg");
+  const savedTier = localStorage.getItem("selectedItemTier");
 
   const [OpenAndClose, setOpenAndClose] = useState<boolean>(false);
   function OpenClose() {
@@ -26,7 +28,10 @@ function MainWeapon() {
 
   return (
     <>
-      <div className="items-box MainWeapon" onClick={() => OpenClose()}>
+      <div
+        className={`items-box MainWeapon ${savedTier}B`}
+        onClick={() => OpenClose()}
+      >
         <div className="selectedItem">
           <img
             className="mainWeaponImg"
@@ -49,7 +54,7 @@ function MainWeapon() {
                   src={data.image}
                   alt={`${data.name} weapon`}
                 />
-                <span className="itemName">{data.name}</span>
+                <span className={`itemName ${data.tier}C`}>{data.name}</span>
               </div>
             );
           })}
