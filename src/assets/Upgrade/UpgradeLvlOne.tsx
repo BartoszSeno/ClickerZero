@@ -1,4 +1,4 @@
-import "../css/Normal/Update/UPone.css";
+import "../css/Normal/Update/upgrade.css";
 import React, { useState, useEffect } from "react";
 
 const UpdateLvlOne = ({
@@ -16,7 +16,7 @@ const UpdateLvlOne = ({
 
   const minusCost = 10 * lvlOne;
   const minusCostTwo = 0.9 * minusCost;
-  const finalCost = minusCost + minusCostTwo;
+  const finalCost = minusCost + minusCostTwo * 2;
 
   function PayForUpgrade() {
     // Get the count from local storage
@@ -42,7 +42,7 @@ const UpdateLvlOne = ({
   return (
     <>
       <button
-        id="UpgradeOne"
+        id="Upgrade"
         onClick={(e) => {
           PayForUpgrade();
           setCount(count);
@@ -50,10 +50,9 @@ const UpdateLvlOne = ({
         }}
         disabled={active}
       >
-        One
+        <div className="count-price">{finalCost.toFixed(0)}</div>
+        <div className="count-number">{lvlOne}</div>
       </button>
-      <div className="count-number">count:{lvlOne}</div>
-      <div className="count-price">Price:{finalCost}</div>
     </>
   );
 };

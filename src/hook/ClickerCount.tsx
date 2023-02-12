@@ -16,7 +16,7 @@ const Clicker = ({
 
   return (
     <div>
-      <p>{count} times</p>
+      <p>{count.toFixed(0)} times</p>
       <button onClick={() => setCount(count + lvlOne)} id="Click"></button>
     </div>
   );
