@@ -1,8 +1,9 @@
 import "./App.css";
 import Clicker from "./hook/ClickerCount";
 import ClearLocalStorageButton from "./hook/RemoveLS";
-import UpdateLvlOne from "./assets/Upgrade/UpgradeLvlOne";
 import { useEffect, useState } from "react";
+import Eq from "./Eq";
+import UpdateLvlOne from "./Upgrade/UpgradeLvlOne";
 
 function App() {
   //main count
@@ -24,26 +25,31 @@ function App() {
 
   return (
     <>
-      <div className="App">
-        <Clicker
-          setCount={setCount}
-          count={count}
-          lvlOne={lvlOne}
-          FullCountPerClick={FullCountPerClick}
-        />
-        <ClearLocalStorageButton />
-        <UpdateLvlOne
-          setCount={setCount}
-          count={count}
-          lvlOne={lvlOne}
-          setLvlOne={setLvlOne}
-          UpgradeOne={UpgradeOne}
-          setUpgradeOne={setUpgradeOne}
-        />
-        <div className="test count per click">
-          Per Click: {FullCountPerClick.toFixed(1)}
+      <main id="App-container">
+        <div className="App">
+          <Clicker
+            setCount={setCount}
+            count={count}
+            lvlOne={lvlOne}
+            FullCountPerClick={FullCountPerClick}
+          />
+          <ClearLocalStorageButton />
+          <UpdateLvlOne
+            setCount={setCount}
+            count={count}
+            lvlOne={lvlOne}
+            setLvlOne={setLvlOne}
+            UpgradeOne={UpgradeOne}
+            setUpgradeOne={setUpgradeOne}
+          />
+          <div className="test count per click">
+            Per Click: {FullCountPerClick.toFixed(1)}
+          </div>
         </div>
-      </div>
+        <div className="right-container">
+          <Eq />
+        </div>
+      </main>
     </>
   );
 }

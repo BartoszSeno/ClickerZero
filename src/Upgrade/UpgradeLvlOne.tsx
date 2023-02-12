@@ -1,4 +1,4 @@
-import "../css/Normal/Update/upgrade.css";
+import "../assets/css/Normal/Update/upgrade.css";
 import React, { useState, useEffect } from "react";
 
 const UpdateLvlOne = ({

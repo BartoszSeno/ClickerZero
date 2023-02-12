@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import "../assets/css/Normal/Equipment/equipment.css";
 
 const Eq = () => {
   return (
     <>
-      <div></div>
+      <section id="equipment"></section>
     </>
   );
 };
