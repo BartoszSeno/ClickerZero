@@ -1,16 +1,115 @@
-import image1 from "C:/Users/sieni/Desktop/ClickerZero/src/assets/images/mainWeapon/yuria.png";
+import image1 from "C:/Users/sieni/Desktop/ClickerZero/src/assets/images/mainWeapon/seleth.png";
+import image2 from "C:/Users/sieni/Desktop/ClickerZero/src/assets/images/mainWeapon/Krea.png";
+import image3 from "C:/Users/sieni/Desktop/ClickerZero/src/assets/images/mainWeapon/kalis.png";
+import image4 from "C:/Users/sieni/Desktop/ClickerZero/src/assets/images/mainWeapon/azwell.png";
+import image5 from "C:/Users/sieni/Desktop/ClickerZero/src/assets/images/mainWeapon/azwell.png";
+import image6 from "C:/Users/sieni/Desktop/ClickerZero/src/assets/images/mainWeapon/yuria.png";
+import image7 from "C:/Users/sieni/Desktop/ClickerZero/src/assets/images/mainWeapon/bares.png";
+import image8 from "C:/Users/sieni/Desktop/ClickerZero/src/assets/images/mainWeapon/rosar.png";
+import image9 from "C:/Users/sieni/Desktop/ClickerZero/src/assets/images/mainWeapon/ain.png";
+import image10 from "C:/Users/sieni/Desktop/ClickerZero/src/assets/images/mainWeapon/liverto.png";
+import image11 from "C:/Users/sieni/Desktop/ClickerZero/src/assets/images/mainWeapon/offin.png";
+import image12 from "C:/Users/sieni/Desktop/ClickerZero/src/assets/images/mainWeapon/kzarka.png";
+import image13 from "C:/Users/sieni/Desktop/ClickerZero/src/assets/images/mainWeapon/blackstar.png";
+import image14 from "C:/Users/sieni/Desktop/ClickerZero/src/assets/images/mainWeapon/godr.png";
 
 export const MainWeaponImageAndNameAndCost = [
   {
     id: 1,
     image: image1,
-    name: "Yuria",
-    upgrade0: 150000,
+    name: "Seleth",
+    dmgLvl0: 14,
+    upgrade0: 25000,
   },
   {
     id: 2,
-    image: image1,
-    name: "Grunil",
-    upgrade0: 350000,
+    image: image2,
+    name: "Krea",
+    dmgLvl0: 19,
+    upgrade0: 47000,
+  },
+  {
+    id: 3,
+    image: image3,
+    name: "Kalis",
+    dmgLvl0: 27,
+    upgrade0: 49000,
+  },
+  {
+    id: 4,
+    image: image4,
+    name: "Azwell",
+    dmgLvl0: 18,
+    upgrade0: 56000,
+  },
+  {
+    id: 5,
+    image: image5,
+    name: "Elsh",
+    dmgLvl0: 14,
+    upgrade0: 72000,
+  },
+  {
+    id: 6,
+    image: image6,
+    name: "Yuria",
+    dmgLvl0: 21,
+    upgrade0: 175000,
+  },
+  {
+    id: 7,
+    image: image7,
+    name: "Bares",
+    dmgLvl0: 15,
+    upgrade0: 262000,
+  },
+  {
+    id: 8,
+    image: image8,
+    name: "Rosar",
+    dmgLvl0: 15,
+    upgrade0: 345000,
+  },
+  {
+    id: 9,
+    image: image9,
+    name: "Ain",
+    dmgLvl0: 15,
+    upgrade0: 377000,
+  },
+  {
+    id: 10,
+    image: image10,
+    name: "Liverto",
+    dmgLvl0: 22,
+    upgrade0: 5300000,
+  },
+  {
+    id: 11,
+    image: image11,
+    name: "Offin",
+    dmgLvl0: 24,
+    upgrade0: 146000000,
+  },
+  {
+    id: 12,
+    image: image12,
+    name: "Kzarka",
+    dmgLvl0: 22,
+    upgrade0: 241000000,
+  },
+  {
+    id: 13,
+    image: image13,
+    name: "Blackstar",
+    dmgLvl0: 28,
+    upgrade0: 725000000,
+  },
+  {
+    id: 14,
+    image: image14,
+    name: "Godr-Ayed",
+    dmgLvl0: 128,
+    upgrade0: 12300000000,
   },
 ];

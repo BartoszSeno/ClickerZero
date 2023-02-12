@@ -15,11 +15,13 @@ function MainWeapon() {
     setSelectedItemId(item.id);
     setSelectedItemName(item.name);
     localStorage.setItem("selectedItemId", item.id.toString());
+    localStorage.setItem("selectedItemDmg", item.dmgLvl0.toString());
     console.log(item.id);
     //selected item
   }
 
   const savedId = localStorage.getItem("selectedItemId");
+  const savedDmg = localStorage.getItem("selectedItemDmg");
 
   const [OpenAndClose, setOpenAndClose] = useState<boolean>(false);
   function OpenClose() {
@@ -29,10 +31,7 @@ function MainWeapon() {
   return (
     <>
       <div className="items-box MainWeapon" onClick={() => OpenClose()}>
-        <div className="selectedItem">
-          {savedId}
-          {selectedItemName}
-        </div>
+        <div className="selectedItem">{savedId}</div>
         <div id="option-container" className={OpenAndClose ? "open" : "close"}>
           {MainWeaponImageAndNameAndCost.map((data, index) => {
             return (
