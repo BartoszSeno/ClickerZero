@@ -2,19 +2,34 @@ import { useState } from "react";
 import { MainWeaponImageAndNameAndCost } from "../../data/equipment/mainWeapon";
 
 function MainWeapon() {
+  const [selectedItemId, setSelectedItemId] = useState<number | undefined>(
+    undefined
+  );
+  const [selectedItemName, setSelectedItemName] = useState<string | undefined>(
+    undefined
+  );
+
   //Geting id from loop on click
   function GetIdPerClick(index: any) {
     const item = MainWeaponImageAndNameAndCost[index];
+    setSelectedItemId(item.id);
+    setSelectedItemName(item.name);
     console.log(item.id);
+    //selected item
   }
 
   const [OpenAndClose, setOpenAndClose] = useState<boolean>(false);
   function OpenClose() {
     setOpenAndClose(!OpenAndClose);
   }
+
   return (
     <>
       <div className="items-box MainWeapon" onClick={() => OpenClose()}>
+        <div className="selectedItem">
+          {selectedItemId}
+          {selectedItemName}
+        </div>
         <div id="option-container" className={OpenAndClose ? "open" : "close"}>
           {MainWeaponImageAndNameAndCost.map((data, index) => {
             return (
