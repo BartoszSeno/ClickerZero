@@ -17,7 +17,12 @@ const UpdateLvlOne = ({
   setUpgradeOne: any;
 }) => {
   // number that increases after buying an upgrade
-  const AmoutCostForBuy = lvlOne * 2;
+  //number that exponent * 2
+  function multiplyWithExponent(base: number, exponent: number) {
+    return Math.pow(base, exponent);
+  }
+  const AmoutCostForBuy = multiplyWithExponent(lvlOne, 2);
+
   const minusCost = 10 + AmoutCostForBuy;
 
   function PayForUpgrade() {
