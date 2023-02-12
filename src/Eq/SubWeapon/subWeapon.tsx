@@ -1,9 +1,9 @@
-function App() {
+function SubWeapon() {
   return (
     <>
-      <div className="items-box"></div>
+      <div className="items-box subWeapon"></div>
     </>
   );
 }
 
-export default App;
+export default SubWeapon;

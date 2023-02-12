@@ -3,4 +3,74 @@
   display: flex;
   height: 700px;
   width: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+.circle {
+  margin-top: 80px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 3px solid white;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.items-box {
+  position: absolute;
+  display: flex;
+  background-color: red;
+  border: 2px solid white;
+  border-radius: 5px;
+  width: 44px;
+  height: 44px;
+}
+
+/*Weapon*/
+.AweWeapon {
+  margin-top: 300px;
+}
+
+.MainWeapon {
+  margin-top: 280px;
+  margin-left: -115px;
+}
+
+.subWeapon {
+  margin-top: 280px;
+  margin-right: -115px;
+}
+/*Armor*/
+
+.Armor {
+  margin-top: -290px;
+  margin-right: -110px;
+}
+.Helmet {
+  margin-top: -290px;
+  margin-left: -110px;
+}
+.Shoes {
+  margin-top: 105px;
+  margin-left: -290px;
+}
+.Gloves {
+  margin-top: 105px;
+  margin-right: -290px;
+}
+
+.imagetest {
+  display: none;
+  background-image: url(../../../images/Untitled.png);
+  background-size: 370px;
+  background-repeat: no-repeat;
+  margin-left: 28px;
+  margin-top: 45.5px;
+  height: 400px;
+  width: 400px;
+  position: absolute;
+  opacity: 0.3;
 }
