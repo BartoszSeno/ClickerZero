@@ -41,22 +41,24 @@ function MainWeapon() {
         </div>
         <div id="option-container" className={OpenAndClose ? "open" : "close"}>
           {MainWeaponImageAndNameAndCost.map((data, index) => {
-            return (
-              <div
-                className={`option ${index} `}
-                key={index}
-                onClick={(e) => {
-                  GetIdPerClick(index);
-                }}
-              >
-                <img
-                  className="OptionWeaponImg"
-                  src={data.image}
-                  alt={`${data.name} weapon`}
-                />
-                <span className={`itemName ${data.tier}C`}>{data.name}</span>
-              </div>
-            );
+            if (data.isAvailable) {
+              return (
+                <div
+                  className={`option ${index} `}
+                  key={index}
+                  onClick={(e) => {
+                    GetIdPerClick(index);
+                  }}
+                >
+                  <img
+                    className="OptionWeaponImg"
+                    src={data.image}
+                    alt={`${data.name} weapon`}
+                  />
+                  <span className={`itemName ${data.tier}C`}>{data.name}</span>
+                </div>
+              );
+            }
           })}
         </div>
       </div>

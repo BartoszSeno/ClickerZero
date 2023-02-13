@@ -10,6 +10,7 @@ const Clicker = ({
   count: number;
   FullCountPerClick: number;
 }) => {
+  /*
   useEffect(() => {
     localStorage.setItem("count", count.toString());
 
@@ -19,6 +20,11 @@ const Clicker = ({
 
     return () => clearInterval(intervalId);
   }, [FullCountPerClick]);
+*/
+
+  useEffect(() => {
+    localStorage.setItem("count", count.toString());
+  }, [count]);
 
   return (
     <div>

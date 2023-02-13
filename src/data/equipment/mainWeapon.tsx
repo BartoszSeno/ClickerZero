@@ -21,6 +21,7 @@ export const MainWeaponImageAndNameAndCost = [
     name: "Seleth",
     dmgLvl0: 14,
     upgrade0: 25000,
+    isAvailable: false,
   },
   {
     id: 2,
@@ -29,6 +30,7 @@ export const MainWeaponImageAndNameAndCost = [
     name: "Krea",
     dmgLvl0: 19,
     upgrade0: 47000,
+    isAvailable: false,
   },
   {
     id: 3,
@@ -37,6 +39,7 @@ export const MainWeaponImageAndNameAndCost = [
     name: "Kalis",
     dmgLvl0: 27,
     upgrade0: 49000,
+    isAvailable: false,
   },
   {
     id: 4,
@@ -45,6 +48,7 @@ export const MainWeaponImageAndNameAndCost = [
     name: "Azwell",
     dmgLvl0: 18,
     upgrade0: 56000,
+    isAvailable: false,
   },
   {
     id: 5,
@@ -53,6 +57,7 @@ export const MainWeaponImageAndNameAndCost = [
     name: "Elsh",
     dmgLvl0: 14,
     upgrade0: 72000,
+    isAvailable: false,
   },
   {
     id: 6,
@@ -61,6 +66,7 @@ export const MainWeaponImageAndNameAndCost = [
     name: "Yuria",
     dmgLvl0: 21,
     upgrade0: 175000,
+    isAvailable: false,
   },
   {
     id: 7,
@@ -69,6 +75,7 @@ export const MainWeaponImageAndNameAndCost = [
     name: "Bares",
     dmgLvl0: 15,
     upgrade0: 262000,
+    isAvailable: false,
   },
   {
     id: 8,
@@ -77,6 +84,7 @@ export const MainWeaponImageAndNameAndCost = [
     name: "Rosar",
     dmgLvl0: 15,
     upgrade0: 345000,
+    isAvailable: false,
   },
   {
     id: 9,
@@ -85,6 +93,7 @@ export const MainWeaponImageAndNameAndCost = [
     name: "Ain",
     dmgLvl0: 15,
     upgrade0: 377000,
+    isAvailable: false,
   },
   {
     id: 10,
@@ -93,6 +102,7 @@ export const MainWeaponImageAndNameAndCost = [
     name: "Liverto",
     dmgLvl0: 22,
     upgrade0: 5300000,
+    isAvailable: false,
   },
   {
     id: 11,
@@ -101,6 +111,7 @@ export const MainWeaponImageAndNameAndCost = [
     name: "Offin",
     dmgLvl0: 24,
     upgrade0: 146000000,
+    isAvailable: false,
   },
   {
     id: 12,
@@ -109,6 +120,7 @@ export const MainWeaponImageAndNameAndCost = [
     name: "Kzarka",
     dmgLvl0: 22,
     upgrade0: 241000000,
+    isAvailable: false,
   },
   {
     id: 13,
@@ -117,6 +129,7 @@ export const MainWeaponImageAndNameAndCost = [
     name: "Blackstar",
     dmgLvl0: 28,
     upgrade0: 725000000,
+    isAvailable: false,
   },
   {
     id: 14,
@@ -125,5 +138,6 @@ export const MainWeaponImageAndNameAndCost = [
     name: "Godr-Ayed",
     dmgLvl0: 128,
     upgrade0: 12300000000,
+    isAvailable: false,
   },
 ];
