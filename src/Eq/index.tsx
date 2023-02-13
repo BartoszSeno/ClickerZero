@@ -7,6 +7,7 @@ import SubWeapon from "./SubWeapon/subWeapon";
 import Helmet from "./Helmet/helmet";
 import Shoes from "./Shoes/shoes";
 import Gloves from "./Gloves/gloves";
+import Statistic from "./statistic/statistic";
 
 const Eq = () => {
   return (
@@ -21,6 +22,9 @@ const Eq = () => {
           <Shoes />
           <Gloves />
         </span>
+      </section>
+      <section id="Statistic">
+        <Statistic />
       </section>
     </>
   );

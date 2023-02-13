@@ -1,0 +1,23 @@
+#left-nav {
+  background-color: aqua;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  font-size: 24px;
+}
+
+.nav-element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 33.3%;
+  height: 100%;
+}
+
+.nav-element:hover {
+  background-color: aliceblue;
+}
+
+/*Shop-Menu*/

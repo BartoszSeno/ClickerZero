@@ -2,15 +2,15 @@
   background-color: rgb(44, 44, 44);
   display: flex;
   height: 977px;
-  width: 600px;
+  width: 700px;
   display: flex;
   justify-content: center;
 }
 
 .circle {
   margin-top: 80px;
-  width: 450px;
-  height: 450px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   border: 3px solid white;
   display: inline-block;
@@ -27,8 +27,8 @@
   background-color: rgb(75, 75, 75);
   border: 2px solid white;
   border-radius: 5px;
-  width: 62px;
-  height: 62px;
+  width: 44px;
+  height: 44px;
   cursor: pointer;
 }
 
@@ -37,12 +37,12 @@
   background-color: rgb(0, 0, 0);
   display: flex;
   flex-direction: column;
-  margin-left: 235px;
-  margin-top: 421px;
-  width: 300px;
-  height: 350px;
-  border: 2px solid white;
-  border-radius: 7px;
+  margin-left: 205px;
+  margin-top: 347px;
+  width: 250px;
+  height: 300px;
+  border: 1px solid white;
+  border-radius: 5px;
   overflow: auto;
   overflow-x: hidden;
   z-index: 100;
@@ -54,8 +54,8 @@
   border-bottom: 1px solid white;
   background-color: rgb(59, 59, 59);
   width: 100%;
-  height: 50px;
-  padding: 10px;
+  height: 30px;
+  padding: 5px;
   cursor: pointer;
 }
 
@@ -65,18 +65,16 @@
 }
 .mainWeaponImg {
   margin-top: 4px;
-  height: 60px;
 }
 
 .OptionWeaponImg {
   margin-top: 5px;
-  height: 35px;
+  height: 25px;
 }
 
 .itemName {
   margin-left: 10px;
   color: white;
-  font-size: 28px;
 }
 
 .close {
@@ -92,28 +90,28 @@
 /*tier weapon*/
 
 .greenB {
-  border: 3.5px solid #48bb78;
-  -webkit-box-shadow: 0px 0px 10px 1px #48bb78;
-  -moz-box-shadow: 0px 0px 10px 1px #48bb78;
-  box-shadow: 0px 0px 10px 1px #48bb78;
+  border: 2.5px solid #48bb78;
+  -webkit-box-shadow: 0px 0px 6px 0px #48bb78;
+  -moz-box-shadow: 0px 0px 6px 0px #48bb78;
+  box-shadow: 0px 0px 6px 0px #48bb78;
 }
 .blueB {
-  border: 3.5px solid #4299e1;
-  -webkit-box-shadow: 0px 0px 10px 1px #4299e1;
-  -moz-box-shadow: 0px 0px 10px 1px #4299e1;
-  box-shadow: 0px 0px 10px 1px #4299e1;
+  border: 2.5px solid #4299e1;
+  -webkit-box-shadow: 0px 0px 6px 0px #4299e1;
+  -moz-box-shadow: 0px 0px 6px 0px #4299e1;
+  box-shadow: 0px 0px 6px 0px #4299e1;
 }
 .yellowB {
-  border: 3.5px solid #ecc94b;
-  -webkit-box-shadow: 0px 0px 10px 1px #ecc94b;
-  -moz-box-shadow: 0px 0px 10px 1px #ecc94b;
-  box-shadow: 0px 0px 10px 1px #ecc94b;
+  border: 2.5px solid #ecc94b;
+  -webkit-box-shadow: 0px 0px 6px 0px #ecc94b;
+  -moz-box-shadow: 0px 0px 6px 0px #ecc94b;
+  box-shadow: 0px 0px 6px 0px #ecc94b;
 }
 .redB {
-  border: 3.5px solid #f56565;
-  -webkit-box-shadow: 0px 0px 10px 1px #f56565;
-  -moz-box-shadow: 0px 0px 10px 1px #f56565;
-  box-shadow: 0px 0px 10px 1px #f56565;
+  border: 2.5px solid #f56565;
+  -webkit-box-shadow: 0px 0px 6px 0px #f56565;
+  -moz-box-shadow: 0px 0px 6px 0px #f56565;
+  box-shadow: 0px 0px 6px 0px #f56565;
 }
 
 .greenC {
@@ -131,35 +129,35 @@
 
 /*Weapon*/
 .AweWeapon {
-  margin-top: 450px;
+  margin-top: 300px;
 }
 
 .MainWeapon {
-  margin-top: 415px;
-  margin-left: -170px;
+  margin-top: 280px;
+  margin-left: -115px;
 }
 
 .subWeapon {
-  margin-top: 415px;
-  margin-right: -170px;
+  margin-top: 280px;
+  margin-right: -115px;
 }
 /*Armor*/
 
 .Armor {
-  margin-top: -440px;
-  margin-right: -170px;
+  margin-top: -290px;
+  margin-right: -110px;
 }
 .Helmet {
-  margin-top: -440px;
-  margin-left: -170px;
+  margin-top: -290px;
+  margin-left: -110px;
 }
 .Shoes {
-  margin-top: 150px;
-  margin-left: -440px;
+  margin-top: 105px;
+  margin-left: -290px;
 }
 .Gloves {
-  margin-top: 150px;
-  margin-right: -440px;
+  margin-top: 105px;
+  margin-right: -290px;
 }
 
 .imagetest {
@@ -181,15 +179,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 600px;
-  margin-top: -320px;
+  width: 400px;
+  margin-top: -230px;
 }
 
 #statistic-container {
   display: flex;
   background-color: rgb(0, 0, 0);
-  height: 100px;
-  width: 400px;
+  height: 80px;
+  width: 300px;
   color: white;
   justify-content: space-around;
 }
@@ -216,7 +214,7 @@
   color: white;
   background-color: black;
   margin-top: 145px;
-  height: 90px;
-  width: 150px;
+  height: 67px;
+  width: 120px;
   z-index: 10;
 }

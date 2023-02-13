@@ -36,7 +36,7 @@ const UpdateLvlOne = ({
     localStorage.setItem("upgradeOneLvl", lvlOne.toString());
 
     //amount pre click
-    UpgradeOne += 0.1;
+    UpgradeOne += 1;
     localStorage.setItem("UpgradeOneCount", UpgradeOne.toString());
   }
 
@@ -60,7 +60,7 @@ const UpdateLvlOne = ({
           setLvlOne(lvlOne);
           setUpgradeOne(UpgradeOne);
         }}
-        //disabled={active}
+        disabled={active}
       >
         <div className="count-price">{minusCost.toFixed(0)}</div>
         <div className="count-number">{lvlOne.toFixed(0)}</div>

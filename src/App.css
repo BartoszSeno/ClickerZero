@@ -1,6 +1,6 @@
 #App-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .App {
@@ -8,4 +8,13 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+
+.left-container {
+  background-color: rgb(44, 44, 44);
+  display: flex;
+  height: 977px;
+  width: 700px;
+  display: flex;
+  flex-direction: column;
 }

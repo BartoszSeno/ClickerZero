@@ -4,17 +4,21 @@ import "../assets/css/Normal/ClickerMain/clicker.css";
 const Clicker = ({
   setCount,
   count,
-  lvlOne,
   FullCountPerClick,
 }: {
   setCount: any;
   count: number;
-  lvlOne: number;
   FullCountPerClick: number;
 }) => {
   useEffect(() => {
     localStorage.setItem("count", count.toString());
-  }, [count]);
+
+    const intervalId = setInterval(() => {
+      setCount((count: number) => count + 0 + FullCountPerClick);
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [FullCountPerClick]);
 
   return (
     <div>

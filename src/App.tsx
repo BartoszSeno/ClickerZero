@@ -4,6 +4,8 @@ import ClearLocalStorageButton from "./hook/RemoveLS";
 import { useEffect, useState } from "react";
 import Eq from "./Eq";
 import UpdateLvlOne from "./Upgrade/UpgradeLvlOne";
+import LeftNav from "./assets/LeftNav";
+import Shop from "./Shop";
 
 function App() {
   //main count
@@ -20,17 +22,29 @@ function App() {
     Number(localStorage.getItem("UpgradeOneCount") || 0)
   );
 
+  //from saved localstorage
+  const savedDmg = localStorage.getItem("selectedItemDmg");
+
   // for adding the total number per click
-  const FullCountPerClick = UpgradeOne;
+  const [FullCountPerClick, setFullCountPerClick] = useState(
+    UpgradeOne + Number(savedDmg || 0)
+  );
+
+  useEffect(() => {
+    setFullCountPerClick(UpgradeOne + Number(savedDmg || 0));
+  }, [UpgradeOne, savedDmg]);
 
   return (
     <>
       <main id="App-container">
+        <div className="left-container">
+          <LeftNav />
+          <Shop />
+        </div>
         <div className="App">
           <Clicker
             setCount={setCount}
             count={count}
-            lvlOne={lvlOne}
             FullCountPerClick={FullCountPerClick}
           />
           <ClearLocalStorageButton />
@@ -43,7 +57,7 @@ function App() {
             setUpgradeOne={setUpgradeOne}
           />
           <div className="test count per click">
-            Per Click: {FullCountPerClick.toFixed(1)}
+            Per Click: {FullCountPerClick.toFixed(0)}
           </div>
         </div>
         <div className="right-container">

@@ -3,6 +3,10 @@ const Statistic = () => {
   // do zrobienie statystyki AP main
   // nastepnie dodanie dmg do count per click
   // sprawdzenie kazdej broni
+
+  //main dmg that is gived per click
+
+  const MainDmg = savedDmg;
   return (
     <>
       <div id="statistic-container">
@@ -18,6 +22,10 @@ const Statistic = () => {
           <span>DP</span>
           <span className="statsDmg">Null</span>
         </div>
+      </div>
+      <div className="GS">
+        <span>GS</span>
+        <span className="statsDmg">{MainDmg}</span>
       </div>
     </>
   );
