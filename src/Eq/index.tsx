@@ -21,7 +21,6 @@ const Eq = () => {
           <Shoes />
           <Gloves />
         </span>
-        <span className="imagetest"></span>
       </section>
     </>
   );

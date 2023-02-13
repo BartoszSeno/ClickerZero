@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { MainWeaponImageAndNameAndCost } from "../../data/equipment/mainWeapon";
 import defaultimg from "C:/Users/sieni/Desktop/ClickerZero/src/assets/images/default.png";
+import Statistic from "../statistic/statistic";
 
 function MainWeapon() {
   //Geting items from loop on click
@@ -60,6 +61,7 @@ function MainWeapon() {
           })}
         </div>
       </div>
+      <Statistic />
     </>
   );
 }
