@@ -35,11 +35,17 @@ function App() {
     setFullCountPerClick(UpgradeOne + Number(savedDmg || 0));
   }, [UpgradeOne, savedDmg]);
 
-  //test
+  //Shop
   const [mainWeaponDara, setMainWeaponData] = useState(
-    JSON.parse(localStorage.getItem("MainWeaponImageAndNameAndCost")) ||
-      MainWeaponImageAndNameAndCost
+    JSON.parse(
+      localStorage.getItem("MainWeaponImageAndNameAndCost") ||
+        JSON.stringify(MainWeaponImageAndNameAndCost)
+    )
   );
+
+  //count weapon time
+
+  const [HowMenyTimeBoughtWeapon, setHowMenyTimeBoughtWeapon] = useState(0);
 
   return (
     <>
@@ -49,6 +55,8 @@ function App() {
           <Shop
             setMainWeaponData={setMainWeaponData}
             mainWeaponDara={mainWeaponDara}
+            count={count}
+            setHowMenyTimeBoughtWeapon={setHowMenyTimeBoughtWeapon}
           />
         </div>
         <div className="App">
@@ -74,6 +82,7 @@ function App() {
           <Eq
             setMainWeaponData={setMainWeaponData}
             mainWeaponDara={mainWeaponDara}
+            HowMenyTimeBoughtWeapon={HowMenyTimeBoughtWeapon}
           />
         </div>
       </main>

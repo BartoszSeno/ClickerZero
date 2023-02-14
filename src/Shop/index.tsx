@@ -4,30 +4,41 @@ import "../assets/css/Normal/shop/shop.css";
 const Shop = ({
   mainWeaponDara,
   setMainWeaponData,
+  count,
+  setHowMenyTimeBoughtWeapon,
 }: {
   mainWeaponDara: any;
   setMainWeaponData: any;
+  count: number;
+  setHowMenyTimeBoughtWeapon: any;
 }) => {
+  const [selectedUpgrade, setSelectedUpgrade] = useState(0);
+
   const handleClick = (index: any) => {
     const newMainWeaponData = [...mainWeaponDara];
-    newMainWeaponData[index].isAvailable = true;
+    newMainWeaponData[index].isBought = true;
+    newMainWeaponData[index].count = (newMainWeaponData[index].count || 0) + 1;
     setMainWeaponData(newMainWeaponData);
     localStorage.setItem(
       "MainWeaponImageAndNameAndCost",
       JSON.stringify(newMainWeaponData)
     );
+    setSelectedUpgrade(newMainWeaponData[index].cost);
+    setHowMenyTimeBoughtWeapon(newMainWeaponData[index].count);
   };
 
   return (
     <>
       <div id="shop-container">
         {mainWeaponDara.map((data: any, index: any) => {
-          if (!data.isAvailable) {
+          if (!data.isBought || data.isBought) {
             return (
-              <div
+              <button
                 className={`itemsForPurchasable ${index} `}
                 key={index}
-                onClick={(e) => handleClick(index)}
+                onClick={(e) => {
+                  handleClick(index);
+                }}
               >
                 <img
                   className="OptionWeaponImg"
@@ -35,8 +46,10 @@ const Shop = ({
                   alt={`${data.name} weapon`}
                 />
                 <span className={`itemName ${data.tier}C`}>{data.name}</span>
-                <span className="PriceForPurchasable">{data.upgrade0}</span>
-              </div>
+                <span className="PriceForPurchasable">
+                  {data.cost}({data.count})
+                </span>
+              </button>
             );
           }
         })}

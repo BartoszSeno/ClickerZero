@@ -12,9 +12,11 @@ import Statistic from "./statistic/statistic";
 const Eq = ({
   mainWeaponDara,
   setMainWeaponData,
+  HowMenyTimeBoughtWeapon,
 }: {
   mainWeaponDara: any;
   setMainWeaponData: any;
+  HowMenyTimeBoughtWeapon: any;
 }) => {
   return (
     <>
@@ -24,6 +26,7 @@ const Eq = ({
           <MainWeapon
             setMainWeaponData={setMainWeaponData}
             mainWeaponDara={mainWeaponDara}
+            HowMenyTimeBoughtWeapon={HowMenyTimeBoughtWeapon}
           />
           <SubWeapon />
           <Armor />

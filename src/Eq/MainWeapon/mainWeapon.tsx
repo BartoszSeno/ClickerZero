@@ -5,9 +5,11 @@ import defaultimg from "C:/Users/sieni/Desktop/ClickerZero/src/assets/images/def
 function MainWeapon({
   mainWeaponDara,
   setMainWeaponData,
+  HowMenyTimeBoughtWeapon,
 }: {
   mainWeaponDara: any;
   setMainWeaponData: any;
+  HowMenyTimeBoughtWeapon: any;
 }) {
   //Geting items from loop on click
   function GetIdPerClick(index: any) {
@@ -47,21 +49,26 @@ function MainWeapon({
         </div>
         <div id="option-container" className={OpenAndClose ? "open" : "close"}>
           {mainWeaponDara.map((data: any, index: any) => {
-            if (data.isAvailable) {
+            if (data.isBought) {
               return (
-                <div
-                  className={`option ${index} `}
-                  key={index}
-                  onClick={(e) => {
-                    GetIdPerClick(index);
-                  }}
-                >
-                  <img
-                    className="OptionWeaponImg"
-                    src={data.image}
-                    alt={`${data.name} weapon`}
-                  />
-                  <span className={`itemName ${data.tier}C`}>{data.name}</span>
+                <div key={index}>
+                  {Array.from({ length: data.count }, (_, i) => (
+                    <div
+                      className={`option ${index} `}
+                      onClick={(e) => {
+                        GetIdPerClick(index);
+                      }}
+                    >
+                      <img
+                        className="OptionWeaponImg"
+                        src={data.image}
+                        alt={`${data.name} weapon`}
+                      />
+                      <span className={`itemName ${data.tier}C`}>
+                        {data.name}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               );
             }
