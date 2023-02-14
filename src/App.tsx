@@ -56,6 +56,7 @@ function App() {
             setMainWeaponData={setMainWeaponData}
             mainWeaponDara={mainWeaponDara}
             count={count}
+            setCount={setCount}
             setHowMenyTimeBoughtWeapon={setHowMenyTimeBoughtWeapon}
           />
         </div>

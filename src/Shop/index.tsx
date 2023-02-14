@@ -5,11 +5,13 @@ const Shop = ({
   mainWeaponDara,
   setMainWeaponData,
   count,
+  setCount,
   setHowMenyTimeBoughtWeapon,
 }: {
   mainWeaponDara: any;
   setMainWeaponData: any;
   count: number;
+  setCount: any;
   setHowMenyTimeBoughtWeapon: any;
 }) => {
   const [selectedUpgrade, setSelectedUpgrade] = useState(0);
@@ -25,7 +27,13 @@ const Shop = ({
     );
     setSelectedUpgrade(newMainWeaponData[index].cost);
     setHowMenyTimeBoughtWeapon(newMainWeaponData[index].count);
+
+    console.log(count);
   };
+
+  useEffect(() => {
+    localStorage.setItem("count", count.toString());
+  }, [count]);
 
   return (
     <>
@@ -38,7 +46,9 @@ const Shop = ({
                 key={index}
                 onClick={(e) => {
                   handleClick(index);
+                  setCount(count - data.cost);
                 }}
+                disabled={count < data.cost}
               >
                 <img
                   className="OptionWeaponImg"
