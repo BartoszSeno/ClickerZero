@@ -34,6 +34,8 @@ function MainWeapon({
     setOpenAndClose(!OpenAndClose);
   }
 
+  // random number for id
+
   return (
     <>
       <div
@@ -55,6 +57,7 @@ function MainWeapon({
                   {Array.from({ length: data.count }, (_, i) => (
                     <div
                       className={`option ${index} `}
+                      id={`${index}${i}`}
                       onClick={(e) => {
                         GetIdPerClick(index);
                       }}
