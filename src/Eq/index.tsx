@@ -9,13 +9,22 @@ import Shoes from "./Shoes/shoes";
 import Gloves from "./Gloves/gloves";
 import Statistic from "./statistic/statistic";
 
-const Eq = () => {
+const Eq = ({
+  mainWeaponDara,
+  setMainWeaponData,
+}: {
+  mainWeaponDara: any;
+  setMainWeaponData: any;
+}) => {
   return (
     <>
       <section id="equipment">
         <span className="circle">
           <AweWeapon />
-          <MainWeapon />
+          <MainWeapon
+            setMainWeaponData={setMainWeaponData}
+            mainWeaponDara={mainWeaponDara}
+          />
           <SubWeapon />
           <Armor />
           <Helmet />

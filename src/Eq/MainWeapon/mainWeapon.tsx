@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MainWeaponImageAndNameAndCost } from "../../data/equipment/mainWeapon";
 import defaultimg from "C:/Users/sieni/Desktop/ClickerZero/src/assets/images/default.png";
 
-function MainWeapon() {
+function MainWeapon({
+  mainWeaponDara,
+  setMainWeaponData,
+}: {
+  mainWeaponDara: any;
+  setMainWeaponData: any;
+}) {
   //Geting items from loop on click
   function GetIdPerClick(index: any) {
     const item = MainWeaponImageAndNameAndCost[index];
@@ -40,7 +46,7 @@ function MainWeapon() {
           />
         </div>
         <div id="option-container" className={OpenAndClose ? "open" : "close"}>
-          {MainWeaponImageAndNameAndCost.map((data, index) => {
+          {mainWeaponDara.map((data: any, index: any) => {
             if (data.isAvailable) {
               return (
                 <div

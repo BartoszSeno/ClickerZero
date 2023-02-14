@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "../assets/css/Normal/shop/shop.css";
-import { MainWeaponImageAndNameAndCost } from "../data/equipment/mainWeapon";
 
-const Shop = () => {
-  const [mainWeaponImageAndNameAndCost, setMainWeaponImageAndNameAndCost] =
-    useState(MainWeaponImageAndNameAndCost);
-
+const Shop = ({
+  mainWeaponDara,
+  setMainWeaponData,
+}: {
+  mainWeaponDara: any;
+  setMainWeaponData: any;
+}) => {
   const handleClick = (index: any) => {
-    const newMainWeaponData = [...mainWeaponImageAndNameAndCost];
-    newMainWeaponData[index].isAvailable =
-      !newMainWeaponData[index].isAvailable;
-    setMainWeaponImageAndNameAndCost(newMainWeaponData);
+    const newMainWeaponData = [...mainWeaponDara];
+    newMainWeaponData[index].isAvailable = true;
+    setMainWeaponData(newMainWeaponData);
     localStorage.setItem(
       "MainWeaponImageAndNameAndCost",
       JSON.stringify(newMainWeaponData)
@@ -20,7 +21,7 @@ const Shop = () => {
   return (
     <>
       <div id="shop-container">
-        {mainWeaponImageAndNameAndCost.map((data, index) => {
+        {mainWeaponDara.map((data: any, index: any) => {
           if (!data.isAvailable) {
             return (
               <div

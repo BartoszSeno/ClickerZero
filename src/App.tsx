@@ -6,6 +6,7 @@ import Eq from "./Eq";
 import UpdateLvlOne from "./Upgrade/UpgradeLvlOne";
 import LeftNav from "./assets/LeftNav";
 import Shop from "./Shop";
+import { MainWeaponImageAndNameAndCost } from "./data/equipment/mainWeapon";
 
 function App() {
   //main count
@@ -34,12 +35,21 @@ function App() {
     setFullCountPerClick(UpgradeOne + Number(savedDmg || 0));
   }, [UpgradeOne, savedDmg]);
 
+  //test
+  const [mainWeaponDara, setMainWeaponData] = useState(
+    JSON.parse(localStorage.getItem("MainWeaponImageAndNameAndCost")) ||
+      MainWeaponImageAndNameAndCost
+  );
+
   return (
     <>
       <main id="App-container">
         <div className="left-container">
           <LeftNav />
-          <Shop />
+          <Shop
+            setMainWeaponData={setMainWeaponData}
+            mainWeaponDara={mainWeaponDara}
+          />
         </div>
         <div className="App">
           <Clicker
@@ -61,7 +71,10 @@ function App() {
           </div>
         </div>
         <div className="right-container">
-          <Eq />
+          <Eq
+            setMainWeaponData={setMainWeaponData}
+            mainWeaponDara={mainWeaponDara}
+          />
         </div>
       </main>
     </>
