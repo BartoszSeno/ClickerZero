@@ -7,6 +7,7 @@ import UpdateLvlOne from "./Upgrade/UpgradeLvlOne";
 import LeftNav from "./assets/LeftNav";
 import Shop from "./Shop";
 import { MainWeaponImageAndNameAndCost } from "./data/equipment/mainWeapon";
+import Enchant from "./enchant";
 
 function App() {
   //main count
@@ -47,21 +48,31 @@ function App() {
 
   const [HowMenyTimeBoughtWeapon, setHowMenyTimeBoughtWeapon] = useState(0);
 
-  //domg from main weapon
+  //dmg from main weapon
   const [savedDMG, setsavedDMG] = useState<any>();
 
+  //open nav tab in one window
+  const [activeTab, setActiveTab] = useState("shop");
   return (
     <>
       <main id="App-container">
         <div className="left-container">
-          <LeftNav />
-          <Shop
-            setMainWeaponData={setMainWeaponData}
-            mainWeaponDara={mainWeaponDara}
-            count={count}
-            setCount={setCount}
-            setHowMenyTimeBoughtWeapon={setHowMenyTimeBoughtWeapon}
-          />
+          <LeftNav setActiveTab={setActiveTab} activeTab={activeTab} />
+
+          <div>
+            <div>
+              {activeTab === "shop" && (
+                <Shop
+                  setMainWeaponData={setMainWeaponData}
+                  mainWeaponDara={mainWeaponDara}
+                  count={count}
+                  setCount={setCount}
+                  setHowMenyTimeBoughtWeapon={setHowMenyTimeBoughtWeapon}
+                />
+              )}
+              {activeTab === "enchant" && <Enchant />}
+            </div>
+          </div>
         </div>
         <div className="App">
           <Clicker

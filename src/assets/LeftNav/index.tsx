@@ -1,18 +1,33 @@
 import React, { useState, useEffect } from "react";
 import "../css/Normal/LeftNav/leftNav.css";
 import ShopNav from "./shop/shop";
+import EnchantNav from "./Enchant/enchant";
 
-const LeftNav = () => {
+const LeftNav = ({
+  activeTab,
+  setActiveTab,
+}: {
+  activeTab: any;
+  setActiveTab: any;
+}) => {
   return (
     <>
-      <nav id="left-nav">
-        <div className="nav-element">
+      <ul id="left-nav">
+        <li
+          onClick={() => setActiveTab("shop")}
+          id="nav-element"
+          className={activeTab === "shop" ? "active" : ""}
+        >
           <ShopNav />
-        </div>
-        <div className="nav-element">Enchant</div>
-        <div className="nav-element">Boss</div>
-        <div className="nav-element">Upgrade</div>
-      </nav>
+        </li>
+        <li
+          onClick={() => setActiveTab("enchant")}
+          id="nav-element"
+          className={activeTab === "enchant" ? "active" : ""}
+        >
+          <EnchantNav />
+        </li>
+      </ul>
     </>
   );
 };

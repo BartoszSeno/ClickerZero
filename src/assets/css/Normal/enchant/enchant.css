@@ -1,0 +1,8 @@
+#enchant-container {
+  background-color: rgb(44, 0, 0);
+  height: 100%;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  display: flex;
+}
