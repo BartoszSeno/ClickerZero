@@ -27,4 +27,8 @@ li {
   background-color: aliceblue;
 }
 
+.active {
+  color: red;
+}
+
 /*Shop-Menu*/

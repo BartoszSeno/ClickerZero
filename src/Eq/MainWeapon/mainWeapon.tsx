@@ -22,17 +22,14 @@ function MainWeapon({
     localStorage.setItem("selectedItemImg", item.image.toString());
     localStorage.setItem("selectedItemDmg", item.dmgLvl0.toString());
     localStorage.setItem("selectedItemTier", item.tier.toString());
-
     const savedDmg = localStorage.getItem("selectedItemDmg");
 
     setsavedDMG(savedDmg);
   }
 
   //load items from localstorage
-  const savedId = localStorage.getItem("selectedItemId");
   const savedImage = localStorage.getItem("selectedItemImg");
   const savedName = localStorage.getItem("selectedItemName");
-  const savedDmg = localStorage.getItem("selectedItemDmg");
   const savedTier = localStorage.getItem("selectedItemTier");
 
   const [OpenAndClose, setOpenAndClose] = useState<boolean>(false);

@@ -30,7 +30,7 @@ const Clicker = ({
     <div>
       <p>{count.toFixed(0)} silver</p>
       <button
-        onClick={() => setCount(count + 1 + FullCountPerClick)}
+        onClick={() => setCount(count + 25000 + FullCountPerClick)}
         id="Click"
       ></button>
     </div>

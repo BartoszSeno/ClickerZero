@@ -70,7 +70,9 @@ function App() {
                   setHowMenyTimeBoughtWeapon={setHowMenyTimeBoughtWeapon}
                 />
               )}
-              {activeTab === "enchant" && <Enchant />}
+              {activeTab === "enchant" && (
+                <Enchant mainWeaponDara={mainWeaponDara} />
+              )}
             </div>
           </div>
         </div>
