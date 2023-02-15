@@ -29,7 +29,10 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
     const itemUpgradeName = `upgrade0${index}`;
     const savedItemUpgrade = localStorage.getItem(itemUpgradeName);
     const itemId = `${index}${savedItemUpgrade || 0}`;
-    localStorage.setItem(itemUpgradeName, Number(itemId.slice(1)) + 1);
+    localStorage.setItem(
+      itemUpgradeName,
+      (Number(itemId.slice(1)) + 1).toString()
+    );
 
     const selectedItem = mainWeaponDara[index];
     const itemName = `upgrade${Number(savedItemUpgrade) + 1}${index}`;
