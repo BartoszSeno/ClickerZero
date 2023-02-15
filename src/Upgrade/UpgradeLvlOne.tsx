@@ -36,7 +36,7 @@ const UpdateLvlOne = ({
     localStorage.setItem("upgradeOneLvl", lvlOne.toString());
 
     //amount pre click
-    UpgradeOne += 10000;
+    UpgradeOne += 1;
     localStorage.setItem("UpgradeOneCount", UpgradeOne.toString());
   }
 

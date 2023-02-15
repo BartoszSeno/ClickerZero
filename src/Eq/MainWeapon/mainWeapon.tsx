@@ -6,10 +6,12 @@ function MainWeapon({
   mainWeaponDara,
   setMainWeaponData,
   HowMenyTimeBoughtWeapon,
+  setsavedDMG,
 }: {
   mainWeaponDara: any;
   setMainWeaponData: any;
   HowMenyTimeBoughtWeapon: any;
+  setsavedDMG: any;
 }) {
   //Geting items from loop on click
   function GetIdPerClick(index: any) {
@@ -20,6 +22,10 @@ function MainWeapon({
     localStorage.setItem("selectedItemImg", item.image.toString());
     localStorage.setItem("selectedItemDmg", item.dmgLvl0.toString());
     localStorage.setItem("selectedItemTier", item.tier.toString());
+
+    const savedDmg = localStorage.getItem("selectedItemDmg");
+
+    setsavedDMG(savedDmg);
   }
 
   //load items from localstorage

@@ -47,6 +47,9 @@ function App() {
 
   const [HowMenyTimeBoughtWeapon, setHowMenyTimeBoughtWeapon] = useState(0);
 
+  //domg from main weapon
+  const [savedDMG, setsavedDMG] = useState<any>();
+
   return (
     <>
       <main id="App-container">
@@ -84,6 +87,8 @@ function App() {
             setMainWeaponData={setMainWeaponData}
             mainWeaponDara={mainWeaponDara}
             HowMenyTimeBoughtWeapon={HowMenyTimeBoughtWeapon}
+            setsavedDMG={setsavedDMG}
+            savedDMG={savedDMG}
           />
         </div>
       </main>
