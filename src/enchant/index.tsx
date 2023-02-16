@@ -10,6 +10,7 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
   }
 
   function GetIdPerClick(index: any) {
+    //import individual data from index
     const item = MainWeaponImageAndNameAndCost[index];
     //save items in localstorage
     localStorage.setItem("selectedItemIdForEnchant", item.id.toString());
@@ -17,31 +18,47 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
     localStorage.setItem("selectedItemImgForEnchant", item.image.toString());
     localStorage.setItem("selectedItemDmgForEnchant", item.dmgLvl0.toString());
     localStorage.setItem("selectedItemTierForEnchant", item.tier.toString());
-
-    //
   }
-  ///
+  /// load value form localstorage
   const savedDmgUpgradeOne = localStorage.getItem("selectedItemDmgUpgradeOne");
   const savedImage = localStorage.getItem("selectedItemImgForEnchant");
   const savedName = localStorage.getItem("selectedItemNameForEnchant");
 
+  // enchant
   function EnchantPerClick(index: any) {
-    const itemUpgradeName = `upgrade0${index}`;
+    const item = MainWeaponImageAndNameAndCost[index];
+
+    // name of upgrade : upgrade0 + id
+    const itemUpgradeName = `${item.name}0${individualId}`;
     const savedItemUpgrade = localStorage.getItem(itemUpgradeName);
     const itemId = `${index}${savedItemUpgrade || 0}`;
     localStorage.setItem(
       itemUpgradeName,
       (Number(itemId.slice(1)) + 1).toString()
     );
-
+    // name of upgrade lvl : upgrade[ number of upgrades ] + id
     const selectedItem = mainWeaponDara[index];
-    const itemName = `upgrade${Number(savedItemUpgrade) + 1}${index}`;
+    const itemName = `${Number(savedItemUpgrade) + 1}${
+      item.name
+    }${individualId}`;
     localStorage.setItem(itemName, selectedItem.name);
+    setUpgradedName(itemName);
     console.log(itemName);
   }
-
+  // save index value  for enchant button
   const [selectedItemIndex, setSelectedItemIndex] = useState<number>(0);
 
+  //get upgraded name
+
+  function GetFullId(e: React.MouseEvent<HTMLDivElement>) {
+    const getId = parseInt(e.currentTarget.id);
+    setindividualId(getId);
+    console.log(getId);
+  }
+
+  const [individualId, setindividualId] = useState<any>(0);
+
+  const [UpgradedName, setUpgradedName] = useState<string>("");
   function test() {}
   return (
     <>
@@ -68,6 +85,7 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
                           onClick={(e) => {
                             setSelectedItemIndex(index);
                             GetIdPerClick(index);
+                            GetFullId(e);
                           }}
                         >
                           <img
