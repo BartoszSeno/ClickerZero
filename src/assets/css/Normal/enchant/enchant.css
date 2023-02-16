@@ -60,11 +60,34 @@
   color: white;
 }
 
-.mws {
-  display: none;
-  position: absolute;
+.EnchantSuccess:hover + .infoEnchant {
+  color: white;
+  display: flex;
 }
 
-.EnchantSuccess:hover + .mws {
+.infoEnchant {
+  display: flex;
+  flex-direction: column;
+  background-color: aqua;
+  display: none;
+  position: absolute;
+  height: 100px;
+  width: 200px;
+  font-size: 30px;
+  margin-left: 180px;
+  margin-top: 180px;
+}
+.UpgradeDmgTitle {
+  font-size: 20px;
+  color: gray;
+}
+.UpgradeImg {
+  height: 40px;
+  width: 40px;
+}
+.UpgradeName {
+  margin-bottom: 10px;
+}
+.enchantBox2 {
   display: flex;
 }
