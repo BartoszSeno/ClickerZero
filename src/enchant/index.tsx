@@ -31,7 +31,7 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
 
   function EnchantPerClick(index: any) {
     const item = MainWeaponImageAndNameAndCost[index];
-    const itemUpgradeName = `${item.name}0${individualId}`;
+    const itemUpgradeName = `${item.name}${individualId}`;
     const savedItemUpgrade = localStorage.getItem(itemUpgradeName);
     const itemId = `${index}${savedItemUpgrade || 0}`;
     localStorage.setItem(
@@ -57,6 +57,7 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
   function GetFullId(e: React.MouseEvent<HTMLDivElement>) {
     const getId = parseInt(e.currentTarget.id);
     setindividualId(getId);
+    console.log(getId);
   }
 
   const [UpgradedNames, setUpgradedNames] = useState(
@@ -64,8 +65,8 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
   );
 
   function UpgradedNamesOnMount() {
-    const upgradedNames = mainWeaponDara.map((data: any, index: any) => {
-      const itemUpgradeName = `${data.name}0${individualId}`;
+    const upgradedNames = mainWeaponDara.map((data: any) => {
+      const itemUpgradeName = `${data.name}${individualId}`;
       const savedItemUpgrade = localStorage.getItem(itemUpgradeName);
       const upgradedName = savedItemUpgrade
         ? `+${Number(savedItemUpgrade)} ${data.name} ${individualId}`
@@ -90,7 +91,7 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
     const item = MainWeaponImageAndNameAndCost[index];
 
     // name of upgrade : upgrade0 + id
-    const itemUpgradeName = `${item.name}0${individualId}`;
+    const itemUpgradeName = `${item.name}${individualId}`;
     const savedItemUpgrade = localStorage.getItem(itemUpgradeName);
     const itemId = `${index}${savedItemUpgrade || 0}`;
     localStorage.setItem(itemUpgradeName, Number(itemId.slice(1)).toString());
@@ -136,18 +137,16 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
                   return (
                     <div key={index}>
                       {Array.from({ length: item.count }, (_, i) => {
-                        const itemId = `${index}${i}`;
-                        const itemUpgradeName = `${item.name}0${individualId}`;
+                        const itemUpgradeName = `${item.name}${individualId}`;
                         const savedItemUpgrade =
                           localStorage.getItem(itemUpgradeName);
-                        const upgradedName = savedItemUpgrade
-                          ? `+${Number(savedItemUpgrade)} ${
-                              item.name
-                            } ${individualId}`
-                          : item.name;
+                        const itemId = `${index}${savedItemUpgrade || 0}`;
+                        localStorage.getItem(itemUpgradeName);
+                        const upgradedName = UpgradedNames[index];
+
                         return (
                           <div
-                            className={`option ${index} `}
+                            className={`option ${itemId} `}
                             id={itemId}
                             onClick={(e) => {
                               setSelectedItemIndex(index);
@@ -194,8 +193,7 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
                 alt={`${savedName || "No name"} weapon`}
               />
               <span className="UpgradeDmg">
-                {" "}
-                <span className="UpgradeDmgTitle">Deamge:</span>{" "}
+                <span className="UpgradeDmgTitle">Deamge:</span>
                 {savedDmgUpgradeOne}
               </span>
             </div>
