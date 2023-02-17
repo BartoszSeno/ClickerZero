@@ -52,6 +52,7 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
     const upgradedNames = [...UpgradedNames];
     upgradedNames[index] = itemName;
     setUpgradedNames(upgradedNames);
+    console.log(itemName);
   }
 
   function GetFullId(e: React.MouseEvent<HTMLDivElement>) {
@@ -94,19 +95,12 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
     const itemUpgradeName = `${item.name}${individualId}`;
     const savedItemUpgrade = localStorage.getItem(itemUpgradeName);
     const itemId = `${index}${savedItemUpgrade || 0}`;
-    localStorage.setItem(itemUpgradeName, Number(itemId.slice(1)).toString());
+    Number(itemId.slice(1));
     // name of upgrade lvl : upgrade[ number of upgrades ] + id
-    const selectedItem = mainWeaponDara[index];
-    const itemName = `+${Number(savedItemUpgrade)} ${
+    const itemName = `+${Number(savedItemUpgrade) + 1} ${
       item.name
     } ${individualId}`;
-    localStorage.setItem(
-      "UpgradedName",
-      JSON.stringify({
-        [itemName]: selectedItem.name,
-        selectedItemNameForEnchant: itemName,
-      })
-    );
+
     setUpgradedName(itemName);
     console.log(itemName);
   }
@@ -120,7 +114,6 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
             className="putItemThere"
             onClick={() => {
               OpenClose();
-              ShowNameOnHover(selectedItemIndex);
             }}
           >
             <img
