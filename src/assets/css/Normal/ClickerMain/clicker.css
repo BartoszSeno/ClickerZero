@@ -1,0 +1,13 @@
+#Click {
+  background-image: url(../../../images/SpiritLvlOne.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  background-color: transparent;
+  height: 200px;
+  width: 200px;
+}
+
+#Click:active {
+  transform: scale(1.01);
+}
