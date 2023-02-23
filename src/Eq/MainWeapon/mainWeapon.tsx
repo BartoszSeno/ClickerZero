@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { MainWeaponImageAndNameAndCost } from "../../data/equipment/mainWeapon";
-import defaultimg from "C:/Users/sieni/Desktop/ClickerZero/src/assets/images/default.png";
 
 function MainWeapon({
   mainWeaponDara,
@@ -48,7 +47,11 @@ function MainWeapon({
         <div className="selectedItem">
           <img
             className="mainWeaponImg"
-            src={savedImage ? savedImage : defaultimg}
+            src={
+              savedImage
+                ? savedImage
+                : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
+            }
             alt={`${savedName || "No name"} weapon`}
           />
         </div>

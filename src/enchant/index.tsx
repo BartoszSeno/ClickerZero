@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../assets/css/Normal/enchant/enchant.css";
 import { MainWeaponImageAndNameAndCost } from "../data/equipment/mainWeapon";
-import defaultimg from "C:/Users/sieni/Desktop/ClickerZero/src/assets/images/default.png";
 
 const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
   const [OpenAndClose, setOpenAndClose] = useState<boolean>(false);
@@ -118,7 +117,11 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
           >
             <img
               className="mainWeaponImg"
-              src={savedImage ? savedImage : defaultimg}
+              src={
+                savedImage
+                  ? savedImage
+                  : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
+              }
               alt={`${savedName || "No name"} weapon`}
             />
             <div
@@ -173,7 +176,11 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
           >
             <img
               className="mainWeaponImg"
-              src={savedImage ? savedImage : defaultimg}
+              src={
+                savedImage
+                  ? savedImage
+                  : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
+              }
               alt={`${savedName || "No name"} weapon`}
             />
           </div>
@@ -182,7 +189,11 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
             <div className="enchantBox2">
               <img
                 className="UpgradeImg"
-                src={savedImage ? savedImage : defaultimg}
+                src={
+                  savedImage
+                    ? savedImage
+                    : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
+                }
                 alt={`${savedName || "No name"} weapon`}
               />
               <span className="UpgradeDmg">
