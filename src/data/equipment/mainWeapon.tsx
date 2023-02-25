@@ -37,7 +37,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 49000,
     isBought: false,
     isVisible: true,
-  } /*,
+  },
   {
     id: 4,
     tier: "green",
@@ -165,5 +165,5 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 12300000000,
     isBought: false,
     isVisible: true,
-  },*/,
+  },
 ];

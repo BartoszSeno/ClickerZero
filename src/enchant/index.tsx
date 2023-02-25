@@ -56,12 +56,6 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
     console.log(itemName);
   }
 
-  function GetFullId(e: React.MouseEvent<HTMLDivElement>) {
-    const getId = parseInt(e.currentTarget.id);
-    setindividualId(getId);
-    console.log(getId);
-  }
-
   const [UpgradedNames, setUpgradedNames] = useState(
     Array(mainWeaponDara.length).fill("")
   );
@@ -141,10 +135,12 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
                         localStorage.getItem(itemUpgradeName);
                         const upgradedName = UpgradedNames[index];
 
+                        const mainId = `${index}${i}`;
+
                         return (
                           <div
                             className={`option ${itemId} `}
-                            id={itemId}
+                            id={mainId}
                             onClick={(e) => {
                               setSelectedItemIndex(index);
                               GetIdPerClick(index);
