@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable array-callback-return */
 import React, { useState, useEffect } from "react";
 import "../assets/css/Normal/enchant/enchant.css";
 import { MainWeaponImageAndNameAndCost } from "../data/equipment/mainWeapon";
@@ -104,7 +106,6 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
     console.log(itemName);
   }
 
-  function test() {}
   return (
     <>
       <div id="enchant-container">
@@ -147,7 +148,6 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
                             onClick={(e) => {
                               setSelectedItemIndex(index);
                               GetIdPerClick(index);
-                              GetFullId(e);
                             }}
                           >
                             <img
