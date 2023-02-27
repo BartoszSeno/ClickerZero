@@ -15,12 +15,14 @@ const Eq = ({
   HowMenyTimeBoughtWeapon,
   savedDMG,
   setsavedDMG,
+  UpgradedNamesMainWeapon,
 }: {
   mainWeaponDara: any;
   setMainWeaponData: any;
   HowMenyTimeBoughtWeapon: any;
   savedDMG: any;
   setsavedDMG: any;
+  UpgradedNamesMainWeapon: any;
 }) => {
   return (
     <>
@@ -32,6 +34,7 @@ const Eq = ({
             mainWeaponDara={mainWeaponDara}
             HowMenyTimeBoughtWeapon={HowMenyTimeBoughtWeapon}
             setsavedDMG={setsavedDMG}
+            UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
           />
           <SubWeapon />
           <Armor />

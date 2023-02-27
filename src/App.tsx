@@ -53,6 +53,11 @@ function App() {
 
   //open nav tab in one window
   const [activeTab, setActiveTab] = useState("shop");
+
+  // GET NAME WITH ENCHANT FROM ENCHANT FUNCTION
+  const [UpgradedNamesMainWeapon, setUpgradedNamesMainWeapon] = useState(
+    Array(mainWeaponDara.length).fill("")
+  );
   return (
     <>
       <main id="App-container">
@@ -71,7 +76,11 @@ function App() {
                 />
               )}
               {activeTab === "enchant" && (
-                <Enchant mainWeaponDara={mainWeaponDara} />
+                <Enchant
+                  mainWeaponDara={mainWeaponDara}
+                  setUpgradedNamesMainWeapon={setUpgradedNamesMainWeapon}
+                  UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
+                />
               )}
             </div>
           </div>
@@ -102,6 +111,7 @@ function App() {
             HowMenyTimeBoughtWeapon={HowMenyTimeBoughtWeapon}
             setsavedDMG={setsavedDMG}
             savedDMG={savedDMG}
+            UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
           />
         </div>
       </main>

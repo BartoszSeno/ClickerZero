@@ -7,11 +7,13 @@ function MainWeapon({
   setMainWeaponData,
   HowMenyTimeBoughtWeapon,
   setsavedDMG,
+  UpgradedNamesMainWeapon,
 }: {
   mainWeaponDara: any;
   setMainWeaponData: any;
   HowMenyTimeBoughtWeapon: any;
   setsavedDMG: any;
+  UpgradedNamesMainWeapon: any;
 }) {
   //Geting items from loop on click
   function GetIdPerClick(index: any) {
@@ -58,6 +60,7 @@ function MainWeapon({
         </div>
         <div id="option-container" className={OpenAndClose ? "open" : "close"}>
           {mainWeaponDara.map((data: any, index: any) => {
+            const upgradedName = UpgradedNamesMainWeapon[index];
             if (data.isBought) {
               return (
                 <div key={index}>
@@ -75,7 +78,7 @@ function MainWeapon({
                         alt={`${data.name} weapon`}
                       />
                       <span className={`itemName ${data.tier}C`}>
-                        {data.name}
+                        {upgradedName ? upgradedName : data.name}
                       </span>
                     </div>
                   ))}

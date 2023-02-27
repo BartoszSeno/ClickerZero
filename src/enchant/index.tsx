@@ -4,7 +4,15 @@ import React, { useState, useEffect } from "react";
 import "../assets/css/Normal/enchant/enchant.css";
 import { MainWeaponImageAndNameAndCost } from "../data/equipment/mainWeapon";
 
-const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
+const Enchant = ({
+  mainWeaponDara,
+  setUpgradedNamesMainWeapon,
+  UpgradedNamesMainWeapon,
+}: {
+  mainWeaponDara: any;
+  setUpgradedNamesMainWeapon: any;
+  UpgradedNamesMainWeapon: any;
+}) => {
   const [OpenAndClose, setOpenAndClose] = useState<boolean>(false);
   function OpenClose() {
     setOpenAndClose(!OpenAndClose);
@@ -50,15 +58,11 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
         selectedItemNameForEnchant: itemName,
       })
     );
-    const upgradedNames = [...UpgradedNames];
+    const upgradedNames = [...UpgradedNamesMainWeapon];
     upgradedNames[index] = itemName;
-    setUpgradedNames(upgradedNames);
+    setUpgradedNamesMainWeapon(upgradedNames);
     console.log(itemName);
   }
-
-  const [UpgradedNames, setUpgradedNames] = useState(
-    Array(mainWeaponDara.length).fill("")
-  );
 
   function UpgradedNamesOnMount() {
     const upgradedNames = mainWeaponDara.map((data: any) => {
@@ -69,7 +73,7 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
         : data.name;
       return upgradedName;
     });
-    setUpgradedNames(upgradedNames);
+    setUpgradedNamesMainWeapon(upgradedNames);
   }
 
   useEffect(() => {
@@ -133,7 +137,7 @@ const Enchant = ({ mainWeaponDara }: { mainWeaponDara: any }) => {
                           localStorage.getItem(itemUpgradeName);
                         const itemId = `${index}${savedItemUpgrade || 0}`;
                         localStorage.getItem(itemUpgradeName);
-                        const upgradedName = UpgradedNames[index];
+                        const upgradedName = UpgradedNamesMainWeapon[index];
 
                         const mainId = `${index}${i}`;
 
