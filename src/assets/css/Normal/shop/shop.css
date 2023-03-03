@@ -35,13 +35,15 @@
 .itemName {
   width: 100%;
   margin: 0;
+  height: 50px;
   display: flex;
+  align-items: end;
   justify-content: center;
 }
 
 .itemsForPurchasable img {
   transform: rotate(30deg);
-  margin-top: 30px;
+  position: relative;
   margin-left: 10px;
   height: 80px;
 }
@@ -57,4 +59,14 @@
   height: 30px;
   align-items: center;
   font-size: 25px;
+}
+
+.CostAndPrice {
+  background-image: url("https://raw.githubusercontent.com/BartoszSeno/ClickerZero/f388c89bbaf68fc653ac3af79074ad37773104eb/src/assets/MainImg/plate.png");
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
