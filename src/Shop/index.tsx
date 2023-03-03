@@ -39,34 +39,38 @@ const Shop = ({
   return (
     <>
       <div id="shop-container">
-        {mainWeaponDara.map((data: any, index: any) => {
-          if (!data.isBought || data.isBought) {
-            return (
-              <button
-                className={`itemsForPurchasable ${index} `}
-                key={index}
-                onClick={(e) => {
-                  handleClick(index);
-                  setCount(count - data.cost);
-                }}
-                disabled={count < data.cost}
-              >
-                <div className="CostAndPrice">
-                  <span className={`itemName ${data.tier}C`}>{data.name}</span>
-                  <span className="PriceForPurchasable">
-                    {data.cost}({data.count})
-                  </span>
-                </div>
+        <div className="shelf">
+          {mainWeaponDara.map((data: any, index: any) => {
+            if (!data.isBought || data.isBought) {
+              return (
+                <button
+                  className={`itemsForPurchasable ${index} `}
+                  key={index}
+                  onClick={(e) => {
+                    handleClick(index);
+                    setCount(count - data.cost);
+                  }}
+                  disabled={count < data.cost}
+                >
+                  <div className="CostAndPrice">
+                    <span className={`itemName ${data.tier}C`}>
+                      {data.name}
+                    </span>
+                    <span className="PriceForPurchasable">
+                      {data.cost}({data.count})
+                    </span>
+                  </div>
 
-                <img
-                  className="OptionWeaponImg"
-                  src={data.image}
-                  alt={`${data.name} weapon`}
-                />
-              </button>
-            );
-          }
-        })}
+                  <img
+                    className="OptionWeaponImg"
+                    src={data.image}
+                    alt={`${data.name} weapon`}
+                  />
+                </button>
+              );
+            }
+          })}
+        </div>
       </div>
     </>
   );

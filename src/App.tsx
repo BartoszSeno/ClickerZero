@@ -58,6 +58,15 @@ function App() {
   const [UpgradedNamesMainWeapon, setUpgradedNamesMainWeapon] = useState(
     Array(mainWeaponDara.length).fill("")
   );
+
+  const leftContainer = document.querySelector(
+    ".left-container"
+  ) as HTMLElement;
+
+  window.addEventListener("scroll", () => {
+    const scrollPosition = window.scrollY;
+    leftContainer.style.backgroundPosition = `center ${scrollPosition}px`;
+  });
   return (
     <>
       <main id="App-container">
