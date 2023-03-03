@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ZeroClicker/static/css/main.6c265537.css",
+    "main.js": "/ZeroClicker/static/js/main.807c343d.js",
+    "static/media/SpiritLvlOne.png": "/ZeroClicker/static/media/SpiritLvlOne.64179b9e697761af5d3e.png",
+    "static/media/Untitled.png": "/ZeroClicker/static/media/Untitled.e49ac958070e9eaa6ff9.png",
+    "index.html": "/ZeroClicker/index.html",
+    "main.6c265537.css.map": "/ZeroClicker/static/css/main.6c265537.css.map",
+    "main.807c343d.js.map": "/ZeroClicker/static/js/main.807c343d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6c265537.css",
+    "static/js/main.807c343d.js"
+  ]
+}
