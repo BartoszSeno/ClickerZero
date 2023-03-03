@@ -51,15 +51,15 @@ const Shop = ({
                 }}
                 disabled={count < data.cost}
               >
+                <span className={`itemName ${data.tier}C`}>{data.name}</span>
+                <span className="PriceForPurchasable">
+                  {data.cost}({data.count})
+                </span>
                 <img
                   className="OptionWeaponImg"
                   src={data.image}
                   alt={`${data.name} weapon`}
                 />
-                <span className={`itemName ${data.tier}C`}>{data.name}</span>
-                <span className="PriceForPurchasable">
-                  {data.cost}({data.count})
-                </span>
               </button>
             );
           }

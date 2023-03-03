@@ -7,6 +7,7 @@
   display: flex;
   background-color: #2d2214;
   overflow: auto;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/1d10835d04fb33b61b7c50d228a42a1324558dae/src/assets/MainImg/shelf.png);
 }
 
 #shop-container::-webkit-scrollbar {
@@ -23,14 +24,13 @@
 }
 
 .itemsForPurchasable {
-  width: 190px;
-  height: 150px;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/SpiritLvlOne.png);
-
+  width: 33.3%;
+  height: 192px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-left: 31px;
+  background-color: transparent;
+  border: none;
 }
 .itemName {
   width: 100%;
@@ -40,8 +40,14 @@
 }
 
 .itemsForPurchasable img {
+  transform: rotate(30deg);
+  margin-top: 30px;
   margin-left: 10px;
-  height: 50px;
+  height: 80px;
+}
+.itemsForPurchasable:hover {
+  background-color: #2d22143b;
+  cursor: pointer;
 }
 
 .PriceForPurchasable {
