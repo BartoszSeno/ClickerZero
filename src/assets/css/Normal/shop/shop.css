@@ -6,6 +6,7 @@
   overflow: auto;
   position: relative;
   background-attachment: scroll;
+  overflow-x: hidden;
 }
 
 .shelf {
@@ -14,9 +15,9 @@
   display: flex;
   position: relative;
   z-index: 100;
-  height: 968px;
+  height: 1000px;
   width: 566px;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/1d10835d04fb33b61b7c50d228a42a1324558dae/src/assets/MainImg/shelf.png);
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/a77698df23ab76a453d290f9999a0237887899ae/src/assets/MainImg/shelf.png);
 }
 #shop-container::-webkit-scrollbar {
   width: 0.2em;
@@ -33,7 +34,7 @@
 
 .itemsForPurchasable {
   width: 33.3%;
-  height: 190px;
+  height: 200px;
   padding: 0;
   display: flex;
   align-items: center;
