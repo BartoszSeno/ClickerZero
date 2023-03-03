@@ -1,16 +1,32 @@
 #shop-container {
-  background-color: rgb(44, 0, 0);
-  height: 927px;
-  width: 100%;
+  height: 728px;
+  width: 566px;
+  margin-top: 181px;
   flex-wrap: wrap;
   align-items: center;
   display: flex;
+  background-color: #2d2214;
+  overflow: auto;
+}
+
+#shop-container::-webkit-scrollbar {
+  width: 0.2em;
+}
+
+#shop-container::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+#shop-container::-webkit-scrollbar-thumb {
+  background-color: #7b5f3c;
+  border-radius: 10px;
 }
 
 .itemsForPurchasable {
   width: 190px;
   height: 150px;
-  background-color: gray;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/SpiritLvlOne.png);
+
   display: flex;
   align-items: center;
   flex-direction: column;

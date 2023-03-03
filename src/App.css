@@ -11,10 +11,11 @@
 }
 
 .left-container {
-  background-color: rgb(44, 44, 44);
   display: flex;
+  align-items: center;
   height: 977px;
   width: 700px;
   display: flex;
   flex-direction: column;
+  background-image: url("https://raw.githubusercontent.com/BartoszSeno/ClickerZero/7e8292ed207169e5416054a869ee13d41b11f066/src/assets/MainImg/LeftMenu.png");
 }
