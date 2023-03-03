@@ -3,7 +3,7 @@ export const MainWeaponImageAndNameAndCost = [
     id: 1,
     tier: "green",
     image:
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/c096aa2023d2bffa9c1eb22de15938be4ed6e6d1/src/assets/MainImg/Weapon/TextureGreen/1.png",
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/1.png",
     name: "Seleth",
     dmgLvl0: 14,
     dmgLvl1: 18,
@@ -16,7 +16,7 @@ export const MainWeaponImageAndNameAndCost = [
     id: 2,
     tier: "green",
     image:
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/mainWeapon/krea.png",
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/1b.png",
     name: "Krea",
     dmgLvl0: 19,
     dmgLvl1: 23,
@@ -29,7 +29,7 @@ export const MainWeaponImageAndNameAndCost = [
     id: 3,
     tier: "green",
     image:
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/mainWeapon/kalis.png",
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/1c.png",
     name: "Kalis",
     dmgLvl0: 27,
     dmgLvl1: 31,

@@ -52,7 +52,7 @@
 }
 
 .itemsForPurchasable img {
-  transform: rotate(30deg);
+  transform: rotate(-75deg);
   position: relative;
   margin-left: 10px;
   height: 80px;
