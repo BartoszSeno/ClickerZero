@@ -3,7 +3,7 @@ export const MainWeaponImageAndNameAndCost = [
     id: 1,
     tier: "green",
     image:
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/mainWeapon/seleth.png",
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/c096aa2023d2bffa9c1eb22de15938be4ed6e6d1/src/assets/MainImg/Weapon/TextureGreen/1.png",
     name: "Seleth",
     dmgLvl0: 14,
     dmgLvl1: 18,
