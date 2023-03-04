@@ -195,4 +195,16 @@ export const MainWeaponImageAndNameAndCost = [
     isBought: false,
     isVisible: true,
   },
+  // BLUE WEAPON ==============================================================================
+  {
+    id: 19,
+    tier: "blue",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/1.png",
+    name: "Ivory",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
 ];
