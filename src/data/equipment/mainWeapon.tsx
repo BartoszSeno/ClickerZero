@@ -197,7 +197,7 @@ export const MainWeaponImageAndNameAndCost = [
   },
   // BLUE WEAPON ==============================================================================
   {
-    id: 19,
+    id: 101,
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/1.png",
@@ -208,11 +208,144 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 20,
+    id: 102,
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/2.png",
     name: "Ivory",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 103,
+    tier: "blue",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/3.png",
+    name: "Ivory",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 104,
+    tier: "blue",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/4.png",
+    name: "Ivory",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 105,
+    tier: "blue",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/5.png",
+    name: "Ivory",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 106,
+    tier: "blue",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/6.png",
+    name: "Ivory",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 107,
+    tier: "blue",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/7.png",
+    name: "Ivory",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 108,
+    tier: "blue",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/8.png",
+    name: "Ivory",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 109,
+    tier: "blue",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/9.png",
+    name: "Ivory",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 110,
+    tier: "blue",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/10.png",
+    name: "Ivory",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 111,
+    tier: "blue",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/11.png",
+    name: "Ivory",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 112,
+    tier: "blue",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/12.png",
+    name: "Ivory",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 113,
+    tier: "blue",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/13.png",
+    name: "Ivory",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  // YELLOW WEAPON ==============================================================================
+  {
+    id: 213,
+    tier: "yellow",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/13.png",
+    name: "Test",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
