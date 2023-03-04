@@ -1,12 +1,6 @@
-@font-face {
-  font-family: "MyCustomFont";
-  src: url("../src/assets/font/pixel_pirate.ttf");
-}
-
 #App-container {
   display: flex;
   justify-content: space-between;
-  font-family: "MyCustomFont", sans-serif;
 }
 
 .App {
