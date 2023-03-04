@@ -130,30 +130,6 @@ function App() {
           className="left-container"
           style={OpenMenu ? { marginLeft: "0px" } : { marginLeft: "-635px" }}
         >
-          <div className="ShowTier">
-            <button onClick={() => setSelectedOption("")}>All</button>
-
-            <button
-              onClick={() => setSelectedOption("green")}
-              className="GreenButton"
-            ></button>
-            <button
-              onClick={() => setSelectedOption("blue")}
-              className="BlueButton"
-            ></button>
-            <button
-              onClick={() => setSelectedOption("yellow")}
-              className="YellowButton"
-            ></button>
-            <button
-              onClick={() => setSelectedOption("Red")}
-              className="RedButton"
-            ></button>
-            <button
-              onClick={() => setSelectedOption("Purple")}
-              className="PurpleButton"
-            ></button>
-          </div>
           <button
             className="CloseAndOpenMenu"
             onClick={(e) => {
@@ -187,14 +163,45 @@ function App() {
           <div>
             <div>
               {activeTab === "shop" && (
-                <Shop
-                  setMainWeaponData={setMainWeaponData}
-                  mainWeaponDara={mainWeaponDara}
-                  count={count}
-                  setCount={setCount}
-                  setHowMenyTimeBoughtWeapon={setHowMenyTimeBoughtWeapon}
-                  SelectedOption={SelectedOption}
-                />
+                <>
+                  <div className="ShowTier">
+                    <div className="conteineeTier">
+                      <button
+                        onClick={() => setSelectedOption("")}
+                        className="all"
+                      ></button>
+
+                      <button
+                        onClick={() => setSelectedOption("green")}
+                        className="GreenButton"
+                      ></button>
+                      <button
+                        onClick={() => setSelectedOption("blue")}
+                        className="BlueButton"
+                      ></button>
+                      <button
+                        onClick={() => setSelectedOption("yellow")}
+                        className="YellowButton"
+                      ></button>
+                      <button
+                        onClick={() => setSelectedOption("Red")}
+                        className="RedButton"
+                      ></button>
+                      <button
+                        onClick={() => setSelectedOption("Purple")}
+                        className="PurpleButton"
+                      ></button>
+                    </div>
+                  </div>
+                  <Shop
+                    setMainWeaponData={setMainWeaponData}
+                    mainWeaponDara={mainWeaponDara}
+                    count={count}
+                    setCount={setCount}
+                    setHowMenyTimeBoughtWeapon={setHowMenyTimeBoughtWeapon}
+                    SelectedOption={SelectedOption}
+                  />
+                </>
               )}
               {activeTab === "enchant" && (
                 <Enchant

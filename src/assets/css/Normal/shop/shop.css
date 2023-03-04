@@ -91,15 +91,27 @@
 .ShowTier {
   position: absolute;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-evenly;
-  width: 20px;
-  height: 200px;
+  width: 300px;
+  height: 50px;
   z-index: 10000;
-  margin-top: 170px;
-  margin-left: -590px;
+  margin-top: 60px;
+  margin-left: -180px;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/smallest.png);
+  background-repeat: no-repeat;
+  transform: rotate(90deg);
+  z-index: 10000;
+}
+.conteineeTier {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-left: 15px;
+  width: 220px;
 }
 
+.all,
 .GreenButton,
 .BlueButton,
 .YellowButton,
@@ -108,16 +120,26 @@
   height: 20px;
   width: 20px;
   border: none;
+  border: 3.5px solid #34262d;
+  opacity: 0.7;
+}
+
+.all:hover,
+.GreenButton:hover,
+.BlueButton:hover,
+.YellowButton:hover,
+.RedButton:hover,
+.PurpleButton:hover {
+  opacity: 1;
+  cursor: pointer;
 }
 
 .GreenButton {
   background-color: #5fdd5f;
-  border: none;
 }
 
 .BlueButton {
   background-color: blue;
-  border: none;
 }
 .YellowButton {
   background-color: Yellow;
