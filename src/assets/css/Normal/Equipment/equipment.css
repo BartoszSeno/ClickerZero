@@ -162,19 +162,6 @@
   margin-right: -440px;
 }
 
-.imagetest {
-  display: none;
-  background-image: url(../../../images/Untitled.png);
-  background-size: 370px;
-  background-repeat: no-repeat;
-  margin-left: 28px;
-  margin-top: 45.5px;
-  height: 400px;
-  width: 400px;
-  position: absolute;
-  opacity: 0.3;
-}
-
 /*Statistic*/
 #Statistic {
   position: absolute;

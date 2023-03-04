@@ -15,7 +15,7 @@
   display: flex;
   position: relative;
   z-index: 100;
-  height: 1000px;
+  height: 1200px;
   width: 566px;
   background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/a77698df23ab76a453d290f9999a0237887899ae/src/assets/MainImg/shelf.png);
 }
@@ -55,7 +55,7 @@
   transform: rotate(-75deg);
   position: relative;
   margin-left: 10px;
-  height: 80px;
+  height: 100px;
 }
 .itemsForPurchasable:hover {
   background-color: #2d22143b;

@@ -27,7 +27,6 @@ const Enchant = ({
     localStorage.setItem("selectedItemImgForEnchant", item.image.toString());
     localStorage.setItem("selectedItemDmgForEnchant", item.dmgLvl0.toString());
     localStorage.setItem("selectedItemTierForEnchant", item.tier.toString());
-    localStorage.setItem("selectedItemDmgUpgradeOne", item.dmgLvl1.toString());
   }
   /// load value form localstorage
   const savedDmgUpgradeOne = localStorage.getItem("selectedItemDmgUpgradeOne");
