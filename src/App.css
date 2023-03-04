@@ -11,6 +11,7 @@
 }
 
 .left-container {
+  transition: 0.35s;
   display: flex;
   align-items: center;
   height: 977px;
@@ -18,4 +19,23 @@
   display: flex;
   flex-direction: column;
   background-image: url("https://raw.githubusercontent.com/BartoszSeno/ClickerZero/7e8292ed207169e5416054a869ee13d41b11f066/src/assets/MainImg/LeftMenu.png");
+}
+
+.CloseAndOpenMenu {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  height: 70px;
+  width: 60px;
+  cursor: pointer;
+  z-index: 10000;
+  margin-left: 663px;
+  margin-top: -35px;
+}
+
+.CloseAndOpenMenu span {
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 70px;
+  width: 60px;
 }
