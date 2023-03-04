@@ -120,6 +120,9 @@ function App() {
     }, 100);
   };
 
+  //SHOW TIER ON CLICK
+  const [SelectedOption, setSelectedOption] = useState("");
+
   return (
     <>
       <main id="App-container">
@@ -127,6 +130,30 @@ function App() {
           className="left-container"
           style={OpenMenu ? { marginLeft: "0px" } : { marginLeft: "-635px" }}
         >
+          <div className="ShowTier">
+            <button onClick={() => setSelectedOption("")}>All</button>
+
+            <button
+              onClick={() => setSelectedOption("green")}
+              className="GreenButton"
+            ></button>
+            <button
+              onClick={() => setSelectedOption("blue")}
+              className="BlueButton"
+            ></button>
+            <button
+              onClick={() => setSelectedOption("yellow")}
+              className="YellowButton"
+            ></button>
+            <button
+              onClick={() => setSelectedOption("Red")}
+              className="RedButton"
+            ></button>
+            <button
+              onClick={() => setSelectedOption("Purple")}
+              className="PurpleButton"
+            ></button>
+          </div>
           <button
             className="CloseAndOpenMenu"
             onClick={(e) => {
@@ -157,7 +184,6 @@ function App() {
             ></button>
           </div>
           <LeftNav setActiveTab={setActiveTab} activeTab={activeTab} />
-
           <div>
             <div>
               {activeTab === "shop" && (
@@ -167,6 +193,7 @@ function App() {
                   count={count}
                   setCount={setCount}
                   setHowMenyTimeBoughtWeapon={setHowMenyTimeBoughtWeapon}
+                  SelectedOption={SelectedOption}
                 />
               )}
               {activeTab === "enchant" && (

@@ -8,12 +8,14 @@ const Shop = ({
   count,
   setCount,
   setHowMenyTimeBoughtWeapon,
+  SelectedOption,
 }: {
   mainWeaponDara: any;
   setMainWeaponData: any;
   count: number;
   setCount: any;
   setHowMenyTimeBoughtWeapon: any;
+  SelectedOption: any;
 }) => {
   const [selectedUpgrade, setSelectedUpgrade] = useState(0);
 
@@ -36,6 +38,8 @@ const Shop = ({
     localStorage.setItem("count", count.toString());
   }, [count]);
 
+  // Button test for show only green weapon
+
   return (
     <>
       <div id="shop-container">
@@ -44,6 +48,7 @@ const Shop = ({
             if (!data.isBought || data.isBought) {
               return (
                 <button
+                  id={data.tier}
                   className={`itemsForPurchasable ${index} `}
                   key={index}
                   onClick={(e) => {
@@ -51,6 +56,12 @@ const Shop = ({
                     setCount(count - data.cost);
                   }}
                   disabled={count < data.cost}
+                  style={{
+                    display:
+                      SelectedOption === data.tier || SelectedOption === ""
+                        ? "flex"
+                        : "none",
+                  }}
                 >
                   <div className="CostAndPrice">
                     <span className={`itemName ${data.tier}C`}>

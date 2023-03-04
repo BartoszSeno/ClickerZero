@@ -15,7 +15,7 @@
   display: flex;
   position: relative;
   z-index: 100;
-  height: 2200px;
+  height: 2800px;
   width: 566px;
   background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/a77698df23ab76a453d290f9999a0237887899ae/src/assets/MainImg/shelf.png);
 }
@@ -86,4 +86,47 @@
   z-index: 20;
   margin-top: 0px;
   font-family: "Alagard";
+}
+
+.ShowTier {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 20px;
+  height: 200px;
+  z-index: 10000;
+  margin-top: 170px;
+  margin-left: -590px;
+}
+
+.GreenButton,
+.BlueButton,
+.YellowButton,
+.RedButton,
+.PurpleButton {
+  height: 20px;
+  width: 20px;
+  border: none;
+}
+
+.GreenButton {
+  background-color: #5fdd5f;
+  border: none;
+}
+
+.BlueButton {
+  background-color: blue;
+  border: none;
+}
+.YellowButton {
+  background-color: Yellow;
+}
+
+.RedButton {
+  background-color: Red;
+}
+
+.PurpleButton {
+  background-color: Purple;
 }

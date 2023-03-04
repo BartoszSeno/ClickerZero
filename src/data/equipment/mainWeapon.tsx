@@ -201,7 +201,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/1.png",
-    name: "Ivory",
+    name: "Razor",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -212,7 +212,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/2.png",
-    name: "Ivory",
+    name: "Purf",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -223,7 +223,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/3.png",
-    name: "Ivory",
+    name: "Sord",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -234,7 +234,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/4.png",
-    name: "Ivory",
+    name: "Defir",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -256,7 +256,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/6.png",
-    name: "Ivory",
+    name: "Tiron",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -267,7 +267,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/7.png",
-    name: "Ivory",
+    name: "Slicer",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -278,7 +278,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/8.png",
-    name: "Ivory",
+    name: "Lamd",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -289,7 +289,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/9.png",
-    name: "Ivory",
+    name: "Carver",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -300,7 +300,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/10.png",
-    name: "Ivory",
+    name: "Sailor",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -311,7 +311,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/11.png",
-    name: "Ivory",
+    name: "Prick",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -322,7 +322,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/12.png",
-    name: "Ivory",
+    name: "Sculp",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -333,7 +333,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/13.png",
-    name: "Ivory",
+    name: "Renwed",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -341,14 +341,125 @@ export const MainWeaponImageAndNameAndCost = [
   },
   // YELLOW WEAPON ==============================================================================
   {
-    id: 213,
+    id: 201,
     tier: "yellow",
     image:
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/13.png",
-    name: "Test",
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/1.png",
+    name: "Quicke",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
     isVisible: true,
   },
+  {
+    id: 202,
+    tier: "yellow",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/2.png",
+    name: "Bonce",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 203,
+    tier: "yellow",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/3.png",
+    name: "Sorrow",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 204,
+    tier: "yellow",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/4.png",
+    name: "Scimit",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 205,
+    tier: "yellow",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/5.png",
+    name: "Dirge",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 206,
+    tier: "yellow",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/6.png",
+    name: "Dems",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 207,
+    tier: "yellow",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/7.png",
+    name: "Peack",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 208,
+    tier: "yellow",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/8.png",
+    name: "Visgo",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 209,
+    tier: "yellow",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/9.png",
+    name: "Defect",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 210,
+    tier: "yellow",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/10.png",
+    name: "Crusader",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 211,
+    tier: "yellow",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/11.png",
+    name: "Furry",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  // RED WEAPON ======================================================
 ];
