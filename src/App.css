@@ -24,18 +24,77 @@
 .CloseAndOpenMenu {
   position: absolute;
   background-color: transparent;
+  background-repeat: no-repeat;
   border: none;
   height: 70px;
   width: 60px;
   cursor: pointer;
   z-index: 10000;
-  margin-left: 663px;
-  margin-top: -35px;
+  margin-left: 723px;
+  margin-top: 0px;
 }
 
-.CloseAndOpenMenu span {
-  background-repeat: no-repeat;
+.FastAccesToMenu {
+  height: 400px;
+  width: 100px;
+  margin-top: 100px;
+  margin-left: 690px;
   position: absolute;
-  height: 70px;
-  width: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  z-index: 10000;
+}
+
+.FAShop {
+  width: 70px;
+  height: 91px;
+  border: none;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/icon/shop.png);
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.FAUpgrade {
+  width: 77px;
+  height: 105px;
+  border: none;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/icon/upgrade.png);
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.FAShop:hover,
+.FAUpgrade:hover {
+  animation: LitleWind 0.6s ease-out;
+}
+
+@keyframes LitleWind {
+  0% {
+    transform: rotate(0deg);
+    transform-origin: center top;
+  }
+  50% {
+    transform: rotate(5deg);
+    transform-origin: center top;
+  }
+  100% {
+    transform: rotate(0deg);
+    transform-origin: center top;
+  }
+}
+
+.opensidemenu,
+.closesidemenu {
+  animation: ShowUpSideMenu 0.6s ease-out;
+}
+
+@keyframes ShowUpSideMenu {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

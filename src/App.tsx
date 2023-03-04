@@ -133,9 +133,29 @@ function App() {
               OpenMenuOrCloseMenu();
               changeImage();
             }}
+            style={{ backgroundImage: `url(${ImgClick})` }}
+          ></button>
+          <div
+            className={`FastAccesToMenu ${
+              OpenMenu ? "closesidemenu" : "opensidemenu"
+            }`}
+            style={OpenMenu ? { display: "none" } : { display: "flex" }}
           >
-            <span style={{ backgroundImage: `url(${ImgClick})` }}></span>
-          </button>
+            <button
+              className="FAShop"
+              onClick={() => {
+                setActiveTab("shop");
+                OpenMenuOrCloseMenu();
+              }}
+            ></button>
+            <button
+              className="FAUpgrade"
+              onClick={() => {
+                setActiveTab("enchant");
+                OpenMenuOrCloseMenu();
+              }}
+            ></button>
+          </div>
           <LeftNav setActiveTab={setActiveTab} activeTab={activeTab} />
 
           <div>
