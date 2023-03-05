@@ -35,14 +35,10 @@ const Enchant = ({
 
   // enchant
 
-  const [individualId, setindividualId] = useState<any>(0);
-
-  const [upgradedValueTest, setupgradedValueTest] = useState(0);
-
   function EnchantPerClick(index: any) {
     const item = MainWeaponImageAndNameAndCost[index];
 
-    const itemUpgradeName = `${item.name}${individualId}`;
+    const itemUpgradeName = `${item.name}`;
 
     const savedItemUpgrade = localStorage.getItem(itemUpgradeName);
 
@@ -57,7 +53,7 @@ const Enchant = ({
 
     const selectedItem = mainWeaponDara[index];
 
-    const itemName = `+${upgradedValue} ${item.name} ${individualId}`;
+    const itemName = `+${upgradedValue} ${item.name}`;
 
     localStorage.setItem(
       "UpgradedName",
@@ -75,10 +71,10 @@ const Enchant = ({
 
   function UpgradedNamesOnMount() {
     const upgradedNames = mainWeaponDara.map((data: any) => {
-      const itemUpgradeName = `${data.name}${individualId}`;
+      const itemUpgradeName = `${data.name}`;
       const savedItemUpgrade = localStorage.getItem(itemUpgradeName);
       const upgradedName = savedItemUpgrade
-        ? `+${Number(savedItemUpgrade)} ${data.name} ${individualId}`
+        ? `+${Number(savedItemUpgrade)} ${data.name}`
         : data.name;
       return upgradedName;
     });
@@ -101,7 +97,7 @@ const Enchant = ({
     const item = MainWeaponImageAndNameAndCost[index];
 
     // name of upgrade : upgrade0 + id
-    const itemUpgradeName = `${item.name}${individualId}`;
+    const itemUpgradeName = `${item.name}`;
     const savedItemUpgradeFromLocalStorage =
       localStorage.getItem(itemUpgradeName);
     const savedItemUpgradeValue = savedItemUpgradeFromLocalStorage
@@ -110,9 +106,7 @@ const Enchant = ({
 
     // Check if upgrade value is less than 15
     if (savedItemUpgradeValue < 15) {
-      const itemName = `+${savedItemUpgradeValue + 1} ${
-        item.name
-      } ${individualId}`;
+      const itemName = `+${savedItemUpgradeValue + 1} ${item.name}`;
       setUpgradedName(itemName);
     } else {
       setUpgradedName(""); // set upgraded name to empty string if value is 15 or greater
@@ -130,7 +124,7 @@ const Enchant = ({
   function FakeUpdateToRefreshTheData(index: any) {
     const item = MainWeaponImageAndNameAndCost[index];
 
-    const itemUpgradeName = `${item.name}${individualId}`;
+    const itemUpgradeName = `${item.name}`;
 
     const savedItemUpgrade = localStorage.getItem(itemUpgradeName);
 
@@ -143,7 +137,7 @@ const Enchant = ({
 
     localStorage.setItem(itemUpgradeName, upgradedValue.toString());
 
-    const itemName = `+${upgradedValue} ${item.name} ${individualId}`;
+    const itemName = `+${upgradedValue} ${item.name}`;
 
     const upgradedNames = [...UpgradedNamesMainWeapon];
     upgradedNames[index] = itemName;

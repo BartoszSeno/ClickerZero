@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "../assets/css/Normal/shop/shop.css";
 
 const Shop = ({
@@ -19,8 +19,6 @@ const Shop = ({
   SelectedOption: any;
   ShelfHeight: any;
 }) => {
-  const [selectedUpgrade, setSelectedUpgrade] = useState(0);
-
   const handleClick = (index: any) => {
     const newMainWeaponData = [...mainWeaponDara];
     newMainWeaponData[index].isBought = true;
@@ -30,7 +28,6 @@ const Shop = ({
       "MainWeaponImageAndNameAndCost",
       JSON.stringify(newMainWeaponData)
     );
-    setSelectedUpgrade(newMainWeaponData[index].cost);
     setHowMenyTimeBoughtWeapon(newMainWeaponData[index].count);
 
     console.log(count);
