@@ -123,6 +123,7 @@ function App() {
   //SHOW TIER ON CLICK
   const [SelectedOption, setSelectedOption] = useState("");
 
+  const [ActiveTier, setActiveTier] = useState("");
   return (
     <>
       <main id="App-container">
@@ -167,29 +168,58 @@ function App() {
                   <div className="ShowTier">
                     <div className="conteineeTier">
                       <button
-                        onClick={() => setSelectedOption("")}
-                        className="all"
-                      ></button>
-
-                      <button
-                        onClick={() => setSelectedOption("green")}
-                        className="GreenButton"
-                      ></button>
-                      <button
-                        onClick={() => setSelectedOption("blue")}
-                        className="BlueButton"
+                        onClick={() => {
+                          setSelectedOption("");
+                          setActiveTier("");
+                        }}
+                        className={`all ${
+                          ActiveTier === "" ? "activeTier" : ""
+                        }`}
                       ></button>
                       <button
-                        onClick={() => setSelectedOption("yellow")}
-                        className="YellowButton"
+                        onClick={() => {
+                          setSelectedOption("green");
+                          setActiveTier("green");
+                        }}
+                        className={`GreenButton ${
+                          ActiveTier === "green" ? "activeTier" : ""
+                        }`}
                       ></button>
                       <button
-                        onClick={() => setSelectedOption("Red")}
-                        className="RedButton"
+                        onClick={() => {
+                          setSelectedOption("blue");
+                          setActiveTier("blue");
+                        }}
+                        className={`BlueButton ${
+                          ActiveTier === "blue" ? "activeTier" : ""
+                        }`}
                       ></button>
                       <button
-                        onClick={() => setSelectedOption("Purple")}
-                        className="PurpleButton"
+                        onClick={() => {
+                          setSelectedOption("yellow");
+                          setActiveTier("yellow");
+                        }}
+                        className={`YellowButton ${
+                          ActiveTier === "yellow" ? "activeTier" : ""
+                        }`}
+                      ></button>
+                      <button
+                        onClick={() => {
+                          setSelectedOption("red");
+                          setActiveTier("red");
+                        }}
+                        className={`RedButton ${
+                          ActiveTier === "red" ? "activeTier" : ""
+                        }`}
+                      ></button>
+                      <button
+                        onClick={() => {
+                          setSelectedOption("purple");
+                          setActiveTier("purple");
+                        }}
+                        className={`PurpleButton ${
+                          ActiveTier === "purple" ? "activeTier" : ""
+                        }`}
                       ></button>
                     </div>
                   </div>

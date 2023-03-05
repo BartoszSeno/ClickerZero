@@ -41,15 +41,12 @@ const Enchant = ({
     const item = MainWeaponImageAndNameAndCost[index];
     const itemUpgradeName = `${item.name}${individualId}`;
     const savedItemUpgrade = localStorage.getItem(itemUpgradeName);
-    const itemId = `${index}${savedItemUpgrade || 0}`;
-    localStorage.setItem(
-      itemUpgradeName,
-      (Number(itemId.slice(1)) + 1).toString()
-    );
+    const savedItemUpgradeNumber = Number(savedItemUpgrade);
+    const upgradedValue =
+      savedItemUpgradeNumber < 15 ? savedItemUpgradeNumber + 1 : 15;
+    localStorage.setItem(itemUpgradeName, upgradedValue.toString());
     const selectedItem = mainWeaponDara[index];
-    const itemName = `+${Number(savedItemUpgrade) + 1} ${
-      item.name
-    } ${individualId}`;
+    const itemName = `+${upgradedValue} ${item.name} ${individualId}`;
     localStorage.setItem(
       "UpgradedName",
       JSON.stringify({
@@ -85,22 +82,30 @@ const Enchant = ({
   //get upgraded name
 
   const [UpgradedName, setUpgradedName] = useState<string>("");
+  const [savedItemUpgrade, setSavedItemUpgrade] = useState<number>(0); // zainicjuj wartość początkową
 
   function ShowNameOnHover(index: any) {
     const item = MainWeaponImageAndNameAndCost[index];
 
     // name of upgrade : upgrade0 + id
     const itemUpgradeName = `${item.name}${individualId}`;
-    const savedItemUpgrade = localStorage.getItem(itemUpgradeName);
-    const itemId = `${index}${savedItemUpgrade || 0}`;
-    Number(itemId.slice(1));
-    // name of upgrade lvl : upgrade[ number of upgrades ] + id
-    const itemName = `+${Number(savedItemUpgrade) + 1} ${
-      item.name
-    } ${individualId}`;
+    const savedItemUpgradeFromLocalStorage =
+      localStorage.getItem(itemUpgradeName);
+    const savedItemUpgradeValue = savedItemUpgradeFromLocalStorage
+      ? Number(savedItemUpgradeFromLocalStorage)
+      : 0;
 
-    setUpgradedName(itemName);
-    console.log(itemName);
+    setSavedItemUpgrade(savedItemUpgradeValue); // aktualizuj wartość z localStorage
+
+    // Check if upgrade value is less than 15
+    if (savedItemUpgradeValue < 15) {
+      const itemName = `+${savedItemUpgradeValue + 1} ${
+        item.name
+      } ${individualId}`;
+      setUpgradedName(itemName);
+    } else {
+      setUpgradedName(""); // set upgraded name to empty string if value is 15 or greater
+    }
   }
 
   return (
@@ -167,40 +172,49 @@ const Enchant = ({
             </div>
           </div>
           <div className="EnchantProgress"></div>
-          <div
-            className="EnchantSuccess"
-            onMouseEnter={() => {
-              ShowNameOnHover(selectedItemIndex);
-            }}
-          >
-            <img
-              className="mainWeaponImg"
-              src={
-                savedImage
-                  ? savedImage
-                  : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
-              }
-              alt={`${savedName || "No name"} weapon`}
-            />
-          </div>
-          <div className="infoEnchant">
-            <span className="UpgradeName">{UpgradedName}</span>
-            <div className="enchantBox2">
-              <img
-                className="UpgradeImg"
-                src={
-                  savedImage
-                    ? savedImage
-                    : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
-                }
-                alt={`${savedName || "No name"} weapon`}
-              />
-              <span className="UpgradeDmg">
-                <span className="UpgradeDmgTitle">Deamge:</span>
-                {savedDmgUpgradeOne}
-              </span>
-            </div>
-          </div>
+          {savedItemUpgrade < 15 ? (
+            <>
+              <div
+                className="EnchantSuccess"
+                onMouseEnter={() => {
+                  ShowNameOnHover(selectedItemIndex);
+                }}
+              >
+                <img
+                  className="mainWeaponImg"
+                  src={
+                    savedImage
+                      ? savedImage
+                      : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
+                  }
+                  alt={`${savedName || "No name"} weapon`}
+                />
+              </div>
+              <div className="infoEnchant">
+                <span className="UpgradeName">{UpgradedName}</span>
+                <div className="enchantBox2">
+                  <img
+                    className="UpgradeImg"
+                    src={
+                      savedImage
+                        ? savedImage
+                        : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
+                    }
+                    alt={`${savedName || "No name"} weapon`}
+                  />
+                  <span className="UpgradeDmg">
+                    <span className="UpgradeDmgTitle">Deamge:</span>
+                    {savedDmgUpgradeOne}
+                  </span>
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="EnchantSuccess"></div>
+              <div className="infoEnchant"></div>
+            </>
+          )}
 
           <button onClick={() => EnchantPerClick(selectedItemIndex)}>
             Enchant
