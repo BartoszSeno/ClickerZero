@@ -39,14 +39,22 @@ const Enchant = ({
 
   function EnchantPerClick(index: any) {
     const item = MainWeaponImageAndNameAndCost[index];
+
     const itemUpgradeName = `${item.name}${individualId}`;
+
     const savedItemUpgrade = localStorage.getItem(itemUpgradeName);
+
     const savedItemUpgradeNumber = Number(savedItemUpgrade);
+
     const upgradedValue =
       savedItemUpgradeNumber < 15 ? savedItemUpgradeNumber + 1 : 15;
+
     localStorage.setItem(itemUpgradeName, upgradedValue.toString());
+
     const selectedItem = mainWeaponDara[index];
+
     const itemName = `+${upgradedValue} ${item.name} ${individualId}`;
+
     localStorage.setItem(
       "UpgradedName",
       JSON.stringify({
@@ -54,10 +62,11 @@ const Enchant = ({
         selectedItemNameForEnchant: itemName,
       })
     );
+
     const upgradedNames = [...UpgradedNamesMainWeapon];
     upgradedNames[index] = itemName;
     setUpgradedNamesMainWeapon(upgradedNames);
-    console.log(itemName);
+    setSavedItemUpgrade(upgradedValue); // aktualizuj wartość z localStorage
   }
 
   function UpgradedNamesOnMount() {
@@ -94,8 +103,6 @@ const Enchant = ({
     const savedItemUpgradeValue = savedItemUpgradeFromLocalStorage
       ? Number(savedItemUpgradeFromLocalStorage)
       : 0;
-
-    setSavedItemUpgrade(savedItemUpgradeValue); // aktualizuj wartość z localStorage
 
     // Check if upgrade value is less than 15
     if (savedItemUpgradeValue < 15) {
