@@ -124,6 +124,8 @@ function App() {
   const [SelectedOption, setSelectedOption] = useState("");
 
   const [ActiveTier, setActiveTier] = useState("");
+
+  const [ShelfHeight, setShelfHeight] = useState("4600");
   return (
     <>
       <main id="App-container">
@@ -171,6 +173,7 @@ function App() {
                         onClick={() => {
                           setSelectedOption("");
                           setActiveTier("");
+                          setShelfHeight("4600");
                         }}
                         className={`all ${
                           ActiveTier === "" ? "activeTier" : ""
@@ -180,6 +183,7 @@ function App() {
                         onClick={() => {
                           setSelectedOption("green");
                           setActiveTier("green");
+                          setShelfHeight("1200");
                         }}
                         className={`GreenButton ${
                           ActiveTier === "green" ? "activeTier" : ""
@@ -189,6 +193,7 @@ function App() {
                         onClick={() => {
                           setSelectedOption("blue");
                           setActiveTier("blue");
+                          setShelfHeight("1000");
                         }}
                         className={`BlueButton ${
                           ActiveTier === "blue" ? "activeTier" : ""
@@ -198,6 +203,7 @@ function App() {
                         onClick={() => {
                           setSelectedOption("yellow");
                           setActiveTier("yellow");
+                          setShelfHeight("800");
                         }}
                         className={`YellowButton ${
                           ActiveTier === "yellow" ? "activeTier" : ""
@@ -207,6 +213,7 @@ function App() {
                         onClick={() => {
                           setSelectedOption("red");
                           setActiveTier("red");
+                          setShelfHeight("800");
                         }}
                         className={`RedButton ${
                           ActiveTier === "red" ? "activeTier" : ""
@@ -216,6 +223,7 @@ function App() {
                         onClick={() => {
                           setSelectedOption("purple");
                           setActiveTier("purple");
+                          setShelfHeight("1000");
                         }}
                         className={`PurpleButton ${
                           ActiveTier === "purple" ? "activeTier" : ""
@@ -230,6 +238,7 @@ function App() {
                     setCount={setCount}
                     setHowMenyTimeBoughtWeapon={setHowMenyTimeBoughtWeapon}
                     SelectedOption={SelectedOption}
+                    ShelfHeight={ShelfHeight}
                   />
                 </>
               )}

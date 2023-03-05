@@ -578,7 +578,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/1.png",
-    name: "Mirsy",
+    name: "Arondite",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -589,7 +589,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/2.png",
-    name: "Mirsy",
+    name: "Purifier",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -600,7 +600,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/3.png",
-    name: "Mirsy",
+    name: "Godslayer",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -611,7 +611,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/4.png",
-    name: "Mirsy",
+    name: "Tyrhung",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -622,7 +622,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/5.png",
-    name: "Mirsy",
+    name: "Valkyrie",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -633,7 +633,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/6.png",
-    name: "Mirsy",
+    name: "Orenmir",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -644,7 +644,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/7.png",
-    name: "Mirsy",
+    name: "Frenzy",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -655,7 +655,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/8.png",
-    name: "Mirsy",
+    name: "Lazarus",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -666,7 +666,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/9.png",
-    name: "Mirsy",
+    name: "Betrayer",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -688,7 +688,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/11.png",
-    name: "Mirsy",
+    name: "Needle",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -699,7 +699,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/12.png",
-    name: "Mirsy",
+    name: "Celeste",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -710,7 +710,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/13.png",
-    name: "Mirsy",
+    name: "Kinslayer",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -721,7 +721,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/14.png",
-    name: "Mirsy",
+    name: "Echo",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,
@@ -732,7 +732,7 @@ export const MainWeaponImageAndNameAndCost = [
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/15.png",
-    name: "Mirsy",
+    name: "Scalpel",
     dmgLvl0: 128,
     cost: 1,
     isBought: false,

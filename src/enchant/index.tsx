@@ -67,14 +67,6 @@ const Enchant = ({
     upgradedNames[index] = itemName;
     setUpgradedNamesMainWeapon(upgradedNames);
     setSavedItemUpgrade(upgradedValue); // aktualizuj wartość z localStorage
-    console.log(item);
-    console.log(itemUpgradeName);
-    console.log(savedItemUpgrade);
-    console.log(savedItemUpgradeNumber);
-    console.log(upgradedValue);
-    console.log(selectedItem);
-    console.log(itemName);
-    console.log(upgradedNames);
   }
 
   function UpgradedNamesOnMount() {

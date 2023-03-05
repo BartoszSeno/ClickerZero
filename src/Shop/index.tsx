@@ -9,6 +9,7 @@ const Shop = ({
   setCount,
   setHowMenyTimeBoughtWeapon,
   SelectedOption,
+  ShelfHeight,
 }: {
   mainWeaponDara: any;
   setMainWeaponData: any;
@@ -16,6 +17,7 @@ const Shop = ({
   setCount: any;
   setHowMenyTimeBoughtWeapon: any;
   SelectedOption: any;
+  ShelfHeight: any;
 }) => {
   const [selectedUpgrade, setSelectedUpgrade] = useState(0);
 
@@ -43,7 +45,7 @@ const Shop = ({
   return (
     <>
       <div id="shop-container">
-        <div className="shelf">
+        <div className="shelf" style={{ height: ShelfHeight }}>
           {mainWeaponDara.map((data: any, index: any) => {
             if (!data.isBought || data.isBought) {
               return (
