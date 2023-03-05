@@ -462,4 +462,114 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   // RED WEAPON ======================================================
+  {
+    id: 301,
+    tier: "red",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/1.png",
+    name: "Guard",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 302,
+    tier: "red",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/2.png",
+    name: "Blooder",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 303,
+    tier: "red",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/3.png",
+    name: "Miths",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 304,
+    tier: "red",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/4.png",
+    name: "Eter",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 305,
+    tier: "red",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/5.png",
+    name: "Malice",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 306,
+    tier: "red",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/6.png",
+    name: "Omega",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 307,
+    tier: "red",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/7.png",
+    name: "Etcher",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 308,
+    tier: "red",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/8.png",
+    name: "Mitive",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 309,
+    tier: "red",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/9.png",
+    name: "Shrend",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
+  {
+    id: 310,
+    tier: "red",
+    image:
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/10.png",
+    name: "Mirsy",
+    dmgLvl0: 128,
+    cost: 1,
+    isBought: false,
+    isVisible: true,
+  },
 ];
