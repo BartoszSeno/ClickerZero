@@ -37,6 +37,8 @@ const Enchant = ({
 
   const [individualId, setindividualId] = useState<any>(0);
 
+  const [upgradedValueTest, setupgradedValueTest] = useState(0);
+
   function EnchantPerClick(index: any) {
     const item = MainWeaponImageAndNameAndCost[index];
 
@@ -48,6 +50,8 @@ const Enchant = ({
 
     const upgradedValue =
       savedItemUpgradeNumber < 15 ? savedItemUpgradeNumber + 1 : 15;
+
+    localStorage.setItem("upgradedValue", upgradedValue.toString());
 
     localStorage.setItem(itemUpgradeName, upgradedValue.toString());
 
@@ -114,6 +118,36 @@ const Enchant = ({
       setUpgradedName(""); // set upgraded name to empty string if value is 15 or greater
     }
   }
+  // remove IMG AND NAME on load page
+  useEffect(() => {
+    localStorage.removeItem("selectedItemImgForEnchant");
+    localStorage.removeItem("selectedItemNameForEnchant");
+  }, []);
+
+  const savedUpgradedValue = localStorage.getItem("upgradedValue");
+  const upgradedValue = savedUpgradedValue ? Number(savedUpgradedValue) : 0;
+
+  function FakeUpdateToRefreshTheData(index: any) {
+    const item = MainWeaponImageAndNameAndCost[index];
+
+    const itemUpgradeName = `${item.name}${individualId}`;
+
+    const savedItemUpgrade = localStorage.getItem(itemUpgradeName);
+
+    const savedItemUpgradeNumber = Number(savedItemUpgrade);
+
+    const upgradedValue =
+      savedItemUpgradeNumber < 15 ? savedItemUpgradeNumber : 15;
+
+    localStorage.setItem("upgradedValue", upgradedValue.toString());
+
+    localStorage.setItem(itemUpgradeName, upgradedValue.toString());
+
+    const itemName = `+${upgradedValue} ${item.name} ${individualId}`;
+
+    const upgradedNames = [...UpgradedNamesMainWeapon];
+    upgradedNames[index] = itemName;
+  }
 
   return (
     <>
@@ -143,14 +177,12 @@ const Enchant = ({
                   return (
                     <div key={index}>
                       {Array.from({ length: item.count }, (_, i) => {
-                        const itemUpgradeName = `${item.name}${individualId}`;
-                        const savedItemUpgrade =
-                          localStorage.getItem(itemUpgradeName);
+                        const mainId = `${index}${i}`;
+                        const itemUpgradeName = `${item.name}${index}${mainId}`;
+
                         const itemId = `${index}${savedItemUpgrade || 0}`;
                         localStorage.getItem(itemUpgradeName);
                         const upgradedName = UpgradedNamesMainWeapon[index];
-
-                        const mainId = `${index}${i}`;
 
                         return (
                           <div
@@ -159,6 +191,7 @@ const Enchant = ({
                             onClick={(e) => {
                               setSelectedItemIndex(index);
                               GetIdPerClick(index);
+                              FakeUpdateToRefreshTheData(index);
                             }}
                           >
                             <img
@@ -179,7 +212,7 @@ const Enchant = ({
             </div>
           </div>
           <div className="EnchantProgress"></div>
-          {savedItemUpgrade < 15 ? (
+          {upgradedValue < 15 ? (
             <>
               <div
                 className="EnchantSuccess"
@@ -222,7 +255,6 @@ const Enchant = ({
               <div className="infoEnchant"></div>
             </>
           )}
-
           <button onClick={() => EnchantPerClick(selectedItemIndex)}>
             Enchant
           </button>
