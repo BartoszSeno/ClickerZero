@@ -63,11 +63,12 @@ function MainWeapon({
             const upgradedName = UpgradedNamesMainWeapon[index];
             if (data.isBought) {
               return (
-                <div key={index}>
+                <div key={`${data.id}_${index}`}>
                   {Array.from({ length: data.count }, (_, i) => (
                     <div
                       className={`option ${index} `}
                       id={`${index}${i}`}
+                      key={`${data.id}_${index}_${i}`}
                       onClick={(e) => {
                         GetIdPerClick(index);
                       }}

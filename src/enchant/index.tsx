@@ -169,7 +169,7 @@ const Enchant = ({
               {mainWeaponDara.map((item: any, index: any) => {
                 if (item.isBought) {
                   return (
-                    <div key={index}>
+                    <div key={`item_${index}`}>
                       {Array.from({ length: item.count }, (_, i) => {
                         const mainId = `${index}${i}`;
                         const itemUpgradeName = `${item.name}${index}${mainId}`;
@@ -182,6 +182,7 @@ const Enchant = ({
                           <div
                             className={`option ${itemId} `}
                             id={mainId}
+                            key={`item_${index}_${i}`}
                             onClick={(e) => {
                               setSelectedItemIndex(index);
                               GetIdPerClick(index);
