@@ -59,6 +59,8 @@ function App() {
     Array(mainWeaponDara.length).fill("")
   );
 
+  const [UpgradedDmgMainWeapon, setUpgradedDmgMainWeapon] = useState("");
+
   const leftContainer = document.querySelector(
     ".left-container"
   ) as HTMLElement;
@@ -244,6 +246,7 @@ function App() {
               )}
               {activeTab === "enchant" && (
                 <Enchant
+                  setUpgradedDmgMainWeapon={setUpgradedDmgMainWeapon}
                   mainWeaponDara={mainWeaponDara}
                   setUpgradedNamesMainWeapon={setUpgradedNamesMainWeapon}
                   UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
@@ -279,6 +282,7 @@ function App() {
             setsavedDMG={setsavedDMG}
             savedDMG={savedDMG}
             UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
+            UpgradedDmgMainWeapon={UpgradedDmgMainWeapon}
           />
         </div>
       </main>

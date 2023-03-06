@@ -16,6 +16,7 @@ const Eq = ({
   savedDMG,
   setsavedDMG,
   UpgradedNamesMainWeapon,
+  UpgradedDmgMainWeapon,
 }: {
   mainWeaponDara: any;
   setMainWeaponData: any;
@@ -23,6 +24,7 @@ const Eq = ({
   savedDMG: any;
   setsavedDMG: any;
   UpgradedNamesMainWeapon: any;
+  UpgradedDmgMainWeapon: any;
 }) => {
   return (
     <>
@@ -35,6 +37,7 @@ const Eq = ({
             HowMenyTimeBoughtWeapon={HowMenyTimeBoughtWeapon}
             setsavedDMG={setsavedDMG}
             UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
+            UpgradedDmgMainWeapon={UpgradedDmgMainWeapon}
           />
           <SubWeapon />
           <Armor />
@@ -44,7 +47,11 @@ const Eq = ({
         </span>
       </section>
       <section id="Statistic">
-        <Statistic savedDMG={savedDMG} />
+        <Statistic
+          savedDMG={savedDMG}
+          mainWeaponDara={mainWeaponDara}
+          UpgradedDmgMainWeapon={UpgradedDmgMainWeapon}
+        />
       </section>
     </>
   );

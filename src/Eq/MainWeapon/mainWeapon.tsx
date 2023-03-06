@@ -1,6 +1,7 @@
 /* eslint-disable array-callback-return */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MainWeaponImageAndNameAndCost } from "../../data/equipment/mainWeapon";
+import { getSavedDmgMain } from "../../enchant";
 
 function MainWeapon({
   mainWeaponDara,
@@ -8,12 +9,14 @@ function MainWeapon({
   HowMenyTimeBoughtWeapon,
   setsavedDMG,
   UpgradedNamesMainWeapon,
+  UpgradedDmgMainWeapon,
 }: {
   mainWeaponDara: any;
   setMainWeaponData: any;
   HowMenyTimeBoughtWeapon: any;
   setsavedDMG: any;
   UpgradedNamesMainWeapon: any;
+  UpgradedDmgMainWeapon: any;
 }) {
   //Geting items from loop on click
   function GetIdPerClick(index: any) {
@@ -24,10 +27,19 @@ function MainWeapon({
     localStorage.setItem("selectedItemImg", item.image.toString());
     localStorage.setItem("selectedItemDmg", item.dmgLvl0.toString());
     localStorage.setItem("selectedItemTier", item.tier.toString());
-    const savedDmg = localStorage.getItem("selectedItemDmg");
 
-    setsavedDMG(savedDmg);
+    const itemSavedDmgMainKey = `selectedItemDmgForEnchant_${item.name}`;
+    const savedDmgMain = getSavedDmgMain(itemSavedDmgMainKey);
+
+    setsavedDMG(savedDmgMain);
   }
+  useEffect(() => {
+    const itemSavedDmgMainKey = `selectedItemDmgForEnchant_${localStorage.getItem(
+      "selectedItemName"
+    )}`;
+    const savedDmgMain = getSavedDmgMain(itemSavedDmgMainKey);
+    setsavedDMG(savedDmgMain);
+  }, []);
 
   //load items from localstorage
   const savedImage = localStorage.getItem("selectedItemImg");
@@ -61,6 +73,8 @@ function MainWeapon({
         <div id="option-container" className={OpenAndClose ? "open" : "close"}>
           {mainWeaponDara.map((data: any, index: any) => {
             const upgradedName = UpgradedNamesMainWeapon[index];
+            // pobranie wartości savedDmgMain dla danego przedmiotu
+
             if (data.isBought) {
               return (
                 <div key={`${data.id}_${index}`}>

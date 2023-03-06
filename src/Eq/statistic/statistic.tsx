@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
-import { MainWeaponImageAndNameAndCost } from "../../data/equipment/mainWeapon";
 
-const Statistic = ({ savedDMG }: { savedDMG: any }) => {
+const Statistic = ({
+  savedDMG,
+  mainWeaponDara,
+  UpgradedDmgMainWeapon,
+}: {
+  savedDMG: any;
+  mainWeaponDara: any;
+  UpgradedDmgMainWeapon: any;
+}) => {
   //main dmg that is gived per click
-
   return (
     <>
       <div id="statistic-container">

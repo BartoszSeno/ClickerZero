@@ -8,10 +8,12 @@ const Enchant = ({
   mainWeaponDara,
   setUpgradedNamesMainWeapon,
   UpgradedNamesMainWeapon,
+  setUpgradedDmgMainWeapon,
 }: {
   mainWeaponDara: any;
   setUpgradedNamesMainWeapon: any;
   UpgradedNamesMainWeapon: any;
+  setUpgradedDmgMainWeapon: any;
 }) => {
   const [OpenAndClose, setOpenAndClose] = useState<boolean>(false);
   function OpenClose() {
@@ -25,11 +27,11 @@ const Enchant = ({
     localStorage.setItem("selectedItemIdForEnchant", item.id.toString());
     localStorage.setItem("selectedItemNameForEnchant", item.name.toString());
     localStorage.setItem("selectedItemImgForEnchant", item.image.toString());
-    localStorage.setItem("selectedItemDmgForEnchant", item.dmgLvl0.toString());
     localStorage.setItem("selectedItemTierForEnchant", item.tier.toString());
+    localStorage.setItem("selectedItemDmgForEnchant", item.dmgLvl0.toString());
   }
   /// load value form localstorage
-  const savedDmgUpgradeOne = localStorage.getItem("selectedItemDmgUpgradeOne");
+  const savedDmgMain = localStorage.getItem("selectedItemDmgForEnchant");
   const savedImage = localStorage.getItem("selectedItemImgForEnchant");
   const savedName = localStorage.getItem("selectedItemNameForEnchant");
 
@@ -37,24 +39,15 @@ const Enchant = ({
 
   function EnchantPerClick(index: any) {
     const item = MainWeaponImageAndNameAndCost[index];
-
     const itemUpgradeName = `${item.name}`;
-
     const savedItemUpgrade = localStorage.getItem(itemUpgradeName);
-
     const savedItemUpgradeNumber = Number(savedItemUpgrade);
-
     const upgradedValue =
       savedItemUpgradeNumber < 15 ? savedItemUpgradeNumber + 1 : 15;
-
     localStorage.setItem("upgradedValue", upgradedValue.toString());
-
     localStorage.setItem(itemUpgradeName, upgradedValue.toString());
-
     const selectedItem = mainWeaponDara[index];
-
     const itemName = `+${upgradedValue} ${item.name}`;
-
     localStorage.setItem(
       "UpgradedName",
       JSON.stringify({
@@ -62,12 +55,41 @@ const Enchant = ({
         selectedItemNameForEnchant: itemName,
       })
     );
-
     const upgradedNames = [...UpgradedNamesMainWeapon];
     upgradedNames[index] = itemName;
     setUpgradedNamesMainWeapon(upgradedNames);
-    setSavedItemUpgrade(upgradedValue); // aktualizuj wartość z localStorage
+
+    // tworzenie unikalnego klucza dla wartości savedDmgMain
+    const itemSavedDmgMainKey = `selectedItemDmgForEnchant_${item.name}`;
+
+    const savedClicks = localStorage.getItem(`savedClicks_${item.name}`);
+    const numClicks = savedClicks ? Number(savedClicks) : 0;
+    if (numClicks < 15) {
+      let newSavedDmgMain = Number(
+        localStorage.getItem(itemSavedDmgMainKey) || 1
+      );
+      newSavedDmgMain *= 2;
+      localStorage.setItem(itemSavedDmgMainKey, newSavedDmgMain.toString());
+      localStorage.setItem(
+        `savedClicks_${item.name}`,
+        (numClicks + 1).toString()
+      );
+    }
+    const savedDmgMain = localStorage.getItem(itemSavedDmgMainKey) || 1;
+    setUpgradedDmgMainWeapon(savedDmgMain);
+    console.log(savedDmgMain);
   }
+
+  const [savedDmgMains, setSavedDmgMains] = useState<number | null>(null);
+
+  useEffect(() => {
+    const savedDmgMainFromLocalStorage = localStorage.getItem(
+      "selectedItemDmgForEnchant"
+    );
+    if (savedDmgMainFromLocalStorage) {
+      setSavedDmgMains(Number(savedDmgMainFromLocalStorage));
+    }
+  }, []);
 
   function UpgradedNamesOnMount() {
     const upgradedNames = mainWeaponDara.map((data: any) => {
@@ -178,6 +200,10 @@ const Enchant = ({
                         localStorage.getItem(itemUpgradeName);
                         const upgradedName = UpgradedNamesMainWeapon[index];
 
+                        // pobranie wartości savedDmgMain dla danego przedmiotu
+                        const itemSavedDmgMainKey = `selectedItemDmgForEnchant_${item.name}`;
+                        const savedDmgMain =
+                          localStorage.getItem(itemSavedDmgMainKey) || 1;
                         return (
                           <div
                             className={`option ${itemId} `}
@@ -197,6 +223,7 @@ const Enchant = ({
                             <span className={`itemName ${item.tier}C`}>
                               {upgradedName}
                             </span>
+                            <span>DMG:{savedDmgMain}</span>
                           </div>
                         );
                       })}
@@ -239,7 +266,7 @@ const Enchant = ({
                   />
                   <span className="UpgradeDmg">
                     <span className="UpgradeDmgTitle">Deamge:</span>
-                    {savedDmgUpgradeOne}
+                    {savedDmgMain}
                   </span>
                 </div>
               </div>
@@ -260,3 +287,8 @@ const Enchant = ({
 };
 
 export default Enchant;
+
+export const getSavedDmgMain = (itemSavedDmgMainKey: string) => {
+  const savedDmgMain = localStorage.getItem(itemSavedDmgMainKey) || 1;
+  return savedDmgMain;
+};
