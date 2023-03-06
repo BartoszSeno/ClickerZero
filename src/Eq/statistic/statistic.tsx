@@ -1,13 +1,9 @@
-import { useEffect, useState } from "react";
-
 const Statistic = ({
   savedDMG,
   mainWeaponDara,
-  UpgradedDmgMainWeapon,
 }: {
   savedDMG: any;
   mainWeaponDara: any;
-  UpgradedDmgMainWeapon: any;
 }) => {
   //main dmg that is gived per click
   return (

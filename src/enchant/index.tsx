@@ -9,11 +9,13 @@ const Enchant = ({
   setUpgradedNamesMainWeapon,
   UpgradedNamesMainWeapon,
   setUpgradedDmgMainWeapon,
+  UpgradedDmgMainWeapon,
 }: {
   mainWeaponDara: any;
   setUpgradedNamesMainWeapon: any;
   UpgradedNamesMainWeapon: any;
   setUpgradedDmgMainWeapon: any;
+  UpgradedDmgMainWeapon: any;
 }) => {
   const [OpenAndClose, setOpenAndClose] = useState<boolean>(false);
   function OpenClose() {
@@ -66,7 +68,7 @@ const Enchant = ({
     const numClicks = savedClicks ? Number(savedClicks) : 0;
     if (numClicks < 15) {
       let newSavedDmgMain = Number(
-        localStorage.getItem(itemSavedDmgMainKey) || 1
+        localStorage.getItem(itemSavedDmgMainKey) || item.dmgLvl0
       );
       newSavedDmgMain *= 2;
       localStorage.setItem(itemSavedDmgMainKey, newSavedDmgMain.toString());
@@ -133,6 +135,9 @@ const Enchant = ({
     } else {
       setUpgradedName(""); // set upgraded name to empty string if value is 15 or greater
     }
+    console.log(item);
+    console.log(itemUpgradeName);
+    console.log(savedItemUpgradeFromLocalStorage);
   }
   // remove IMG AND NAME on load page
   useEffect(() => {
@@ -163,6 +168,13 @@ const Enchant = ({
 
     const upgradedNames = [...UpgradedNamesMainWeapon];
     upgradedNames[index] = itemName;
+
+    // tworzenie unikalnego klucza dla wartości savedDmgMain
+    const itemSavedDmgMainKey = `selectedItemDmgForEnchant_${item.name}`;
+
+    const savedDmgMain = localStorage.getItem(itemSavedDmgMainKey) || 1;
+    setUpgradedDmgMainWeapon(savedDmgMain);
+    console.log(savedDmgMain);
   }
 
   return (
@@ -266,7 +278,7 @@ const Enchant = ({
                   />
                   <span className="UpgradeDmg">
                     <span className="UpgradeDmgTitle">Deamge:</span>
-                    {savedDmgMain}
+                    {UpgradedDmgMainWeapon}
                   </span>
                 </div>
               </div>

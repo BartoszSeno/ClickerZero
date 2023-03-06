@@ -246,6 +246,7 @@ function App() {
               )}
               {activeTab === "enchant" && (
                 <Enchant
+                  UpgradedDmgMainWeapon={UpgradedDmgMainWeapon}
                   setUpgradedDmgMainWeapon={setUpgradedDmgMainWeapon}
                   mainWeaponDara={mainWeaponDara}
                   setUpgradedNamesMainWeapon={setUpgradedNamesMainWeapon}

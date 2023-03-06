@@ -47,11 +47,7 @@ const Eq = ({
         </span>
       </section>
       <section id="Statistic">
-        <Statistic
-          savedDMG={savedDMG}
-          mainWeaponDara={mainWeaponDara}
-          UpgradedDmgMainWeapon={UpgradedDmgMainWeapon}
-        />
+        <Statistic savedDMG={savedDMG} mainWeaponDara={mainWeaponDara} />
       </section>
     </>
   );
