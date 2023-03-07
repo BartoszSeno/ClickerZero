@@ -10,12 +10,14 @@ const Enchant = ({
   UpgradedNamesMainWeapon,
   setUpgradedDmgMainWeapon,
   UpgradedDmgMainWeapon,
+  UpgradedNamesOnMount,
 }: {
   mainWeaponDara: any;
   setUpgradedNamesMainWeapon: any;
   UpgradedNamesMainWeapon: any;
   setUpgradedDmgMainWeapon: any;
   UpgradedDmgMainWeapon: any;
+  UpgradedNamesOnMount: any;
 }) => {
   const [OpenAndClose, setOpenAndClose] = useState<boolean>(false);
   function OpenClose() {
@@ -79,7 +81,6 @@ const Enchant = ({
     }
     const savedDmgMain = localStorage.getItem(itemSavedDmgMainKey) || 1;
     setUpgradedDmgMainWeapon(savedDmgMain);
-    console.log(savedDmgMain);
   }
 
   const [savedDmgMains, setSavedDmgMains] = useState<number | null>(null);
@@ -91,22 +92,6 @@ const Enchant = ({
     if (savedDmgMainFromLocalStorage) {
       setSavedDmgMains(Number(savedDmgMainFromLocalStorage));
     }
-  }, []);
-
-  function UpgradedNamesOnMount() {
-    const upgradedNames = mainWeaponDara.map((data: any) => {
-      const itemUpgradeName = `${data.name}`;
-      const savedItemUpgrade = localStorage.getItem(itemUpgradeName);
-      const upgradedName = savedItemUpgrade
-        ? `+${Number(savedItemUpgrade)} ${data.name}`
-        : data.name;
-      return upgradedName;
-    });
-    setUpgradedNamesMainWeapon(upgradedNames);
-  }
-
-  useEffect(() => {
-    UpgradedNamesOnMount();
   }, []);
 
   // save index value  for enchant button
@@ -135,9 +120,6 @@ const Enchant = ({
     } else {
       setUpgradedName(""); // set upgraded name to empty string if value is 15 or greater
     }
-    console.log(item);
-    console.log(itemUpgradeName);
-    console.log(savedItemUpgradeFromLocalStorage);
   }
   // remove IMG AND NAME on load page
   useEffect(() => {
@@ -174,7 +156,6 @@ const Enchant = ({
 
     const savedDmgMain = localStorage.getItem(itemSavedDmgMainKey) || 1;
     setUpgradedDmgMainWeapon(savedDmgMain);
-    console.log(savedDmgMain);
   }
 
   return (

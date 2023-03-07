@@ -128,6 +128,25 @@ function App() {
   const [ActiveTier, setActiveTier] = useState("");
 
   const [ShelfHeight, setShelfHeight] = useState("4600");
+
+  //refresh name of upgrade?
+
+  function UpgradedNamesOnMount() {
+    const upgradedNames = mainWeaponDara.map((data: any) => {
+      const itemUpgradeName = `${data.name}`;
+      const savedItemUpgrade = localStorage.getItem(itemUpgradeName);
+      const upgradedName = savedItemUpgrade
+        ? `+${Number(savedItemUpgrade)} ${data.name}`
+        : data.name;
+      return upgradedName;
+    });
+    setUpgradedNamesMainWeapon(upgradedNames);
+  }
+
+  useEffect(() => {
+    UpgradedNamesOnMount();
+  }, []);
+
   return (
     <>
       <main id="App-container">
@@ -251,6 +270,7 @@ function App() {
                   mainWeaponDara={mainWeaponDara}
                   setUpgradedNamesMainWeapon={setUpgradedNamesMainWeapon}
                   UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
+                  UpgradedNamesOnMount={UpgradedNamesOnMount}
                 />
               )}
             </div>
@@ -284,6 +304,7 @@ function App() {
             savedDMG={savedDMG}
             UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
             UpgradedDmgMainWeapon={UpgradedDmgMainWeapon}
+            UpgradedNamesOnMount={UpgradedNamesOnMount}
           />
         </div>
       </main>

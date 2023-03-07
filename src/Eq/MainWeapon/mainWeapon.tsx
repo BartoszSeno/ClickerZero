@@ -10,6 +10,7 @@ function MainWeapon({
   setsavedDMG,
   UpgradedNamesMainWeapon,
   UpgradedDmgMainWeapon,
+  UpgradedNamesOnMount,
 }: {
   mainWeaponDara: any;
   setMainWeaponData: any;
@@ -17,6 +18,7 @@ function MainWeapon({
   setsavedDMG: any;
   UpgradedNamesMainWeapon: any;
   UpgradedDmgMainWeapon: any;
+  UpgradedNamesOnMount: any;
 }) {
   //Geting items from loop on click
   function GetIdPerClick(index: any) {
@@ -39,7 +41,7 @@ function MainWeapon({
     )}`;
     const savedDmgMain = getSavedDmgMain(itemSavedDmgMainKey);
     setsavedDMG(savedDmgMain);
-  }, []);
+  }, [setsavedDMG]);
 
   //load items from localstorage
   const savedImage = localStorage.getItem("selectedItemImg");

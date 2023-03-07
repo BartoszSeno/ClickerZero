@@ -17,6 +17,7 @@ const Eq = ({
   setsavedDMG,
   UpgradedNamesMainWeapon,
   UpgradedDmgMainWeapon,
+  UpgradedNamesOnMount,
 }: {
   mainWeaponDara: any;
   setMainWeaponData: any;
@@ -25,6 +26,7 @@ const Eq = ({
   setsavedDMG: any;
   UpgradedNamesMainWeapon: any;
   UpgradedDmgMainWeapon: any;
+  UpgradedNamesOnMount: any;
 }) => {
   return (
     <>
@@ -38,6 +40,7 @@ const Eq = ({
             setsavedDMG={setsavedDMG}
             UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
             UpgradedDmgMainWeapon={UpgradedDmgMainWeapon}
+            UpgradedNamesOnMount={UpgradedNamesOnMount}
           />
           <SubWeapon />
           <Armor />
