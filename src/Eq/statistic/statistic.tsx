@@ -28,7 +28,7 @@ const Statistic = ({
                   {selectedItemData && (
                     <div>
                       <span className="statsDmg">
-                        {savedDmgMain ? savedDmgMain : selectedItemData.dmgLvl0}
+                        {savedDmgMain ? savedDmgMain : data.dmgLvl0}
                       </span>
                     </div>
                   )}
