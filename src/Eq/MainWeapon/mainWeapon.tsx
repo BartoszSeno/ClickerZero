@@ -10,7 +10,8 @@ function MainWeapon({
   setsavedDMG,
   UpgradedNamesMainWeapon,
   UpgradedDmgMainWeapon,
-  UpgradedNamesOnMount,
+  savedDMG,
+  handleItemSelect,
 }: {
   mainWeaponDara: any;
   setMainWeaponData: any;
@@ -18,23 +19,21 @@ function MainWeapon({
   setsavedDMG: any;
   UpgradedNamesMainWeapon: any;
   UpgradedDmgMainWeapon: any;
-  UpgradedNamesOnMount: any;
+  savedDMG: any;
+  handleItemSelect: any;
 }) {
   //Geting items from loop on click
+
   function GetIdPerClick(index: any) {
     const item = MainWeaponImageAndNameAndCost[index];
     //save items in localstorage
-    localStorage.setItem("selectedItemId", item.id.toString());
-    localStorage.setItem("selectedItemName", item.name.toString());
-    localStorage.setItem("selectedItemImg", item.image.toString());
-    localStorage.setItem("selectedItemDmg", item.dmgLvl0.toString());
-    localStorage.setItem("selectedItemTier", item.tier.toString());
-
-    const itemSavedDmgMainKey = `selectedItemDmgForEnchant_${item.name}`;
-    const savedDmgMain = getSavedDmgMain(itemSavedDmgMainKey);
-
-    setsavedDMG(savedDmgMain);
+    localStorage.setItem("selectedItemIdEquip", item.id.toString());
+    localStorage.setItem("selectedItemNameEquip", item.name.toString());
+    localStorage.setItem("selectedItemImgEquip", item.image.toString());
+    localStorage.setItem("selectedItemDmgEquip", item.dmgLvl0.toString());
+    localStorage.setItem("selectedItemTierEquip", item.tier.toString());
   }
+
   useEffect(() => {
     const itemSavedDmgMainKey = `selectedItemDmgForEnchant_${localStorage.getItem(
       "selectedItemName"
@@ -44,9 +43,9 @@ function MainWeapon({
   }, [setsavedDMG]);
 
   //load items from localstorage
-  const savedImage = localStorage.getItem("selectedItemImg");
-  const savedName = localStorage.getItem("selectedItemName");
-  const savedTier = localStorage.getItem("selectedItemTier");
+  const savedImage = localStorage.getItem("selectedItemImgEquip");
+  const savedName = localStorage.getItem("selectedItemNameEquip");
+  const savedTier = localStorage.getItem("selectedItemTierEquip");
 
   const [OpenAndClose, setOpenAndClose] = useState<boolean>(false);
   function OpenClose() {
@@ -75,17 +74,17 @@ function MainWeapon({
         <div id="option-container" className={OpenAndClose ? "open" : "close"}>
           {mainWeaponDara.map((data: any, index: any) => {
             const upgradedName = UpgradedNamesMainWeapon[index];
-            // pobranie wartości savedDmgMain dla danego przedmiotu
 
-            if (data.isBought) {
-              return (
-                <div key={`${data.id}_${index}`}>
-                  {Array.from({ length: data.count }, (_, i) => (
+            return (
+              <div key={`${data.id}_${index}`}>
+                {Array.from({ length: data.count }, (_, i) => {
+                  return (
                     <div
                       className={`option ${index} `}
                       id={`${index}${i}`}
                       key={`${data.id}_${index}_${i}`}
                       onClick={(e) => {
+                        handleItemSelect(index);
                         GetIdPerClick(index);
                       }}
                     >
@@ -98,10 +97,10 @@ function MainWeapon({
                         {upgradedName ? upgradedName : data.name}
                       </span>
                     </div>
-                  ))}
-                </div>
-              );
-            }
+                  );
+                })}
+              </div>
+            );
           })}
         </div>
       </div>

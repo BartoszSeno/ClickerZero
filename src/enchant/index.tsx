@@ -35,7 +35,6 @@ const Enchant = ({
     localStorage.setItem("selectedItemDmgForEnchant", item.dmgLvl0.toString());
   }
   /// load value form localstorage
-  const savedDmgMain = localStorage.getItem("selectedItemDmgForEnchant");
   const savedImage = localStorage.getItem("selectedItemImgForEnchant");
   const savedName = localStorage.getItem("selectedItemNameForEnchant");
 
@@ -79,11 +78,12 @@ const Enchant = ({
         (numClicks + 1).toString()
       );
     }
-    const savedDmgMain = localStorage.getItem(itemSavedDmgMainKey) || 1;
+    const savedDmgMain =
+      localStorage.getItem(itemSavedDmgMainKey) || item.dmgLvl0;
     setUpgradedDmgMainWeapon(savedDmgMain);
   }
 
-  const [savedDmgMains, setSavedDmgMains] = useState<number | null>(null);
+  const [, setSavedDmgMains] = useState<number | null>(null);
 
   useEffect(() => {
     const savedDmgMainFromLocalStorage = localStorage.getItem(
@@ -100,7 +100,7 @@ const Enchant = ({
   //get upgraded name
 
   const [UpgradedName, setUpgradedName] = useState<string>("");
-  const [savedItemUpgrade, setSavedItemUpgrade] = useState<number>(0); // zainicjuj wartość początkową
+  const [savedItemUpgrade] = useState<number>(0); // zainicjuj wartość początkową
 
   function ShowNameOnHover(index: any) {
     const item = MainWeaponImageAndNameAndCost[index];
@@ -120,6 +120,15 @@ const Enchant = ({
     } else {
       setUpgradedName(""); // set upgraded name to empty string if value is 15 or greater
     }
+
+    // fakowy upgrade dla dodania wiekszego dmg
+    const itemSavedDmgMainKey = `selectedItemDmgForEnchant_${item.name}`;
+
+    let newSavedDmgMain = Number(
+      localStorage.getItem(itemSavedDmgMainKey) || item.dmgLvl0
+    );
+    newSavedDmgMain *= 2;
+    setUpgradedDmgMainWeapon(newSavedDmgMain);
   }
   // remove IMG AND NAME on load page
   useEffect(() => {
@@ -154,7 +163,8 @@ const Enchant = ({
     // tworzenie unikalnego klucza dla wartości savedDmgMain
     const itemSavedDmgMainKey = `selectedItemDmgForEnchant_${item.name}`;
 
-    const savedDmgMain = localStorage.getItem(itemSavedDmgMainKey) || 1;
+    const savedDmgMain =
+      localStorage.getItem(itemSavedDmgMainKey) || item.dmgLvl0;
     setUpgradedDmgMainWeapon(savedDmgMain);
   }
 
@@ -196,7 +206,8 @@ const Enchant = ({
                         // pobranie wartości savedDmgMain dla danego przedmiotu
                         const itemSavedDmgMainKey = `selectedItemDmgForEnchant_${item.name}`;
                         const savedDmgMain =
-                          localStorage.getItem(itemSavedDmgMainKey) || 1;
+                          localStorage.getItem(itemSavedDmgMainKey) ||
+                          item.dmgLvl0;
                         return (
                           <div
                             className={`option ${itemId} `}
@@ -282,6 +293,6 @@ const Enchant = ({
 export default Enchant;
 
 export const getSavedDmgMain = (itemSavedDmgMainKey: string) => {
-  const savedDmgMain = localStorage.getItem(itemSavedDmgMainKey) || 1;
+  const savedDmgMain = localStorage.getItem(itemSavedDmgMainKey) || null;
   return savedDmgMain;
 };
