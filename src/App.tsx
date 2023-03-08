@@ -8,6 +8,7 @@ import LeftNav from "./assets/LeftNav";
 import Shop from "./Shop";
 import { MainWeaponImageAndNameAndCost } from "./data/equipment/mainWeapon";
 import Enchant from "./enchant";
+import { formatNumber } from "./hook/ClickerCount";
 
 function App() {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -15,7 +16,7 @@ function App() {
 
   useEffect(() => {
     const mainWeaponFullDmgFromText = document.querySelector(
-      ".statsDmgMainWeapon"
+      ".statsDmgMainWeaponHiden"
     ) as HTMLElement;
     const text = mainWeaponFullDmgFromText?.textContent;
     setMainWeaponFullDmgText(text);
@@ -312,7 +313,7 @@ function App() {
             setUpgradeOne={setUpgradeOne}
           />
           <div className="MainWeaponFullDmgText count per click">
-            Per Click: {FullCountPerClick.toFixed(0)}
+            Per Click: {formatNumber(FullCountPerClick.toFixed(0))}
           </div>
         </div>
         <div className="right-container">

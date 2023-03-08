@@ -16,7 +16,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/1.png",
     name: "Dirk",
-    dmgLvl0: 14,
+    dmgLvl0: 1,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -28,7 +28,7 @@ export const MainWeaponImageAndNameAndCost = [
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/1b.png",
     name: "Honed",
     dmgLvl0: 19,
-    cost: 1,
+    cost: 3,
     isBought: false,
     isVisible: true,
   },
@@ -39,7 +39,7 @@ export const MainWeaponImageAndNameAndCost = [
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/1c.png",
     name: "Occult",
     dmgLvl0: 27,
-    cost: 1,
+    cost: 5,
     isBought: false,
     isVisible: true,
   },
@@ -50,7 +50,7 @@ export const MainWeaponImageAndNameAndCost = [
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/2.png",
     name: "Rust",
     dmgLvl0: 18,
-    cost: 1,
+    cost: 10,
     isBought: false,
     isVisible: true,
   },
@@ -60,7 +60,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/3.png",
     name: "Siletto",
-    dmgLvl0: 21,
+    dmgLvl0: 19,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -71,7 +71,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/4.png",
     name: "Bares",
-    dmgLvl0: 15,
+    dmgLvl0: 34,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -82,7 +82,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/5.png",
     name: "Frail",
-    dmgLvl0: 15,
+    dmgLvl0: 62,
     cost: 1,
     isBought: false,
   },
@@ -92,7 +92,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/6.png",
     name: "Malice",
-    dmgLvl0: 15,
+    dmgLvl0: 112,
     cost: 1,
     isBought: false,
   },
@@ -102,7 +102,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/7.png",
     name: "Ebon",
-    dmgLvl0: 22,
+    dmgLvl0: 203,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -113,7 +113,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/8.png",
     name: "Piercer",
-    dmgLvl0: 24,
+    dmgLvl0: 367,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -124,7 +124,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/9.png",
     name: "Justie",
-    dmgLvl0: 22,
+    dmgLvl0: 663,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -135,7 +135,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/10.png",
     name: "Grandim",
-    dmgLvl0: 28,
+    dmgLvl0: 1197,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -146,7 +146,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/11.png",
     name: "Sagery",
-    dmgLvl0: 128,
+    dmgLvl0: 2161,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -157,7 +157,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/12.png",
     name: "Gonder",
-    dmgLvl0: 128,
+    dmgLvl0: 3902,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -168,7 +168,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/13.png",
     name: "Sliger",
-    dmgLvl0: 128,
+    dmgLvl0: 7044,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -179,7 +179,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/14.png",
     name: "Vindio",
-    dmgLvl0: 128,
+    dmgLvl0: 12717,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -190,7 +190,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/15.png",
     name: "Vile",
-    dmgLvl0: 128,
+    dmgLvl0: 22957,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -201,7 +201,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/16.png",
     name: "Ivory",
-    dmgLvl0: 128,
+    dmgLvl0: 41443,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -213,7 +213,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/1.png",
     name: "Razor",
-    dmgLvl0: 1281,
+    dmgLvl0: 74813,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -224,7 +224,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/2.png",
     name: "Purf",
-    dmgLvl0: 12822,
+    dmgLvl0: 135053,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -235,7 +235,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/3.png",
     name: "Sord",
-    dmgLvl0: 1281,
+    dmgLvl0: 243798,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -246,7 +246,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/4.png",
     name: "Defir",
-    dmgLvl0: 1283,
+    dmgLvl0: 440105,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -257,7 +257,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/5.png",
     name: "Ivory",
-    dmgLvl0: 128,
+    dmgLvl0: 794479,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -268,7 +268,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/6.png",
     name: "Tiron",
-    dmgLvl0: 128,
+    dmgLvl0: 1434193,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -279,7 +279,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/7.png",
     name: "Slicer",
-    dmgLvl0: 128,
+    dmgLvl0: 2589006,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -290,7 +290,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/8.png",
     name: "Lamd",
-    dmgLvl0: 128,
+    dmgLvl0: 4673674,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -301,7 +301,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/9.png",
     name: "Carver",
-    dmgLvl0: 128,
+    dmgLvl0: 8436916,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -312,7 +312,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/10.png",
     name: "Sailor",
-    dmgLvl0: 128,
+    dmgLvl0: 15230322,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -323,7 +323,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/11.png",
     name: "Prick",
-    dmgLvl0: 128,
+    dmgLvl0: 27493777,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -334,7 +334,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/12.png",
     name: "Sculp",
-    dmgLvl0: 128,
+    dmgLvl0: 49631767,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -345,7 +345,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/13.png",
     name: "Renwed",
-    dmgLvl0: 128,
+    dmgLvl0: 89595267,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -357,7 +357,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/1.png",
     name: "Quicke",
-    dmgLvl0: 128,
+    dmgLvl0: 161737376,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -368,7 +368,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/2.png",
     name: "Bonce",
-    dmgLvl0: 128,
+    dmgLvl0: 291968312,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -379,7 +379,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/3.png",
     name: "Sorrow",
-    dmgLvl0: 128,
+    dmgLvl0: 527061198,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -390,7 +390,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/4.png",
     name: "Scimit",
-    dmgLvl0: 128,
+    dmgLvl0: 951450874,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -401,7 +401,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/5.png",
     name: "Dirge",
-    dmgLvl0: 128,
+    dmgLvl0: 1717559118,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -412,7 +412,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/6.png",
     name: "Dems",
-    dmgLvl0: 128,
+    dmgLvl0: 3100537721,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -423,7 +423,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/7.png",
     name: "Peack",
-    dmgLvl0: 128,
+    dmgLvl0: 5597090694,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -434,7 +434,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/8.png",
     name: "Visgo",
-    dmgLvl0: 128,
+    dmgLvl0: 10103868122,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -445,7 +445,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/9.png",
     name: "Defect",
-    dmgLvl0: 128,
+    dmgLvl0: 18239502733,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -456,7 +456,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/10.png",
     name: "Crusader",
-    dmgLvl0: 128,
+    dmgLvl0: 32925950335,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -467,7 +467,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/11.png",
     name: "Furry",
-    dmgLvl0: 128,
+    dmgLvl0: 59437925545,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -479,7 +479,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/1.png",
     name: "Guard",
-    dmgLvl0: 128,
+    dmgLvl0: 107297343194,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -490,7 +490,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/2.png",
     name: "Blooder",
-    dmgLvl0: 128,
+    dmgLvl0: 193693163934,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -501,7 +501,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/3.png",
     name: "Miths",
-    dmgLvl0: 128,
+    dmgLvl0: 349654899534,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -512,7 +512,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/4.png",
     name: "Eter",
-    dmgLvl0: 128,
+    dmgLvl0: 631197024640,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -523,7 +523,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/5.png",
     name: "Marce",
-    dmgLvl0: 138,
+    dmgLvl0: 1139436868880,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -534,7 +534,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/6.png",
     name: "Omega",
-    dmgLvl0: 128,
+    dmgLvl0: 2056911435703,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -545,7 +545,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/7.png",
     name: "Etcher",
-    dmgLvl0: 128,
+    dmgLvl0: 3713136523732,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -556,7 +556,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/8.png",
     name: "Mitive",
-    dmgLvl0: 128,
+    dmgLvl0: 6702954052641,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -567,7 +567,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/9.png",
     name: "Shrend",
-    dmgLvl0: 128,
+    dmgLvl0: 12100172655828,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -578,7 +578,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/10.png",
     name: "Mirsy",
-    dmgLvl0: 128,
+    dmgLvl0: 21843231678301,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -590,7 +590,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/1.png",
     name: "Arondite",
-    dmgLvl0: 128,
+    dmgLvl0: 39431401825669,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -601,7 +601,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/2.png",
     name: "Purifier",
-    dmgLvl0: 128,
+    dmgLvl0: 71181566575698,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -612,7 +612,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/3.png",
     name: "Godslayer",
-    dmgLvl0: 128,
+    dmgLvl0: 128496963982451,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -623,7 +623,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/4.png",
     name: "Tyrhung",
-    dmgLvl0: 128,
+    dmgLvl0: 231962719381120,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -634,7 +634,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/5.png",
     name: "Valkyrie",
-    dmgLvl0: 128,
+    dmgLvl0: 418739101026799,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -645,7 +645,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/6.png",
     name: "Orenmir",
-    dmgLvl0: 128,
+    dmgLvl0: 755907825173577,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -656,7 +656,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/7.png",
     name: "Frenzy",
-    dmgLvl0: 128,
+    dmgLvl0: 1364564806003342,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -667,7 +667,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/8.png",
     name: "Lazarus",
-    dmgLvl0: 128,
+    dmgLvl0: 2463312387797234,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -678,7 +678,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/9.png",
     name: "Betrayer",
-    dmgLvl0: 128,
+    dmgLvl0: 4446771522451566,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -689,7 +689,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/10.png",
     name: "Mirsy",
-    dmgLvl0: 128,
+    dmgLvl0: 8027311952329567,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -700,7 +700,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/11.png",
     name: "Needle",
-    dmgLvl0: 128,
+    dmgLvl0: 16053311552229861,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -711,7 +711,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/12.png",
     name: "Celeste",
-    dmgLvl0: 128,
+    dmgLvl0: 310533145547223864,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -722,7 +722,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/13.png",
     name: "Kinslayer",
-    dmgLvl0: 128,
+    dmgLvl0: 620133145542223824,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -733,7 +733,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/14.png",
     name: "Echo",
-    dmgLvl0: 128,
+    dmgLvl0: 1270163144542223323,
     cost: 1,
     isBought: false,
     isVisible: true,
@@ -744,7 +744,7 @@ export const MainWeaponImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/15.png",
     name: "Scalpel",
-    dmgLvl0: 1280,
+    dmgLvl0: 2530123144532223598,
     cost: 1,
     isBought: false,
     isVisible: true,

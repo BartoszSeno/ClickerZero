@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { getSavedDmgMain } from "../../enchant";
+import { formatNumber } from "../../hook/ClickerCount";
 
 const Statistic = ({
   savedDMG,
@@ -29,6 +30,11 @@ const Statistic = ({
                   {selectedItemData && (
                     <div>
                       <span className="statsDmgMainWeapon">
+                        {formatNumber(
+                          savedDmgMain ? savedDmgMain : data.dmgLvl0
+                        )}
+                      </span>
+                      <span className="statsDmgMainWeaponHiden">
                         {savedDmgMain ? savedDmgMain : data.dmgLvl0}
                       </span>
                     </div>
@@ -60,5 +66,5 @@ const Statistic = ({
 export default Statistic;
 
 export const mainWeaponFullDmgFromText = document.querySelector(
-  ".statsDmgMainWeapon"
+  ".statsDmgMainWeaponHiden"
 ) as HTMLElement;

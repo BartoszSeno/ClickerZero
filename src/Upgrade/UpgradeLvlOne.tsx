@@ -1,5 +1,6 @@
 import "../assets/css/Normal/Update/upgrade.css";
 import React, { useState, useEffect } from "react";
+import { formatNumber } from "../hook/ClickerCount";
 
 const UpdateLvlOne = ({
   setCount,
@@ -62,7 +63,7 @@ const UpdateLvlOne = ({
         }}
         disabled={active}
       >
-        <div className="count-price">{minusCost.toFixed(0)}</div>
+        <div className="count-price">{formatNumber(minusCost.toFixed(0))}</div>
         <div className="count-number">{lvlOne.toFixed(0)}</div>
       </button>
     </>

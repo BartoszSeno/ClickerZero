@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import "../assets/css/Normal/enchant/enchant.css";
 import { MainWeaponImageAndNameAndCost } from "../data/equipment/mainWeapon";
+import { formatNumber } from "../hook/ClickerCount";
 
 const Enchant = ({
   mainWeaponDara,
@@ -270,7 +271,7 @@ const Enchant = ({
                   />
                   <span className="UpgradeDmg">
                     <span className="UpgradeDmgTitle">Deamge:</span>
-                    {UpgradedDmgMainWeapon}
+                    {formatNumber(UpgradedDmgMainWeapon)}
                   </span>
                 </div>
               </div>
