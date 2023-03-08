@@ -74,7 +74,6 @@ function MainWeapon({
         <div id="option-container" className={OpenAndClose ? "open" : "close"}>
           {mainWeaponDara.map((data: any, index: any) => {
             const upgradedName = UpgradedNamesMainWeapon[index];
-
             return (
               <div key={`${data.id}_${index}`}>
                 {Array.from({ length: data.count }, (_, i) => {

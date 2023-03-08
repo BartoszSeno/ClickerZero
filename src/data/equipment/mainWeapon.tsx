@@ -197,7 +197,7 @@ export const MainWeaponImageAndNameAndCost = [
   },
   // BLUE WEAPON ==============================================================================
   {
-    id: 101,
+    id: 19,
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/1.png",
@@ -208,18 +208,18 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 102,
+    id: 20,
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/2.png",
     name: "Purf",
-    dmgLvl0: 128,
+    dmgLvl0: 1282,
     cost: 1,
     isBought: false,
     isVisible: true,
   },
   {
-    id: 103,
+    id: 21,
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/3.png",
@@ -230,7 +230,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 104,
+    id: 23,
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/4.png",
@@ -241,7 +241,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 105,
+    id: 24,
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/5.png",
@@ -252,7 +252,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 106,
+    id: 25,
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/6.png",
@@ -263,7 +263,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 107,
+    id: 26,
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/7.png",
@@ -274,7 +274,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 108,
+    id: 27,
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/8.png",
@@ -285,7 +285,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 109,
+    id: 28,
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/9.png",
@@ -296,7 +296,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 110,
+    id: 29,
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/10.png",
@@ -307,7 +307,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 111,
+    id: 30,
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/11.png",
@@ -318,7 +318,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 112,
+    id: 31,
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/12.png",
@@ -329,7 +329,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 113,
+    id: 32,
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureBlue/13.png",
@@ -341,7 +341,7 @@ export const MainWeaponImageAndNameAndCost = [
   },
   // YELLOW WEAPON ==============================================================================
   {
-    id: 201,
+    id: 33,
     tier: "yellow",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/1.png",
@@ -352,7 +352,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 202,
+    id: 34,
     tier: "yellow",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/2.png",
@@ -363,7 +363,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 203,
+    id: 35,
     tier: "yellow",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/3.png",
@@ -374,7 +374,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 204,
+    id: 36,
     tier: "yellow",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/4.png",
@@ -385,7 +385,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 205,
+    id: 37,
     tier: "yellow",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/5.png",
@@ -396,7 +396,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 206,
+    id: 38,
     tier: "yellow",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/6.png",
@@ -407,7 +407,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 207,
+    id: 39,
     tier: "yellow",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/7.png",
@@ -418,7 +418,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 208,
+    id: 40,
     tier: "yellow",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/8.png",
@@ -429,7 +429,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 209,
+    id: 41,
     tier: "yellow",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/9.png",
@@ -440,7 +440,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 210,
+    id: 42,
     tier: "yellow",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/10.png",
@@ -451,7 +451,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 211,
+    id: 43,
     tier: "yellow",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureYellow/11.png",
@@ -463,7 +463,7 @@ export const MainWeaponImageAndNameAndCost = [
   },
   // RED WEAPON ======================================================
   {
-    id: 301,
+    id: 44,
     tier: "red",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/1.png",
@@ -474,7 +474,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 302,
+    id: 45,
     tier: "red",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/2.png",
@@ -485,7 +485,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 303,
+    id: 46,
     tier: "red",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/3.png",
@@ -496,7 +496,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 304,
+    id: 47,
     tier: "red",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/4.png",
@@ -507,7 +507,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 305,
+    id: 48,
     tier: "red",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/5.png",
@@ -518,7 +518,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 306,
+    id: 49,
     tier: "red",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/6.png",
@@ -529,7 +529,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 307,
+    id: 50,
     tier: "red",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/7.png",
@@ -540,7 +540,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 308,
+    id: 51,
     tier: "red",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/8.png",
@@ -551,7 +551,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 309,
+    id: 52,
     tier: "red",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/9.png",
@@ -562,7 +562,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 310,
+    id: 53,
     tier: "red",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureRed/10.png",
@@ -574,7 +574,7 @@ export const MainWeaponImageAndNameAndCost = [
   },
   // PURPLE WEAPON ======================================================
   {
-    id: 401,
+    id: 54,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/1.png",
@@ -585,7 +585,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 402,
+    id: 55,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/2.png",
@@ -596,7 +596,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 403,
+    id: 56,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/3.png",
@@ -607,7 +607,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 404,
+    id: 57,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/4.png",
@@ -618,7 +618,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 405,
+    id: 58,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/5.png",
@@ -629,7 +629,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 406,
+    id: 59,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/6.png",
@@ -640,7 +640,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 407,
+    id: 60,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/7.png",
@@ -651,7 +651,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 408,
+    id: 61,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/8.png",
@@ -662,7 +662,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 409,
+    id: 62,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/9.png",
@@ -673,7 +673,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 410,
+    id: 63,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/10.png",
@@ -684,7 +684,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 411,
+    id: 64,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/11.png",
@@ -695,7 +695,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 412,
+    id: 65,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/12.png",
@@ -706,7 +706,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 413,
+    id: 66,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/13.png",
@@ -717,7 +717,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 414,
+    id: 67,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/14.png",
@@ -728,7 +728,7 @@ export const MainWeaponImageAndNameAndCost = [
     isVisible: true,
   },
   {
-    id: 415,
+    id: 68,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TexturePurple/15.png",
