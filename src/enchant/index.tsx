@@ -173,6 +173,9 @@ const Enchant = ({
     <>
       <div id="enchant-container">
         <div className="encahnt-box">
+          <button onClick={() => EnchantPerClick(selectedItemIndex)}>
+            Enchant
+          </button>
           <div
             className="putItemThere"
             onClick={() => {
@@ -276,9 +279,6 @@ const Enchant = ({
               <div className="infoEnchant"></div>
             </>
           )}
-          <button onClick={() => EnchantPerClick(selectedItemIndex)}>
-            Enchant
-          </button>
         </div>
       </div>
     </>

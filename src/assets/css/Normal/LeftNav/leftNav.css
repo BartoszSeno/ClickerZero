@@ -5,6 +5,8 @@
   height: 154px;
   width: 564px;
   font-size: 35px;
+  position: absolute;
+  z-index: 200;
   /*margin left 68px*/
 }
 

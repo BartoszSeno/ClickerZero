@@ -1,38 +1,49 @@
 #enchant-container {
-  height: 927px;
-  width: 100%;
+  height: 977px;
+  width: 700px;
   flex-wrap: wrap;
   align-items: center;
   display: flex;
   justify-content: center;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/LeftMenuSmith.gif);
+  position: relative;
+  background-repeat: no-repeat;
+  z-index: 100;
 }
 
 .encahnt-box {
   display: flex;
-  background-color: black;
-  height: 300px;
-  width: 600px;
+  height: 500px;
+  width: 300px;
   color: white;
   justify-content: space-around;
   align-items: center;
+  flex-direction: column-reverse;
 }
 
 .putItemThere,
 .EnchantSuccess {
-  background-color: aqua;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(128, 128, 128, 0.1);
+  border-radius: 20px;
   display: flex;
-  height: 80px;
-  width: 80px;
+  height: 100px;
+  width: 100px;
+  margin-top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .EnchantSuccess {
-  background-color: red;
+  background-color: rgba(0, 0, 0, 0.103);
+  margin-top: 45px;
 }
 
 .EnchantProgress {
   background-color: rebeccapurple;
-  height: 10px;
-  width: 200px;
+  height: 100px;
+  width: 10px;
 }
 
 #EnchantMenuChouseWeapon {
@@ -89,4 +100,8 @@
 }
 .enchantBox2 {
   display: flex;
+}
+
+.mainWeaponImg {
+  height: 90%;
 }
