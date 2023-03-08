@@ -7,7 +7,7 @@ import Helmet from "./Helmet/helmet";
 import Shoes from "./Shoes/shoes";
 import Gloves from "./Gloves/gloves";
 import Statistic from "./statistic/statistic";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Eq = ({
   mainWeaponDara,
@@ -33,6 +33,7 @@ const Eq = ({
   const handleItemSelect = (index: any) => {
     setSelectedItem(index);
   };
+  // TO DO ZMIANY JAKOS
 
   return (
     <>

@@ -23,7 +23,6 @@ const Statistic = ({
               const selectedItemData = mainWeaponDara.find(
                 (data: any) => data.id === selectedItem
               );
-
               return (
                 <div key={`${data.id}_${index}`}>
                   {selectedItemData && (

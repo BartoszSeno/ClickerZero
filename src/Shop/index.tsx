@@ -44,7 +44,7 @@ const Shop = ({
       <div id="shop-container">
         <div className="shelf" style={{ height: ShelfHeight }}>
           {mainWeaponDara.map((data: any, index: any) => {
-            if (!data.isBought || data.isBought) {
+            if (data.isVisible) {
               return (
                 <button
                   id={data.tier}

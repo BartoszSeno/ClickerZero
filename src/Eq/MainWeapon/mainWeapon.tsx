@@ -1,7 +1,6 @@
 /* eslint-disable array-callback-return */
 import { useEffect, useState } from "react";
 import { MainWeaponImageAndNameAndCost } from "../../data/equipment/mainWeapon";
-import { getSavedDmgMain } from "../../enchant";
 
 function MainWeapon({
   mainWeaponDara,
@@ -34,25 +33,20 @@ function MainWeapon({
     localStorage.setItem("selectedItemTierEquip", item.tier.toString());
   }
 
-  useEffect(() => {
-    const itemSavedDmgMainKey = `selectedItemDmgForEnchant_${localStorage.getItem(
-      "selectedItemName"
-    )}`;
-    const savedDmgMain = getSavedDmgMain(itemSavedDmgMainKey);
-    setsavedDMG(savedDmgMain);
-  }, [setsavedDMG]);
-
   //load items from localstorage
   const savedImage = localStorage.getItem("selectedItemImgEquip");
   const savedName = localStorage.getItem("selectedItemNameEquip");
   const savedTier = localStorage.getItem("selectedItemTierEquip");
+  const savedId = localStorage.getItem("selectedItemIdEquip");
 
   const [OpenAndClose, setOpenAndClose] = useState<boolean>(false);
   function OpenClose() {
     setOpenAndClose(!OpenAndClose);
   }
 
-  // random number for id
+  useEffect(() => {
+    handleItemSelect(Number(savedId));
+  });
 
   return (
     <>
