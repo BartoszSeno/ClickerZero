@@ -37,8 +37,6 @@ const Shop = ({
     localStorage.setItem("count", count.toString());
   }, [count]);
 
-  // Button test for show only green weapon
-
   return (
     <>
       <div id="shop-container">

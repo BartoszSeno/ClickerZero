@@ -7,7 +7,7 @@ import Helmet from "./Helmet/helmet";
 import Shoes from "./Shoes/shoes";
 import Gloves from "./Gloves/gloves";
 import Statistic from "./statistic/statistic";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Eq = ({
   mainWeaponDara,
@@ -18,6 +18,9 @@ const Eq = ({
   UpgradedNamesMainWeapon,
   UpgradedDmgMainWeapon,
   UpgradedNamesOnMount,
+  handleItemSelect,
+  selectedItem,
+  setMainWeaponFullDmg,
 }: {
   mainWeaponDara: any;
   setMainWeaponData: any;
@@ -27,12 +30,10 @@ const Eq = ({
   UpgradedNamesMainWeapon: any;
   UpgradedDmgMainWeapon: any;
   UpgradedNamesOnMount: any;
+  handleItemSelect: any;
+  selectedItem: any;
+  setMainWeaponFullDmg: any;
 }) => {
-  const [selectedItem, setSelectedItem] = useState(null);
-
-  const handleItemSelect = (index: any) => {
-    setSelectedItem(index);
-  };
   // TO DO ZMIANY JAKOS
 
   return (
@@ -62,6 +63,7 @@ const Eq = ({
           savedDMG={savedDMG}
           mainWeaponDara={mainWeaponDara}
           selectedItem={selectedItem}
+          setMainWeaponFullDmg={setMainWeaponFullDmg}
         />
       </section>
     </>

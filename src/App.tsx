@@ -8,8 +8,24 @@ import LeftNav from "./assets/LeftNav";
 import Shop from "./Shop";
 import { MainWeaponImageAndNameAndCost } from "./data/equipment/mainWeapon";
 import Enchant from "./enchant";
+import { mainWeaponFullDmgFromText } from "./Eq/statistic/statistic";
 
 function App() {
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [test, settest] = useState<any>();
+
+  useEffect(() => {
+    const mainWeaponFullDmgFromText = document.querySelector(
+      ".statsDmgMainWeapon"
+    ) as HTMLElement;
+    const text = mainWeaponFullDmgFromText?.textContent;
+    console.log(text);
+    settest(text);
+    console.log(test);
+  });
+
+  const [MainWeaponFullDmg, setMainWeaponFullDmg] = useState<any>();
+
   //main count
   const [count, setCount] = useState(() =>
     Number(localStorage.getItem("count") || 0)
@@ -24,17 +40,14 @@ function App() {
     Number(localStorage.getItem("UpgradeOneCount") || 0)
   );
 
-  //from saved localstorage
-  const savedDmg = localStorage.getItem("selectedItemDmg");
-
   // for adding the total number per click
   const [FullCountPerClick, setFullCountPerClick] = useState(
-    UpgradeOne + Number(savedDmg || 0)
+    UpgradeOne + (Number(test) || 0)
   );
 
   useEffect(() => {
-    setFullCountPerClick(UpgradeOne + Number(savedDmg || 0));
-  }, [UpgradeOne, savedDmg]);
+    setFullCountPerClick(UpgradeOne + (Number(test) || 0));
+  }, [UpgradeOne, test]);
 
   //Shop
   const [mainWeaponDara, setMainWeaponData] = useState(
@@ -147,6 +160,17 @@ function App() {
     UpgradedNamesOnMount();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // funkcja do autmoatycznego odświeżania statystyk broni
+
+  const handleItemSelect = (index: any) => {
+    setSelectedItem(index);
+  };
+  const savedId = localStorage.getItem("selectedItemIdEquip");
+
+  useEffect(() => {
+    handleItemSelect(Number(savedId));
+  });
 
   return (
     <>
@@ -306,6 +330,9 @@ function App() {
             UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
             UpgradedDmgMainWeapon={UpgradedDmgMainWeapon}
             UpgradedNamesOnMount={UpgradedNamesOnMount}
+            handleItemSelect={handleItemSelect}
+            selectedItem={selectedItem}
+            setMainWeaponFullDmg={setMainWeaponFullDmg}
           />
         </div>
       </main>

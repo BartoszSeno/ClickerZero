@@ -37,16 +37,11 @@ function MainWeapon({
   const savedImage = localStorage.getItem("selectedItemImgEquip");
   const savedName = localStorage.getItem("selectedItemNameEquip");
   const savedTier = localStorage.getItem("selectedItemTierEquip");
-  const savedId = localStorage.getItem("selectedItemIdEquip");
 
   const [OpenAndClose, setOpenAndClose] = useState<boolean>(false);
   function OpenClose() {
     setOpenAndClose(!OpenAndClose);
   }
-
-  useEffect(() => {
-    handleItemSelect(Number(savedId));
-  });
 
   return (
     <>

@@ -1,20 +1,22 @@
+import { useEffect } from "react";
 import { getSavedDmgMain } from "../../enchant";
 
 const Statistic = ({
   savedDMG,
   mainWeaponDara,
   selectedItem,
+  setMainWeaponFullDmg,
 }: {
   savedDMG: any;
   mainWeaponDara: any;
   selectedItem: any;
+  setMainWeaponFullDmg: any;
 }) => {
   return (
     <>
       <div id="statistic-container">
         <div className="MainWeaponDmg">
           <span>AP</span>
-
           {mainWeaponDara.map((data: any, index: any) => {
             // Warunek if dla wybranego elementu
             if (index === selectedItem) {
@@ -23,11 +25,12 @@ const Statistic = ({
               const selectedItemData = mainWeaponDara.find(
                 (data: any) => data.id === selectedItem
               );
+
               return (
                 <div key={`${data.id}_${index}`}>
                   {selectedItemData && (
                     <div>
-                      <span className="statsDmg">
+                      <span className="statsDmgMainWeapon">
                         {savedDmgMain ? savedDmgMain : data.dmgLvl0}
                       </span>
                     </div>
@@ -57,3 +60,7 @@ const Statistic = ({
 };
 
 export default Statistic;
+
+export const mainWeaponFullDmgFromText = document.querySelector(
+  ".statsDmgMainWeapon"
+) as HTMLElement;
