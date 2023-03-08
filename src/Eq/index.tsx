@@ -20,7 +20,6 @@ const Eq = ({
   UpgradedNamesOnMount,
   handleItemSelect,
   selectedItem,
-  setMainWeaponFullDmg,
 }: {
   mainWeaponDara: any;
   setMainWeaponData: any;
@@ -32,7 +31,6 @@ const Eq = ({
   UpgradedNamesOnMount: any;
   handleItemSelect: any;
   selectedItem: any;
-  setMainWeaponFullDmg: any;
 }) => {
   // TO DO ZMIANY JAKOS
 
@@ -63,7 +61,6 @@ const Eq = ({
           savedDMG={savedDMG}
           mainWeaponDara={mainWeaponDara}
           selectedItem={selectedItem}
-          setMainWeaponFullDmg={setMainWeaponFullDmg}
         />
       </section>
     </>

@@ -5,12 +5,10 @@ const Statistic = ({
   savedDMG,
   mainWeaponDara,
   selectedItem,
-  setMainWeaponFullDmg,
 }: {
   savedDMG: any;
   mainWeaponDara: any;
   selectedItem: any;
-  setMainWeaponFullDmg: any;
 }) => {
   return (
     <>

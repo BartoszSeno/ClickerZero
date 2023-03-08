@@ -8,23 +8,18 @@ import LeftNav from "./assets/LeftNav";
 import Shop from "./Shop";
 import { MainWeaponImageAndNameAndCost } from "./data/equipment/mainWeapon";
 import Enchant from "./enchant";
-import { mainWeaponFullDmgFromText } from "./Eq/statistic/statistic";
 
 function App() {
   const [selectedItem, setSelectedItem] = useState(null);
-  const [test, settest] = useState<any>();
+  const [MainWeaponFullDmgText, setMainWeaponFullDmgText] = useState<any>();
 
   useEffect(() => {
     const mainWeaponFullDmgFromText = document.querySelector(
       ".statsDmgMainWeapon"
     ) as HTMLElement;
     const text = mainWeaponFullDmgFromText?.textContent;
-    console.log(text);
-    settest(text);
-    console.log(test);
+    setMainWeaponFullDmgText(text);
   });
-
-  const [MainWeaponFullDmg, setMainWeaponFullDmg] = useState<any>();
 
   //main count
   const [count, setCount] = useState(() =>
@@ -42,12 +37,12 @@ function App() {
 
   // for adding the total number per click
   const [FullCountPerClick, setFullCountPerClick] = useState(
-    UpgradeOne + (Number(test) || 0)
+    UpgradeOne + (Number(MainWeaponFullDmgText) || 0)
   );
 
   useEffect(() => {
-    setFullCountPerClick(UpgradeOne + (Number(test) || 0));
-  }, [UpgradeOne, test]);
+    setFullCountPerClick(UpgradeOne + (Number(MainWeaponFullDmgText) || 0));
+  }, [UpgradeOne, MainWeaponFullDmgText]);
 
   //Shop
   const [mainWeaponDara, setMainWeaponData] = useState(
@@ -316,7 +311,7 @@ function App() {
             UpgradeOne={UpgradeOne}
             setUpgradeOne={setUpgradeOne}
           />
-          <div className="test count per click">
+          <div className="MainWeaponFullDmgText count per click">
             Per Click: {FullCountPerClick.toFixed(0)}
           </div>
         </div>
@@ -332,7 +327,6 @@ function App() {
             UpgradedNamesOnMount={UpgradedNamesOnMount}
             handleItemSelect={handleItemSelect}
             selectedItem={selectedItem}
-            setMainWeaponFullDmg={setMainWeaponFullDmg}
           />
         </div>
       </main>
