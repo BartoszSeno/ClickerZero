@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "../assets/css/Normal/ClickerMain/clicker.css";
 
 const Clicker = ({
@@ -65,9 +65,9 @@ const Clicker = ({
 
   return (
     <div>
-      <p>{formatNumber(count)} silver</p>
+      <p>{formatNumber(count || 1)} silver</p>
       <button
-        onClick={() => setCount(count + 100 + FullCountPerClick)}
+        onClick={() => setCount(count + 1 + FullCountPerClick)}
         id="Click"
       ></button>
     </div>

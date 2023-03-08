@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { getSavedDmgMain } from "../../enchant";
 import { formatNumber } from "../../hook/ClickerCount";
 

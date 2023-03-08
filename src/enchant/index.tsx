@@ -204,11 +204,6 @@ const Enchant = ({
                         localStorage.getItem(itemUpgradeName);
                         const upgradedName = UpgradedNamesMainWeapon[index];
 
-                        // pobranie wartości savedDmgMain dla danego przedmiotu
-                        const itemSavedDmgMainKey = `selectedItemDmgForEnchant_${item.name}`;
-                        const savedDmgMain =
-                          localStorage.getItem(itemSavedDmgMainKey) ||
-                          item.dmgLvl0;
                         return (
                           <div
                             className={`option ${itemId} `}
@@ -228,7 +223,6 @@ const Enchant = ({
                             <span className={`itemName ${item.tier}C`}>
                               {upgradedName}
                             </span>
-                            <span>DMG:{savedDmgMain}</span>
                           </div>
                         );
                       })}

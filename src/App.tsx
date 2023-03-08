@@ -37,6 +37,7 @@ function App() {
   );
 
   // for adding the total number per click
+
   const [FullCountPerClick, setFullCountPerClick] = useState(
     UpgradeOne + (Number(MainWeaponFullDmgText) || 0)
   );
