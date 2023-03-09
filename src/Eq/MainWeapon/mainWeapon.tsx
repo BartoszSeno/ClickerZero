@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MainWeaponImageAndNameAndCost } from "../../data/equipment/mainWeapon";
 
 function MainWeapon({
