@@ -9,6 +9,7 @@ import Shop from "./Shop";
 import { MainWeaponImageAndNameAndCost } from "./data/equipment/mainWeapon";
 import Enchant from "./enchant";
 import { formatNumber } from "./hook/ClickerCount";
+import Information from "./Information";
 
 function App() {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -168,6 +169,12 @@ function App() {
   useEffect(() => {
     handleItemSelect(Number(savedId));
   });
+
+  const [infoOpenClose, setinfoOpenClose] = useState<boolean>(false);
+
+  function HandleInfoOpenAndClose() {
+    setinfoOpenClose(!infoOpenClose);
+  }
 
   return (
     <>
@@ -331,6 +338,10 @@ function App() {
             selectedItem={selectedItem}
           />
         </div>
+        <button className="InfoOpen" onClick={HandleInfoOpenAndClose}>
+          Info
+        </button>
+        <Information infoOpenClose={infoOpenClose} />
       </main>
     </>
   );

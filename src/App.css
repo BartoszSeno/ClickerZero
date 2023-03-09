@@ -102,3 +102,16 @@
     opacity: 1;
   }
 }
+
+.InfoOpen {
+  position: absolute;
+  height: 40px;
+  width: 100px;
+  background-color: #967853;
+  border: 2px solid #493823;
+  color: white;
+  font-size: 30px;
+  margin-left: 1650px;
+  font-family: "Alagard";
+  z-index: 10001;
+}
