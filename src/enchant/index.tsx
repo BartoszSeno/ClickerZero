@@ -6,14 +6,14 @@ import { MainWeaponImageAndNameAndCost } from "../data/equipment/mainWeapon";
 import { formatNumber } from "../hook/ClickerCount";
 
 const Enchant = ({
-  mainWeaponDara,
+  mainWeaponData,
   setUpgradedNamesMainWeapon,
   UpgradedNamesMainWeapon,
   setUpgradedDmgMainWeapon,
   UpgradedDmgMainWeapon,
   UpgradedNamesOnMount,
 }: {
-  mainWeaponDara: any;
+  mainWeaponData: any;
   setUpgradedNamesMainWeapon: any;
   UpgradedNamesMainWeapon: any;
   setUpgradedDmgMainWeapon: any;
@@ -50,7 +50,7 @@ const Enchant = ({
       savedItemUpgradeNumber < 15 ? savedItemUpgradeNumber + 1 : 15;
     localStorage.setItem("upgradedValue", upgradedValue.toString());
     localStorage.setItem(itemUpgradeName, upgradedValue.toString());
-    const selectedItem = mainWeaponDara[index];
+    const selectedItem = mainWeaponData[index];
     const itemName = `+${upgradedValue} ${item.name}`;
     localStorage.setItem(
       "UpgradedName",
@@ -195,7 +195,7 @@ const Enchant = ({
               id="EnchantMenuChouseWeapon"
               className={OpenAndClose ? "open" : "close"}
             >
-              {mainWeaponDara.map((item: any, index: any) => {
+              {mainWeaponData.map((item: any, index: any) => {
                 if (item.isBought) {
                   return (
                     <div key={`item_${index}`}>

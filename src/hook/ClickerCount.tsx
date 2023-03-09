@@ -22,10 +22,12 @@ const Clicker = ({
   }, [FullCountPerClick]);
 */
 
+  // This useEffect hook updates the localStorage item "count" every time the "count" variable changes.
   useEffect(() => {
     localStorage.setItem("count", count.toString());
   }, [count]);
 
+  // This function formats a number with suffixes like K, M, B, T, etc.
   function formatNumber(num: any, decimalPlaces = 0) {
     const suffixes = [
       "",
@@ -57,9 +59,13 @@ const Clicker = ({
       "O",
       "N",
     ];
+    // The base of the logarithm in the suffix formula
     const base = Math.floor(Math.log10(Math.abs(num)) / 3);
+    // The suffix for the formatted number
     const suffix = suffixes[base];
+    // The formatted number as a string
     const formattedNum = (num / Math.pow(10, base * 3)).toFixed(decimalPlaces);
+    // Return the formatted number with the suffix
     return formattedNum + suffix;
   }
 

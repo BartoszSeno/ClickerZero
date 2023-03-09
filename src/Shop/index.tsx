@@ -3,36 +3,37 @@ import React, { useEffect } from "react";
 import "../assets/css/Normal/shop/shop.css";
 
 const Shop = ({
-  mainWeaponDara,
+  mainWeaponData,
   setMainWeaponData,
   count,
   setCount,
-  setHowMenyTimeBoughtWeapon,
   SelectedOption,
   ShelfHeight,
 }: {
-  mainWeaponDara: any;
+  mainWeaponData: any;
   setMainWeaponData: any;
   count: number;
   setCount: any;
-  setHowMenyTimeBoughtWeapon: any;
   SelectedOption: any;
   ShelfHeight: any;
 }) => {
   const handleClick = (index: any) => {
-    const newMainWeaponData = [...mainWeaponDara];
+    // Create a new array with the same elements as `mainWeaponData`
+    const newMainWeaponData = [...mainWeaponData];
+    // Set the `isBought` property of the item at `index` to `true`
     newMainWeaponData[index].isBought = true;
+    // Increment the `count` property of the item at `index`, or set it to 1 if it doesn't exist
     newMainWeaponData[index].count = (newMainWeaponData[index].count || 0) + 1;
+    // Update the `mainWeaponData` state with the new array
     setMainWeaponData(newMainWeaponData);
+    // Set an item in local storage serialized as JSON
     localStorage.setItem(
       "MainWeaponImageAndNameAndCost",
       JSON.stringify(newMainWeaponData)
     );
-    setHowMenyTimeBoughtWeapon(newMainWeaponData[index].count);
-
-    console.log(count);
   };
 
+  // Set an effect to run whenever the `count` state changes
   useEffect(() => {
     localStorage.setItem("count", count.toString());
   }, [count]);
@@ -41,7 +42,7 @@ const Shop = ({
     <>
       <div id="shop-container">
         <div className="shelf" style={{ height: ShelfHeight }}>
-          {mainWeaponDara.map((data: any, index: any) => {
+          {mainWeaponData.map((data: any, index: any) => {
             if (data.isVisible) {
               return (
                 <button

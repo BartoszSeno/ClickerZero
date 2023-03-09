@@ -1,31 +1,22 @@
 /* eslint-disable array-callback-return */
 import { useState } from "react";
 import { MainWeaponImageAndNameAndCost } from "../../data/equipment/mainWeapon";
+import MainWeaponLoop from "./MainWeaponLoop/MWLoop";
 
 function MainWeapon({
-  mainWeaponDara,
-  setMainWeaponData,
-  HowMenyTimeBoughtWeapon,
-  setsavedDMG,
+  mainWeaponData,
   UpgradedNamesMainWeapon,
-  UpgradedDmgMainWeapon,
-  savedDMG,
   handleItemSelect,
 }: {
-  mainWeaponDara: any;
-  setMainWeaponData: any;
-  HowMenyTimeBoughtWeapon: any;
-  setsavedDMG: any;
+  mainWeaponData: any;
   UpgradedNamesMainWeapon: any;
-  UpgradedDmgMainWeapon: any;
-  savedDMG: any;
   handleItemSelect: any;
 }) {
-  //Geting items from loop on click
-
+  // Function that gets called when an item is clicked on
   function GetIdPerClick(index: any) {
     const item = MainWeaponImageAndNameAndCost[index];
-    //save items in localstorage
+
+    // Save item information in local storage for later use
     localStorage.setItem("selectedItemIdEquip", item.id.toString());
     localStorage.setItem("selectedItemNameEquip", item.name.toString());
     localStorage.setItem("selectedItemImgEquip", item.image.toString());
@@ -33,12 +24,15 @@ function MainWeapon({
     localStorage.setItem("selectedItemTierEquip", item.tier.toString());
   }
 
-  //load items from localstorage
+  // Load saved item information from local storage
   const savedImage = localStorage.getItem("selectedItemImgEquip");
   const savedName = localStorage.getItem("selectedItemNameEquip");
   const savedTier = localStorage.getItem("selectedItemTierEquip");
 
+  // State hook that tracks whether a component should be open or closed
   const [OpenAndClose, setOpenAndClose] = useState<boolean>(false);
+
+  // Function that toggles the open/close state of a component
   function OpenClose() {
     setOpenAndClose(!OpenAndClose);
   }
@@ -61,35 +55,12 @@ function MainWeapon({
           />
         </div>
         <div id="option-container" className={OpenAndClose ? "open" : "close"}>
-          {mainWeaponDara.map((data: any, index: any) => {
-            const upgradedName = UpgradedNamesMainWeapon[index];
-            return (
-              <div key={`${data.id}_${index}`}>
-                {Array.from({ length: data.count }, (_, i) => {
-                  return (
-                    <div
-                      className={`option ${index} `}
-                      id={`${index}${i}`}
-                      key={`${data.id}_${index}_${i}`}
-                      onClick={(e) => {
-                        handleItemSelect(index);
-                        GetIdPerClick(index);
-                      }}
-                    >
-                      <img
-                        className="OptionWeaponImg"
-                        src={data.image}
-                        alt={`${data.name} weapon`}
-                      />
-                      <span className={`itemName ${data.tier}C`}>
-                        {upgradedName ? upgradedName : data.name}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            );
-          })}
+          <MainWeaponLoop
+            mainWeaponData={mainWeaponData}
+            UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
+            handleItemSelect={handleItemSelect}
+            GetIdPerClick={GetIdPerClick}
+          />
         </div>
       </div>
     </>

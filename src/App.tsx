@@ -10,84 +10,118 @@ import { MainWeaponImageAndNameAndCost } from "./data/equipment/mainWeapon";
 import Enchant from "./enchant";
 import { formatNumber } from "./hook/ClickerCount";
 import Information from "./Information";
+import ButtonWithTierItemSorting from "./hook/ButtonForTierShow";
 
 function App() {
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [MainWeaponFullDmgText, setMainWeaponFullDmgText] = useState<any>();
-
-  useEffect(() => {
-    const mainWeaponFullDmgFromText = document.querySelector(
-      ".statsDmgMainWeaponHiden"
-    ) as HTMLElement;
-    const text = mainWeaponFullDmgFromText?.textContent;
-    setMainWeaponFullDmgText(text);
-  });
-
-  //main count
-  const [count, setCount] = useState(() =>
-    Number(localStorage.getItem("count") || 0)
-  );
-
-  // writing out what lvl has the first upgrade
-  const [lvlOne, setLvlOne] = useState(() =>
-    Number(localStorage.getItem("upgradeOneLvl") || 0)
-  );
-  //the amount you get after leveling up the first upgrades
-  const [UpgradeOne, setUpgradeOne] = useState(() =>
-    Number(localStorage.getItem("UpgradeOneCount") || 0)
-  );
-
-  // for adding the total number per click
-
-  const [FullCountPerClick, setFullCountPerClick] = useState(
-    UpgradeOne + (Number(MainWeaponFullDmgText) || 0)
-  );
-
-  useEffect(() => {
-    setFullCountPerClick(UpgradeOne + (Number(MainWeaponFullDmgText) || 0));
-  }, [UpgradeOne, MainWeaponFullDmgText]);
-
-  //Shop
-  const [mainWeaponDara, setMainWeaponData] = useState(
+  // ARRAY OF THE ENTIRE MAIN WEAPON
+  const [mainWeaponData, setMainWeaponData] = useState<any>(
     JSON.parse(
       localStorage.getItem("MainWeaponImageAndNameAndCost") ||
         JSON.stringify(MainWeaponImageAndNameAndCost)
     )
   );
 
-  //count weapon time
-
-  const [HowMenyTimeBoughtWeapon, setHowMenyTimeBoughtWeapon] = useState(0);
-
-  //dmg from main weapon
-  const [savedDMG, setsavedDMG] = useState<any>();
-
-  //open nav tab in one window
-  const [activeTab, setActiveTab] = useState("shop");
-
-  // GET NAME WITH ENCHANT FROM ENCHANT FUNCTION
-  const [UpgradedNamesMainWeapon, setUpgradedNamesMainWeapon] = useState(
-    Array(mainWeaponDara.length).fill("")
+  //==================
+  // FULL NUMBER WHICH SAVES THE COUNT NUMBER OF MAIN POINTS 'count'
+  const [count, setCount] = useState<number>(() =>
+    Number(localStorage.getItem("count") || 0)
   );
 
-  const [UpgradedDmgMainWeapon, setUpgradedDmgMainWeapon] = useState("");
+  //===================
+  //the amount you get after leveling up the first upgrades
+  const [UpgradeOne, setUpgradeOne] = useState<number>(() =>
+    Number(localStorage.getItem("UpgradeOneCount") || 0)
+  );
 
-  const leftContainer = document.querySelector(
-    ".left-container"
-  ) as HTMLElement;
+  //===================
+  // VARIABLE THAT SAVES THE VALUE OF THE MAIN DMG
+  const [MainWeaponFullDmgText, setMainWeaponFullDmgText] = useState<any>();
 
-  window.addEventListener("scroll", () => {
-    const scrollPosition = window.scrollY;
-    leftContainer.style.backgroundPosition = `center ${scrollPosition}px`;
+  useEffect(() => {
+    // export data from statistic
+    const mainWeaponFullDmgFromText = document.querySelector(
+      ".statsDmgMainWeaponHiden"
+    ) as HTMLElement;
+    //if the data exists, convert it to a text
+    const text = mainWeaponFullDmgFromText?.textContent;
+    setMainWeaponFullDmgText(text);
+  }, []);
+
+  //==============
+  // HERE NEW WARIABLES ARE ADDED WHICH ARE USED TO INCREASE POINTS PER CLICK
+  // full click from ( Upgrade lvl 1 & Main Weapon)
+  const [FullCountPerClick, setFullCountPerClick] = useState<number>(
+    UpgradeOne + (Number(MainWeaponFullDmgText) || 0)
+  );
+  // per-click update
+  useEffect(() => {
+    setFullCountPerClick(UpgradeOne + (Number(MainWeaponFullDmgText) || 0));
+  }, [UpgradeOne, MainWeaponFullDmgText]);
+
+  // listing the levels from the first upgrade
+  const [lvlOne, setLvlOne] = useState(() =>
+    Number(localStorage.getItem("upgradeOneLvl") || 0)
+  );
+  //==================
+  // SAVES THE TRUE VALUE OF MAIN WEAPON DMG
+  const [UpgradedDmgMainWeapon, setUpgradedDmgMainWeapon] =
+    useState<string>("");
+
+  //==================
+  // GET UPGRADED NAME FROM ENCHANT FUNCTION
+  const [UpgradedNamesMainWeapon, setUpgradedNamesMainWeapon] = useState<any>(
+    Array(mainWeaponData.length).fill("")
+  );
+
+  // function in which we get data what object has a upgraded name (from enchant)
+  function UpgradedNamesOnMount() {
+    const upgradedNames = mainWeaponData.map((data: any) => {
+      const itemUpgradeName = `${data.name}`;
+      const savedItemUpgrade = localStorage.getItem(itemUpgradeName);
+      const upgradedName = savedItemUpgrade
+        ? `+${Number(savedItemUpgrade)} ${data.name}`
+        : data.name;
+      return upgradedName;
+    });
+    setUpgradedNamesMainWeapon(upgradedNames);
+  }
+  //refresh names on load
+  useEffect(() => {
+    UpgradedNamesOnMount();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  //===============
+  //FUNCTION TO AUTOMATICALY REFRESH MAIN WEAPON STATS
+  // !! useState important for show the value points per click !!
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  // geting the id on click
+  const handleItemSelect = (index: any) => {
+    setSelectedItem(index);
+  };
+
+  //we get the id of the currently selected item (eq selected) which is saved in localstorage for update statistic DMG
+  const savedId = localStorage.getItem("selectedItemIdEquip");
+
+  //we add fake id to the selected item to make it refresh automatically
+  useEffect(() => {
+    handleItemSelect(Number(savedId));
   });
 
-  // For open Left Menu
+  //==================
+  // SELECT THE ACTIVE TAB
+  const [activeTab, setActiveTab] = useState("shop");
+
+  //=================
+  // CLOSING AND OPEN THE LEFT CONTAINER
   const [OpenMenu, setOpenMenu] = useState<boolean>(true);
 
   function OpenMenuOrCloseMenu() {
     setTimeout(() => {
       const newValue = !OpenMenu;
       setOpenMenu(newValue);
+      // save in localStorage that left menu is open or close
       localStorage.setItem("OpenMenu", JSON.stringify(newValue));
     }, 150);
   }
@@ -100,24 +134,15 @@ function App() {
     }
   }, [OpenMenu]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setImgClick(
-        OpenMenu
-          ? "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Arrow/leftArrowButtonUnclicked.png"
-          : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Arrow/rgihtArrowButtonUnclicked.png"
-      );
-    }, 300);
-  }, [OpenMenu]);
-
-  // image change script
-
+  //====================
+  //BUTTON IMAGE CHANGE ON POSITION
   const [ImgClick, setImgClick] = useState(
     OpenMenu
       ? "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Arrow/leftArrowButtonUnclicked.png"
       : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Arrow/rgihtArrowButtonUnclicked.png"
   );
 
+  // change image for animation on click then back to origin
   const changeImage = () => {
     const originalSrc = ImgClick;
     const newSrc = OpenMenu
@@ -133,48 +158,32 @@ function App() {
     }, 100);
   };
 
-  //SHOW TIER ON CLICK
-  const [SelectedOption, setSelectedOption] = useState("");
-
-  const [ActiveTier, setActiveTier] = useState("");
-
-  const [ShelfHeight, setShelfHeight] = useState("4600");
-
-  //refresh name of upgrade?
-
-  function UpgradedNamesOnMount() {
-    const upgradedNames = mainWeaponDara.map((data: any) => {
-      const itemUpgradeName = `${data.name}`;
-      const savedItemUpgrade = localStorage.getItem(itemUpgradeName);
-      const upgradedName = savedItemUpgrade
-        ? `+${Number(savedItemUpgrade)} ${data.name}`
-        : data.name;
-      return upgradedName;
-    });
-    setUpgradedNamesMainWeapon(upgradedNames);
-  }
-
+  // image change automatic
   useEffect(() => {
-    UpgradedNamesOnMount();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    setTimeout(() => {
+      setImgClick(
+        OpenMenu
+          ? "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Arrow/leftArrowButtonUnclicked.png"
+          : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Arrow/rgihtArrowButtonUnclicked.png"
+      );
+    }, 300);
+  }, [OpenMenu]);
 
-  // funkcja do autmoatycznego odświeżania statystyk broni
-
-  const handleItemSelect = (index: any) => {
-    setSelectedItem(index);
-  };
-  const savedId = localStorage.getItem("selectedItemIdEquip");
-
-  useEffect(() => {
-    handleItemSelect(Number(savedId));
-  });
-
+  //================
+  // INFORMATION MENU OPEN AND CLOSE
   const [infoOpenClose, setinfoOpenClose] = useState<boolean>(false);
 
   function HandleInfoOpenAndClose() {
     setinfoOpenClose(!infoOpenClose);
   }
+
+  //==============
+  // USESTATE THAT CHANGE HEIGHT OR SORT BY TIER
+  // selects which tier has been selected
+  const [SelectedOption, setSelectedOption] = useState<string>("");
+  const [ActiveTier, setActiveTier] = useState<string>("");
+  // changes the shelf height
+  const [ShelfHeight, setShelfHeight] = useState<string>("4600");
 
   return (
     <>
@@ -217,76 +226,17 @@ function App() {
             <div>
               {activeTab === "shop" && (
                 <>
-                  <div className="ShowTier">
-                    <div className="conteineeTier">
-                      <button
-                        onClick={() => {
-                          setSelectedOption("");
-                          setActiveTier("");
-                          setShelfHeight("4600");
-                        }}
-                        className={`all ${
-                          ActiveTier === "" ? "activeTier" : ""
-                        }`}
-                      ></button>
-                      <button
-                        onClick={() => {
-                          setSelectedOption("green");
-                          setActiveTier("green");
-                          setShelfHeight("1200");
-                        }}
-                        className={`GreenButton ${
-                          ActiveTier === "green" ? "activeTier" : ""
-                        }`}
-                      ></button>
-                      <button
-                        onClick={() => {
-                          setSelectedOption("blue");
-                          setActiveTier("blue");
-                          setShelfHeight("1000");
-                        }}
-                        className={`BlueButton ${
-                          ActiveTier === "blue" ? "activeTier" : ""
-                        }`}
-                      ></button>
-                      <button
-                        onClick={() => {
-                          setSelectedOption("yellow");
-                          setActiveTier("yellow");
-                          setShelfHeight("800");
-                        }}
-                        className={`YellowButton ${
-                          ActiveTier === "yellow" ? "activeTier" : ""
-                        }`}
-                      ></button>
-                      <button
-                        onClick={() => {
-                          setSelectedOption("red");
-                          setActiveTier("red");
-                          setShelfHeight("800");
-                        }}
-                        className={`RedButton ${
-                          ActiveTier === "red" ? "activeTier" : ""
-                        }`}
-                      ></button>
-                      <button
-                        onClick={() => {
-                          setSelectedOption("purple");
-                          setActiveTier("purple");
-                          setShelfHeight("1000");
-                        }}
-                        className={`PurpleButton ${
-                          ActiveTier === "purple" ? "activeTier" : ""
-                        }`}
-                      ></button>
-                    </div>
-                  </div>
+                  <ButtonWithTierItemSorting
+                    setSelectedOption={setSelectedOption}
+                    setActiveTier={setActiveTier}
+                    setShelfHeight={setShelfHeight}
+                    ActiveTier={ActiveTier}
+                  />
                   <Shop
                     setMainWeaponData={setMainWeaponData}
-                    mainWeaponDara={mainWeaponDara}
+                    mainWeaponData={mainWeaponData}
                     count={count}
                     setCount={setCount}
-                    setHowMenyTimeBoughtWeapon={setHowMenyTimeBoughtWeapon}
                     SelectedOption={SelectedOption}
                     ShelfHeight={ShelfHeight}
                   />
@@ -296,7 +246,7 @@ function App() {
                 <Enchant
                   UpgradedDmgMainWeapon={UpgradedDmgMainWeapon}
                   setUpgradedDmgMainWeapon={setUpgradedDmgMainWeapon}
-                  mainWeaponDara={mainWeaponDara}
+                  mainWeaponData={mainWeaponData}
                   setUpgradedNamesMainWeapon={setUpgradedNamesMainWeapon}
                   UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
                   UpgradedNamesOnMount={UpgradedNamesOnMount}
@@ -326,14 +276,8 @@ function App() {
         </div>
         <div className="right-container">
           <Eq
-            setMainWeaponData={setMainWeaponData}
-            mainWeaponDara={mainWeaponDara}
-            HowMenyTimeBoughtWeapon={HowMenyTimeBoughtWeapon}
-            setsavedDMG={setsavedDMG}
-            savedDMG={savedDMG}
+            mainWeaponData={mainWeaponData}
             UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
-            UpgradedDmgMainWeapon={UpgradedDmgMainWeapon}
-            UpgradedNamesOnMount={UpgradedNamesOnMount}
             handleItemSelect={handleItemSelect}
             selectedItem={selectedItem}
           />

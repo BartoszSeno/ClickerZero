@@ -8,41 +8,22 @@ import Gloves from "./Gloves/gloves";
 import Statistic from "./statistic/statistic";
 
 const Eq = ({
-  mainWeaponDara,
-  setMainWeaponData,
-  HowMenyTimeBoughtWeapon,
-  savedDMG,
-  setsavedDMG,
+  mainWeaponData,
   UpgradedNamesMainWeapon,
-  UpgradedDmgMainWeapon,
-  UpgradedNamesOnMount,
   handleItemSelect,
   selectedItem,
 }: {
-  mainWeaponDara: any;
-  setMainWeaponData: any;
-  HowMenyTimeBoughtWeapon: any;
-  savedDMG: any;
-  setsavedDMG: any;
+  mainWeaponData: any;
   UpgradedNamesMainWeapon: any;
-  UpgradedDmgMainWeapon: any;
-  UpgradedNamesOnMount: any;
   handleItemSelect: any;
   selectedItem: any;
 }) => {
-  // TO DO ZMIANY JAKOS
-
   return (
     <>
       <section id="equipment">
         <MainWeapon
-          setMainWeaponData={setMainWeaponData}
-          mainWeaponDara={mainWeaponDara}
-          HowMenyTimeBoughtWeapon={HowMenyTimeBoughtWeapon}
-          setsavedDMG={setsavedDMG}
-          savedDMG={savedDMG}
+          mainWeaponData={mainWeaponData}
           UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
-          UpgradedDmgMainWeapon={UpgradedDmgMainWeapon}
           handleItemSelect={handleItemSelect}
         />
         <SubWeapon />
@@ -53,8 +34,7 @@ const Eq = ({
       </section>
       <section id="Statistic">
         <Statistic
-          savedDMG={savedDMG}
-          mainWeaponDara={mainWeaponDara}
+          mainWeaponData={mainWeaponData}
           selectedItem={selectedItem}
         />
       </section>
