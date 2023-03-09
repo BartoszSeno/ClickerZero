@@ -1,13 +1,11 @@
 import "../assets/css/Normal/Equipment/equipment.css";
 import Armor from "./Armor/armor";
-import AweWeapon from "./AweWeapon/aweWeapon";
 import MainWeapon from "./MainWeapon/mainWeapon";
 import SubWeapon from "./SubWeapon/subWeapon";
 import Helmet from "./Helmet/helmet";
 import Shoes from "./Shoes/shoes";
 import Gloves from "./Gloves/gloves";
 import Statistic from "./statistic/statistic";
-import { useState } from "react";
 
 const Eq = ({
   mainWeaponDara,
@@ -37,24 +35,21 @@ const Eq = ({
   return (
     <>
       <section id="equipment">
-        <span className="circle">
-          <AweWeapon />
-          <MainWeapon
-            setMainWeaponData={setMainWeaponData}
-            mainWeaponDara={mainWeaponDara}
-            HowMenyTimeBoughtWeapon={HowMenyTimeBoughtWeapon}
-            setsavedDMG={setsavedDMG}
-            savedDMG={savedDMG}
-            UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
-            UpgradedDmgMainWeapon={UpgradedDmgMainWeapon}
-            handleItemSelect={handleItemSelect}
-          />
-          <SubWeapon />
-          <Armor />
-          <Helmet />
-          <Shoes />
-          <Gloves />
-        </span>
+        <MainWeapon
+          setMainWeaponData={setMainWeaponData}
+          mainWeaponDara={mainWeaponDara}
+          HowMenyTimeBoughtWeapon={HowMenyTimeBoughtWeapon}
+          setsavedDMG={setsavedDMG}
+          savedDMG={savedDMG}
+          UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
+          UpgradedDmgMainWeapon={UpgradedDmgMainWeapon}
+          handleItemSelect={handleItemSelect}
+        />
+        <SubWeapon />
+        <Armor />
+        <Helmet />
+        <Shoes />
+        <Gloves />
       </section>
       <section id="Statistic">
         <Statistic

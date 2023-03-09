@@ -14,7 +14,7 @@ const Statistic = ({
     <>
       <div id="statistic-container">
         <div className="MainWeaponDmg">
-          <span>AP</span>
+          <span>DMG;</span>
           {mainWeaponDara.map((data: any, index: any) => {
             // Warunek if dla wybranego elementu
             if (index === selectedItem) {
@@ -45,13 +45,9 @@ const Statistic = ({
             }
           })}
         </div>
-        <div className="AweWeaponDmg">
-          <span>AAP</span>
-          <span className="statsDmg">Null</span>
-        </div>
-        <div className="SubWeaponDmg">
-          <span>DP</span>
-          <span className="statsDmg">Null</span>
+        <div className="armorDef">
+          <span>DEF;</span>
+          <span className="statsDmg">...</span>
         </div>
       </div>
       <div className="GS">
