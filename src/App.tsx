@@ -8,9 +8,11 @@ import LeftNav from "./assets/LeftNav";
 import Shop from "./Shop";
 import { MainWeaponImageAndNameAndCost } from "./data/equipment/mainWeapon";
 import Enchant from "./enchant";
-import { formatNumber } from "./hook/ClickerCount";
+import { formatNumber } from "./hook/FormatNumber";
 import Information from "./Information";
 import ButtonWithTierItemSorting from "./hook/ButtonForTierShow";
+import FastAccesButton from "./hook/FastAcces";
+import PerClickPoints from "./hook/PerClick";
 
 function App() {
   // ARRAY OF THE ENTIRE MAIN WEAPON
@@ -45,7 +47,8 @@ function App() {
     //if the data exists, convert it to a text
     const text = mainWeaponFullDmgFromText?.textContent;
     setMainWeaponFullDmgText(text);
-  }, []);
+    console.log(text);
+  });
 
   //==============
   // HERE NEW WARIABLES ARE ADDED WHICH ARE USED TO INCREASE POINTS PER CLICK
@@ -53,10 +56,6 @@ function App() {
   const [FullCountPerClick, setFullCountPerClick] = useState<number>(
     UpgradeOne + (Number(MainWeaponFullDmgText) || 0)
   );
-  // per-click update
-  useEffect(() => {
-    setFullCountPerClick(UpgradeOne + (Number(MainWeaponFullDmgText) || 0));
-  }, [UpgradeOne, MainWeaponFullDmgText]);
 
   // listing the levels from the first upgrade
   const [lvlOne, setLvlOne] = useState(() =>
@@ -200,27 +199,11 @@ function App() {
             }}
             style={{ backgroundImage: `url(${ImgClick})` }}
           ></button>
-          <div
-            className={`FastAccesToMenu ${
-              OpenMenu ? "closesidemenu" : "opensidemenu"
-            }`}
-            style={OpenMenu ? { display: "none" } : { display: "flex" }}
-          >
-            <button
-              className="FAShop"
-              onClick={() => {
-                setActiveTab("shop");
-                OpenMenuOrCloseMenu();
-              }}
-            ></button>
-            <button
-              className="FAUpgrade"
-              onClick={() => {
-                setActiveTab("enchant");
-                OpenMenuOrCloseMenu();
-              }}
-            ></button>
-          </div>
+          <FastAccesButton
+            OpenMenu={OpenMenu}
+            setActiveTab={setActiveTab}
+            OpenMenuOrCloseMenu={OpenMenuOrCloseMenu}
+          />
           <LeftNav setActiveTab={setActiveTab} activeTab={activeTab} />
           <div>
             <div>
@@ -270,9 +253,12 @@ function App() {
             UpgradeOne={UpgradeOne}
             setUpgradeOne={setUpgradeOne}
           />
-          <div className="MainWeaponFullDmgText count per click">
-            Per Click: {formatNumber(FullCountPerClick.toFixed(0))}
-          </div>
+          <PerClickPoints
+            FullCountPerClick={FullCountPerClick}
+            setFullCountPerClick={setFullCountPerClick}
+            UpgradeOne={UpgradeOne}
+            MainWeaponFullDmgText={MainWeaponFullDmgText}
+          />
         </div>
         <div className="right-container">
           <Eq

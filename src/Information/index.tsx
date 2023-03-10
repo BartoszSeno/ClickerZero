@@ -18,9 +18,11 @@ const Information = ({ infoOpenClose }: { infoOpenClose: any }) => {
             Changing store options sorting between: Armor's (all type), weapon
             (all type)
           </p>
+          <p>sell option</p>
         </div>
         <div className="news">
           <h1>What's next:</h1>
+          <p>New background</p>
           <p>Better Info box</p>
           <p>Create an item cost</p>
           <p>Adding cost for upgrade for each itmes</p>

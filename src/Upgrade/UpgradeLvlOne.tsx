@@ -1,6 +1,6 @@
 import "../assets/css/Normal/Update/upgrade.css";
 import React, { useState, useEffect } from "react";
-import { formatNumber } from "../hook/ClickerCount";
+import { formatNumber } from "../hook/FormatNumber";
 
 const UpdateLvlOne = ({
   setCount,
@@ -38,7 +38,7 @@ const UpdateLvlOne = ({
     localStorage.setItem("upgradeOneLvl", lvlOne.toString());
 
     // Increase the UpgradeOne variable by 1 and update its value in local storage
-    UpgradeOne += 1;
+    UpgradeOne += 10;
     localStorage.setItem("UpgradeOneCount", UpgradeOne.toString());
   }
 

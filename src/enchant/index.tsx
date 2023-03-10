@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import "../assets/css/Normal/enchant/enchant.css";
 import { MainWeaponImageAndNameAndCost } from "../data/equipment/mainWeapon";
-import { formatNumber } from "../hook/ClickerCount";
+import { formatNumber } from "../hook/FormatNumber";
 
 const Enchant = ({
   mainWeaponData,

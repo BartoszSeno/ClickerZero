@@ -1,5 +1,5 @@
 import { getSavedDmgMain } from "../../../enchant";
-import { formatNumber } from "../../../hook/ClickerCount";
+import { formatNumber } from "../../../hook/FormatNumber";
 
 const Damage = ({
   mainWeaponData,
