@@ -8,7 +8,6 @@ import LeftNav from "./assets/LeftNav";
 import Shop from "./Shop";
 import { MainWeaponImageAndNameAndCost } from "./data/equipment/mainWeapon";
 import Enchant from "./enchant";
-import { formatNumber } from "./hook/FormatNumber";
 import Information from "./Information";
 import ButtonWithTierItemSorting from "./hook/ButtonForTierShow";
 import FastAccesButton from "./hook/FastAcces";
@@ -232,7 +231,6 @@ function App() {
                   mainWeaponData={mainWeaponData}
                   setUpgradedNamesMainWeapon={setUpgradedNamesMainWeapon}
                   UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
-                  UpgradedNamesOnMount={UpgradedNamesOnMount}
                 />
               )}
             </div>
