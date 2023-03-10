@@ -94,7 +94,7 @@ const Enchant = ({
     setUpgradedDmgMainWeapon(savedDmgMain);
   }
 
-  //==================
+  //===================================================================
   // Declare state to save selected damage value, initialized with null
   const [, setSavedDmgMains] = useState<number | null>(null);
 
