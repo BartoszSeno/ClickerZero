@@ -9,6 +9,8 @@ const PutItemHere = ({
   setUpgradedDmgMainWeapon,
   savedImage,
   savedName,
+  itsMainWeapon,
+  setitsMainWeapon,
   ArmorData,
   savedArmorItemUpgrade,
   UpgradedNamesArmor,
@@ -16,10 +18,17 @@ const PutItemHere = ({
   savedArmorName,
   setSelectedArmorItemIndex,
   setUpgradedDefArmor,
-  setitsMainWeapon,
   setitsArmor,
-  itsMainWeapon,
   itsArmor,
+  HelmetData,
+  savedHelmetItemUpgrade,
+  UpgradedNamesHelmet,
+  savedHelmetImage,
+  savedHelmetName,
+  setSelectedHelmetItemIndex,
+  setUpgradedDefHelmet,
+  itsHelmet,
+  setitsHelmet,
 }: {
   mainWeaponData: any;
   savedItemUpgrade: any;
@@ -28,7 +37,8 @@ const PutItemHere = ({
   setUpgradedDmgMainWeapon: any;
   savedImage: any;
   savedName: any;
-
+  itsMainWeapon: any;
+  setitsMainWeapon: any;
   ArmorData: any;
   savedArmorItemUpgrade: any;
   UpgradedNamesArmor: any;
@@ -36,10 +46,17 @@ const PutItemHere = ({
   savedArmorName: any;
   setSelectedArmorItemIndex: any;
   setUpgradedDefArmor: any;
-  setitsMainWeapon: any;
   setitsArmor: any;
-  itsMainWeapon: any;
   itsArmor: any;
+  HelmetData: any;
+  savedHelmetItemUpgrade: any;
+  UpgradedNamesHelmet: any;
+  savedHelmetImage: any;
+  savedHelmetName: any;
+  setSelectedHelmetItemIndex: any;
+  setUpgradedDefHelmet: any;
+  itsHelmet: any;
+  setitsHelmet: any;
 }) => {
   // open and close menu
   const [OpenAndClose, setOpenAndClose] = useState<boolean>(false);
@@ -59,15 +76,21 @@ const PutItemHere = ({
           src={
             itsMainWeapon
               ? savedImage
-              : savedArmorImage
-              ? itsMainWeapon
-                ? savedImage
-                : savedArmorImage
+              : itsArmor
+              ? savedArmorImage
+              : itsHelmet
+              ? savedHelmetImage
               : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
           }
           alt={`${
-            itsMainWeapon ? savedName : savedArmorName || "No name"
-          } weapon`}
+            itsMainWeapon
+              ? savedName
+              : itsArmor
+              ? savedArmorName
+              : itsHelmet
+              ? savedHelmetName
+              : "No name weapon"
+          }`}
         />
         <div
           id="EnchantMenuChouseWeapon"
@@ -86,8 +109,12 @@ const PutItemHere = ({
             setUpgradedDefArmor={setUpgradedDefArmor}
             setitsMainWeapon={setitsMainWeapon}
             setitsArmor={setitsArmor}
-            itsMainWeapon={itsMainWeapon}
-            itsArmor={itsArmor}
+            HelmetData={HelmetData}
+            savedHelmetItemUpgrade={savedHelmetItemUpgrade}
+            UpgradedNamesHelmet={UpgradedNamesHelmet}
+            setSelectedHelmetItemIndex={setSelectedHelmetItemIndex}
+            setUpgradedDefHelmet={setUpgradedDefHelmet}
+            setitsHelmet={setitsHelmet}
           />
         </div>
       </div>

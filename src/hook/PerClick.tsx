@@ -7,12 +7,14 @@ function PerClickPoints({
   UpgradeOne,
   MainWeaponFullDmgText,
   FullArmorDefText,
+  FullHelmetDefText,
 }: {
   FullCountPerClick: number;
   setFullCountPerClick: any;
   UpgradeOne: number;
   MainWeaponFullDmgText: number;
   FullArmorDefText: number;
+  FullHelmetDefText: number;
 }) {
   //constant value ' 1 '
 
@@ -23,7 +25,8 @@ function PerClickPoints({
       OnePerClick +
         UpgradeOne +
         (Number(MainWeaponFullDmgText) || 0) +
-        (Number(FullArmorDefText) || 0)
+        (Number(FullArmorDefText) || 0) +
+        (Number(FullHelmetDefText) || 0)
     );
   }, [
     UpgradeOne,
@@ -31,6 +34,7 @@ function PerClickPoints({
     setFullCountPerClick,
     OnePerClick,
     FullArmorDefText,
+    FullHelmetDefText,
   ]);
 
   return (

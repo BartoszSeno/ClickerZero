@@ -1,14 +1,38 @@
 /* eslint-disable no-lone-blocks */
 import { formatNumber } from "../../../hook/FormatNumber";
-import { getSavedDefArmor } from "../../../enchant";
+import { getSavedDefArmor, getSavedDefHelmet } from "../../../enchant";
 
 const Damage = ({
   ArmorData,
   selectedArmorItem,
+  HelmetData,
+  selectedHelmetItem,
 }: {
   ArmorData: any;
   selectedArmorItem: any;
+  HelmetData: any;
+  selectedHelmetItem: any;
 }) => {
+  // export data from statistic
+  const FullArmorDefFromText = document.querySelector(
+    ".statsDefDefHiden"
+  ) as HTMLElement;
+  //if the data exists, convert it to a text
+  const textArmor = FullArmorDefFromText?.textContent;
+  // export data from statistic
+  const FullHelmetDefFromText = document.querySelector(
+    ".statsHelmetDefHiden"
+  ) as HTMLElement;
+  //if the data exists, convert it to a text
+  const textHelmet = FullHelmetDefFromText?.textContent;
+
+  const FullValu = (Number(textArmor) || 0) + (Number(textHelmet) || 0);
+
+  function tessts() {
+    console.log(textArmor);
+    console.log(textHelmet);
+    console.log(FullValu);
+  }
   return (
     <>
       {ArmorData.map((data: any, index: any) => {
@@ -23,10 +47,32 @@ const Damage = ({
             <div key={`${data.id}_${index}`}>
               {selectedArmorItemData && (
                 <div>
-                  <span className="statsDefArmor">
-                    {formatNumber(savedDefMain ? savedDefMain : data.defLvl0)}
-                  </span>
                   <span className="statsDefDefHiden">
+                    {savedDefMain ? savedDefMain : data.defLvl0}
+                  </span>
+                </div>
+              )}
+            </div>
+          );
+        } else {
+          return null;
+        }
+      })}
+      <button onClick={tessts}>test</button>
+      <span className="statsDefHelmet">{FullValu}</span>
+      {HelmetData.map((data: any, index: any) => {
+        if (index === selectedHelmetItem) {
+          const itemSavedDefMainKey = `selectedItemDefForEnchant_${data.name}`;
+          const savedDefMain = getSavedDefHelmet(itemSavedDefMainKey);
+          const selectedHelmetItemData = HelmetData.find(
+            (data: any) => data.id === Number(selectedHelmetItem)
+          );
+
+          return (
+            <div key={`${data.id}_${index}`}>
+              {selectedHelmetItemData && (
+                <div>
+                  <span className="statsHelmetDefHiden">
                     {savedDefMain ? savedDefMain : data.defLvl0}
                   </span>
                 </div>

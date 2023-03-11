@@ -28,7 +28,7 @@ export const ArmorImageAndNameAndCost = [
     tier: "green",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/armor/n2.png",
-    name: "Dirk",
+    name: "Darg",
     defLvl0: 1,
     cost: 1,
     isBought: false,
@@ -52,7 +52,7 @@ export const ArmorImageAndNameAndCost = [
     tier: "green",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/armor/n4.png",
-    name: "Dirk",
+    name: "Bosor",
     defLvl0: 1,
     cost: 1,
     isBought: false,

@@ -7,11 +7,15 @@ const Statistic = ({
   selectedItem,
   ArmorData,
   selectedArmorItem,
+  HelmetData,
+  selectedHelmetItem,
 }: {
   mainWeaponData: any;
   selectedItem: any;
   ArmorData: any;
   selectedArmorItem: any;
+  HelmetData: any;
+  selectedHelmetItem: any;
 }) => {
   return (
     <>
@@ -25,6 +29,8 @@ const Statistic = ({
           <Defence
             ArmorData={ArmorData}
             selectedArmorItem={selectedArmorItem}
+            HelmetData={HelmetData}
+            selectedHelmetItem={selectedHelmetItem}
           />
         </div>
       </div>

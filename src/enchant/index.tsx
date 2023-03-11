@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import "../assets/css/Normal/enchant/enchant.css";
 import { MainWeaponImageAndNameAndCost } from "../data/equipment/mainWeapon";
 import { ArmorImageAndNameAndCost } from "../data/equipment/armor";
+import { HelmetImageAndNameAndCost } from "../data/equipment/helmet";
 import EnchantSucces from "./EnchantSucces/EnchantSucces";
 import PutItemHere from "./PutItemHere/PutItemHere";
 
@@ -18,18 +19,27 @@ const Enchant = ({
   ArmorData,
   setUpgradedNamesArmor,
   UpgradedNamesArmor,
+  HelmetData,
+  UpgradedNamesHelmet,
+  setUpgradedNamesHelmet,
+  setUpgradedDefHelmet,
+  UpgradedDefHelmet,
 }: {
   mainWeaponData: any;
   setUpgradedNamesMainWeapon: any;
   UpgradedNamesMainWeapon: any;
   setUpgradedDmgMainWeapon: any;
   UpgradedDmgMainWeapon: any;
-
   UpgradedDefArmor: any;
   setUpgradedDefArmor: any;
   ArmorData: any;
   setUpgradedNamesArmor: any;
   UpgradedNamesArmor: any;
+  HelmetData: any;
+  UpgradedNamesHelmet: any;
+  setUpgradedNamesHelmet: any;
+  setUpgradedDefHelmet: any;
+  UpgradedDefHelmet: any;
 }) => {
   /// load value form localstorage
   const savedImage = localStorage.getItem("selectedItemImgForEnchant");
@@ -40,6 +50,13 @@ const Enchant = ({
   );
   const savedArmorName = localStorage.getItem(
     "selectedArmorItemNameForEnchant"
+  );
+  //helmet
+  const savedHelmetImage = localStorage.getItem(
+    "selectedHelmetItemImgForEnchant"
+  );
+  const savedHelmetName = localStorage.getItem(
+    "selectedHelmetItemNameForEnchant"
   );
   // enchant
 
@@ -168,6 +185,62 @@ const Enchant = ({
     setUpgradedDefArmor(savedDefArmor);
   }
 
+  //helmet
+  function EnchantPerClickForHelmet(HelmetIndex: any) {
+    const helmet = HelmetImageAndNameAndCost[HelmetIndex];
+
+    const HelmetItemUpgradeName = `${helmet.name}`;
+
+    const savedHelmetItemUpgrade = localStorage.getItem(HelmetItemUpgradeName);
+    const savedHelmetItemUpgradeNumber = Number(savedHelmetItemUpgrade);
+
+    const HelmetupgradedValue =
+      savedHelmetItemUpgradeNumber < 15 ? savedHelmetItemUpgradeNumber + 1 : 15;
+
+    localStorage.setItem("HelmetupgradedValue", HelmetupgradedValue.toString());
+    localStorage.setItem(HelmetItemUpgradeName, HelmetupgradedValue.toString());
+
+    const selectedHelmetItem = HelmetData[HelmetIndex];
+
+    const HelmetItemName = `+${HelmetupgradedValue} ${helmet.name}`;
+
+    localStorage.setItem(
+      "UpgradedHelmetName",
+      JSON.stringify({
+        [HelmetItemName]: selectedHelmetItem.name,
+        selectedHelmetItemNameForEnchant: HelmetItemName,
+      })
+    );
+
+    const upgradedHelmetNames = [...UpgradedNamesHelmet];
+    upgradedHelmetNames[HelmetIndex] = HelmetItemName;
+    setUpgradedNamesHelmet(upgradedHelmetNames);
+
+    const itemSavedDefHelmetKey = `selectedItemDefForEnchant_${helmet.name}`;
+
+    const savedHelmetClicks = localStorage.getItem(
+      `savedHelmetClicks_${helmet.name}`
+    );
+    const numHelmetClicks = savedHelmetClicks ? Number(savedHelmetClicks) : 0;
+
+    if (numHelmetClicks < 15) {
+      let newSavedDefHelmet = Number(
+        localStorage.getItem(itemSavedDefHelmetKey) || helmet.defLvl0
+      );
+      newSavedDefHelmet *= 2;
+      localStorage.setItem(itemSavedDefHelmetKey, newSavedDefHelmet.toString());
+      localStorage.setItem(
+        `savedHelmetClicks_${helmet.name}`,
+        (numHelmetClicks + 1).toString()
+      );
+    }
+    console.log(localStorage.getItem(itemSavedDefHelmetKey));
+
+    const savedDefHelmet =
+      localStorage.getItem(itemSavedDefHelmetKey) || helmet.defLvl0;
+
+    setUpgradedDefHelmet(savedDefHelmet);
+  }
   //===================================================================
   // Declare state to save selected damage value, initialized with null
   const [, setSavedDmgMains] = useState<number | null>(null);
@@ -193,24 +266,41 @@ const Enchant = ({
       setSavedDefArmor(Number(savedDefArmorFromLocalStorage));
     }
   }, []);
+  //helmet
+  const [, setSavedDefHelmet] = useState<number | null>(null);
 
+  // Load selected damage value from local storage when component mounts
+  useEffect(() => {
+    const savedDefHelmetFromLocalStorage = localStorage.getItem(
+      "selectedItemDefForEnchant"
+    );
+    if (savedDefHelmetFromLocalStorage) {
+      setSavedDefHelmet(Number(savedDefHelmetFromLocalStorage));
+    }
+  }, []);
   // Declare state to save selected item index, initialized with 0
   const [selectedItemIndex, setSelectedItemIndex] = useState<number>(0);
   //armor
   const [selectedArmorItemIndex, setSelectedArmorItemIndex] =
+    useState<number>(0);
+  //helmet
+  const [selectedHelmetItemIndex, setSelectedHelmetItemIndex] =
     useState<number>(0);
 
   // Declare state to save saved item upgrade value, initialized with 0
   const [savedItemUpgrade] = useState<number>(0);
   //armor
   const [savedArmorItemUpgrade] = useState<number>(0);
-
+  //helmet
+  const [savedHelmetItemUpgrade] = useState<number>(0);
   // Remove saved item image and name from local storage on component mount
   useEffect(() => {
     localStorage.removeItem("selectedItemImgForEnchant");
     localStorage.removeItem("selectedItemNameForEnchant");
     localStorage.removeItem("selectedArmorItemImgForEnchant");
     localStorage.removeItem("selectedArmorItemNameForEnchant");
+    localStorage.removeItem("selectedHelmetItemImgForEnchant");
+    localStorage.removeItem("selectedHelmetItemNameForEnchant");
   }, []);
 
   const savedUpgradedValue = localStorage.getItem("ArmorupgradedValue");
@@ -220,10 +310,16 @@ const Enchant = ({
   const ArmorupgradedValue = savedArmorUpgradedValue
     ? Number(savedArmorUpgradedValue)
     : 0;
+  //helmet
+  const savedHelmetUpgradedValue = localStorage.getItem("HelmetupgradedValue");
+  const HelmetupgradedValue = savedHelmetUpgradedValue
+    ? Number(savedHelmetUpgradedValue)
+    : 0;
 
   // its weapon or armor ?
   const [itsMainWeapon, setitsMainWeapon] = useState(false);
   const [itsArmor, setitsArmor] = useState(false);
+  const [itsHelmet, setitsHelmet] = useState(false);
 
   return (
     <>
@@ -235,6 +331,8 @@ const Enchant = ({
                 EnchantPerClick(selectedItemIndex);
               } else if (itsArmor === true) {
                 EnchantPerClickForArmor(selectedArmorItemIndex);
+              } else if (itsHelmet === true) {
+                EnchantPerClickForHelmet(selectedHelmetItemIndex);
               }
             }}
           >
@@ -249,16 +347,25 @@ const Enchant = ({
             savedImage={savedImage}
             savedName={savedName}
             ArmorData={ArmorData}
+            itsMainWeapon={itsMainWeapon}
+            setitsMainWeapon={setitsMainWeapon}
             savedArmorItemUpgrade={savedArmorItemUpgrade}
             UpgradedNamesArmor={UpgradedNamesArmor}
             savedArmorImage={savedArmorImage}
             savedArmorName={savedArmorName}
             setSelectedArmorItemIndex={setSelectedArmorItemIndex}
             setUpgradedDefArmor={setUpgradedDefArmor}
-            setitsMainWeapon={setitsMainWeapon}
             setitsArmor={setitsArmor}
-            itsMainWeapon={itsMainWeapon}
             itsArmor={itsArmor}
+            HelmetData={HelmetData}
+            savedHelmetItemUpgrade={savedHelmetItemUpgrade}
+            UpgradedNamesHelmet={UpgradedNamesHelmet}
+            savedHelmetImage={savedHelmetImage}
+            savedHelmetName={savedHelmetName}
+            setSelectedHelmetItemIndex={setSelectedHelmetItemIndex}
+            setUpgradedDefHelmet={setUpgradedDefHelmet}
+            itsHelmet={itsHelmet}
+            setitsHelmet={setitsHelmet}
           />
           <div className="EnchantProgress"></div>
           <EnchantSucces
@@ -268,14 +375,19 @@ const Enchant = ({
             savedName={savedName}
             UpgradedDmgMainWeapon={UpgradedDmgMainWeapon}
             setUpgradedDmgMainWeapon={setUpgradedDmgMainWeapon}
+            itsMainWeapon={itsMainWeapon}
             UpgradedDefArmor={UpgradedDefArmor}
-            ArmorupgradedValue={ArmorupgradedValue}
             selectedArmorItemIndex={selectedArmorItemIndex}
             savedArmorImage={savedArmorImage}
             savedArmorName={savedArmorName}
             setUpgradedDefArmor={setUpgradedDefArmor}
-            itsMainWeapon={itsMainWeapon}
             itsArmor={itsArmor}
+            UpgradedDefHelmet={UpgradedDefHelmet}
+            selectedHelmetItemIndex={selectedHelmetItemIndex}
+            savedHelmetImage={savedHelmetImage}
+            savedHelmetName={savedHelmetName}
+            setUpgradedDefHelmet={setUpgradedDefHelmet}
+            itsHelmet={itsHelmet}
           />
         </div>
       </div>
@@ -293,4 +405,9 @@ export const getSavedDmgMain = (itemSavedDmgMainKey: string) => {
 export const getSavedDefArmor = (itemSavedDefArmorKey: string) => {
   const savedDefArmor = localStorage.getItem(itemSavedDefArmorKey) || null;
   return savedDefArmor;
+};
+
+export const getSavedDefHelmet = (itemSavedDefHelmetKey: string) => {
+  const savedDefHelmet = localStorage.getItem(itemSavedDefHelmetKey) || null;
+  return savedDefHelmet;
 };

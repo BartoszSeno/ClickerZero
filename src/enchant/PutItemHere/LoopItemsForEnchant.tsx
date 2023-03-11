@@ -1,7 +1,6 @@
-import { MainWeaponImageAndNameAndCost } from "../../data/equipment/mainWeapon";
-import { ArmorImageAndNameAndCost } from "../../data/equipment/armor";
 import MainWeaponLoopEnchant from "./LoopItems/MainWeapon";
 import ArmorLoopEnchant from "./LoopItems/Armor";
+import HelmetLoopEnchant from "./LoopItems/Helmet";
 /* eslint-disable array-callback-return */
 const LoopItemForEnchant = ({
   mainWeaponData,
@@ -16,8 +15,12 @@ const LoopItemForEnchant = ({
   setUpgradedDefArmor,
   setitsMainWeapon,
   setitsArmor,
-  itsMainWeapon,
-  itsArmor,
+  HelmetData,
+  savedHelmetItemUpgrade,
+  UpgradedNamesHelmet,
+  setSelectedHelmetItemIndex,
+  setUpgradedDefHelmet,
+  setitsHelmet,
 }: {
   mainWeaponData: any;
   savedItemUpgrade: any;
@@ -31,8 +34,12 @@ const LoopItemForEnchant = ({
   setUpgradedDefArmor: any;
   setitsMainWeapon: any;
   setitsArmor: any;
-  itsMainWeapon: any;
-  itsArmor: any;
+  HelmetData: any;
+  savedHelmetItemUpgrade: any;
+  UpgradedNamesHelmet: any;
+  setSelectedHelmetItemIndex: any;
+  setUpgradedDefHelmet: any;
+  setitsHelmet: any;
 }) => {
   // its weapon or armor?
   const HandleItemClick = (itemArray: any[], clickedItemId: string) => {
@@ -43,8 +50,14 @@ const LoopItemForEnchant = ({
       if (itemArray === mainWeaponData) {
         setitsMainWeapon(true);
         setitsArmor(false);
+        setitsHelmet(false);
       } else if (itemArray === ArmorData) {
         setitsArmor(true);
+        setitsMainWeapon(false);
+        setitsHelmet(false);
+      } else if (itemArray === HelmetData) {
+        setitsHelmet(true);
+        setitsArmor(false);
         setitsMainWeapon(false);
       }
     }
@@ -66,6 +79,14 @@ const LoopItemForEnchant = ({
         UpgradedNamesArmor={UpgradedNamesArmor}
         setSelectedArmorItemIndex={setSelectedArmorItemIndex}
         setUpgradedDefArmor={setUpgradedDefArmor}
+        HandleItemClick={HandleItemClick}
+      />
+      <HelmetLoopEnchant
+        HelmetData={HelmetData}
+        savedHelmetItemUpgrade={savedHelmetItemUpgrade}
+        UpgradedNamesHelmet={UpgradedNamesHelmet}
+        setSelectedHelmetItemIndex={setSelectedHelmetItemIndex}
+        setUpgradedDefHelmet={setUpgradedDefHelmet}
         HandleItemClick={HandleItemClick}
       />
     </>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { MainWeaponImageAndNameAndCost } from "../../data/equipment/mainWeapon";
 import { ArmorImageAndNameAndCost } from "../../data/equipment/armor";
+import { HelmetImageAndNameAndCost } from "../../data/equipment/helmet";
 import { formatNumber } from "../../hook/FormatNumber";
 
 const EnchantSucces = ({
@@ -13,11 +14,16 @@ const EnchantSucces = ({
   selectedArmorItemIndex,
   savedArmorImage,
   savedArmorName,
-  ArmorupgradedValue,
   setUpgradedDefArmor,
   UpgradedDefArmor,
   itsMainWeapon,
   itsArmor,
+  UpgradedDefHelmet,
+  selectedHelmetItemIndex,
+  savedHelmetImage,
+  savedHelmetName,
+  setUpgradedDefHelmet,
+  itsHelmet,
 }: {
   upgradedValue: any;
   selectedItemIndex: any;
@@ -28,17 +34,23 @@ const EnchantSucces = ({
   selectedArmorItemIndex: any;
   savedArmorImage: any;
   savedArmorName: any;
-  ArmorupgradedValue: any;
   setUpgradedDefArmor: any;
   UpgradedDefArmor: any;
   itsMainWeapon: any;
   itsArmor: any;
+  UpgradedDefHelmet: any;
+  selectedHelmetItemIndex: any;
+  savedHelmetImage: any;
+  savedHelmetName: any;
+  setUpgradedDefHelmet: any;
+  itsHelmet: any;
 }) => {
   // Declare state to save upgraded item name, initialized with an empty string
   const [UpgradedName, setUpgradedName] = useState<string>("");
   //armor
   const [UpgradedArmorName, setUpgradedArmorName] = useState<string>("");
-
+  //armor
+  const [UpgradedHelmetName, setUpgradedHelmetName] = useState<string>("");
   // Function to show item name on hover
   function ShowNameOnHover(index: any) {
     // Get item from the list of weapon images and names at specified index
@@ -102,6 +114,40 @@ const EnchantSucces = ({
     setUpgradedDefArmor(newSavedDefArmor);
   }
 
+  function ShowNameOnHoverForHelmet(HelmetIndex: any) {
+    // Get item from the list of weapon images and names at specified index
+    const Helmet = HelmetImageAndNameAndCost[HelmetIndex];
+
+    // Create name of upgrade based on item name
+    const HelmetItemUpgradeName = `${Helmet.name}`;
+
+    // Load saved upgrade value from local storage or set it to 0
+    const savedHelmetItemUpgradeFromLocalStorage = localStorage.getItem(
+      HelmetItemUpgradeName
+    );
+    const savedHelmetItemUpgradeValue = savedHelmetItemUpgradeFromLocalStorage
+      ? Number(savedHelmetItemUpgradeFromLocalStorage)
+      : 0;
+
+    // Set upgraded item name based on upgrade value, or set it to empty string if upgrade value is 15 or greater
+    if (savedHelmetItemUpgradeValue < 15) {
+      const HelmetItemName = `+${savedHelmetItemUpgradeValue + 1} ${
+        Helmet.name
+      }`;
+      setUpgradedHelmetName(HelmetItemName);
+    } else {
+      setUpgradedHelmetName("");
+    }
+
+    // Set upgraded damage value for the selected item, multiplying it by 2
+    const itemSavedDefHelmetKey = `selectedItemDefForEnchant_${Helmet.name}`;
+    let newSavedDefHelmet = Number(
+      localStorage.getItem(itemSavedDefHelmetKey) || Helmet.defLvl0
+    );
+    newSavedDefHelmet *= 2;
+    setUpgradedDefHelmet(newSavedDefHelmet);
+  }
+
   return (
     <>
       {upgradedValue < 15 ? (
@@ -113,6 +159,8 @@ const EnchantSucces = ({
                 ShowNameOnHover(selectedItemIndex);
               } else if (itsArmor === true) {
                 ShowNameOnHoverForArmor(selectedArmorItemIndex);
+              } else if (itsHelmet === true) {
+                ShowNameOnHoverForHelmet(selectedHelmetItemIndex);
               }
             }}
           >
@@ -121,20 +169,32 @@ const EnchantSucces = ({
               src={
                 itsMainWeapon
                   ? savedImage
-                  : savedArmorImage
-                  ? itsMainWeapon
-                    ? savedImage
-                    : savedArmorImage
+                  : itsArmor
+                  ? savedArmorImage
+                  : itsHelmet
+                  ? savedHelmetImage
                   : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
               }
               alt={`${
-                itsMainWeapon ? savedName : savedArmorName || "No name"
-              } weapon`}
+                itsMainWeapon
+                  ? savedName
+                  : itsArmor
+                  ? savedArmorName
+                  : itsHelmet
+                  ? savedHelmetName
+                  : "No name weapon"
+              }`}
             />
           </div>
           <div className="infoEnchant">
             <span className="UpgradeName">
-              {itsMainWeapon ? UpgradedName : UpgradedArmorName}
+              {itsMainWeapon
+                ? UpgradedName
+                : itsArmor
+                ? UpgradedArmorName
+                : itsHelmet
+                ? UpgradedHelmetName
+                : ""}
             </span>
             <div className="enchantBox2">
               <img
@@ -142,15 +202,21 @@ const EnchantSucces = ({
                 src={
                   itsMainWeapon
                     ? savedImage
-                    : savedArmorImage
-                    ? itsMainWeapon
-                      ? savedImage
-                      : savedArmorImage
+                    : itsArmor
+                    ? savedArmorImage
+                    : itsHelmet
+                    ? savedHelmetImage
                     : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
                 }
                 alt={`${
-                  itsMainWeapon ? savedName : savedArmorName || "No name"
-                } weapon`}
+                  itsMainWeapon
+                    ? savedName
+                    : itsArmor
+                    ? savedArmorName
+                    : itsHelmet
+                    ? savedHelmetName
+                    : "No name weapon"
+                }`}
               />
               <span className="UpgradeDmg">
                 <span className="UpgradeDmgTitle">
@@ -158,7 +224,11 @@ const EnchantSucces = ({
                 </span>
                 {itsMainWeapon
                   ? formatNumber(UpgradedDmgMainWeapon)
-                  : formatNumber(UpgradedDefArmor)}
+                  : itsArmor
+                  ? formatNumber(UpgradedDefArmor)
+                  : itsHelmet
+                  ? formatNumber(UpgradedDefHelmet)
+                  : ""}
               </span>
             </div>
           </div>
