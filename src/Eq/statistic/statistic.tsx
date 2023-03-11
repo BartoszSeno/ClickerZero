@@ -5,9 +5,13 @@ import GearScore from "./GearScore/gearScore";
 const Statistic = ({
   mainWeaponData,
   selectedItem,
+  ArmorData,
+  selectedArmorItem,
 }: {
   mainWeaponData: any;
   selectedItem: any;
+  ArmorData: any;
+  selectedArmorItem: any;
 }) => {
   return (
     <>
@@ -18,7 +22,10 @@ const Statistic = ({
         </div>
         <div className="armorDef">
           <span>DEF</span>
-          <Defence />
+          <Defence
+            ArmorData={ArmorData}
+            selectedArmorItem={selectedArmorItem}
+          />
         </div>
       </div>
       <div className="GS">

@@ -38,6 +38,7 @@
 .EnchantSuccess {
   background-color: rgba(0, 0, 0, 0.103);
   margin-top: 45px;
+  background-color: red;
 }
 
 .EnchantProgress {

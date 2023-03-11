@@ -45,7 +45,7 @@ function MainWeapon({
       >
         <div className="selectedItem">
           <img
-            className="mainWeaponImgeq"
+            className="equipmentImgeq"
             src={
               savedImage
                 ? savedImage

@@ -1,18 +1,18 @@
-function MainWeaponLoop({
-  mainWeaponData,
-  UpgradedNamesMainWeapon,
-  handleItemSelect,
+function ArmorLoop({
+  ArmorData,
+  UpgradedNamesArmor,
+  handleArmorItemSelect,
   GetIdPerClick,
 }: {
-  mainWeaponData: any;
-  UpgradedNamesMainWeapon: any;
-  handleItemSelect: any;
+  ArmorData: any;
+  UpgradedNamesArmor: any;
+  handleArmorItemSelect: any;
   GetIdPerClick: any;
 }) {
   return (
     <>
-      {mainWeaponData.map((data: any, index: any) => {
-        const upgradedName = UpgradedNamesMainWeapon[index];
+      {ArmorData.map((data: any, index: any) => {
+        const upgradedName = UpgradedNamesArmor[index];
         return (
           <div key={`${data.id}_${index}`}>
             {Array.from({ length: data.count }, (_, i) => {
@@ -22,14 +22,14 @@ function MainWeaponLoop({
                   id={`${index}${i}`}
                   key={`${data.id}_${index}_${i}`}
                   onClick={(e) => {
-                    handleItemSelect(index);
+                    handleArmorItemSelect(index);
                     GetIdPerClick(index);
                   }}
                 >
                   <img
                     className="OptionEquipmentImg"
                     src={data.image}
-                    alt={`${data.name} weapon`}
+                    alt={`${data.name} armor`}
                   />
                   <span className={`itemName ${data.tier}C`}>
                     {upgradedName ? upgradedName : data.name}
@@ -44,4 +44,4 @@ function MainWeaponLoop({
   );
 }
 
-export default MainWeaponLoop;
+export default ArmorLoop;

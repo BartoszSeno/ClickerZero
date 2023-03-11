@@ -7,6 +7,7 @@ import UpdateLvlOne from "./Upgrade/UpgradeLvlOne";
 import LeftNav from "./assets/LeftNav";
 import Shop from "./Shop";
 import { MainWeaponImageAndNameAndCost } from "./data/equipment/mainWeapon";
+import { ArmorImageAndNameAndCost } from "./data/equipment/armor";
 import Enchant from "./enchant";
 import Information from "./Information";
 import ButtonWithTierItemSorting from "./hook/ButtonForTierShow";
@@ -14,6 +15,60 @@ import FastAccesButton from "./hook/FastAcces";
 import PerClickPoints from "./hook/PerClick";
 
 function App() {
+  // ARRAY OF THE ENTIRE ARMOR
+  const [ArmorData, setArmorData] = useState<any>(
+    JSON.parse(
+      localStorage.getItem("ArmorImageAndNameAndCost") ||
+        JSON.stringify(ArmorImageAndNameAndCost)
+    )
+  );
+  //==================
+  // GET UPGRADED ARMOR NAME FROM ENCHANT FUNCTION
+  const [UpgradedNamesArmor, setUpgradedNamesArmor] = useState<any>(
+    Array(ArmorData.length).fill("")
+  );
+
+  // function in which we get data what object has a upgraded name (from enchant)
+  function UpgradedArmorNamesOnMount() {
+    const upgradedArmorNames = ArmorData.map((data: any) => {
+      const itemUpgradeArmorName = `${data.name}`;
+      const savedItemArmorUpgrade = localStorage.getItem(itemUpgradeArmorName);
+      const upgradedArmorName = savedItemArmorUpgrade
+        ? `+${Number(savedItemArmorUpgrade)} ${data.name}`
+        : data.name;
+      return upgradedArmorName;
+    });
+    setUpgradedNamesArmor(upgradedArmorNames);
+  }
+  //refresh names on load
+  useEffect(() => {
+    UpgradedArmorNamesOnMount();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  //==================
+
+  //FUNCTION TO AUTOMATICALY REFRESH ARMOR STATS
+  // !! useState important for show the value points per click !!
+  const [selectedArmorItem, setSelectedArmorItem] = useState(null);
+
+  // geting the id on click
+  const handleArmorItemSelect = (armorIndex: any) => {
+    setSelectedArmorItem(armorIndex);
+  };
+
+  //we get the id of the currently selected item (eq selected) which is saved in localstorage for update statistic DMG
+  const savedArmorId = localStorage.getItem("selectedArmorItemIdEquip");
+
+  //we add fake id to the selected item to make it refresh automatically
+  useEffect(() => {
+    handleArmorItemSelect(Number(savedArmorId));
+  });
+
+  //==================
+  // SAVES THE TRUE VALUE OF MAIN ARMOR DEF
+  const [UpgradedDefArmor, setUpgradedDefArmor] = useState<string>("");
+
+  //==================
   // ARRAY OF THE ENTIRE MAIN WEAPON
   const [mainWeaponData, setMainWeaponData] = useState<any>(
     JSON.parse(
@@ -35,6 +90,20 @@ function App() {
   );
 
   //===================
+  // VARIABLE THAT SAVES THE VALUE OF THE MAIN ARMOR DEF
+  const [FullArmorDefText, setFullArmorDefText] = useState<any>();
+
+  useEffect(() => {
+    // export data from statistic
+    const FullArmorDefFromText = document.querySelector(
+      ".statsDefDefHiden"
+    ) as HTMLElement;
+    //if the data exists, convert it to a text
+    const textArmor = FullArmorDefFromText?.textContent;
+    setFullArmorDefText(textArmor);
+  });
+
+  //==============
   // VARIABLE THAT SAVES THE VALUE OF THE MAIN DMG
   const [MainWeaponFullDmgText, setMainWeaponFullDmgText] = useState<any>();
 
@@ -46,14 +115,15 @@ function App() {
     //if the data exists, convert it to a text
     const text = mainWeaponFullDmgFromText?.textContent;
     setMainWeaponFullDmgText(text);
-    console.log(text);
   });
 
   //==============
   // HERE NEW WARIABLES ARE ADDED WHICH ARE USED TO INCREASE POINTS PER CLICK
   // full click from ( Upgrade lvl 1 & Main Weapon)
   const [FullCountPerClick, setFullCountPerClick] = useState<number>(
-    UpgradeOne + (Number(MainWeaponFullDmgText) || 0)
+    UpgradeOne +
+      (Number(MainWeaponFullDmgText) || 0) +
+      (Number(FullArmorDefText) || 0)
   );
 
   // listing the levels from the first upgrade
@@ -221,6 +291,8 @@ function App() {
                     setCount={setCount}
                     SelectedOption={SelectedOption}
                     ShelfHeight={ShelfHeight}
+                    ArmorData={ArmorData}
+                    setArmorData={setArmorData}
                   />
                 </>
               )}
@@ -231,6 +303,11 @@ function App() {
                   mainWeaponData={mainWeaponData}
                   setUpgradedNamesMainWeapon={setUpgradedNamesMainWeapon}
                   UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
+                  UpgradedDefArmor={UpgradedDefArmor}
+                  setUpgradedDefArmor={setUpgradedDefArmor}
+                  ArmorData={ArmorData}
+                  setUpgradedNamesArmor={setUpgradedNamesArmor}
+                  UpgradedNamesArmor={UpgradedNamesArmor}
                 />
               )}
             </div>
@@ -256,6 +333,7 @@ function App() {
             setFullCountPerClick={setFullCountPerClick}
             UpgradeOne={UpgradeOne}
             MainWeaponFullDmgText={MainWeaponFullDmgText}
+            FullArmorDefText={FullArmorDefText}
           />
         </div>
         <div className="right-container">
@@ -264,6 +342,10 @@ function App() {
             UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
             handleItemSelect={handleItemSelect}
             selectedItem={selectedItem}
+            ArmorData={ArmorData}
+            UpgradedNamesArmor={UpgradedNamesArmor}
+            handleArmorItemSelect={handleArmorItemSelect}
+            selectedArmorItem={selectedArmorItem}
           />
         </div>
         <button className="InfoOpen" onClick={HandleInfoOpenAndClose}>

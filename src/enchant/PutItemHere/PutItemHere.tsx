@@ -9,6 +9,17 @@ const PutItemHere = ({
   setUpgradedDmgMainWeapon,
   savedImage,
   savedName,
+  ArmorData,
+  savedArmorItemUpgrade,
+  UpgradedNamesArmor,
+  savedArmorImage,
+  savedArmorName,
+  setSelectedArmorItemIndex,
+  setUpgradedDefArmor,
+  setitsMainWeapon,
+  setitsArmor,
+  itsMainWeapon,
+  itsArmor,
 }: {
   mainWeaponData: any;
   savedItemUpgrade: any;
@@ -17,6 +28,18 @@ const PutItemHere = ({
   setUpgradedDmgMainWeapon: any;
   savedImage: any;
   savedName: any;
+
+  ArmorData: any;
+  savedArmorItemUpgrade: any;
+  UpgradedNamesArmor: any;
+  savedArmorImage: any;
+  savedArmorName: any;
+  setSelectedArmorItemIndex: any;
+  setUpgradedDefArmor: any;
+  setitsMainWeapon: any;
+  setitsArmor: any;
+  itsMainWeapon: any;
+  itsArmor: any;
 }) => {
   // open and close menu
   const [OpenAndClose, setOpenAndClose] = useState<boolean>(false);
@@ -34,11 +57,17 @@ const PutItemHere = ({
         <img
           className="mainWeaponImg"
           src={
-            savedImage
+            itsMainWeapon
               ? savedImage
+              : savedArmorImage
+              ? itsMainWeapon
+                ? savedImage
+                : savedArmorImage
               : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
           }
-          alt={`${savedName || "No name"} weapon`}
+          alt={`${
+            itsMainWeapon ? savedName : savedArmorName || "No name"
+          } weapon`}
         />
         <div
           id="EnchantMenuChouseWeapon"
@@ -50,6 +79,15 @@ const PutItemHere = ({
             UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
             setSelectedItemIndex={setSelectedItemIndex}
             setUpgradedDmgMainWeapon={setUpgradedDmgMainWeapon}
+            ArmorData={ArmorData}
+            savedArmorItemUpgrade={savedArmorItemUpgrade}
+            UpgradedNamesArmor={UpgradedNamesArmor}
+            setSelectedArmorItemIndex={setSelectedArmorItemIndex}
+            setUpgradedDefArmor={setUpgradedDefArmor}
+            setitsMainWeapon={setitsMainWeapon}
+            setitsArmor={setitsArmor}
+            itsMainWeapon={itsMainWeapon}
+            itsArmor={itsArmor}
           />
         </div>
       </div>

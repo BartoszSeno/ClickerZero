@@ -9,6 +9,8 @@ const Shop = ({
   setCount,
   SelectedOption,
   ShelfHeight,
+  ArmorData,
+  setArmorData,
 }: {
   mainWeaponData: any;
   setMainWeaponData: any;
@@ -16,8 +18,11 @@ const Shop = ({
   setCount: any;
   SelectedOption: any;
   ShelfHeight: any;
+  ArmorData: any;
+  setArmorData: any;
 }) => {
   const handleClick = (index: any) => {
+    //MAIN WEAPON
     // Create a new array with the same elements as `mainWeaponData`
     const newMainWeaponData = [...mainWeaponData];
     // Set the `isBought` property of the item at `index` to `true`
@@ -30,6 +35,17 @@ const Shop = ({
     localStorage.setItem(
       "MainWeaponImageAndNameAndCost",
       JSON.stringify(newMainWeaponData)
+    );
+  };
+  const handleClickArmor = (index: any) => {
+    //ARMOR
+    const newArmorData = [...ArmorData];
+    newArmorData[index].isBought = true;
+    newArmorData[index].count = (newArmorData[index].count || 0) + 1;
+    setArmorData(newArmorData);
+    localStorage.setItem(
+      "ArmorImageAndNameAndCost",
+      JSON.stringify(newArmorData)
     );
   };
 
@@ -51,6 +67,43 @@ const Shop = ({
                   key={index}
                   onClick={(e) => {
                     handleClick(index);
+                    setCount(count - data.cost);
+                  }}
+                  disabled={count < data.cost}
+                  style={{
+                    display:
+                      SelectedOption === data.tier || SelectedOption === ""
+                        ? "flex"
+                        : "none",
+                  }}
+                >
+                  <div className="CostAndPrice">
+                    <span className={`itemName ${data.tier}C`}>
+                      {data.name}
+                    </span>
+                    <span className="PriceForPurchasable">
+                      {data.cost}({data.count})
+                    </span>
+                  </div>
+
+                  <img
+                    className="OptionWeaponImg"
+                    src={data.image}
+                    alt={`${data.name} weapon`}
+                  />
+                </button>
+              );
+            }
+          })}
+          {ArmorData.map((data: any, index: any) => {
+            if (data.isVisible) {
+              return (
+                <button
+                  id={data.tier}
+                  className={`itemsForPurchasable ${index} `}
+                  key={index}
+                  onClick={(e) => {
+                    handleClickArmor(index);
                     setCount(count - data.cost);
                   }}
                   disabled={count < data.cost}

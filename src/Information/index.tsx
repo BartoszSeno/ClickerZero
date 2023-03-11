@@ -18,6 +18,12 @@ const Information = ({ infoOpenClose }: { infoOpenClose: any }) => {
             Changing store options sorting between: Armor's (all type), weapon
             (all type)
           </p>
+          <p>
+            zmienic tak by kazdy przedmiot mogl byc kupiony raz zmienic wygląd
+            po kupionym na szary dalsza widocznosc przedmiotu bez mozliwosci
+            klikniecia na niego bron np wisi rekojecia do gory arory ubrane na
+            manekina kaski na głowe manekina
+          </p>
           <p>sell option</p>
         </div>
         <div className="news">
