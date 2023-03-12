@@ -28,11 +28,6 @@ const Damage = ({
 
   const FullValu = (Number(textArmor) || 0) + (Number(textHelmet) || 0);
 
-  function tessts() {
-    console.log(textArmor);
-    console.log(textHelmet);
-    console.log(FullValu);
-  }
   return (
     <>
       {ArmorData.map((data: any, index: any) => {
@@ -58,7 +53,7 @@ const Damage = ({
           return null;
         }
       })}
-      <span className="statsDefHelmet">{FullValu}</span>
+      <span className="statsDefHelmet">{formatNumber(FullValu)}</span>
       {HelmetData.map((data: any, index: any) => {
         if (index === selectedHelmetItem) {
           const itemSavedDefMainKey = `selectedItemDefForEnchant_${data.name}`;
