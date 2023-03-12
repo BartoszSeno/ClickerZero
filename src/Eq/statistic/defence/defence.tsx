@@ -58,7 +58,6 @@ const Damage = ({
           return null;
         }
       })}
-      <button onClick={tessts}>test</button>
       <span className="statsDefHelmet">{FullValu}</span>
       {HelmetData.map((data: any, index: any) => {
         if (index === selectedHelmetItem) {
