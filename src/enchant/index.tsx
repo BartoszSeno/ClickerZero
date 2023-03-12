@@ -5,6 +5,7 @@ import "../assets/css/Normal/enchant/enchant.css";
 import { MainWeaponImageAndNameAndCost } from "../data/equipment/mainWeapon";
 import { ArmorImageAndNameAndCost } from "../data/equipment/armor";
 import { HelmetImageAndNameAndCost } from "../data/equipment/helmet";
+import { ShoesImageAndNameAndCost } from "../data/equipment/Shoes";
 import EnchantSucces from "./EnchantSucces/EnchantSucces";
 import PutItemHere from "./PutItemHere/PutItemHere";
 
@@ -24,6 +25,11 @@ const Enchant = ({
   setUpgradedNamesHelmet,
   setUpgradedDefHelmet,
   UpgradedDefHelmet,
+  ShoesData,
+  UpgradedNamesShoes,
+  setUpgradedNamesShoes,
+  setUpgradedDefShoes,
+  UpgradedDefShoes,
 }: {
   mainWeaponData: any;
   setUpgradedNamesMainWeapon: any;
@@ -40,6 +46,11 @@ const Enchant = ({
   setUpgradedNamesHelmet: any;
   setUpgradedDefHelmet: any;
   UpgradedDefHelmet: any;
+  ShoesData: any;
+  UpgradedNamesShoes: any;
+  setUpgradedNamesShoes: any;
+  setUpgradedDefShoes: any;
+  UpgradedDefShoes: any;
 }) => {
   /// load value form localstorage
   const savedImage = localStorage.getItem("selectedItemImgForEnchant");
@@ -57,6 +68,13 @@ const Enchant = ({
   );
   const savedHelmetName = localStorage.getItem(
     "selectedHelmetItemNameForEnchant"
+  );
+  //Shoes
+  const savedShoesImage = localStorage.getItem(
+    "selectedShoesItemImgForEnchant"
+  );
+  const savedShoesName = localStorage.getItem(
+    "selectedShoesItemNameForEnchant"
   );
   // enchant
 
@@ -241,6 +259,62 @@ const Enchant = ({
 
     setUpgradedDefHelmet(savedDefHelmet);
   }
+  //Shoes
+  function EnchantPerClickForShoes(ShoesIndex: any) {
+    const Shoes = ShoesImageAndNameAndCost[ShoesIndex];
+
+    const ShoesItemUpgradeName = `${Shoes.name}`;
+
+    const savedShoesItemUpgrade = localStorage.getItem(ShoesItemUpgradeName);
+    const savedShoesItemUpgradeNumber = Number(savedShoesItemUpgrade);
+
+    const ShoesupgradedValue =
+      savedShoesItemUpgradeNumber < 15 ? savedShoesItemUpgradeNumber + 1 : 15;
+
+    localStorage.setItem("ShoesupgradedValue", ShoesupgradedValue.toString());
+    localStorage.setItem(ShoesItemUpgradeName, ShoesupgradedValue.toString());
+
+    const selectedShoesItem = ShoesData[ShoesIndex];
+
+    const ShoesItemName = `+${ShoesupgradedValue} ${Shoes.name}`;
+
+    localStorage.setItem(
+      "UpgradedShoesName",
+      JSON.stringify({
+        [ShoesItemName]: selectedShoesItem.name,
+        selectedShoesItemNameForEnchant: ShoesItemName,
+      })
+    );
+
+    const upgradedShoesNames = [...UpgradedNamesShoes];
+    upgradedShoesNames[ShoesIndex] = ShoesItemName;
+    setUpgradedNamesShoes(upgradedShoesNames);
+
+    const itemSavedDefShoesKey = `selectedItemDefForEnchant_${Shoes.name}`;
+
+    const savedShoesClicks = localStorage.getItem(
+      `savedShoesClicks_${Shoes.name}`
+    );
+    const numShoesClicks = savedShoesClicks ? Number(savedShoesClicks) : 0;
+
+    if (numShoesClicks < 15) {
+      let newSavedDefShoes = Number(
+        localStorage.getItem(itemSavedDefShoesKey) || Shoes.defLvl0
+      );
+      newSavedDefShoes *= 2;
+      localStorage.setItem(itemSavedDefShoesKey, newSavedDefShoes.toString());
+      localStorage.setItem(
+        `savedShoesClicks_${Shoes.name}`,
+        (numShoesClicks + 1).toString()
+      );
+    }
+    console.log(localStorage.getItem(itemSavedDefShoesKey));
+
+    const savedDefShoes =
+      localStorage.getItem(itemSavedDefShoesKey) || Shoes.defLvl0;
+
+    setUpgradedDefShoes(savedDefShoes);
+  }
   //===================================================================
   // Declare state to save selected damage value, initialized with null
   const [, setSavedDmgMains] = useState<number | null>(null);
@@ -278,6 +352,18 @@ const Enchant = ({
       setSavedDefHelmet(Number(savedDefHelmetFromLocalStorage));
     }
   }, []);
+  //Shoes
+  const [, setSavedDefShoes] = useState<number | null>(null);
+
+  // Load selected damage value from local storage when component mounts
+  useEffect(() => {
+    const savedDefShoesFromLocalStorage = localStorage.getItem(
+      "selectedItemDefForEnchant"
+    );
+    if (savedDefShoesFromLocalStorage) {
+      setSavedDefShoes(Number(savedDefShoesFromLocalStorage));
+    }
+  }, []);
   // Declare state to save selected item index, initialized with 0
   const [selectedItemIndex, setSelectedItemIndex] = useState<number>(0);
   //armor
@@ -286,6 +372,9 @@ const Enchant = ({
   //helmet
   const [selectedHelmetItemIndex, setSelectedHelmetItemIndex] =
     useState<number>(0);
+  //Shoes
+  const [selectedShoesItemIndex, setSelectedShoesItemIndex] =
+    useState<number>(0);
 
   // Declare state to save saved item upgrade value, initialized with 0
   const [savedItemUpgrade] = useState<number>(0);
@@ -293,6 +382,8 @@ const Enchant = ({
   const [savedArmorItemUpgrade] = useState<number>(0);
   //helmet
   const [savedHelmetItemUpgrade] = useState<number>(0);
+  //Shoes
+  const [savedShoesItemUpgrade] = useState<number>(0);
   // Remove saved item image and name from local storage on component mount
   useEffect(() => {
     localStorage.removeItem("selectedItemImgForEnchant");
@@ -301,6 +392,8 @@ const Enchant = ({
     localStorage.removeItem("selectedArmorItemNameForEnchant");
     localStorage.removeItem("selectedHelmetItemImgForEnchant");
     localStorage.removeItem("selectedHelmetItemNameForEnchant");
+    localStorage.removeItem("selectedShoesItemImgForEnchant");
+    localStorage.removeItem("selectedShoesItemNameForEnchant");
   }, []);
 
   const savedUpgradedValue = localStorage.getItem("ArmorupgradedValue");
@@ -315,11 +408,17 @@ const Enchant = ({
   const HelmetupgradedValue = savedHelmetUpgradedValue
     ? Number(savedHelmetUpgradedValue)
     : 0;
+  //Shoes
+  const savedShoesUpgradedValue = localStorage.getItem("ShoesupgradedValue");
+  const ShoesupgradedValue = savedShoesUpgradedValue
+    ? Number(savedShoesUpgradedValue)
+    : 0;
 
   // its weapon or armor ?
   const [itsMainWeapon, setitsMainWeapon] = useState(false);
   const [itsArmor, setitsArmor] = useState(false);
   const [itsHelmet, setitsHelmet] = useState(false);
+  const [itsShoes, setitsShoes] = useState(false);
 
   return (
     <>
@@ -333,6 +432,8 @@ const Enchant = ({
                 EnchantPerClickForArmor(selectedArmorItemIndex);
               } else if (itsHelmet === true) {
                 EnchantPerClickForHelmet(selectedHelmetItemIndex);
+              } else if (itsShoes === true) {
+                EnchantPerClickForShoes(selectedShoesItemIndex);
               }
             }}
           >
@@ -366,6 +467,15 @@ const Enchant = ({
             setUpgradedDefHelmet={setUpgradedDefHelmet}
             itsHelmet={itsHelmet}
             setitsHelmet={setitsHelmet}
+            ShoesData={ShoesData}
+            savedShoesItemUpgrade={savedShoesItemUpgrade}
+            UpgradedNamesShoes={UpgradedNamesShoes}
+            savedShoesImage={savedShoesImage}
+            savedShoesName={savedShoesName}
+            setSelectedShoesItemIndex={setSelectedShoesItemIndex}
+            setUpgradedDefShoes={setUpgradedDefShoes}
+            itsShoes={itsShoes}
+            setitsShoes={setitsShoes}
           />
           <div className="EnchantProgress"></div>
           <EnchantSucces
@@ -388,6 +498,12 @@ const Enchant = ({
             savedHelmetName={savedHelmetName}
             setUpgradedDefHelmet={setUpgradedDefHelmet}
             itsHelmet={itsHelmet}
+            UpgradedDefShoes={UpgradedDefShoes}
+            selectedShoesItemIndex={selectedShoesItemIndex}
+            savedShoesImage={savedShoesImage}
+            savedShoesName={savedShoesName}
+            setUpgradedDefShoes={setUpgradedDefShoes}
+            itsShoes={itsShoes}
           />
         </div>
       </div>
@@ -410,4 +526,9 @@ export const getSavedDefArmor = (itemSavedDefArmorKey: string) => {
 export const getSavedDefHelmet = (itemSavedDefHelmetKey: string) => {
   const savedDefHelmet = localStorage.getItem(itemSavedDefHelmetKey) || null;
   return savedDefHelmet;
+};
+
+export const getSavedDefShoes = (itemSavedDefShoesKey: string) => {
+  const savedDefShoes = localStorage.getItem(itemSavedDefShoesKey) || null;
+  return savedDefShoes;
 };

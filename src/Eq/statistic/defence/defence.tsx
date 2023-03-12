@@ -1,17 +1,23 @@
 /* eslint-disable no-lone-blocks */
 import { formatNumber } from "../../../hook/FormatNumber";
-import { getSavedDefArmor, getSavedDefHelmet } from "../../../enchant";
+import DefenceArmor from "./gear/Armor";
+import DefenceHelmet from "./gear/Helmet";
+import DefenceShoes from "./gear/Shoes";
 
-const Damage = ({
+const Defence = ({
   ArmorData,
   selectedArmorItem,
   HelmetData,
   selectedHelmetItem,
+  ShoesData,
+  selectedShoesItem,
 }: {
   ArmorData: any;
   selectedArmorItem: any;
   HelmetData: any;
   selectedHelmetItem: any;
+  ShoesData: any;
+  selectedShoesItem: any;
 }) => {
   // export data from statistic
   const FullArmorDefFromText = document.querySelector(
@@ -25,60 +31,35 @@ const Damage = ({
   ) as HTMLElement;
   //if the data exists, convert it to a text
   const textHelmet = FullHelmetDefFromText?.textContent;
+  // export data from statistic
+  const FullShoesDefFromText = document.querySelector(
+    ".statsShoesDefHiden"
+  ) as HTMLElement;
+  //if the data exists, convert it to a text
+  const textShoes = FullShoesDefFromText?.textContent;
 
-  const FullValu = (Number(textArmor) || 0) + (Number(textHelmet) || 0);
+  const FullValu =
+    (Number(textArmor) || 0) +
+    (Number(textHelmet) || 0) +
+    (Number(textShoes) || 0);
 
   return (
     <>
-      {ArmorData.map((data: any, index: any) => {
-        if (index === selectedArmorItem) {
-          const itemSavedDefMainKey = `selectedItemDefForEnchant_${data.name}`;
-          const savedDefMain = getSavedDefArmor(itemSavedDefMainKey);
-          const selectedArmorItemData = ArmorData.find(
-            (data: any) => data.id === Number(selectedArmorItem)
-          );
-
-          return (
-            <div key={`${data.id}_${index}`}>
-              {selectedArmorItemData && (
-                <div>
-                  <span className="statsDefDefHiden">
-                    {savedDefMain ? savedDefMain : data.defLvl0}
-                  </span>
-                </div>
-              )}
-            </div>
-          );
-        } else {
-          return null;
-        }
-      })}
+      <DefenceArmor
+        ArmorData={ArmorData}
+        selectedArmorItem={selectedArmorItem}
+      />
       <span className="statsDefHelmet">{formatNumber(FullValu)}</span>
-      {HelmetData.map((data: any, index: any) => {
-        if (index === selectedHelmetItem) {
-          const itemSavedDefMainKey = `selectedItemDefForEnchant_${data.name}`;
-          const savedDefMain = getSavedDefHelmet(itemSavedDefMainKey);
-          const selectedHelmetItemData = HelmetData.find(
-            (data: any) => data.id === Number(selectedHelmetItem)
-          );
-
-          return (
-            <div key={`${data.id}_${index}`}>
-              {selectedHelmetItemData && (
-                <div>
-                  <span className="statsHelmetDefHiden">
-                    {savedDefMain ? savedDefMain : data.defLvl0}
-                  </span>
-                </div>
-              )}
-            </div>
-          );
-        } else {
-          return null;
-        }
-      })}
+      <DefenceHelmet
+        HelmetData={HelmetData}
+        selectedHelmetItem={selectedHelmetItem}
+      />
+      <DefenceShoes
+        ShoesData={ShoesData}
+        selectedShoesItem={selectedShoesItem}
+      />
     </>
   );
 };
 
-export default Damage;
+export default Defence;

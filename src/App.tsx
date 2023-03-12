@@ -9,6 +9,7 @@ import Shop from "./Shop";
 import { MainWeaponImageAndNameAndCost } from "./data/equipment/mainWeapon";
 import { ArmorImageAndNameAndCost } from "./data/equipment/armor";
 import { HelmetImageAndNameAndCost } from "./data/equipment/helmet";
+import { ShoesImageAndNameAndCost } from "./data/equipment/Shoes";
 import Enchant from "./enchant";
 import Information from "./Information";
 import ButtonWithTierItemSorting from "./hook/ButtonForTierShow";
@@ -16,6 +17,61 @@ import FastAccesButton from "./hook/FastAcces";
 import PerClickPoints from "./hook/PerClick";
 
 function App() {
+  // ARRAY OF THE ENTIRE Shoes
+  const [ShoesData, setShoesData] = useState<any>(
+    JSON.parse(
+      localStorage.getItem("ShoesImageAndNameAndCost") ||
+        JSON.stringify(ShoesImageAndNameAndCost)
+    )
+  );
+  //==================
+  // GET UPGRADED Shoes NAME FROM ENCHANT FUNCTION
+  const [UpgradedNamesShoes, setUpgradedNamesShoes] = useState<any>(
+    Array(ShoesData.length).fill("")
+  );
+
+  // function in which we get data what object has a upgraded name (from enchant)
+  function UpgradedShoesNamesOnMount() {
+    const upgradedShoesNames = ShoesData.map((data: any) => {
+      const itemUpgradeShoesName = `${data.name}`;
+      const savedItemShoesUpgrade = localStorage.getItem(itemUpgradeShoesName);
+      const upgradedShoesName = savedItemShoesUpgrade
+        ? `+${Number(savedItemShoesUpgrade)} ${data.name}`
+        : data.name;
+      return upgradedShoesName;
+    });
+    setUpgradedNamesShoes(upgradedShoesNames);
+  }
+  //refresh names on load
+  useEffect(() => {
+    UpgradedShoesNamesOnMount();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  //==================
+
+  //FUNCTION TO AUTOMATICALY REFRESH Shoes STATS
+  // !! useState important for show the value points per click !!
+  const [selectedShoesItem, setSelectedShoesItem] = useState(null);
+
+  // geting the id on click
+  const handleShoesItemSelect = (ShoesIndex: any) => {
+    setSelectedShoesItem(ShoesIndex);
+  };
+
+  //we get the id of the currently selected item (eq selected) which is saved in localstorage for update statistic DMG
+  const savedShoesId = localStorage.getItem("selectedShoesItemIdEquip");
+
+  //we add fake id to the selected item to make it refresh automatically
+  useEffect(() => {
+    handleShoesItemSelect(Number(savedShoesId));
+  });
+
+  //==================
+  // SAVES THE TRUE VALUE OF MAIN Shoes DEF
+  const [UpgradedDefShoes, setUpgradedDefShoes] = useState<string>("");
+
+  //====================================================================================================
+
   // ARRAY OF THE ENTIRE Helmet
   const [HelmetData, setHelmetData] = useState<any>(
     JSON.parse(
@@ -161,7 +217,21 @@ function App() {
   });
 
   //==============
-  // VARIABLE THAT SAVES THE VALUE OF THE MAIN ARMOR DEF
+  // VARIABLE THAT SAVES THE VALUE OF THE MAIN Shoes DEF
+  const [FullShoesDefText, setFullShoesDefText] = useState<any>();
+
+  useEffect(() => {
+    // export data from statistic
+    const FullShoesDefFromText = document.querySelector(
+      ".statsShoesDefHiden"
+    ) as HTMLElement;
+    //if the data exists, convert it to a text
+    const textShoes = FullShoesDefFromText?.textContent;
+    setFullShoesDefText(textShoes);
+  });
+
+  //==============
+  // VARIABLE THAT SAVES THE VALUE OF THE MAIN Helmet DEF
   const [FullHelmetDefText, setFullHelmetDefText] = useState<any>();
 
   useEffect(() => {
@@ -195,7 +265,8 @@ function App() {
     UpgradeOne +
       (Number(MainWeaponFullDmgText) || 0) +
       (Number(FullArmorDefText) || 0) +
-      (Number(FullHelmetDefText) || 0)
+      (Number(FullHelmetDefText) || 0) +
+      (Number(FullShoesDefText) || 0)
   );
 
   // listing the levels from the first upgrade
@@ -367,6 +438,8 @@ function App() {
                     setArmorData={setArmorData}
                     HelmetData={HelmetData}
                     setHelmetData={setHelmetData}
+                    ShoesData={ShoesData}
+                    setShoesData={setShoesData}
                   />
                 </>
               )}
@@ -387,6 +460,11 @@ function App() {
                   setUpgradedNamesHelmet={setUpgradedNamesHelmet}
                   setUpgradedDefHelmet={setUpgradedDefHelmet}
                   UpgradedDefHelmet={UpgradedDefHelmet}
+                  ShoesData={ShoesData}
+                  UpgradedNamesShoes={UpgradedNamesShoes}
+                  setUpgradedNamesShoes={setUpgradedNamesShoes}
+                  setUpgradedDefShoes={setUpgradedDefShoes}
+                  UpgradedDefShoes={UpgradedDefShoes}
                 />
               )}
             </div>
@@ -414,6 +492,7 @@ function App() {
             MainWeaponFullDmgText={MainWeaponFullDmgText}
             FullArmorDefText={FullArmorDefText}
             FullHelmetDefText={FullHelmetDefText}
+            FullShoesDefText={FullShoesDefText}
           />
         </div>
         <div className="right-container">
@@ -430,6 +509,10 @@ function App() {
             UpgradedNamesHelmet={UpgradedNamesHelmet}
             handleHelmetItemSelect={handleHelmetItemSelect}
             selectedHelmetItem={selectedHelmetItem}
+            ShoesData={ShoesData}
+            UpgradedNamesShoes={UpgradedNamesShoes}
+            handleShoesItemSelect={handleShoesItemSelect}
+            selectedShoesItem={selectedShoesItem}
           />
         </div>
         <button className="InfoOpen" onClick={HandleInfoOpenAndClose}>

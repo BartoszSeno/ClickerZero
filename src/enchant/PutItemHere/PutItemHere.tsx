@@ -29,6 +29,15 @@ const PutItemHere = ({
   setUpgradedDefHelmet,
   itsHelmet,
   setitsHelmet,
+  ShoesData,
+  savedShoesItemUpgrade,
+  UpgradedNamesShoes,
+  savedShoesImage,
+  savedShoesName,
+  setSelectedShoesItemIndex,
+  setUpgradedDefShoes,
+  itsShoes,
+  setitsShoes,
 }: {
   mainWeaponData: any;
   savedItemUpgrade: any;
@@ -57,6 +66,15 @@ const PutItemHere = ({
   setUpgradedDefHelmet: any;
   itsHelmet: any;
   setitsHelmet: any;
+  ShoesData: any;
+  savedShoesItemUpgrade: any;
+  UpgradedNamesShoes: any;
+  savedShoesImage: any;
+  savedShoesName: any;
+  setSelectedShoesItemIndex: any;
+  setUpgradedDefShoes: any;
+  itsShoes: any;
+  setitsShoes: any;
 }) => {
   // open and close menu
   const [OpenAndClose, setOpenAndClose] = useState<boolean>(false);
@@ -80,6 +98,8 @@ const PutItemHere = ({
               ? savedArmorImage
               : itsHelmet
               ? savedHelmetImage
+              : itsShoes
+              ? savedShoesImage
               : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
           }
           alt={`${
@@ -89,6 +109,8 @@ const PutItemHere = ({
               ? savedArmorName
               : itsHelmet
               ? savedHelmetName
+              : itsShoes
+              ? savedShoesImage
               : "No name weapon"
           }`}
         />
@@ -115,6 +137,12 @@ const PutItemHere = ({
             setSelectedHelmetItemIndex={setSelectedHelmetItemIndex}
             setUpgradedDefHelmet={setUpgradedDefHelmet}
             setitsHelmet={setitsHelmet}
+            ShoesData={ShoesData}
+            savedShoesItemUpgrade={savedShoesItemUpgrade}
+            UpgradedNamesShoes={UpgradedNamesShoes}
+            setSelectedShoesItemIndex={setSelectedShoesItemIndex}
+            setUpgradedDefShoes={setUpgradedDefShoes}
+            setitsShoes={setitsShoes}
           />
         </div>
       </div>
