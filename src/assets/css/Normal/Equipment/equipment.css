@@ -203,6 +203,7 @@
 .statsDmgMainWeaponHiden,
 .statsDefDefHiden,
 .statsHelmetDefHiden,
-.statsShoesDefHiden {
+.statsShoesDefHiden,
+.statsGlovesDefHiden {
   display: none;
 }

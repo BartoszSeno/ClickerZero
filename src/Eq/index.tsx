@@ -24,6 +24,10 @@ const Eq = ({
   UpgradedNamesShoes,
   handleShoesItemSelect,
   selectedShoesItem,
+  GlovesData,
+  UpgradedNamesGloves,
+  handleGlovesItemSelect,
+  selectedGlovesItem,
 }: {
   mainWeaponData: any;
   UpgradedNamesMainWeapon: any;
@@ -41,6 +45,10 @@ const Eq = ({
   UpgradedNamesShoes: any;
   handleShoesItemSelect: any;
   selectedShoesItem: any;
+  GlovesData: any;
+  UpgradedNamesGloves: any;
+  handleGlovesItemSelect: any;
+  selectedGlovesItem: any;
 }) => {
   return (
     <>
@@ -66,7 +74,11 @@ const Eq = ({
           UpgradedNamesShoes={UpgradedNamesShoes}
           handleShoesItemSelect={handleShoesItemSelect}
         />
-        <Gloves />
+        <Gloves
+          GlovesData={GlovesData}
+          UpgradedNamesGloves={UpgradedNamesGloves}
+          handleGlovesItemSelect={handleGlovesItemSelect}
+        />
       </section>
       <section id="Statistic">
         <Statistic
@@ -78,6 +90,8 @@ const Eq = ({
           selectedHelmetItem={selectedHelmetItem}
           ShoesData={ShoesData}
           selectedShoesItem={selectedShoesItem}
+          GlovesData={GlovesData}
+          selectedGlovesItem={selectedGlovesItem}
         />
       </section>
     </>

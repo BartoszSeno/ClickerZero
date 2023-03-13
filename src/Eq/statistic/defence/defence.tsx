@@ -3,6 +3,7 @@ import { formatNumber } from "../../../hook/FormatNumber";
 import DefenceArmor from "./gear/Armor";
 import DefenceHelmet from "./gear/Helmet";
 import DefenceShoes from "./gear/Shoes";
+import DefenceGloves from "./gear/gloves";
 
 const Defence = ({
   ArmorData,
@@ -11,6 +12,8 @@ const Defence = ({
   selectedHelmetItem,
   ShoesData,
   selectedShoesItem,
+  GlovesData,
+  selectedGlovesItem,
 }: {
   ArmorData: any;
   selectedArmorItem: any;
@@ -18,6 +21,8 @@ const Defence = ({
   selectedHelmetItem: any;
   ShoesData: any;
   selectedShoesItem: any;
+  GlovesData: any;
+  selectedGlovesItem: any;
 }) => {
   // export data from statistic
   const FullArmorDefFromText = document.querySelector(
@@ -37,11 +42,18 @@ const Defence = ({
   ) as HTMLElement;
   //if the data exists, convert it to a text
   const textShoes = FullShoesDefFromText?.textContent;
+  // export data from statistic
+  const FullGlovesDefFromText = document.querySelector(
+    ".statsGlovesDefHiden"
+  ) as HTMLElement;
+  //if the data exists, convert it to a text
+  const textGloves = FullGlovesDefFromText?.textContent;
 
   const FullValu =
-    (Number(textArmor) || 0) +
-    (Number(textHelmet) || 0) +
-    (Number(textShoes) || 0);
+    Number(textArmor || 0) +
+    Number(textHelmet || 0) +
+    Number(textShoes || 0) +
+    Number(textGloves || 0);
 
   return (
     <>
@@ -57,6 +69,10 @@ const Defence = ({
       <DefenceShoes
         ShoesData={ShoesData}
         selectedShoesItem={selectedShoesItem}
+      />
+      <DefenceGloves
+        GlovesData={GlovesData}
+        selectedGlovesItem={selectedGlovesItem}
       />
     </>
   );

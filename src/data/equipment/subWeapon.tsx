@@ -1,4 +1,4 @@
-export const ShieldImageAndNameAndCost = [
+export const ShieldAndDaggerImageAndNameAndCost = [
   {
     id: 100,
     tier: "green",
@@ -208,38 +208,38 @@ export const ShieldImageAndNameAndCost = [
     isVisible: true,
     type: "shield",
   },
-  //knife
+  //dagger
   {
     id: 16,
     tier: "purple",
     image:
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/knife/d1.png",
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/dagger/d1.png",
     name: "Valirds",
     defLvl0: 0,
     dmgLvl0: 1,
     cost: 1,
     isBought: false,
     isVisible: true,
-    type: "knife",
+    type: "dagger",
   },
   {
     id: 17,
     tier: "purple",
     image:
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/knife/d7.png",
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/dagger/d7.png",
     name: "Aetherius",
     defLvl0: 0,
     dmgLvl0: 1,
     cost: 1,
     isBought: false,
     isVisible: true,
-    type: "knife",
+    type: "dagger",
   },
   {
     id: 18,
     tier: "purple",
     image:
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/knife/d7.png",
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/dagger/d7.png",
     name: "Nightbite",
     defLvl0: 0,
     dmgLvl0: 1,
@@ -252,52 +252,52 @@ export const ShieldImageAndNameAndCost = [
     id: 19,
     tier: "purple",
     image:
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/knife/d7.png",
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/dagger/d7.png",
     name: "Valirds",
     defLvl0: 0,
     dmgLvl0: 1,
     cost: 1,
     isBought: false,
     isVisible: true,
-    type: "knife",
+    type: "dagger",
   },
   {
     id: 20,
     tier: "purple",
     image:
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/knife/d7.png",
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/dagger/d7.png",
     name: "Sunflare",
     defLvl0: 0,
     dmgLvl0: 1,
     cost: 1,
     isBought: false,
     isVisible: true,
-    type: "knife",
+    type: "dagger",
   },
   {
     id: 21,
     tier: "purple",
     image:
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/knife/d7.png",
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/dagger/d7.png",
     name: "Dissector",
     defLvl0: 0,
     dmgLvl0: 1,
     cost: 1,
     isBought: false,
     isVisible: true,
-    type: "knife",
+    type: "dagger",
   },
   {
     id: 22,
     tier: "purple",
     image:
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/knife/d7.png",
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/dagger/d7.png",
     name: "Venombite",
     defLvl0: 0,
     dmgLvl0: 1,
     cost: 1,
     isBought: false,
     isVisible: true,
-    type: "knife",
+    type: "dagger",
   },
 ];

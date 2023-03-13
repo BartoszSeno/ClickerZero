@@ -18,7 +18,7 @@ export const GlovesImageAndNameAndCost = [
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/gloves/d1.png",
-    name: "Aegis",
+    name: "Grasp",
     defLvl0: 1,
     dmgLvl0: 0,
     cost: 1,
@@ -31,7 +31,7 @@ export const GlovesImageAndNameAndCost = [
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/gloves/d2.png",
-    name: "Obif",
+    name: "Misery",
     defLvl0: 1,
     dmgLvl0: 0,
     cost: 1,
@@ -44,7 +44,7 @@ export const GlovesImageAndNameAndCost = [
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/gloves/d3.png",
-    name: "Sylm",
+    name: "Coned",
     defLvl0: 1,
     dmgLvl0: 0,
     cost: 1,
@@ -57,7 +57,7 @@ export const GlovesImageAndNameAndCost = [
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/gloves/d4.png",
-    name: "Thil",
+    name: "Keenim",
     defLvl0: 1,
     dmgLvl0: 0,
     cost: 1,
@@ -70,7 +70,7 @@ export const GlovesImageAndNameAndCost = [
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/gloves/d5.png",
-    name: "Ffer",
+    name: "Handards",
     defLvl0: 1,
     dmgLvl0: 0,
     cost: 1,
@@ -83,7 +83,7 @@ export const GlovesImageAndNameAndCost = [
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/gloves/d6.png",
-    name: "Ushi",
+    name: "Gesfal",
     defLvl0: 1,
     dmgLvl0: 0,
     cost: 1,
@@ -96,7 +96,7 @@ export const GlovesImageAndNameAndCost = [
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/gloves/d7.png",
-    name: "Stry",
+    name: "Dunet",
     defLvl0: 1,
     dmgLvl0: 0,
     cost: 1,

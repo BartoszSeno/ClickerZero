@@ -2,6 +2,7 @@ import MainWeaponLoopEnchant from "./LoopItems/MainWeapon";
 import ArmorLoopEnchant from "./LoopItems/Armor";
 import HelmetLoopEnchant from "./LoopItems/Helmet";
 import ShoesLoopEnchant from "./LoopItems/Shoes";
+import GlovesLoopEnchant from "./LoopItems/Gloves";
 /* eslint-disable array-callback-return */
 const LoopItemForEnchant = ({
   mainWeaponData,
@@ -28,6 +29,12 @@ const LoopItemForEnchant = ({
   setSelectedShoesItemIndex,
   setUpgradedDefShoes,
   setitsShoes,
+  GlovesData,
+  savedGlovesItemUpgrade,
+  UpgradedNamesGloves,
+  setSelectedGlovesItemIndex,
+  setUpgradedDefGloves,
+  setitsGloves,
 }: {
   mainWeaponData: any;
   savedItemUpgrade: any;
@@ -53,6 +60,12 @@ const LoopItemForEnchant = ({
   setSelectedShoesItemIndex: any;
   setUpgradedDefShoes: any;
   setitsShoes: any;
+  GlovesData: any;
+  savedGlovesItemUpgrade: any;
+  UpgradedNamesGloves: any;
+  setSelectedGlovesItemIndex: any;
+  setUpgradedDefGloves: any;
+  setitsGloves: any;
 }) => {
   // its weapon or armor?
   const HandleItemClick = (itemArray: any[], clickedItemId: string) => {
@@ -65,21 +78,31 @@ const LoopItemForEnchant = ({
         setitsArmor(false);
         setitsHelmet(false);
         setitsShoes(false);
+        setitsGloves(false);
       } else if (itemArray === ArmorData) {
         setitsArmor(true);
         setitsMainWeapon(false);
         setitsHelmet(false);
         setitsShoes(false);
+        setitsGloves(false);
       } else if (itemArray === HelmetData) {
         setitsHelmet(true);
         setitsArmor(false);
         setitsMainWeapon(false);
         setitsShoes(false);
+        setitsGloves(false);
       } else if (itemArray === ShoesData) {
         setitsShoes(true);
         setitsArmor(false);
         setitsMainWeapon(false);
         setitsHelmet(false);
+        setitsGloves(false);
+      } else if (itemArray === GlovesData) {
+        setitsGloves(true);
+        setitsArmor(false);
+        setitsMainWeapon(false);
+        setitsHelmet(false);
+        setitsShoes(false);
       }
     }
   };
@@ -116,6 +139,14 @@ const LoopItemForEnchant = ({
         UpgradedNamesShoes={UpgradedNamesShoes}
         setSelectedShoesItemIndex={setSelectedShoesItemIndex}
         setUpgradedDefShoes={setUpgradedDefShoes}
+        HandleItemClick={HandleItemClick}
+      />
+      <GlovesLoopEnchant
+        GlovesData={GlovesData}
+        savedGlovesItemUpgrade={savedGlovesItemUpgrade}
+        UpgradedNamesGloves={UpgradedNamesGloves}
+        setSelectedGlovesItemIndex={setSelectedGlovesItemIndex}
+        setUpgradedDefGloves={setUpgradedDefGloves}
         HandleItemClick={HandleItemClick}
       />
     </>
