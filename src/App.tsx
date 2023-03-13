@@ -79,6 +79,10 @@ function App() {
   const [UpgradedDefShieldAndDagger, setUpgradedDefShieldAndDagger] =
     useState<string>("");
 
+  // SAVES THE TRUE VALUE OF MAIN Gloves DMG
+  const [UpgradedDmgShieldAndDagger, setUpgradedDmgShieldAndDagger] =
+    useState<string>("");
+
   //==================
   // ARRAY OF THE ENTIRE Gloves
   const [GlovesData, setGlovesData] = useState<any>(
@@ -631,6 +635,8 @@ function App() {
                   setUpgradedNamesShieldAndDagger={
                     setUpgradedNamesShieldAndDagger
                   }
+                  setUpgradedDmgShieldAndDagger={setUpgradedDmgShieldAndDagger}
+                  UpgradedDmgShieldAndDagger={UpgradedDmgShieldAndDagger}
                 />
               )}
             </div>

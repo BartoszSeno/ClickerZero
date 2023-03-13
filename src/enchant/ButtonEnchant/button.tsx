@@ -49,6 +49,8 @@ const ButtonForEnchant = ({
   UpgradedNamesShieldAndDagger,
   setUpgradedNamesShieldAndDagger,
   setUpgradedDefShieldAndDagger,
+  setUpgradedDmgShieldAndDagger,
+  UpgradedDmgShieldAndDagger,
 }: {
   selectedItemIndex: number;
   itsMainWeapon: boolean;
@@ -91,6 +93,8 @@ const ButtonForEnchant = ({
   UpgradedNamesShieldAndDagger: any;
   setUpgradedNamesShieldAndDagger: any;
   setUpgradedDefShieldAndDagger: any;
+  setUpgradedDmgShieldAndDagger: any;
+  UpgradedDmgShieldAndDagger: any;
 }) => {
   //==============
   // MAIN FUNCTION FOR UPGRADE ITEMS
@@ -432,7 +436,7 @@ const ButtonForEnchant = ({
     upgradedShieldAndDaggerNames[ShieldAndDaggerIndex] =
       ShieldAndDaggerItemName;
     setUpgradedNamesShieldAndDagger(upgradedShieldAndDaggerNames);
-
+    //def
     const itemSavedDefShieldAndDaggerKey = `selectedItemDefForEnchant_${ShieldAndDagger.name}`;
 
     const savedShieldAndDaggerClicks = localStorage.getItem(
@@ -464,6 +468,38 @@ const ButtonForEnchant = ({
       ShieldAndDagger.defLvl0;
 
     setUpgradedDefShieldAndDagger(savedDefShieldAndDagger);
+    //dmg
+    const itemSavedDmgShieldAndDaggerKey = `selectedItemDmgForEnchant_${ShieldAndDagger.name}`;
+
+    const savedShieldAndDaggerClicksDMG = localStorage.getItem(
+      `savedShieldAndDaggerClicksDMG_${ShieldAndDagger.name}`
+    );
+    const numShieldAndDaggerClicksDMG = savedShieldAndDaggerClicksDMG
+      ? Number(savedShieldAndDaggerClicksDMG)
+      : 0;
+
+    if (numShieldAndDaggerClicksDMG < 15) {
+      let newSavedDmgShieldAndDagger = Number(
+        localStorage.getItem(itemSavedDmgShieldAndDaggerKey) ||
+          ShieldAndDagger.dmgLvl0
+      );
+      newSavedDmgShieldAndDagger *= 2;
+      localStorage.setItem(
+        itemSavedDmgShieldAndDaggerKey,
+        newSavedDmgShieldAndDagger.toString()
+      );
+      localStorage.setItem(
+        `savedShieldAndDaggerClicksDMG_${ShieldAndDagger.name}`,
+        (numShieldAndDaggerClicksDMG + 1).toString()
+      );
+    }
+    console.log(localStorage.getItem(itemSavedDmgShieldAndDaggerKey));
+
+    const savedDmgShieldAndDagger =
+      localStorage.getItem(itemSavedDmgShieldAndDaggerKey) ||
+      ShieldAndDagger.dmgLvl0;
+
+    setUpgradedDmgShieldAndDagger(savedDmgShieldAndDagger);
   }
   return (
     <>

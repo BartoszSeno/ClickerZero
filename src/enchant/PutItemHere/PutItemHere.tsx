@@ -56,6 +56,8 @@ const PutItemHere = ({
   setUpgradedDefShieldAndDagger,
   itsShieldAndDagger,
   setitsShieldAndDagger,
+  setUpgradedDmgShieldAndDagger,
+  UpgradedDmgShieldAndDagger,
 }: {
   mainWeaponData: any;
   savedItemUpgrade: any;
@@ -111,6 +113,8 @@ const PutItemHere = ({
   setUpgradedDefShieldAndDagger: any;
   itsShieldAndDagger: any;
   setitsShieldAndDagger: any;
+  setUpgradedDmgShieldAndDagger: any;
+  UpgradedDmgShieldAndDagger: any;
 }) => {
   // open and close menu
   const [OpenAndClose, setOpenAndClose] = useState<boolean>(false);
@@ -201,6 +205,8 @@ const PutItemHere = ({
             }
             setUpgradedDefShieldAndDagger={setUpgradedDefShieldAndDagger}
             setitsShieldAndDagger={setitsShieldAndDagger}
+            setUpgradedDmgShieldAndDagger={setUpgradedDmgShieldAndDagger}
+            UpgradedDmgShieldAndDagger={UpgradedDmgShieldAndDagger}
           />
         </div>
       </div>

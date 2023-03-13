@@ -45,6 +45,8 @@ const EnchantSucces = ({
   savedShieldAndDaggerName,
   setUpgradedDefShieldAndDagger,
   itsShieldAndDagger,
+  setUpgradedDmgShieldAndDagger,
+  UpgradedDmgShieldAndDagger,
 }: {
   upgradedValue: any;
   selectedItemIndex: any;
@@ -83,6 +85,8 @@ const EnchantSucces = ({
   savedShieldAndDaggerName: any;
   setUpgradedDefShieldAndDagger: any;
   itsShieldAndDagger: any;
+  setUpgradedDmgShieldAndDagger: any;
+  UpgradedDmgShieldAndDagger: any;
 }) => {
   // Declare state to save upgraded item name, initialized with an empty string
   const [UpgradedName, setUpgradedName] = useState<string>("");
@@ -285,7 +289,7 @@ const EnchantSucces = ({
       setUpgradedShieldAndDaggerName("");
     }
 
-    // Set upgraded damage value for the selected item, multiplying it by 2
+    // Set upgraded defence value for the selected item, multiplying it by 2
     const itemSavedDefShieldAndDaggerKey = `selectedItemDefForEnchant_${ShieldAndDagger.name}`;
     let newSavedDefShieldAndDagger = Number(
       localStorage.getItem(itemSavedDefShieldAndDaggerKey) ||
@@ -293,6 +297,14 @@ const EnchantSucces = ({
     );
     newSavedDefShieldAndDagger *= 2;
     setUpgradedDefShieldAndDagger(newSavedDefShieldAndDagger);
+    // Set upgraded damage value for the selected item, multiplying it by 2
+    const itemSavedDmgShieldAndDaggerKey = `selectedItemDmgForEnchant_${ShieldAndDagger.name}`;
+    let newSavedDmgShieldAndDagger = Number(
+      localStorage.getItem(itemSavedDmgShieldAndDaggerKey) ||
+        ShieldAndDagger.dmgLvl0
+    );
+    newSavedDmgShieldAndDagger *= 2;
+    setUpgradedDmgShieldAndDagger(newSavedDmgShieldAndDagger);
   }
 
   return (
@@ -419,6 +431,8 @@ const EnchantSucces = ({
                   ? formatNumber(UpgradedDefGloves)
                   : itsShieldAndDagger
                   ? formatNumber(UpgradedDefShieldAndDagger)
+                  : itsShieldAndDagger
+                  ? formatNumber(UpgradedDmgShieldAndDagger)
                   : ""}
               </span>
             </div>

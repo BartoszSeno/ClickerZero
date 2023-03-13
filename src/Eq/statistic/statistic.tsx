@@ -34,7 +34,12 @@ const Statistic = ({
       <div id="statistic-container">
         <div className="MainWeaponDmg">
           <span>DMG</span>
-          <Damage mainWeaponData={mainWeaponData} selectedItem={selectedItem} />
+          <Damage
+            mainWeaponData={mainWeaponData}
+            selectedItem={selectedItem}
+            ShieldAndDaggerData={ShieldAndDaggerData}
+            selectedShieldAndDaggerItem={selectedShieldAndDaggerItem}
+          />
         </div>
         <div className="armorDef">
           <span>DEF</span>

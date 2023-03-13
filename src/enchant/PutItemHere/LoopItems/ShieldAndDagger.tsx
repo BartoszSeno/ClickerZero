@@ -8,6 +8,8 @@ const ShieldAndDaggerLoopEnchant = ({
   setSelectedShieldAndDaggerItemIndex,
   setUpgradedDefShieldAndDagger,
   HandleItemClick,
+  UpgradedDmgShieldAndDagger,
+  setUpgradedDmgShieldAndDagger,
 }: {
   ShieldAndDaggerData: any;
   savedShieldAndDaggerItemUpgrade: any;
@@ -15,6 +17,8 @@ const ShieldAndDaggerLoopEnchant = ({
   setSelectedShieldAndDaggerItemIndex: any;
   setUpgradedDefShieldAndDagger: any;
   HandleItemClick: any;
+  UpgradedDmgShieldAndDagger: any;
+  setUpgradedDmgShieldAndDagger: any;
 }) => {
   // Define a function named "GetIdPerClickShieldAndDagger" that takes an argument "index" of data type.
   function GetIdPerClickShieldAndDagger(ShieldAndDaggerIndex: any) {
@@ -42,6 +46,10 @@ const ShieldAndDaggerLoopEnchant = ({
     localStorage.setItem(
       "selectedShieldAndDaggerItemDefForEnchant",
       ShieldAndDagger.defLvl0.toString()
+    );
+    localStorage.setItem(
+      "selectedShieldAndDaggerItemDmgForEnchant",
+      ShieldAndDagger.dmgLvl0.toString()
     );
   }
   // FAKE FUNCTION TO UPDATA DATA ON LOAD, WORK THE SAME LIKE 'ENCHANTPERCLICK'
@@ -80,10 +88,15 @@ const ShieldAndDaggerLoopEnchant = ({
       ShieldAndDaggerItemName;
 
     const itemSavedDefShieldAndDaggerKey = `selectedShieldAndDaggerItemDefForEnchant_${item.name}`;
+    const itemSavedDmgShieldAndDaggerKey = `selectedShieldAndDaggerItemDmgForEnchant_${item.name}`;
 
     const savedDefShieldAndDagger =
       localStorage.getItem(itemSavedDefShieldAndDaggerKey) || item.defLvl0;
     setUpgradedDefShieldAndDagger(savedDefShieldAndDagger);
+
+    const savedDmgShieldAndDagger =
+      localStorage.getItem(itemSavedDmgShieldAndDaggerKey) || item.dmgLvl0;
+    setUpgradedDmgShieldAndDagger(savedDmgShieldAndDagger);
   }
 
   return (

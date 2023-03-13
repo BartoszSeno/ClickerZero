@@ -42,6 +42,8 @@ const LoopItemForEnchant = ({
   setSelectedShieldAndDaggerItemIndex,
   setUpgradedDefShieldAndDagger,
   setitsShieldAndDagger,
+  setUpgradedDmgShieldAndDagger,
+  UpgradedDmgShieldAndDagger,
 }: {
   mainWeaponData: any;
   savedItemUpgrade: any;
@@ -79,6 +81,8 @@ const LoopItemForEnchant = ({
   setSelectedShieldAndDaggerItemIndex: any;
   setUpgradedDefShieldAndDagger: any;
   setitsShieldAndDagger: any;
+  setUpgradedDmgShieldAndDagger: any;
+  UpgradedDmgShieldAndDagger: any;
 }) => {
   // its weapon or armor?
   const HandleItemClick = (itemArray: any[], clickedItemId: string) => {
@@ -183,6 +187,8 @@ const LoopItemForEnchant = ({
         }
         setUpgradedDefShieldAndDagger={setUpgradedDefShieldAndDagger}
         HandleItemClick={HandleItemClick}
+        setUpgradedDmgShieldAndDagger={setUpgradedDmgShieldAndDagger}
+        UpgradedDmgShieldAndDagger={UpgradedDmgShieldAndDagger}
       />
     </>
   );

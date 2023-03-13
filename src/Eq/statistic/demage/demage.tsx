@@ -1,41 +1,44 @@
-import { getSavedDmgMain } from "../../../enchant";
+import DemageMainWeapon from "./gear/mainWeapon";
+import DemageDagger from "./gear/dagger";
 import { formatNumber } from "../../../hook/FormatNumber";
 
 const Damage = ({
   mainWeaponData,
   selectedItem,
+  ShieldAndDaggerData,
+  selectedShieldAndDaggerItem,
 }: {
   mainWeaponData: any;
   selectedItem: any;
+  ShieldAndDaggerData: any;
+  selectedShieldAndDaggerItem: any;
 }) => {
+  // export data from statistic
+  const FullMainWeaponDmgFromText = document.querySelector(
+    ".statsDmgMainWeaponHiden"
+  ) as HTMLElement;
+  //if the data exists, convert it to a text
+  const textMainWeapon = FullMainWeaponDmgFromText?.textContent;
+
+  const FullDaggerDmgFromText = document.querySelector(
+    ".statsDmgDaggerHiden"
+  ) as HTMLElement;
+  //if the data exists, convert it to a text
+  const textDagger = FullDaggerDmgFromText?.textContent;
+
+  const FullDmg = Number(textMainWeapon || 0) + Number(textDagger || 0);
+
   return (
     <>
-      {mainWeaponData.map((data: any, index: any) => {
-        if (index === selectedItem) {
-          const itemSavedDmgMainKey = `selectedItemDmgForEnchant_${data.name}`;
-          const savedDmgMain = getSavedDmgMain(itemSavedDmgMainKey);
-          const selectedItemData = mainWeaponData.find(
-            (data: any) => data.id === selectedItem
-          );
-
-          return (
-            <div key={`${data.id}_${index}`}>
-              {selectedItemData && (
-                <div>
-                  <span className="statsDmgMainWeapon">
-                    {formatNumber(savedDmgMain ? savedDmgMain : data.dmgLvl0)}
-                  </span>
-                  <span className="statsDmgMainWeaponHiden">
-                    {savedDmgMain ? savedDmgMain : data.dmgLvl0}
-                  </span>
-                </div>
-              )}
-            </div>
-          );
-        } else {
-          return null;
-        }
-      })}
+      <DemageMainWeapon
+        mainWeaponData={mainWeaponData}
+        selectedItem={selectedItem}
+      />
+      <span className="statsDmgMainWeapon">{formatNumber(FullDmg)}</span>
+      <DemageDagger
+        ShieldAndDaggerData={ShieldAndDaggerData}
+        selectedShieldAndDaggerItem={selectedShieldAndDaggerItem}
+      />
     </>
   );
 };
