@@ -4,6 +4,7 @@ import { ArmorImageAndNameAndCost } from "../../data/equipment/armor";
 import { HelmetImageAndNameAndCost } from "../../data/equipment/helmet";
 import { ShoesImageAndNameAndCost } from "../../data/equipment/Shoes";
 import { GlovesImageAndNameAndCost } from "../../data/equipment/gloves";
+import { ShieldAndDaggerImageAndNameAndCost } from "../../data/equipment/subWeapon";
 import { formatNumber } from "../../hook/FormatNumber";
 
 const EnchantSucces = ({
@@ -38,6 +39,12 @@ const EnchantSucces = ({
   savedGlovesName,
   setUpgradedDefGloves,
   itsGloves,
+  UpgradedDefShieldAndDagger,
+  selectedShieldAndDaggerItemIndex,
+  savedShieldAndDaggerImage,
+  savedShieldAndDaggerName,
+  setUpgradedDefShieldAndDagger,
+  itsShieldAndDagger,
 }: {
   upgradedValue: any;
   selectedItemIndex: any;
@@ -70,6 +77,12 @@ const EnchantSucces = ({
   savedGlovesName: any;
   setUpgradedDefGloves: any;
   itsGloves: any;
+  UpgradedDefShieldAndDagger: any;
+  selectedShieldAndDaggerItemIndex: any;
+  savedShieldAndDaggerImage: any;
+  savedShieldAndDaggerName: any;
+  setUpgradedDefShieldAndDagger: any;
+  itsShieldAndDagger: any;
 }) => {
   // Declare state to save upgraded item name, initialized with an empty string
   const [UpgradedName, setUpgradedName] = useState<string>("");
@@ -81,6 +94,9 @@ const EnchantSucces = ({
   const [UpgradedShoesName, setUpgradedShoesName] = useState<string>("");
   //Gloves
   const [UpgradedGlovesName, setUpgradedGlovesName] = useState<string>("");
+  //ShieldAndDagger
+  const [UpgradedShieldAndDaggerName, setUpgradedShieldAndDaggerName] =
+    useState<string>("");
   // Function to show item name on hover
   function ShowNameOnHover(index: any) {
     // Get item from the list of weapon images and names at specified index
@@ -243,6 +259,42 @@ const EnchantSucces = ({
     setUpgradedDefGloves(newSavedDefGloves);
   }
 
+  function ShowNameOnHoverForShieldAndDagger(ShieldAndDaggerIndex: any) {
+    // Get item from the list of weapon images and names at specified index
+    const ShieldAndDagger =
+      ShieldAndDaggerImageAndNameAndCost[ShieldAndDaggerIndex];
+
+    // Create name of upgrade based on item name
+    const ShieldAndDaggerItemUpgradeName = `${ShieldAndDagger.name}`;
+
+    // Load saved upgrade value from local storage or set it to 0
+    const savedShieldAndDaggerItemUpgradeFromLocalStorage =
+      localStorage.getItem(ShieldAndDaggerItemUpgradeName);
+    const savedShieldAndDaggerItemUpgradeValue =
+      savedShieldAndDaggerItemUpgradeFromLocalStorage
+        ? Number(savedShieldAndDaggerItemUpgradeFromLocalStorage)
+        : 0;
+
+    // Set upgraded item name based on upgrade value, or set it to empty string if upgrade value is 15 or greater
+    if (savedShieldAndDaggerItemUpgradeValue < 15) {
+      const ShieldAndDaggerItemName = `+${
+        savedShieldAndDaggerItemUpgradeValue + 1
+      } ${ShieldAndDagger.name}`;
+      setUpgradedShieldAndDaggerName(ShieldAndDaggerItemName);
+    } else {
+      setUpgradedShieldAndDaggerName("");
+    }
+
+    // Set upgraded damage value for the selected item, multiplying it by 2
+    const itemSavedDefShieldAndDaggerKey = `selectedItemDefForEnchant_${ShieldAndDagger.name}`;
+    let newSavedDefShieldAndDagger = Number(
+      localStorage.getItem(itemSavedDefShieldAndDaggerKey) ||
+        ShieldAndDagger.defLvl0
+    );
+    newSavedDefShieldAndDagger *= 2;
+    setUpgradedDefShieldAndDagger(newSavedDefShieldAndDagger);
+  }
+
   return (
     <>
       {upgradedValue < 15 ? (
@@ -260,6 +312,10 @@ const EnchantSucces = ({
                 ShowNameOnHoverForShoes(selectedShoesItemIndex);
               } else if (itsGloves === true) {
                 ShowNameOnHoverForGloves(selectedGlovesItemIndex);
+              } else if (itsShieldAndDagger === true) {
+                ShowNameOnHoverForShieldAndDagger(
+                  selectedShieldAndDaggerItemIndex
+                );
               }
             }}
           >
@@ -276,6 +332,8 @@ const EnchantSucces = ({
                   ? savedShoesImage
                   : itsGloves
                   ? savedGlovesImage
+                  : itsShieldAndDagger
+                  ? savedShieldAndDaggerImage
                   : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
               }
               alt={`${
@@ -289,6 +347,8 @@ const EnchantSucces = ({
                   ? UpgradedShoesName
                   : itsGloves
                   ? UpgradedGlovesName
+                  : itsShieldAndDagger
+                  ? UpgradedShieldAndDaggerName
                   : "No name weapon"
               }`}
             />
@@ -305,6 +365,8 @@ const EnchantSucces = ({
                 ? UpgradedShoesName
                 : itsGloves
                 ? UpgradedGlovesName
+                : itsShieldAndDagger
+                ? UpgradedShieldAndDaggerName
                 : ""}
             </span>
             <div className="enchantBox2">
@@ -321,6 +383,8 @@ const EnchantSucces = ({
                     ? savedShoesImage
                     : itsGloves
                     ? savedGlovesImage
+                    : itsShieldAndDagger
+                    ? savedShieldAndDaggerImage
                     : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
                 }
                 alt={`${
@@ -334,6 +398,8 @@ const EnchantSucces = ({
                     ? UpgradedShoesName
                     : itsGloves
                     ? UpgradedGlovesName
+                    : itsShieldAndDagger
+                    ? UpgradedShieldAndDaggerName
                     : "No name weapon"
                 }`}
               />
@@ -351,6 +417,8 @@ const EnchantSucces = ({
                   ? formatNumber(UpgradedDefShoes)
                   : itsGloves
                   ? formatNumber(UpgradedDefGloves)
+                  : itsShieldAndDagger
+                  ? formatNumber(UpgradedDefShieldAndDagger)
                   : ""}
               </span>
             </div>

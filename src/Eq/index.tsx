@@ -1,7 +1,7 @@
 import "../assets/css/Normal/Equipment/equipment.css";
 import Armor from "./Armor/armor";
 import MainWeapon from "./MainWeapon/mainWeapon";
-import SubWeapon from "./SubWeapon/subWeapon";
+import ShieldAndDagger from "./SubWeapon/subWeapon";
 import Helmet from "./Helmet/helmet";
 import Shoes from "./Shoes/shoes";
 import Gloves from "./Gloves/gloves";
@@ -28,6 +28,10 @@ const Eq = ({
   UpgradedNamesGloves,
   handleGlovesItemSelect,
   selectedGlovesItem,
+  ShieldAndDaggerData,
+  UpgradedNamesShieldAndDagger,
+  handleShieldAndDaggerItemSelect,
+  selectedShieldAndDaggerItem,
 }: {
   mainWeaponData: any;
   UpgradedNamesMainWeapon: any;
@@ -49,6 +53,10 @@ const Eq = ({
   UpgradedNamesGloves: any;
   handleGlovesItemSelect: any;
   selectedGlovesItem: any;
+  ShieldAndDaggerData: any;
+  UpgradedNamesShieldAndDagger: any;
+  handleShieldAndDaggerItemSelect: any;
+  selectedShieldAndDaggerItem: any;
 }) => {
   return (
     <>
@@ -58,7 +66,11 @@ const Eq = ({
           UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
           handleItemSelect={handleItemSelect}
         />
-        <SubWeapon />
+        <ShieldAndDagger
+          ShieldAndDaggerData={ShieldAndDaggerData}
+          UpgradedNamesShieldAndDagger={UpgradedNamesShieldAndDagger}
+          handleShieldAndDaggerItemSelect={handleShieldAndDaggerItemSelect}
+        />
         <Armor
           ArmorData={ArmorData}
           UpgradedNamesArmor={UpgradedNamesArmor}
@@ -92,6 +104,8 @@ const Eq = ({
           selectedShoesItem={selectedShoesItem}
           GlovesData={GlovesData}
           selectedGlovesItem={selectedGlovesItem}
+          ShieldAndDaggerData={ShieldAndDaggerData}
+          selectedShieldAndDaggerItem={selectedShieldAndDaggerItem}
         />
       </section>
     </>

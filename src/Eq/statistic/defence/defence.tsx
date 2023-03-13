@@ -4,6 +4,7 @@ import DefenceArmor from "./gear/Armor";
 import DefenceHelmet from "./gear/Helmet";
 import DefenceShoes from "./gear/Shoes";
 import DefenceGloves from "./gear/gloves";
+import DefenceShieldAndDagger from "./gear/shieldAndDagger";
 
 const Defence = ({
   ArmorData,
@@ -14,6 +15,8 @@ const Defence = ({
   selectedShoesItem,
   GlovesData,
   selectedGlovesItem,
+  ShieldAndDaggerData,
+  selectedShieldAndDaggerItem,
 }: {
   ArmorData: any;
   selectedArmorItem: any;
@@ -23,6 +26,8 @@ const Defence = ({
   selectedShoesItem: any;
   GlovesData: any;
   selectedGlovesItem: any;
+  ShieldAndDaggerData: any;
+  selectedShieldAndDaggerItem: any;
 }) => {
   // export data from statistic
   const FullArmorDefFromText = document.querySelector(
@@ -48,12 +53,19 @@ const Defence = ({
   ) as HTMLElement;
   //if the data exists, convert it to a text
   const textGloves = FullGlovesDefFromText?.textContent;
+  // export data from statistic
+  const FullShieldAndDaggerDefFromText = document.querySelector(
+    ".statsShieldAndDaggerDefHiden"
+  ) as HTMLElement;
+  //if the data exists, convert it to a text
+  const textShieldAndDagger = FullShieldAndDaggerDefFromText?.textContent;
 
   const FullValu =
     Number(textArmor || 0) +
     Number(textHelmet || 0) +
     Number(textShoes || 0) +
-    Number(textGloves || 0);
+    Number(textGloves || 0) +
+    Number(textShieldAndDagger || 0);
 
   return (
     <>
@@ -73,6 +85,10 @@ const Defence = ({
       <DefenceGloves
         GlovesData={GlovesData}
         selectedGlovesItem={selectedGlovesItem}
+      />
+      <DefenceShieldAndDagger
+        ShieldAndDaggerData={ShieldAndDaggerData}
+        selectedShieldAndDaggerItem={selectedShieldAndDaggerItem}
       />
     </>
   );

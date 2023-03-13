@@ -133,7 +133,7 @@
   margin-top: 532px;
 }
 
-.subWeapon {
+.ShieldAndDagger {
   margin-top: 622px;
 }
 /*Armor*/
@@ -204,6 +204,7 @@
 .statsDefDefHiden,
 .statsHelmetDefHiden,
 .statsShoesDefHiden,
-.statsGlovesDefHiden {
+.statsGlovesDefHiden,
+.statsShieldAndDaggerDefHiden {
   display: none;
 }

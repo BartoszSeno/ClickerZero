@@ -33,6 +33,12 @@ const Enchant = ({
   setUpgradedNamesGloves,
   setUpgradedDefGloves,
   UpgradedDefGloves,
+
+  ShieldAndDaggerData,
+  UpgradedNamesShieldAndDagger,
+  setUpgradedNamesShieldAndDagger,
+  setUpgradedDefShieldAndDagger,
+  UpgradedDefShieldAndDagger,
 }: {
   mainWeaponData: any;
   setUpgradedNamesMainWeapon: any;
@@ -59,6 +65,12 @@ const Enchant = ({
   setUpgradedNamesGloves: any;
   setUpgradedDefGloves: any;
   UpgradedDefGloves: any;
+
+  ShieldAndDaggerData: any;
+  UpgradedNamesShieldAndDagger: any;
+  setUpgradedNamesShieldAndDagger: any;
+  setUpgradedDefShieldAndDagger: any;
+  UpgradedDefShieldAndDagger: any;
 }) => {
   //MAIN WEAPON
   /// load image form localstorage
@@ -183,7 +195,40 @@ const Enchant = ({
   const [itsShoes, setitsShoes] = useState<boolean>(false);
 
   //=================================================================================
+  //ShieldAndDagger
+  /// load image form localstorage
+  const savedShieldAndDaggerImage = localStorage.getItem(
+    "selectedShieldAndDaggerItemImgForEnchant"
+  );
+  const savedShieldAndDaggerName = localStorage.getItem(
+    "selectedShieldAndDaggerItemNameForEnchant"
+  );
+  // Declare state to save selected damage value, initialized with null
+  const [, setSavedDefShieldAndDagger] = useState<number | null>(null);
 
+  // Load selected damage value from local storage when component mounts
+  useEffect(() => {
+    const savedDefShieldAndDaggerFromLocalStorage = localStorage.getItem(
+      "selectedItemDefForEnchant"
+    );
+    if (savedDefShieldAndDaggerFromLocalStorage) {
+      setSavedDefShieldAndDagger(
+        Number(savedDefShieldAndDaggerFromLocalStorage)
+      );
+    }
+  }, []);
+
+  // Declare state to save selected item index, initialized with 0
+  const [
+    selectedShieldAndDaggerItemIndex,
+    setSelectedShieldAndDaggerItemIndex,
+  ] = useState<number>(0);
+  // Declare state to save saved item upgrade value, initialized with 0
+  const [savedShieldAndDaggerItemUpgrade] = useState<number>(0);
+  // its weapon or armor ?
+  const [itsShieldAndDagger, setitsShieldAndDagger] = useState<boolean>(false);
+
+  //=================================================================================
   //Gloves
   /// load image form localstorage
   const savedGlovesImage = localStorage.getItem(
@@ -227,6 +272,8 @@ const Enchant = ({
     localStorage.removeItem("selectedShoesItemNameForEnchant");
     localStorage.removeItem("selectedGlovesItemImgForEnchant");
     localStorage.removeItem("selectedGlovesItemNameForEnchant");
+    localStorage.removeItem("selectedShieldAndDaggerItemImgForEnchant");
+    localStorage.removeItem("selectedShieldAndDaggerItemNameForEnchant");
   }, []);
 
   return (
@@ -264,6 +311,12 @@ const Enchant = ({
             UpgradedNamesGloves={UpgradedNamesGloves}
             setUpgradedNamesGloves={setUpgradedNamesGloves}
             setUpgradedDefGloves={setUpgradedDefGloves}
+            itsShieldAndDagger={itsShieldAndDagger}
+            selectedShieldAndDaggerItemIndex={selectedShieldAndDaggerItemIndex}
+            ShieldAndDaggerData={ShieldAndDaggerData}
+            UpgradedNamesShieldAndDagger={UpgradedNamesShieldAndDagger}
+            setUpgradedNamesShieldAndDagger={setUpgradedNamesShieldAndDagger}
+            setUpgradedDefShieldAndDagger={setUpgradedDefShieldAndDagger}
           />
           <PutItemHere
             mainWeaponData={mainWeaponData}
@@ -311,6 +364,17 @@ const Enchant = ({
             setUpgradedDefGloves={setUpgradedDefGloves}
             itsGloves={itsGloves}
             setitsGloves={setitsGloves}
+            ShieldAndDaggerData={ShieldAndDaggerData}
+            savedShieldAndDaggerItemUpgrade={savedShieldAndDaggerItemUpgrade}
+            UpgradedNamesShieldAndDagger={UpgradedNamesShieldAndDagger}
+            savedShieldAndDaggerImage={savedShieldAndDaggerImage}
+            savedShieldAndDaggerName={savedShieldAndDaggerName}
+            setSelectedShieldAndDaggerItemIndex={
+              setSelectedShieldAndDaggerItemIndex
+            }
+            setUpgradedDefShieldAndDagger={setUpgradedDefShieldAndDagger}
+            itsShieldAndDagger={itsShieldAndDagger}
+            setitsShieldAndDagger={setitsShieldAndDagger}
           />
           <div className="EnchantProgress"></div>
           <EnchantSucces
@@ -345,6 +409,12 @@ const Enchant = ({
             savedGlovesName={savedGlovesName}
             setUpgradedDefGloves={setUpgradedDefGloves}
             itsGloves={itsGloves}
+            UpgradedDefShieldAndDagger={UpgradedDefShieldAndDagger}
+            selectedShieldAndDaggerItemIndex={selectedShieldAndDaggerItemIndex}
+            savedShieldAndDaggerImage={savedShieldAndDaggerImage}
+            savedShieldAndDaggerName={savedShieldAndDaggerName}
+            setUpgradedDefShieldAndDagger={setUpgradedDefShieldAndDagger}
+            itsShieldAndDagger={itsShieldAndDagger}
           />
         </div>
       </div>
@@ -377,4 +447,12 @@ export const getSavedDefShoes = (itemSavedDefShoesKey: string) => {
 export const getSavedDefGloves = (itemSavedDefGlovesKey: string) => {
   const savedDefGloves = localStorage.getItem(itemSavedDefGlovesKey) || null;
   return savedDefGloves;
+};
+
+export const getSavedDefShieldAndDagger = (
+  itemSavedDefShieldAndDaggerKey: string
+) => {
+  const savedDefShieldAndDagger =
+    localStorage.getItem(itemSavedDefShieldAndDaggerKey) || null;
+  return savedDefShieldAndDagger;
 };

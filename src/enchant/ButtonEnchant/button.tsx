@@ -5,6 +5,7 @@ import { ArmorImageAndNameAndCost } from "../../data/equipment/armor";
 import { ShoesImageAndNameAndCost } from "../../data/equipment/Shoes";
 import { HelmetImageAndNameAndCost } from "../../data/equipment/helmet";
 import { GlovesImageAndNameAndCost } from "../../data/equipment/gloves";
+import { ShieldAndDaggerImageAndNameAndCost } from "../../data/equipment/subWeapon";
 
 const ButtonForEnchant = ({
   selectedItemIndex,
@@ -41,6 +42,13 @@ const ButtonForEnchant = ({
   UpgradedNamesGloves,
   setUpgradedNamesGloves,
   setUpgradedDefGloves,
+  //ShieldAndDagger
+  itsShieldAndDagger,
+  selectedShieldAndDaggerItemIndex,
+  ShieldAndDaggerData,
+  UpgradedNamesShieldAndDagger,
+  setUpgradedNamesShieldAndDagger,
+  setUpgradedDefShieldAndDagger,
 }: {
   selectedItemIndex: number;
   itsMainWeapon: boolean;
@@ -76,6 +84,13 @@ const ButtonForEnchant = ({
   UpgradedNamesGloves: any;
   setUpgradedNamesGloves: any;
   setUpgradedDefGloves: any;
+  //ShieldAndDagger
+  itsShieldAndDagger: boolean;
+  selectedShieldAndDaggerItemIndex: number;
+  ShieldAndDaggerData: any;
+  UpgradedNamesShieldAndDagger: any;
+  setUpgradedNamesShieldAndDagger: any;
+  setUpgradedDefShieldAndDagger: any;
 }) => {
   //==============
   // MAIN FUNCTION FOR UPGRADE ITEMS
@@ -371,6 +386,85 @@ const ButtonForEnchant = ({
 
     setUpgradedDefGloves(savedDefGloves);
   }
+
+  //ShieldAndDagger
+  function EnchantPerClickForShieldAndDagger(ShieldAndDaggerIndex: any) {
+    const ShieldAndDagger =
+      ShieldAndDaggerImageAndNameAndCost[ShieldAndDaggerIndex];
+
+    const ShieldAndDaggerItemUpgradeName = `${ShieldAndDagger.name}`;
+
+    const savedShieldAndDaggerItemUpgrade = localStorage.getItem(
+      ShieldAndDaggerItemUpgradeName
+    );
+    const savedShieldAndDaggerItemUpgradeNumber = Number(
+      savedShieldAndDaggerItemUpgrade
+    );
+
+    const ShieldAndDaggerupgradedValue =
+      savedShieldAndDaggerItemUpgradeNumber < 15
+        ? savedShieldAndDaggerItemUpgradeNumber + 1
+        : 15;
+
+    localStorage.setItem(
+      "ShieldAndDaggerupgradedValue",
+      ShieldAndDaggerupgradedValue.toString()
+    );
+    localStorage.setItem(
+      ShieldAndDaggerItemUpgradeName,
+      ShieldAndDaggerupgradedValue.toString()
+    );
+
+    const selectedShieldAndDaggerItem =
+      ShieldAndDaggerData[ShieldAndDaggerIndex];
+
+    const ShieldAndDaggerItemName = `+${ShieldAndDaggerupgradedValue} ${ShieldAndDagger.name}`;
+
+    localStorage.setItem(
+      "UpgradedShieldAndDaggerName",
+      JSON.stringify({
+        [ShieldAndDaggerItemName]: selectedShieldAndDaggerItem.name,
+        selectedShieldAndDaggerItemNameForEnchant: ShieldAndDaggerItemName,
+      })
+    );
+
+    const upgradedShieldAndDaggerNames = [...UpgradedNamesShieldAndDagger];
+    upgradedShieldAndDaggerNames[ShieldAndDaggerIndex] =
+      ShieldAndDaggerItemName;
+    setUpgradedNamesShieldAndDagger(upgradedShieldAndDaggerNames);
+
+    const itemSavedDefShieldAndDaggerKey = `selectedItemDefForEnchant_${ShieldAndDagger.name}`;
+
+    const savedShieldAndDaggerClicks = localStorage.getItem(
+      `savedShieldAndDaggerClicks_${ShieldAndDagger.name}`
+    );
+    const numShieldAndDaggerClicks = savedShieldAndDaggerClicks
+      ? Number(savedShieldAndDaggerClicks)
+      : 0;
+
+    if (numShieldAndDaggerClicks < 15) {
+      let newSavedDefShieldAndDagger = Number(
+        localStorage.getItem(itemSavedDefShieldAndDaggerKey) ||
+          ShieldAndDagger.defLvl0
+      );
+      newSavedDefShieldAndDagger *= 2;
+      localStorage.setItem(
+        itemSavedDefShieldAndDaggerKey,
+        newSavedDefShieldAndDagger.toString()
+      );
+      localStorage.setItem(
+        `savedShieldAndDaggerClicks_${ShieldAndDagger.name}`,
+        (numShieldAndDaggerClicks + 1).toString()
+      );
+    }
+    console.log(localStorage.getItem(itemSavedDefShieldAndDaggerKey));
+
+    const savedDefShieldAndDagger =
+      localStorage.getItem(itemSavedDefShieldAndDaggerKey) ||
+      ShieldAndDagger.defLvl0;
+
+    setUpgradedDefShieldAndDagger(savedDefShieldAndDagger);
+  }
   return (
     <>
       <button
@@ -385,6 +479,8 @@ const ButtonForEnchant = ({
             EnchantPerClickForShoes(selectedShoesItemIndex);
           } else if (itsGloves === true) {
             EnchantPerClickForGloves(selectedGlovesItemIndex);
+          } else if (itsShieldAndDagger === true) {
+            EnchantPerClickForShieldAndDagger(selectedShieldAndDaggerItemIndex);
           }
         }}
       >

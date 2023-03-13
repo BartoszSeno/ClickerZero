@@ -47,6 +47,15 @@ const PutItemHere = ({
   setUpgradedDefGloves,
   itsGloves,
   setitsGloves,
+  ShieldAndDaggerData,
+  savedShieldAndDaggerItemUpgrade,
+  UpgradedNamesShieldAndDagger,
+  savedShieldAndDaggerImage,
+  savedShieldAndDaggerName,
+  setSelectedShieldAndDaggerItemIndex,
+  setUpgradedDefShieldAndDagger,
+  itsShieldAndDagger,
+  setitsShieldAndDagger,
 }: {
   mainWeaponData: any;
   savedItemUpgrade: any;
@@ -93,6 +102,15 @@ const PutItemHere = ({
   setUpgradedDefGloves: any;
   itsGloves: any;
   setitsGloves: any;
+  ShieldAndDaggerData: any;
+  savedShieldAndDaggerItemUpgrade: any;
+  UpgradedNamesShieldAndDagger: any;
+  savedShieldAndDaggerImage: any;
+  savedShieldAndDaggerName: any;
+  setSelectedShieldAndDaggerItemIndex: any;
+  setUpgradedDefShieldAndDagger: any;
+  itsShieldAndDagger: any;
+  setitsShieldAndDagger: any;
 }) => {
   // open and close menu
   const [OpenAndClose, setOpenAndClose] = useState<boolean>(false);
@@ -120,6 +138,8 @@ const PutItemHere = ({
               ? savedShoesImage
               : itsGloves
               ? savedGlovesImage
+              : itsShieldAndDagger
+              ? savedShieldAndDaggerImage
               : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
           }
           alt={`${
@@ -133,6 +153,8 @@ const PutItemHere = ({
               ? savedShoesImage
               : itsGloves
               ? savedGlovesImage
+              : itsShieldAndDagger
+              ? savedShieldAndDaggerImage
               : "No name weapon"
           }`}
         />
@@ -171,6 +193,14 @@ const PutItemHere = ({
             setSelectedGlovesItemIndex={setSelectedGlovesItemIndex}
             setUpgradedDefGloves={setUpgradedDefGloves}
             setitsGloves={setitsGloves}
+            ShieldAndDaggerData={ShieldAndDaggerData}
+            savedShieldAndDaggerItemUpgrade={savedShieldAndDaggerItemUpgrade}
+            UpgradedNamesShieldAndDagger={UpgradedNamesShieldAndDagger}
+            setSelectedShieldAndDaggerItemIndex={
+              setSelectedShieldAndDaggerItemIndex
+            }
+            setUpgradedDefShieldAndDagger={setUpgradedDefShieldAndDagger}
+            setitsShieldAndDagger={setitsShieldAndDagger}
           />
         </div>
       </div>

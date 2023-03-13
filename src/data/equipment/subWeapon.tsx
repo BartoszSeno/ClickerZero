@@ -226,7 +226,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     id: 17,
     tier: "purple",
     image:
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/dagger/d7.png",
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/dagger/d2.png",
     name: "Aetherius",
     defLvl0: 0,
     dmgLvl0: 1,
@@ -239,7 +239,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     id: 18,
     tier: "purple",
     image:
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/dagger/d7.png",
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/dagger/d3.png",
     name: "Nightbite",
     defLvl0: 0,
     dmgLvl0: 1,
@@ -252,7 +252,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     id: 19,
     tier: "purple",
     image:
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/dagger/d7.png",
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/dagger/d4.png",
     name: "Valirds",
     defLvl0: 0,
     dmgLvl0: 1,
@@ -265,7 +265,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     id: 20,
     tier: "purple",
     image:
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/dagger/d7.png",
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/dagger/d5.png",
     name: "Sunflare",
     defLvl0: 0,
     dmgLvl0: 1,
@@ -278,7 +278,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     id: 21,
     tier: "purple",
     image:
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/dagger/d7.png",
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/dagger/d6.png",
     name: "Dissector",
     defLvl0: 0,
     dmgLvl0: 1,

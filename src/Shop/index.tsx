@@ -6,6 +6,7 @@ import ArmorShop from "./Items/ArmorShop";
 import HelmetShop from "./Items/HelmetShop";
 import ShoesShop from "./Items/ShoesShop";
 import GlovesShop from "./Items/GlovesShop";
+import ShieldAndDaggerShop from "./Items/ShieldAndDaggerShop";
 
 const Shop = ({
   mainWeaponData,
@@ -22,6 +23,8 @@ const Shop = ({
   setShoesData,
   GlovesData,
   setGlovesData,
+  ShieldAndDaggerData,
+  setShieldAndDaggerData,
 }: {
   mainWeaponData: any;
   setMainWeaponData: any;
@@ -37,6 +40,8 @@ const Shop = ({
   setShoesData: any;
   GlovesData: any;
   setGlovesData: any;
+  ShieldAndDaggerData: any;
+  setShieldAndDaggerData: any;
 }) => {
   // Set an effect to run whenever the `count` state changes
   useEffect(() => {
@@ -78,6 +83,13 @@ const Shop = ({
           <GlovesShop
             GlovesData={GlovesData}
             setGlovesData={setGlovesData}
+            count={count}
+            setCount={setCount}
+            SelectedOption={SelectedOption}
+          />
+          <ShieldAndDaggerShop
+            ShieldAndDaggerData={ShieldAndDaggerData}
+            setShieldAndDaggerData={setShieldAndDaggerData}
             count={count}
             setCount={setCount}
             SelectedOption={SelectedOption}

@@ -11,6 +11,7 @@ import { ArmorImageAndNameAndCost } from "./data/equipment/armor";
 import { HelmetImageAndNameAndCost } from "./data/equipment/helmet";
 import { ShoesImageAndNameAndCost } from "./data/equipment/Shoes";
 import { GlovesImageAndNameAndCost } from "./data/equipment/gloves";
+import { ShieldAndDaggerImageAndNameAndCost } from "./data/equipment/subWeapon";
 import Enchant from "./enchant";
 import Information from "./Information";
 import ButtonWithTierItemSorting from "./hook/ButtonForTierShow";
@@ -18,6 +19,67 @@ import FastAccesButton from "./hook/FastAcces";
 import PerClickPoints from "./hook/PerClick";
 
 function App() {
+  // ARRAY OF THE ENTIRE ShieldAndDagger
+  const [ShieldAndDaggerData, setShieldAndDaggerData] = useState<any>(
+    JSON.parse(
+      localStorage.getItem("ShieldAndDaggerImageAndNameAndCost") ||
+        JSON.stringify(ShieldAndDaggerImageAndNameAndCost)
+    )
+  );
+  //==================
+  // GET UPGRADED ShieldAndDagger NAME FROM ENCHANT FUNCTION
+  const [UpgradedNamesShieldAndDagger, setUpgradedNamesShieldAndDagger] =
+    useState<any>(Array(ShieldAndDaggerData.length).fill(""));
+
+  // function in which we get data what object has a upgraded name (from enchant)
+  function UpgradedShieldAndDaggerNamesOnMount() {
+    const upgradedShieldAndDaggerNames = ShieldAndDaggerData.map(
+      (data: any) => {
+        const itemUpgradeShieldAndDaggerName = `${data.name}`;
+        const savedItemShieldAndDaggerUpgrade = localStorage.getItem(
+          itemUpgradeShieldAndDaggerName
+        );
+        const upgradedShieldAndDaggerName = savedItemShieldAndDaggerUpgrade
+          ? `+${Number(savedItemShieldAndDaggerUpgrade)} ${data.name}`
+          : data.name;
+        return upgradedShieldAndDaggerName;
+      }
+    );
+    setUpgradedNamesShieldAndDagger(upgradedShieldAndDaggerNames);
+  }
+  //refresh names on load
+  useEffect(() => {
+    UpgradedShieldAndDaggerNamesOnMount();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  //==================
+
+  //FUNCTION TO AUTOMATICALY REFRESH ShieldAndDagger STATS
+  // !! useState important for show the value points per click !!
+  const [selectedShieldAndDaggerItem, setSelectedShieldAndDaggerItem] =
+    useState(null);
+
+  // geting the id on click
+  const handleShieldAndDaggerItemSelect = (ShieldAndDaggerIndex: any) => {
+    setSelectedShieldAndDaggerItem(ShieldAndDaggerIndex);
+  };
+
+  //we get the id of the currently selected item (eq selected) which is saved in localstorage for update statistic DMG
+  const savedShieldAndDaggerId = localStorage.getItem(
+    "selectedShieldAndDaggerItemIdEquip"
+  );
+
+  //we add fake id to the selected item to make it refresh automatically
+  useEffect(() => {
+    handleShieldAndDaggerItemSelect(Number(savedShieldAndDaggerId));
+  });
+
+  //==================
+  // SAVES THE TRUE VALUE OF MAIN Gloves DEF
+  const [UpgradedDefShieldAndDagger, setUpgradedDefShieldAndDagger] =
+    useState<string>("");
+
+  //==================
   // ARRAY OF THE ENTIRE Gloves
   const [GlovesData, setGlovesData] = useState<any>(
     JSON.parse(
@@ -274,6 +336,21 @@ function App() {
   });
 
   //==============
+  // VARIABLE THAT SAVES THE VALUE OF THE MAIN ShieldAndDagger DEF
+  const [FullShieldAndDaggerDefText, setFullShieldAndDaggerDefText] =
+    useState<any>();
+
+  useEffect(() => {
+    // export data from statistic
+    const FullShieldAndDaggerDefFromText = document.querySelector(
+      ".statsShieldAndDaggerDefHiden"
+    ) as HTMLElement;
+    //if the data exists, convert it to a text
+    const textShieldAndDagger = FullShieldAndDaggerDefFromText?.textContent;
+    setFullShieldAndDaggerDefText(textShieldAndDagger);
+  });
+
+  //==============
   // VARIABLE THAT SAVES THE VALUE OF THE MAIN Gloves DEF
   const [FullGlovesDefText, setFullGlovesDefText] = useState<any>();
 
@@ -338,7 +415,8 @@ function App() {
       (Number(FullArmorDefText) || 0) +
       (Number(FullHelmetDefText) || 0) +
       (Number(FullShoesDefText) || 0) +
-      (Number(FullGlovesDefText) || 0)
+      (Number(FullGlovesDefText) || 0) +
+      (Number(FullShieldAndDaggerDefText) || 0)
   );
 
   // listing the levels from the first upgrade
@@ -514,6 +592,8 @@ function App() {
                     setShoesData={setShoesData}
                     GlovesData={GlovesData}
                     setGlovesData={setGlovesData}
+                    ShieldAndDaggerData={ShieldAndDaggerData}
+                    setShieldAndDaggerData={setShieldAndDaggerData}
                   />
                 </>
               )}
@@ -544,6 +624,13 @@ function App() {
                   setUpgradedNamesGloves={setUpgradedNamesGloves}
                   setUpgradedDefGloves={setUpgradedDefGloves}
                   UpgradedDefGloves={UpgradedDefGloves}
+                  ShieldAndDaggerData={ShieldAndDaggerData}
+                  UpgradedNamesShieldAndDagger={UpgradedNamesShieldAndDagger}
+                  setUpgradedDefShieldAndDagger={setUpgradedDefShieldAndDagger}
+                  UpgradedDefShieldAndDagger={UpgradedDefShieldAndDagger}
+                  setUpgradedNamesShieldAndDagger={
+                    setUpgradedNamesShieldAndDagger
+                  }
                 />
               )}
             </div>
@@ -573,6 +660,7 @@ function App() {
             FullHelmetDefText={FullHelmetDefText}
             FullShoesDefText={FullShoesDefText}
             FullGlovesDefText={FullGlovesDefText}
+            FullShieldAndDaggerDefText={FullShieldAndDaggerDefText}
           />
         </div>
         <div className="right-container">
@@ -597,6 +685,10 @@ function App() {
             UpgradedNamesGloves={UpgradedNamesGloves}
             handleGlovesItemSelect={handleGlovesItemSelect}
             selectedGlovesItem={selectedGlovesItem}
+            ShieldAndDaggerData={ShieldAndDaggerData}
+            UpgradedNamesShieldAndDagger={UpgradedNamesShieldAndDagger}
+            handleShieldAndDaggerItemSelect={handleShieldAndDaggerItemSelect}
+            selectedShieldAndDaggerItem={selectedShieldAndDaggerItem}
           />
         </div>
         <button className="InfoOpen" onClick={HandleInfoOpenAndClose}>
