@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MainWeaponImageAndNameAndCost } from "../../data/equipment/mainWeapon";
 import { ArmorImageAndNameAndCost } from "../../data/equipment/armor";
 import { HelmetImageAndNameAndCost } from "../../data/equipment/helmet";
@@ -47,6 +47,11 @@ const EnchantSucces = ({
   itsShieldAndDagger,
   setUpgradedDmgShieldAndDagger,
   UpgradedDmgShieldAndDagger,
+  ArmorupgradedValue,
+  HelmetupgradedValue,
+  ShoesupgradedValue,
+  GlovesupgradedValue,
+  ShieldAndDaggerupgradedValue,
 }: {
   upgradedValue: any;
   selectedItemIndex: any;
@@ -87,6 +92,11 @@ const EnchantSucces = ({
   itsShieldAndDagger: any;
   setUpgradedDmgShieldAndDagger: any;
   UpgradedDmgShieldAndDagger: any;
+  ArmorupgradedValue: any;
+  HelmetupgradedValue: any;
+  ShoesupgradedValue: any;
+  GlovesupgradedValue: any;
+  ShieldAndDaggerupgradedValue: any;
 }) => {
   // Declare state to save upgraded item name, initialized with an empty string
   const [UpgradedName, setUpgradedName] = useState<string>("");
@@ -307,12 +317,36 @@ const EnchantSucces = ({
     setUpgradedDmgShieldAndDagger(newSavedDmgShieldAndDagger);
   }
 
+  const [WhatVlue, setWhatVlue] = useState<any>();
+
+  useEffect(() => {
+    if (itsMainWeapon === true) {
+      setWhatVlue(upgradedValue);
+      console.log("we");
+    } else if (itsArmor === true) {
+      setWhatVlue(ArmorupgradedValue);
+      console.log("ar");
+    } else if (itsHelmet === true) {
+      setWhatVlue(HelmetupgradedValue);
+      console.log("he");
+    } else if (itsShoes === true) {
+      setWhatVlue(ShoesupgradedValue);
+      console.log("sh");
+    } else if (itsGloves === true) {
+      setWhatVlue(GlovesupgradedValue);
+      console.log("gl");
+    } else if (itsShieldAndDagger === true) {
+      setWhatVlue(ShieldAndDaggerupgradedValue);
+      console.log("dag");
+    }
+  });
   return (
     <>
-      {upgradedValue < 15 ? (
+      {WhatVlue < 15 ? (
         <>
           <div
             className="EnchantSuccess"
+            onClick={() => setWhatVlue(WhatVlue + 1)}
             onMouseEnter={() => {
               if (itsMainWeapon === true) {
                 ShowNameOnHover(selectedItemIndex);

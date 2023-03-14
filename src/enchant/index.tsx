@@ -98,12 +98,40 @@ const Enchant = ({
   // Declare state to save saved item upgrade value, initialized with 0
   const [savedItemUpgrade] = useState<number>(0);
 
-  // to check the enchantment level
-  const savedUpgradedValue = localStorage.getItem("ArmorupgradedValue");
-  const upgradedValue = savedUpgradedValue ? Number(savedUpgradedValue) : 0;
   // its weapon or armor ?
   const [itsMainWeapon, setitsMainWeapon] = useState<boolean>(false);
 
+  const savedUpgradedValue = localStorage.getItem("upgradedValue");
+  const upgradedValue = savedUpgradedValue ? Number(savedUpgradedValue) : 0;
+
+  // to check the enchantment level
+  //armor
+  const savedArmorUpgradedValue = localStorage.getItem("ArmorUpgradedValue");
+  const ArmorupgradedValue = savedArmorUpgradedValue
+    ? Number(savedArmorUpgradedValue)
+    : 0;
+  //helmet
+  const savedHelmetUpgradedValue = localStorage.getItem("HelmetUpgradedValue");
+  const HelmetupgradedValue = savedHelmetUpgradedValue
+    ? Number(savedHelmetUpgradedValue)
+    : 0;
+  //Shoes
+  const savedShoesUpgradedValue = localStorage.getItem("ShoesUpgradedValue");
+  const ShoesupgradedValue = savedShoesUpgradedValue
+    ? Number(savedShoesUpgradedValue)
+    : 0;
+  //gloves
+  const savedGlovesUpgradedValue = localStorage.getItem("GlovesUpgradedValue");
+  const GlovesupgradedValue = savedGlovesUpgradedValue
+    ? Number(savedGlovesUpgradedValue)
+    : 0;
+  //gloves
+  const savedShieldAndDaggerUpgradedValue = localStorage.getItem(
+    "ShieldAndDaggerUpgradedValue"
+  );
+  const ShieldAndDaggerupgradedValue = savedShieldAndDaggerUpgradedValue
+    ? Number(savedShieldAndDaggerUpgradedValue)
+    : 0;
   //=================================================================================
   //ARMOR
   /// load image form localstorage
@@ -400,6 +428,11 @@ const Enchant = ({
           <div className="EnchantProgress"></div>
           <EnchantSucces
             upgradedValue={upgradedValue}
+            ArmorupgradedValue={ArmorupgradedValue}
+            HelmetupgradedValue={HelmetupgradedValue}
+            ShoesupgradedValue={ShoesupgradedValue}
+            GlovesupgradedValue={GlovesupgradedValue}
+            ShieldAndDaggerupgradedValue={ShieldAndDaggerupgradedValue}
             selectedItemIndex={selectedItemIndex}
             savedImage={savedImage}
             savedName={savedName}

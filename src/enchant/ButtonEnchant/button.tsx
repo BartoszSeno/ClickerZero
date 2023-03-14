@@ -213,7 +213,6 @@ const ButtonForEnchant = ({
         (numArmorClicks + 1).toString()
       );
     }
-    console.log(localStorage.getItem(itemSavedDefArmorKey));
 
     const savedDefArmor =
       localStorage.getItem(itemSavedDefArmorKey) || armor.defLvl0;
@@ -270,7 +269,6 @@ const ButtonForEnchant = ({
         (numHelmetClicks + 1).toString()
       );
     }
-    console.log(localStorage.getItem(itemSavedDefHelmetKey));
 
     const savedDefHelmet =
       localStorage.getItem(itemSavedDefHelmetKey) || helmet.defLvl0;
@@ -326,7 +324,6 @@ const ButtonForEnchant = ({
         (numShoesClicks + 1).toString()
       );
     }
-    console.log(localStorage.getItem(itemSavedDefShoesKey));
 
     const savedDefShoes =
       localStorage.getItem(itemSavedDefShoesKey) || Shoes.defLvl0;
@@ -383,7 +380,6 @@ const ButtonForEnchant = ({
         (numGlovesClicks + 1).toString()
       );
     }
-    console.log(localStorage.getItem(itemSavedDefGlovesKey));
 
     const savedDefGloves =
       localStorage.getItem(itemSavedDefGlovesKey) || Gloves.defLvl0;
@@ -461,7 +457,6 @@ const ButtonForEnchant = ({
         (numShieldAndDaggerClicks + 1).toString()
       );
     }
-    console.log(localStorage.getItem(itemSavedDefShieldAndDaggerKey));
 
     const savedDefShieldAndDagger =
       localStorage.getItem(itemSavedDefShieldAndDaggerKey) ||
@@ -493,7 +488,6 @@ const ButtonForEnchant = ({
         (numShieldAndDaggerClicksDMG + 1).toString()
       );
     }
-    console.log(localStorage.getItem(itemSavedDmgShieldAndDaggerKey));
 
     const savedDmgShieldAndDagger =
       localStorage.getItem(itemSavedDmgShieldAndDaggerKey) ||
@@ -509,6 +503,7 @@ const ButtonForEnchant = ({
             EnchantPerClick(selectedItemIndex);
           } else if (itsArmor === true) {
             EnchantPerClickForArmor(selectedArmorItemIndex);
+            console.log("t");
           } else if (itsHelmet === true) {
             EnchantPerClickForHelmet(selectedHelmetItemIndex);
           } else if (itsShoes === true) {

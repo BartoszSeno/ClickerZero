@@ -12,8 +12,12 @@ const Information = ({ infoOpenClose }: { infoOpenClose: any }) => {
           <p>
             <h2>making readable code</h2>
           </p>
-          <p>Adding new weapon - subWeapon</p>
-          <p>Adding new Armor all types</p>
+          <p>
+            Adding new weapon - subWeapon <b>DONE</b>
+          </p>
+          <p>
+            Adding new Armor all types <b>DONE</b>
+          </p>
           <p>
             Changing store options sorting between: Armor's (all type), weapon
             (all type)

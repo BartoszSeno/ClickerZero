@@ -1,6 +1,5 @@
 import Damage from "./demage/demage";
 import Defence from "./defence/defence";
-import GearScore from "./GearScore/gearScore";
 
 const Statistic = ({
   mainWeaponData,
@@ -56,10 +55,6 @@ const Statistic = ({
             selectedShieldAndDaggerItem={selectedShieldAndDaggerItem}
           />
         </div>
-      </div>
-      <div className="GS">
-        <span>GS</span>
-        <GearScore />
       </div>
     </>
   );
