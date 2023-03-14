@@ -1,14 +1,21 @@
 import "../assets/css/Normal/Village/background.css";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 const MainIndexVillage = () => {
-  const mainBGScrollHorizontalRef = useRef<any>(null);
+  const mainBGScrollHorizontalRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = (scrollOffset: number) => {
     if (mainBGScrollHorizontalRef.current) {
       mainBGScrollHorizontalRef.current.scrollLeft += scrollOffset;
     }
   };
+
+  useEffect(() => {
+    if (mainBGScrollHorizontalRef.current) {
+      const { current } = mainBGScrollHorizontalRef;
+      current.scrollLeft = current.offsetWidth / 1;
+    }
+  }, []);
 
   return (
     <>
@@ -21,10 +28,7 @@ const MainIndexVillage = () => {
           handleScroll(e.deltaY);
         }}
       >
-        <div className="bg">
-          <div className="left"></div>
-          <div className="right"></div>
-        </div>
+        <div className="bg"></div>
       </div>
     </>
   );
