@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/ClickerZero/static/css/main.a07b6bfc.css",
-    "main.js": "/ClickerZero/static/js/main.7bea049d.js",
+    "main.css": "/ClickerZero/static/css/main.4435adc1.css",
+    "main.js": "/ClickerZero/static/js/main.4c3e45d3.js",
     "static/media/SpiritLvlOne.png": "/ClickerZero/static/media/SpiritLvlOne.64179b9e697761af5d3e.png",
     "index.html": "/ClickerZero/index.html",
-    "main.a07b6bfc.css.map": "/ClickerZero/static/css/main.a07b6bfc.css.map",
-    "main.7bea049d.js.map": "/ClickerZero/static/js/main.7bea049d.js.map"
+    "main.4435adc1.css.map": "/ClickerZero/static/css/main.4435adc1.css.map",
+    "main.4c3e45d3.js.map": "/ClickerZero/static/js/main.4c3e45d3.js.map"
   },
   "entrypoints": [
-    "static/css/main.a07b6bfc.css",
-    "static/js/main.7bea049d.js"
+    "static/css/main.4435adc1.css",
+    "static/js/main.4c3e45d3.js"
   ]
 }
