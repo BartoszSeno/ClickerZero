@@ -9,14 +9,10 @@ const Information = ({ infoOpenClose }: { infoOpenClose: any }) => {
       >
         <div className="workingon">
           <h1>Now working on:</h1>
+          <h2>making readable code</h2>
           <p>
-            <h2>making readable code</h2>
-          </p>
-          <p>
-            Adding new weapon - subWeapon <b>DONE</b>
-          </p>
-          <p>
-            Adding new Armor all types <b>DONE</b>
+            Creating new graphic for shop all type / weapon / armor, and for
+            blacksmith
           </p>
           <p>
             Changing store options sorting between: Armor's (all type), weapon

@@ -13,7 +13,7 @@ const MainIndexVillage = () => {
   useEffect(() => {
     if (mainBGScrollHorizontalRef.current) {
       const { current } = mainBGScrollHorizontalRef;
-      current.scrollLeft = current.offsetWidth / 1;
+      current.scrollLeft = current.offsetWidth / 0.632;
     }
   }, []);
 

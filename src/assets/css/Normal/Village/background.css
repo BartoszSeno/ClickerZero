@@ -8,7 +8,8 @@
 
 .bg {
   justify-content: space-between;
-  width: 6000px;
-  height: 90%;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/c9f6221d06cd76c2eb6112c02915613cbbf0e4d2/src/assets/images/testbg.png);
+  width: 8000px;
+  height: 100%;
+  background-size: 8000px;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/fianlbg.png?token=GHSAT0AAAAAAB3PJ2NBQUGNNH5EKULLGJSQZAXH2OQ);
 }

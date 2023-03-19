@@ -6,7 +6,7 @@ import MainApp from "./mainApp";
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/ClickerZero">
         <Routes>
           <Route path="/" element={<MainApp />}></Route>
           <Route path="/Village" element={<MainIndexVillage />}></Route>
