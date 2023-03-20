@@ -1,7 +1,6 @@
 #App-container {
   display: flex;
   justify-content: space-between;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/background/b4.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position-y: -100px;

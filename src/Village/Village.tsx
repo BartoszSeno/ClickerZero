@@ -1,5 +1,6 @@
 import "../assets/css/Normal/Village/background.css";
 import React, { useEffect, useRef } from "react";
+import MainApp from "../mainApp";
 
 const MainIndexVillage = () => {
   const mainBGScrollHorizontalRef = useRef<HTMLDivElement>(null);
@@ -28,7 +29,11 @@ const MainIndexVillage = () => {
           handleScroll(e.deltaY);
         }}
       >
-        <div className="bg"></div>
+        <div className="bg">
+          <div className="gameWindow">
+            <MainApp />
+          </div>
+        </div>
       </div>
     </>
   );

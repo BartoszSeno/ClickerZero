@@ -1,7 +1,6 @@
 #mainBGScrollHorizontal {
   width: 100%;
   height: 1000px;
-  background-color: red;
   overflow-x: scroll;
   white-space: nowrap;
 }
@@ -11,5 +10,12 @@
   width: 8000px;
   height: 100%;
   background-size: 8000px;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/fianlbg.png?token=GHSAT0AAAAAAB3PJ2NAZPPDBUSFNPZ6IV3MZAY2ATA);
+  background-position-y: -10px;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/33MainMap.png);
+}
+
+.gameWindow {
+  position: absolute;
+  width: 1920px;
+  height: 1000px;
 }
