@@ -11,7 +11,7 @@ const Information = ({ infoOpenClose }: { infoOpenClose: any }) => {
           <h1>Now working on:</h1>
           <h2>making readable code</h2>
           <p>
-            Creating new graphic for shop all type / weapon / armor, and for
+            Working on new graphic for shop all type / weapon / armor, and for
             blacksmith
           </p>
           <p>
