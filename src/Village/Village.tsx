@@ -28,10 +28,6 @@ const MainIndexVillage = () => {
   const [ASO, setASO] = useState<boolean>(false);
   const [MO, setMO] = useState<boolean>(false);
 
-  function OpenWeaponShop() {
-    setWSO(!WSO);
-  }
-
   return (
     <>
       <div

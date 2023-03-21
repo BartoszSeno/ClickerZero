@@ -10,25 +10,13 @@ const Information = ({ infoOpenClose }: { infoOpenClose: any }) => {
         <div className="workingon">
           <h1>Now working on:</h1>
           <h2>making readable code</h2>
-          <p>
-            Working on new graphic for shop all type / weapon / armor, and for
-            blacksmith
-          </p>
-          <p>
-            Changing store options sorting between: Armor's (all type), weapon
-            (all type)
-          </p>
-          <p>
-            zmienic tak by kazdy przedmiot mogl byc kupiony raz zmienic wygląd
-            po kupionym na szary dalsza widocznosc przedmiotu bez mozliwosci
-            klikniecia na niego bron np wisi rekojecia do gory arory ubrane na
-            manekina kaski na głowe manekina
-          </p>
+          <p>in the process of creating graphics for the village</p>
+          <p>separate graphics for each house</p>
+          <p>delete the current ui and create new one</p>
           <p>sell option</p>
         </div>
         <div className="news">
           <h1>What's next:</h1>
-          <p>New background</p>
           <p>Better Info box</p>
           <p>Create an item cost</p>
           <p>Adding cost for upgrade for each itmes</p>
@@ -38,7 +26,6 @@ const Information = ({ infoOpenClose }: { infoOpenClose: any }) => {
         </div>
         <div className="tofix">
           <h1>To fix:</h1>
-          <p>button style when enchant is open</p>
         </div>
       </div>
     </>
