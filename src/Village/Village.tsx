@@ -1,6 +1,11 @@
 import "../assets/css/Normal/Village/background.css";
-import React, { useEffect, useRef } from "react";
+import "../assets/css/Normal/Village/leftVillage.css";
+import React, { useEffect, useRef, useState } from "react";
 import MainApp from "../mainApp";
+import WeaponShop from "./WeaponShop/WShop";
+import BlackSmith from "./BlackSmitch/BlackSmitch";
+import ArmorShop from "./ArmorShop/AShop";
+import Motel from "./Motel/Motel";
 
 const MainIndexVillage = () => {
   const mainBGScrollHorizontalRef = useRef<HTMLDivElement>(null);
@@ -18,6 +23,15 @@ const MainIndexVillage = () => {
     }
   }, []);
 
+  const [WSO, setWSO] = useState<boolean>(false);
+  const [BSO, setBSO] = useState<boolean>(false);
+  const [ASO, setASO] = useState<boolean>(false);
+  const [MO, setMO] = useState<boolean>(false);
+
+  function OpenWeaponShop() {
+    setWSO(!WSO);
+  }
+
   return (
     <>
       <div
@@ -29,9 +43,82 @@ const MainIndexVillage = () => {
           handleScroll(e.deltaY);
         }}
       >
-        <div className="bg">
-          <div className="gameWindow">
+        <div className="GameMainWindow">
+          <div className="MidleMenu">
             <MainApp />
+          </div>
+          <div className="rightVillage"></div>
+          <div className="midVillage"></div>
+          <div className="leftVillage">
+            <div
+              className="WeaponShop"
+              onClick={(e) => {
+                setWSO(true);
+                setBSO(false);
+                setASO(false);
+                setMO(false);
+              }}
+            >
+              <WeaponShop
+                WSO={WSO}
+                setWSO={setWSO}
+                setBSO={setBSO}
+                setASO={setASO}
+                setMO={setMO}
+              />
+            </div>
+
+            <div
+              className="BlackSmith"
+              onClick={(e) => {
+                setWSO(false);
+                setBSO(true);
+                setASO(false);
+                setMO(false);
+              }}
+            >
+              <BlackSmith
+                BSO={BSO}
+                setWSO={setWSO}
+                setBSO={setBSO}
+                setASO={setASO}
+                setMO={setMO}
+              />
+            </div>
+            <div
+              className="ArmorShop"
+              onClick={(e) => {
+                setWSO(false);
+                setBSO(false);
+                setASO(true);
+                setMO(false);
+              }}
+            >
+              <ArmorShop
+                ASO={ASO}
+                setWSO={setWSO}
+                setBSO={setBSO}
+                setASO={setASO}
+                setMO={setMO}
+              />
+            </div>
+            <div
+              className="Motel"
+              onClick={(e) => {
+                setWSO(false);
+                setBSO(false);
+                setASO(false);
+                setMO(true);
+              }}
+            >
+              <Motel
+                MO={MO}
+                setWSO={setWSO}
+                setBSO={setBSO}
+                setASO={setASO}
+                setMO={setMO}
+              />
+            </div>
           </div>
         </div>
       </div>
