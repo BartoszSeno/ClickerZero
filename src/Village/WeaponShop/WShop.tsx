@@ -46,22 +46,20 @@ const WeaponShop = ({
         }}
       >
         <div
-          id="shop-container"
+          id="weapon-shop-container"
           style={{ display: ShopIsOpen ? "flex" : "none" }}
           onClick={(e) => {
             e.stopPropagation();
             setShopIsOpen(true);
           }}
         >
-          <div className="shelf" style={{ height: ShelfHeight }}>
-            <MainWeaponShop
-              mainWeaponData={mainWeaponData}
-              setMainWeaponData={setMainWeaponData}
-              count={count}
-              setCount={setCount}
-              SelectedOption={SelectedOption}
-            />
-          </div>
+          <MainWeaponShop
+            mainWeaponData={mainWeaponData}
+            setMainWeaponData={setMainWeaponData}
+            count={count}
+            setCount={setCount}
+            SelectedOption={SelectedOption}
+          />
         </div>
       </div>
     </>

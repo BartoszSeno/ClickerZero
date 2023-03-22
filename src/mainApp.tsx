@@ -12,7 +12,6 @@ import { HelmetImageAndNameAndCost } from "./data/equipment/helmet";
 import { ShoesImageAndNameAndCost } from "./data/equipment/Shoes";
 import { GlovesImageAndNameAndCost } from "./data/equipment/gloves";
 import { ShieldAndDaggerImageAndNameAndCost } from "./data/equipment/subWeapon";
-import Enchant from "./enchant";
 import Information from "./Information";
 import ButtonWithTierItemSorting from "./hook/ButtonForTierShow";
 import FastAccesButton from "./hook/FastAcces";

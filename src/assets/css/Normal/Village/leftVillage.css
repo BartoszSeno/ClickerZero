@@ -11,16 +11,17 @@
   display: none;
   background-color: black;
   z-index: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.test {
-  background-color: wheat;
-  height: 100px;
-  width: 100px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10000;
+#weapon-shop-container {
+  transform: scale(1.5);
+  height: 700px;
+  width: 1000px;
+  display: flex;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/wShop.png?token=GHSAT0AAAAAAB3PJ2NAQ4O7HSGXABAU2M6WZA3OJZA);
+  background-repeat: no-repeat;
   cursor: auto;
 }
