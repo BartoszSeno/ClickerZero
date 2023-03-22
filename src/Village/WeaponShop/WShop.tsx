@@ -1,4 +1,5 @@
 import { useState } from "react";
+import MainWeaponShop from "../../Shop/Items/MainWeaponShop";
 
 const WeaponShop = ({
   WSO,
@@ -6,12 +7,24 @@ const WeaponShop = ({
   setBSO,
   setASO,
   setMO,
+  ShelfHeight,
+  mainWeaponData,
+  setMainWeaponData,
+  count,
+  setCount,
+  SelectedOption,
 }: {
   WSO: boolean;
   setWSO: any;
   setBSO: any;
   setASO: any;
   setMO: any;
+  ShelfHeight: any;
+  mainWeaponData: any;
+  setMainWeaponData: any;
+  count: any;
+  setCount: any;
+  SelectedOption: any;
 }) => {
   const [ShopIsOpen, setShopIsOpen] = useState(true);
 
@@ -33,14 +46,22 @@ const WeaponShop = ({
         }}
       >
         <div
-          className="test"
+          id="shop-container"
           style={{ display: ShopIsOpen ? "flex" : "none" }}
           onClick={(e) => {
             e.stopPropagation();
             setShopIsOpen(true);
           }}
         >
-          WeaponShop
+          <div className="shelf" style={{ height: ShelfHeight }}>
+            <MainWeaponShop
+              mainWeaponData={mainWeaponData}
+              setMainWeaponData={setMainWeaponData}
+              count={count}
+              setCount={setCount}
+              SelectedOption={SelectedOption}
+            />
+          </div>
         </div>
       </div>
     </>

@@ -601,44 +601,6 @@ function MainApp() {
                   />
                 </>
               )}
-              {activeTab === "enchant" && (
-                <Enchant
-                  UpgradedDmgMainWeapon={UpgradedDmgMainWeapon}
-                  setUpgradedDmgMainWeapon={setUpgradedDmgMainWeapon}
-                  mainWeaponData={mainWeaponData}
-                  setUpgradedNamesMainWeapon={setUpgradedNamesMainWeapon}
-                  UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
-                  UpgradedDefArmor={UpgradedDefArmor}
-                  setUpgradedDefArmor={setUpgradedDefArmor}
-                  ArmorData={ArmorData}
-                  setUpgradedNamesArmor={setUpgradedNamesArmor}
-                  UpgradedNamesArmor={UpgradedNamesArmor}
-                  HelmetData={HelmetData}
-                  UpgradedNamesHelmet={UpgradedNamesHelmet}
-                  setUpgradedNamesHelmet={setUpgradedNamesHelmet}
-                  setUpgradedDefHelmet={setUpgradedDefHelmet}
-                  UpgradedDefHelmet={UpgradedDefHelmet}
-                  ShoesData={ShoesData}
-                  UpgradedNamesShoes={UpgradedNamesShoes}
-                  setUpgradedNamesShoes={setUpgradedNamesShoes}
-                  setUpgradedDefShoes={setUpgradedDefShoes}
-                  UpgradedDefShoes={UpgradedDefShoes}
-                  GlovesData={GlovesData}
-                  UpgradedNamesGloves={UpgradedNamesGloves}
-                  setUpgradedNamesGloves={setUpgradedNamesGloves}
-                  setUpgradedDefGloves={setUpgradedDefGloves}
-                  UpgradedDefGloves={UpgradedDefGloves}
-                  ShieldAndDaggerData={ShieldAndDaggerData}
-                  UpgradedNamesShieldAndDagger={UpgradedNamesShieldAndDagger}
-                  setUpgradedDefShieldAndDagger={setUpgradedDefShieldAndDagger}
-                  UpgradedDefShieldAndDagger={UpgradedDefShieldAndDagger}
-                  setUpgradedNamesShieldAndDagger={
-                    setUpgradedNamesShieldAndDagger
-                  }
-                  setUpgradedDmgShieldAndDagger={setUpgradedDmgShieldAndDagger}
-                  UpgradedDmgShieldAndDagger={UpgradedDmgShieldAndDagger}
-                />
-              )}
             </div>
           </div>
         </div>

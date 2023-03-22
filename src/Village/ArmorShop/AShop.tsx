@@ -1,17 +1,60 @@
 import { useState } from "react";
+import HelmetShop from "../../Shop/Items/HelmetShop";
+import ArmorShop from "../../Shop/Items/ArmorShop";
+import GlovesShop from "../../Shop/Items/GlovesShop";
+import ShoesShop from "../../Shop/Items/ShoesShop";
 
-const ArmorShop = ({
+const ArmorShops = ({
   ASO,
   setWSO,
   setBSO,
   setASO,
   setMO,
+  ShelfHeight,
+  count,
+  setCount,
+  SelectedOption,
+  //helmet
+  HelmetData,
+  setHelmetData,
+  //armor
+
+  ArmorData,
+  setArmorData,
+  //gloves
+
+  GlovesData,
+  setGlovesData,
+  //shoes
+
+  ShoesData,
+  setShoesData,
 }: {
   ASO: boolean;
   setWSO: any;
   setBSO: any;
   setASO: any;
   setMO: any;
+  ShelfHeight: any;
+
+  count: any;
+  setCount: any;
+  SelectedOption: any;
+  //helmet
+  HelmetData: any;
+  setHelmetData: any;
+  //armor
+
+  ArmorData: any;
+  setArmorData: any;
+  //gloves
+
+  GlovesData: any;
+  setGlovesData: any;
+  //shoes
+
+  ShoesData: any;
+  setShoesData: any;
 }) => {
   const [ArmorShopIsOpen, setArmorShopIsOpen] = useState(true);
 
@@ -32,18 +75,47 @@ const ArmorShop = ({
         }}
       >
         <div
-          className="test"
+          id="shop-container"
           style={{ display: ArmorShopIsOpen ? "flex" : "none" }}
           onClick={(e) => {
             e.stopPropagation();
             setArmorShopIsOpen(true);
           }}
         >
-          ArmorShop
+          <div className="shelf" style={{ height: ShelfHeight }}>
+            <HelmetShop
+              HelmetData={HelmetData}
+              setHelmetData={setHelmetData}
+              count={count}
+              setCount={setCount}
+              SelectedOption={SelectedOption}
+            />
+            <ArmorShop
+              ArmorData={ArmorData}
+              setArmorData={setArmorData}
+              count={count}
+              setCount={setCount}
+              SelectedOption={SelectedOption}
+            />
+            <GlovesShop
+              GlovesData={GlovesData}
+              setGlovesData={setGlovesData}
+              count={count}
+              setCount={setCount}
+              SelectedOption={SelectedOption}
+            />
+            <ShoesShop
+              ShoesData={ShoesData}
+              setShoesData={setShoesData}
+              count={count}
+              setCount={setCount}
+              SelectedOption={SelectedOption}
+            />
+          </div>
         </div>
       </div>
     </>
   );
 };
 
-export default ArmorShop;
+export default ArmorShops;
