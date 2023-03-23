@@ -33,10 +33,10 @@ const RedAndPurpleMainWeaponShop = ({
   };
 
   const [selectedItems, setSelectedItems] = useState<any[]>([]);
-  const [timeLeft, setTimeLeft] = useState<number>(120);
+  const [timeLeftRAP, settimeLeftRAP] = useState<number>(120);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const interval1 = setInterval(() => {
       const randomIndexes: number[] = [];
       while (randomIndexes.length < 2) {
         const randomIndex = Math.floor(Math.random() * mainWeaponData.length);
@@ -47,7 +47,7 @@ const RedAndPurpleMainWeaponShop = ({
       const selectedItems = randomIndexes.map((index) => mainWeaponData[index]);
       setSelectedItems(selectedItems);
       localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
-      setTimeLeft(120); // resetujemy czas pozostały do zresetowania przedmiotu na 60 sekund
+      settimeLeftRAP(120); // resetujemy czas pozostały do zresetowania przedmiotu na 60 sekund
     }, 120000);
 
     const savedItems = localStorage.getItem("selectedItems");
@@ -56,15 +56,18 @@ const RedAndPurpleMainWeaponShop = ({
     }
 
     const interval2 = setInterval(() => {
-      setTimeLeft((prevTimeLeft) => prevTimeLeft - 1);
+      settimeLeftRAP((prevtimeLeftRAP) => prevtimeLeftRAP - 1);
     }, 1000);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval1);
+      clearInterval(interval2);
+    };
   }, []);
 
   return (
     <>
-      <div>{timeLeft}s</div>
+      <div style={{ position: "absolute", color: "white" }}>{timeLeftRAP}s</div>
       {selectedItems.map((data: any, index: any) => {
         return (
           <button
