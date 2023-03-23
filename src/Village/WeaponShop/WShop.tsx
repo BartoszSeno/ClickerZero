@@ -53,13 +53,22 @@ const WeaponShop = ({
             setShopIsOpen(true);
           }}
         >
-          <MainWeaponShop
-            mainWeaponData={mainWeaponData}
-            setMainWeaponData={setMainWeaponData}
-            count={count}
-            setCount={setCount}
-            SelectedOption={SelectedOption}
-          />
+          <span className="WeaponWall">
+            <MainWeaponShop
+              mainWeaponData={mainWeaponData}
+              setMainWeaponData={setMainWeaponData}
+              count={count}
+              setCount={setCount}
+              SelectedOption={SelectedOption}
+            />
+          </span>
+        </div>
+        <div className="test">
+          <p>Do zrobienia:</p>
+          <p>by bronie pokazywały sie na ścianie randomowo</p>
+          <p>2 bronie od legendarnego pokazywały sie na kolumnach randomowo</p>
+          <p>pokazać przedmiot na prawo od sklepu po jego statystki</p>
+          <p>pokazac róznice dmg z aktualnej broni</p>
         </div>
       </div>
     </>

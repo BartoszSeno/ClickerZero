@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const MainWeaponShop = ({
   mainWeaponData,
@@ -31,9 +31,49 @@ const MainWeaponShop = ({
     );
   };
 
+  function shuffle(array: any[]) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  const [timeLeft, setTimeLeft] = useState(60);
+
+  useEffect(() => {
+    let counter = 0;
+
+    const intervalId = setInterval(() => {
+      setTimeLeft((prevTime) => {
+        if (prevTime === 0) {
+          clearInterval(intervalId);
+          shuffle(mainWeaponData);
+          setTimeLeft(60);
+          return 60;
+        } else {
+          return prevTime - 1;
+        }
+      });
+
+      counter++;
+      if (counter === 60) {
+        shuffle(mainWeaponData);
+        setTimeLeft(60);
+        counter = 0;
+      }
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <>
-      {mainWeaponData.map((data: any, index: any) => {
+      <div style={{ position: "absolute", color: "white" }}>
+        Time left: {timeLeft}s
+      </div>
+
+      {mainWeaponData.slice(0, 20).map((data: any, index: any) => {
         if (data.isVisible) {
           return (
             <button
@@ -52,13 +92,6 @@ const MainWeaponShop = ({
                     : "none",
               }}
             >
-              <div className="CostAndPrice">
-                <span className={`itemName ${data.tier}C`}>{data.name}</span>
-                <span className="PriceForPurchasable">
-                  {data.cost}({data.count})
-                </span>
-              </div>
-
               <img
                 className="OptionWeaponImg"
                 src={data.image}

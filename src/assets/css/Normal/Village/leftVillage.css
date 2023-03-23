@@ -2,6 +2,8 @@
 .MainBlackSmith,
 .MainArmorShop,
 .MainMotel {
+  margin-top: -5px;
+  padding-bottom: 15px;
   height: 100%;
   width: 100%;
   position: fixed;
@@ -17,11 +19,38 @@
 }
 
 #weapon-shop-container {
-  transform: scale(1.5);
+  transform: scale(1.2);
   height: 700px;
   width: 1000px;
   display: flex;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/wShop.png?token=GHSAT0AAAAAAB3PJ2NAQ4O7HSGXABAU2M6WZA3OJZA);
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/wShop.png);
   background-repeat: no-repeat;
   cursor: auto;
+}
+.test {
+  color: white;
+}
+
+.itemsForPurchasable {
+  width: 80px;
+  height: 0px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  margin-left: 40px;
+}
+
+.itemsForPurchasable img {
+  transform: rotate(90deg);
+  position: relative;
+  height: 100px;
+}
+
+.WeaponWall {
+  height: 270px;
+  width: 860px;
+  margin-left: 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
