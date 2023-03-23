@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable array-callback-return */
 import React, { useEffect, useState } from "react";
 
@@ -36,6 +37,10 @@ const MainWeaponShop = ({
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
+
+    // Save the shuffled array to localStorage
+    localStorage.setItem("mainWeaponDataShop", JSON.stringify(array));
+
     return array;
   }
 
@@ -65,43 +70,52 @@ const MainWeaponShop = ({
     }, 1000);
 
     return () => clearInterval(intervalId);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    const storedData = localStorage.getItem("mainWeaponDataShop");
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      setMainWeaponData(parsedData);
+    }
+  }, []);
   return (
     <>
       <div style={{ position: "absolute", color: "white" }}>
         Time left: {timeLeft}s
       </div>
 
-      {mainWeaponData.slice(0, 20).map((data: any, index: any) => {
-        if (data.tier !== "purple" && data.tier !== "red") {
-          return (
-            <button
-              id={data.tier}
-              className={`itemsForPurchasable ${index} `}
-              key={index}
-              onClick={(e) => {
-                handleClick(index);
-                setCount(count - data.cost);
-              }}
-              disabled={count < data.cost}
-              style={{
-                display:
-                  SelectedOption === data.tier || SelectedOption === ""
-                    ? "flex"
-                    : "none",
-              }}
-            >
-              <img
-                className="OptionWeaponImg"
-                src={data.image}
-                alt={`${data.name} weapon`}
-              />
-            </button>
-          );
-        }
-      })}
+      {mainWeaponData
+        .filter((data: any) => data.id > 1)
+        .slice(0, 20)
+        .map((data: any, index: any) => {
+          if (data.tier !== "purple" && data.tier !== "red") {
+            return (
+              <button
+                id={data.tier}
+                className={`itemsForPurchasable ${index} `}
+                key={index}
+                onClick={(e) => {
+                  handleClick(index);
+                  setCount(count - data.cost);
+                }}
+                disabled={count < data.cost}
+                style={{
+                  display:
+                    SelectedOption === data.tier || SelectedOption === ""
+                      ? "flex"
+                      : "none",
+                }}
+              >
+                <img
+                  className="OptionWeaponImg"
+                  src={data.image}
+                  alt={`${data.name} weapon`}
+                />
+              </button>
+            );
+          }
+        })}
     </>
   );
 };

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable array-callback-return */
 import React, { useEffect, useState } from "react";
 
@@ -31,80 +32,65 @@ const RedAndPurpleMainWeaponShop = ({
     );
   };
 
-  function shuffle(array: any[]) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
-
-  const [timeLeftRAP, settimeLeftRAP] = useState(60);
+  const [selectedItems, setSelectedItems] = useState<any[]>([]);
+  const [timeLeft, setTimeLeft] = useState<number>(120);
 
   useEffect(() => {
-    let counter = 0;
-
-    const intervalId = setInterval(() => {
-      settimeLeftRAP((prevTime) => {
-        if (prevTime === 0) {
-          clearInterval(intervalId);
-          shuffle(mainWeaponData);
-          settimeLeftRAP(60);
-          return 60;
-        } else {
-          return prevTime - 1;
+    const interval = setInterval(() => {
+      const randomIndexes: number[] = [];
+      while (randomIndexes.length < 2) {
+        const randomIndex = Math.floor(Math.random() * mainWeaponData.length);
+        if (!randomIndexes.includes(randomIndex)) {
+          randomIndexes.push(randomIndex);
         }
-      });
-
-      counter++;
-      if (counter === 60) {
-        shuffle(mainWeaponData);
-        settimeLeftRAP(60);
-        counter = 0;
       }
+      const selectedItems = randomIndexes.map((index) => mainWeaponData[index]);
+      setSelectedItems(selectedItems);
+      localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
+      setTimeLeft(120); // resetujemy czas pozostały do zresetowania przedmiotu na 60 sekund
+    }, 120000);
+
+    const savedItems = localStorage.getItem("selectedItems");
+    if (savedItems) {
+      setSelectedItems(JSON.parse(savedItems));
+    }
+
+    const interval2 = setInterval(() => {
+      setTimeLeft((prevTimeLeft) => prevTimeLeft - 1);
     }, 1000);
 
-    return () => clearInterval(intervalId);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <>
-      <div style={{ position: "absolute", color: "white" }}>
-        Time left: {timeLeftRAP}s
-      </div>
-
-      {mainWeaponData
-        .filter((data: any) => data.id >= 43)
-        .slice(0, 2)
-        .map((data: any, index: any) => {
-          if (data.isVisible) {
-            return (
-              <button
-                id={data.tier}
-                className={`RAPitemsForPurchasable ${index} `}
-                key={index}
-                onClick={(e) => {
-                  handleClick(index);
-                  setCount(count - data.cost);
-                }}
-                disabled={count < data.cost}
-                style={{
-                  display:
-                    SelectedOption === data.tier || SelectedOption === ""
-                      ? "flex"
-                      : "none",
-                }}
-              >
-                <img
-                  className="OptionWeaponImg"
-                  src={data.image}
-                  alt={`${data.name} weapon`}
-                />
-              </button>
-            );
-          }
-        })}
+      <div>{timeLeft}s</div>
+      {selectedItems.map((data: any, index: any) => {
+        return (
+          <button
+            id={data.tier}
+            className={`RAPitemsForPurchasable ${index} `}
+            key={index}
+            onClick={(e) => {
+              handleClick(index);
+              setCount(count - data.cost);
+            }}
+            disabled={count < data.cost}
+            style={{
+              display:
+                SelectedOption === data.tier || SelectedOption === ""
+                  ? "flex"
+                  : "none",
+            }}
+          >
+            <img
+              className="OptionWeaponImg"
+              src={data.image}
+              alt={`${data.name} weapon`}
+            />
+          </button>
+        );
+      })}
     </>
   );
 };

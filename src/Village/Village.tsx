@@ -13,6 +13,7 @@ import { HelmetImageAndNameAndCost } from "../data/equipment/helmet";
 import { ShoesImageAndNameAndCost } from "../data/equipment/Shoes";
 import { GlovesImageAndNameAndCost } from "../data/equipment/gloves";
 import { ShieldAndDaggerImageAndNameAndCost } from "../data/equipment/subWeapon";
+import ClearLocalStorageButton from "../hook/RemoveLS";
 
 const MainIndexVillage = () => {
   // ARRAY OF THE ENTIRE ShieldAndDagger
@@ -579,7 +580,9 @@ const MainIndexVillage = () => {
       >
         <div className="GameMainWindow">
           <div className="rightVillage"></div>
-          <div className="midVillage"></div>
+          <div className="midVillage">
+            <ClearLocalStorageButton />
+          </div>
           <div className="leftVillage">
             <div
               className="WeaponShop"

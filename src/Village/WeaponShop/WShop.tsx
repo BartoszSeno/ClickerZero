@@ -75,7 +75,6 @@ const WeaponShop = ({
         </div>
         <div className="test">
           <p>Do zrobienia:</p>
-          <p>2 bronie od legendarnego pokazywały sie na kolumnach randomowo</p>
           <p>pokazać przedmiot na prawo od sklepu po jego statystki</p>
           <p>pokazac róznice dmg z aktualnej broni</p>
         </div>
