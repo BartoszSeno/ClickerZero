@@ -1,7 +1,7 @@
 /* eslint-disable array-callback-return */
 import React, { useEffect, useState } from "react";
 
-const MainWeaponShop = ({
+const RedAndPurpleMainWeaponShop = ({
   mainWeaponData,
   setMainWeaponData,
   count,
@@ -39,17 +39,17 @@ const MainWeaponShop = ({
     return array;
   }
 
-  const [timeLeft, setTimeLeft] = useState(60);
+  const [timeLeftRAP, settimeLeftRAP] = useState(60);
 
   useEffect(() => {
     let counter = 0;
 
     const intervalId = setInterval(() => {
-      setTimeLeft((prevTime) => {
+      settimeLeftRAP((prevTime) => {
         if (prevTime === 0) {
           clearInterval(intervalId);
           shuffle(mainWeaponData);
-          setTimeLeft(60);
+          settimeLeftRAP(60);
           return 60;
         } else {
           return prevTime - 1;
@@ -59,7 +59,7 @@ const MainWeaponShop = ({
       counter++;
       if (counter === 60) {
         shuffle(mainWeaponData);
-        setTimeLeft(60);
+        settimeLeftRAP(60);
         counter = 0;
       }
     }, 1000);
@@ -71,39 +71,42 @@ const MainWeaponShop = ({
   return (
     <>
       <div style={{ position: "absolute", color: "white" }}>
-        Time left: {timeLeft}s
+        Time left: {timeLeftRAP}s
       </div>
 
-      {mainWeaponData.slice(0, 20).map((data: any, index: any) => {
-        if (data.tier !== "purple" && data.tier !== "red") {
-          return (
-            <button
-              id={data.tier}
-              className={`itemsForPurchasable ${index} `}
-              key={index}
-              onClick={(e) => {
-                handleClick(index);
-                setCount(count - data.cost);
-              }}
-              disabled={count < data.cost}
-              style={{
-                display:
-                  SelectedOption === data.tier || SelectedOption === ""
-                    ? "flex"
-                    : "none",
-              }}
-            >
-              <img
-                className="OptionWeaponImg"
-                src={data.image}
-                alt={`${data.name} weapon`}
-              />
-            </button>
-          );
-        }
-      })}
+      {mainWeaponData
+        .filter((data: any) => data.id >= 43)
+        .slice(0, 2)
+        .map((data: any, index: any) => {
+          if (data.isVisible) {
+            return (
+              <button
+                id={data.tier}
+                className={`RAPitemsForPurchasable ${index} `}
+                key={index}
+                onClick={(e) => {
+                  handleClick(index);
+                  setCount(count - data.cost);
+                }}
+                disabled={count < data.cost}
+                style={{
+                  display:
+                    SelectedOption === data.tier || SelectedOption === ""
+                      ? "flex"
+                      : "none",
+                }}
+              >
+                <img
+                  className="OptionWeaponImg"
+                  src={data.image}
+                  alt={`${data.name} weapon`}
+                />
+              </button>
+            );
+          }
+        })}
     </>
   );
 };
 
-export default MainWeaponShop;
+export default RedAndPurpleMainWeaponShop;

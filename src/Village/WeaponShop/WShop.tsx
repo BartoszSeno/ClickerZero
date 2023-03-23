@@ -1,5 +1,6 @@
 import { useState } from "react";
 import MainWeaponShop from "../../Shop/Items/MainWeaponShop";
+import RedAndPurpleMainWeaponShop from "../../Shop/Items/RedAndPurpleWeapon";
 
 const WeaponShop = ({
   WSO,
@@ -62,10 +63,18 @@ const WeaponShop = ({
               SelectedOption={SelectedOption}
             />
           </span>
+          <span className="RedAndPurple">
+            <RedAndPurpleMainWeaponShop
+              mainWeaponData={mainWeaponData}
+              setMainWeaponData={setMainWeaponData}
+              count={count}
+              setCount={setCount}
+              SelectedOption={SelectedOption}
+            />
+          </span>
         </div>
         <div className="test">
           <p>Do zrobienia:</p>
-          <p>by bronie pokazywały sie na ścianie randomowo</p>
           <p>2 bronie od legendarnego pokazywały sie na kolumnach randomowo</p>
           <p>pokazać przedmiot na prawo od sklepu po jego statystki</p>
           <p>pokazac róznice dmg z aktualnej broni</p>
