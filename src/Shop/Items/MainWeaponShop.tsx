@@ -32,60 +32,46 @@ const MainWeaponShop = ({
     );
   };
 
-  function shuffle(array: any[]) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-
-    // Save the shuffled array to localStorage
-    localStorage.setItem("mainWeaponDataShop", JSON.stringify(array));
-
-    return array;
-  }
-
-  const [timeLeft, setTimeLeft] = useState(60);
+  const [selectedItemsN, setselectedItemsN] = useState<any[]>([]);
+  const [timeLeft, settimeLeft] = useState<number>(60);
 
   useEffect(() => {
-    let counter = 0;
+    const interval1 = setInterval(() => {
+      const randomIndexes: number[] = [];
+      while (randomIndexes.length < 20) {
+        const randomIndex = Math.floor(Math.random() * mainWeaponData.length);
 
-    const intervalId = setInterval(() => {
-      setTimeLeft((prevTime) => {
-        if (prevTime === 0) {
-          clearInterval(intervalId);
-          shuffle(mainWeaponData);
-          setTimeLeft(60);
-          return 60;
-        } else {
-          return prevTime - 1;
+        if (!randomIndexes.includes(randomIndex)) {
+          randomIndexes.push(randomIndex);
         }
-      });
-
-      counter++;
-      if (counter === 60) {
-        shuffle(mainWeaponData);
-        setTimeLeft(60);
-        counter = 0;
       }
+      const selectedItemsN = randomIndexes.map(
+        (index) => mainWeaponData[index]
+      );
+      setselectedItemsN(selectedItemsN);
+      localStorage.setItem("selectedItemsN", JSON.stringify(selectedItemsN));
+      settimeLeft(60); // resetujemy czas pozostały do zresetowania przedmiotu na 60 sekund
+    }, 60000);
+
+    const savedItems = localStorage.getItem("selectedItemsN");
+    if (savedItems) {
+      setselectedItemsN(JSON.parse(savedItems));
+    }
+
+    const interval2 = setInterval(() => {
+      settimeLeft((prevtimeLeft) => prevtimeLeft - 1);
     }, 1000);
 
-    return () => clearInterval(intervalId);
-  }, []);
-
-  useEffect(() => {
-    const storedData = localStorage.getItem("mainWeaponDataShop");
-    if (storedData) {
-      const parsedData = JSON.parse(storedData);
-      setMainWeaponData(parsedData);
-    }
+    return () => {
+      clearInterval(interval1);
+      clearInterval(interval2);
+    };
   }, []);
   return (
     <>
-      <div style={{ position: "absolute", color: "white" }}>
-        Time left: {timeLeft}s
-      </div>
+      <div style={{ position: "absolute", color: "white" }}>{timeLeft}s</div>
 
-      {mainWeaponData
+      {selectedItemsN
         .filter((data: any) => data.id > 1)
         .slice(0, 20)
         .map((data: any, index: any) => {

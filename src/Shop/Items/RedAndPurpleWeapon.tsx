@@ -92,7 +92,6 @@ const RedAndPurpleMainWeaponShop = ({
               className="OptionWeaponImg"
               src={data.image}
               alt={`${data.name} weapon`}
-              style={{ backgroundColor: data.tier }}
             />
           </button>
         );
