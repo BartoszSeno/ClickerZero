@@ -39,7 +39,9 @@ const RedAndPurpleMainWeaponShop = ({
     const interval1 = setInterval(() => {
       const randomIndexes: number[] = [];
       while (randomIndexes.length < 2) {
-        const randomIndex = Math.floor(Math.random() * mainWeaponData.length);
+        const randomIndex =
+          Math.floor(Math.random() * (mainWeaponData.length - 43)) + 43;
+
         if (!randomIndexes.includes(randomIndex)) {
           randomIndexes.push(randomIndex);
         }
@@ -90,6 +92,7 @@ const RedAndPurpleMainWeaponShop = ({
               className="OptionWeaponImg"
               src={data.image}
               alt={`${data.name} weapon`}
+              style={{ backgroundColor: data.tier }}
             />
           </button>
         );
