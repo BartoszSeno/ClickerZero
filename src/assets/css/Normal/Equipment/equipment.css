@@ -1,5 +1,5 @@
 #equipment {
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/twww2.png?token=GHSAT0AAAAAAB3PJ2NBZK5XGGFLPQH4M4P6ZA7JIUA);
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/invenory/FullUi.png);
   background-repeat: no-repeat;
   display: flex;
   height: 350px;
@@ -12,7 +12,7 @@
   width: 66px;
   height: 64px;
   cursor: pointer;
-  background-color: rgba(255, 0, 0, 0.411);
+  border-radius: 16px;
 }
 #loopItems {
   height: 77.2px;
@@ -23,7 +23,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/teeeeee.png?token=GHSAT0AAAAAAB3PJ2NA7WENYSLHJAB3TCXOZA7JJAA);
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/invenory/invSlots.png);
 }
 
 #option-container {
@@ -35,7 +35,7 @@
   z-index: 100;
   color: white;
   height: 314px;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/teeeeee.png?token=GHSAT0AAAAAAB3PJ2NA7WENYSLHJAB3TCXOZA7JJAA);
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/invenory/invSlots.png);
 }
 
 .och {
@@ -76,7 +76,7 @@
   cursor: pointer;
   margin-top: 7.4px;
   margin-left: 6.8px;
-  background-color: rgba(255, 0, 0, 0.479);
+  border-radius: 19px;
 }
 
 .option:active,
@@ -84,13 +84,11 @@
   background-color: rgb(83, 83, 83);
 }
 .equipmentImgeq {
-  margin-top: 4px;
-  height: 60px;
+  height: 50px;
 }
 
 .OptionEquipmentImg {
-  margin-top: 5px;
-  height: 35px;
+  height: 52px;
 }
 
 .itemName {
