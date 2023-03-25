@@ -7,10 +7,14 @@ function Helmet({
   HelmetData,
   UpgradedNamesHelmet,
   handleHelmetItemSelect,
+  isActive,
+  handleItemClick,
 }: {
   HelmetData: any;
   UpgradedNamesHelmet: any;
   handleHelmetItemSelect: any;
+  isActive: any;
+  handleItemClick: any;
 }) {
   // Function that gets called when an item is clicked on
   function GetIdPerClick(index: any) {
@@ -29,20 +33,11 @@ function Helmet({
   const savedName = localStorage.getItem("selectedHelmetItemNameEquip");
   const savedTier = localStorage.getItem("selectedHelmetItemTierEquip");
 
-  // State hook that tracks whether a component should be open or closed
-  const [OpenAndCloseForHelmet, setOpenAndCloseForHelmet] =
-    useState<boolean>(false);
-
-  // Function that toggles the open/close state of a component
-  function OpenClose() {
-    setOpenAndCloseForHelmet(!OpenAndCloseForHelmet);
-  }
-
   return (
     <>
       <div
         className={`items-box Helmet ${savedTier}B`}
-        onClick={() => OpenClose()}
+        onClick={() => handleItemClick()}
       >
         <div className="selectedItem">
           <img
@@ -57,7 +52,7 @@ function Helmet({
         </div>
         <div
           id="option-container"
-          className={OpenAndCloseForHelmet ? "open" : "close"}
+          className={`och ${isActive ? "open" : "close"}`}
         >
           <HelmetLoop
             HelmetData={HelmetData}
@@ -65,6 +60,7 @@ function Helmet({
             handleHelmetItemSelect={handleHelmetItemSelect}
             GetIdPerClick={GetIdPerClick}
           />
+          h
         </div>
       </div>
     </>

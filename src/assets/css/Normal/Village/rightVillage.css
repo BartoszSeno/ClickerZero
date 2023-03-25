@@ -45,6 +45,7 @@
   transform: rotate(90deg);
   position: relative;
   height: 85px;
+  transition: 0.1s;
 }
 
 .WeaponWall {
@@ -80,4 +81,12 @@
   transform: rotate(90deg);
   position: relative;
   height: 100px;
+  transition: 0.1s;
+}
+
+.RAPitemsForPurchasable img:hover,
+.itemsForPurchasable img:hover {
+  cursor: pointer;
+  transition: 0.08s;
+  transform: scale(1.1) rotate(90deg);
 }

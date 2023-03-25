@@ -15,6 +15,8 @@ const MainWeaponShop = ({
   setCount: any;
   SelectedOption: any;
 }) => {
+  const [disabledButtons, setDisabledButtons] = useState<any>([]);
+
   const handleClick = (index: any) => {
     //MAIN WEAPON
     // Create a new array with the same elements as `mainWeaponData`
@@ -22,7 +24,7 @@ const MainWeaponShop = ({
     // Set the `isBought` property of the item at `index` to `true`
     newMainWeaponData[index].isBought = true;
     // Increment the `count` property of the item at `index`, or set it to 1 if it doesn't exist
-    newMainWeaponData[index].count = (newMainWeaponData[index].count || 0) + 1;
+    newMainWeaponData[index].count = newMainWeaponData[index].count || 1;
     // Update the `mainWeaponData` state with the new array
     setMainWeaponData(newMainWeaponData);
     // Set an item in local storage serialized as JSON
@@ -30,6 +32,7 @@ const MainWeaponShop = ({
       "MainWeaponImageAndNameAndCost",
       JSON.stringify(newMainWeaponData)
     );
+    setDisabledButtons([...disabledButtons, index]);
   };
 
   const [selectedItemsN, setselectedItemsN] = useState<any[]>([]);
@@ -67,6 +70,7 @@ const MainWeaponShop = ({
       clearInterval(interval2);
     };
   }, []);
+
   return (
     <>
       <div style={{ position: "absolute", color: "white" }}>{timeLeft}s</div>

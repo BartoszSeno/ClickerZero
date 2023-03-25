@@ -14,7 +14,7 @@ function ShoesLoop({
       {ShoesData.map((data: any, index: any) => {
         const upgradedName = UpgradedNamesShoes[index];
         return (
-          <div key={`${data.id}_${index}`}>
+          <div key={`${data.id}_${index}`} id="loopItems">
             {Array.from({ length: data.count }, (_, i) => {
               return (
                 <div
@@ -31,9 +31,6 @@ function ShoesLoop({
                     src={data.image}
                     alt={`${data.name} Shoes`}
                   />
-                  <span className={`itemName ${data.tier}C`}>
-                    {upgradedName ? upgradedName : data.name}
-                  </span>
                 </div>
               );
             })}

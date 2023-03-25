@@ -1,5 +1,6 @@
 import "../assets/css/Normal/Village/background.css";
-import "../assets/css/Normal/Village/leftVillage.css";
+import "../assets/css/Normal/Village/midVillage.css";
+import "../assets/css/Normal/Village/rightVillage.css";
 import "../assets/css/Normal/shop/shop.css";
 
 import React, { useEffect, useRef, useState } from "react";
@@ -14,6 +15,8 @@ import { ShoesImageAndNameAndCost } from "../data/equipment/Shoes";
 import { GlovesImageAndNameAndCost } from "../data/equipment/gloves";
 import { ShieldAndDaggerImageAndNameAndCost } from "../data/equipment/subWeapon";
 import ClearLocalStorageButton from "../hook/RemoveLS";
+import Eq from "../Eq";
+import Clicker from "../hook/ClickerCount";
 
 const MainIndexVillage = () => {
   // ARRAY OF THE ENTIRE ShieldAndDagger
@@ -579,11 +582,42 @@ const MainIndexVillage = () => {
         }}
       >
         <div className="GameMainWindow">
-          <div className="rightVillage"></div>
+          <div className="leftVillage"></div>
           <div className="midVillage">
+            <Eq
+              mainWeaponData={mainWeaponData}
+              UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
+              handleItemSelect={handleItemSelect}
+              selectedItem={selectedItem}
+              ArmorData={ArmorData}
+              UpgradedNamesArmor={UpgradedNamesArmor}
+              handleArmorItemSelect={handleArmorItemSelect}
+              selectedArmorItem={selectedArmorItem}
+              HelmetData={HelmetData}
+              UpgradedNamesHelmet={UpgradedNamesHelmet}
+              handleHelmetItemSelect={handleHelmetItemSelect}
+              selectedHelmetItem={selectedHelmetItem}
+              ShoesData={ShoesData}
+              UpgradedNamesShoes={UpgradedNamesShoes}
+              handleShoesItemSelect={handleShoesItemSelect}
+              selectedShoesItem={selectedShoesItem}
+              GlovesData={GlovesData}
+              UpgradedNamesGloves={UpgradedNamesGloves}
+              handleGlovesItemSelect={handleGlovesItemSelect}
+              selectedGlovesItem={selectedGlovesItem}
+              ShieldAndDaggerData={ShieldAndDaggerData}
+              UpgradedNamesShieldAndDagger={UpgradedNamesShieldAndDagger}
+              handleShieldAndDaggerItemSelect={handleShieldAndDaggerItemSelect}
+              selectedShieldAndDaggerItem={selectedShieldAndDaggerItem}
+            />
+            <Clicker
+              setCount={setCount}
+              count={count}
+              FullCountPerClick={FullCountPerClick}
+            />
             <ClearLocalStorageButton />
           </div>
-          <div className="leftVillage">
+          <div className="rightVillage">
             <div
               className="WeaponShop"
               onClick={(e) => {

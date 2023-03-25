@@ -1,0 +1,9 @@
+.midVillage {
+  background-color: rgba(218, 165, 32, 0.3);
+  height: 100%;
+  width: 2000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

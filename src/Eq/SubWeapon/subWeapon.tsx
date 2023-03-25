@@ -7,10 +7,14 @@ function ShieldAndDagger({
   ShieldAndDaggerData,
   UpgradedNamesShieldAndDagger,
   handleShieldAndDaggerItemSelect,
+  isActive,
+  handleItemClick,
 }: {
   ShieldAndDaggerData: any;
   UpgradedNamesShieldAndDagger: any;
   handleShieldAndDaggerItemSelect: any;
+  isActive: any;
+  handleItemClick: any;
 }) {
   // Function that gets called when an item is clicked on
   function GetIdPerClick(index: any) {
@@ -50,20 +54,11 @@ function ShieldAndDagger({
     "selectedShieldAndDaggerItemTierEquip"
   );
 
-  // State hook that tracks whether a component should be open or closed
-  const [OpenAndCloseForShieldAndDagger, setOpenAndCloseForShieldAndDagger] =
-    useState<boolean>(false);
-
-  // Function that toggles the open/close state of a component
-  function OpenClose() {
-    setOpenAndCloseForShieldAndDagger(!OpenAndCloseForShieldAndDagger);
-  }
-
   return (
     <>
       <div
         className={`items-box ShieldAndDagger ${savedTier}B`}
-        onClick={() => OpenClose()}
+        onClick={() => handleItemClick()}
       >
         <div className="selectedItem">
           <img
@@ -78,7 +73,7 @@ function ShieldAndDagger({
         </div>
         <div
           id="option-container"
-          className={OpenAndCloseForShieldAndDagger ? "open" : "close"}
+          className={`ocsw ${isActive ? "open" : "close"}`}
         >
           <ShieldAndDaggerLoop
             ShieldAndDaggerData={ShieldAndDaggerData}
@@ -86,6 +81,7 @@ function ShieldAndDagger({
             handleShieldAndDaggerItemSelect={handleShieldAndDaggerItemSelect}
             GetIdPerClick={GetIdPerClick}
           />
+          sd
         </div>
       </div>
     </>

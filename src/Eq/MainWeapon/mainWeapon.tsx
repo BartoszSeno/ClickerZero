@@ -7,10 +7,14 @@ function MainWeapon({
   mainWeaponData,
   UpgradedNamesMainWeapon,
   handleItemSelect,
+  isActive,
+  handleItemClick,
 }: {
   mainWeaponData: any;
   UpgradedNamesMainWeapon: any;
   handleItemSelect: any;
+  isActive: any;
+  handleItemClick: any;
 }) {
   // Function that gets called when an item is clicked on
   function GetIdPerClick(index: any) {
@@ -29,19 +33,11 @@ function MainWeapon({
   const savedName = localStorage.getItem("selectedItemNameEquip");
   const savedTier = localStorage.getItem("selectedItemTierEquip");
 
-  // State hook that tracks whether a component should be open or closed
-  const [OpenAndClose, setOpenAndClose] = useState<boolean>(false);
-
-  // Function that toggles the open/close state of a component
-  function OpenClose() {
-    setOpenAndClose(!OpenAndClose);
-  }
-
   return (
     <>
       <div
         className={`items-box MainWeapon ${savedTier}B`}
-        onClick={() => OpenClose()}
+        onClick={() => handleItemClick()}
       >
         <div className="selectedItem">
           <img
@@ -54,7 +50,10 @@ function MainWeapon({
             alt={`${savedName || "No name"} weapon`}
           />
         </div>
-        <div id="option-container" className={OpenAndClose ? "open" : "close"}>
+        <div
+          id="option-container"
+          className={`ocmw ${isActive ? "open" : "close"}`}
+        >
           <MainWeaponLoop
             mainWeaponData={mainWeaponData}
             UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}

@@ -7,10 +7,14 @@ function Armor({
   ArmorData,
   UpgradedNamesArmor,
   handleArmorItemSelect,
+  isActive,
+  handleItemClick,
 }: {
   ArmorData: any;
   UpgradedNamesArmor: any;
   handleArmorItemSelect: any;
+  isActive: any;
+  handleItemClick: any;
 }) {
   // Function that gets called when an item is clicked on
   function GetIdPerClick(index: any) {
@@ -29,20 +33,11 @@ function Armor({
   const savedName = localStorage.getItem("selectedArmorItemNameEquip");
   const savedTier = localStorage.getItem("selectedArmorItemTierEquip");
 
-  // State hook that tracks whether a component should be open or closed
-  const [OpenAndCloseForArmor, setOpenAndCloseForArmor] =
-    useState<boolean>(false);
-
-  // Function that toggles the open/close state of a component
-  function OpenClose() {
-    setOpenAndCloseForArmor(!OpenAndCloseForArmor);
-  }
-
   return (
     <>
       <div
         className={`items-box Armor ${savedTier}B`}
-        onClick={() => OpenClose()}
+        onClick={() => handleItemClick()}
       >
         <div className="selectedItem">
           <img
@@ -57,7 +52,7 @@ function Armor({
         </div>
         <div
           id="option-container"
-          className={OpenAndCloseForArmor ? "open" : "close"}
+          className={`oca ${isActive ? "open" : "close"}`}
         >
           <ArmorLoop
             ArmorData={ArmorData}
@@ -65,6 +60,7 @@ function Armor({
             handleArmorItemSelect={handleArmorItemSelect}
             GetIdPerClick={GetIdPerClick}
           />
+          a
         </div>
       </div>
     </>

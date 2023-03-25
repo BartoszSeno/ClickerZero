@@ -6,6 +6,7 @@ import Helmet from "./Helmet/helmet";
 import Shoes from "./Shoes/shoes";
 import Gloves from "./Gloves/gloves";
 import Statistic from "./statistic/statistic";
+import { useState } from "react";
 
 const Eq = ({
   mainWeaponData,
@@ -58,41 +59,63 @@ const Eq = ({
   handleShieldAndDaggerItemSelect: any;
   selectedShieldAndDaggerItem: any;
 }) => {
+  const [whichIsOpen, setwhichIsOpen] = useState("MainWeapon");
+
+  const handleItemClick = (component: any) => {
+    setwhichIsOpen(component);
+  };
   return (
     <>
       <section id="equipment">
-        <MainWeapon
-          mainWeaponData={mainWeaponData}
-          UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
-          handleItemSelect={handleItemSelect}
-        />
-        <ShieldAndDagger
-          ShieldAndDaggerData={ShieldAndDaggerData}
-          UpgradedNamesShieldAndDagger={UpgradedNamesShieldAndDagger}
-          handleShieldAndDaggerItemSelect={handleShieldAndDaggerItemSelect}
-        />
-        <Armor
-          ArmorData={ArmorData}
-          UpgradedNamesArmor={UpgradedNamesArmor}
-          handleArmorItemSelect={handleArmorItemSelect}
-        />
-        <Helmet
-          HelmetData={HelmetData}
-          UpgradedNamesHelmet={UpgradedNamesHelmet}
-          handleHelmetItemSelect={handleHelmetItemSelect}
-        />
-        <Shoes
-          ShoesData={ShoesData}
-          UpgradedNamesShoes={UpgradedNamesShoes}
-          handleShoesItemSelect={handleShoesItemSelect}
-        />
-        <Gloves
-          GlovesData={GlovesData}
-          UpgradedNamesGloves={UpgradedNamesGloves}
-          handleGlovesItemSelect={handleGlovesItemSelect}
-        />
+        <div className="DmgItems">
+          <MainWeapon
+            mainWeaponData={mainWeaponData}
+            UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
+            handleItemSelect={handleItemSelect}
+            isActive={whichIsOpen === "MainWeapon"}
+            handleItemClick={() => handleItemClick("MainWeapon")}
+          />
+          <ShieldAndDagger
+            ShieldAndDaggerData={ShieldAndDaggerData}
+            UpgradedNamesShieldAndDagger={UpgradedNamesShieldAndDagger}
+            handleShieldAndDaggerItemSelect={handleShieldAndDaggerItemSelect}
+            isActive={whichIsOpen === "ShieldAndDagger"}
+            handleItemClick={() => handleItemClick("ShieldAndDagger")}
+          />
+        </div>
+        <div className="DefItems">
+          <Helmet
+            HelmetData={HelmetData}
+            UpgradedNamesHelmet={UpgradedNamesHelmet}
+            handleHelmetItemSelect={handleHelmetItemSelect}
+            isActive={whichIsOpen === "Helmet"}
+            handleItemClick={() => handleItemClick("Helmet")}
+          />
+          <Armor
+            ArmorData={ArmorData}
+            UpgradedNamesArmor={UpgradedNamesArmor}
+            handleArmorItemSelect={handleArmorItemSelect}
+            isActive={whichIsOpen === "Armor"}
+            handleItemClick={() => handleItemClick("Armor")}
+          />
+          <Gloves
+            GlovesData={GlovesData}
+            UpgradedNamesGloves={UpgradedNamesGloves}
+            handleGlovesItemSelect={handleGlovesItemSelect}
+            isActive={whichIsOpen === "Gloves"}
+            handleItemClick={() => handleItemClick("Gloves")}
+          />
+          <Shoes
+            ShoesData={ShoesData}
+            UpgradedNamesShoes={UpgradedNamesShoes}
+            handleShoesItemSelect={handleShoesItemSelect}
+            isActive={whichIsOpen === "Shoes"}
+            handleItemClick={() => handleItemClick("Shoes")}
+          />
+        </div>
       </section>
-      <section id="Statistic">
+      {/*
+        <section id="Statistic">
         <Statistic
           mainWeaponData={mainWeaponData}
           selectedItem={selectedItem}
@@ -108,6 +131,7 @@ const Eq = ({
           selectedShieldAndDaggerItem={selectedShieldAndDaggerItem}
         />
       </section>
+      */}
     </>
   );
 };

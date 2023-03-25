@@ -7,10 +7,14 @@ function Shoes({
   ShoesData,
   UpgradedNamesShoes,
   handleShoesItemSelect,
+  isActive,
+  handleItemClick,
 }: {
   ShoesData: any;
   UpgradedNamesShoes: any;
   handleShoesItemSelect: any;
+  isActive: any;
+  handleItemClick: any;
 }) {
   // Function that gets called when an item is clicked on
   function GetIdPerClick(index: any) {
@@ -29,20 +33,11 @@ function Shoes({
   const savedName = localStorage.getItem("selectedShoesItemNameEquip");
   const savedTier = localStorage.getItem("selectedShoesItemTierEquip");
 
-  // State hook that tracks whether a component should be open or closed
-  const [OpenAndCloseForShoes, setOpenAndCloseForShoes] =
-    useState<boolean>(false);
-
-  // Function that toggles the open/close state of a component
-  function OpenClose() {
-    setOpenAndCloseForShoes(!OpenAndCloseForShoes);
-  }
-
   return (
     <>
       <div
         className={`items-box Shoes ${savedTier}B`}
-        onClick={() => OpenClose()}
+        onClick={() => handleItemClick()}
       >
         <div className="selectedItem">
           <img
@@ -57,7 +52,7 @@ function Shoes({
         </div>
         <div
           id="option-container"
-          className={OpenAndCloseForShoes ? "open" : "close"}
+          className={`ocs ${isActive ? "open" : "close"}`}
         >
           <ShoesLoop
             ShoesData={ShoesData}
@@ -65,6 +60,7 @@ function Shoes({
             handleShoesItemSelect={handleShoesItemSelect}
             GetIdPerClick={GetIdPerClick}
           />
+          s
         </div>
       </div>
     </>

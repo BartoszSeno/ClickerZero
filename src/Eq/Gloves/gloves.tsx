@@ -7,10 +7,14 @@ function Gloves({
   GlovesData,
   UpgradedNamesGloves,
   handleGlovesItemSelect,
+  isActive,
+  handleItemClick,
 }: {
   GlovesData: any;
   UpgradedNamesGloves: any;
   handleGlovesItemSelect: any;
+  isActive: any;
+  handleItemClick: any;
 }) {
   // Function that gets called when an item is clicked on
   function GetIdPerClick(index: any) {
@@ -29,20 +33,11 @@ function Gloves({
   const savedName = localStorage.getItem("selectedGlovesItemNameEquip");
   const savedTier = localStorage.getItem("selectedGlovesItemTierEquip");
 
-  // State hook that tracks whether a component should be open or closed
-  const [OpenAndCloseForGloves, setOpenAndCloseForGloves] =
-    useState<boolean>(false);
-
-  // Function that toggles the open/close state of a component
-  function OpenClose() {
-    setOpenAndCloseForGloves(!OpenAndCloseForGloves);
-  }
-
   return (
     <>
       <div
         className={`items-box Gloves ${savedTier}B`}
-        onClick={() => OpenClose()}
+        onClick={() => handleItemClick()}
       >
         <div className="selectedItem">
           <img
@@ -57,7 +52,7 @@ function Gloves({
         </div>
         <div
           id="option-container"
-          className={OpenAndCloseForGloves ? "open" : "close"}
+          className={`ocg ${isActive ? "open" : "close"}`}
         >
           <GlovesLoop
             GlovesData={GlovesData}
@@ -65,6 +60,7 @@ function Gloves({
             handleGlovesItemSelect={handleGlovesItemSelect}
             GetIdPerClick={GetIdPerClick}
           />
+          g
         </div>
       </div>
     </>
