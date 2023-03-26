@@ -75,14 +75,14 @@ const ArmorShops = ({
         }}
       >
         <div
-          id="shop-container"
+          id="armor-shop-container"
           style={{ display: ArmorShopIsOpen ? "flex" : "none" }}
           onClick={(e) => {
             e.stopPropagation();
             setArmorShopIsOpen(true);
           }}
         >
-          <div className="shelf" style={{ height: ShelfHeight }}>
+          <div className="helmet-Conteiner">
             <HelmetShop
               HelmetData={HelmetData}
               setHelmetData={setHelmetData}
@@ -90,6 +90,8 @@ const ArmorShops = ({
               setCount={setCount}
               SelectedOption={SelectedOption}
             />
+          </div>
+          <div className="armor-Conteiner">
             <ArmorShop
               ArmorData={ArmorData}
               setArmorData={setArmorData}
@@ -97,6 +99,9 @@ const ArmorShops = ({
               setCount={setCount}
               SelectedOption={SelectedOption}
             />
+          </div>
+          {/*
+          <div className="gloves-Conteiner">
             <GlovesShop
               GlovesData={GlovesData}
               setGlovesData={setGlovesData}
@@ -104,6 +109,9 @@ const ArmorShops = ({
               setCount={setCount}
               SelectedOption={SelectedOption}
             />
+          </div>
+        */}
+          <div className="shoes-Conteiner">
             <ShoesShop
               ShoesData={ShoesData}
               setShoesData={setShoesData}

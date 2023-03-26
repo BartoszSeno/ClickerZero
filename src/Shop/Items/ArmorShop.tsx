@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable array-callback-return */
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const ArmorShop = ({
   count,
@@ -18,7 +19,7 @@ const ArmorShop = ({
     //ARMOR
     const newArmorData = [...ArmorData];
     newArmorData[index].isBought = true;
-    newArmorData[index].count = (newArmorData[index].count || 0) + 1;
+    newArmorData[index].count = newArmorData[index].count || 1;
     setArmorData(newArmorData);
     localStorage.setItem(
       "ArmorImageAndNameAndCost",
@@ -26,43 +27,83 @@ const ArmorShop = ({
     );
   };
 
+  const [selectedItemsA, setselectedItemsA] = useState<any[]>([]);
+  const [timeLeft, settimeLeft] = useState<number>(60);
+
+  useEffect(() => {
+    const interval1 = setInterval(() => {
+      const randomIndexes: number[] = [];
+      while (randomIndexes.length < 4) {
+        const randomIndex = Math.floor(Math.random() * ArmorData.length);
+
+        if (!randomIndexes.includes(randomIndex)) {
+          randomIndexes.push(randomIndex);
+        }
+      }
+      const selectedItemsA = randomIndexes.map((index) => ArmorData[index]);
+      setselectedItemsA(selectedItemsA);
+      localStorage.setItem("selectedItemsA", JSON.stringify(selectedItemsA));
+      settimeLeft(60); // resetujemy czas pozostały do zresetowania przedmiotu na 60 sekund
+    }, 60000);
+
+    const savedItems = localStorage.getItem("selectedItemsA");
+    if (savedItems) {
+      setselectedItemsA(JSON.parse(savedItems));
+    }
+
+    const interval2 = setInterval(() => {
+      settimeLeft((prevtimeLeft) => prevtimeLeft - 1);
+    }, 1000);
+
+    return () => {
+      clearInterval(interval1);
+      clearInterval(interval2);
+    };
+  }, []);
+
   return (
     <>
-      {ArmorData.map((data: any, index: any) => {
-        if (data.isVisible) {
-          return (
-            <button
-              id={data.tier}
-              className={`itemsForPurchasable ${index} `}
-              key={index}
-              onClick={(e) => {
-                handleClickArmor(index);
-                setCount(count - data.cost);
-              }}
-              disabled={count < data.cost}
-              style={{
-                display:
-                  SelectedOption === data.tier || SelectedOption === ""
-                    ? "flex"
-                    : "none",
-              }}
-            >
+      <div style={{ position: "absolute", color: "white" }}>{timeLeft}s</div>
+
+      {selectedItemsA
+        .filter((data: any) => data.id > 1)
+        .slice(0, 6)
+        .map((data: any, index: any) => {
+          if (data.tier !== "purple") {
+            return (
+              <button
+                id={data.tier}
+                className={`itemsForPurchasableA ${index} `}
+                key={index}
+                onClick={(e) => {
+                  handleClickArmor(index);
+                  setCount(count - data.cost);
+                }}
+                disabled={count < data.cost}
+                style={{
+                  display:
+                    SelectedOption === data.tier || SelectedOption === ""
+                      ? "flex"
+                      : "none",
+                }}
+              >
+                {/* 
               <div className="CostAndPrice">
                 <span className={`itemName ${data.tier}C`}>{data.name}</span>
                 <span className="PriceForPurchasable">
                   {data.cost}({data.count})
                 </span>
               </div>
-
-              <img
-                className="OptionWeaponImg"
-                src={data.image}
-                alt={`${data.name} weapon`}
-              />
-            </button>
-          );
-        }
-      })}
+*/}
+                <img
+                  className="OptionWeaponImg"
+                  src={data.image}
+                  alt={`${data.name} weapon`}
+                />
+              </button>
+            );
+          }
+        })}
     </>
   );
 };

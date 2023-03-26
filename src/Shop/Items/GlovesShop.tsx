@@ -33,7 +33,7 @@ const GlovesShop = ({
           return (
             <button
               id={data.tier}
-              className={`itemsForPurchasable ${index} `}
+              className={`itemsForPurchasableG ${index} `}
               key={index}
               onClick={(e) => {
                 handleClickGloves(index);
@@ -47,13 +47,14 @@ const GlovesShop = ({
                     : "none",
               }}
             >
+              {/*
               <div className="CostAndPrice">
                 <span className={`itemName ${data.tier}C`}>{data.name}</span>
                 <span className="PriceForPurchasable">
                   {data.cost}({data.count})
                 </span>
               </div>
-
+            */}
               <img
                 className="OptionWeaponImg"
                 src={data.image}

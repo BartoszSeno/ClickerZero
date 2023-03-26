@@ -1,5 +1,4 @@
 /* eslint-disable array-callback-return */
-import { useState } from "react";
 import { HelmetImageAndNameAndCost } from "../../data/equipment/helmet";
 import HelmetLoop from "./Helmetloop/HelmetLoop";
 

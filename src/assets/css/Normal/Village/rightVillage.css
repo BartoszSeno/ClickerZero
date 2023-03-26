@@ -23,7 +23,7 @@
   height: 700px;
   width: 1000px;
   display: flex;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/wShop.png);
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/AShop.png?token=GHSAT0AAAAAAB3PJ2NAXZJP73S6SWFUUHSMZBAFZYQ);
   background-repeat: no-repeat;
   cursor: auto;
   flex-direction: column;
@@ -89,4 +89,100 @@
   cursor: pointer;
   transition: 0.08s;
   transform: scale(1.1) rotate(90deg);
+}
+
+.itemsForPurchasableS img:hover,
+.itemsForPurchasableA img:hover,
+.itemsForPurchasableH img:hover {
+  cursor: pointer;
+  transition: 0.08s;
+  transform: scale(1.1);
+}
+
+/* ARMOR SHOP */
+
+#armor-shop-container {
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/AShop.png?token=GHSAT0AAAAAAB3PJ2NBOGVQF342ZDE5ZNLEZBAHCEQ);
+  background-repeat: no-repeat;
+  height: 700px;
+  width: 1000px;
+}
+
+.helmet-Conteiner {
+  position: absolute;
+  height: 70px;
+  width: 300px;
+  margin-top: 307px;
+  margin-left: 500px;
+  display: flex;
+}
+
+.itemsForPurchasableH {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  background-color: transparent;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  margin-left: 5px;
+}
+
+.itemsForPurchasableH img {
+  height: 50px;
+  transition: 0.08s;
+}
+/*Armor*/
+.armor-Conteiner {
+  position: absolute;
+  width: 540px;
+  margin-top: 380px;
+  margin-left: 35px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.itemsForPurchasableA {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  background-color: transparent;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  margin-right: 120px;
+  margin-bottom: 27px;
+}
+
+.itemsForPurchasableA img {
+  height: 65px;
+  transition: 0.08s;
+}
+
+/*SHOES*/
+
+.shoes-Conteiner {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  height: 175px;
+  width: 250px;
+  margin-top: 23px;
+  margin-left: 633px;
+}
+
+.itemsForPurchasableS {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  background-color: transparent;
+  justify-content: center;
+  align-items: end;
+  border: none;
+  margin-left: 7px;
+}
+
+.itemsForPurchasableS img {
+  height: 40px;
+  transition: 0.08s;
 }
