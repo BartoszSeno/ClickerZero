@@ -28,7 +28,7 @@ const HelmetShop = ({
     newHelmetData[index].count = newHelmetData[index].count || 1;
     setHelmetData(newHelmetData);
     localStorage.setItem(
-      "MainWeaponImageAndNameAndCost",
+      "HelmetImageAndNameAndCost",
       JSON.stringify(newHelmetData)
     );
     setDisabledButtons([...disabledButtons, index]);

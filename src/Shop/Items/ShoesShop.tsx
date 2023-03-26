@@ -26,7 +26,7 @@ const ShoesShop = ({
     newShoesData[index].count = newShoesData[index].count || 1;
     setShoesData(newShoesData);
     localStorage.setItem(
-      "MainWeaponImageAndNameAndCost",
+      "ShoesImageAndNameAndCost",
       JSON.stringify(newShoesData)
     );
     setDisabledButtons([...disabledButtons, index]);
@@ -34,7 +34,7 @@ const ShoesShop = ({
 
   const changeselectedItemsS = () => {
     const randomIndexes: number[] = [];
-    while (randomIndexes.length < 20) {
+    while (randomIndexes.length < 6) {
       const randomIndex = Math.floor(Math.random() * ShoesData.length);
 
       if (!randomIndexes.includes(randomIndex)) {
@@ -74,7 +74,7 @@ const ShoesShop = ({
       {Array.isArray(selectedItemsS) &&
         selectedItemsS
           .filter((data: any) => data.id > 1)
-          .slice(0, 20)
+          .slice(0, 6)
           .map((data: any, index: any) => {
             if (data.tier !== "purple") {
               return (

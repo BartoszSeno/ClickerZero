@@ -26,7 +26,7 @@ const ArmorShop = ({
     newArmorData[index].count = newArmorData[index].count || 1;
     setArmorData(newArmorData);
     localStorage.setItem(
-      "MainWeaponImageAndNameAndCost",
+      "ArmorImageAndNameAndCost",
       JSON.stringify(newArmorData)
     );
     setDisabledButtons([...disabledButtons, index]);
