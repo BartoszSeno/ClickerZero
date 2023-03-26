@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import "../assets/css/Normal/Update/upgrade.css";
 import React, { useState, useEffect } from "react";
 import { formatNumber } from "../hook/FormatNumber";
@@ -52,7 +53,7 @@ const UpdateLvlOne = ({
     } else {
       setActive(false);
     }
-  });
+  }, []);
 
   return (
     <>

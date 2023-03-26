@@ -10,7 +10,6 @@ const ArmorShops = ({
   setBSO,
   setASO,
   setMO,
-  ShelfHeight,
   count,
   setCount,
   SelectedOption,
@@ -35,7 +34,6 @@ const ArmorShops = ({
   setBSO: any;
   setASO: any;
   setMO: any;
-  ShelfHeight: any;
 
   count: any;
   setCount: any;

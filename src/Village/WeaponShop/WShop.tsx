@@ -8,7 +8,6 @@ const WeaponShop = ({
   setBSO,
   setASO,
   setMO,
-  ShelfHeight,
   mainWeaponData,
   setMainWeaponData,
   count,
@@ -20,7 +19,6 @@ const WeaponShop = ({
   setBSO: any;
   setASO: any;
   setMO: any;
-  ShelfHeight: any;
   mainWeaponData: any;
   setMainWeaponData: any;
   count: any;

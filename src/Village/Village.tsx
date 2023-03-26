@@ -340,7 +340,7 @@ const MainIndexVillage = () => {
     //if the data exists, convert it to a text
     const textArmor = FullArmorDefFromText?.textContent;
     setFullArmorDefText(textArmor);
-  });
+  }, []);
 
   //==============
   // VARIABLE THAT SAVES THE VALUE OF THE MAIN ShieldAndDagger DEF
@@ -355,7 +355,7 @@ const MainIndexVillage = () => {
     //if the data exists, convert it to a text
     const textShieldAndDagger = FullShieldAndDaggerDefFromText?.textContent;
     setFullShieldAndDaggerDefText(textShieldAndDagger);
-  });
+  }, []);
 
   //==============
   // VARIABLE THAT SAVES THE VALUE OF THE MAIN Gloves DEF
@@ -369,7 +369,7 @@ const MainIndexVillage = () => {
     //if the data exists, convert it to a text
     const textGloves = FullGlovesDefFromText?.textContent;
     setFullGlovesDefText(textGloves);
-  });
+  }, []);
 
   //==============
   // VARIABLE THAT SAVES THE VALUE OF THE MAIN Shoes DEF
@@ -383,7 +383,7 @@ const MainIndexVillage = () => {
     //if the data exists, convert it to a text
     const textShoes = FullShoesDefFromText?.textContent;
     setFullShoesDefText(textShoes);
-  });
+  }, []);
 
   //==============
   // VARIABLE THAT SAVES THE VALUE OF THE MAIN Helmet DEF
@@ -397,7 +397,7 @@ const MainIndexVillage = () => {
     //if the data exists, convert it to a text
     const textHelmet = FullHelmetDefFromText?.textContent;
     setFullHelmetDefText(textHelmet);
-  });
+  }, []);
 
   //==============
   // VARIABLE THAT SAVES THE VALUE OF THE MAIN DMG
@@ -411,7 +411,7 @@ const MainIndexVillage = () => {
     //if the data exists, convert it to a text
     const text = mainWeaponFullDmgFromText?.textContent;
     setMainWeaponFullDmgText(text);
-  });
+  }, []);
 
   //==============
   // HERE NEW WARIABLES ARE ADDED WHICH ARE USED TO INCREASE POINTS PER CLICK
@@ -478,64 +478,6 @@ const MainIndexVillage = () => {
   });
 
   //==================
-  // SELECT THE ACTIVE TAB
-  const [activeTab, setActiveTab] = useState("shop");
-
-  //=================
-  // CLOSING AND OPEN THE LEFT CONTAINER
-  const [OpenMenu, setOpenMenu] = useState<boolean>(true);
-
-  function OpenMenuOrCloseMenu() {
-    setTimeout(() => {
-      const newValue = !OpenMenu;
-      setOpenMenu(newValue);
-      // save in localStorage that left menu is open or close
-      localStorage.setItem("OpenMenu", JSON.stringify(newValue));
-    }, 150);
-  }
-
-  // Retrieve the value of OpenMenu from local storage when the component mounts
-  useEffect(() => {
-    const valueFromLocalStorage = localStorage.getItem("OpenMenu");
-    if (valueFromLocalStorage !== null) {
-      setOpenMenu(JSON.parse(valueFromLocalStorage));
-    }
-  }, [OpenMenu]);
-
-  //====================
-  //BUTTON IMAGE CHANGE ON POSITION
-  const [ImgClick, setImgClick] = useState(
-    OpenMenu
-      ? "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Arrow/leftArrowButtonUnclicked.png"
-      : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Arrow/rgihtArrowButtonUnclicked.png"
-  );
-
-  // change image for animation on click then back to origin
-  const changeImage = () => {
-    const originalSrc = ImgClick;
-    const newSrc = OpenMenu
-      ? "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Arrow/leftArrowButtonClicked.png"
-      : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Arrow/rgihtArrowButtonClicked.png";
-
-    // Change the image source to the new image
-    setImgClick(newSrc);
-
-    // After 1 second, change the image source back to the original
-    setTimeout(() => {
-      setImgClick(originalSrc);
-    }, 100);
-  };
-
-  // image change automatic
-  useEffect(() => {
-    setTimeout(() => {
-      setImgClick(
-        OpenMenu
-          ? "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Arrow/leftArrowButtonUnclicked.png"
-          : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Arrow/rgihtArrowButtonUnclicked.png"
-      );
-    }, 300);
-  }, [OpenMenu]);
 
   //================
   // INFORMATION MENU OPEN AND CLOSE
@@ -548,10 +490,8 @@ const MainIndexVillage = () => {
   //==============
   // USESTATE THAT CHANGE HEIGHT OR SORT BY TIER
   // selects which tier has been selected
-  const [SelectedOption, setSelectedOption] = useState<string>("");
-  const [ActiveTier, setActiveTier] = useState<string>("");
+  const [SelectedOption] = useState<string>("");
   // changes the shelf height
-  const [ShelfHeight, setShelfHeight] = useState<string>("4600");
 
   const mainBGScrollHorizontalRef = useRef<HTMLDivElement>(null);
 
@@ -660,7 +600,6 @@ const MainIndexVillage = () => {
                 setBSO={setBSO}
                 setASO={setASO}
                 setMO={setMO}
-                ShelfHeight={ShelfHeight}
                 mainWeaponData={mainWeaponData}
                 setMainWeaponData={setMainWeaponData}
                 count={count}
@@ -735,7 +674,6 @@ const MainIndexVillage = () => {
                 setBSO={setBSO}
                 setASO={setASO}
                 setMO={setMO}
-                ShelfHeight={ShelfHeight}
                 count={count}
                 setCount={setCount}
                 SelectedOption={SelectedOption}
