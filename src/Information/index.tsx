@@ -13,10 +13,10 @@ const Information = ({ infoOpenClose }: { infoOpenClose: any }) => {
           <p>in the process of creating graphics for the village</p>
           <p>separate graphics for each house</p>
           <p>delete the current ui and create new one</p>
-          <p>sell option</p>
         </div>
         <div className="news">
           <h1>What's next:</h1>
+          <p>if mid village: sell option</p>
           <p>Better Info box</p>
           <p>Create an item cost</p>
           <p>Adding cost for upgrade for each itmes</p>

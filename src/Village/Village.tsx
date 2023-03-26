@@ -585,7 +585,12 @@ const MainIndexVillage = () => {
         }}
       >
         <div className="GameMainWindow">
-          <div className="leftVillage"></div>
+          <div className="leftVillage">
+            <button className="InfoOpen" onClick={HandleInfoOpenAndClose}>
+              Info
+            </button>
+            <Information infoOpenClose={infoOpenClose} />
+          </div>
           <div className="midVillage">
             <Eq
               mainWeaponData={mainWeaponData}
@@ -638,10 +643,6 @@ const MainIndexVillage = () => {
               UpgradeOne={UpgradeOne}
               setUpgradeOne={setUpgradeOne}
             />
-            <button className="InfoOpen" onClick={HandleInfoOpenAndClose}>
-              Info
-            </button>
-            <Information infoOpenClose={infoOpenClose} />
           </div>
           <div className="rightVillage">
             <div

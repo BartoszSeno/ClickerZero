@@ -114,8 +114,8 @@ const Eq = ({
           />
         </div>
       </section>
-      {/*
-        <section id="Statistic">
+
+      <section id="Statistic">
         <Statistic
           mainWeaponData={mainWeaponData}
           selectedItem={selectedItem}
@@ -131,7 +131,6 @@ const Eq = ({
           selectedShieldAndDaggerItem={selectedShieldAndDaggerItem}
         />
       </section>
-      */}
     </>
   );
 };

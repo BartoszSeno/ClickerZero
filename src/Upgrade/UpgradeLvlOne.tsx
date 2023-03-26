@@ -38,7 +38,7 @@ const UpdateLvlOne = ({
     localStorage.setItem("upgradeOneLvl", lvlOne.toString());
 
     // Increase the UpgradeOne variable by 1 and update its value in local storage
-    UpgradeOne += 10;
+    UpgradeOne += 1;
     localStorage.setItem("UpgradeOneCount", UpgradeOne.toString());
   }
 

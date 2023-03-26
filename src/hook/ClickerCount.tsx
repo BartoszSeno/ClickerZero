@@ -29,10 +29,10 @@ const Clicker = ({
   }, [count]);
 
   return (
-    <div>
+    <div id="SilverCountInfo">
       <p>{formatNumber(count)} silver</p>
       <button
-        onClick={() => setCount(count + FullCountPerClick + 10000)}
+        onClick={() => setCount(count + FullCountPerClick)}
         id="Click"
       ></button>
     </div>

@@ -103,7 +103,6 @@
 }
 
 .InfoOpen {
-  position: absolute;
   height: 40px;
   width: 100px;
   background-color: #967853;
@@ -113,9 +112,14 @@
   margin-left: 1650px;
   font-family: "Alagard";
   z-index: 10001;
+  cursor: pointer;
 }
 
 button:disabled {
   filter: brightness(40%) grayscale(60%);
   -webkit-filter: brightness(40%) grayscale(60%);
+}
+
+#SilverCountInfo {
+  margin-top: 50px;
 }
