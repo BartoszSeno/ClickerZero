@@ -17,6 +17,9 @@ import { ShieldAndDaggerImageAndNameAndCost } from "../data/equipment/subWeapon"
 import ClearLocalStorageButton from "../hook/RemoveLS";
 import Eq from "../Eq";
 import Clicker from "../hook/ClickerCount";
+import Information from "../Information";
+import PerClickPoints from "../hook/PerClick";
+import UpdateLvlOne from "../Upgrade/UpgradeLvlOne";
 
 const MainIndexVillage = () => {
   // ARRAY OF THE ENTIRE ShieldAndDagger
@@ -615,7 +618,30 @@ const MainIndexVillage = () => {
               count={count}
               FullCountPerClick={FullCountPerClick}
             />
+            <PerClickPoints
+              FullCountPerClick={FullCountPerClick}
+              setFullCountPerClick={setFullCountPerClick}
+              UpgradeOne={UpgradeOne}
+              MainWeaponFullDmgText={MainWeaponFullDmgText}
+              FullArmorDefText={FullArmorDefText}
+              FullHelmetDefText={FullHelmetDefText}
+              FullShoesDefText={FullShoesDefText}
+              FullGlovesDefText={FullGlovesDefText}
+              FullShieldAndDaggerDefText={FullShieldAndDaggerDefText}
+            />
             <ClearLocalStorageButton />
+            <UpdateLvlOne
+              setCount={setCount}
+              count={count}
+              lvlOne={lvlOne}
+              setLvlOne={setLvlOne}
+              UpgradeOne={UpgradeOne}
+              setUpgradeOne={setUpgradeOne}
+            />
+            <button className="InfoOpen" onClick={HandleInfoOpenAndClose}>
+              Info
+            </button>
+            <Information infoOpenClose={infoOpenClose} />
           </div>
           <div className="rightVillage">
             <div
