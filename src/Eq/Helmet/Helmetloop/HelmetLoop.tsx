@@ -31,9 +31,6 @@ function HelmetLoop({
                     src={data.image}
                     alt={`${data.name} Helmet`}
                   />
-                  <span className={`itemName ${data.tier}C`}>
-                    {upgradedName ? upgradedName : data.name}
-                  </span>
                 </div>
               );
             })}

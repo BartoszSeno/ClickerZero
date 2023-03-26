@@ -23,7 +23,7 @@
   height: 700px;
   width: 1000px;
   display: flex;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/AShop.png?token=GHSAT0AAAAAAB3PJ2NAXZJP73S6SWFUUHSMZBAFZYQ);
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/wShop.png);
   background-repeat: no-repeat;
   cursor: auto;
   flex-direction: column;
@@ -102,7 +102,7 @@
 /* ARMOR SHOP */
 
 #armor-shop-container {
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/AShop.png?token=GHSAT0AAAAAAB3PJ2NBOGVQF342ZDE5ZNLEZBAHCEQ);
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/AShop.png);
   background-repeat: no-repeat;
   height: 700px;
   width: 1000px;

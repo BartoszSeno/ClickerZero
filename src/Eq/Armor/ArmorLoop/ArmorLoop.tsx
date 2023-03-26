@@ -31,9 +31,6 @@ function ArmorLoop({
                     src={data.image}
                     alt={`${data.name} armor`}
                   />
-                  <span className={`itemName ${data.tier}C`}>
-                    {upgradedName ? upgradedName : data.name}
-                  </span>
                 </div>
               );
             })}

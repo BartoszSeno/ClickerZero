@@ -31,9 +31,6 @@ function GlovesLoop({
                     src={data.image}
                     alt={`${data.name} Gloves`}
                   />
-                  <span className={`itemName ${data.tier}C`}>
-                    {upgradedName ? upgradedName : data.name}
-                  </span>
                 </div>
               );
             })}
