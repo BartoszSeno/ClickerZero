@@ -87,8 +87,11 @@ const MainWeaponShop = ({
                   onClick={(e) => {
                     handleClick(data); // przekazujemy cały obiekt przedmiotu zamiast indeksu
                     setCount(count - data.cost);
+                    setDisabledButtons([...disabledButtons, index]);
                   }}
-                  disabled={count < data.cost}
+                  disabled={
+                    disabledButtons.includes(index) || count < data.cost
+                  }
                   style={{
                     display:
                       SelectedOption === data.tier || SelectedOption === ""

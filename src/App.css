@@ -114,3 +114,8 @@
   font-family: "Alagard";
   z-index: 10001;
 }
+
+button:disabled {
+  filter: brightness(40%) grayscale(60%);
+  -webkit-filter: brightness(40%) grayscale(60%);
+}
