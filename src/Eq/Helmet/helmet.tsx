@@ -59,7 +59,6 @@ function Helmet({
             handleHelmetItemSelect={handleHelmetItemSelect}
             GetIdPerClick={GetIdPerClick}
           />
-          h
         </div>
       </div>
     </>

@@ -104,6 +104,7 @@
 #armor-shop-container {
   background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/AShop.png);
   background-repeat: no-repeat;
+  cursor: auto;
   height: 700px;
   width: 1000px;
 }

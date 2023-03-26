@@ -59,7 +59,6 @@ function Armor({
             handleArmorItemSelect={handleArmorItemSelect}
             GetIdPerClick={GetIdPerClick}
           />
-          a
         </div>
       </div>
     </>

@@ -81,7 +81,6 @@ function ShieldAndDagger({
             handleShieldAndDaggerItemSelect={handleShieldAndDaggerItemSelect}
             GetIdPerClick={GetIdPerClick}
           />
-          sd
         </div>
       </div>
     </>

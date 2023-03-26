@@ -15,35 +15,41 @@ const ShoesShop = ({
   ShoesData: any;
   setShoesData: any;
 }) => {
-  const handleClickShoes = (index: any) => {
-    //Shoes
+  const [disabledButtons, setDisabledButtons] = useState<any>([]);
+  const [selectedItemsS, setselectedItemsS] = useState<any[]>([]);
+  const [timeLeft, settimeLeft] = useState<number>(60);
+
+  const handleClickShoes = (selectedItem: any) => {
     const newShoesData = [...ShoesData];
+    const index = newShoesData.findIndex((item) => item.id === selectedItem.id);
     newShoesData[index].isBought = true;
     newShoesData[index].count = newShoesData[index].count || 1;
     setShoesData(newShoesData);
     localStorage.setItem(
-      "ShoesImageAndNameAndCost",
+      "MainWeaponImageAndNameAndCost",
       JSON.stringify(newShoesData)
     );
+    setDisabledButtons([...disabledButtons, index]);
   };
 
-  const [selectedItemsS, setselectedItemsS] = useState<any[]>([]);
-  const [timeLeft, settimeLeft] = useState<number>(60);
+  const changeselectedItemsS = () => {
+    const randomIndexes: number[] = [];
+    while (randomIndexes.length < 20) {
+      const randomIndex = Math.floor(Math.random() * ShoesData.length);
+
+      if (!randomIndexes.includes(randomIndex)) {
+        randomIndexes.push(randomIndex);
+      }
+    }
+    const selectedItemsS = randomIndexes.map((index) => ShoesData[index]);
+    setselectedItemsS(selectedItemsS);
+    localStorage.setItem("selectedItemsS", JSON.stringify(selectedItemsS));
+    settimeLeft(60);
+  };
 
   useEffect(() => {
     const interval1 = setInterval(() => {
-      const randomIndexes: number[] = [];
-      while (randomIndexes.length < 6) {
-        const randomIndex = Math.floor(Math.random() * ShoesData.length);
-
-        if (!randomIndexes.includes(randomIndex)) {
-          randomIndexes.push(randomIndex);
-        }
-      }
-      const selectedItemsS = randomIndexes.map((index) => ShoesData[index]);
-      setselectedItemsS(selectedItemsS);
-      localStorage.setItem("selectedItemsS", JSON.stringify(selectedItemsS));
-      settimeLeft(60); // resetujemy czas pozostały do zresetowania przedmiotu na 60 sekund
+      changeselectedItemsS();
     }, 60000);
 
     const savedItems = localStorage.getItem("selectedItemsS");
@@ -65,29 +71,30 @@ const ShoesShop = ({
     <>
       <div style={{ position: "absolute", color: "white" }}>{timeLeft}s</div>
 
-      {selectedItemsS
-        .filter((data: any) => data.id > 1)
-        .slice(0, 6)
-        .map((data: any, index: any) => {
-          if (data.tier !== "purple") {
-            return (
-              <button
-                id={data.tier}
-                className={`itemsForPurchasableS ${index} `}
-                key={index}
-                onClick={(e) => {
-                  handleClickShoes(index);
-                  setCount(count - data.cost);
-                }}
-                disabled={count < data.cost}
-                style={{
-                  display:
-                    SelectedOption === data.tier || SelectedOption === ""
-                      ? "flex"
-                      : "none",
-                }}
-              >
-                {/*
+      {Array.isArray(selectedItemsS) &&
+        selectedItemsS
+          .filter((data: any) => data.id > 1)
+          .slice(0, 20)
+          .map((data: any, index: any) => {
+            if (data.tier !== "purple") {
+              return (
+                <button
+                  id={data.tier}
+                  className={`itemsForPurchasableS ${index} `}
+                  key={index}
+                  onClick={(e) => {
+                    handleClickShoes(data);
+                    setCount(count - data.cost);
+                  }}
+                  disabled={count < data.cost}
+                  style={{
+                    display:
+                      SelectedOption === data.tier || SelectedOption === ""
+                        ? "flex"
+                        : "none",
+                  }}
+                >
+                  {/*
               <div className="CostAndPrice">
                 <span className={`itemName ${data.tier}C`}>{data.name}</span>
                 <span className="PriceForPurchasable">
@@ -95,15 +102,15 @@ const ShoesShop = ({
                 </span>
               </div>
             */}
-                <img
-                  className="OptionWeaponImg"
-                  src={data.image}
-                  alt={`${data.name} weapon`}
-                />
-              </button>
-            );
-          }
-        })}
+                  <img
+                    className="OptionWeaponImg"
+                    src={data.image}
+                    alt={`${data.name} weapon`}
+                  />
+                </button>
+              );
+            }
+          })}
     </>
   );
 };

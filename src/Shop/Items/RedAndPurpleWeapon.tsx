@@ -16,18 +16,17 @@ const RedAndPurpleMainWeaponShop = ({
   SelectedOption: any;
 }) => {
   const [disabledButtons, setDisabledButtons] = useState<any>([]);
+  const [SelectedItems, setSelectedItems] = useState<any[]>([]);
+  const [timeLeft, settimeLeft] = useState<number>(60);
 
-  const handleClick = (index: any) => {
-    //MAIN WEAPON
-    // Create a new array with the same elements as `mainWeaponData`
+  const handleClick = (selectedItem: any) => {
     const newMainWeaponData = [...mainWeaponData];
-    // Set the `isBought` property of the item at `index` to `true`
+    const index = newMainWeaponData.findIndex(
+      (item) => item.id === selectedItem.id
+    );
     newMainWeaponData[index].isBought = true;
-    // Increment the `count` property of the item at `index`, or set it to 1 if it doesn't exist
     newMainWeaponData[index].count = newMainWeaponData[index].count || 1;
-    // Update the `mainWeaponData` state with the new array
     setMainWeaponData(newMainWeaponData);
-    // Set an item in local storage serialized as JSON
     localStorage.setItem(
       "MainWeaponImageAndNameAndCost",
       JSON.stringify(newMainWeaponData)
@@ -35,33 +34,34 @@ const RedAndPurpleMainWeaponShop = ({
     setDisabledButtons([...disabledButtons, index]);
   };
 
-  const [selectedItems, setSelectedItems] = useState<any[]>([]);
-  const [timeLeftRAP, settimeLeftRAP] = useState<number>(120);
+  const changeSelectedItems = () => {
+    const randomIndexes: number[] = [];
+    while (randomIndexes.length < 2) {
+      const randomIndex =
+        Math.floor(Math.random() * (mainWeaponData.length - 43)) + 43;
+
+      if (!randomIndexes.includes(randomIndex)) {
+        randomIndexes.push(randomIndex);
+      }
+    }
+    const SelectedItems = randomIndexes.map((index) => mainWeaponData[index]);
+    setSelectedItems(SelectedItems);
+    localStorage.setItem("SelectedItems", JSON.stringify(SelectedItems));
+    settimeLeft(60);
+  };
 
   useEffect(() => {
     const interval1 = setInterval(() => {
-      const randomIndexes: number[] = [];
-      while (randomIndexes.length < 2) {
-        const randomIndex =
-          Math.floor(Math.random() * (mainWeaponData.length - 43)) + 43;
+      changeSelectedItems();
+    }, 60000);
 
-        if (!randomIndexes.includes(randomIndex)) {
-          randomIndexes.push(randomIndex);
-        }
-      }
-      const selectedItems = randomIndexes.map((index) => mainWeaponData[index]);
-      setSelectedItems(selectedItems);
-      localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
-      settimeLeftRAP(120); // resetujemy czas pozostały do zresetowania przedmiotu na 60 sekund
-    }, 120000);
-
-    const savedItems = localStorage.getItem("selectedItems");
+    const savedItems = localStorage.getItem("SelectedItems");
     if (savedItems) {
       setSelectedItems(JSON.parse(savedItems));
     }
 
     const interval2 = setInterval(() => {
-      settimeLeftRAP((prevtimeLeftRAP) => prevtimeLeftRAP - 1);
+      settimeLeft((prevtimeLeft) => prevtimeLeft - 1);
     }, 1000);
 
     return () => {
@@ -72,33 +72,37 @@ const RedAndPurpleMainWeaponShop = ({
 
   return (
     <>
-      <div style={{ position: "absolute", color: "white" }}>{timeLeftRAP}s</div>
-      {selectedItems.map((data: any, index: any) => {
-        return (
-          <button
-            id={data.tier}
-            className={`RAPitemsForPurchasable ${index} `}
-            key={index}
-            onClick={(e) => {
-              handleClick(index);
-              setCount(count - data.cost);
-            }}
-            disabled={count < data.cost}
-            style={{
-              display:
-                SelectedOption === data.tier || SelectedOption === ""
-                  ? "flex"
-                  : "none",
-            }}
-          >
-            <img
-              className="OptionWeaponImg"
-              src={data.image}
-              alt={`${data.name} weapon`}
-            />
-          </button>
-        );
-      })}
+      <div style={{ position: "absolute", color: "white" }}>{timeLeft}s</div>
+
+      {Array.isArray(SelectedItems) &&
+        SelectedItems.filter((data: any) => data.id > 1)
+          .slice(0, 2)
+          .map((data: any, index: any) => {
+            return (
+              <button
+                id={data.tier}
+                className={`RAPitemsForPurchasable ${index} `}
+                key={index}
+                onClick={(e) => {
+                  handleClick(data);
+                  setCount(count - data.cost);
+                }}
+                disabled={count < data.cost}
+                style={{
+                  display:
+                    SelectedOption === data.tier || SelectedOption === ""
+                      ? "flex"
+                      : "none",
+                }}
+              >
+                <img
+                  className="OptionWeaponImg"
+                  src={data.image}
+                  alt={`${data.name} weapon`}
+                />
+              </button>
+            );
+          })}
     </>
   );
 };

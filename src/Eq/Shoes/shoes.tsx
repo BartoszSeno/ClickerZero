@@ -59,7 +59,6 @@ function Shoes({
             handleShoesItemSelect={handleShoesItemSelect}
             GetIdPerClick={GetIdPerClick}
           />
-          s
         </div>
       </div>
     </>
