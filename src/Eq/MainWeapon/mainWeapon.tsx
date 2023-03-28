@@ -1,6 +1,7 @@
 /* eslint-disable array-callback-return */
 import { MainWeaponImageAndNameAndCost } from "../../data/equipment/mainWeapon";
 import MainWeaponLoop from "./MainWeaponLoop/MWLoop";
+import Inventory from "../../inventory";
 
 function MainWeapon({
   mainWeaponData,
@@ -53,7 +54,8 @@ function MainWeapon({
           id="option-container"
           className={`ocmw ${isActive ? "open" : "close"}`}
         >
-          <MainWeaponLoop
+          <Inventory
+            props={""}
             mainWeaponData={mainWeaponData}
             UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
             handleItemSelect={handleItemSelect}

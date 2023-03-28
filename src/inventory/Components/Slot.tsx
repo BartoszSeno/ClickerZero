@@ -1,24 +1,22 @@
 import React from "react";
 
-const ItemSlot = (props: { slot: any; data: { img: any } }) => {
+const ItemSlot = ({ slot, data }: { slot: number; data: { img: string } }) => {
   return (
-    <>
-      <div
-        id={`item-slot-${props.slot}`}
-        className={`item-slot`}
-        data-slot={props.slot}
-        data-type={`item`}
-      >
-        <div className="content">
-          <div
-            className="img"
-            style={{
-              backgroundImage: `url("${props.data.img}")`,
-            }}
-          />
-        </div>
+    <div
+      id={`item-slot-${slot}`}
+      className={`item-slot`}
+      data-slot={slot}
+      data-type={`item`}
+    >
+      <div className="content">
+        <div
+          className="img"
+          style={{
+            backgroundImage: `url("${data.img}")`,
+          }}
+        />
       </div>
-    </>
+    </div>
   );
 };
 

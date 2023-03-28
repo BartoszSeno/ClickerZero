@@ -18,11 +18,12 @@ const Inventory = (props: any) => {
       img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/2.png",
     },
   ]); //Let's assume this is the player's items.
+
   const itemsRef = React.useRef(props.items);
 
   const [draggingSlotId, setDraggingSlot] = useState(null);
   const getNumberOfSlots = () =>
-    new Array(25).fill(null).map((_, index) => index);
+    new Array(24).fill(null).map((_, index) => index);
   const getItemDataInSlot = (slot: number) =>
     items.find((item) => item.slot === slot);
 
@@ -99,7 +100,7 @@ const Inventory = (props: any) => {
 
   return (
     <>
-      <div className="app-container">
+      <div id="inventoryContainer">
         <DragAndDropAPI
           activeDraggedSlot={draggingSlotId}
           setActiveDraggedSlot={setDraggingSlot}

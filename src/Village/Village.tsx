@@ -527,7 +527,6 @@ const MainIndexVillage = () => {
       >
         <div className="GameMainWindow">
           <div className="leftVillage">
-            <Inventory items={undefined} />
             {/*
             <button className="InfoOpen" onClick={HandleInfoOpenAndClose}>
               Info
