@@ -5,37 +5,51 @@ import "../assets/css/Normal/inventory/inventory.css";
 import ItemSlot from "./Components/Slot";
 import DragAndDropAPI from "./Components/DragAndDropAPI";
 
-const Inventory = (props: any) => {
-  const [items, setItems] = useState([
-    {
-      slot: 5,
-      title: "Sword",
-      img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/1.png",
-    },
-    {
-      slot: 3,
-      title: "Gun",
-      img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/2.png",
-    },
-  ]); //Let's assume this is the player's items.
+const Inventory = ({
+  props,
+  mainWeaponData,
+  UpgradedNamesMainWeapon,
+  handleItemSelect,
+  GetIdPerClick,
+}: {
+  props: any;
+  mainWeaponData: any;
+  UpgradedNamesMainWeapon: any;
+  handleItemSelect: any;
+  GetIdPerClick: any;
+}) => {
+  const [items, setItems] = useState(
+    mainWeaponData
+      .filter((item: { isBought: boolean }) => item.isBought === true)
+      .map((item: any, index: number) => ({ ...item, id: index }))
+  );
+
+  useEffect(() => {
+    setItems(
+      mainWeaponData
+        .filter((item: { isBought: boolean }) => item.isBought === true)
+        .map((item: any, index: number) => ({ ...item, id: index }))
+    );
+  }, [mainWeaponData]);
+  //Let's assume this is the player's items.
 
   const itemsRef = React.useRef(props.items);
 
   const [draggingSlotId, setDraggingSlot] = useState(null);
   const getNumberOfSlots = () =>
     new Array(24).fill(null).map((_, index) => index);
-  const getItemDataInSlot = (slot: number) =>
-    items.find((item) => item.slot === slot);
+  const getItemDataInSlot = (id: number) =>
+    items.find((item: { id: number }) => item.id === id);
 
   const getInventorySlotIndex = (slotIndex: number) => {
-    let slot = itemsRef.current.filter(
-      (item: { slot: number }) => item.slot === slotIndex
+    let id = itemsRef.current.filter(
+      (item: { id: number }) => item.id === slotIndex
     )[0];
-    return slot ? itemsRef.current.indexOf(slot) : null;
+    return id ? itemsRef.current.indexOf(id) : null;
   };
 
   const swapItemSlots = (oldSlot: number, newSlot: number) => {
-    setItems((currentState) => {
+    setItems((currentState: any) => {
       let newInventory = [...currentState];
       let oldIndex = -1,
         newIndex = -1;
@@ -43,17 +57,17 @@ const Inventory = (props: any) => {
       // Finding the old ones..
 
       newInventory.forEach((item, index) => {
-        if (item.slot === oldSlot) {
+        if (item.id === oldSlot) {
           oldIndex = index;
-        } else if (item.slot === newSlot) {
+        } else if (item.id === newSlot) {
           newIndex = index;
         }
       });
 
       // Replacing them
 
-      newInventory[oldIndex] = { ...newInventory[oldIndex], slot: newSlot };
-      newInventory[newIndex] = { ...newInventory[newIndex], slot: oldSlot };
+      newInventory[oldIndex] = { ...newInventory[oldIndex], id: newSlot };
+      newInventory[newIndex] = { ...newInventory[newIndex], id: oldSlot };
 
       return [...newInventory];
     });
@@ -62,12 +76,12 @@ const Inventory = (props: any) => {
   const moveItemToSlot = (oldSlot: number, newSlot: number) => {
     console.log(`move slot`, oldSlot, newSlot);
 
-    setItems((currentState) => {
+    setItems((currentState: any) => {
       let inventory = [...currentState];
 
       inventory.forEach((item, index) => {
-        if (item.slot === oldSlot) {
-          inventory[index].slot = newSlot;
+        if (item.id === oldSlot) {
+          inventory[index].id = newSlot;
         }
       });
 
@@ -76,8 +90,8 @@ const Inventory = (props: any) => {
   };
 
   const onInventoryItemDragged = ({ detail: eventData }: any) => {
-    const oldSlot = parseInt(eventData.slot),
-      newSlot = parseInt(eventData.destination.slot);
+    const oldSlot = parseInt(eventData.id),
+      newSlot = parseInt(eventData.destination.id);
 
     if (eventData.destination.type === "empty-slot") {
       moveItemToSlot(oldSlot, newSlot);
@@ -106,12 +120,8 @@ const Inventory = (props: any) => {
           setActiveDraggedSlot={setDraggingSlot}
         />
         <div className="inventory">
-          {getNumberOfSlots().map((slot) => (
-            <ItemSlot
-              slot={slot}
-              data={getItemDataInSlot(slot) || null}
-              key={slot}
-            />
+          {getNumberOfSlots().map((id) => (
+            <ItemSlot id={id} data={getItemDataInSlot(id) || null} key={id} />
           ))}
         </div>
       </div>
