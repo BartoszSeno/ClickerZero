@@ -478,16 +478,6 @@ const MainIndexVillage = () => {
     handleItemSelect(Number(savedId));
   });
 
-  //==================
-
-  //================
-  // INFORMATION MENU OPEN AND CLOSE
-  const [infoOpenClose, setinfoOpenClose] = useState<boolean>(false);
-
-  function HandleInfoOpenAndClose() {
-    setinfoOpenClose(!infoOpenClose);
-  }
-
   //==============
   // USESTATE THAT CHANGE HEIGHT OR SORT BY TIER
   // selects which tier has been selected
@@ -519,9 +509,7 @@ const MainIndexVillage = () => {
       <div
         id="mainBGScrollHorizontal"
         ref={mainBGScrollHorizontalRef}
-        onScroll={(e) => console.log(e.currentTarget.scrollLeft)}
         onWheel={(e) => {
-          e.preventDefault();
           handleScroll(e.deltaY);
         }}
       >
