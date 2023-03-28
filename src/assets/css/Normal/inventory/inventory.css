@@ -1,0 +1,215 @@
+body {
+  background: rgb(34, 33, 33);
+  color: #fff;
+}
+
+.app-container {
+  height: 900px;
+  box-sizing: content-box;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inventory {
+  height: 455px;
+  width: 500px;
+  background: rgba(255, 255, 255, 0.03);
+  border: solid 1px rgba(255, 255, 255, 0.09);
+  border-radius: 6px;
+  padding: 4px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.item-slot {
+  display: inline-block;
+  height: 90px;
+  width: 20%;
+  padding: 3px;
+  box-sizing: border-box;
+  /* margin: 2px; */
+  cursor: pointer;
+}
+
+.item-slot.empty {
+  cursor: default;
+}
+
+.item-slot.being-moved .img {
+  display: none;
+}
+
+.item-slot.being-dragged {
+  position: absolute;
+  cursor: grab;
+}
+
+.item-slot.being-dragged .content {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.item-slot .content {
+  content: " ";
+  background: rgba(255, 255, 255, 0.09);
+  border: solid 1px rgba(255, 255, 255, 0.03);
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+.item-slot .content .img {
+  height: 90%;
+  width: 90%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.destination-area-example {
+  background: rgba(255, 255, 255, 0.09);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  border: solid 1px rgba(255, 255, 255, 0.09);
+  border-radius: 6px;
+  margin-right: 8px;
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}

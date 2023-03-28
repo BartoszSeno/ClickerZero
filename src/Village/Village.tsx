@@ -20,7 +20,7 @@ import Clicker from "../hook/ClickerCount";
 import Information from "../Information";
 import PerClickPoints from "../hook/PerClick";
 import UpdateLvlOne from "../Upgrade/UpgradeLvlOne";
-import AppTest from "../inventory";
+import Inventory from "../inventory";
 
 const MainIndexVillage = () => {
   // ARRAY OF THE ENTIRE ShieldAndDagger
@@ -527,7 +527,7 @@ const MainIndexVillage = () => {
       >
         <div className="GameMainWindow">
           <div className="leftVillage">
-            <AppTest />
+            <Inventory items={undefined} />
             {/*
             <button className="InfoOpen" onClick={HandleInfoOpenAndClose}>
               Info
