@@ -9,6 +9,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 0,
     isBought: false,
     isVisible: false,
+    type: "weapon",
   },
   {
     id: 1,
@@ -20,6 +21,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 2,
@@ -31,6 +33,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 3,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 3,
@@ -42,6 +45,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 5,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 4,
@@ -53,6 +57,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 10,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 5,
@@ -64,6 +69,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 6,
@@ -75,6 +81,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 7,
@@ -106,6 +113,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 10,
@@ -117,6 +125,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 11,
@@ -128,6 +137,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 12,
@@ -139,6 +149,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 13,
@@ -150,6 +161,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 14,
@@ -161,6 +173,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 15,
@@ -172,6 +185,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 16,
@@ -183,6 +197,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 17,
@@ -194,6 +209,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 18,
@@ -205,6 +221,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   // BLUE WEAPON ==============================================================================
   {
@@ -217,6 +234,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 20,
@@ -228,6 +246,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 21,
@@ -239,6 +258,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 22,
@@ -250,6 +270,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 23,
@@ -261,6 +282,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 24,
@@ -272,6 +294,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 25,
@@ -283,6 +306,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 26,
@@ -294,6 +318,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 27,
@@ -305,6 +330,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 28,
@@ -316,6 +342,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 29,
@@ -327,6 +354,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 30,
@@ -338,6 +366,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 31,
@@ -349,6 +378,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   // YELLOW WEAPON ==============================================================================
   {
@@ -361,6 +391,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 33,
@@ -372,6 +403,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 34,
@@ -383,6 +415,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 35,
@@ -394,6 +427,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 36,
@@ -405,6 +439,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 37,
@@ -416,6 +451,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 38,
@@ -427,6 +463,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 39,
@@ -438,6 +475,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 40,
@@ -449,6 +487,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 41,
@@ -460,6 +499,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 42,
@@ -471,6 +511,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   // RED WEAPON ======================================================
   {
@@ -483,6 +524,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 44,
@@ -494,6 +536,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 45,
@@ -505,6 +548,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 46,
@@ -516,6 +560,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 47,
@@ -527,6 +572,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 48,
@@ -538,6 +584,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 49,
@@ -549,6 +596,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 50,
@@ -560,6 +608,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 51,
@@ -571,6 +620,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 52,
@@ -582,6 +632,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   // PURPLE WEAPON ======================================================
   {
@@ -594,6 +645,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 54,
@@ -605,6 +657,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 55,
@@ -616,6 +669,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 56,
@@ -627,6 +681,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 57,
@@ -638,6 +693,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 58,
@@ -649,6 +705,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 59,
@@ -660,6 +717,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 60,
@@ -671,6 +729,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 61,
@@ -682,6 +741,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 62,
@@ -693,6 +753,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 63,
@@ -704,6 +765,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 64,
@@ -715,6 +777,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 65,
@@ -726,6 +789,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 66,
@@ -737,6 +801,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
   {
     id: 67,
@@ -748,5 +813,6 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    type: "weapon",
   },
 ];

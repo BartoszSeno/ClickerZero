@@ -510,6 +510,7 @@ const MainIndexVillage = () => {
         id="mainBGScrollHorizontal"
         ref={mainBGScrollHorizontalRef}
         onWheel={(e) => {
+          //e.preventDefault();
           handleScroll(e.deltaY);
         }}
       >

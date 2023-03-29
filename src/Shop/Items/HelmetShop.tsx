@@ -24,8 +24,12 @@ const HelmetShop = ({
     const index = newHelmetData.findIndex(
       (item) => item.id === selectedItem.id
     );
-    newHelmetData[index].isBought = true;
-    newHelmetData[index].count = newHelmetData[index].count || 1;
+    const updatedItem = {
+      ...newHelmetData[index],
+      isBought: true,
+      id: newHelmetData.filter((item) => item.isBought).length + 1,
+    };
+    newHelmetData[index] = updatedItem;
     setHelmetData(newHelmetData);
     localStorage.setItem(
       "HelmetImageAndNameAndCost",

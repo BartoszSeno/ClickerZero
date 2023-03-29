@@ -18,11 +18,26 @@ const Inventory = ({
   handleItemSelect: any;
   GetIdPerClick: any;
 }) => {
-  const [items, setItems] = useState(
-    mainWeaponData
-      .filter((item: { isBought: boolean }) => item.isBought === true)
-      .map((item: any, index: number) => ({ ...item, id: index }))
-  );
+  const saveItemsToLocalStorage = (items: any[]) => {
+    const itemsWithNewSlots = items.map((item) => ({
+      ...item,
+      newSlot: item.id,
+    }));
+    localStorage.setItem("items", JSON.stringify(itemsWithNewSlots));
+    console.log(itemsWithNewSlots);
+  };
+
+  const [items, setItems] = useState(() => {
+    const storedItems = localStorage.getItem("items");
+
+    if (storedItems !== null) {
+      return JSON.parse(storedItems);
+    } else {
+      return mainWeaponData
+        .filter((item: { isBought: boolean }) => item.isBought === true)
+        .map((item: any, index: number) => ({ ...item, id: index }));
+    }
+  });
 
   useEffect(() => {
     setItems(
@@ -31,6 +46,11 @@ const Inventory = ({
         .map((item: any, index: number) => ({ ...item, id: index }))
     );
   }, [mainWeaponData]);
+
+  // Call the saveItemsToLocalStorage function whenever the items state is updated
+  useEffect(() => {
+    saveItemsToLocalStorage(items);
+  }, [items]);
   //Let's assume this is the player's items.
 
   const itemsRef = React.useRef(props.items);
