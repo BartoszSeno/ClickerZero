@@ -8,110 +8,145 @@ import DragAndDropAPI from "./Components/DragAndDropAPI";
 const Inventory = ({
   props,
   mainWeaponData,
-  UpgradedNamesMainWeapon,
-  handleItemSelect,
-  GetIdPerClick,
 }: {
   props: any;
   mainWeaponData: any;
-  UpgradedNamesMainWeapon: any;
-  handleItemSelect: any;
-  GetIdPerClick: any;
 }) => {
-  const saveItemsToLocalStorage = (items: any[]) => {
-    const itemsWithNewSlots = items.map((item) => ({
-      ...item,
-      newSlot: item.id,
-    }));
-    localStorage.setItem("items", JSON.stringify(itemsWithNewSlots));
-    console.log(itemsWithNewSlots);
+  const getBoughtItems = (items: any[]) => {
+    return items.filter((item) => item.isBought === true);
   };
 
   const [items, setItems] = useState(() => {
-    const storedItems = localStorage.getItem("items");
+    const localItems = localStorage.getItem("items");
+    const parsedItems = localItems ? JSON.parse(localItems) : mainWeaponData;
 
-    if (storedItems !== null) {
-      return JSON.parse(storedItems);
-    } else {
-      return mainWeaponData
-        .filter((item: { isBought: boolean }) => item.isBought === true)
-        .map((item: any, index: number) => ({ ...item, id: index }));
-    }
+    // Add an `order` property to each item based on its index in the array
+    const itemsWithOrder = parsedItems.map((item: any, index: any) => ({
+      ...item,
+      order: index,
+    }));
+
+    const boughtItems = getBoughtItems(itemsWithOrder);
+
+    const itemsWithSlots = boughtItems.map((item, index) => {
+      const savedSlot = localStorage.getItem(`item_${index}_slot`);
+      const slot = savedSlot !== null ? parseInt(savedSlot) : index;
+      return { ...item, slot };
+    });
+
+    // Sort the items by the `order` property
+    return itemsWithSlots.sort((a, b) => a.slot - b.slot);
   });
 
   useEffect(() => {
-    setItems(
-      mainWeaponData
-        .filter((item: { isBought: boolean }) => item.isBought === true)
-        .map((item: any, index: number) => ({ ...item, id: index }))
+    const boughtItems = getBoughtItems(mainWeaponData);
+    const itemsWithSlots = boughtItems.map((item, index) => {
+      const savedSlot = localStorage.getItem(`item_${index}_slot`);
+      const slot = savedSlot !== null ? parseInt(savedSlot) : index;
+      return { ...item, slot };
+    });
+
+    const emptySlots = getNumberOfSlots().filter(
+      (slot) => !itemsWithSlots.some((item) => item.slot === slot)
     );
+
+    // Assign the first empty slot to the new item
+    const newItem = { ...mainWeaponData[0], slot: emptySlots[0] };
+    const newItems = [...itemsWithSlots, newItem];
+
+    setItems(newItems);
   }, [mainWeaponData]);
 
-  // Call the saveItemsToLocalStorage function whenever the items state is updated
-  useEffect(() => {
-    saveItemsToLocalStorage(items);
-  }, [items]);
-  //Let's assume this is the player's items.
+  const UpdateOnClick = () => {
+    setTimeout(() => {
+      const boughtItems = getBoughtItems(mainWeaponData);
+      const itemsWithSlots = boughtItems.map((item, index) => {
+        const savedSlot = localStorage.getItem(`item_${index}_slot`);
+        const slot = savedSlot !== null ? parseInt(savedSlot) : index;
+        return { ...item, slot };
+      });
 
+      const emptySlots = getNumberOfSlots().filter(
+        (slot) => !itemsWithSlots.some((item) => item.slot === slot)
+      );
+
+      // Assign the first empty slot to the new item
+      const newItem = { ...mainWeaponData[0], slot: emptySlots[0] };
+      const newItems = [...itemsWithSlots, newItem];
+
+      setItems(newItems);
+    }, 10);
+  };
+
+  useEffect(() => {
+    items.forEach((item: { slot?: { toString: () => string } }, index: any) => {
+      const slot = item.slot !== undefined ? item.slot.toString() : "";
+      localStorage.setItem(`item_${index}_slot`, slot);
+    });
+  }, [items]);
+
+  //Let's assume this is the player's items.
   const itemsRef = React.useRef(props.items);
 
   const [draggingSlotId, setDraggingSlot] = useState(null);
   const getNumberOfSlots = () =>
-    new Array(24).fill(null).map((_, index) => index);
-  const getItemDataInSlot = (id: number) =>
-    items.find((item: { id: number }) => item.id === id);
+    new Array(25).fill(null).map((_, index) => index);
+  const getItemDataInSlot = (slot: number) =>
+    items.find((item: { slot: number }) => item.slot === slot);
 
   const getInventorySlotIndex = (slotIndex: number) => {
-    let id = itemsRef.current.filter(
-      (item: { id: number }) => item.id === slotIndex
+    let slot = itemsRef.current.filter(
+      (item: { slot: number }) => item.slot === slotIndex
     )[0];
-    return id ? itemsRef.current.indexOf(id) : null;
+
+    return slot ? itemsRef.current.indexOf(slot) : null;
   };
 
   const swapItemSlots = (oldSlot: number, newSlot: number) => {
     setItems((currentState: any) => {
-      let newInventory = [...currentState];
+      const newInventory = [...currentState];
       let oldIndex = -1,
         newIndex = -1;
 
-      // Finding the old ones..
-
+      // Finding the old and new slots
       newInventory.forEach((item, index) => {
-        if (item.id === oldSlot) {
+        if (item.slot === oldSlot) {
           oldIndex = index;
-        } else if (item.id === newSlot) {
+        } else if (item.slot === newSlot) {
           newIndex = index;
         }
       });
 
       // Replacing them
+      newInventory[oldIndex] = { ...newInventory[oldIndex], slot: newSlot };
+      newInventory[newIndex] = { ...newInventory[newIndex], slot: oldSlot };
 
-      newInventory[oldIndex] = { ...newInventory[oldIndex], id: newSlot };
-      newInventory[newIndex] = { ...newInventory[newIndex], id: oldSlot };
+      // Update localStorage
+      localStorage.setItem("items", JSON.stringify(newInventory));
 
       return [...newInventory];
     });
   };
 
   const moveItemToSlot = (oldSlot: number, newSlot: number) => {
-    console.log(`move slot`, oldSlot, newSlot);
-
     setItems((currentState: any) => {
       let inventory = [...currentState];
 
       inventory.forEach((item, index) => {
-        if (item.id === oldSlot) {
-          inventory[index].id = newSlot;
+        if (item.slot === oldSlot) {
+          inventory[index].slot = newSlot;
         }
       });
 
+      // Update localStorage
+      console.log(inventory);
       return inventory;
     });
   };
 
   const onInventoryItemDragged = ({ detail: eventData }: any) => {
-    const oldSlot = parseInt(eventData.id),
-      newSlot = parseInt(eventData.destination.id);
+    const oldSlot = parseInt(eventData.slot),
+      newSlot = parseInt(eventData.destination.slot);
 
     if (eventData.destination.type === "empty-slot") {
       moveItemToSlot(oldSlot, newSlot);
@@ -119,8 +154,11 @@ const Inventory = ({
       swapItemSlots(oldSlot, newSlot);
     } else if (eventData.destination.type === "example-1") {
     }
-  };
 
+    console.log("t " + oldSlot);
+    console.log("s " + newSlot);
+    localStorage.setItem("newSlot", JSON.stringify(newSlot));
+  };
   useEffect(() => {
     document.addEventListener("inventoryItemDragged", onInventoryItemDragged);
     return () => {
@@ -134,14 +172,18 @@ const Inventory = ({
 
   return (
     <>
-      <div id="inventoryContainer">
+      <div className="app-container">
         <DragAndDropAPI
           activeDraggedSlot={draggingSlotId}
           setActiveDraggedSlot={setDraggingSlot}
         />
-        <div className="inventory">
-          {getNumberOfSlots().map((id) => (
-            <ItemSlot id={id} data={getItemDataInSlot(id) || null} key={id} />
+        <div className="inventory" onMouseOver={UpdateOnClick}>
+          {getNumberOfSlots().map((slot: number) => (
+            <ItemSlot
+              slot={slot}
+              data={getItemDataInSlot(slot) || null}
+              key={slot}
+            />
           ))}
         </div>
       </div>

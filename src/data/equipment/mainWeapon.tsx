@@ -1,9 +1,8 @@
 export const MainWeaponImageAndNameAndCost = [
   {
     id: 0,
-    tier: "green",
-    image:
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Weapon/TextureGreen/1.png",
+    tier: "",
+    image: "",
     name: "",
     dmgLvl0: 0,
     cost: 0,

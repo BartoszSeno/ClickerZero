@@ -54,13 +54,7 @@ function MainWeapon({
           id="option-container"
           className={`ocmw ${isActive ? "open" : "close"}`}
         >
-          <Inventory
-            props={""}
-            mainWeaponData={mainWeaponData}
-            UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
-            handleItemSelect={handleItemSelect}
-            GetIdPerClick={GetIdPerClick}
-          />
+          <Inventory props={""} mainWeaponData={mainWeaponData} />
         </div>
       </div>
     </>

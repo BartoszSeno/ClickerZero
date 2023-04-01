@@ -1,45 +1,33 @@
 import React from "react";
 
-const ItemSlot = ({
-  id,
-  data,
-  mainWeaponData,
-  UpgradedNamesMainWeapon,
-  handleItemSelect,
-  GetIdPerClick,
-}: {
-  id: number;
-  data: { image: string };
-  mainWeaponData: any;
-  UpgradedNamesMainWeapon: any;
-  handleItemSelect: any;
-  GetIdPerClick: any;
-}) => {
+const ItemSlot = (props: { slot: any; data: { image: any } }) => {
   return (
-    <div
-      id={`item-slot-${id}`}
-      className={`item-slot`}
-      data-slot={id}
-      data-type={`item`}
-    >
-      <div className="content">
-        <div
-          className="img"
-          style={{
-            backgroundImage: `url("${data.image}")`,
-          }}
-        />
+    <>
+      <div
+        id={`item-slot-${props.slot}`}
+        className={`item-slot`}
+        data-slot={props.slot}
+        data-type={`item`}
+      >
+        <div className="content">
+          <div
+            className="img"
+            style={{
+              backgroundImage: `url("${props.data.image}")`,
+            }}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
-const EmptySlot = (props: { id: any }) => {
+const EmptySlot = (props: { slot: any }) => {
   return (
     <>
       <div
         className="item-slot empty"
-        data-slot={props.id}
+        data-slot={props.slot}
         data-type={`empty-slot`}
       >
         <div className="content" />
@@ -48,7 +36,7 @@ const EmptySlot = (props: { id: any }) => {
   );
 };
 
-const MainComponent = (props: any & { id: any }) => {
+const MainComponent = (props: any & { slot: any }) => {
   return props.data !== null ? (
     <ItemSlot {...props} />
   ) : (

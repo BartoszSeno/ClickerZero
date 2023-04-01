@@ -12,10 +12,10 @@ const ExportingComponent = (props: any) => {
   };
 
   const moveElementCloneToMouseCoords = async (x: any, y: any) => {
-    const id = slotDraggedRef.current;
-    if (id === null) return false;
+    const slot = slotDraggedRef.current;
+    if (slot === null) return false;
     const insertedChild = document.getElementById(
-      `item-slot-ghost-${id}`
+      `item-slot-ghost-${slot}`
     ) as HTMLElement;
     if (!insertedChild) return false;
     insertedChild.style.top = `${x}px`;
@@ -34,20 +34,20 @@ const ExportingComponent = (props: any) => {
     if (slotDraggedRef.current !== null) return false;
     event.preventDefault();
     const div = event.target;
-    const id = div.getAttribute("data-slot");
+    const slot = div.getAttribute("data-slot");
     const type = div.getAttribute("data-type");
-    if (id !== undefined && type === "item") {
-      const slotNumber = parseInt(id);
+    if (slot !== undefined && type === "item") {
+      const slotNumber = parseInt(slot);
       setDraggingSlot(slotNumber);
       const itemSelected = document.getElementById(
-        `item-slot-${id}`
+        `item-slot-${slot}`
       ) as HTMLElement;
       const itemList = document.getElementsByClassName(
         "inventory"
       )[0] as HTMLElement;
       const itemClone = itemSelected.cloneNode(true) as HTMLElement;
       itemClone.className += " being-dragged";
-      itemClone.id = `item-slot-ghost-${id}`;
+      itemClone.id = `item-slot-ghost-${slot}`;
       itemList.appendChild(itemClone);
 
       // Hiding the current item selected while dragging around the clone
@@ -55,7 +55,7 @@ const ExportingComponent = (props: any) => {
 
       // Setting the default height and width and moving the clone to the right pos.
       const insertedChild = document.getElementById(
-        `item-slot-ghost-${id}`
+        `item-slot-ghost-${slot}`
       ) as HTMLElement;
       const rect = itemSelected.getBoundingClientRect();
       // Setting Initial styling..
@@ -73,10 +73,10 @@ const ExportingComponent = (props: any) => {
     if (slotDraggedRef.current === null) return false;
     event.preventDefault();
     const { clientX, clientY } = event;
-    const id = slotDraggedRef.current;
-    if (id === null) return false;
+    const slot = slotDraggedRef.current;
+    if (slot === null) return false;
     const itemSlotElement = document.getElementById(
-      `item-slot-${id}`
+      `item-slot-${slot}`
     ) as HTMLElement;
     itemSlotElement.className = itemSlotElement.className.replace(
       " being-moved",
@@ -84,7 +84,7 @@ const ExportingComponent = (props: any) => {
     );
     // Deleting the ghost item..
     const itemGhostElement = document.getElementById(
-      `item-slot-ghost-${id}`
+      `item-slot-ghost-${slot}`
     ) as HTMLElement;
     itemGhostElement.remove();
 
@@ -92,13 +92,13 @@ const ExportingComponent = (props: any) => {
     const target = document.elementFromPoint(clientX, clientY) as HTMLElement;
     const targetSlot = target.getAttribute("data-slot");
 
-    if (targetSlot !== id) {
+    if (targetSlot !== slot) {
       document.dispatchEvent(
         new CustomEvent("inventoryItemDragged", {
           detail: {
-            id: id,
+            slot: slot,
             destination: {
-              id: target.getAttribute("data-slot"),
+              slot: target.getAttribute("data-slot"),
               type: target.getAttribute("data-type"),
             },
           },

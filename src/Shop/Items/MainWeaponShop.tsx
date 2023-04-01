@@ -17,7 +17,7 @@ const MainWeaponShop = ({
 }) => {
   const [disabledButtons, setDisabledButtons] = useState<any>([]);
   const [selectedItemsN, setselectedItemsN] = useState<any[]>([]);
-  const [timeLeft, settimeLeft] = useState<number>(60);
+  const [timeLeft, settimeLeft] = useState<number>(5);
 
   const handleClick = (selectedItem: any) => {
     const newMainWeaponData = [...mainWeaponData];
@@ -46,13 +46,13 @@ const MainWeaponShop = ({
     const selectedItemsN = randomIndexes.map((index) => mainWeaponData[index]);
     setselectedItemsN(selectedItemsN);
     localStorage.setItem("selectedItemsN", JSON.stringify(selectedItemsN));
-    settimeLeft(60);
+    settimeLeft(5);
   };
 
   useEffect(() => {
     const interval1 = setInterval(() => {
       changeSelectedItemsN();
-    }, 60000);
+    }, 5000);
 
     const savedItems = localStorage.getItem("selectedItemsN");
     if (savedItems) {
