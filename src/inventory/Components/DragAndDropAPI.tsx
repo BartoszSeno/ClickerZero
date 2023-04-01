@@ -31,6 +31,7 @@ const ExportingComponent = (props: any) => {
   };
 
   const onMouseClick = (event: any) => {
+    if (event.button !== 0) return; // exit if not left mouse button
     if (slotDraggedRef.current !== null) return false;
     event.preventDefault();
     const div = event.target;

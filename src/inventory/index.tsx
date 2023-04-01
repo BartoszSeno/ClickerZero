@@ -8,9 +8,13 @@ import DragAndDropAPI from "./Components/DragAndDropAPI";
 const Inventory = ({
   props,
   mainWeaponData,
+  handleItemClick,
+  GetIdPerClick,
 }: {
   props: any;
   mainWeaponData: any;
+  handleItemClick: any;
+  GetIdPerClick: any;
 }) => {
   const getBoughtItems = (items: any[]) => {
     return items.filter((item) => item.isBought === true);
@@ -35,7 +39,7 @@ const Inventory = ({
     });
 
     // Sort the items by the `order` property
-    return itemsWithSlots.sort((a, b) => a.slot - b.slot);
+    return itemsWithSlots;
   });
 
   useEffect(() => {
@@ -155,8 +159,6 @@ const Inventory = ({
     } else if (eventData.destination.type === "example-1") {
     }
 
-    console.log("t " + oldSlot);
-    console.log("s " + newSlot);
     localStorage.setItem("newSlot", JSON.stringify(newSlot));
   };
   useEffect(() => {
@@ -170,6 +172,14 @@ const Inventory = ({
     // eslint-disable-next-line
   }, []);
 
+  const inventoryElement = document.querySelector(".inventory");
+  if (inventoryElement) {
+    inventoryElement.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+      return false;
+    });
+  }
+
   return (
     <>
       <div className="app-container">
@@ -178,13 +188,25 @@ const Inventory = ({
           setActiveDraggedSlot={setDraggingSlot}
         />
         <div className="inventory" onMouseOver={UpdateOnClick}>
-          {getNumberOfSlots().map((slot: number) => (
-            <ItemSlot
-              slot={slot}
-              data={getItemDataInSlot(slot) || null}
-              key={slot}
-            />
-          ))}
+          {getNumberOfSlots().map((slot: number) => {
+            const item = items.find((item) => item.slot === slot);
+            const itemId = item ? item.id : null;
+            return (
+              <span
+                onContextMenu={(e) => {
+                  handleItemClick(itemId);
+                  GetIdPerClick(itemId);
+                }}
+              >
+                <ItemSlot
+                  slot={slot}
+                  data={getItemDataInSlot(slot) || null}
+                  key={slot}
+                  itemId={itemId}
+                />
+              </span>
+            );
+          })}
         </div>
       </div>
     </>
