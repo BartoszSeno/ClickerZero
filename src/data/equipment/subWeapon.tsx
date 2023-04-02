@@ -1,6 +1,6 @@
 export const ShieldAndDaggerImageAndNameAndCost = [
   {
-    id: 100,
+    id: 0,
     tier: "green",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/subWeapon/shield/n1.png",
@@ -34,7 +34,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     defLvl0: 1,
     dmgLvl0: 0,
     cost: 1,
-    isBought: false,
+    isBought: true,
     isVisible: true,
     type: "shield",
   },
@@ -99,7 +99,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     defLvl0: 1,
     dmgLvl0: 0,
     cost: 1,
-    isBought: false,
+    isBought: true,
     isVisible: true,
     type: "shield",
   },
@@ -218,7 +218,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     defLvl0: 0,
     dmgLvl0: 1,
     cost: 1,
-    isBought: false,
+    isBought: true,
     isVisible: true,
     type: "dagger",
   },

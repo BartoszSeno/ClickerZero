@@ -23,7 +23,6 @@ const ShoesShop = ({
     const newShoesData = [...ShoesData];
     const index = newShoesData.findIndex((item) => item.id === selectedItem.id);
     newShoesData[index].isBought = true;
-    newShoesData[index].count = newShoesData[index].count || 1;
     setShoesData(newShoesData);
     localStorage.setItem(
       "ShoesImageAndNameAndCost",

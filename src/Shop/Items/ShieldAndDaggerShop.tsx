@@ -18,8 +18,6 @@ const ShieldAndDaggerShop = ({
     //ShieldAndDagger
     const newShieldAndDaggerData = [...ShieldAndDaggerData];
     newShieldAndDaggerData[index].isBought = true;
-    newShieldAndDaggerData[index].count =
-      (newShieldAndDaggerData[index].count || 0) + 1;
     setShieldAndDaggerData(newShieldAndDaggerData);
     localStorage.setItem(
       "ShieldAndDaggerImageAndNameAndCost",

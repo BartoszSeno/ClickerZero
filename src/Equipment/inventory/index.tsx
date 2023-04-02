@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-import "../assets/css/Normal/inventory/inventory.css";
+import "../../assets/css/Normal/inventory/inventory.css";
 import { v4 as uuidv4 } from "uuid";
 
 // Components
@@ -10,19 +11,48 @@ const Inventory = ({
   props,
   mainWeaponData,
   handleItemClick,
-  GetIdPerClick,
+  GetIdPerClickMW,
+  HelmetData,
+  GetIdPerClickH,
+  ArmorData,
+  GetIdPerClickA,
+  ShoesData,
+  GetIdPerClickS,
+  GlovesData,
+  GetIdPerClickG,
+  ShieldAndDaggerData,
+  GetIdPerClickSW,
 }: {
   props: any;
   mainWeaponData: any;
   handleItemClick: any;
-  GetIdPerClick: any;
+  GetIdPerClickMW: any;
+  HelmetData: any;
+  GetIdPerClickH: any;
+  ArmorData: any;
+  GetIdPerClickA: any;
+  ShoesData: any;
+  GetIdPerClickS: any;
+  GlovesData: any;
+  GetIdPerClickG: any;
+  ShieldAndDaggerData: any;
+  GetIdPerClickSW: any;
 }) => {
+  const allItemsFromArray = [
+    ...mainWeaponData,
+    ...HelmetData,
+    ...ArmorData,
+    ...ShoesData,
+    ...GlovesData,
+    ...ShieldAndDaggerData,
+  ];
+
   const [items, setItems] = useState(() => {
     const storedItems = localStorage.getItem("items");
     if (storedItems) {
       return JSON.parse(storedItems);
     }
-    return mainWeaponData
+    return allItemsFromArray
       .filter((item: any) => item.isBought === true)
       .map((item: any, index: any) => ({ ...item, slot: index }));
   });
@@ -30,7 +60,7 @@ const Inventory = ({
   const inventorySlots = new Array(24).fill(null);
 
   useEffect(() => {
-    const newBoughtItem = mainWeaponData.find(
+    const newBoughtItem = allItemsFromArray.find(
       (item: any) =>
         item.isBought === true && !items.find((i: any) => i.id === item.id)
     );
@@ -54,7 +84,7 @@ const Inventory = ({
         }
       }
 
-      if (emptySlotIndex <= 24) {
+      if (emptySlotIndex <= 23) {
         const updatedItems = [...items];
         updatedItems.push({ ...newBoughtItem, slot: emptySlotIndex });
         setItems(updatedItems);
@@ -65,7 +95,7 @@ const Inventory = ({
         console.log(emptySlotIndex);
       }
     }
-  }, [mainWeaponData, items, inventorySlots]);
+  }, [allItemsFromArray, items, inventorySlots]);
 
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
@@ -153,6 +183,24 @@ const Inventory = ({
     });
   }
 
+  const handleContextMenu = (e: { preventDefault: () => void }, item: any) => {
+    e.preventDefault();
+    console.log("Clicked item:", item);
+    if (item.type === "weapon") {
+      GetIdPerClickMW(item.id); // wywołanie funkcji GetIdPerClickMW z id elementu
+    } else if (item.type === "helmet") {
+      GetIdPerClickH(item.id); // wywołanie funkcji GetIdPerClickH z id elementu
+    } else if (item.type === "Armor") {
+      GetIdPerClickA(item.id); // wywołanie funkcji GetIdPerClickH z id elementu
+    } else if (item.type === "Shoes") {
+      GetIdPerClickS(item.id); // wywołanie funkcji GetIdPerClickH z id elementu
+    } else if (item.type === "gloves") {
+      GetIdPerClickG(item.id); // wywołanie funkcji GetIdPerClickH z id elementu
+    } else if (item.type === "shield" || "dagger") {
+      GetIdPerClickSW(item.id); // wywołanie funkcji GetIdPerClickH z id elementu
+    }
+  };
+
   return (
     <>
       <div className="app-container">
@@ -170,7 +218,7 @@ const Inventory = ({
               <span
                 onContextMenu={(e) => {
                   handleItemClick(itemId);
-                  GetIdPerClick(itemId);
+                  handleContextMenu(e, item);
                 }}
               >
                 <ItemSlot

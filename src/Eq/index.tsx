@@ -1,9 +1,4 @@
 import "../assets/css/Normal/Equipment/equipment.css";
-import Armor from "./Armor/armor";
-import MainWeapon from "./MainWeapon/mainWeapon";
-import ShieldAndDagger from "./SubWeapon/subWeapon";
-import Helmet from "./Helmet/helmet";
-import Shoes from "./Shoes/shoes";
 import Gloves from "./Gloves/gloves";
 import Statistic from "./statistic/statistic";
 import { useState } from "react";
@@ -67,50 +62,14 @@ const Eq = ({
   return (
     <>
       <section id="equipment">
-        <div className="DmgItems">
-          <MainWeapon
-            mainWeaponData={mainWeaponData}
-            UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
-            handleItemSelect={handleItemSelect}
-            isActive={whichIsOpen === "MainWeapon"}
-            handleItemClick={() => handleItemClick("MainWeapon")}
-          />
-          <ShieldAndDagger
-            ShieldAndDaggerData={ShieldAndDaggerData}
-            UpgradedNamesShieldAndDagger={UpgradedNamesShieldAndDagger}
-            handleShieldAndDaggerItemSelect={handleShieldAndDaggerItemSelect}
-            isActive={whichIsOpen === "ShieldAndDagger"}
-            handleItemClick={() => handleItemClick("ShieldAndDagger")}
-          />
-        </div>
+        <div className="DmgItems"></div>
         <div className="DefItems">
-          <Helmet
-            HelmetData={HelmetData}
-            UpgradedNamesHelmet={UpgradedNamesHelmet}
-            handleHelmetItemSelect={handleHelmetItemSelect}
-            isActive={whichIsOpen === "Helmet"}
-            handleItemClick={() => handleItemClick("Helmet")}
-          />
-          <Armor
-            ArmorData={ArmorData}
-            UpgradedNamesArmor={UpgradedNamesArmor}
-            handleArmorItemSelect={handleArmorItemSelect}
-            isActive={whichIsOpen === "Armor"}
-            handleItemClick={() => handleItemClick("Armor")}
-          />
           <Gloves
             GlovesData={GlovesData}
             UpgradedNamesGloves={UpgradedNamesGloves}
             handleGlovesItemSelect={handleGlovesItemSelect}
             isActive={whichIsOpen === "Gloves"}
             handleItemClick={() => handleItemClick("Gloves")}
-          />
-          <Shoes
-            ShoesData={ShoesData}
-            UpgradedNamesShoes={UpgradedNamesShoes}
-            handleShoesItemSelect={handleShoesItemSelect}
-            isActive={whichIsOpen === "Shoes"}
-            handleItemClick={() => handleItemClick("Shoes")}
           />
         </div>
       </section>

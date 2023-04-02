@@ -25,7 +25,6 @@ const MainWeaponShop = ({
       (item) => item.id === selectedItem.id
     );
     newMainWeaponData[index].isBought = true;
-    newMainWeaponData[index].count = newMainWeaponData[index].count || 1;
     setMainWeaponData(newMainWeaponData);
     localStorage.setItem(
       "MainWeaponImageAndNameAndCost",

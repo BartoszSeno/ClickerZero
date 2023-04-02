@@ -17,13 +17,12 @@ const ArmorShop = ({
 }) => {
   const [disabledButtons, setDisabledButtons] = useState<any>([]);
   const [selectedItemsA, setselectedItemsA] = useState<any[]>([]);
-  const [timeLeft, settimeLeft] = useState<number>(60);
+  const [timeLeft, settimeLeft] = useState<number>(5);
 
   const handleClickArmor = (selectedItem: any) => {
     const newArmorData = [...ArmorData];
     const index = newArmorData.findIndex((item) => item.id === selectedItem.id);
     newArmorData[index].isBought = true;
-    newArmorData[index].count = newArmorData[index].count || 1;
     setArmorData(newArmorData);
     localStorage.setItem(
       "ArmorImageAndNameAndCost",
@@ -44,13 +43,13 @@ const ArmorShop = ({
     const selectedItemsA = randomIndexes.map((index) => ArmorData[index]);
     setselectedItemsA(selectedItemsA);
     localStorage.setItem("selectedItemsA", JSON.stringify(selectedItemsA));
-    settimeLeft(60);
+    settimeLeft(5);
   };
 
   useEffect(() => {
     const interval1 = setInterval(() => {
       changeselectedItemsA();
-    }, 60000);
+    }, 5000);
 
     const savedItems = localStorage.getItem("selectedItemsA");
     if (savedItems) {

@@ -2,6 +2,7 @@ import "../assets/css/Normal/Village/background.css";
 import "../assets/css/Normal/Village/midVillage.css";
 import "../assets/css/Normal/Village/rightVillage.css";
 import "../assets/css/Normal/shop/shop.css";
+import MainEq from "../Equipment";
 
 import React, { useEffect, useRef, useState } from "react";
 import WeaponShop from "./WeaponShop/WShop";
@@ -515,6 +516,32 @@ const MainIndexVillage = () => {
       >
         <div className="GameMainWindow">
           <div className="leftVillage">
+            <MainEq
+              mainWeaponData={mainWeaponData}
+              UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
+              handleItemSelect={handleItemSelect}
+              selectedItem={selectedItem}
+              ArmorData={ArmorData}
+              UpgradedNamesArmor={UpgradedNamesArmor}
+              handleArmorItemSelect={handleArmorItemSelect}
+              selectedArmorItem={selectedArmorItem}
+              HelmetData={HelmetData}
+              UpgradedNamesHelmet={UpgradedNamesHelmet}
+              handleHelmetItemSelect={handleHelmetItemSelect}
+              selectedHelmetItem={selectedHelmetItem}
+              ShoesData={ShoesData}
+              UpgradedNamesShoes={UpgradedNamesShoes}
+              handleShoesItemSelect={handleShoesItemSelect}
+              selectedShoesItem={selectedShoesItem}
+              GlovesData={GlovesData}
+              UpgradedNamesGloves={UpgradedNamesGloves}
+              handleGlovesItemSelect={handleGlovesItemSelect}
+              selectedGlovesItem={selectedGlovesItem}
+              ShieldAndDaggerData={ShieldAndDaggerData}
+              UpgradedNamesShieldAndDagger={UpgradedNamesShieldAndDagger}
+              handleShieldAndDaggerItemSelect={handleShieldAndDaggerItemSelect}
+              selectedShieldAndDaggerItem={selectedShieldAndDaggerItem}
+            />
             {/*
             <button className="InfoOpen" onClick={HandleInfoOpenAndClose}>
               Info

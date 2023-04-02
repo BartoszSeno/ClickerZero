@@ -17,19 +17,15 @@ const HelmetShop = ({
 }) => {
   const [disabledButtons, setDisabledButtons] = useState<any>([]);
   const [selectedItemsH, setselectedItemsH] = useState<any[]>([]);
-  const [timeLeft, settimeLeft] = useState<number>(60);
+  const [timeLeft, settimeLeft] = useState<number>(5);
 
   const handleClickHelmet = (selectedItem: any) => {
     const newHelmetData = [...HelmetData];
     const index = newHelmetData.findIndex(
       (item) => item.id === selectedItem.id
     );
-    const updatedItem = {
-      ...newHelmetData[index],
-      isBought: true,
-      id: newHelmetData.filter((item) => item.isBought).length + 1,
-    };
-    newHelmetData[index] = updatedItem;
+
+    newHelmetData[index].isBought = true;
     setHelmetData(newHelmetData);
     localStorage.setItem(
       "HelmetImageAndNameAndCost",
@@ -50,13 +46,13 @@ const HelmetShop = ({
     const selectedItemsH = randomIndexes.map((index) => HelmetData[index]);
     setselectedItemsH(selectedItemsH);
     localStorage.setItem("selectedItemsH", JSON.stringify(selectedItemsH));
-    settimeLeft(60);
+    settimeLeft(5);
   };
 
   useEffect(() => {
     const interval1 = setInterval(() => {
       changeselectedItemsH();
-    }, 60000);
+    }, 5000);
 
     const savedItems = localStorage.getItem("selectedItemsH");
     if (savedItems) {

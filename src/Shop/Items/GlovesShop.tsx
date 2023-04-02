@@ -18,7 +18,6 @@ const GlovesShop = ({
     //Gloves
     const newGlovesData = [...GlovesData];
     newGlovesData[index].isBought = true;
-    newGlovesData[index].count = (newGlovesData[index].count || 0) + 1;
     setGlovesData(newGlovesData);
     localStorage.setItem(
       "GlovesImageAndNameAndCost",

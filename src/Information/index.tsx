@@ -23,6 +23,7 @@ const Information = ({ infoOpenClose }: { infoOpenClose: any }) => {
           <p>Dmg/def optimization</p>
           <p>Change GUI</p>
           <p>Adding credit's</p>
+          <p>make room for collecting items</p>
         </div>
         <div className="tofix">
           <h1>To fix:</h1>
