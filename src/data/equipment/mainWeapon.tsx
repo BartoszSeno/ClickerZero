@@ -91,6 +91,8 @@ export const MainWeaponImageAndNameAndCost = [
     dmgLvl0: 62,
     cost: 1,
     isBought: false,
+    isVisible: true,
+    type: "weapon",
   },
   {
     id: 8,
@@ -101,6 +103,8 @@ export const MainWeaponImageAndNameAndCost = [
     dmgLvl0: 112,
     cost: 1,
     isBought: false,
+    isVisible: true,
+    type: "weapon",
   },
   {
     id: 9,

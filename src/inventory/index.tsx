@@ -54,11 +54,15 @@ const Inventory = ({
         }
       }
 
-      if (emptySlotIndex !== -1) {
+      if (emptySlotIndex <= 24) {
         const updatedItems = [...items];
         updatedItems.push({ ...newBoughtItem, slot: emptySlotIndex });
         setItems(updatedItems);
         inventorySlots[emptySlotIndex] = newBoughtItem;
+        console.log(emptySlotIndex);
+      } else {
+        alert("Ekwipunek jest pełny!");
+        console.log(emptySlotIndex);
       }
     }
   }, [mainWeaponData, items, inventorySlots]);
@@ -141,6 +145,14 @@ const Inventory = ({
     // eslint-disable-next-line
   }, []);
 
+  const inventoryElement = document.querySelector(".inventory");
+  if (inventoryElement) {
+    inventoryElement.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+      return false;
+    });
+  }
+
   return (
     <>
       <div className="app-container">
@@ -149,13 +161,27 @@ const Inventory = ({
           setActiveDraggedSlot={setDraggingSlot}
         />
         <div className="inventory">
-          {getNumberOfSlots().map((slot) => (
-            <ItemSlot
-              slot={slot}
-              data={getItemDataInSlot(slot) || null}
-              key={slot}
-            />
-          ))}
+          {getNumberOfSlots().map((slot: number) => {
+            const item = items.find(
+              (item: { slot: number }) => item.slot === slot
+            );
+            const itemId = item ? item.id : null;
+            return (
+              <span
+                onContextMenu={(e) => {
+                  handleItemClick(itemId);
+                  GetIdPerClick(itemId);
+                }}
+              >
+                <ItemSlot
+                  slot={slot}
+                  data={getItemDataInSlot(slot) || null}
+                  key={slot}
+                  itemId={itemId}
+                />
+              </span>
+            );
+          })}
         </div>
       </div>
     </>
