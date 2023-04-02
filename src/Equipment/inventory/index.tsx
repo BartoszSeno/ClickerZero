@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import "../../assets/css/Normal/inventory/inventory.css";
-import { v4 as uuidv4 } from "uuid";
 
 // Components
 import ItemSlot from "./Components/Slot";
@@ -220,6 +219,7 @@ const Inventory = ({
                   handleItemClick(itemId);
                   handleContextMenu(e, item);
                 }}
+                key={`item-slot-${slot}`}
               >
                 <ItemSlot
                   slot={slot}
