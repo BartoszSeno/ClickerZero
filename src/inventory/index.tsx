@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../assets/css/Normal/inventory/inventory.css";
+import { v4 as uuidv4 } from "uuid";
 
 // Components
 import ItemSlot from "./Components/Slot";
@@ -16,103 +17,72 @@ const Inventory = ({
   handleItemClick: any;
   GetIdPerClick: any;
 }) => {
-  const getBoughtItems = (items: any[]) => {
-    return items.filter((item) => item.isBought === true);
-  };
-
   const [items, setItems] = useState(() => {
-    const localItems = localStorage.getItem("items");
-    const parsedItems = localItems ? JSON.parse(localItems) : mainWeaponData;
-
-    // Add an `order` property to each item based on its index in the array
-    const itemsWithOrder = parsedItems.map((item: any, index: any) => ({
-      ...item,
-      order: index,
-    }));
-
-    const boughtItems = getBoughtItems(itemsWithOrder);
-
-    const itemsWithSlots = boughtItems.map((item, index) => {
-      const savedSlot = localStorage.getItem(`item_${index}_slot`);
-      const slot = savedSlot !== null ? parseInt(savedSlot) : index;
-      return { ...item, slot };
-    });
-
-    // Sort the items by the `order` property
-    return itemsWithSlots;
+    const storedItems = localStorage.getItem("items");
+    if (storedItems) {
+      return JSON.parse(storedItems);
+    }
+    return mainWeaponData
+      .filter((item: any) => item.isBought === true)
+      .map((item: any, index: any) => ({ ...item, slot: index }));
   });
 
-  useEffect(() => {
-    const boughtItems = getBoughtItems(mainWeaponData);
-    const itemsWithSlots = boughtItems.map((item, index) => {
-      const savedSlot = localStorage.getItem(`item_${index}_slot`);
-      const slot = savedSlot !== null ? parseInt(savedSlot) : index;
-      return { ...item, slot };
-    });
+  const inventorySlots = new Array(24).fill(null);
 
-    const emptySlots = getNumberOfSlots().filter(
-      (slot) => !itemsWithSlots.some((item) => item.slot === slot)
+  useEffect(() => {
+    const newBoughtItem = mainWeaponData.find(
+      (item: any) =>
+        item.isBought === true && !items.find((i: any) => i.id === item.id)
     );
 
-    // Assign the first empty slot to the new item
-    const newItem = { ...mainWeaponData[0], slot: emptySlots[0] };
-    const newItems = [...itemsWithSlots, newItem];
-
-    setItems(newItems);
-  }, [mainWeaponData]);
-
-  const UpdateOnClick = () => {
-    setTimeout(() => {
-      const boughtItems = getBoughtItems(mainWeaponData);
-      const itemsWithSlots = boughtItems.map((item, index) => {
-        const savedSlot = localStorage.getItem(`item_${index}_slot`);
-        const slot = savedSlot !== null ? parseInt(savedSlot) : index;
-        return { ...item, slot };
-      });
-
-      const emptySlots = getNumberOfSlots().filter(
-        (slot) => !itemsWithSlots.some((item) => item.slot === slot)
+    if (newBoughtItem) {
+      let emptySlotIndex = inventorySlots.findIndex(
+        (item, index) =>
+          !item && index !== -1 && !items.some((i: any) => i.slot === index)
       );
 
-      // Assign the first empty slot to the new item
-      const newItem = { ...mainWeaponData[0], slot: emptySlots[0] };
-      const newItems = [...itemsWithSlots, newItem];
+      if (emptySlotIndex === -1) {
+        if (
+          items.some(
+            (item: { slot: number }) =>
+              item.slot > items[items.length - 1]?.slot
+          )
+        ) {
+          emptySlotIndex = items[items.length - 1].slot + 1;
+        } else {
+          emptySlotIndex = items.length;
+        }
+      }
 
-      setItems(newItems);
-    }, 10);
-  };
+      if (emptySlotIndex !== -1) {
+        const updatedItems = [...items];
+        updatedItems.push({ ...newBoughtItem, slot: emptySlotIndex });
+        setItems(updatedItems);
+        inventorySlots[emptySlotIndex] = newBoughtItem;
+      }
+    }
+  }, [mainWeaponData, items, inventorySlots]);
 
   useEffect(() => {
-    items.forEach((item: { slot?: { toString: () => string } }, index: any) => {
-      const slot = item.slot !== undefined ? item.slot.toString() : "";
-      localStorage.setItem(`item_${index}_slot`, slot);
-    });
+    localStorage.setItem("items", JSON.stringify(items));
   }, [items]);
-
-  //Let's assume this is the player's items.
-  const itemsRef = React.useRef(props.items);
+  //========================================================================================
 
   const [draggingSlotId, setDraggingSlot] = useState(null);
+
   const getNumberOfSlots = () =>
     new Array(25).fill(null).map((_, index) => index);
   const getItemDataInSlot = (slot: number) =>
     items.find((item: { slot: number }) => item.slot === slot);
 
-  const getInventorySlotIndex = (slotIndex: number) => {
-    let slot = itemsRef.current.filter(
-      (item: { slot: number }) => item.slot === slotIndex
-    )[0];
-
-    return slot ? itemsRef.current.indexOf(slot) : null;
-  };
-
   const swapItemSlots = (oldSlot: number, newSlot: number) => {
     setItems((currentState: any) => {
-      const newInventory = [...currentState];
+      let newInventory = [...currentState];
       let oldIndex = -1,
         newIndex = -1;
 
-      // Finding the old and new slots
+      // Finding the old ones..
+
       newInventory.forEach((item, index) => {
         if (item.slot === oldSlot) {
           oldIndex = index;
@@ -122,17 +92,17 @@ const Inventory = ({
       });
 
       // Replacing them
+
       newInventory[oldIndex] = { ...newInventory[oldIndex], slot: newSlot };
       newInventory[newIndex] = { ...newInventory[newIndex], slot: oldSlot };
-
-      // Update localStorage
-      localStorage.setItem("items", JSON.stringify(newInventory));
 
       return [...newInventory];
     });
   };
 
   const moveItemToSlot = (oldSlot: number, newSlot: number) => {
+    console.log(`move slot`, oldSlot, newSlot);
+
     setItems((currentState: any) => {
       let inventory = [...currentState];
 
@@ -142,8 +112,6 @@ const Inventory = ({
         }
       });
 
-      // Update localStorage
-      console.log(inventory);
       return inventory;
     });
   };
@@ -159,8 +127,9 @@ const Inventory = ({
     } else if (eventData.destination.type === "example-1") {
     }
 
-    localStorage.setItem("newSlot", JSON.stringify(newSlot));
+    localStorage.setItem("items", JSON.stringify(items));
   };
+
   useEffect(() => {
     document.addEventListener("inventoryItemDragged", onInventoryItemDragged);
     return () => {
@@ -172,14 +141,6 @@ const Inventory = ({
     // eslint-disable-next-line
   }, []);
 
-  const inventoryElement = document.querySelector(".inventory");
-  if (inventoryElement) {
-    inventoryElement.addEventListener("contextmenu", function (e) {
-      e.preventDefault();
-      return false;
-    });
-  }
-
   return (
     <>
       <div className="app-container">
@@ -187,26 +148,14 @@ const Inventory = ({
           activeDraggedSlot={draggingSlotId}
           setActiveDraggedSlot={setDraggingSlot}
         />
-        <div className="inventory" onMouseOver={UpdateOnClick}>
-          {getNumberOfSlots().map((slot: number) => {
-            const item = items.find((item) => item.slot === slot);
-            const itemId = item ? item.id : null;
-            return (
-              <span
-                onContextMenu={(e) => {
-                  handleItemClick(itemId);
-                  GetIdPerClick(itemId);
-                }}
-              >
-                <ItemSlot
-                  slot={slot}
-                  data={getItemDataInSlot(slot) || null}
-                  key={slot}
-                  itemId={itemId}
-                />
-              </span>
-            );
-          })}
+        <div className="inventory">
+          {getNumberOfSlots().map((slot) => (
+            <ItemSlot
+              slot={slot}
+              data={getItemDataInSlot(slot) || null}
+              key={slot}
+            />
+          ))}
         </div>
       </div>
     </>

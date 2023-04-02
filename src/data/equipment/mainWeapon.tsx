@@ -8,7 +8,7 @@ export const MainWeaponImageAndNameAndCost = [
     cost: 0,
     isBought: false,
     isVisible: false,
-    type: "weapon",
+    type: "",
   },
   {
     id: 1,
