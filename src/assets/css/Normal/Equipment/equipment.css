@@ -186,14 +186,6 @@
 }
 /*Armor*/
 
-.Helmet,
-.Armor,
-.Gloves,
-.Shoes {
-  margin-left: 2px;
-  box-sizing: border-box;
-}
-
 /*Statistic*/
 #Statistic {
   display: flex;

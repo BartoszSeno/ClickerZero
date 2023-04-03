@@ -1,5 +1,4 @@
 import "../assets/css/Normal/Equipment/equipment.css";
-import Gloves from "./Gloves/gloves";
 import Statistic from "./statistic/statistic";
 import { useState } from "react";
 
@@ -54,24 +53,11 @@ const Eq = ({
   handleShieldAndDaggerItemSelect: any;
   selectedShieldAndDaggerItem: any;
 }) => {
-  const [whichIsOpen, setwhichIsOpen] = useState("MainWeapon");
-
-  const handleItemClick = (component: any) => {
-    setwhichIsOpen(component);
-  };
   return (
     <>
       <section id="equipment">
         <div className="DmgItems"></div>
-        <div className="DefItems">
-          <Gloves
-            GlovesData={GlovesData}
-            UpgradedNamesGloves={UpgradedNamesGloves}
-            handleGlovesItemSelect={handleGlovesItemSelect}
-            isActive={whichIsOpen === "Gloves"}
-            handleItemClick={() => handleItemClick("Gloves")}
-          />
-        </div>
+        <div className="DefItems"></div>
       </section>
 
       <section id="Statistic">

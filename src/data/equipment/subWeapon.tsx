@@ -296,7 +296,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     defLvl0: 0,
     dmgLvl0: 1,
     cost: 1,
-    isBought: false,
+    isBought: true,
     isVisible: true,
     type: "dagger",
   },

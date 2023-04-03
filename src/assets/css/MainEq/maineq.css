@@ -13,3 +13,48 @@
   width: 100px !important;
   height: 100px;
 }
+
+.items-box {
+  display: flex;
+  width: 66px;
+  height: 64px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+.equipmentImgeq {
+  height: 50px;
+}
+.weaponPosition {
+  margin-top: -200px;
+}
+/* =============================================*/
+.greenB {
+  border: 3.5px solid #48bb78;
+  -webkit-box-shadow: 0px 0px 10px 1px #48bb78;
+  -moz-box-shadow: 0px 0px 10px 1px #48bb78;
+  box-shadow: 0px 0px 10px 1px #48bb78;
+}
+.blueB {
+  border: 3.5px solid #4299e1;
+  -webkit-box-shadow: 0px 0px 10px 1px #4299e1;
+  -moz-box-shadow: 0px 0px 10px 1px #4299e1;
+  box-shadow: 0px 0px 10px 1px #4299e1;
+}
+.yellowB {
+  border: 3.5px solid #ecc94b;
+  -webkit-box-shadow: 0px 0px 10px 1px #ecc94b;
+  -moz-box-shadow: 0px 0px 10px 1px #ecc94b;
+  box-shadow: 0px 0px 10px 1px #ecc94b;
+}
+.redB {
+  border: 3.5px solid #f56565;
+  -webkit-box-shadow: 0px 0px 10px 1px #f56565;
+  -moz-box-shadow: 0px 0px 10px 1px #f56565;
+  box-shadow: 0px 0px 10px 1px #f56565;
+}
+.purpleB {
+  border: 3.5px solid purple;
+  -webkit-box-shadow: 0px 0px 10px 1px purple;
+  -moz-box-shadow: 0px 0px 10px 1px purple;
+  box-shadow: 0px 0px 10px 1px purple;
+}

@@ -9,7 +9,6 @@ import DragAndDropAPI from "./Components/DragAndDropAPI";
 const Inventory = ({
   props,
   mainWeaponData,
-  handleItemClick,
   GetIdPerClickMW,
   HelmetData,
   GetIdPerClickH,
@@ -24,7 +23,6 @@ const Inventory = ({
 }: {
   props: any;
   mainWeaponData: any;
-  handleItemClick: any;
   GetIdPerClickMW: any;
   HelmetData: any;
   GetIdPerClickH: any;
@@ -216,7 +214,6 @@ const Inventory = ({
             return (
               <span
                 onContextMenu={(e) => {
-                  handleItemClick(itemId);
                   handleContextMenu(e, item);
                 }}
                 key={`item-slot-${slot}`}

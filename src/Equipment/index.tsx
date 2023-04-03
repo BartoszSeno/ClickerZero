@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import "../assets/css/MainEq/maineq.css";
+
 import { useState } from "react";
 import Inventory from "./inventory";
+import EquipContainer from "./equipment";
 import { MainWeaponImageAndNameAndCost } from "../data/equipment/mainWeapon";
 import { HelmetImageAndNameAndCost } from "../data/equipment/helmet";
 import { ArmorImageAndNameAndCost } from "../data/equipment/armor";
@@ -60,11 +62,6 @@ const MainEq = ({
   handleShieldAndDaggerItemSelect: any;
   selectedShieldAndDaggerItem: any;
 }) => {
-  const [whichIsOpen, setwhichIsOpen] = useState("MainWeapon");
-
-  const handleItemClick = (component: any) => {
-    setwhichIsOpen(component);
-  };
   //MAIN WEAPON
   //===========================================================================
   const [, setSelectedItemIdEquip] = useState(null);
@@ -81,16 +78,12 @@ const MainEq = ({
     localStorage.setItem("selectedItemImgEquip", item.image.toString());
     localStorage.setItem("selectedItemDmgEquip", item.dmgLvl0.toString());
     localStorage.setItem("selectedItemTierEquip", item.tier.toString());
-    console.log("mw");
     setwhatIsUse("weapon");
+
     setTimeout(() => {
       setSelectedItemIdEquip(null);
     }, 10);
   }
-
-  // Load saved item information from local storage
-  const savedImageMW = localStorage.getItem("selectedItemImgEquip");
-  const savedNameMW = localStorage.getItem("selectedItemNameEquip");
 
   //HELMET
   //===========================================================================
@@ -105,16 +98,12 @@ const MainEq = ({
     localStorage.setItem("selectedHelmetItemImgEquip", item.image.toString());
     localStorage.setItem("selectedHelmetItemDmgEquip", item.defLvl0.toString());
     localStorage.setItem("selectedHelmetItemTierEquip", item.tier.toString());
-    console.log("h");
     setwhatIsUse("helmet");
+
     setTimeout(() => {
       setSelectedItemIdEquip(null);
     }, 10);
   }
-  console.log(whatIsUse);
-  // Load saved item information from local storage
-  const savedImageH = localStorage.getItem("selectedHelmetItemImgEquip");
-  const savedNameH = localStorage.getItem("selectedHelmetItemNameEquip");
 
   //ARMOR
   //===========================================================================
@@ -128,16 +117,13 @@ const MainEq = ({
     localStorage.setItem("selectedArmorItemImgEquip", item.image.toString());
     localStorage.setItem("selectedArmorItemDmgEquip", item.defLvl0.toString());
     localStorage.setItem("selectedArmorItemTierEquip", item.tier.toString());
-    console.log("a");
     setwhatIsUse("armor");
+
     setTimeout(() => {
       setSelectedItemIdEquip(null);
     }, 10);
   }
 
-  // Load saved item information from local storage
-  const savedImageA = localStorage.getItem("selectedArmorItemImgEquip");
-  const savedNameA = localStorage.getItem("selectedArmorItemNameEquip");
   //SHOES
   //===========================================================================
   function GetIdPerClickS(index: any) {
@@ -150,16 +136,13 @@ const MainEq = ({
     localStorage.setItem("selectedShoesItemImgEquip", item.image.toString());
     localStorage.setItem("selectedShoesItemDmgEquip", item.defLvl0.toString());
     localStorage.setItem("selectedShoesItemTierEquip", item.tier.toString());
-    console.log("a");
     setwhatIsUse("shoes");
+
     setTimeout(() => {
       setSelectedItemIdEquip(null);
     }, 10);
   }
 
-  // Load saved item information from local storage
-  const savedImageS = localStorage.getItem("selectedShoesItemImgEquip");
-  const savedNameS = localStorage.getItem("selectedShoesItemNameEquip");
   //GLOVES
   //===========================================================================
   function GetIdPerClickG(index: any) {
@@ -172,16 +155,13 @@ const MainEq = ({
     localStorage.setItem("selectedGlovesItemImgEquip", item.image.toString());
     localStorage.setItem("selectedGlovesItemDmgEquip", item.defLvl0.toString());
     localStorage.setItem("selectedGlovesItemTierEquip", item.tier.toString());
-    console.log("g");
     setwhatIsUse("gloves");
+
     setTimeout(() => {
       setSelectedItemIdEquip(null);
     }, 10);
   }
 
-  // Load saved item information from local storage
-  const savedImageG = localStorage.getItem("selectedGlovesItemImgEquip");
-  const savedNameG = localStorage.getItem("selectedGlovesItemNameEquip");
   //SUB WEAPON
   //===========================================================================
   function GetIdPerClickSW(index: any) {
@@ -211,68 +191,21 @@ const MainEq = ({
     );
     console.log("g");
     setwhatIsUse("shield" || "dagger");
-    console.log(whatIsUse);
 
     setTimeout(() => {
       setSelectedItemIdEquip(null);
     }, 10);
   }
 
-  // Load saved item information from local storage
-  const savedImageSW = localStorage.getItem(
-    "selectedShieldAndDaggerItemImgEquip"
-  );
-  const savedNameSW = localStorage.getItem(
-    "selectedShieldAndDaggerItemNameEquip"
-  );
   //===========================================================================
 
-  let imageSrc = "";
-  if (whatIsUse.includes("weapon")) {
-    imageSrc =
-      savedImageMW ||
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png";
-  } else if (whatIsUse.includes("helmet")) {
-    imageSrc =
-      savedImageH ||
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png";
-  } else if (whatIsUse.includes("armor")) {
-    imageSrc =
-      savedImageA ||
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png";
-  } else if (whatIsUse.includes("shoes")) {
-    imageSrc =
-      savedImageS ||
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png";
-  } else if (whatIsUse.includes("gloves")) {
-    imageSrc =
-      savedImageG ||
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png";
-  } else if (whatIsUse.includes("shield" || "dagger")) {
-    imageSrc =
-      savedImageSW ||
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png";
-  } else {
-    imageSrc =
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png";
-  }
   return (
     <>
-      <div className="MainEqContainer" onClick={() => handleItemClick}>
-        <div className="selectedItem">
-          <img
-            className="equipmentImgeq"
-            src={imageSrc}
-            alt={`${
-              savedNameMW ? savedNameMW : savedNameH ? savedNameH : "No name"
-            } weapon`}
-          />
-        </div>
+      <div className="MainEqContainer">
         <div id="option-container">
           <Inventory
             props={""}
             mainWeaponData={mainWeaponData}
-            handleItemClick={handleItemClick}
             GetIdPerClickMW={GetIdPerClickMW}
             HelmetData={HelmetData}
             GetIdPerClickH={GetIdPerClickH}
@@ -286,6 +219,7 @@ const MainEq = ({
             GetIdPerClickSW={GetIdPerClickSW}
           />
         </div>
+        <EquipContainer />
       </div>
     </>
   );
