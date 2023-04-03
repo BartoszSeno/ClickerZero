@@ -12,7 +12,7 @@ const Information = ({ infoOpenClose }: { infoOpenClose: any }) => {
           <h2>making readable code</h2>
           <p>in the process of creating graphics for the village</p>
           <p>separate graphics for each house</p>
-          <p>delete the current ui and create new one</p>
+          <p>creating new inventory ?</p>
         </div>
         <div className="news">
           <h1>What's next:</h1>
