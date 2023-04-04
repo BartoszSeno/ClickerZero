@@ -54,7 +54,7 @@ const Inventory = ({
       .map((item: any, index: any) => ({ ...item, slot: index }));
   });
 
-  const inventorySlots = new Array(24).fill(null);
+  const inventorySlots = new Array(41).fill(null);
 
   useEffect(() => {
     const newBoughtItem = allItemsFromArray.find(
@@ -81,7 +81,7 @@ const Inventory = ({
         }
       }
 
-      if (emptySlotIndex <= 23) {
+      if (emptySlotIndex <= 40) {
         const updatedItems = [...items];
         updatedItems.push({ ...newBoughtItem, slot: emptySlotIndex });
         setItems(updatedItems);
@@ -102,7 +102,7 @@ const Inventory = ({
   const [draggingSlotId, setDraggingSlot] = useState(null);
 
   const getNumberOfSlots = () =>
-    new Array(25).fill(null).map((_, index) => index);
+    new Array(42).fill(null).map((_, index) => index);
   const getItemDataInSlot = (slot: number) =>
     items.find((item: { slot: number }) => item.slot === slot);
 

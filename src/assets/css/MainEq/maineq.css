@@ -3,19 +3,20 @@
   justify-content: center;
   align-items: center;
   width: 900px;
-  height: 650px;
-  background-color: red;
+  height: 665px;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/invenory/Inventory.png);
+background-repeat: no-repeat;
   position: fixed;
-  margin-top: 320px;
   left: 50%;
   transform: translate(-50%, 0%);
 }
 
 .selectedItem {
-  background-color: aqua;
   display: flex;
   width: 100px !important;
-  height: 100px;
+  height: 65px;
+  justify-content: center;
+  align-items: center;
 }
 
 .items-box {
@@ -23,7 +24,7 @@
   width: 66px;
   height: 64px;
   cursor: pointer;
-  border-radius: 16px;
+  border-radius: 26px;
 }
 .equipmentImgeq {
   height: 50px;
@@ -62,3 +63,41 @@
   -moz-box-shadow: 0px 0px 10px 1px purple;
   box-shadow: 0px 0px 10px 1px purple;
 }
+
+.Armor{
+  margin-top: -309.4px;
+  margin-left: -390px;
+  position: absolute;
+}
+.Shoes{
+  margin-top: -309.4px;
+  margin-left: -234px;
+  position: absolute;
+}
+
+
+.Helmet{
+  margin-top: -309px;
+  margin-left: -468px;
+  position: absolute;
+}
+.Gloves{
+  
+  margin-top: -309.4px;
+  margin-left: -312px;
+  position: absolute;
+}
+
+.SubWeapon{
+  position: absolute;
+  margin-top: -309.4px;
+margin-left: -78px;
+}
+
+.MainWeapon{
+  position: absolute;
+  margin-top: -309.4px;
+  margin-left: -157px;
+
+}
+

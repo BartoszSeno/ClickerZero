@@ -8,7 +8,7 @@ function EquipWeapon() {
 
   return (
     <>
-      <div className={`items-box WeaponPosition ${savedTierMW}B`}>
+      <div className={`items-box MainWeapon ${savedTierMW}B`}>
         <div className="selectedItem">
           <img
             className="equipmentImgeq"
