@@ -516,32 +516,7 @@ const MainIndexVillage = () => {
       >
         <div className="GameMainWindow">
           <div className="leftVillage">
-            <MainEq
-              mainWeaponData={mainWeaponData}
-              UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
-              handleItemSelect={handleItemSelect}
-              selectedItem={selectedItem}
-              ArmorData={ArmorData}
-              UpgradedNamesArmor={UpgradedNamesArmor}
-              handleArmorItemSelect={handleArmorItemSelect}
-              selectedArmorItem={selectedArmorItem}
-              HelmetData={HelmetData}
-              UpgradedNamesHelmet={UpgradedNamesHelmet}
-              handleHelmetItemSelect={handleHelmetItemSelect}
-              selectedHelmetItem={selectedHelmetItem}
-              ShoesData={ShoesData}
-              UpgradedNamesShoes={UpgradedNamesShoes}
-              handleShoesItemSelect={handleShoesItemSelect}
-              selectedShoesItem={selectedShoesItem}
-              GlovesData={GlovesData}
-              UpgradedNamesGloves={UpgradedNamesGloves}
-              handleGlovesItemSelect={handleGlovesItemSelect}
-              selectedGlovesItem={selectedGlovesItem}
-              ShieldAndDaggerData={ShieldAndDaggerData}
-              UpgradedNamesShieldAndDagger={UpgradedNamesShieldAndDagger}
-              handleShieldAndDaggerItemSelect={handleShieldAndDaggerItemSelect}
-              selectedShieldAndDaggerItem={selectedShieldAndDaggerItem}
-            />
+          
             {/*
             <button className="InfoOpen" onClick={HandleInfoOpenAndClose}>
               Info
@@ -550,7 +525,7 @@ const MainIndexVillage = () => {
             */}
           </div>
           <div className="midVillage">
-            <Eq
+          <MainEq
               mainWeaponData={mainWeaponData}
               UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
               handleItemSelect={handleItemSelect}
