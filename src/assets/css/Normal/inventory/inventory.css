@@ -4,6 +4,7 @@
   box-sizing: content-box;
   width: 700px;
   display: flex;
+
 }
 
 .inventory {
@@ -41,6 +42,8 @@
 
 .item-slot.being-dragged .content {
   background: rgba(255, 255, 255, 0.4);
+  left: 50%;
+  transform: translate(-50%, 0%);
 }
 
 .item-slot .content {
