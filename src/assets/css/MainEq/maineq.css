@@ -1,14 +1,33 @@
 .MainEqContainer {
   display: flex;
-  justify-content: center;
+  flex-direction: row-reverse;
   align-items: center;
-  width: 900px;
-  height: 665px;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/invenory/Inventory.png);
-background-repeat: no-repeat;
+  justify-content: center;
+  height: 700px;
+  width: 1000px;
   position: fixed;
   left: 50%;
   transform: translate(-50%, 0%);
+}
+
+#option-container{
+  display: flex;
+  width: 500px;
+  height: 100%;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/3c600cc1e2bf67cc9c4df207e30caf080ae463a9/src/assets/MainImg/invenory/Inventory.png);
+background-repeat: no-repeat;
+background-position: center;
+
+}
+#EqCharacters{
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/invenory/eq.png);
+  background-repeat: no-repeat;
+  display: flex;
+  width: 500px;
+  height: 100%;
+  background-position: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .selectedItem {
@@ -24,11 +43,12 @@ background-repeat: no-repeat;
   width: 66px;
   height: 64px;
   cursor: pointer;
-  border-radius: 26px;
+  border-radius: 10px;
 }
 .equipmentImgeq {
   height: 50px;
 }
+
 .weaponPosition {
   margin-top: -200px;
 }
@@ -38,66 +58,73 @@ background-repeat: no-repeat;
   -webkit-box-shadow: 0px 0px 10px 1px #48bb78;
   -moz-box-shadow: 0px 0px 10px 1px #48bb78;
   box-shadow: 0px 0px 10px 1px #48bb78;
+  background-color: #967853;
 }
 .blueB {
   border: 3.5px solid #4299e1;
   -webkit-box-shadow: 0px 0px 10px 1px #4299e1;
   -moz-box-shadow: 0px 0px 10px 1px #4299e1;
   box-shadow: 0px 0px 10px 1px #4299e1;
+  background-color: #967853;
 }
 .yellowB {
   border: 3.5px solid #ecc94b;
   -webkit-box-shadow: 0px 0px 10px 1px #ecc94b;
   -moz-box-shadow: 0px 0px 10px 1px #ecc94b;
   box-shadow: 0px 0px 10px 1px #ecc94b;
+  background-color: #967853;
 }
 .redB {
   border: 3.5px solid #f56565;
   -webkit-box-shadow: 0px 0px 10px 1px #f56565;
   -moz-box-shadow: 0px 0px 10px 1px #f56565;
   box-shadow: 0px 0px 10px 1px #f56565;
+  background-color: #967853;
 }
 .purpleB {
   border: 3.5px solid purple;
   -webkit-box-shadow: 0px 0px 10px 1px purple;
   -moz-box-shadow: 0px 0px 10px 1px purple;
   box-shadow: 0px 0px 10px 1px purple;
+  background-color: #967853;
+}
+
+
+.Helmet,
+.Armor,
+.Gloves,
+.Shoes,
+.MainWeapon,
+.SubWeapon{
+position: absolute;
+}
+
+.Helmet{
+  margin-top: -116.5px;
+  margin-left: -153px;
 }
 
 .Armor{
-  margin-top: -309.4px;
-  margin-left: -390px;
-  position: absolute;
+  margin-top: -116.5px;
+  margin-left: 80.5px;
 }
+
 .Shoes{
-  margin-top: -309.4px;
-  margin-left: -234px;
-  position: absolute;
+  margin-top: 34px;
+  margin-left: -153px;
 }
 
-
-.Helmet{
-  margin-top: -309px;
-  margin-left: -468px;
-  position: absolute;
-}
 .Gloves{
-  
-  margin-top: -309.4px;
-  margin-left: -312px;
-  position: absolute;
-}
-
-.SubWeapon{
-  position: absolute;
-  margin-top: -309.4px;
-margin-left: -78px;
+  margin-top: 34px;
+  margin-left: 80.5px;
 }
 
 .MainWeapon{
-  position: absolute;
-  margin-top: -309.4px;
-  margin-left: -157px;
-
+  margin-top: 108px;
+  margin-left: -75px;
 }
 
+.SubWeapon{
+  margin-top: 108px;
+  margin-left: 3px;
+}

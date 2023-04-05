@@ -198,11 +198,28 @@ const MainEq = ({
   }
 
   //===========================================================================
+  let isKeyPressed = false;
+
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "i" && !isKeyPressed) {
+      console.log("eq open");
+      OpenAndCloseInvEq();
+      isKeyPressed = true;
+    }
+  });
+
+  const [openInvAndEq, setopenInvAndEq] = useState<boolean>(false)
+
+function OpenAndCloseInvEq(){
+  setopenInvAndEq(!openInvAndEq)
+}
 
   return (
     <>
       <div className="MainEqContainer">
-        <div id="option-container">
+        <div id="option-container"
+        style={{display: openInvAndEq ? "flex" : "none"}}
+        >
           <Inventory
             props={""}
             mainWeaponData={mainWeaponData}
@@ -219,7 +236,12 @@ const MainEq = ({
             GetIdPerClickSW={GetIdPerClickSW}
           />
         </div>
+        <div id="EqCharacters"
+        style={{display: openInvAndEq ? "flex" : "none"}}
+        
+        >
         <EquipContainer />
+        </div>
       </div>
     </>
   );
