@@ -6,17 +6,38 @@ import EquipArmor from "./Slots/Armor";
 import EquipGloves from "./Slots/Gloves";
 import EquipShoes from "./Slots/Shoes";
 
-function EquipContainer() {
+function EquipContainer({
+  mainWeaponData,
+  HelmetData,
+  ArmorData,
+  ShoesData,
+  GlovesData,
+  ShieldAndDaggerData,
+  setGlovesData,
+  setMainWeaponData,
+}: {
+  mainWeaponData: any;
+  HelmetData: any;
+  ArmorData: any;
+  ShoesData: any;
+  GlovesData: any;
+  ShieldAndDaggerData: any;
+  setGlovesData: any;
+  setMainWeaponData: any;
+}) {
   return (
     <>
       <div className="weaponContainer">
-        <EquipWeapon />
+        <EquipWeapon
+          mainWeaponData={mainWeaponData}
+          setMainWeaponData={setMainWeaponData}
+        />
         <EquipSubWeapon />
       </div>
       <div className="ArmorContainer">
         <EquipHelmet />
         <EquipArmor />
-        <EquipGloves />
+        <EquipGloves GlovesData={GlovesData} setGlovesData={setGlovesData} />
         <EquipShoes />
       </div>
     </>

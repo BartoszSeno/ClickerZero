@@ -20,6 +20,7 @@ const Inventory = ({
   GetIdPerClickG,
   ShieldAndDaggerData,
   GetIdPerClickSW,
+  setGlovesData,
 }: {
   props: any;
   mainWeaponData: any;
@@ -34,6 +35,7 @@ const Inventory = ({
   GetIdPerClickG: any;
   ShieldAndDaggerData: any;
   GetIdPerClickSW: any;
+  setGlovesData: any;
 }) => {
   const allItemsFromArray = [
     ...mainWeaponData,
@@ -50,16 +52,18 @@ const Inventory = ({
       return JSON.parse(storedItems);
     }
     return allItemsFromArray
-      .filter((item: any) => item.isBought === true)
+      .filter((item: any) => item.isBought === true && item.isEquip === false)
       .map((item: any, index: any) => ({ ...item, slot: index }));
   });
-
+  console.log("fsa ", items);
   const inventorySlots = new Array(34).fill(null);
 
   useEffect(() => {
     const newBoughtItem = allItemsFromArray.find(
       (item: any) =>
-        item.isBought === true && !items.find((i: any) => i.id === item.id)
+        item.isBought === true &&
+        item.isEquip === false &&
+        !items.find((i: any) => i.id === item.id)
     );
 
     if (newBoughtItem) {
@@ -184,19 +188,32 @@ const Inventory = ({
     e.preventDefault();
     console.log("Clicked item:", item);
     if (item.type === "weapon") {
-      GetIdPerClickMW(item.id); // wywołanie funkcji GetIdPerClickMW z id elementu
+      GetIdPerClickMW(item.id);
     } else if (item.type === "helmet") {
-      GetIdPerClickH(item.id); // wywołanie funkcji GetIdPerClickH z id elementu
+      GetIdPerClickH(item.id);
     } else if (item.type === "Armor") {
-      GetIdPerClickA(item.id); // wywołanie funkcji GetIdPerClickH z id elementu
+      GetIdPerClickA(item.id);
     } else if (item.type === "Shoes") {
-      GetIdPerClickS(item.id); // wywołanie funkcji GetIdPerClickH z id elementu
+      GetIdPerClickS(item.id);
     } else if (item.type === "gloves") {
-      GetIdPerClickG(item.id); // wywołanie funkcji GetIdPerClickH z id elementu
+      //===============
+      const newGlovesData = [...GlovesData];
+      newGlovesData.forEach((glove, index) => {
+        if (index === item.id) {
+          glove.isEquip = true;
+        } else {
+          glove.isEquip = false;
+        }
+      });
+      console.log(GlovesData);
+      setGlovesData(newGlovesData);
+      //===============
+      GetIdPerClickG(item.id);
     } else if (item.type === "shield" || "dagger") {
-      GetIdPerClickSW(item.id); // wywołanie funkcji GetIdPerClickH z id elementu
+      GetIdPerClickSW(item.id);
     }
   };
+  console.log("tt ", GlovesData);
 
   return (
     <>

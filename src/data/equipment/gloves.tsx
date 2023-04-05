@@ -10,6 +10,8 @@ export const GlovesImageAndNameAndCost = [
     cost: 0,
     isBought: false,
     isVisible: false,
+    isEquip: false,
+
     type: "gloves",
   },
   //purple
@@ -23,7 +25,8 @@ export const GlovesImageAndNameAndCost = [
     dmgLvl0: 0,
     cost: 1,
     isBought: false,
-    isVisible: true,
+    isVisible: false,
+    isEquip: false,
     type: "gloves",
   },
   {
@@ -35,8 +38,9 @@ export const GlovesImageAndNameAndCost = [
     defLvl0: 1,
     dmgLvl0: 0,
     cost: 1,
-    isBought: false,
-    isVisible: true,
+    isBought: true,
+    isVisible: false,
+    isEquip: false,
     type: "gloves",
   },
   {
@@ -49,7 +53,8 @@ export const GlovesImageAndNameAndCost = [
     dmgLvl0: 0,
     cost: 1,
     isBought: false,
-    isVisible: true,
+    isVisible: false,
+    isEquip: false,
     type: "gloves",
   },
   {
@@ -62,7 +67,8 @@ export const GlovesImageAndNameAndCost = [
     dmgLvl0: 0,
     cost: 1,
     isBought: false,
-    isVisible: true,
+    isVisible: false,
+    isEquip: false,
     type: "gloves",
   },
   {
@@ -75,7 +81,8 @@ export const GlovesImageAndNameAndCost = [
     dmgLvl0: 0,
     cost: 1,
     isBought: false,
-    isVisible: true,
+    isVisible: false,
+    isEquip: false,
     type: "gloves",
   },
   {
@@ -88,7 +95,8 @@ export const GlovesImageAndNameAndCost = [
     dmgLvl0: 0,
     cost: 1,
     isBought: false,
-    isVisible: true,
+    isVisible: false,
+    isEquip: false,
     type: "gloves",
   },
   {
@@ -101,7 +109,8 @@ export const GlovesImageAndNameAndCost = [
     dmgLvl0: 0,
     cost: 1,
     isBought: true,
-    isVisible: true,
+    isVisible: false,
+    isEquip: false,
     type: "gloves",
   },
 ];

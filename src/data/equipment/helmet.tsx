@@ -9,6 +9,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 0,
     isBought: false,
     isVisible: false,
+    isEquip: false,
     type: "helmet",
   },
   {
@@ -21,6 +22,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
   {
@@ -33,6 +35,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
   {
@@ -45,6 +48,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
   {
@@ -57,6 +61,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
   {
@@ -69,6 +74,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
   {
@@ -81,6 +87,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
   {
@@ -93,6 +100,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
   {
@@ -105,6 +113,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
   {
@@ -117,6 +126,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
   {
@@ -129,6 +139,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
   {
@@ -141,6 +152,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
   {
@@ -153,6 +165,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
   {
@@ -165,6 +178,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
   {
@@ -177,6 +191,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
   {
@@ -189,6 +204,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
   {
@@ -201,6 +217,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
   //purple
@@ -214,6 +231,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
   {
@@ -226,6 +244,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
   {
@@ -238,6 +257,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
   {
@@ -250,6 +270,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
   {
@@ -262,6 +283,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
   {
@@ -274,6 +296,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
   {
@@ -286,6 +309,7 @@ export const HelmetImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+    isEquip: false,
     type: "helmet",
   },
 ];

@@ -1,10 +1,20 @@
 /* eslint-disable array-callback-return */
 
-function EquipWeapon() {
+import { Console } from "console";
+import { useEffect } from "react";
+
+function EquipWeapon({
+  setMainWeaponData,
+  mainWeaponData,
+}: {
+  setMainWeaponData: any;
+  mainWeaponData: any;
+}) {
   // Load saved item information from local storage
   const savedImageMW = localStorage.getItem("selectedItemImgEquip");
   const savedNameMW = localStorage.getItem("selectedItemNameEquip");
   const savedTierMW = localStorage.getItem("selectedItemTierEquip");
+  const savedIdMW = localStorage.getItem("selectedItemIdEquip");
 
   return (
     <>

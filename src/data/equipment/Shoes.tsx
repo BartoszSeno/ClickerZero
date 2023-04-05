@@ -9,7 +9,8 @@ export const ShoesImageAndNameAndCost = [
     cost: 0,
     isBought: false,
     isVisible: false,
-    type: "Shoes",
+isEquip: false,
+type: "Shoes",
   },
   {
     id: 1,
@@ -21,6 +22,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
   {
@@ -33,6 +35,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
   {
@@ -45,6 +48,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
   {
@@ -57,6 +61,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
   {
@@ -69,6 +74,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
   {
@@ -81,6 +87,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
   {
@@ -93,6 +100,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
   {
@@ -105,6 +113,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
   {
@@ -117,6 +126,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
   {
@@ -129,6 +139,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
   {
@@ -141,6 +152,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
   {
@@ -153,6 +165,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
   {
@@ -165,6 +178,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
   {
@@ -177,6 +191,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
   {
@@ -189,6 +204,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
   {
@@ -201,6 +217,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
   //purple
@@ -214,6 +231,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
   {
@@ -226,6 +244,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
   {
@@ -238,6 +257,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
   {
@@ -250,6 +270,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
   {
@@ -262,6 +283,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
   {
@@ -274,6 +296,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
   {
@@ -286,6 +309,7 @@ export const ShoesImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Shoes",
   },
 ];

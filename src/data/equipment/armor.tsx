@@ -9,7 +9,8 @@ export const ArmorImageAndNameAndCost = [
     cost: 0,
     isBought: false,
     isVisible: false,
-    type: "Armor",
+isEquip: false,
+type: "Armor",
   },
   {
     id: 1,
@@ -21,6 +22,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
   {
@@ -33,6 +35,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
   {
@@ -45,6 +48,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
   {
@@ -57,6 +61,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
   {
@@ -69,6 +74,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
   {
@@ -81,6 +87,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
   {
@@ -93,6 +100,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
   {
@@ -105,6 +113,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
   {
@@ -117,6 +126,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
   {
@@ -129,6 +139,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
   {
@@ -141,6 +152,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
   {
@@ -153,6 +165,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
   {
@@ -165,6 +178,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
   {
@@ -177,6 +191,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
   {
@@ -189,6 +204,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
   {
@@ -201,6 +217,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
   //purple
@@ -214,6 +231,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
   {
@@ -226,6 +244,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
   {
@@ -238,6 +257,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
   {
@@ -250,6 +270,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
   {
@@ -262,6 +283,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
   {
@@ -274,6 +296,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
   {
@@ -286,6 +309,7 @@ export const ArmorImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Armor",
   },
 ];

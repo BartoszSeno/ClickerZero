@@ -516,7 +516,6 @@ const MainIndexVillage = () => {
       >
         <div className="GameMainWindow">
           <div className="leftVillage">
-          
             {/*
             <button className="InfoOpen" onClick={HandleInfoOpenAndClose}>
               Info
@@ -525,7 +524,7 @@ const MainIndexVillage = () => {
             */}
           </div>
           <div className="midVillage">
-          <MainEq
+            <MainEq
               mainWeaponData={mainWeaponData}
               UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
               handleItemSelect={handleItemSelect}
@@ -550,6 +549,8 @@ const MainIndexVillage = () => {
               UpgradedNamesShieldAndDagger={UpgradedNamesShieldAndDagger}
               handleShieldAndDaggerItemSelect={handleShieldAndDaggerItemSelect}
               selectedShieldAndDaggerItem={selectedShieldAndDaggerItem}
+              setGlovesData={setGlovesData}
+              setMainWeaponData={setMainWeaponData}
             />
             <Clicker
               setCount={setCount}

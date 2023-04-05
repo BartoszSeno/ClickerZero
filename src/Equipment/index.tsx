@@ -36,6 +36,8 @@ const MainEq = ({
   UpgradedNamesShieldAndDagger,
   handleShieldAndDaggerItemSelect,
   selectedShieldAndDaggerItem,
+  setGlovesData,
+  setMainWeaponData,
 }: {
   mainWeaponData: any;
   UpgradedNamesMainWeapon: any;
@@ -61,6 +63,8 @@ const MainEq = ({
   UpgradedNamesShieldAndDagger: any;
   handleShieldAndDaggerItemSelect: any;
   selectedShieldAndDaggerItem: any;
+  setGlovesData: any;
+  setMainWeaponData: any;
 }) => {
   //MAIN WEAPON
   //===========================================================================
@@ -200,7 +204,7 @@ const MainEq = ({
   //===========================================================================
   let isKeyPressed = false;
 
-  document.addEventListener("keydown", function(event) {
+  document.addEventListener("keydown", function (event) {
     if (event.key === "i" && !isKeyPressed) {
       console.log("eq open");
       OpenAndCloseInvEq();
@@ -208,17 +212,26 @@ const MainEq = ({
     }
   });
 
-  const [openInvAndEq, setopenInvAndEq] = useState<boolean>(false)
+  const [openInvAndEq, setopenInvAndEq] = useState<boolean>(false);
 
-function OpenAndCloseInvEq(){
-  setopenInvAndEq(!openInvAndEq)
-}
+  function OpenAndCloseInvEq() {
+    setopenInvAndEq(!openInvAndEq);
+  }
+
+  const inventoryElement = document.querySelector("#EqCharacters");
+  if (inventoryElement) {
+    inventoryElement.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+      return false;
+    });
+  }
 
   return (
     <>
       <div className="MainEqContainer">
-        <div id="option-container"
-        style={{display: openInvAndEq ? "flex" : "none"}}
+        <div
+          id="option-container"
+          style={{ display: openInvAndEq ? "flex" : "none" }}
         >
           <Inventory
             props={""}
@@ -234,13 +247,23 @@ function OpenAndCloseInvEq(){
             GetIdPerClickG={GetIdPerClickG}
             ShieldAndDaggerData={ShieldAndDaggerData}
             GetIdPerClickSW={GetIdPerClickSW}
+            setGlovesData={setGlovesData}
           />
         </div>
-        <div id="EqCharacters"
-        style={{display: openInvAndEq ? "flex" : "none"}}
-        
+        <div
+          id="EqCharacters"
+          style={{ display: openInvAndEq ? "flex" : "none" }}
         >
-        <EquipContainer />
+          <EquipContainer
+            mainWeaponData={mainWeaponData}
+            HelmetData={HelmetData}
+            ArmorData={ArmorData}
+            ShoesData={ShoesData}
+            GlovesData={GlovesData}
+            ShieldAndDaggerData={ShieldAndDaggerData}
+            setGlovesData={setGlovesData}
+            setMainWeaponData={setMainWeaponData}
+          />
         </div>
       </div>
     </>

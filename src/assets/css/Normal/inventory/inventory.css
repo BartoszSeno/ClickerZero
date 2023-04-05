@@ -4,7 +4,6 @@
   box-sizing: content-box;
   width: 700px;
   display: flex;
-
 }
 
 .inventory {
@@ -17,7 +16,7 @@
   flex-wrap: wrap;
   background-color: #f56565;
 }
-span{
+span {
   height: 75px;
 }
 
@@ -28,7 +27,7 @@ span{
   box-sizing: border-box;
   cursor: pointer;
   background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/invenory/emptSlot.png);
-background-repeat: no-repeat;
+  background-repeat: no-repeat;
 }
 
 .item-slot.empty {

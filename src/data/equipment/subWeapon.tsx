@@ -10,7 +10,8 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 0,
     isBought: false,
     isVisible: false,
-    type: "shield",
+isEquip: false,
+type: "shield",
   },
   {
     id: 1,
@@ -23,6 +24,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "shield",
   },
   {
@@ -36,6 +38,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "shield",
   },
   {
@@ -49,6 +52,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "shield",
   },
   {
@@ -62,6 +66,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "shield",
   },
   {
@@ -75,6 +80,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "shield",
   },
   {
@@ -88,6 +94,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "shield",
   },
   {
@@ -101,6 +108,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "shield",
   },
   {
@@ -114,6 +122,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "shield",
   },
   //purple
@@ -128,6 +137,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "shield",
   },
   {
@@ -141,6 +151,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "shield",
   },
   {
@@ -154,6 +165,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "shield",
   },
   {
@@ -167,6 +179,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "shield",
   },
   {
@@ -180,6 +193,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "shield",
   },
   {
@@ -193,6 +207,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "shield",
   },
   {
@@ -206,6 +221,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "shield",
   },
   //dagger
@@ -220,6 +236,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "dagger",
   },
   {
@@ -233,6 +250,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "dagger",
   },
   {
@@ -246,6 +264,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "Kinslayer",
   },
   {
@@ -259,6 +278,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "dagger",
   },
   {
@@ -272,6 +292,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "dagger",
   },
   {
@@ -285,6 +306,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 1,
     isBought: false,
     isVisible: true,
+isEquip: false,
     type: "dagger",
   },
   {
@@ -298,6 +320,7 @@ export const ShieldAndDaggerImageAndNameAndCost = [
     cost: 1,
     isBought: true,
     isVisible: true,
+isEquip: false,
     type: "dagger",
   },
 ];
