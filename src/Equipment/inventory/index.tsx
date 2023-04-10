@@ -116,6 +116,7 @@ const Inventory = ({
       let oldIndex = -1,
         newIndex = -1;
 
+      console.log(currentState);
       // Finding the old ones..
 
       newInventory.forEach((item, index) => {
@@ -213,7 +214,6 @@ const Inventory = ({
       GetIdPerClickSW(item.id);
     }
   };
-  console.log("tt ", GlovesData);
 
   return (
     <>

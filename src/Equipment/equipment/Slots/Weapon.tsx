@@ -16,9 +16,27 @@ function EquipWeapon({
   const savedTierMW = localStorage.getItem("selectedItemTierEquip");
   const savedIdMW = localStorage.getItem("selectedItemIdEquip");
 
+  const handleClick = () => {
+    const newMainWeaponData = [...mainWeaponData];
+    const index = newMainWeaponData.findIndex(
+      (item) => item.id === Number(savedIdMW)
+    );
+    newMainWeaponData[index].isEquip = true;
+    setMainWeaponData(newMainWeaponData);
+    localStorage.setItem(
+      "MainWeaponImageAndNameAndCost",
+      JSON.stringify(newMainWeaponData)
+    );
+    console.log("tsest ", newMainWeaponData[index]);
+    console.log("main ", mainWeaponData[index]);
+  };
+
   return (
     <>
-      <div className={`items-box MainWeapon ${savedTierMW}B`}>
+      <div
+        className={`items-box MainWeapon ${savedTierMW}B`}
+        onContextMenu={handleClick}
+      >
         <div className="selectedItem">
           <img
             className="equipmentImgeq"
