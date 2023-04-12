@@ -38,6 +38,10 @@ const MainEq = ({
   selectedShieldAndDaggerItem,
   setGlovesData,
   setMainWeaponData,
+  setArmorData,
+  setHelmetData,
+  setShoesData,
+  setShieldAndDaggerData,
 }: {
   mainWeaponData: any;
   UpgradedNamesMainWeapon: any;
@@ -65,6 +69,10 @@ const MainEq = ({
   selectedShieldAndDaggerItem: any;
   setGlovesData: any;
   setMainWeaponData: any;
+  setArmorData: any;
+  setHelmetData: any;
+  setShoesData: any;
+  setShieldAndDaggerData: any;
 }) => {
   //MAIN WEAPON
   //===========================================================================
@@ -246,10 +254,55 @@ const MainEq = ({
       //===============
       GetIdPerClickMW(item.id);
     } else if (item.type === "helmet") {
+      //===============
+      const newHelmetDatas = [...HelmetData];
+      newHelmetDatas.forEach((Helmet, index) => {
+        if (index === item.id) {
+          Helmet.isEquip = true;
+        } else {
+          Helmet.isEquip = false;
+        }
+      });
+      setHelmetData(newHelmetDatas);
+      localStorage.setItem(
+        "HelmetImageAndNameAndCost",
+        JSON.stringify(newHelmetDatas)
+      );
+      //===============
       GetIdPerClickH(item.id);
     } else if (item.type === "Armor") {
+      //===============
+      const newArmorDatas = [...ArmorData];
+      newArmorDatas.forEach((Armor, index) => {
+        if (index === item.id) {
+          Armor.isEquip = true;
+        } else {
+          Armor.isEquip = false;
+        }
+      });
+      setArmorData(newArmorDatas);
+      localStorage.setItem(
+        "ArmorImageAndNameAndCost",
+        JSON.stringify(newArmorDatas)
+      );
+      //===============
       GetIdPerClickA(item.id);
     } else if (item.type === "Shoes") {
+      //===============
+      const newShoesDatas = [...ShoesData];
+      newShoesDatas.forEach((Shoes, index) => {
+        if (index === item.id) {
+          Shoes.isEquip = true;
+        } else {
+          Shoes.isEquip = false;
+        }
+      });
+      setShoesData(newShoesDatas);
+      localStorage.setItem(
+        "ShoesImageAndNameAndCost",
+        JSON.stringify(newShoesDatas)
+      );
+      //===============
       GetIdPerClickS(item.id);
     } else if (item.type === "gloves") {
       //===============
@@ -269,6 +322,21 @@ const MainEq = ({
       //===============
       GetIdPerClickG(item.id);
     } else if (item.type === "shield" || "dagger") {
+      //===============
+      const newShieldAndDaggerDatas = [...ShieldAndDaggerData];
+      newShieldAndDaggerDatas.forEach((ShieldDagger, index) => {
+        if (index === item.id) {
+          ShieldDagger.isEquip = true;
+        } else {
+          ShieldDagger.isEquip = false;
+        }
+      });
+      setShieldAndDaggerData(newShieldAndDaggerDatas);
+      localStorage.setItem(
+        "ShieldAndDaggerImageAndNameAndCost",
+        JSON.stringify(newShieldAndDaggerDatas)
+      );
+      //===============
       GetIdPerClickSW(item.id);
     }
     console.log("Clicked item:", item);
@@ -313,6 +381,10 @@ const MainEq = ({
             ShieldAndDaggerData={ShieldAndDaggerData}
             setGlovesData={setGlovesData}
             setMainWeaponData={setMainWeaponData}
+            setArmorData={setArmorData}
+            setHelmetData={setHelmetData}
+            setShoesData={setShoesData}
+            setShieldAndDaggerData={setShieldAndDaggerData}
           />
         </div>
       </div>

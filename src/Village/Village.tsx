@@ -551,6 +551,10 @@ const MainIndexVillage = () => {
               selectedShieldAndDaggerItem={selectedShieldAndDaggerItem}
               setGlovesData={setGlovesData}
               setMainWeaponData={setMainWeaponData}
+              setArmorData={setArmorData}
+              setHelmetData={setHelmetData}
+              setShoesData={setShoesData}
+              setShieldAndDaggerData={setShieldAndDaggerData}
             />
             <Clicker
               setCount={setCount}

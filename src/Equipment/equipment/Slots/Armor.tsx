@@ -1,26 +1,60 @@
 /* eslint-disable array-callback-return */
 
-function EquipArmor() {
+function EquipArmor({
+  ArmorData,
+  setArmorData,
+}: {
+  ArmorData: any;
+  setArmorData: any;
+}) {
   // Load saved item information from local storage
-  const savedImageA = localStorage.getItem("selectedArmorItemImgEquip");
-  const savedNameA = localStorage.getItem("selectedArmorItemNameEquip");
-  const savedTierA = localStorage.getItem("selectedArmorItemTierEquip");
+  const savedIdA = localStorage.getItem("selectedArmorItemIdEquip");
+
+  const handleClick = (selectedItem: any) => {
+    const newArmorDatas = [...ArmorData];
+    const index = newArmorDatas.findIndex(
+      (item) => item.id === selectedItem.id
+    );
+    newArmorDatas[index].isEquip = false;
+    setArmorData(newArmorDatas);
+    localStorage.setItem(
+      "ArmorImageAndNameAndCost",
+      JSON.stringify(newArmorDatas)
+    );
+  };
 
   return (
     <>
-      <div className={`items-box Armor ${savedTierA}B`}>
-        <div className="selectedItem">
-          <img
-            className="equipmentImgeq"
-            src={
-              savedImageA
-                ? savedImageA
-                : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
+      {Array.isArray(ArmorData) &&
+        ArmorData.map((item: any) => {
+          if (item.id === Number(savedIdA)) {
+            if (item.isEquip === false) {
+              return null; // Jeśli item.isEquip jest ustawione na false, zwracamy null
+            } else {
+              return (
+                <div
+                  key={item.id}
+                  className={`items-box Armor ${item.tier}B`}
+                  onContextMenu={() => handleClick(item)}
+                >
+                  <div className="selectedItem">
+                    <img
+                      className="equipmentImgeq"
+                      src={
+                        item.image
+                          ? item.image
+                          : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
+                      }
+                      alt={`${item.name || "No name"} Weapon`}
+                    />
+                  </div>
+                </div>
+              );
             }
-            alt={`${savedNameA || "No name"} Armor`}
-          />
-        </div>
-      </div>
+          } else {
+            return null; // Jeśli item.id nie jest równy savedIdMW, zwracamy null (lub inny odpowiedni komponent)
+          }
+        })}
     </>
   );
 }

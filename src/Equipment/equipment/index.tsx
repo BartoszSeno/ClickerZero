@@ -15,6 +15,10 @@ function EquipContainer({
   ShieldAndDaggerData,
   setGlovesData,
   setMainWeaponData,
+  setArmorData,
+  setHelmetData,
+  setShoesData,
+  setShieldAndDaggerData,
 }: {
   mainWeaponData: any;
   HelmetData: any;
@@ -24,6 +28,10 @@ function EquipContainer({
   ShieldAndDaggerData: any;
   setGlovesData: any;
   setMainWeaponData: any;
+  setArmorData: any;
+  setHelmetData: any;
+  setShoesData: any;
+  setShieldAndDaggerData: any;
 }) {
   return (
     <>
@@ -32,13 +40,16 @@ function EquipContainer({
           mainWeaponData={mainWeaponData}
           setMainWeaponData={setMainWeaponData}
         />
-        <EquipSubWeapon />
+        <EquipSubWeapon
+          ShieldAndDaggerData={ShieldAndDaggerData}
+          setShieldAndDaggerData={setShieldAndDaggerData}
+        />
       </div>
       <div className="ArmorContainer">
-        <EquipHelmet />
-        <EquipArmor />
+        <EquipHelmet HelmetData={HelmetData} setHelmetData={setHelmetData} />
+        <EquipArmor ArmorData={ArmorData} setArmorData={setArmorData} />
         <EquipGloves GlovesData={GlovesData} setGlovesData={setGlovesData} />
-        <EquipShoes />
+        <EquipShoes ShoesData={ShoesData} setShoesData={setShoesData} />
       </div>
     </>
   );
