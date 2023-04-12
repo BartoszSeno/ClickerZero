@@ -86,10 +86,6 @@ const MainEq = ({
 
     // Save item information in local storage for later use
     localStorage.setItem("selectedItemIdEquip", item.id.toString());
-    localStorage.setItem("selectedItemNameEquip", item.name.toString());
-    localStorage.setItem("selectedItemImgEquip", item.image.toString());
-    localStorage.setItem("selectedItemDmgEquip", item.dmgLvl0.toString());
-    localStorage.setItem("selectedItemTierEquip", item.tier.toString());
     setwhatIsUse("weapon");
 
     setTimeout(() => {
@@ -106,10 +102,6 @@ const MainEq = ({
 
     // Save item information in local storage for later use
     localStorage.setItem("selectedHelmetItemIdEquip", item.id.toString());
-    localStorage.setItem("selectedHelmetItemNameEquip", item.name.toString());
-    localStorage.setItem("selectedHelmetItemImgEquip", item.image.toString());
-    localStorage.setItem("selectedHelmetItemDmgEquip", item.defLvl0.toString());
-    localStorage.setItem("selectedHelmetItemTierEquip", item.tier.toString());
     setwhatIsUse("helmet");
 
     setTimeout(() => {
@@ -125,10 +117,6 @@ const MainEq = ({
 
     // Save item information in local storage for later use
     localStorage.setItem("selectedArmorItemIdEquip", item.id.toString());
-    localStorage.setItem("selectedArmorItemNameEquip", item.name.toString());
-    localStorage.setItem("selectedArmorItemImgEquip", item.image.toString());
-    localStorage.setItem("selectedArmorItemDmgEquip", item.defLvl0.toString());
-    localStorage.setItem("selectedArmorItemTierEquip", item.tier.toString());
     setwhatIsUse("armor");
 
     setTimeout(() => {
@@ -144,10 +132,6 @@ const MainEq = ({
 
     // Save item information in local storage for later use
     localStorage.setItem("selectedShoesItemIdEquip", item.id.toString());
-    localStorage.setItem("selectedShoesItemNameEquip", item.name.toString());
-    localStorage.setItem("selectedShoesItemImgEquip", item.image.toString());
-    localStorage.setItem("selectedShoesItemDmgEquip", item.defLvl0.toString());
-    localStorage.setItem("selectedShoesItemTierEquip", item.tier.toString());
     setwhatIsUse("shoes");
 
     setTimeout(() => {
@@ -163,10 +147,6 @@ const MainEq = ({
 
     // Save item information in local storage for later use
     localStorage.setItem("selectedGlovesItemIdEquip", item.id.toString());
-    localStorage.setItem("selectedGlovesItemNameEquip", item.name.toString());
-    localStorage.setItem("selectedGlovesItemImgEquip", item.image.toString());
-    localStorage.setItem("selectedGlovesItemDmgEquip", item.defLvl0.toString());
-    localStorage.setItem("selectedGlovesItemTierEquip", item.tier.toString());
     setwhatIsUse("gloves");
 
     setTimeout(() => {
@@ -184,22 +164,6 @@ const MainEq = ({
     localStorage.setItem(
       "selectedShieldAndDaggerItemIdEquip",
       item.id.toString()
-    );
-    localStorage.setItem(
-      "selectedShieldAndDaggerItemNameEquip",
-      item.name.toString()
-    );
-    localStorage.setItem(
-      "selectedShieldAndDaggerItemImgEquip",
-      item.image.toString()
-    );
-    localStorage.setItem(
-      "selectedShieldAndDaggerItemDmgEquip",
-      item.defLvl0.toString()
-    );
-    localStorage.setItem(
-      "selectedShieldAndDaggerItemTierEquip",
-      item.tier.toString()
     );
     console.log("g");
     setwhatIsUse("shield" || "dagger");
