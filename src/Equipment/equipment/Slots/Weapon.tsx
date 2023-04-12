@@ -11,44 +11,53 @@ function EquipWeapon({
   mainWeaponData: any;
 }) {
   // Load saved item information from local storage
-  const savedImageMW = localStorage.getItem("selectedItemImgEquip");
-  const savedNameMW = localStorage.getItem("selectedItemNameEquip");
-  const savedTierMW = localStorage.getItem("selectedItemTierEquip");
   const savedIdMW = localStorage.getItem("selectedItemIdEquip");
 
-  const handleClick = () => {
-    const newMainWeaponData = [...mainWeaponData];
-    const index = newMainWeaponData.findIndex(
-      (item) => item.id === Number(savedIdMW)
+  const handleClick = (selectedItem: any) => {
+    const newMainWeaponDatas = [...mainWeaponData];
+    const index = newMainWeaponDatas.findIndex(
+      (item) => item.id === selectedItem.id
     );
-    newMainWeaponData[index].isEquip = true;
-    setMainWeaponData(newMainWeaponData);
+    newMainWeaponDatas[index].isEquip = false;
+    setMainWeaponData(newMainWeaponDatas);
     localStorage.setItem(
       "MainWeaponImageAndNameAndCost",
-      JSON.stringify(newMainWeaponData)
+      JSON.stringify(newMainWeaponDatas)
     );
-    console.log("tsest ", newMainWeaponData[index]);
-    console.log("main ", mainWeaponData[index]);
   };
 
   return (
     <>
-      <div
-        className={`items-box MainWeapon ${savedTierMW}B`}
-        onContextMenu={handleClick}
-      >
-        <div className="selectedItem">
-          <img
-            className="equipmentImgeq"
-            src={
-              savedImageMW
-                ? savedImageMW
-                : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
+      {Array.isArray(mainWeaponData) &&
+        mainWeaponData.map((item: any) => {
+          if (item.id === Number(savedIdMW)) {
+            if (item.isEquip === false) {
+              return null; // Jeśli item.isEquip jest ustawione na false, zwracamy null
+            } else {
+              return (
+                <div
+                  key={item.id}
+                  className={`items-box MainWeapon ${item.tier}B`}
+                  onContextMenu={() => handleClick(item)}
+                >
+                  <div className="selectedItem">
+                    <img
+                      className="equipmentImgeq"
+                      src={
+                        item.image
+                          ? item.image
+                          : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
+                      }
+                      alt={`${item.name || "No name"} Weapon`}
+                    />
+                  </div>
+                </div>
+              );
             }
-            alt={`${savedNameMW || "No name"} Weapon`}
-          />
-        </div>
-      </div>
+          } else {
+            return null; // Jeśli item.id nie jest równy savedIdMW, zwracamy null (lub inny odpowiedni komponent)
+          }
+        })}
     </>
   );
 }

@@ -226,6 +226,54 @@ const MainEq = ({
     });
   }
 
+  const handleContextMenu = (e: { preventDefault: () => void }, item: any) => {
+    e.preventDefault();
+    if (item.type === "weapon") {
+      //===============
+      const newWeaponData = [...mainWeaponData];
+      newWeaponData.forEach((Weapon, index) => {
+        if (index === item.id) {
+          Weapon.isEquip = true;
+        } else {
+          Weapon.isEquip = false;
+        }
+      });
+      setMainWeaponData(newWeaponData);
+      localStorage.setItem(
+        "MainWeaponImageAndNameAndCost",
+        JSON.stringify(newWeaponData)
+      );
+      //===============
+      GetIdPerClickMW(item.id);
+    } else if (item.type === "helmet") {
+      GetIdPerClickH(item.id);
+    } else if (item.type === "Armor") {
+      GetIdPerClickA(item.id);
+    } else if (item.type === "Shoes") {
+      GetIdPerClickS(item.id);
+    } else if (item.type === "gloves") {
+      //===============
+      const newGlovesData = [...GlovesData];
+      newGlovesData.forEach((glove, index) => {
+        if (index === item.id) {
+          glove.isEquip = true;
+        } else {
+          glove.isEquip = false;
+        }
+      });
+      setGlovesData(newGlovesData);
+      localStorage.setItem(
+        "GlovesImageAndNameAndCost",
+        JSON.stringify(newGlovesData)
+      );
+      //===============
+      GetIdPerClickG(item.id);
+    } else if (item.type === "shield" || "dagger") {
+      GetIdPerClickSW(item.id);
+    }
+    console.log("Clicked item:", item);
+  };
+
   return (
     <>
       <div className="MainEqContainer">
@@ -248,6 +296,8 @@ const MainEq = ({
             ShieldAndDaggerData={ShieldAndDaggerData}
             GetIdPerClickSW={GetIdPerClickSW}
             setGlovesData={setGlovesData}
+            setMainWeaponData={setMainWeaponData}
+            handleContextMenu={handleContextMenu}
           />
         </div>
         <div

@@ -15,7 +15,6 @@ const MainWeaponShop = ({
   setCount: any;
   SelectedOption: any;
 }) => {
-  const [disabledButtons, setDisabledButtons] = useState<any>([]);
   const [selectedItemsN, setselectedItemsN] = useState<any[]>([]);
   const [timeLeft, settimeLeft] = useState<number>(5);
 
@@ -30,7 +29,6 @@ const MainWeaponShop = ({
       "MainWeaponImageAndNameAndCost",
       JSON.stringify(newMainWeaponData)
     );
-    setDisabledButtons([...disabledButtons, index]);
   };
 
   const changeSelectedItemsN = () => {
@@ -86,11 +84,7 @@ const MainWeaponShop = ({
                   onClick={(e) => {
                     handleClick(data); // przekazujemy cały obiekt przedmiotu zamiast indeksu
                     setCount(count - data.cost);
-                    setDisabledButtons([...disabledButtons, index]);
                   }}
-                  disabled={
-                    disabledButtons.includes(index) || count < data.cost
-                  }
                   style={{
                     display:
                       SelectedOption === data.tier || SelectedOption === ""

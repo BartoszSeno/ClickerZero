@@ -21,6 +21,8 @@ const Inventory = ({
   ShieldAndDaggerData,
   GetIdPerClickSW,
   setGlovesData,
+  setMainWeaponData,
+  handleContextMenu,
 }: {
   props: any;
   mainWeaponData: any;
@@ -36,6 +38,8 @@ const Inventory = ({
   ShieldAndDaggerData: any;
   GetIdPerClickSW: any;
   setGlovesData: any;
+  setMainWeaponData: any;
+  handleContextMenu: any;
 }) => {
   const allItemsFromArray = [
     ...mainWeaponData,
@@ -55,6 +59,13 @@ const Inventory = ({
       .filter((item: any) => item.isBought === true && item.isEquip === false)
       .map((item: any, index: any) => ({ ...item, slot: index }));
   });
+
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items]); // Dodaj zapis do localStorage wewnątrz useEffect
+
+  // Aktualizuj items na podstawie allItemsFromArray
+
   console.log("fsa ", items);
   const inventorySlots = new Array(34).fill(null);
 
@@ -96,11 +107,9 @@ const Inventory = ({
         console.log(emptySlotIndex);
       }
     }
+    localStorage.setItem("items", JSON.stringify(items));
   }, [allItemsFromArray, items, inventorySlots]);
 
-  useEffect(() => {
-    localStorage.setItem("items", JSON.stringify(items));
-  }, [items]);
   //========================================================================================
 
   const [draggingSlotId, setDraggingSlot] = useState(null);
@@ -185,36 +194,6 @@ const Inventory = ({
     });
   }
 
-  const handleContextMenu = (e: { preventDefault: () => void }, item: any) => {
-    e.preventDefault();
-    console.log("Clicked item:", item);
-    if (item.type === "weapon") {
-      GetIdPerClickMW(item.id);
-    } else if (item.type === "helmet") {
-      GetIdPerClickH(item.id);
-    } else if (item.type === "Armor") {
-      GetIdPerClickA(item.id);
-    } else if (item.type === "Shoes") {
-      GetIdPerClickS(item.id);
-    } else if (item.type === "gloves") {
-      //===============
-      const newGlovesData = [...GlovesData];
-      newGlovesData.forEach((glove, index) => {
-        if (index === item.id) {
-          glove.isEquip = true;
-        } else {
-          glove.isEquip = false;
-        }
-      });
-      console.log(GlovesData);
-      setGlovesData(newGlovesData);
-      //===============
-      GetIdPerClickG(item.id);
-    } else if (item.type === "shield" || "dagger") {
-      GetIdPerClickSW(item.id);
-    }
-  };
-
   return (
     <>
       <div className="app-container">
@@ -228,6 +207,7 @@ const Inventory = ({
               (item: { slot: number }) => item.slot === slot
             );
             const itemId = item ? item.id : null;
+
             return (
               <span
                 onContextMenu={(e) => {
