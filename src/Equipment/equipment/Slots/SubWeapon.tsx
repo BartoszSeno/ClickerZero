@@ -3,14 +3,23 @@
 function EquipSubWeapon({
   ShieldAndDaggerData,
   setShieldAndDaggerData,
+  FullInv,
 }: {
   ShieldAndDaggerData: any;
   setShieldAndDaggerData: any;
+  FullInv: any;
 }) {
   // Load saved item information from local storage
   const savedIdSD = localStorage.getItem("selectedShieldAndDaggerItemIdEquip");
 
   const handleClick = (selectedItem: any) => {
+    // Check if FullInv is true
+    if (FullInv === true) {
+      // Handle the condition when FullInv is true, e.g. show an error message or return early
+      console.log("Cannot use this function when FullInv is true.");
+      return;
+    }
+
     const newShieldAndDaggerDatas = [...ShieldAndDaggerData];
     const index = newShieldAndDaggerDatas.findIndex(
       (item) => item.id === selectedItem.id

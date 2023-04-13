@@ -8,12 +8,14 @@ const MainWeaponShop = ({
   count,
   setCount,
   SelectedOption,
+  FullInv,
 }: {
   mainWeaponData: any;
   setMainWeaponData: any;
   count: number;
   setCount: any;
   SelectedOption: any;
+  FullInv: any;
 }) => {
   const [selectedItemsN, setselectedItemsN] = useState<any[]>([]);
   const [timeLeft, settimeLeft] = useState<number>(5);
@@ -91,6 +93,7 @@ const MainWeaponShop = ({
                         ? "flex"
                         : "none",
                   }}
+                  disabled={FullInv === true}
                 >
                   <img
                     className="OptionWeaponImg"

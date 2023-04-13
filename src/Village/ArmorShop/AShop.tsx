@@ -13,6 +13,7 @@ const ArmorShops = ({
   count,
   setCount,
   SelectedOption,
+  FullInv,
   //helmet
   HelmetData,
   setHelmetData,
@@ -38,6 +39,7 @@ const ArmorShops = ({
   count: any;
   setCount: any;
   SelectedOption: any;
+  FullInv: any;
   //helmet
   HelmetData: any;
   setHelmetData: any;
@@ -87,6 +89,7 @@ const ArmorShops = ({
               count={count}
               setCount={setCount}
               SelectedOption={SelectedOption}
+              FullInv={FullInv}
             />
           </div>
           <div className="armor-Conteiner">
@@ -96,6 +99,7 @@ const ArmorShops = ({
               count={count}
               setCount={setCount}
               SelectedOption={SelectedOption}
+              FullInv={FullInv}
             />
           </div>
           {/*
@@ -116,6 +120,7 @@ const ArmorShops = ({
               count={count}
               setCount={setCount}
               SelectedOption={SelectedOption}
+              FullInv={FullInv}
             />
           </div>
         </div>

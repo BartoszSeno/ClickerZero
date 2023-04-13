@@ -8,12 +8,14 @@ const ArmorShop = ({
   SelectedOption,
   ArmorData,
   setArmorData,
+  FullInv,
 }: {
   count: number;
   setCount: any;
   SelectedOption: any;
   ArmorData: any;
   setArmorData: any;
+  FullInv: any;
 }) => {
   const [selectedItemsA, setselectedItemsA] = useState<any[]>([]);
   const [timeLeft, settimeLeft] = useState<number>(5);
@@ -89,6 +91,7 @@ const ArmorShop = ({
                         ? "flex"
                         : "none",
                   }}
+                  disabled={FullInv === true}
                 >
                   {/* 
               <div className="CostAndPrice">

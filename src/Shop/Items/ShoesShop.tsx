@@ -8,12 +8,14 @@ const ShoesShop = ({
   SelectedOption,
   ShoesData,
   setShoesData,
+  FullInv,
 }: {
   count: number;
   setCount: any;
   SelectedOption: any;
   ShoesData: any;
   setShoesData: any;
+  FullInv: any;
 }) => {
   const [selectedItemsS, setselectedItemsS] = useState<any[]>([]);
   const [timeLeft, settimeLeft] = useState<number>(5);
@@ -89,6 +91,7 @@ const ShoesShop = ({
                         ? "flex"
                         : "none",
                   }}
+                  disabled={FullInv === true}
                 >
                   {/*
               <div className="CostAndPrice">

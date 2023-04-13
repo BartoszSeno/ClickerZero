@@ -42,6 +42,8 @@ const MainEq = ({
   setHelmetData,
   setShoesData,
   setShieldAndDaggerData,
+  setFullInv,
+  FullInv,
 }: {
   mainWeaponData: any;
   UpgradedNamesMainWeapon: any;
@@ -73,6 +75,8 @@ const MainEq = ({
   setHelmetData: any;
   setShoesData: any;
   setShieldAndDaggerData: any;
+  setFullInv: any;
+  FullInv: any;
 }) => {
   //MAIN WEAPON
   //===========================================================================
@@ -103,7 +107,6 @@ const MainEq = ({
 
     // Save item information in local storage for later use
     localStorage.setItem("selectedHelmetItemIdEquip", item.id.toString());
-    console.log(item.id);
     setwhatIsUse("helmet");
 
     setTimeout(() => {
@@ -114,7 +117,6 @@ const MainEq = ({
   //ARMOR
   //===========================================================================
   function GetIdPerClickA(index: any) {
-    console.log("s ", index);
     const minus = index - 2000;
     const item = ArmorImageAndNameAndCost[minus];
 
@@ -139,7 +141,6 @@ const MainEq = ({
 
     // Save item information in local storage for later use
     localStorage.setItem("selectedShoesItemIdEquip", item.id.toString());
-    console.log(item.id);
     setwhatIsUse("shoes");
 
     setTimeout(() => {
@@ -157,7 +158,6 @@ const MainEq = ({
 
     // Save item information in local storage for later use
     localStorage.setItem("selectedGlovesItemIdEquip", item.id.toString());
-    console.log(item.id);
     setwhatIsUse("gloves");
 
     setTimeout(() => {
@@ -178,7 +178,6 @@ const MainEq = ({
       "selectedShieldAndDaggerItemIdEquip",
       item.id.toString()
     );
-    console.log(item.id);
     setwhatIsUse("shield" || "dagger");
 
     setTimeout(() => {
@@ -191,7 +190,6 @@ const MainEq = ({
 
   document.addEventListener("keydown", function (event) {
     if (event.key === "i" && !isKeyPressed) {
-      console.log("eq open");
       OpenAndCloseInvEq();
       isKeyPressed = true;
     }
@@ -346,6 +344,7 @@ const MainEq = ({
             setGlovesData={setGlovesData}
             setMainWeaponData={setMainWeaponData}
             handleContextMenu={handleContextMenu}
+            setFullInv={setFullInv}
           />
         </div>
         <div
@@ -365,6 +364,7 @@ const MainEq = ({
             setHelmetData={setHelmetData}
             setShoesData={setShoesData}
             setShieldAndDaggerData={setShieldAndDaggerData}
+            FullInv={FullInv}
           />
         </div>
       </div>

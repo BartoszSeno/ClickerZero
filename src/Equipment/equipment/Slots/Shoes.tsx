@@ -3,14 +3,22 @@
 function EquipShoes({
   ShoesData,
   setShoesData,
+  FullInv,
 }: {
   ShoesData: any;
   setShoesData: any;
+  FullInv: any;
 }) {
   // Load saved item information from local storage
   const savedIdS = localStorage.getItem("selectedShoesItemIdEquip");
 
   const handleClick = (selectedItem: any) => {
+    // Check if FullInv is true
+    if (FullInv === true) {
+      // Handle the condition when FullInv is true, e.g. show an error message or return early
+      console.log("Cannot use this function when FullInv is true.");
+      return;
+    }
     const newShoesDatas = [...ShoesData];
     const index = newShoesDatas.findIndex(
       (item) => item.id === selectedItem.id

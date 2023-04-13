@@ -13,6 +13,7 @@ const WeaponShop = ({
   count,
   setCount,
   SelectedOption,
+  FullInv,
 }: {
   WSO: boolean;
   setWSO: any;
@@ -24,6 +25,7 @@ const WeaponShop = ({
   count: any;
   setCount: any;
   SelectedOption: any;
+  FullInv: any;
 }) => {
   const [ShopIsOpen, setShopIsOpen] = useState(true);
 
@@ -59,6 +61,7 @@ const WeaponShop = ({
               count={count}
               setCount={setCount}
               SelectedOption={SelectedOption}
+              FullInv={FullInv}
             />
           </span>
           <span className="RedAndPurple">
@@ -68,6 +71,7 @@ const WeaponShop = ({
               count={count}
               setCount={setCount}
               SelectedOption={SelectedOption}
+              FullInv={FullInv}
             />
           </span>
         </div>

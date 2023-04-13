@@ -3,13 +3,21 @@
 function EquipGloves({
   GlovesData,
   setGlovesData,
+  FullInv,
 }: {
   GlovesData: any;
   setGlovesData: any;
+  FullInv: any;
 }) {
   const savedIdG = localStorage.getItem("selectedGlovesItemIdEquip");
 
   const handleClickGloves = (selectedItem: any) => {
+    // Check if FullInv is true
+    if (FullInv === true) {
+      // Handle the condition when FullInv is true, e.g. show an error message or return early
+      console.log("Cannot use this function when FullInv is true.");
+      return;
+    }
     //Gloves
     const newGlovesData = [...GlovesData];
     const index = newGlovesData.findIndex(

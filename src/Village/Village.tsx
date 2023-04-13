@@ -504,6 +504,10 @@ const MainIndexVillage = () => {
   const [ASO, setASO] = useState<boolean>(false);
   const [MO, setMO] = useState<boolean>(false);
 
+  const [FullInv, setFullInv] = useState<boolean>(false);
+
+  console.log(FullInv);
+
   return (
     <>
       <div
@@ -555,6 +559,8 @@ const MainIndexVillage = () => {
               setHelmetData={setHelmetData}
               setShoesData={setShoesData}
               setShieldAndDaggerData={setShieldAndDaggerData}
+              setFullInv={setFullInv}
+              FullInv={FullInv}
             />
             <Clicker
               setCount={setCount}
@@ -603,6 +609,7 @@ const MainIndexVillage = () => {
                 count={count}
                 setCount={setCount}
                 SelectedOption={SelectedOption}
+                FullInv={FullInv}
               />
             </div>
 
@@ -689,6 +696,7 @@ const MainIndexVillage = () => {
                 //shoes
                 ShoesData={ShoesData}
                 setShoesData={setShoesData}
+                FullInv={FullInv}
               />
             </div>
             <div

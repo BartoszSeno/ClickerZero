@@ -3,14 +3,22 @@
 function EquipArmor({
   ArmorData,
   setArmorData,
+  FullInv,
 }: {
   ArmorData: any;
   setArmorData: any;
+  FullInv: any;
 }) {
   // Load saved item information from local storage
   const savedIdA = localStorage.getItem("selectedArmorItemIdEquip");
 
   const handleClick = (selectedItem: any) => {
+    // Check if FullInv is true
+    if (FullInv === true) {
+      // Handle the condition when FullInv is true, e.g. show an error message or return early
+      console.log("Cannot use this function when FullInv is true.");
+      return;
+    }
     const newArmorDatas = [...ArmorData];
     const index = newArmorDatas.findIndex(
       (item) => item.id === selectedItem.id

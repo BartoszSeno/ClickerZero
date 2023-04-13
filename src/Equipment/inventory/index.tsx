@@ -23,6 +23,7 @@ const Inventory = ({
   setGlovesData,
   setMainWeaponData,
   handleContextMenu,
+  setFullInv,
 }: {
   props: any;
   mainWeaponData: any;
@@ -40,6 +41,7 @@ const Inventory = ({
   setGlovesData: any;
   setMainWeaponData: any;
   handleContextMenu: any;
+  setFullInv: any;
 }) => {
   const allItemsFromArray = [
     ...mainWeaponData,
@@ -60,15 +62,13 @@ const Inventory = ({
       .map((item: any, index: any) => ({ ...item, slot: index }));
   });
 
-  console.log(items);
-
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
   }, [items]); // Dodaj zapis do localStorage wewnątrz useEffect
 
   // Aktualizuj items na podstawie allItemsFromArray
 
-  const inventorySlots = new Array(34).fill(null);
+  const inventorySlots = new Array(36).fill(null);
   //========================================================================================
 
   const prevItemsRef = useRef<any[]>([]);
@@ -78,6 +78,7 @@ const Inventory = ({
     const updatedItems = allItemsFromArray
       .filter((item) => item.isBought === true && item.isEquip === false)
       .map((item) => {
+        setFullInv(false);
         // Check if the item is already present in the current items state
         const existingItem = items.find((i: { id: any }) => i.id === item.id);
         if (existingItem) {
@@ -103,9 +104,9 @@ const Inventory = ({
         return item;
       });
 
-    if (updatedItems.length > 33) {
-      alert("Ekwipunek jest pełny!");
-      return;
+    if (updatedItems.length >= 35) {
+      console.log("Ekwipunek jest pełny!");
+      setFullInv(true);
     }
 
     // Compare prevItemsRef with current items to avoid infinite loop
@@ -135,7 +136,6 @@ const Inventory = ({
       let oldIndex = -1,
         newIndex = -1;
 
-      console.log(currentState);
       // Finding the old ones..
 
       newInventory.forEach((item, index) => {

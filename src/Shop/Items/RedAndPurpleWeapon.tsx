@@ -8,14 +8,15 @@ const RedAndPurpleMainWeaponShop = ({
   count,
   setCount,
   SelectedOption,
+  FullInv,
 }: {
   mainWeaponData: any;
   setMainWeaponData: any;
   count: number;
   setCount: any;
   SelectedOption: any;
+  FullInv: any;
 }) => {
-  const [disabledButtons, setDisabledButtons] = useState<any>([]);
   const [SelectedItems, setSelectedItems] = useState<any[]>([]);
   const [timeLeft, settimeLeft] = useState<number>(60);
 
@@ -31,7 +32,6 @@ const RedAndPurpleMainWeaponShop = ({
       "MainWeaponImageAndNameAndCost",
       JSON.stringify(newMainWeaponData)
     );
-    setDisabledButtons([...disabledButtons, index]);
   };
 
   const changeSelectedItems = () => {
@@ -86,9 +86,8 @@ const RedAndPurpleMainWeaponShop = ({
                 onClick={(e) => {
                   handleClick(data);
                   setCount(count - data.cost);
-                  setDisabledButtons([...disabledButtons, index]);
                 }}
-                disabled={disabledButtons.includes(index) || count < data.cost}
+                disabled={FullInv === true}
                 style={{
                   display:
                     SelectedOption === data.tier || SelectedOption === ""

@@ -19,6 +19,7 @@ function EquipContainer({
   setHelmetData,
   setShoesData,
   setShieldAndDaggerData,
+  FullInv,
 }: {
   mainWeaponData: any;
   HelmetData: any;
@@ -32,6 +33,7 @@ function EquipContainer({
   setHelmetData: any;
   setShoesData: any;
   setShieldAndDaggerData: any;
+  FullInv: any;
 }) {
   return (
     <>
@@ -39,17 +41,35 @@ function EquipContainer({
         <EquipWeapon
           mainWeaponData={mainWeaponData}
           setMainWeaponData={setMainWeaponData}
+          FullInv={FullInv}
         />
         <EquipSubWeapon
           ShieldAndDaggerData={ShieldAndDaggerData}
           setShieldAndDaggerData={setShieldAndDaggerData}
+          FullInv={FullInv}
         />
       </div>
       <div className="ArmorContainer">
-        <EquipHelmet HelmetData={HelmetData} setHelmetData={setHelmetData} />
-        <EquipArmor ArmorData={ArmorData} setArmorData={setArmorData} />
-        <EquipGloves GlovesData={GlovesData} setGlovesData={setGlovesData} />
-        <EquipShoes ShoesData={ShoesData} setShoesData={setShoesData} />
+        <EquipHelmet
+          HelmetData={HelmetData}
+          setHelmetData={setHelmetData}
+          FullInv={FullInv}
+        />
+        <EquipArmor
+          ArmorData={ArmorData}
+          setArmorData={setArmorData}
+          FullInv={FullInv}
+        />
+        <EquipGloves
+          GlovesData={GlovesData}
+          setGlovesData={setGlovesData}
+          FullInv={FullInv}
+        />
+        <EquipShoes
+          ShoesData={ShoesData}
+          setShoesData={setShoesData}
+          FullInv={FullInv}
+        />
       </div>
     </>
   );

@@ -8,12 +8,14 @@ const HelmetShop = ({
   SelectedOption,
   HelmetData,
   setHelmetData,
+  FullInv,
 }: {
   count: number;
   setCount: any;
   SelectedOption: any;
   HelmetData: any;
   setHelmetData: any;
+  FullInv: any;
 }) => {
   const [selectedItemsH, setselectedItemsH] = useState<any[]>([]);
   const [timeLeft, settimeLeft] = useState<number>(5);
@@ -92,6 +94,7 @@ const HelmetShop = ({
                         ? "flex"
                         : "none",
                   }}
+                  disabled={FullInv === true}
                 >
                   {/*
               <div className="CostAndPrice">

@@ -6,14 +6,24 @@ import { useEffect } from "react";
 function EquipWeapon({
   setMainWeaponData,
   mainWeaponData,
+  FullInv,
 }: {
   setMainWeaponData: any;
   mainWeaponData: any;
+  FullInv: any;
 }) {
   // Load saved item information from local storage
   const savedIdMW = localStorage.getItem("selectedItemIdEquip");
 
   const handleClick = (selectedItem: any) => {
+    // Check if FullInv is true
+    if (FullInv === true) {
+      // Handle the condition when FullInv is true, e.g. show an error message or return early
+      console.log("Cannot use this function when FullInv is true.");
+      return;
+    }
+
+    // Continue with the rest of the logic when FullInv is false
     const newMainWeaponDatas = [...mainWeaponData];
     const index = newMainWeaponDatas.findIndex(
       (item) => item.id === selectedItem.id

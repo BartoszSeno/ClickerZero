@@ -3,14 +3,22 @@
 function EquipHelmet({
   HelmetData,
   setHelmetData,
+  FullInv,
 }: {
   HelmetData: any;
   setHelmetData: any;
+  FullInv: any;
 }) {
   // Load saved item information from local storage
   const savedIdG = localStorage.getItem("selectedHelmetItemIdEquip");
 
   const handleClick = (selectedItem: any) => {
+    // Check if FullInv is true
+    if (FullInv === true) {
+      // Handle the condition when FullInv is true, e.g. show an error message or return early
+      console.log("Cannot use this function when FullInv is true.");
+      return;
+    }
     const newHelmetDatas = [...HelmetData];
     const index = newHelmetDatas.findIndex(
       (item) => item.id === selectedItem.id
