@@ -1,9 +1,8 @@
 export const GlovesImageAndNameAndCost = [
   {
-    id: 100,
-    tier: "green",
-    image:
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/gloves/d1.png",
+    id: 3000,
+    tier: "",
+    image: "",
     name: "",
     defLvl0: 0,
     dmgLvl0: 0,
@@ -11,12 +10,11 @@ export const GlovesImageAndNameAndCost = [
     isBought: false,
     isVisible: false,
     isEquip: false,
-
     type: "gloves",
   },
   //purple
   {
-    id: 1,
+    id: 3001,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/gloves/d1.png",
@@ -30,7 +28,7 @@ export const GlovesImageAndNameAndCost = [
     type: "gloves",
   },
   {
-    id: 2,
+    id: 3002,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/gloves/d2.png",
@@ -44,7 +42,7 @@ export const GlovesImageAndNameAndCost = [
     type: "gloves",
   },
   {
-    id: 3,
+    id: 3003,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/gloves/d3.png",
@@ -58,7 +56,7 @@ export const GlovesImageAndNameAndCost = [
     type: "gloves",
   },
   {
-    id: 4,
+    id: 3004,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/gloves/d4.png",
@@ -72,7 +70,7 @@ export const GlovesImageAndNameAndCost = [
     type: "gloves",
   },
   {
-    id: 5,
+    id: 3005,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/gloves/d5.png",
@@ -86,7 +84,7 @@ export const GlovesImageAndNameAndCost = [
     type: "gloves",
   },
   {
-    id: 6,
+    id: 3006,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/gloves/d6.png",
@@ -100,7 +98,7 @@ export const GlovesImageAndNameAndCost = [
     type: "gloves",
   },
   {
-    id: 7,
+    id: 3007,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/gloves/d7.png",

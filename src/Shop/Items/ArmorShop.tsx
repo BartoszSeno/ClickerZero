@@ -15,7 +15,6 @@ const ArmorShop = ({
   ArmorData: any;
   setArmorData: any;
 }) => {
-  const [disabledButtons, setDisabledButtons] = useState<any>([]);
   const [selectedItemsA, setselectedItemsA] = useState<any[]>([]);
   const [timeLeft, settimeLeft] = useState<number>(5);
 
@@ -28,7 +27,6 @@ const ArmorShop = ({
       "ArmorImageAndNameAndCost",
       JSON.stringify(newArmorData)
     );
-    setDisabledButtons([...disabledButtons, index]);
   };
 
   const changeselectedItemsA = () => {
@@ -84,11 +82,7 @@ const ArmorShop = ({
                   onClick={(e) => {
                     handleClickArmor(data);
                     setCount(count - data.cost);
-                    setDisabledButtons([...disabledButtons, index]);
                   }}
-                  disabled={
-                    disabledButtons.includes(index) || count < data.cost
-                  }
                   style={{
                     display:
                       SelectedOption === data.tier || SelectedOption === ""

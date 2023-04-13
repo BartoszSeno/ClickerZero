@@ -15,7 +15,6 @@ const HelmetShop = ({
   HelmetData: any;
   setHelmetData: any;
 }) => {
-  const [disabledButtons, setDisabledButtons] = useState<any>([]);
   const [selectedItemsH, setselectedItemsH] = useState<any[]>([]);
   const [timeLeft, settimeLeft] = useState<number>(5);
 
@@ -31,7 +30,6 @@ const HelmetShop = ({
       "HelmetImageAndNameAndCost",
       JSON.stringify(newHelmetData)
     );
-    setDisabledButtons([...disabledButtons, index]);
   };
 
   const changeselectedItemsH = () => {
@@ -87,11 +85,7 @@ const HelmetShop = ({
                   onClick={(e) => {
                     handleClickHelmet(data);
                     setCount(count - data.cost);
-                    setDisabledButtons([...disabledButtons, index]);
                   }}
-                  disabled={
-                    disabledButtons.includes(index) || count < data.cost
-                  }
                   style={{
                     display:
                       SelectedOption === data.tier || SelectedOption === ""

@@ -15,9 +15,8 @@ const ShoesShop = ({
   ShoesData: any;
   setShoesData: any;
 }) => {
-  const [disabledButtons, setDisabledButtons] = useState<any>([]);
   const [selectedItemsS, setselectedItemsS] = useState<any[]>([]);
-  const [timeLeft, settimeLeft] = useState<number>(60);
+  const [timeLeft, settimeLeft] = useState<number>(5);
 
   const handleClickShoes = (selectedItem: any) => {
     const newShoesData = [...ShoesData];
@@ -28,7 +27,6 @@ const ShoesShop = ({
       "ShoesImageAndNameAndCost",
       JSON.stringify(newShoesData)
     );
-    setDisabledButtons([...disabledButtons, index]);
   };
 
   const changeselectedItemsS = () => {
@@ -43,13 +41,13 @@ const ShoesShop = ({
     const selectedItemsS = randomIndexes.map((index) => ShoesData[index]);
     setselectedItemsS(selectedItemsS);
     localStorage.setItem("selectedItemsS", JSON.stringify(selectedItemsS));
-    settimeLeft(60);
+    settimeLeft(5);
   };
 
   useEffect(() => {
     const interval1 = setInterval(() => {
       changeselectedItemsS();
-    }, 60000);
+    }, 5000);
 
     const savedItems = localStorage.getItem("selectedItemsS");
     if (savedItems) {
@@ -84,11 +82,7 @@ const ShoesShop = ({
                   onClick={(e) => {
                     handleClickShoes(data);
                     setCount(count - data.cost);
-                    setDisabledButtons([...disabledButtons, index]);
                   }}
-                  disabled={
-                    disabledButtons.includes(index) || count < data.cost
-                  }
                   style={{
                     display:
                       SelectedOption === data.tier || SelectedOption === ""

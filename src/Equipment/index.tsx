@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import "../assets/css/MainEq/maineq.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Inventory from "./inventory";
 import EquipContainer from "./equipment";
 import { MainWeaponImageAndNameAndCost } from "../data/equipment/mainWeapon";
@@ -83,7 +83,6 @@ const MainEq = ({
   function GetIdPerClickMW(index: any) {
     const item = MainWeaponImageAndNameAndCost[index];
     setSelectedItemIdEquip(index.id);
-
     // Save item information in local storage for later use
     localStorage.setItem("selectedItemIdEquip", item.id.toString());
     setwhatIsUse("weapon");
@@ -97,11 +96,14 @@ const MainEq = ({
   //===========================================================================
 
   function GetIdPerClickH(index: any) {
-    const item = HelmetImageAndNameAndCost[index];
+    const minus = index - 1000;
+
+    const item = HelmetImageAndNameAndCost[minus];
     setSelectedItemIdEquip(index.id);
 
     // Save item information in local storage for later use
     localStorage.setItem("selectedHelmetItemIdEquip", item.id.toString());
+    console.log(item.id);
     setwhatIsUse("helmet");
 
     setTimeout(() => {
@@ -112,7 +114,10 @@ const MainEq = ({
   //ARMOR
   //===========================================================================
   function GetIdPerClickA(index: any) {
-    const item = ArmorImageAndNameAndCost[index];
+    console.log("s ", index);
+    const minus = index - 2000;
+    const item = ArmorImageAndNameAndCost[minus];
+
     setSelectedItemIdEquip(index.id);
 
     // Save item information in local storage for later use
@@ -127,11 +132,14 @@ const MainEq = ({
   //SHOES
   //===========================================================================
   function GetIdPerClickS(index: any) {
-    const item = ShoesImageAndNameAndCost[index];
+    const minus = index - 4000;
+
+    const item = ShoesImageAndNameAndCost[minus];
     setSelectedItemIdEquip(index.id);
 
     // Save item information in local storage for later use
     localStorage.setItem("selectedShoesItemIdEquip", item.id.toString());
+    console.log(item.id);
     setwhatIsUse("shoes");
 
     setTimeout(() => {
@@ -142,11 +150,14 @@ const MainEq = ({
   //GLOVES
   //===========================================================================
   function GetIdPerClickG(index: any) {
-    const item = GlovesImageAndNameAndCost[index];
+    const minus = index - 3000;
+
+    const item = GlovesImageAndNameAndCost[minus];
     setSelectedItemIdEquip(index.id);
 
     // Save item information in local storage for later use
     localStorage.setItem("selectedGlovesItemIdEquip", item.id.toString());
+    console.log(item.id);
     setwhatIsUse("gloves");
 
     setTimeout(() => {
@@ -157,7 +168,9 @@ const MainEq = ({
   //SUB WEAPON
   //===========================================================================
   function GetIdPerClickSW(index: any) {
-    const item = ShieldAndDaggerImageAndNameAndCost[index];
+    const minus = index - 5000;
+
+    const item = ShieldAndDaggerImageAndNameAndCost[minus];
     setSelectedItemIdEquip(index.id);
 
     // Save item information in local storage for later use
@@ -165,7 +178,7 @@ const MainEq = ({
       "selectedShieldAndDaggerItemIdEquip",
       item.id.toString()
     );
-    console.log("g");
+    console.log(item.id);
     setwhatIsUse("shield" || "dagger");
 
     setTimeout(() => {
@@ -200,6 +213,8 @@ const MainEq = ({
 
   const handleContextMenu = (e: { preventDefault: () => void }, item: any) => {
     e.preventDefault();
+    console.log("Clicked item:", item);
+
     if (item.type === "weapon") {
       //===============
       const newWeaponData = [...mainWeaponData];
@@ -216,12 +231,13 @@ const MainEq = ({
         JSON.stringify(newWeaponData)
       );
       //===============
+
       GetIdPerClickMW(item.id);
     } else if (item.type === "helmet") {
       //===============
       const newHelmetDatas = [...HelmetData];
       newHelmetDatas.forEach((Helmet, index) => {
-        if (index === item.id) {
+        if (index === item.id - 1000) {
           Helmet.isEquip = true;
         } else {
           Helmet.isEquip = false;
@@ -238,7 +254,7 @@ const MainEq = ({
       //===============
       const newArmorDatas = [...ArmorData];
       newArmorDatas.forEach((Armor, index) => {
-        if (index === item.id) {
+        if (index === item.id - 2000) {
           Armor.isEquip = true;
         } else {
           Armor.isEquip = false;
@@ -250,12 +266,13 @@ const MainEq = ({
         JSON.stringify(newArmorDatas)
       );
       //===============
+
       GetIdPerClickA(item.id);
     } else if (item.type === "Shoes") {
       //===============
       const newShoesDatas = [...ShoesData];
       newShoesDatas.forEach((Shoes, index) => {
-        if (index === item.id) {
+        if (index === item.id - 4000) {
           Shoes.isEquip = true;
         } else {
           Shoes.isEquip = false;
@@ -272,7 +289,7 @@ const MainEq = ({
       //===============
       const newGlovesData = [...GlovesData];
       newGlovesData.forEach((glove, index) => {
-        if (index === item.id) {
+        if (index === item.id - 3000) {
           glove.isEquip = true;
         } else {
           glove.isEquip = false;
@@ -289,7 +306,7 @@ const MainEq = ({
       //===============
       const newShieldAndDaggerDatas = [...ShieldAndDaggerData];
       newShieldAndDaggerDatas.forEach((ShieldDagger, index) => {
-        if (index === item.id) {
+        if (index === item.id - 5000) {
           ShieldDagger.isEquip = true;
         } else {
           ShieldDagger.isEquip = false;
@@ -303,7 +320,6 @@ const MainEq = ({
       //===============
       GetIdPerClickSW(item.id);
     }
-    console.log("Clicked item:", item);
   };
 
   return (

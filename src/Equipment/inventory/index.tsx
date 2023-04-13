@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../../assets/css/Normal/inventory/inventory.css";
 
 // Components
@@ -45,8 +45,8 @@ const Inventory = ({
     ...mainWeaponData,
     ...HelmetData,
     ...ArmorData,
-    ...ShoesData,
     ...GlovesData,
+    ...ShoesData,
     ...ShieldAndDaggerData,
   ];
 
@@ -60,55 +60,64 @@ const Inventory = ({
       .map((item: any, index: any) => ({ ...item, slot: index }));
   });
 
+  console.log(items);
+
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
   }, [items]); // Dodaj zapis do localStorage wewnątrz useEffect
 
   // Aktualizuj items na podstawie allItemsFromArray
 
-  console.log("fsa ", items);
   const inventorySlots = new Array(34).fill(null);
+  //========================================================================================
+
+  const prevItemsRef = useRef<any[]>([]);
 
   useEffect(() => {
-    const newBoughtItem = allItemsFromArray.find(
-      (item: any) =>
-        item.isBought === true &&
-        item.isEquip === false &&
-        !items.find((i: any) => i.id === item.id)
-    );
-
-    if (newBoughtItem) {
-      let emptySlotIndex = inventorySlots.findIndex(
-        (item, index) =>
-          !item && index !== -1 && !items.some((i: any) => i.slot === index)
-      );
-
-      if (emptySlotIndex === -1) {
-        if (
-          items.some(
-            (item: { slot: number }) =>
-              item.slot > items[items.length - 1]?.slot
-          )
-        ) {
-          emptySlotIndex = items[items.length - 1].slot + 1;
+    // Filter out items that are not bought in allItemsFromArray
+    const updatedItems = allItemsFromArray
+      .filter((item) => item.isBought === true && item.isEquip === false)
+      .map((item) => {
+        // Check if the item is already present in the current items state
+        const existingItem = items.find((i: { id: any }) => i.id === item.id);
+        if (existingItem) {
+          // Preserve the current slot value for the existing item
+          item.slot = existingItem.slot;
         } else {
-          emptySlotIndex = items.length;
+          // Update the slot property for each item in updatedItems
+          let emptySlotIndex = inventorySlots.findIndex(
+            (item, index) =>
+              !item && index !== -1 && !items.some((i: any) => i.slot === index)
+          );
+          if (emptySlotIndex !== -1) {
+            // If there's an empty slot available, assign it
+            item.slot = emptySlotIndex;
+          } else {
+            // Find the first available empty slot index after the last slot used in updatedItems
+            const lastSlot = updatedItems.reduce((maxSlot, item) => {
+              return item.slot > maxSlot ? item.slot : maxSlot;
+            }, -1);
+            item.slot = lastSlot + 1;
+          }
         }
-      }
+        return item;
+      });
 
-      if (emptySlotIndex <= 33) {
-        const updatedItems = [...items];
-        updatedItems.push({ ...newBoughtItem, slot: emptySlotIndex });
-        setItems(updatedItems);
-        inventorySlots[emptySlotIndex] = newBoughtItem;
-        console.log(emptySlotIndex);
-      } else {
-        alert("Ekwipunek jest pełny!");
-        console.log(emptySlotIndex);
-      }
+    if (updatedItems.length > 33) {
+      alert("Ekwipunek jest pełny!");
+      return;
     }
-    localStorage.setItem("items", JSON.stringify(items));
-  }, [allItemsFromArray, items, inventorySlots]);
+
+    // Compare prevItemsRef with current items to avoid infinite loop
+    if (JSON.stringify(prevItemsRef.current) !== JSON.stringify(updatedItems)) {
+      // Update state and local storage with updatedItems using functional update
+      setItems(updatedItems);
+      localStorage.setItem("items", JSON.stringify(updatedItems));
+
+      // Update prevItemsRef with the current items value
+      prevItemsRef.current = updatedItems;
+    }
+  }, [allItemsFromArray, inventorySlots, items]);
 
   //========================================================================================
 
@@ -116,6 +125,7 @@ const Inventory = ({
 
   const getNumberOfSlots = () =>
     new Array(35).fill(null).map((_, index) => index);
+
   const getItemDataInSlot = (slot: number) =>
     items.find((item: { slot: number }) => item.slot === slot);
 

@@ -1,6 +1,6 @@
 export const HelmetImageAndNameAndCost = [
   {
-    id: 100,
+    id: 1000,
     tier: "green",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/n1.png",
@@ -13,7 +13,7 @@ export const HelmetImageAndNameAndCost = [
     type: "helmet",
   },
   {
-    id: 1,
+    id: 1001,
     tier: "green",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/n1.png",
@@ -26,7 +26,7 @@ export const HelmetImageAndNameAndCost = [
     type: "helmet",
   },
   {
-    id: 2,
+    id: 1002,
     tier: "green",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/n2.png",
@@ -39,7 +39,7 @@ export const HelmetImageAndNameAndCost = [
     type: "helmet",
   },
   {
-    id: 3,
+    id: 1003,
     tier: "green",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/n3.png",
@@ -52,7 +52,7 @@ export const HelmetImageAndNameAndCost = [
     type: "helmet",
   },
   {
-    id: 4,
+    id: 1004,
     tier: "green",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/n4.png",
@@ -65,7 +65,7 @@ export const HelmetImageAndNameAndCost = [
     type: "helmet",
   },
   {
-    id: 5,
+    id: 1005,
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/n5.png",
@@ -78,7 +78,7 @@ export const HelmetImageAndNameAndCost = [
     type: "helmet",
   },
   {
-    id: 6,
+    id: 1006,
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/n6.png",
@@ -91,7 +91,7 @@ export const HelmetImageAndNameAndCost = [
     type: "helmet",
   },
   {
-    id: 7,
+    id: 1007,
     tier: "blue",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/n7.png",
@@ -104,7 +104,7 @@ export const HelmetImageAndNameAndCost = [
     type: "helmet",
   },
   {
-    id: 8,
+    id: 1008,
     tier: "yellow",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/n8.png",
@@ -117,7 +117,7 @@ export const HelmetImageAndNameAndCost = [
     type: "helmet",
   },
   {
-    id: 9,
+    id: 1009,
     tier: "yellow",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/n9.png",
@@ -130,7 +130,7 @@ export const HelmetImageAndNameAndCost = [
     type: "helmet",
   },
   {
-    id: 10,
+    id: 1010,
     tier: "yellow",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/n10.png",
@@ -143,7 +143,7 @@ export const HelmetImageAndNameAndCost = [
     type: "helmet",
   },
   {
-    id: 11,
+    id: 1011,
     tier: "yellow",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/n10a.png",
@@ -156,7 +156,7 @@ export const HelmetImageAndNameAndCost = [
     type: "helmet",
   },
   {
-    id: 12,
+    id: 1012,
     tier: "red",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/n11.png",
@@ -169,7 +169,7 @@ export const HelmetImageAndNameAndCost = [
     type: "helmet",
   },
   {
-    id: 13,
+    id: 1013,
     tier: "red",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/n12.png",
@@ -182,7 +182,7 @@ export const HelmetImageAndNameAndCost = [
     type: "helmet",
   },
   {
-    id: 14,
+    id: 1014,
     tier: "red",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/n13.png",
@@ -195,7 +195,7 @@ export const HelmetImageAndNameAndCost = [
     type: "helmet",
   },
   {
-    id: 15,
+    id: 1015,
     tier: "red",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/n14.png",
@@ -208,7 +208,7 @@ export const HelmetImageAndNameAndCost = [
     type: "helmet",
   },
   {
-    id: 16,
+    id: 1016,
     tier: "red",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/n15.png",
@@ -222,7 +222,7 @@ export const HelmetImageAndNameAndCost = [
   },
   //purple
   {
-    id: 17,
+    id: 1017,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/d1.png",
@@ -235,7 +235,7 @@ export const HelmetImageAndNameAndCost = [
     type: "helmet",
   },
   {
-    id: 18,
+    id: 1018,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/d2.png",
@@ -248,7 +248,7 @@ export const HelmetImageAndNameAndCost = [
     type: "helmet",
   },
   {
-    id: 19,
+    id: 1019,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/d3.png",
@@ -261,7 +261,7 @@ export const HelmetImageAndNameAndCost = [
     type: "helmet",
   },
   {
-    id: 20,
+    id: 1020,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/d4.png",
@@ -274,7 +274,7 @@ export const HelmetImageAndNameAndCost = [
     type: "helmet",
   },
   {
-    id: 21,
+    id: 1021,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/d5.png",
@@ -287,7 +287,7 @@ export const HelmetImageAndNameAndCost = [
     type: "helmet",
   },
   {
-    id: 22,
+    id: 1022,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/d6.png",
@@ -300,7 +300,7 @@ export const HelmetImageAndNameAndCost = [
     type: "helmet",
   },
   {
-    id: 23,
+    id: 1023,
     tier: "purple",
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/helmet/d7.png",
