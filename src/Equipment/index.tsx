@@ -322,10 +322,17 @@ const MainEq = ({
 
   return (
     <>
-      <div className="MainEqContainer">
+      <div
+        className="MainEqContainer"
+        style={{
+          display: openInvAndEq ? "flex" : "none",
+        }}
+      >
         <div
           id="option-container"
-          style={{ display: openInvAndEq ? "flex" : "none" }}
+          style={{
+            display: openInvAndEq ? "flex" : "none",
+          }}
         >
           <Inventory
             props={""}

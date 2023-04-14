@@ -29,12 +29,11 @@
 }
 
 .rightVillage {
-  background-color: rgba(0, 255, 255, 0.171);
+  background-color: rgba(0, 255, 255, 0.146);
   height: 100%;
   width: 3000px;
   display: flex;
   flex-direction: row;
-  z-index: 1;
 }
 
 .WeaponShop {

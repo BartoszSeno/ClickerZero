@@ -8,25 +8,32 @@
   position: fixed;
   left: 50%;
   transform: translate(-50%, 0%);
+  pointer-events: none;
 }
 
 #option-container {
   display: flex;
-  width: 500px;
-  height: 100%;
+  position: relative;
+  margin-left: 150px;
+  width: 455px;
+  height: 626px;
   background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/3c600cc1e2bf67cc9c4df207e30caf080ae463a9/src/assets/MainImg/invenory/Inventory.png);
   background-repeat: no-repeat;
   background-position: center;
+  background-position-y: -12px;
+  z-index: 3;
+  pointer-events: all;
 }
 #EqCharacters {
   background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/invenory/eq.png);
   background-repeat: no-repeat;
   display: flex;
-  width: 500px;
-  height: 100%;
+  width: 370px;
+  height: 403px;
   background-position: center;
   justify-content: center;
   align-items: center;
+  pointer-events: all;
 }
 
 .selectedItem {

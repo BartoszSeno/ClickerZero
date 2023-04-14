@@ -9,8 +9,8 @@
 .inventory {
   height: auto;
   width: 390px;
-  margin-top: 125px;
-  margin-left: 55px;
+  margin-top: 82px;
+  margin-left: 32px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
