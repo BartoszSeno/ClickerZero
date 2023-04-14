@@ -1,8 +1,3 @@
-/* eslint-disable array-callback-return */
-
-import { Console } from "console";
-import { useEffect } from "react";
-
 function EquipWeapon({
   setMainWeaponData,
   mainWeaponData,
