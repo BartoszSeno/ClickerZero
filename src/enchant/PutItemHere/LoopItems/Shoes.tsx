@@ -72,7 +72,7 @@ const ShoesLoopEnchant = ({
         if (ShoesItem.isBought) {
           return (
             <div key={`Shoes_${ShoesIndex}`}>
-              {Array.from({ length: ShoesItem.count }, (_, a) => {
+              {Array.from({ length: 1 }, (_, a) => {
                 const mainShoesId = `${ShoesIndex}${a}`;
                 const ShoesItemUpgradeName = `${ShoesItem.name}${ShoesIndex}${mainShoesId}`;
                 const ShoesItemId = `${ShoesIndex}${

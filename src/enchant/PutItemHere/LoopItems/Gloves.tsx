@@ -75,7 +75,7 @@ const GlovesLoopEnchant = ({
         if (GlovesItem.isBought) {
           return (
             <div key={`Gloves_${GlovesIndex}`}>
-              {Array.from({ length: GlovesItem.count }, (_, a) => {
+              {Array.from({ length: 1 }, (_, a) => {
                 const mainGlovesId = `${GlovesIndex}${a}`;
                 const GlovesItemUpgradeName = `${GlovesItem.name}${GlovesIndex}${mainGlovesId}`;
                 const GlovesItemId = `${GlovesIndex}${

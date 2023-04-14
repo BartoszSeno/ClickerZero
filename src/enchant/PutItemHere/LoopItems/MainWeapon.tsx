@@ -59,7 +59,8 @@ const MainWeaponLoopEnchant = ({
         if (item.isBought) {
           return (
             <div key={`item_${index}`}>
-              {Array.from({ length: item.count }, (_, i) => {
+              {Array.from({ length: 1 }, (_, i) => {
+                // Replace length: item.count with a static number or a variable
                 const mainId = `${index}${i}`;
                 const itemUpgradeName = `${item.name}${index}${mainId}`;
 

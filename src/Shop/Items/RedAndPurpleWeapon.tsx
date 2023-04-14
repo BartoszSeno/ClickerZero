@@ -18,7 +18,7 @@ const RedAndPurpleMainWeaponShop = ({
   FullInv: any;
 }) => {
   const [SelectedItems, setSelectedItems] = useState<any[]>([]);
-  const [timeLeft, settimeLeft] = useState<number>(60);
+  const [timeLeft, settimeLeft] = useState<number>(5);
 
   const handleClick = (selectedItem: any) => {
     const newMainWeaponData = [...mainWeaponData];
@@ -26,7 +26,6 @@ const RedAndPurpleMainWeaponShop = ({
       (item) => item.id === selectedItem.id
     );
     newMainWeaponData[index].isBought = true;
-    newMainWeaponData[index].count = newMainWeaponData[index].count || 1;
     setMainWeaponData(newMainWeaponData);
     localStorage.setItem(
       "MainWeaponImageAndNameAndCost",
@@ -47,13 +46,13 @@ const RedAndPurpleMainWeaponShop = ({
     const SelectedItems = randomIndexes.map((index) => mainWeaponData[index]);
     setSelectedItems(SelectedItems);
     localStorage.setItem("SelectedItems", JSON.stringify(SelectedItems));
-    settimeLeft(60);
+    settimeLeft(5);
   };
 
   useEffect(() => {
     const interval1 = setInterval(() => {
       changeSelectedItems();
-    }, 60000);
+    }, 5000);
 
     const savedItems = localStorage.getItem("SelectedItems");
     if (savedItems) {

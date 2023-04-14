@@ -106,7 +106,7 @@ const ShieldAndDaggerLoopEnchant = ({
           if (ShieldAndDaggerItem.isBought) {
             return (
               <div key={`ShieldAndDagger_${ShieldAndDaggerIndex}`}>
-                {Array.from({ length: ShieldAndDaggerItem.count }, (_, a) => {
+                {Array.from({ length: 1 }, (_, a) => {
                   const mainShieldAndDaggerId = `${ShieldAndDaggerIndex}${a}`;
                   const ShieldAndDaggerItemUpgradeName = `${ShieldAndDaggerItem.name}${ShieldAndDaggerIndex}${mainShieldAndDaggerId}`;
                   const ShieldAndDaggerItemId = `${ShieldAndDaggerIndex}${

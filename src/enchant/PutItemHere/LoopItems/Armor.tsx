@@ -72,7 +72,7 @@ const ArmorLoopEnchant = ({
         if (armorItem.isBought) {
           return (
             <div key={`armor_${armorIndex}`}>
-              {Array.from({ length: armorItem.count }, (_, a) => {
+              {Array.from({ length: 1 }, (_, a) => {
                 const mainArmorId = `${armorIndex}${a}`;
                 const ArmorItemUpgradeName = `${armorItem.name}${armorIndex}${mainArmorId}`;
                 const ArmorItemId = `${armorIndex}${

@@ -75,7 +75,7 @@ const HelmetLoopEnchant = ({
         if (helmetItem.isBought) {
           return (
             <div key={`Helmet_${HelmetIndex}`}>
-              {Array.from({ length: helmetItem.count }, (_, a) => {
+              {Array.from({ length: 1 }, (_, a) => {
                 const mainHelmetId = `${HelmetIndex}${a}`;
                 const HelmetItemUpgradeName = `${helmetItem.name}${HelmetIndex}${mainHelmetId}`;
                 const HelmetItemId = `${HelmetIndex}${
