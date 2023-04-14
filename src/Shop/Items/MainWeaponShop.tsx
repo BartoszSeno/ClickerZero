@@ -93,7 +93,11 @@ const MainWeaponShop = ({
                         ? "flex"
                         : "none",
                   }}
-                  disabled={FullInv === true}
+                  disabled={
+                    count < data.cost ||
+                    FullInv === true ||
+                    data.isBought === true
+                  }
                 >
                   <img
                     className="OptionWeaponImg"

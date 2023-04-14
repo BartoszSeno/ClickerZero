@@ -87,7 +87,11 @@ const RedAndPurpleMainWeaponShop = ({
                   handleClick(data);
                   setCount(count - data.cost);
                 }}
-                disabled={FullInv === true}
+                disabled={
+                  count < data.cost ||
+                  FullInv === true ||
+                  data.isBought === true
+                }
                 style={{
                   display:
                     SelectedOption === data.tier || SelectedOption === ""

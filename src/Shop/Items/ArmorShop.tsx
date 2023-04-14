@@ -91,7 +91,11 @@ const ArmorShop = ({
                         ? "flex"
                         : "none",
                   }}
-                  disabled={FullInv === true}
+                  disabled={
+                    count < data.cost ||
+                    FullInv === true ||
+                    data.isBought === true
+                  }
                 >
                   {/* 
               <div className="CostAndPrice">

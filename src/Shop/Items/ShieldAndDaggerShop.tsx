@@ -38,7 +38,11 @@ const ShieldAndDaggerShop = ({
                 handleClickShieldAndDagger(index);
                 setCount(count - data.cost);
               }}
-              disabled={count < data.cost}
+              disabled={
+                count < data.cost ||
+                // || FullInv === true
+                data.isBought === true
+              }
               style={{
                 display:
                   SelectedOption === data.tier || SelectedOption === ""
