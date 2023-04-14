@@ -10,6 +10,7 @@ import { ArmorImageAndNameAndCost } from "../data/equipment/armor";
 import { ShoesImageAndNameAndCost } from "../data/equipment/Shoes";
 import { GlovesImageAndNameAndCost } from "../data/equipment/gloves";
 import { ShieldAndDaggerImageAndNameAndCost } from "../data/equipment/subWeapon";
+import Statistic from "./stats";
 
 const MainEq = ({
   mainWeaponData,
@@ -374,6 +375,20 @@ const MainEq = ({
             FullInv={FullInv}
           />
         </div>
+        <Statistic
+          mainWeaponData={mainWeaponData}
+          selectedItem={selectedItem}
+          ShieldAndDaggerData={ShieldAndDaggerData}
+          selectedShieldAndDaggerItem={selectedShieldAndDaggerItem}
+          HelmetData={HelmetData}
+          selectedHelmetItem={selectedHelmetItem}
+          ArmorData={ArmorData}
+          selectedArmorItem={selectedArmorItem}
+          GlovesData={GlovesData}
+          selectedGlovesItem={selectedGlovesItem}
+          ShoesData={ShoesData}
+          selectedShoesItem={selectedShoesItem}
+        />
       </div>
     </>
   );

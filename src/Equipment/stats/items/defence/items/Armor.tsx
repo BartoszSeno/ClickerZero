@@ -1,5 +1,6 @@
 /* eslint-disable no-lone-blocks */
-import { getSavedDefArmor } from "../../../../enchant";
+
+import { getSavedDefArmor } from "../../../../../enchant";
 
 const DefenceArmor = ({
   ArmorData,
@@ -11,7 +12,7 @@ const DefenceArmor = ({
   return (
     <>
       {ArmorData.map((data: any, index: any) => {
-        if (index === selectedArmorItem) {
+        if (index + 2000 === selectedArmorItem) {
           const itemSavedDefMainKey = `selectedItemDefForEnchant_${data.name}`;
           const savedDefMain = getSavedDefArmor(itemSavedDefMainKey);
           const selectedArmorItemData = ArmorData.find(

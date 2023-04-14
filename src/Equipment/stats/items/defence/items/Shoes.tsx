@@ -1,5 +1,6 @@
 /* eslint-disable no-lone-blocks */
-import { getSavedDefShoes } from "../../../../enchant";
+
+import { getSavedDefShoes } from "../../../../../enchant";
 
 const DefenceShoes = ({
   ShoesData,
@@ -11,7 +12,7 @@ const DefenceShoes = ({
   return (
     <>
       {ShoesData.map((data: any, index: any) => {
-        if (index === selectedShoesItem) {
+        if (index + 4000 === selectedShoesItem) {
           const itemSavedDefMainKey = `selectedItemDefForEnchant_${data.name}`;
           const savedDefMain = getSavedDefShoes(itemSavedDefMainKey);
           const selectedShoesItemData = ShoesData.find(

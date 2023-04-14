@@ -16,7 +16,6 @@ import { ShoesImageAndNameAndCost } from "../data/equipment/Shoes";
 import { GlovesImageAndNameAndCost } from "../data/equipment/gloves";
 import { ShieldAndDaggerImageAndNameAndCost } from "../data/equipment/subWeapon";
 import ClearLocalStorageButton from "../hook/RemoveLS";
-import Eq from "../Eq";
 import Clicker from "../hook/ClickerCount";
 import Information from "../Information";
 import PerClickPoints from "../hook/PerClick";

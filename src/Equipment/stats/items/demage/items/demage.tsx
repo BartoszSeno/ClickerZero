@@ -1,8 +1,10 @@
-import DemageMainWeapon from "./gear/mainWeapon";
-import DemageDagger from "./gear/dagger";
-import { formatNumber } from "../../../hook/FormatNumber";
+/* eslint-disable array-callback-return */
 
-const Damage = ({
+import { formatNumber } from "../../../../../hook/FormatNumber";
+import DemageDagger from "./dagger";
+import DemageMainWeapon from "../weapon";
+
+function DmgStatistic({
   mainWeaponData,
   selectedItem,
   ShieldAndDaggerData,
@@ -12,7 +14,7 @@ const Damage = ({
   selectedItem: any;
   ShieldAndDaggerData: any;
   selectedShieldAndDaggerItem: any;
-}) => {
+}) {
   // export data from statistic
   const FullMainWeaponDmgFromText = document.querySelector(
     ".statsDmgMainWeaponHiden"
@@ -30,17 +32,20 @@ const Damage = ({
 
   return (
     <>
+      <span>Weapon Dmg</span>
       <DemageMainWeapon
         mainWeaponData={mainWeaponData}
         selectedItem={selectedItem}
       />
-      <span className="statsDmgMainWeapon">{formatNumber(FullDmg)}</span>
+      <span>Dagger Dmg</span>
       <DemageDagger
         ShieldAndDaggerData={ShieldAndDaggerData}
         selectedShieldAndDaggerItem={selectedShieldAndDaggerItem}
       />
+      <span className="fullStats">Full dmg</span>
+      <span className="statsDefHelmet">{formatNumber(FullDmg)}</span>
     </>
   );
-};
+}
 
-export default Damage;
+export default DmgStatistic;

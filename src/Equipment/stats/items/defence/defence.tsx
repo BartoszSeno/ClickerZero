@@ -1,34 +1,33 @@
-/* eslint-disable no-lone-blocks */
-import { formatNumber } from "../../../hook/FormatNumber";
-import DefenceArmor from "./gear/Armor";
-import DefenceHelmet from "./gear/Helmet";
-import DefenceShoes from "./gear/Shoes";
-import DefenceGloves from "./gear/gloves";
-import DefenceShieldAndDagger from "./gear/shieldAndDagger";
+import { formatNumber } from "../../../../hook/FormatNumber";
+import DefenceArmor from "./items/Armor";
+import DefenceHelmet from "./items/Helmet";
+import DefenceShoes from "./items/Shoes";
+import DefenceGloves from "./items/gloves";
+import DefenceShieldAndDagger from "./items/shieldAndDagger";
 
-const Defence = ({
-  ArmorData,
-  selectedArmorItem,
-  HelmetData,
-  selectedHelmetItem,
-  ShoesData,
-  selectedShoesItem,
-  GlovesData,
-  selectedGlovesItem,
+function DefenceStatistic({
   ShieldAndDaggerData,
   selectedShieldAndDaggerItem,
+  HelmetData,
+  selectedHelmetItem,
+  ArmorData,
+  selectedArmorItem,
+  GlovesData,
+  selectedGlovesItem,
+  ShoesData,
+  selectedShoesItem,
 }: {
-  ArmorData: any;
-  selectedArmorItem: any;
-  HelmetData: any;
-  selectedHelmetItem: any;
-  ShoesData: any;
-  selectedShoesItem: any;
-  GlovesData: any;
-  selectedGlovesItem: any;
   ShieldAndDaggerData: any;
   selectedShieldAndDaggerItem: any;
-}) => {
+  HelmetData: any;
+  selectedHelmetItem: any;
+  ArmorData: any;
+  selectedArmorItem: any;
+  GlovesData: any;
+  selectedGlovesItem: any;
+  ShoesData: any;
+  selectedShoesItem: any;
+}) {
   // export data from statistic
   const FullArmorDefFromText = document.querySelector(
     ".statsDefDefHiden"
@@ -67,31 +66,40 @@ const Defence = ({
     Number(textGloves || 0) +
     Number(textShieldAndDagger || 0);
 
+  //=================================
+
   return (
     <>
-      <DefenceArmor
-        ArmorData={ArmorData}
-        selectedArmorItem={selectedArmorItem}
-      />
-      <span className="statsDefHelmet">{formatNumber(FullValu)}</span>
+      <span>Helmet Def</span>
       <DefenceHelmet
         HelmetData={HelmetData}
         selectedHelmetItem={selectedHelmetItem}
       />
-      <DefenceShoes
-        ShoesData={ShoesData}
-        selectedShoesItem={selectedShoesItem}
+      <span>Armor Def</span>
+
+      <DefenceArmor
+        ArmorData={ArmorData}
+        selectedArmorItem={selectedArmorItem}
       />
+      <span>Gloves Def</span>
       <DefenceGloves
         GlovesData={GlovesData}
         selectedGlovesItem={selectedGlovesItem}
       />
+      <span>Shoes Def</span>
+      <DefenceShoes
+        ShoesData={ShoesData}
+        selectedShoesItem={selectedShoesItem}
+      />
+      <span>Shield Def</span>
       <DefenceShieldAndDagger
         ShieldAndDaggerData={ShieldAndDaggerData}
         selectedShieldAndDaggerItem={selectedShieldAndDaggerItem}
       />
+      <span className="fullStats">Full def</span>
+      <span className="statsDefHelmet">{formatNumber(FullValu)}</span>
     </>
   );
-};
+}
 
-export default Defence;
+export default DefenceStatistic;

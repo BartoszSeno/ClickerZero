@@ -1,4 +1,4 @@
-import { getSavedDmgShieldAndDagger } from "../../../../enchant";
+import { getSavedDmgShieldAndDagger } from "../../../../../enchant";
 
 const DemageDagger = ({
   ShieldAndDaggerData,
@@ -10,7 +10,7 @@ const DemageDagger = ({
   return (
     <>
       {ShieldAndDaggerData.map((data: any, index: any) => {
-        if (index === selectedShieldAndDaggerItem) {
+        if (index + 5000 === selectedShieldAndDaggerItem) {
           const itemSavedDmgMainKey = `selectedItemDmgForEnchant_${data.name}`;
           const savedDmgMain = getSavedDmgShieldAndDagger(itemSavedDmgMainKey);
           const selectedItemData = ShieldAndDaggerData.find(

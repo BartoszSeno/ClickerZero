@@ -14,8 +14,8 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  background-color: #f56565;
 }
+
 span {
   height: 75px;
 }
@@ -27,6 +27,7 @@ span {
   box-sizing: border-box;
   cursor: pointer;
   background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/invenory/emptSlot.png);
+  cursor: grab;
   background-repeat: no-repeat;
 }
 
@@ -46,8 +47,8 @@ span {
 
 .item-slot.being-dragged .content {
   background: rgba(255, 255, 255, 0.4);
-  margin-left: -115px;
-  margin-top: -115px;
+  margin-left: -930px;
+  margin-top: -147px;
   left: 50%;
   transform: translate(-50%, 0%);
 }
@@ -70,4 +71,23 @@ span {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
+}
+
+#statisticContainer {
+  position: absolute;
+  background-color: aqua;
+  height: 500px;
+  width: 100px;
+  margin-left: -80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.fullStats {
+  background-color: red;
+  text-align: center;
+  height: 20px;
+  width: 100%;
 }

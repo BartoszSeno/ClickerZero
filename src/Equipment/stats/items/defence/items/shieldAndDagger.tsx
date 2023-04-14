@@ -1,5 +1,6 @@
 /* eslint-disable no-lone-blocks */
-import { getSavedDefShieldAndDagger } from "../../../../enchant";
+
+import { getSavedDefShieldAndDagger } from "../../../../../enchant";
 
 const DefenceShieldAndDagger = ({
   ShieldAndDaggerData,
@@ -11,7 +12,7 @@ const DefenceShieldAndDagger = ({
   return (
     <>
       {ShieldAndDaggerData.map((data: any, index: any) => {
-        if (index === selectedShieldAndDaggerItem) {
+        if (index + 5000 === selectedShieldAndDaggerItem) {
           const itemSavedDefMainKey = `selectedItemDefForEnchant_${data.name}`;
           const savedDefMain = getSavedDefShieldAndDagger(itemSavedDefMainKey);
           const selectedShieldAndDaggerItemData = ShieldAndDaggerData.find(
