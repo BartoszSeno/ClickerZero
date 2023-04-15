@@ -406,12 +406,13 @@ const MainIndexVillage = () => {
   useEffect(() => {
     // export data from statistic
     const mainWeaponFullDmgFromText = document.querySelector(
-      ".statsDmgMainWeaponHiden"
+      ".statsFullDmg"
     ) as HTMLElement;
     //if the data exists, convert it to a text
     const text = mainWeaponFullDmgFromText?.textContent;
     setMainWeaponFullDmgText(text);
   }, []);
+  console.log(MainWeaponFullDmgText);
 
   //==============
   // HERE NEW WARIABLES ARE ADDED WHICH ARE USED TO INCREASE POINTS PER CLICK

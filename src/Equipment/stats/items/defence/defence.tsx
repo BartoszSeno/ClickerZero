@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import { formatNumber } from "../../../../hook/FormatNumber";
 import DefenceArmor from "./items/Armor";
 import DefenceHelmet from "./items/Helmet";
@@ -28,45 +29,46 @@ function DefenceStatistic({
   ShoesData: any;
   selectedShoesItem: any;
 }) {
-  // export data from statistic
-  const FullArmorDefFromText = document.querySelector(
-    ".statsDefDefHiden"
-  ) as HTMLElement;
-  //if the data exists, convert it to a text
-  const textArmor = FullArmorDefFromText?.textContent;
-  // export data from statistic
-  const FullHelmetDefFromText = document.querySelector(
-    ".statsHelmetDefHiden"
-  ) as HTMLElement;
-  //if the data exists, convert it to a text
-  const textHelmet = FullHelmetDefFromText?.textContent;
-  // export data from statistic
-  const FullShoesDefFromText = document.querySelector(
-    ".statsShoesDefHiden"
-  ) as HTMLElement;
-  //if the data exists, convert it to a text
-  const textShoes = FullShoesDefFromText?.textContent;
-  // export data from statistic
-  const FullGlovesDefFromText = document.querySelector(
-    ".statsGlovesDefHiden"
-  ) as HTMLElement;
-  //if the data exists, convert it to a text
-  const textGloves = FullGlovesDefFromText?.textContent;
-  // export data from statistic
-  const FullShieldAndDaggerDefFromText = document.querySelector(
-    ".statsShieldAndDaggerDefHiden"
-  ) as HTMLElement;
-  //if the data exists, convert it to a text
-  const textShieldAndDagger = FullShieldAndDaggerDefFromText?.textContent;
+  const [fullValu, setFullValu] = useState(0); // Initialize fullValu state with initial value of 0
 
-  const FullValu =
-    Number(textArmor || 0) +
-    Number(textHelmet || 0) +
-    Number(textShoes || 0) +
-    Number(textGloves || 0) +
-    Number(textShieldAndDagger || 0);
+  useEffect(() => {
+    // Run this effect whenever any of the dependent values change
+    const textArmor = document.querySelector(
+      ".statsDefDefHiden"
+    ) as HTMLElement;
+    const textHelmet = document.querySelector(
+      ".statsHelmetDefHiden"
+    ) as HTMLElement;
+    const textShoes = document.querySelector(
+      ".statsShoesDefHiden"
+    ) as HTMLElement;
+    const textGloves = document.querySelector(
+      ".statsGlovesDefHiden"
+    ) as HTMLElement;
+    const textShieldAndDagger = document.querySelector(
+      ".statsShieldAndDaggerDefHiden"
+    ) as HTMLElement;
 
-  //=================================
+    const fullValue =
+      Number(textArmor?.textContent || 0) +
+      Number(textHelmet?.textContent || 0) +
+      Number(textShoes?.textContent || 0) +
+      Number(textGloves?.textContent || 0) +
+      Number(textShieldAndDagger?.textContent || 0);
+
+    setFullValu(fullValue); // Update the state with the computed full value
+  }, [
+    ShieldAndDaggerData,
+    selectedShieldAndDaggerItem,
+    HelmetData,
+    selectedHelmetItem,
+    ArmorData,
+    selectedArmorItem,
+    GlovesData,
+    selectedGlovesItem,
+    ShoesData,
+    selectedShoesItem,
+  ]);
 
   return (
     <>
@@ -76,7 +78,6 @@ function DefenceStatistic({
         selectedHelmetItem={selectedHelmetItem}
       />
       <span>Armor Def</span>
-
       <DefenceArmor
         ArmorData={ArmorData}
         selectedArmorItem={selectedArmorItem}
@@ -97,7 +98,7 @@ function DefenceStatistic({
         selectedShieldAndDaggerItem={selectedShieldAndDaggerItem}
       />
       <span className="fullStats">Full def</span>
-      <span className="statsDefHelmet">{formatNumber(FullValu)}</span>
+      <span className="statsDefHelmet">{formatNumber(fullValu)}</span>
     </>
   );
 }

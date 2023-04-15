@@ -1,4 +1,4 @@
-import DmgStatistic from "./items/demage/items/demage";
+import DmgStatistic from "./items/demage/demage";
 import DefenceStatistic from "./items/defence/defence";
 
 function Statistic({

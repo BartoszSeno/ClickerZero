@@ -29,6 +29,7 @@ function EquipArmor({
       "ArmorImageAndNameAndCost",
       JSON.stringify(newArmorDatas)
     );
+    localStorage.removeItem("selectedArmorItemIdEquip");
   };
 
   return (

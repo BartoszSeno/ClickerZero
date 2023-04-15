@@ -29,6 +29,7 @@ function EquipGloves({
       "GlovesImageAndNameAndCost",
       JSON.stringify(newGlovesData)
     );
+    localStorage.removeItem("selectedGlovesItemIdEquip");
   };
 
   return (

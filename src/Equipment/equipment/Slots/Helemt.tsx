@@ -29,6 +29,7 @@ function EquipHelmet({
       "HelmetImageAndNameAndCost",
       JSON.stringify(newHelmetDatas)
     );
+    localStorage.removeItem("selectedHelmetItemIdEquip");
   };
 
   return (

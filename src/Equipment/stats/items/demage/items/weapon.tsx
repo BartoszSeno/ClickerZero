@@ -1,4 +1,4 @@
-import { getSavedDmgMain } from "../../../../enchant";
+import { getSavedDmgMain } from "../../../../../enchant";
 
 const DemageMainWeapon = ({
   mainWeaponData,

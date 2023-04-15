@@ -29,6 +29,7 @@ function EquipWeapon({
       "MainWeaponImageAndNameAndCost",
       JSON.stringify(newMainWeaponDatas)
     );
+    localStorage.removeItem("selectedItemIdEquip");
   };
 
   return (

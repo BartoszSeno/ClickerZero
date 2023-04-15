@@ -29,6 +29,7 @@ function EquipShoes({
       "ShoesImageAndNameAndCost",
       JSON.stringify(newShoesDatas)
     );
+    localStorage.removeItem("selectedShoesItemIdEquip");
   };
 
   return (

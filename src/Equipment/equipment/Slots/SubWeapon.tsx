@@ -30,6 +30,7 @@ function EquipSubWeapon({
       "ShieldAndDaggerImageAndNameAndCost",
       JSON.stringify(newShieldAndDaggerDatas)
     );
+    localStorage.removeItem("selectedShieldAndDaggerItemIdEquip");
   };
 
   return (
