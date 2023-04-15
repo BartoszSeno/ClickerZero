@@ -36,6 +36,10 @@ const WeaponShop = ({
     setMO(false);
   }
 
+  const [NoR, setNoR] = useState();
+
+  console.log(NoR);
+
   return (
     <>
       <div
@@ -62,6 +66,8 @@ const WeaponShop = ({
               setCount={setCount}
               SelectedOption={SelectedOption}
               FullInv={FullInv}
+              setNoR={setNoR}
+              NoR={NoR}
             />
           </span>
           <span className="RedAndPurple">
@@ -72,13 +78,10 @@ const WeaponShop = ({
               setCount={setCount}
               SelectedOption={SelectedOption}
               FullInv={FullInv}
+              setNoR={setNoR}
+              NoR={NoR}
             />
           </span>
-        </div>
-        <div className="test">
-          <p>Do zrobienia:</p>
-          <p>pokazać przedmiot na prawo od sklepu po jego statystki</p>
-          <p>pokazac róznice dmg z aktualnej broni</p>
         </div>
       </div>
     </>

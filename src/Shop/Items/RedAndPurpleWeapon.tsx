@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable array-callback-return */
 import React, { useEffect, useState } from "react";
+import ShowWeapon from "./ShowWeapon";
 
 const RedAndPurpleMainWeaponShop = ({
   mainWeaponData,
@@ -9,6 +10,8 @@ const RedAndPurpleMainWeaponShop = ({
   setCount,
   SelectedOption,
   FullInv,
+  setNoR,
+  NoR,
 }: {
   mainWeaponData: any;
   setMainWeaponData: any;
@@ -16,6 +19,8 @@ const RedAndPurpleMainWeaponShop = ({
   setCount: any;
   SelectedOption: any;
   FullInv: any;
+  setNoR: any;
+  NoR: any;
 }) => {
   const [SelectedItems, setSelectedItems] = useState<any[]>([]);
   const [timeLeft, settimeLeft] = useState<number>(5);
@@ -69,6 +74,36 @@ const RedAndPurpleMainWeaponShop = ({
     };
   }, []);
 
+  //===================
+  // full Def Stats
+  const [MainWeaponDmg, setMainWeaponDmg] = useState<any>();
+  const imgUp =
+    "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/stats/up.png";
+  const imgDown =
+    "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/stats/down.png";
+
+  setTimeout(() => {
+    // export data from statistic
+    const currentDmgMW = document.querySelector(
+      ".statsDmgMainWeaponHiden"
+    ) as HTMLElement;
+    //if the data exists, convert it to a text
+    const text = currentDmgMW?.textContent;
+    setMainWeaponDmg(text);
+  }, 1000);
+  //==============
+  const [idWeapon, setidWeapon] = useState<number>();
+
+  const GetId = (selectedItem: any) => {
+    const newMainWeaponData = [...mainWeaponData];
+    const index = newMainWeaponData.findIndex(
+      (item) => item.id === selectedItem.id
+    );
+    console.log(idWeapon);
+    setidWeapon(index);
+    setNoR("ShowStatsWeaponRare");
+  };
+
   return (
     <>
       <div style={{ position: "absolute", color: "white" }}>{timeLeft}s</div>
@@ -83,29 +118,54 @@ const RedAndPurpleMainWeaponShop = ({
                 className={`RAPitemsForPurchasable ${index} `}
                 key={index}
                 onClick={(e) => {
-                  handleClick(data);
-                  setCount(count - data.cost);
+                  GetId(data);
                 }}
-                disabled={
-                  count < data.cost ||
-                  FullInv === true ||
-                  data.isBought === true
-                }
                 style={{
                   display:
                     SelectedOption === data.tier || SelectedOption === ""
                       ? "flex"
                       : "none",
                 }}
+                disabled={
+                  count < data.cost ||
+                  FullInv === true ||
+                  data.isBought === true
+                }
               >
                 <img
                   className="OptionWeaponImg"
                   src={data.image}
                   alt={`${data.name} weapon`}
                 />
+                <div
+                  className="UpgradeDmgStats"
+                  style={{
+                    backgroundImage: `url(${
+                      data.dmgLvl0 > MainWeaponDmg ? imgUp : imgDown
+                    })`,
+                  }}
+                ></div>
               </button>
             );
           })}
+      <div
+        style={{
+          display: NoR === "ShowStatsWeapon" ? "none" : "",
+          position: "absolute",
+          marginLeft: NoR === "ShowStatsWeaponRare" ? "385px" : "",
+          marginTop: NoR === "ShowStatsWeaponRare" ? "-305px" : "",
+        }}
+      >
+        <ShowWeapon
+          mainWeaponData={mainWeaponData}
+          count={count}
+          setCount={setCount}
+          idWeapon={idWeapon}
+          MainWeaponDmg={MainWeaponDmg}
+          handleClick={handleClick}
+          NoR={NoR}
+        />
+      </div>
     </>
   );
 };

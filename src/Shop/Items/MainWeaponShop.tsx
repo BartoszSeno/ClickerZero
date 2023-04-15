@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable array-callback-return */
 import React, { useEffect, useState } from "react";
+import ShowWeapon from "./ShowWeapon";
 
 const MainWeaponShop = ({
   mainWeaponData,
@@ -9,6 +10,8 @@ const MainWeaponShop = ({
   setCount,
   SelectedOption,
   FullInv,
+  setNoR,
+  NoR,
 }: {
   mainWeaponData: any;
   setMainWeaponData: any;
@@ -16,6 +19,8 @@ const MainWeaponShop = ({
   setCount: any;
   SelectedOption: any;
   FullInv: any;
+  setNoR: any;
+  NoR: any;
 }) => {
   const [selectedItemsN, setselectedItemsN] = useState<any[]>([]);
   const [timeLeft, settimeLeft] = useState<number>(5);
@@ -86,6 +91,16 @@ const MainWeaponShop = ({
     setMainWeaponDmg(text);
   }, 1000);
   //==============
+  const [idWeapon, setidWeapon] = useState<number>();
+
+  const GetId = (selectedItem: any) => {
+    const newMainWeaponData = [...mainWeaponData];
+    const index = newMainWeaponData.findIndex(
+      (item) => item.id === selectedItem.id
+    );
+    setidWeapon(index);
+    setNoR("ShowStatsWeapon");
+  };
 
   return (
     <>
@@ -103,8 +118,7 @@ const MainWeaponShop = ({
                   className={`itemsForPurchasable ${index} `}
                   key={index}
                   onClick={(e) => {
-                    handleClick(data); // przekazujemy cały obiekt przedmiotu zamiast indeksu
-                    setCount(count - data.cost);
+                    GetId(data);
                   }}
                   style={{
                     display:
@@ -135,6 +149,24 @@ const MainWeaponShop = ({
               );
             }
           })}
+      <div
+        style={{
+          display: NoR === "ShowStatsWeaponRare" ? "none" : "",
+          position: "absolute",
+          marginLeft: NoR === "ShowStatsWeapon" ? "843.5px" : "",
+          marginTop: NoR === "ShowStatsWeapon" ? "-45px" : "",
+        }}
+      >
+        <ShowWeapon
+          mainWeaponData={mainWeaponData}
+          count={count}
+          setCount={setCount}
+          idWeapon={idWeapon}
+          MainWeaponDmg={MainWeaponDmg}
+          handleClick={handleClick}
+          NoR={NoR}
+        />
+      </div>
     </>
   );
 };
