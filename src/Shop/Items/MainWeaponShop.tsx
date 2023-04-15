@@ -68,6 +68,23 @@ const MainWeaponShop = ({
     };
   }, []);
 
+  //===================
+  // full Def Stats
+  const [MainWeaponDmg, setMainWeaponDmg] = useState<any>();
+
+  setTimeout(() => {
+    // export data from statistic
+    const currentDmgMW = document.querySelector(
+      ".statsDmgMainWeaponHiden"
+    ) as HTMLElement;
+    //if the data exists, convert it to a text
+    const text = currentDmgMW?.textContent;
+    setMainWeaponDmg(text);
+  }, 1000);
+  //==============
+
+  console.log(MainWeaponDmg);
+
   return (
     <>
       <div style={{ position: "absolute", color: "white" }}>{timeLeft}s</div>
