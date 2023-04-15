@@ -71,6 +71,10 @@ const MainWeaponShop = ({
   //===================
   // full Def Stats
   const [MainWeaponDmg, setMainWeaponDmg] = useState<any>();
+  const imgUp =
+    "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/stats/up.png";
+  const imgDown =
+    "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/stats/down.png";
 
   setTimeout(() => {
     // export data from statistic
@@ -82,8 +86,6 @@ const MainWeaponShop = ({
     setMainWeaponDmg(text);
   }, 1000);
   //==============
-
-  console.log(MainWeaponDmg);
 
   return (
     <>
@@ -121,6 +123,14 @@ const MainWeaponShop = ({
                     src={data.image}
                     alt={`${data.name} weapon`}
                   />
+                  <div
+                    className="UpgradeDmgStats"
+                    style={{
+                      backgroundImage: `url(${
+                        data.dmgLvl0 > MainWeaponDmg ? imgUp : imgDown
+                      })`,
+                    }}
+                  ></div>
                 </button>
               );
             }
