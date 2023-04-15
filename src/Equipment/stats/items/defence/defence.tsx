@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { formatNumber } from "../../../../hook/FormatNumber";
 import DefenceArmor from "./items/Armor";
 import DefenceHelmet from "./items/Helmet";
 import DefenceShoes from "./items/Shoes";
@@ -98,7 +97,7 @@ function DefenceStatistic({
         selectedShieldAndDaggerItem={selectedShieldAndDaggerItem}
       />
       <span className="fullStats">Full def</span>
-      <span className="statsDefHelmet">{formatNumber(fullValu)}</span>
+      <span className="statsFullDef">{fullValu}</span>
     </>
   );
 }

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { formatNumber } from "../../../../hook/FormatNumber";
 import DemageDagger from "./items/dagger";
 import DemageMainWeapon from "./items/weapon";
 

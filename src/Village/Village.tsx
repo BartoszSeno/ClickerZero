@@ -329,102 +329,37 @@ const MainIndexVillage = () => {
   );
 
   //===================
-  // VARIABLE THAT SAVES THE VALUE OF THE MAIN ARMOR DEF
-  const [FullArmorDefText, setFullArmorDefText] = useState<any>();
+  // full Def Stats
+  const [FullDefValue, setFullDefValue] = useState<any>();
 
-  useEffect(() => {
+  setTimeout(() => {
     // export data from statistic
-    const FullArmorDefFromText = document.querySelector(
-      ".statsDefDefHiden"
+    const FullDmgFromText = document.querySelector(
+      ".statsFullDef"
     ) as HTMLElement;
     //if the data exists, convert it to a text
-    const textArmor = FullArmorDefFromText?.textContent;
-    setFullArmorDefText(textArmor);
-  }, []);
-
+    const text = FullDmgFromText?.textContent;
+    setFullDefValue(text);
+  }, 10);
   //==============
-  // VARIABLE THAT SAVES THE VALUE OF THE MAIN ShieldAndDagger DEF
-  const [FullShieldAndDaggerDefText, setFullShieldAndDaggerDefText] =
-    useState<any>();
+  // full Dmg Stats
+  const [FullDmgValue, setFullDmgValue] = useState<any>();
 
-  useEffect(() => {
+  setTimeout(() => {
     // export data from statistic
-    const FullShieldAndDaggerDefFromText = document.querySelector(
-      ".statsShieldAndDaggerDefHiden"
-    ) as HTMLElement;
-    //if the data exists, convert it to a text
-    const textShieldAndDagger = FullShieldAndDaggerDefFromText?.textContent;
-    setFullShieldAndDaggerDefText(textShieldAndDagger);
-  }, []);
-
-  //==============
-  // VARIABLE THAT SAVES THE VALUE OF THE MAIN Gloves DEF
-  const [FullGlovesDefText, setFullGlovesDefText] = useState<any>();
-
-  useEffect(() => {
-    // export data from statistic
-    const FullGlovesDefFromText = document.querySelector(
-      ".statsGlovesDefHiden"
-    ) as HTMLElement;
-    //if the data exists, convert it to a text
-    const textGloves = FullGlovesDefFromText?.textContent;
-    setFullGlovesDefText(textGloves);
-  }, []);
-
-  //==============
-  // VARIABLE THAT SAVES THE VALUE OF THE MAIN Shoes DEF
-  const [FullShoesDefText, setFullShoesDefText] = useState<any>();
-
-  useEffect(() => {
-    // export data from statistic
-    const FullShoesDefFromText = document.querySelector(
-      ".statsShoesDefHiden"
-    ) as HTMLElement;
-    //if the data exists, convert it to a text
-    const textShoes = FullShoesDefFromText?.textContent;
-    setFullShoesDefText(textShoes);
-  }, []);
-
-  //==============
-  // VARIABLE THAT SAVES THE VALUE OF THE MAIN Helmet DEF
-  const [FullHelmetDefText, setFullHelmetDefText] = useState<any>();
-
-  useEffect(() => {
-    // export data from statistic
-    const FullHelmetDefFromText = document.querySelector(
-      ".statsHelmetDefHiden"
-    ) as HTMLElement;
-    //if the data exists, convert it to a text
-    const textHelmet = FullHelmetDefFromText?.textContent;
-    setFullHelmetDefText(textHelmet);
-  }, []);
-
-  //==============
-  // VARIABLE THAT SAVES THE VALUE OF THE MAIN DMG
-  const [MainWeaponFullDmgText, setMainWeaponFullDmgText] = useState<any>();
-
-  useEffect(() => {
-    // export data from statistic
-    const mainWeaponFullDmgFromText = document.querySelector(
+    const FullDmgFromText = document.querySelector(
       ".statsFullDmg"
     ) as HTMLElement;
     //if the data exists, convert it to a text
-    const text = mainWeaponFullDmgFromText?.textContent;
-    setMainWeaponFullDmgText(text);
-  }, []);
-  console.log(MainWeaponFullDmgText);
+    const text = FullDmgFromText?.textContent;
+    setFullDmgValue(text);
+  }, 10);
 
   //==============
   // HERE NEW WARIABLES ARE ADDED WHICH ARE USED TO INCREASE POINTS PER CLICK
   // full click from ( Upgrade lvl 1 & Main Weapon)
   const [FullCountPerClick, setFullCountPerClick] = useState<number>(
-    UpgradeOne +
-      (Number(MainWeaponFullDmgText) || 0) +
-      (Number(FullArmorDefText) || 0) +
-      (Number(FullHelmetDefText) || 0) +
-      (Number(FullShoesDefText) || 0) +
-      (Number(FullGlovesDefText) || 0) +
-      (Number(FullShieldAndDaggerDefText) || 0)
+    UpgradeOne + (Number(FullDmgValue) || 0) + (Number(FullDefValue) || 0)
   );
 
   // listing the levels from the first upgrade
@@ -506,8 +441,6 @@ const MainIndexVillage = () => {
 
   const [FullInv, setFullInv] = useState<boolean>(false);
 
-  console.log(FullInv);
-
   return (
     <>
       <div
@@ -571,12 +504,8 @@ const MainIndexVillage = () => {
               FullCountPerClick={FullCountPerClick}
               setFullCountPerClick={setFullCountPerClick}
               UpgradeOne={UpgradeOne}
-              MainWeaponFullDmgText={MainWeaponFullDmgText}
-              FullArmorDefText={FullArmorDefText}
-              FullHelmetDefText={FullHelmetDefText}
-              FullShoesDefText={FullShoesDefText}
-              FullGlovesDefText={FullGlovesDefText}
-              FullShieldAndDaggerDefText={FullShieldAndDaggerDefText}
+              FullDmgValue={FullDmgValue}
+              FullDefValue={FullDefValue}
             />
             <ClearLocalStorageButton />
             <UpdateLvlOne
