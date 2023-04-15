@@ -65,6 +65,32 @@ const ShoesShop = ({
       clearInterval(interval2);
     };
   }, []);
+  //===================
+  // full Def Stats
+  const [ShoesDef, setShoesDef] = useState<any>();
+  const imgUp =
+    "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/stats/up.png";
+  const imgDown =
+    "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/stats/down.png";
+
+  setTimeout(() => {
+    // export data from statistic
+    const currentDefH = document.querySelector(
+      ".statsShoesDefHiden"
+    ) as HTMLElement;
+    //if the data exists, convert it to a text
+    const text = currentDefH?.textContent;
+    setShoesDef(text);
+  }, 1000);
+  //==============
+  const [idWeapon, setidWeapon] = useState<number>();
+
+  const GetId = (selectedItem: any) => {
+    const newShoesData = [...ShoesData];
+    const index = newShoesData.findIndex((item) => item.id === selectedItem.id);
+    console.log(idWeapon);
+    setidWeapon(index);
+  };
 
   return (
     <>
@@ -110,6 +136,14 @@ const ShoesShop = ({
                     src={data.image}
                     alt={`${data.name} weapon`}
                   />
+                  <div
+                    className="UpgradeDefStats"
+                    style={{
+                      backgroundImage: `url(${
+                        data.defLvl0 > ShoesDef ? imgUp : imgDown
+                      })`,
+                    }}
+                  ></div>
                 </button>
               );
             }

@@ -69,6 +69,35 @@ const HelmetShop = ({
     };
   }, []);
 
+  //===================
+  // full Def Stats
+  const [HelmetDef, setHelmetDef] = useState<any>();
+  const imgUp =
+    "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/stats/up.png";
+  const imgDown =
+    "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/stats/down.png";
+
+  setTimeout(() => {
+    // export data from statistic
+    const currentDefH = document.querySelector(
+      ".statsHelmetDefHiden"
+    ) as HTMLElement;
+    //if the data exists, convert it to a text
+    const text = currentDefH?.textContent;
+    setHelmetDef(text);
+  }, 1000);
+  //==============
+  const [idWeapon, setidWeapon] = useState<number>();
+
+  const GetId = (selectedItem: any) => {
+    const newHelmetData = [...HelmetData];
+    const index = newHelmetData.findIndex(
+      (item) => item.id === selectedItem.id
+    );
+    console.log(idWeapon);
+    setidWeapon(index);
+  };
+
   return (
     <>
       <div style={{ position: "absolute", color: "white" }}>{timeLeft}s</div>
@@ -109,10 +138,18 @@ const HelmetShop = ({
               </div>
             */}
                   <img
-                    className="OptionWeaponImg"
+                    className="OptionHelmetImg"
                     src={data.image}
-                    alt={`${data.name} weapon`}
+                    alt={`${data.name} Helemt`}
                   />
+                  <div
+                    className="UpgradeDefStats"
+                    style={{
+                      backgroundImage: `url(${
+                        data.defLvl0 > HelmetDef ? imgUp : imgDown
+                      })`,
+                    }}
+                  ></div>
                 </button>
               );
             }

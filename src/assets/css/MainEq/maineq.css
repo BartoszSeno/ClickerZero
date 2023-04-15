@@ -158,7 +158,17 @@
   background-position: 30% 70%;
   height: 40px;
   width: 100%;
-  z-index: 100;
+  z-index: 1000;
+  display: none;
+}
+.UpgradeDefStats {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: 10px;
+  background-position: 100% 0%;
+  height: 40px;
+  width: 60px;
+  z-index: 1000;
   display: none;
 }
 
@@ -167,6 +177,12 @@
 }
 .RAPitemsForPurchasable:hover > .UpgradeDmgStats {
   background-position: 90% 80%;
+  display: flex;
+}
+
+.itemsForPurchasableH:hover > .UpgradeDefStats,
+.itemsForPurchasableA:hover > .UpgradeDefStats,
+.itemsForPurchasableS:hover > .UpgradeDefStats {
   display: flex;
 }
 

@@ -69,7 +69,7 @@ export const ArmorImageAndNameAndCost = [
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/armor/n5.png",
     name: "Dender",
-    defLvl0: 1,
+    defLvl0: 0,
     cost: 1,
     isBought: false,
     isVisible: true,

@@ -65,6 +65,32 @@ const ArmorShop = ({
       clearInterval(interval2);
     };
   }, []);
+  //===================
+  // full Def Stats
+  const [ArmorDef, setArmorDef] = useState<any>();
+  const imgUp =
+    "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/stats/up.png";
+  const imgDown =
+    "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/stats/down.png";
+
+  setTimeout(() => {
+    // export data from statistic
+    const currentDefH = document.querySelector(
+      ".statsDefDefHiden"
+    ) as HTMLElement;
+    //if the data exists, convert it to a text
+    const text = currentDefH?.textContent;
+    setArmorDef(text);
+  }, 1000);
+  //==============
+  const [idWeapon, setidWeapon] = useState<number>();
+
+  const GetId = (selectedItem: any) => {
+    const newArmorData = [...ArmorData];
+    const index = newArmorData.findIndex((item) => item.id === selectedItem.id);
+    console.log(idWeapon);
+    setidWeapon(index);
+  };
 
   return (
     <>
@@ -110,6 +136,14 @@ const ArmorShop = ({
                     src={data.image}
                     alt={`${data.name} weapon`}
                   />
+                  <div
+                    className="UpgradeDefStats"
+                    style={{
+                      backgroundImage: `url(${
+                        data.defLvl0 > ArmorDef ? imgUp : imgDown
+                      })`,
+                    }}
+                  ></div>
                 </button>
               );
             }

@@ -45,6 +45,12 @@ const ShowWeapon = ({
                   ? "30px"
                   : idWeapon === 12
                   ? "30px"
+                  : idWeapon === 21
+                  ? "45px"
+                  : idWeapon === 19
+                  ? "50px"
+                  : idWeapon === 4
+                  ? "25px"
                   : "",
             }}
           ></div>
