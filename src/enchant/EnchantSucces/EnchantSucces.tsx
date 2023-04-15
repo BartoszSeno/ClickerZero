@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { MainWeaponImageAndNameAndCost } from "../../data/equipment/mainWeapon";
 import { ArmorImageAndNameAndCost } from "../../data/equipment/armor";
@@ -322,24 +323,18 @@ const EnchantSucces = ({
   useEffect(() => {
     if (itsMainWeapon === true) {
       setWhatVlue(upgradedValue);
-      console.log("we");
     } else if (itsArmor === true) {
       setWhatVlue(ArmorupgradedValue);
-      console.log("ar");
     } else if (itsHelmet === true) {
       setWhatVlue(HelmetupgradedValue);
-      console.log("he");
     } else if (itsShoes === true) {
       setWhatVlue(ShoesupgradedValue);
-      console.log("sh");
     } else if (itsGloves === true) {
       setWhatVlue(GlovesupgradedValue);
-      console.log("gl");
     } else if (itsShieldAndDagger === true) {
       setWhatVlue(ShieldAndDaggerupgradedValue);
-      console.log("dag");
     }
-  });
+  }, []);
   return (
     <>
       {WhatVlue < 15 ? (

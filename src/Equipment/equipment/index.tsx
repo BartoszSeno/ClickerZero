@@ -20,6 +20,7 @@ function EquipContainer({
   setShoesData,
   setShieldAndDaggerData,
   FullInv,
+  ce,
 }: {
   mainWeaponData: any;
   HelmetData: any;
@@ -34,10 +35,16 @@ function EquipContainer({
   setShoesData: any;
   setShieldAndDaggerData: any;
   FullInv: any;
+  ce: any;
 }) {
   return (
     <>
-      <div className="weaponContainer">
+      <div
+        className="weaponContainer"
+        style={{
+          display: ce ? "flex" : "none",
+        }}
+      >
         <EquipWeapon
           mainWeaponData={mainWeaponData}
           setMainWeaponData={setMainWeaponData}
@@ -49,7 +56,12 @@ function EquipContainer({
           FullInv={FullInv}
         />
       </div>
-      <div className="ArmorContainer">
+      <div
+        className="ArmorContainer"
+        style={{
+          display: ce ? "flex" : "none",
+        }}
+      >
         <EquipHelmet
           HelmetData={HelmetData}
           setHelmetData={setHelmetData}

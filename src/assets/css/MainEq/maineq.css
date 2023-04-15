@@ -133,3 +133,21 @@
   margin-top: 108px;
   margin-left: 3px;
 }
+
+.CloseEq {
+  position: absolute;
+  height: 48px;
+  width: 48px;
+  margin-top: -315px;
+  margin-left: 262px;
+  cursor: pointer;
+}
+
+.CloseInv {
+  position: absolute;
+  height: 48px;
+  width: 48px;
+  cursor: pointer;
+  margin-top: 19px;
+  margin-left: 374px;
+}

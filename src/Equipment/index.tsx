@@ -192,6 +192,8 @@ const MainEq = ({
   document.addEventListener("keydown", function (event) {
     if (event.key === "i" && !isKeyPressed) {
       OpenAndCloseInvEq();
+      setCe(true);
+      setInv(true);
       isKeyPressed = true;
     }
   });
@@ -321,20 +323,36 @@ const MainEq = ({
     }
   };
 
+  const [ce, setCe] = useState<boolean>(true);
+
+  function CloseEq(index: any) {
+    setCe(!ce);
+    console.log(ce);
+  }
+
+  const [Inv, setInv] = useState<boolean>(true);
+
+  function CloseInv(index: any) {
+    setInv(!Inv);
+    console.log(Inv);
+    setopenInvAndEq(false);
+  }
   return (
     <>
       <div
         className="MainEqContainer"
         style={{
-          display: openInvAndEq ? "flex" : "none",
+          display: openInvAndEq && Inv ? "flex" : "none",
         }}
       >
         <div
           id="option-container"
           style={{
-            display: openInvAndEq ? "flex" : "none",
+            display: openInvAndEq && Inv ? "flex" : "none",
           }}
         >
+          <div className="CloseInv" onClick={CloseInv}></div>
+
           <Inventory
             props={""}
             mainWeaponData={mainWeaponData}
@@ -357,8 +375,12 @@ const MainEq = ({
         </div>
         <div
           id="EqCharacters"
-          style={{ display: openInvAndEq ? "flex" : "none" }}
+          style={{
+            pointerEvents: ce ? "all" : "none",
+            backgroundImage: ce ? "" : "none",
+          }}
         >
+          <div className="CloseEq" onClick={CloseEq}></div>
           <EquipContainer
             mainWeaponData={mainWeaponData}
             HelmetData={HelmetData}
@@ -373,6 +395,7 @@ const MainEq = ({
             setShoesData={setShoesData}
             setShieldAndDaggerData={setShieldAndDaggerData}
             FullInv={FullInv}
+            ce={ce}
           />
         </div>
         <Statistic
