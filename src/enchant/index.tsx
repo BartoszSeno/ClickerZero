@@ -425,7 +425,6 @@ const Enchant = ({
             setUpgradedDmgShieldAndDagger={setUpgradedDmgShieldAndDagger}
             UpgradedDmgShieldAndDagger={UpgradedDmgShieldAndDagger}
           />
-          <div className="EnchantProgress"></div>
           <EnchantSucces
             upgradedValue={upgradedValue}
             ArmorupgradedValue={ArmorupgradedValue}

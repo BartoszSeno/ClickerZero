@@ -498,6 +498,7 @@ const ButtonForEnchant = ({
   return (
     <>
       <button
+        className="enchantButton"
         onClick={() => {
           if (itsMainWeapon === true) {
             EnchantPerClick(selectedItemIndex);

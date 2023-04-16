@@ -1,11 +1,11 @@
 #enchant-container {
-  height: 977px;
-  width: 700px;
+  height: 680px;
+  width: 920px;
   flex-wrap: wrap;
   align-items: center;
   display: flex;
   justify-content: center;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/LeftMenuSmith.gif);
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/enchant.png);
   position: relative;
   background-repeat: no-repeat;
   z-index: 100;
@@ -23,27 +23,24 @@
 
 .putItemThere,
 .EnchantSuccess {
-  background-color: rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(128, 128, 128, 0.1);
-  border-radius: 20px;
   display: flex;
-  height: 100px;
-  width: 100px;
-  margin-top: 0px;
   justify-content: center;
   align-items: center;
 }
-
-.EnchantSuccess {
-  background-color: rgba(0, 0, 0, 0.103);
-  margin-top: 45px;
-  background-color: red;
+.putItemThere {
+  position: absolute;
+  margin-top: 360px;
+  margin-left: -560px;
+  height: 85px;
+  width: 190px;
 }
 
-.EnchantProgress {
-  background-color: rebeccapurple;
-  height: 100px;
-  width: 10px;
+.EnchantSuccess {
+  position: absolute;
+  height: 131px;
+  width: 130px;
+  margin-left: 170px;
+  margin-top: 185px;
 }
 
 #EnchantMenuChouseWeapon {
@@ -84,7 +81,7 @@
   height: 100px;
   width: 200px;
   font-size: 30px;
-  margin-left: 180px;
+  margin-left: 580px;
   margin-top: 180px;
 }
 .UpgradeDmgTitle {
@@ -112,4 +109,10 @@
 
 .open {
   display: flex;
+}
+
+.enchantButton {
+  position: absolute;
+  margin-left: -550px;
+  margin-top: 200px;
 }
