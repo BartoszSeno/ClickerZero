@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable array-callback-return */
 import React, { useEffect, useState } from "react";
+import ShowHelmet from "../ShowStats/ShowHelmet";
 
 const HelmetShop = ({
   count,
@@ -9,6 +10,8 @@ const HelmetShop = ({
   HelmetData,
   setHelmetData,
   FullInv,
+  setAoSoH,
+  AoSoH,
 }: {
   count: number;
   setCount: any;
@@ -16,6 +19,8 @@ const HelmetShop = ({
   HelmetData: any;
   setHelmetData: any;
   FullInv: any;
+  setAoSoH: any;
+  AoSoH: any;
 }) => {
   const [selectedItemsH, setselectedItemsH] = useState<any[]>([]);
   const [timeLeft, settimeLeft] = useState<number>(5);
@@ -87,15 +92,16 @@ const HelmetShop = ({
     setHelmetDef(text);
   }, 1000);
   //==============
-  const [idWeapon, setidWeapon] = useState<number>();
+  const [idHelmet, setidHelmet] = useState<number>();
 
   const GetId = (selectedItem: any) => {
     const newHelmetData = [...HelmetData];
     const index = newHelmetData.findIndex(
       (item) => item.id === selectedItem.id
     );
-    console.log(idWeapon);
-    setidWeapon(index);
+    console.log(idHelmet);
+    setidHelmet(index);
+    setAoSoH("ShowStatsHelmet");
   };
 
   return (
@@ -114,8 +120,7 @@ const HelmetShop = ({
                   className={`itemsForPurchasableH ${index} `}
                   key={index}
                   onClick={(e) => {
-                    handleClickHelmet(data);
-                    setCount(count - data.cost);
+                    GetId(data);
                   }}
                   style={{
                     display:
@@ -154,6 +159,27 @@ const HelmetShop = ({
               );
             }
           })}
+      <div
+        style={{
+          display:
+            AoSoH === "ShowStatsArmors" || AoSoH === "ShowStatsShoes"
+              ? "none"
+              : "",
+          position: "absolute",
+          marginLeft: AoSoH === "ShowStatsHelmet" ? "-24px" : "",
+          marginTop: AoSoH === "ShowStatsHelmet" ? "119px" : "",
+        }}
+      >
+        <ShowHelmet
+          HelmetData={HelmetData}
+          count={count}
+          setCount={setCount}
+          idHelmet={idHelmet}
+          HelmetDef={HelmetDef}
+          handleClickHelmet={handleClickHelmet}
+          AoSoH={AoSoH}
+        />
+      </div>
     </>
   );
 };

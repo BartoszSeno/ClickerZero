@@ -1,54 +1,53 @@
 import { formatNumber } from "../../hook/FormatNumber";
 
-const ShowArmor = ({
-  ArmorData,
+const ShowHelmet = ({
+  HelmetData,
   count,
   setCount,
-  idArmor,
-  ArmorDef,
-  handleClickArmor,
+  idHelmet,
+  HelmetDef,
+  handleClickHelmet,
   AoSoH,
 }: {
-  ArmorData: any;
+  HelmetData: any;
   count: number;
   setCount: any;
-  idArmor: any;
-  ArmorDef: any;
-  handleClickArmor: any;
+  idHelmet: any;
+  HelmetDef: any;
+  handleClickHelmet: any;
   AoSoH: any;
 }) => {
   return (
     <>
-      {idArmor === undefined ? null : (
+      {idHelmet === undefined ? null : (
         <div id="ShowStatsArmor">
           <div
             className="ArmorImgShow"
-            id={String(idArmor)}
+            id={String(idHelmet)}
             style={{
-              backgroundImage: `url(${ArmorData[Number(idArmor)].image})`,
-              backgroundSize:
-                idArmor === 10 ? "90px" : idArmor === 9 ? "85px" : "",
+              backgroundImage: `url(${HelmetData[Number(idHelmet)].image})`,
+              backgroundSize: idHelmet === 10 ? "50px" : "",
             }}
           ></div>
-          <div className="ArmorName">{ArmorData[Number(idArmor)].name}</div>
+          <div className="ArmorName">{HelmetData[Number(idHelmet)].name}</div>
           <div className="ArmorDef">
             <span>DEf: </span>
             <span
               className="DefCount"
               style={{
                 color:
-                  ArmorData[Number(idArmor)].defLvl0 > ArmorDef
+                  HelmetData[Number(idHelmet)].defLvl0 > HelmetDef
                     ? "#33CC33"
                     : "#EA0001",
               }}
             >
-              {formatNumber(ArmorData[Number(idArmor)].defLvl0)}
+              {formatNumber(HelmetData[Number(idHelmet)].defLvl0)}
             </span>
           </div>
           <button
             onClick={(e) => {
-              handleClickArmor(ArmorData[Number(idArmor)]);
-              setCount(count - ArmorData[Number(idArmor)].cost);
+              handleClickHelmet(HelmetData[Number(idHelmet)]);
+              setCount(count - HelmetData[Number(idHelmet)].cost);
             }}
           >
             Purchase
@@ -59,4 +58,4 @@ const ShowArmor = ({
   );
 };
 
-export default ShowArmor;
+export default ShowHelmet;

@@ -64,6 +64,10 @@ const ArmorShops = ({
     setASO(false);
     setMO(false);
   }
+
+  const [AoSoH, setAoSoH] = useState<string>("");
+  console.log(AoSoH);
+
   return (
     <>
       <div
@@ -90,6 +94,8 @@ const ArmorShops = ({
               setCount={setCount}
               SelectedOption={SelectedOption}
               FullInv={FullInv}
+              setAoSoH={setAoSoH}
+              AoSoH={AoSoH}
             />
           </div>
           <div className="armor-Conteiner">
@@ -100,6 +106,8 @@ const ArmorShops = ({
               setCount={setCount}
               SelectedOption={SelectedOption}
               FullInv={FullInv}
+              setAoSoH={setAoSoH}
+              AoSoH={AoSoH}
             />
           </div>
           {/*
@@ -121,6 +129,8 @@ const ArmorShops = ({
               setCount={setCount}
               SelectedOption={SelectedOption}
               FullInv={FullInv}
+              setAoSoH={setAoSoH}
+              AoSoH={AoSoH}
             />
           </div>
         </div>

@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable array-callback-return */
 import React, { useEffect, useState } from "react";
+import ShowArmor from "../ShowStats/ShowArmor";
 
 const ArmorShop = ({
   count,
@@ -9,6 +10,8 @@ const ArmorShop = ({
   ArmorData,
   setArmorData,
   FullInv,
+  setAoSoH,
+  AoSoH,
 }: {
   count: number;
   setCount: any;
@@ -16,6 +19,8 @@ const ArmorShop = ({
   ArmorData: any;
   setArmorData: any;
   FullInv: any;
+  setAoSoH: any;
+  AoSoH: any;
 }) => {
   const [selectedItemsA, setselectedItemsA] = useState<any[]>([]);
   const [timeLeft, settimeLeft] = useState<number>(5);
@@ -83,13 +88,14 @@ const ArmorShop = ({
     setArmorDef(text);
   }, 1000);
   //==============
-  const [idWeapon, setidWeapon] = useState<number>();
+  const [idArmor, setidArmor] = useState<number>();
 
   const GetId = (selectedItem: any) => {
     const newArmorData = [...ArmorData];
     const index = newArmorData.findIndex((item) => item.id === selectedItem.id);
-    console.log(idWeapon);
-    setidWeapon(index);
+    console.log(idArmor);
+    setidArmor(index);
+    setAoSoH("ShowStatsArmors");
   };
 
   return (
@@ -108,8 +114,7 @@ const ArmorShop = ({
                   className={`itemsForPurchasableA ${index} `}
                   key={index}
                   onClick={(e) => {
-                    handleClickArmor(data);
-                    setCount(count - data.cost);
+                    GetId(data);
                   }}
                   style={{
                     display:
@@ -148,6 +153,27 @@ const ArmorShop = ({
               );
             }
           })}
+      <div
+        style={{
+          display:
+            AoSoH === "ShowStatsHelmet" || AoSoH === "ShowStatsShoes"
+              ? "none"
+              : "",
+          position: "absolute",
+          marginLeft: AoSoH === "ShowStatsArmors" ? "441px" : "",
+          marginTop: AoSoH === "ShowStatsArmors" ? "46px" : "",
+        }}
+      >
+        <ShowArmor
+          ArmorData={ArmorData}
+          count={count}
+          setCount={setCount}
+          idArmor={idArmor}
+          ArmorDef={ArmorDef}
+          handleClickArmor={handleClickArmor}
+          AoSoH={AoSoH}
+        />
+      </div>
     </>
   );
 };

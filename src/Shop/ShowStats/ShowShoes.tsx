@@ -1,54 +1,53 @@
 import { formatNumber } from "../../hook/FormatNumber";
 
-const ShowArmor = ({
-  ArmorData,
+const ShowShoes = ({
+  ShoesData,
   count,
   setCount,
-  idArmor,
-  ArmorDef,
-  handleClickArmor,
+  idShoes,
+  ShoesDef,
+  handleClickShoes,
   AoSoH,
 }: {
-  ArmorData: any;
+  ShoesData: any;
   count: number;
   setCount: any;
-  idArmor: any;
-  ArmorDef: any;
-  handleClickArmor: any;
+  idShoes: any;
+  ShoesDef: any;
+  handleClickShoes: any;
   AoSoH: any;
 }) => {
   return (
     <>
-      {idArmor === undefined ? null : (
+      {idShoes === undefined ? null : (
         <div id="ShowStatsArmor">
           <div
             className="ArmorImgShow"
-            id={String(idArmor)}
+            id={String(idShoes)}
             style={{
-              backgroundImage: `url(${ArmorData[Number(idArmor)].image})`,
-              backgroundSize:
-                idArmor === 10 ? "90px" : idArmor === 9 ? "85px" : "",
+              backgroundImage: `url(${ShoesData[Number(idShoes)].image})`,
+              backgroundSize: idShoes === 16 ? "60px" : "",
             }}
           ></div>
-          <div className="ArmorName">{ArmorData[Number(idArmor)].name}</div>
+          <div className="ArmorName">{ShoesData[Number(idShoes)].name}</div>
           <div className="ArmorDef">
             <span>DEf: </span>
             <span
               className="DefCount"
               style={{
                 color:
-                  ArmorData[Number(idArmor)].defLvl0 > ArmorDef
+                  ShoesData[Number(idShoes)].defLvl0 > ShoesDef
                     ? "#33CC33"
                     : "#EA0001",
               }}
             >
-              {formatNumber(ArmorData[Number(idArmor)].defLvl0)}
+              {formatNumber(ShoesData[Number(idShoes)].defLvl0)}
             </span>
           </div>
           <button
             onClick={(e) => {
-              handleClickArmor(ArmorData[Number(idArmor)]);
-              setCount(count - ArmorData[Number(idArmor)].cost);
+              handleClickShoes(ShoesData[Number(idShoes)]);
+              setCount(count - ShoesData[Number(idShoes)].cost);
             }}
           >
             Purchase
@@ -59,4 +58,4 @@ const ShowArmor = ({
   );
 };
 
-export default ShowArmor;
+export default ShowShoes;

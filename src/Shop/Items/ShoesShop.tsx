@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable array-callback-return */
 import React, { useEffect, useState } from "react";
+import ShowShoes from "../ShowStats/ShowShoes";
 
 const ShoesShop = ({
   count,
@@ -9,6 +10,8 @@ const ShoesShop = ({
   ShoesData,
   setShoesData,
   FullInv,
+  setAoSoH,
+  AoSoH,
 }: {
   count: number;
   setCount: any;
@@ -16,6 +19,8 @@ const ShoesShop = ({
   ShoesData: any;
   setShoesData: any;
   FullInv: any;
+  setAoSoH: any;
+  AoSoH: any;
 }) => {
   const [selectedItemsS, setselectedItemsS] = useState<any[]>([]);
   const [timeLeft, settimeLeft] = useState<number>(5);
@@ -83,13 +88,14 @@ const ShoesShop = ({
     setShoesDef(text);
   }, 1000);
   //==============
-  const [idWeapon, setidWeapon] = useState<number>();
+  const [idShoes, setidShoes] = useState<number>();
 
   const GetId = (selectedItem: any) => {
     const newShoesData = [...ShoesData];
     const index = newShoesData.findIndex((item) => item.id === selectedItem.id);
-    console.log(idWeapon);
-    setidWeapon(index);
+    console.log(idShoes);
+    setidShoes(index);
+    setAoSoH("ShowStatsShoes");
   };
 
   return (
@@ -108,8 +114,7 @@ const ShoesShop = ({
                   className={`itemsForPurchasableS ${index} `}
                   key={index}
                   onClick={(e) => {
-                    handleClickShoes(data);
-                    setCount(count - data.cost);
+                    GetId(data);
                   }}
                   style={{
                     display:
@@ -148,6 +153,27 @@ const ShoesShop = ({
               );
             }
           })}
+      <div
+        style={{
+          display:
+            AoSoH === "ShowStatsHelmet" || AoSoH === "ShowStatsArmors"
+              ? "none"
+              : "",
+          position: "absolute",
+          marginLeft: AoSoH === "ShowStatsShoes" ? "-157px" : "",
+          marginTop: AoSoH === "ShowStatsShoes" ? "403px" : "",
+        }}
+      >
+        <ShowShoes
+          ShoesData={ShoesData}
+          count={count}
+          setCount={setCount}
+          idShoes={idShoes}
+          ShoesDef={ShoesDef}
+          handleClickShoes={handleClickShoes}
+          AoSoH={AoSoH}
+        />
+      </div>
     </>
   );
 };
