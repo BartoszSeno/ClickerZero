@@ -318,93 +318,108 @@ const EnchantSucces = ({
     setUpgradedDmgShieldAndDagger(newSavedDmgShieldAndDagger);
   }
 
-  const [WhatVlue, setWhatVlue] = useState<any>();
-
-  console.log(WhatVlue);
-
   useEffect(() => {
     if (itsMainWeapon === true) {
-      setWhatVlue(upgradedValue);
+      ShowNameOnHover(selectedItemIndex);
     } else if (itsArmor === true) {
-      setWhatVlue(ArmorupgradedValue);
+      ShowNameOnHoverForArmor(selectedArmorItemIndex);
     } else if (itsHelmet === true) {
-      setWhatVlue(HelmetupgradedValue);
+      ShowNameOnHoverForHelmet(selectedHelmetItemIndex);
     } else if (itsShoes === true) {
-      setWhatVlue(ShoesupgradedValue);
+      ShowNameOnHoverForShoes(selectedShoesItemIndex);
     } else if (itsGloves === true) {
-      setWhatVlue(GlovesupgradedValue);
+      ShowNameOnHoverForGloves(selectedGlovesItemIndex);
     } else if (itsShieldAndDagger === true) {
-      setWhatVlue(ShieldAndDaggerupgradedValue);
+      ShowNameOnHoverForShieldAndDagger(selectedShieldAndDaggerItemIndex);
     }
-  }, [
-    itsMainWeapon,
-    itsArmor,
-    itsHelmet,
-    itsShoes,
-    itsGloves,
-    itsShieldAndDagger,
-  ]);
+  });
 
   return (
     <>
-      {WhatVlue < 15 ? (
-        <>
-          <div
-            className="EnchantSuccess"
-            onClick={() => setWhatVlue(WhatVlue + 1)}
-            onMouseEnter={() => {
-              if (itsMainWeapon === true) {
-                ShowNameOnHover(selectedItemIndex);
-              } else if (itsArmor === true) {
-                ShowNameOnHoverForArmor(selectedArmorItemIndex);
-              } else if (itsHelmet === true) {
-                ShowNameOnHoverForHelmet(selectedHelmetItemIndex);
-              } else if (itsShoes === true) {
-                ShowNameOnHoverForShoes(selectedShoesItemIndex);
-              } else if (itsGloves === true) {
-                ShowNameOnHoverForGloves(selectedGlovesItemIndex);
-              } else if (itsShieldAndDagger === true) {
-                ShowNameOnHoverForShieldAndDagger(
-                  selectedShieldAndDaggerItemIndex
-                );
-              }
+      <>
+        <div className="EnchantSuccess">
+          <img
+            className="mainWeaponImgSucc"
+            style={{
+              transform:
+                itsMainWeapon === true
+                  ? "rotate(90deg)"
+                  : itsArmor === true
+                  ? "rotate(90deg)"
+                  : itsShieldAndDagger === true
+                  ? "rotate(90deg)"
+                  : itsGloves === true
+                  ? "rotate(-35deg)"
+                  : "",
+              height:
+                itsMainWeapon === true
+                  ? "90px"
+                  : itsArmor === true
+                  ? "50px"
+                  : itsShieldAndDagger === true
+                  ? "50px"
+                  : itsGloves === true
+                  ? "50px"
+                  : itsShoes === true
+                  ? "50px"
+                  : itsHelmet === true
+                  ? "54px"
+                  : "",
+              marginTop:
+                itsShoes === true ? "-20px" : itsHelmet === true ? "-20px" : "",
             }}
-          >
-            <img
-              className="mainWeaponImgSucc"
-              style={{
-                transform:
-                  itsMainWeapon === true
-                    ? "rotate(90deg)"
-                    : itsArmor === true
-                    ? "rotate(90deg)"
-                    : itsShieldAndDagger === true
-                    ? "rotate(90deg)"
-                    : itsGloves === true
-                    ? "rotate(-35deg)"
-                    : "",
-                height:
-                  itsMainWeapon === true
-                    ? "90px"
-                    : itsArmor === true
-                    ? "50px"
-                    : itsShieldAndDagger === true
-                    ? "50px"
-                    : itsGloves === true
-                    ? "50px"
-                    : itsShoes === true
-                    ? "50px"
-                    : itsHelmet === true
-                    ? "54px"
-                    : "",
-                marginTop:
-                  itsShoes === true
-                    ? "-20px"
-                    : itsHelmet === true
-                    ? "-20px"
-                    : "",
-              }}
-              src={
+            src={
+              itsMainWeapon
+                ? savedImage
+                : itsArmor
+                ? savedArmorImage
+                : itsHelmet
+                ? savedHelmetImage
+                : itsShoes
+                ? savedShoesImage
+                : itsGloves
+                ? savedGlovesImage
+                : itsShieldAndDagger
+                ? savedShieldAndDaggerImage
+                : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
+            }
+            alt={`${
+              itsMainWeapon
+                ? savedName
+                : itsArmor
+                ? savedArmorName
+                : itsHelmet
+                ? savedHelmetName
+                : itsShoes
+                ? UpgradedShoesName
+                : itsGloves
+                ? UpgradedGlovesName
+                : itsShieldAndDagger
+                ? UpgradedShieldAndDaggerName
+                : "No name weapon"
+            }`}
+          />
+        </div>
+        <div className="infoEnchant">
+          <span className="UpgradeName">
+            {itsMainWeapon
+              ? UpgradedName
+              : itsArmor
+              ? UpgradedArmorName
+              : itsHelmet
+              ? UpgradedHelmetName
+              : itsShoes
+              ? UpgradedShoesName
+              : itsGloves
+              ? UpgradedGlovesName
+              : itsShieldAndDagger
+              ? UpgradedShieldAndDaggerName
+              : ""}
+          </span>
+          <div
+            className="UpgradeImgs"
+            style={{
+              backgroundImage: `url(${
                 itsMainWeapon
                   ? savedImage
                   : itsArmor
@@ -418,103 +433,31 @@ const EnchantSucces = ({
                   : itsShieldAndDagger
                   ? savedShieldAndDaggerImage
                   : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
-              }
-              alt={`${
-                itsMainWeapon
-                  ? savedName
-                  : itsArmor
-                  ? savedArmorName
-                  : itsHelmet
-                  ? savedHelmetName
-                  : itsShoes
-                  ? UpgradedShoesName
-                  : itsGloves
-                  ? UpgradedGlovesName
-                  : itsShieldAndDagger
-                  ? UpgradedShieldAndDaggerName
-                  : "No name weapon"
-              }`}
-            />
-          </div>
-          <div className="infoEnchant">
-            <span className="UpgradeName">
-              {itsMainWeapon
-                ? UpgradedName
-                : itsArmor
-                ? UpgradedArmorName
-                : itsHelmet
-                ? UpgradedHelmetName
-                : itsShoes
-                ? UpgradedShoesName
-                : itsGloves
-                ? UpgradedGlovesName
-                : itsShieldAndDagger
-                ? UpgradedShieldAndDaggerName
-                : ""}
+              })`,
+            }}
+          />
+          <span className="UpgradeDmg">
+            <span className="UpgradeDmgTitle">
+              {itsMainWeapon ? "Dmg: " : "Def: "}
             </span>
-            <div className="enchantBox2">
-              <img
-                className="UpgradeImg"
-                src={
-                  itsMainWeapon
-                    ? savedImage
-                    : itsArmor
-                    ? savedArmorImage
-                    : itsHelmet
-                    ? savedHelmetImage
-                    : itsShoes
-                    ? savedShoesImage
-                    : itsGloves
-                    ? savedGlovesImage
-                    : itsShieldAndDagger
-                    ? savedShieldAndDaggerImage
-                    : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
-                }
-                alt={`${
-                  itsMainWeapon
-                    ? savedName
-                    : itsArmor
-                    ? savedArmorName
-                    : itsHelmet
-                    ? savedHelmetName
-                    : itsShoes
-                    ? UpgradedShoesName
-                    : itsGloves
-                    ? UpgradedGlovesName
-                    : itsShieldAndDagger
-                    ? UpgradedShieldAndDaggerName
-                    : "No name weapon"
-                }`}
-              />
-              <span className="UpgradeDmg">
-                <span className="UpgradeDmgTitle">
-                  {itsMainWeapon ? "Demage: " : "Defence: "}
-                </span>
-                {itsMainWeapon
-                  ? formatNumber(UpgradedDmgMainWeapon)
-                  : itsArmor
-                  ? formatNumber(UpgradedDefArmor)
-                  : itsHelmet
-                  ? formatNumber(UpgradedDefHelmet)
-                  : itsShoes
-                  ? formatNumber(UpgradedDefShoes)
-                  : itsGloves
-                  ? formatNumber(UpgradedDefGloves)
-                  : itsShieldAndDagger
-                  ? formatNumber(UpgradedDefShieldAndDagger)
-                  : itsShieldAndDagger
-                  ? formatNumber(UpgradedDmgShieldAndDagger)
-                  : ""}
-              </span>
-            </div>
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="EnchantSuccess"></div>
-          <div className="infoEnchant"></div>
-        </>
-      )}
+            {itsMainWeapon
+              ? formatNumber(UpgradedDmgMainWeapon)
+              : itsArmor
+              ? formatNumber(UpgradedDefArmor)
+              : itsHelmet
+              ? formatNumber(UpgradedDefHelmet)
+              : itsShoes
+              ? formatNumber(UpgradedDefShoes)
+              : itsGloves
+              ? formatNumber(UpgradedDefGloves)
+              : itsShieldAndDagger
+              ? formatNumber(UpgradedDefShieldAndDagger)
+              : itsShieldAndDagger
+              ? formatNumber(UpgradedDmgShieldAndDagger)
+              : ""}
+          </span>
+        </div>
+      </>
     </>
   );
 };

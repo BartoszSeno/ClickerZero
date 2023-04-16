@@ -75,28 +75,53 @@
 .infoEnchant {
   display: flex;
   flex-direction: column;
-  background-color: aqua;
-  display: none;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/stats/weaponshow.png);
+  background-repeat: no-repeat;
   position: absolute;
-  height: 100px;
-  width: 200px;
+  height: 300px;
+  width: 290px;
   font-size: 30px;
-  margin-left: 580px;
+  margin-left: 1205px;
+  margin-top: -380px;
+}
+.UpgradeDmg {
+  position: absolute;
+  display: flex;
+  align-items: center;
   margin-top: 180px;
+  width: 230px;
+  margin-left: 30px;
 }
+
 .UpgradeDmgTitle {
+  display: flex;
   font-size: 20px;
-  color: gray;
+  width: 70px;
+  height: 24px;
+  font-size: 30px;
+  margin-top: -5px;
 }
-.UpgradeImg {
-  height: 40px;
-  width: 40px;
+.UpgradeImgs {
+  display: flex;
+  height: 90px;
+  width: 90px;
+  margin-top: 53px;
+  margin-left: 26px;
+  background-size: 70px;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
 }
+
 .UpgradeName {
+  position: absolute;
   margin-bottom: 10px;
+  margin-left: 30px;
+  margin-top: 160px;
 }
 .enchantBox2 {
   display: flex;
+  position: absolute;
 }
 
 .mainWeaponImg {
