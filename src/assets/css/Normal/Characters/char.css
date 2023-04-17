@@ -1,0 +1,10 @@
+#CharacterSlect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 980px;
+  width: 1920px;
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.647);
+}

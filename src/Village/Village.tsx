@@ -3,6 +3,7 @@ import "../assets/css/Normal/Village/midVillage.css";
 import "../assets/css/Normal/Village/rightVillage.css";
 import "../assets/css/Normal/shop/shop.css";
 import MainEq from "../Equipment";
+import CharacterSelection from "../Character";
 
 import React, { useEffect, useRef, useState } from "react";
 import WeaponShop from "./WeaponShop/WShop";
@@ -461,6 +462,7 @@ const MainIndexVillage = () => {
             */}
           </div>
           <div className="midVillage">
+            <CharacterSelection />
             <MainEq
               mainWeaponData={mainWeaponData}
               UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
