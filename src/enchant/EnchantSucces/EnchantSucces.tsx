@@ -434,6 +434,8 @@ const EnchantSucces = ({
                   ? savedShieldAndDaggerImage
                   : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
               })`,
+              backgroundSize: itsMainWeapon ? "30px" : "",
+              transform: itsMainWeapon ? "rotate(45deg)" : "",
             }}
           />
           <span className="UpgradeDmg">
