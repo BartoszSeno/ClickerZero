@@ -104,3 +104,24 @@
   position: absolute;
   color: antiquewhite;
 }
+
+/*==========  character eq ===========*/
+
+.CharBox {
+  position: absolute;
+  z-index: 5;
+  margin-top: 62px;
+  height: 300px;
+  width: 312px;
+  display: flex;
+  justify-content: center;
+  z-index: -1;
+}
+
+.CharacterImgEq {
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 200px;
+  width: 150px;
+  background-size: 200px;
+}

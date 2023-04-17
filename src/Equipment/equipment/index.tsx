@@ -5,6 +5,7 @@ import EquipHelmet from "./Slots/Helemt";
 import EquipArmor from "./Slots/Armor";
 import EquipGloves from "./Slots/Gloves";
 import EquipShoes from "./Slots/Shoes";
+import CharacterSelectionEq from "../../Character/CharacterEq";
 
 function EquipContainer({
   mainWeaponData,
@@ -56,6 +57,7 @@ function EquipContainer({
           FullInv={FullInv}
         />
       </div>
+      <CharacterSelectionEq ce={ce} />
       <div
         className="ArmorContainer"
         style={{

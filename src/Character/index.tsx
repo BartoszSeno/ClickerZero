@@ -1,10 +1,35 @@
 /* eslint-disable array-callback-return */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../assets/css/Normal/Characters/char.css";
 import { CharacterSelectionStart } from "../data/character/character";
 
 const CharacterSelection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedCharacterId, setSelectedCharacterId] = useState<number>();
+  const [ItsSelected, setItsSelected] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true); // Add a loading state
+
+  const handleCharacterClick = (characterId: number) => {
+    setSelectedCharacterId(characterId);
+    setItsSelected(true);
+    localStorage.setItem("selectedCharacterID", characterId.toString());
+    localStorage.setItem("ItsSelected", "true"); // Save ItsSelected value in localStorage
+  };
+
+  useEffect(() => {
+    const savedItsSelected = localStorage.getItem("ItsSelected");
+    if (savedItsSelected === "true") {
+      setItsSelected(true);
+    }
+    setLoading(false); // Set loading to false after fetching data from localStorage
+  }, []);
+
+  if (loading) {
+    return <div>...</div>; // Render a loading message or spinner while data is being fetched
+  }
+
+  console.log(selectedCharacterId);
+
   const characters = [...CharacterSelectionStart, ...CharacterSelectionStart];
 
   const handleArrowClick = (direction: string) => {
@@ -19,7 +44,10 @@ const CharacterSelection = () => {
 
   return (
     <>
-      <div id="CharacterSlect">
+      <div
+        id="CharacterSlect"
+        style={{ display: ItsSelected ? "none" : "false" }}
+      >
         <div className="Arrow" onClick={() => handleArrowClick("left")}>
           {"<"}
         </div>
@@ -29,6 +57,7 @@ const CharacterSelection = () => {
         {characters.slice(currentIndex, currentIndex + 4).map((data: any) => (
           <div
             className="Border"
+            onClick={() => handleCharacterClick(data.id)}
             style={{
               backgroundColor:
                 data.name === "Divine Fist"
