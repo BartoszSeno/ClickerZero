@@ -1,4 +1,4 @@
-export const GlovesImageAndNameAndCost = [
+export const CharacterSelectionStart = [
   {
     id: 1,
     image:
