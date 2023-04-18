@@ -15,27 +15,21 @@ import Statistic from "./stats";
 const MainEq = ({
   mainWeaponData,
   UpgradedNamesMainWeapon,
-  handleItemSelect,
   selectedItem,
   ArmorData,
   UpgradedNamesArmor,
-  handleArmorItemSelect,
   selectedArmorItem,
   HelmetData,
   UpgradedNamesHelmet,
-  handleHelmetItemSelect,
   selectedHelmetItem,
   ShoesData,
   UpgradedNamesShoes,
-  handleShoesItemSelect,
   selectedShoesItem,
   GlovesData,
   UpgradedNamesGloves,
-  handleGlovesItemSelect,
   selectedGlovesItem,
   ShieldAndDaggerData,
   UpgradedNamesShieldAndDagger,
-  handleShieldAndDaggerItemSelect,
   selectedShieldAndDaggerItem,
   setGlovesData,
   setMainWeaponData,
@@ -45,30 +39,46 @@ const MainEq = ({
   setShieldAndDaggerData,
   setFullInv,
   FullInv,
+  OpenAndCloseEqinEnchant,
+  setOpenAndCloseEqinEnchant,
+  //enchant
+  setSelectedItemIndex,
+  setUpgradedDmgMainWeapon,
+  setSelectedArmorItemIndex,
+  setUpgradedDefArmor,
+  setitsMainWeapon,
+  setitsArmor,
+  setSelectedHelmetItemIndex,
+  setUpgradedDefHelmet,
+  setitsHelmet,
+  setSelectedShoesItemIndex,
+  setUpgradedDefShoes,
+  setitsShoes,
+  setSelectedGlovesItemIndex,
+  setUpgradedDefGloves,
+  setitsGloves,
+  setSelectedShieldAndDaggerItemIndex,
+  setUpgradedDefShieldAndDagger,
+  setitsShieldAndDagger,
+  setUpgradedDmgShieldAndDagger,
 }: {
   mainWeaponData: any;
   UpgradedNamesMainWeapon: any;
-  handleItemSelect: any;
   selectedItem: any;
   ArmorData: any;
   UpgradedNamesArmor: any;
-  handleArmorItemSelect: any;
   selectedArmorItem: any;
   HelmetData: any;
   UpgradedNamesHelmet: any;
-  handleHelmetItemSelect: any;
   selectedHelmetItem: any;
   ShoesData: any;
   UpgradedNamesShoes: any;
-  handleShoesItemSelect: any;
   selectedShoesItem: any;
   GlovesData: any;
   UpgradedNamesGloves: any;
-  handleGlovesItemSelect: any;
   selectedGlovesItem: any;
   ShieldAndDaggerData: any;
   UpgradedNamesShieldAndDagger: any;
-  handleShieldAndDaggerItemSelect: any;
   selectedShieldAndDaggerItem: any;
   setGlovesData: any;
   setMainWeaponData: any;
@@ -78,6 +88,28 @@ const MainEq = ({
   setShieldAndDaggerData: any;
   setFullInv: any;
   FullInv: any;
+  OpenAndCloseEqinEnchant: boolean;
+  setOpenAndCloseEqinEnchant: any;
+  //enchant
+  setSelectedItemIndex: any;
+  setUpgradedDmgMainWeapon: any;
+  setSelectedArmorItemIndex: any;
+  setUpgradedDefArmor: any;
+  setitsMainWeapon: any;
+  setitsArmor: any;
+  setSelectedHelmetItemIndex: any;
+  setUpgradedDefHelmet: any;
+  setitsHelmet: any;
+  setSelectedShoesItemIndex: any;
+  setUpgradedDefShoes: any;
+  setitsShoes: any;
+  setSelectedGlovesItemIndex: any;
+  setUpgradedDefGloves: any;
+  setitsGloves: any;
+  setSelectedShieldAndDaggerItemIndex: any;
+  setUpgradedDefShieldAndDagger: any;
+  setitsShieldAndDagger: any;
+  setUpgradedDmgShieldAndDagger: any;
 }) => {
   //MAIN WEAPON
   //===========================================================================
@@ -337,21 +369,91 @@ const MainEq = ({
     console.log(Inv);
     setopenInvAndEq(false);
   }
+
+  const HandleItemClick = (itemArray: any[], clickedItemId: string) => {
+    const clickedItemIndex = itemArray.findIndex(
+      (item) => item.id === Number(clickedItemId)
+    );
+    if (clickedItemIndex !== -1) {
+      if (itemArray === mainWeaponData) {
+        setitsMainWeapon(true);
+        setitsArmor(false);
+        setitsHelmet(false);
+        setitsShoes(false);
+        setitsGloves(false);
+        setitsShieldAndDagger(false);
+      } else if (itemArray === ArmorData) {
+        setitsArmor(true);
+        setitsMainWeapon(false);
+        setitsHelmet(false);
+        setitsShoes(false);
+        setitsGloves(false);
+        setitsShieldAndDagger(false);
+      } else if (itemArray === HelmetData) {
+        setitsHelmet(true);
+        setitsArmor(false);
+        setitsMainWeapon(false);
+        setitsShoes(false);
+        setitsGloves(false);
+        setitsShieldAndDagger(false);
+      } else if (itemArray === ShoesData) {
+        setitsShoes(true);
+        setitsArmor(false);
+        setitsMainWeapon(false);
+        setitsHelmet(false);
+        setitsGloves(false);
+        setitsShieldAndDagger(false);
+      } else if (itemArray === GlovesData) {
+        setitsGloves(true);
+        setitsArmor(false);
+        setitsMainWeapon(false);
+        setitsHelmet(false);
+        setitsShoes(false);
+        setitsShieldAndDagger(false);
+      } else if (itemArray === ShieldAndDaggerData) {
+        setitsShieldAndDagger(true);
+        setitsArmor(false);
+        setitsMainWeapon(false);
+        setitsHelmet(false);
+        setitsShoes(false);
+        setitsGloves(false);
+      }
+    }
+  };
+
   return (
     <>
       <div
         className="MainEqContainer"
         style={{
-          display: openInvAndEq && Inv ? "flex" : "none",
+          display: OpenAndCloseEqinEnchant
+            ? "flex"
+            : openInvAndEq && Inv
+            ? "flex"
+            : "none",
+          zIndex: OpenAndCloseEqinEnchant ? "10000" : "",
+          marginLeft: OpenAndCloseEqinEnchant ? "-770px" : "",
+          marginTop: OpenAndCloseEqinEnchant ? "-30px" : "",
         }}
       >
         <div
           id="option-container"
           style={{
-            display: openInvAndEq && Inv ? "flex" : "none",
+            display: OpenAndCloseEqinEnchant
+              ? "flex"
+              : openInvAndEq && Inv
+              ? "flex"
+              : "none",
           }}
         >
-          <div className="CloseInv" onClick={CloseInv}></div>
+          <div
+            className="CloseInv"
+            onClick={(e) => {
+              //e.preventDefault();
+              CloseInv(e);
+              setOpenAndCloseEqinEnchant();
+            }}
+          ></div>
 
           <Inventory
             props={""}
@@ -371,11 +473,39 @@ const MainEq = ({
             setMainWeaponData={setMainWeaponData}
             handleContextMenu={handleContextMenu}
             setFullInv={setFullInv}
+            HandleItemClick={HandleItemClick}
+            OpenAndCloseEqinEnchant={OpenAndCloseEqinEnchant}
+            setSelectedItemIndex={setSelectedItemIndex}
+            setSelectedArmorItemIndex={setSelectedArmorItemIndex}
+            setSelectedGlovesItemIndex={setSelectedGlovesItemIndex}
+            setSelectedHelmetItemIndex={setSelectedHelmetItemIndex}
+            setSelectedShieldAndDaggerItemIndex={
+              setSelectedShieldAndDaggerItemIndex
+            }
+            setSelectedShoesItemIndex={setSelectedShoesItemIndex}
+            UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
+            setUpgradedDmgMainWeapon={setUpgradedDmgMainWeapon}
+            UpgradedNamesGloves={UpgradedNamesGloves}
+            setUpgradedDefGloves={setUpgradedDefGloves}
+            UpgradedNamesShieldAndDagger={UpgradedNamesShieldAndDagger}
+            setUpgradedDefShieldAndDagger={setUpgradedDefShieldAndDagger}
+            setUpgradedDmgShieldAndDagger={setUpgradedDmgShieldAndDagger}
+            UpgradedNamesArmor={UpgradedNamesArmor}
+            setUpgradedDefArmor={setUpgradedDefArmor}
+            UpgradedNamesHelmet={UpgradedNamesHelmet}
+            setUpgradedDefHelmet={setUpgradedDefHelmet}
+            UpgradedNamesShoes={UpgradedNamesShoes}
+            setUpgradedDefShoes={setUpgradedDefShoes}
           />
         </div>
         <div
           id="EqCharacters"
           style={{
+            display: OpenAndCloseEqinEnchant
+              ? "none"
+              : openInvAndEq && Inv
+              ? "flex"
+              : "none",
             pointerEvents: ce ? "all" : "none",
             backgroundImage: ce ? "" : "none",
           }}

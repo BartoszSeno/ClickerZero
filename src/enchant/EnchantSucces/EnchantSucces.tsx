@@ -31,28 +31,20 @@ const EnchantSucces = ({
   UpgradedDefShoes,
   selectedShoesItemIndex,
   savedShoesImage,
-  savedShoesName,
   setUpgradedDefShoes,
   itsShoes,
   UpgradedDefGloves,
   selectedGlovesItemIndex,
   savedGlovesImage,
-  savedGlovesName,
   setUpgradedDefGloves,
   itsGloves,
   UpgradedDefShieldAndDagger,
   selectedShieldAndDaggerItemIndex,
   savedShieldAndDaggerImage,
-  savedShieldAndDaggerName,
   setUpgradedDefShieldAndDagger,
   itsShieldAndDagger,
   setUpgradedDmgShieldAndDagger,
   UpgradedDmgShieldAndDagger,
-  ArmorupgradedValue,
-  HelmetupgradedValue,
-  ShoesupgradedValue,
-  GlovesupgradedValue,
-  ShieldAndDaggerupgradedValue,
 }: {
   upgradedValue: any;
   selectedItemIndex: any;
@@ -76,28 +68,20 @@ const EnchantSucces = ({
   UpgradedDefShoes: any;
   selectedShoesItemIndex: any;
   savedShoesImage: any;
-  savedShoesName: any;
   setUpgradedDefShoes: any;
   itsShoes: any;
   UpgradedDefGloves: any;
   selectedGlovesItemIndex: any;
   savedGlovesImage: any;
-  savedGlovesName: any;
   setUpgradedDefGloves: any;
   itsGloves: any;
   UpgradedDefShieldAndDagger: any;
   selectedShieldAndDaggerItemIndex: any;
   savedShieldAndDaggerImage: any;
-  savedShieldAndDaggerName: any;
   setUpgradedDefShieldAndDagger: any;
   itsShieldAndDagger: any;
   setUpgradedDmgShieldAndDagger: any;
   UpgradedDmgShieldAndDagger: any;
-  ArmorupgradedValue: any;
-  HelmetupgradedValue: any;
-  ShoesupgradedValue: any;
-  GlovesupgradedValue: any;
-  ShieldAndDaggerupgradedValue: any;
 }) => {
   // Declare state to save upgraded item name, initialized with an empty string
   const [UpgradedName, setUpgradedName] = useState<string>("");

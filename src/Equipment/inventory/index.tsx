@@ -5,6 +5,12 @@ import "../../assets/css/Normal/inventory/inventory.css";
 // Components
 import ItemSlot from "./Components/Slot";
 import DragAndDropAPI from "./Components/DragAndDropAPI";
+import { MainWeaponImageAndNameAndCost } from "../../data/equipment/mainWeapon";
+import { GlovesImageAndNameAndCost } from "../../data/equipment/gloves";
+import { ShieldAndDaggerImageAndNameAndCost } from "../../data/equipment/subWeapon";
+import { ArmorImageAndNameAndCost } from "../../data/equipment/armor";
+import { HelmetImageAndNameAndCost } from "../../data/equipment/helmet";
+import { ShoesImageAndNameAndCost } from "../../data/equipment/Shoes";
 
 const Inventory = ({
   props,
@@ -24,6 +30,27 @@ const Inventory = ({
   setMainWeaponData,
   handleContextMenu,
   setFullInv,
+  HandleItemClick,
+  OpenAndCloseEqinEnchant,
+  setSelectedItemIndex,
+  setSelectedArmorItemIndex,
+  setSelectedGlovesItemIndex,
+  setSelectedHelmetItemIndex,
+  setSelectedShieldAndDaggerItemIndex,
+  setSelectedShoesItemIndex,
+  UpgradedNamesMainWeapon,
+  setUpgradedDmgMainWeapon,
+  UpgradedNamesGloves,
+  setUpgradedDefGloves,
+  UpgradedNamesShieldAndDagger,
+  setUpgradedDefShieldAndDagger,
+  setUpgradedDmgShieldAndDagger,
+  UpgradedNamesArmor,
+  setUpgradedDefArmor,
+  UpgradedNamesHelmet,
+  setUpgradedDefHelmet,
+  UpgradedNamesShoes,
+  setUpgradedDefShoes,
 }: {
   props: any;
   mainWeaponData: any;
@@ -42,6 +69,27 @@ const Inventory = ({
   setMainWeaponData: any;
   handleContextMenu: any;
   setFullInv: any;
+  HandleItemClick: any;
+  OpenAndCloseEqinEnchant: boolean;
+  setSelectedItemIndex: any;
+  setSelectedArmorItemIndex: any;
+  setSelectedGlovesItemIndex: any;
+  setSelectedHelmetItemIndex: any;
+  setSelectedShieldAndDaggerItemIndex: any;
+  setSelectedShoesItemIndex: any;
+  UpgradedNamesMainWeapon: any;
+  setUpgradedDmgMainWeapon: any;
+  UpgradedNamesGloves: any;
+  setUpgradedDefGloves: any;
+  UpgradedNamesShieldAndDagger: any;
+  setUpgradedDefShieldAndDagger: any;
+  setUpgradedDmgShieldAndDagger: any;
+  UpgradedNamesArmor: any;
+  setUpgradedDefArmor: any;
+  UpgradedNamesHelmet: any;
+  setUpgradedDefHelmet: any;
+  UpgradedNamesShoes: any;
+  setUpgradedDefShoes: any;
 }) => {
   const allItemsFromArray = [
     ...mainWeaponData,
@@ -203,7 +251,339 @@ const Inventory = ({
       return false;
     });
   }
+  //=============================================================================
+  //mainWeapon storage data and fake enchant
+  // Define a function named "GetIdPerClick" that takes an argument "index" of data type.
+  function GetIdPerClick(index: any) {
+    // Retrieve the item data at the given index from an array named "MainWeaponImageAndNameAndCost".
+    const item = MainWeaponImageAndNameAndCost[index];
 
+    // Save the individual item data retrieved above into the browser's local storage.
+    localStorage.setItem("selectedItemIdForEnchant", item.id.toString());
+    localStorage.setItem("selectedItemNameForEnchant", item.name.toString());
+    localStorage.setItem("selectedItemImgForEnchant", item.image.toString());
+    localStorage.setItem("selectedItemTierForEnchant", item.tier.toString());
+    localStorage.setItem("selectedItemDmgForEnchant", item.dmgLvl0.toString());
+  }
+  // FAKE FUNCTION TO UPDATA DATA ON LOAD, WORK THE SAME LIKE 'ENCHANTPERCLICK'
+  //!! BUT VALUE NOT SAVED IN LOCALSTORAGE !!
+  function FakeUpdateToRefreshTheData(index: any) {
+    const item = MainWeaponImageAndNameAndCost[index];
+    const itemUpgradeName = `${item.name}`;
+    const savedItemUpgrade = localStorage.getItem(itemUpgradeName);
+    const savedItemUpgradeNumber = Number(savedItemUpgrade);
+    const upgradedValue =
+      savedItemUpgradeNumber < 15 ? savedItemUpgradeNumber : 15;
+
+    localStorage.setItem("upgradedValue", upgradedValue.toString());
+
+    localStorage.setItem(itemUpgradeName, upgradedValue.toString());
+
+    const itemName = `+${upgradedValue} ${item.name}`;
+
+    const upgradedNames = [...UpgradedNamesMainWeapon];
+    upgradedNames[index] = itemName;
+
+    const itemSavedDmgMainKey = `selectedItemDmgForEnchant_${item.name}`;
+
+    const savedDmgMain =
+      localStorage.getItem(itemSavedDmgMainKey) || item.dmgLvl0;
+    setUpgradedDmgMainWeapon(savedDmgMain);
+  }
+  //=============================================================================
+  //gloves storage data and fake enchant
+  // Define a function named "GetIdPerClickGloves" that takes an argument "index" of data type.
+  function GetIdPerClickGloves(GlovesIndex: any) {
+    // Retrieve the item data at the given index from an array named "GlovesImageAndNameAndCost".
+    const Gloves = GlovesImageAndNameAndCost[GlovesIndex];
+
+    // Save the individual item data retrieved above into the browser's local storage.
+    localStorage.setItem(
+      "selectedGlovesItemIdForEnchant",
+      Gloves.id.toString()
+    );
+    localStorage.setItem(
+      "selectedGlovesItemNameForEnchant",
+      Gloves.name.toString()
+    );
+    localStorage.setItem(
+      "selectedGlovesItemImgForEnchant",
+      Gloves.image.toString()
+    );
+    localStorage.setItem(
+      "selectedGlovesItemTierForEnchant",
+      Gloves.tier.toString()
+    );
+    localStorage.setItem(
+      "selectedGlovesItemDefForEnchant",
+      Gloves.defLvl0.toString()
+    );
+  }
+  // FAKE FUNCTION TO UPDATA DATA ON LOAD, WORK THE SAME LIKE 'ENCHANTPERCLICK'
+  //!! BUT VALUE NOT SAVED IN LOCALSTORAGE !!
+  //Gloves
+  function FakeUpdateToRefreshTheGlovesData(GlovesIndex: any) {
+    const item = GlovesImageAndNameAndCost[GlovesIndex];
+    const GlovesItemUpgradeName = `${item.name}`;
+    const savedGlovesItemUpgrade = localStorage.getItem(GlovesItemUpgradeName);
+    const savedGlovesItemUpgradeNumber = Number(savedGlovesItemUpgrade);
+    const GlovesUpgradedValue =
+      savedGlovesItemUpgradeNumber < 15 ? savedGlovesItemUpgradeNumber : 15;
+
+    localStorage.setItem("GlovesUpgradedValue", GlovesUpgradedValue.toString());
+
+    localStorage.setItem(GlovesItemUpgradeName, GlovesUpgradedValue.toString());
+
+    const GlovesItemName = `+${GlovesUpgradedValue} ${item.name}`;
+
+    const upgradedGlovesNames = [...UpgradedNamesGloves];
+    upgradedGlovesNames[GlovesIndex] = GlovesItemName;
+
+    const itemSavedDefGlovesKey = `selectedGlovesItemDefForEnchant_${item.name}`;
+
+    const savedDefGloves =
+      localStorage.getItem(itemSavedDefGlovesKey) || item.defLvl0;
+    setUpgradedDefGloves(savedDefGloves);
+  }
+  //=============================================================================
+  //shield and dagger storage data and fake enchant
+  // Define a function named "GetIdPerClickShieldAndDagger" that takes an argument "index" of data type.
+  function GetIdPerClickShieldAndDagger(ShieldAndDaggerIndex: any) {
+    // Retrieve the item data at the given index from an array named "ShieldAndDaggerImageAndNameAndCost".
+    const ShieldAndDagger =
+      ShieldAndDaggerImageAndNameAndCost[ShieldAndDaggerIndex];
+
+    // Save the individual item data retrieved above into the browser's local storage.
+    localStorage.setItem(
+      "selectedShieldAndDaggerItemIdForEnchant",
+      ShieldAndDagger.id.toString()
+    );
+    localStorage.setItem(
+      "selectedShieldAndDaggerItemNameForEnchant",
+      ShieldAndDagger.name.toString()
+    );
+    localStorage.setItem(
+      "selectedShieldAndDaggerItemImgForEnchant",
+      ShieldAndDagger.image.toString()
+    );
+    localStorage.setItem(
+      "selectedShieldAndDaggerItemTierForEnchant",
+      ShieldAndDagger.tier.toString()
+    );
+    localStorage.setItem(
+      "selectedShieldAndDaggerItemDefForEnchant",
+      ShieldAndDagger.defLvl0.toString()
+    );
+    localStorage.setItem(
+      "selectedShieldAndDaggerItemDmgForEnchant",
+      ShieldAndDagger.dmgLvl0.toString()
+    );
+  }
+  // FAKE FUNCTION TO UPDATA DATA ON LOAD, WORK THE SAME LIKE 'ENCHANTPERCLICK'
+  //!! BUT VALUE NOT SAVED IN LOCALSTORAGE !!
+  //ShieldAndDagger
+  function FakeUpdateToRefreshTheShieldAndDaggerData(
+    ShieldAndDaggerIndex: any
+  ) {
+    const item = ShieldAndDaggerImageAndNameAndCost[ShieldAndDaggerIndex];
+    const ShieldAndDaggerItemUpgradeName = `${item.name}`;
+    const savedShieldAndDaggerItemUpgrade = localStorage.getItem(
+      ShieldAndDaggerItemUpgradeName
+    );
+    const savedShieldAndDaggerItemUpgradeNumber = Number(
+      savedShieldAndDaggerItemUpgrade
+    );
+    const ShieldAndDaggerUpgradedValue =
+      savedShieldAndDaggerItemUpgradeNumber < 15
+        ? savedShieldAndDaggerItemUpgradeNumber
+        : 15;
+
+    localStorage.setItem(
+      "ShieldAndDaggerUpgradedValue",
+      ShieldAndDaggerUpgradedValue.toString()
+    );
+
+    localStorage.setItem(
+      ShieldAndDaggerItemUpgradeName,
+      ShieldAndDaggerUpgradedValue.toString()
+    );
+
+    const ShieldAndDaggerItemName = `+${ShieldAndDaggerUpgradedValue} ${item.name}`;
+
+    const upgradedShieldAndDaggerNames = [...UpgradedNamesShieldAndDagger];
+    upgradedShieldAndDaggerNames[ShieldAndDaggerIndex] =
+      ShieldAndDaggerItemName;
+
+    const itemSavedDefShieldAndDaggerKey = `selectedShieldAndDaggerItemDefForEnchant_${item.name}`;
+    const itemSavedDmgShieldAndDaggerKey = `selectedShieldAndDaggerItemDmgForEnchant_${item.name}`;
+
+    const savedDefShieldAndDagger =
+      localStorage.getItem(itemSavedDefShieldAndDaggerKey) || item.defLvl0;
+    setUpgradedDefShieldAndDagger(savedDefShieldAndDagger);
+
+    const savedDmgShieldAndDagger =
+      localStorage.getItem(itemSavedDmgShieldAndDaggerKey) || item.dmgLvl0;
+    setUpgradedDmgShieldAndDagger(savedDmgShieldAndDagger);
+  }
+  //=============================================================================
+  //armor and dagger storage data and fake enchant
+  // Define a function named "GetIdPerClickArmor" that takes an argument "index" of data type.
+  function GetIdPerClickArmor(armorIndex: any) {
+    // Retrieve the item data at the given index from an array named "ArmorImageAndNameAndCost".
+    const armor = ArmorImageAndNameAndCost[armorIndex];
+
+    // Save the individual item data retrieved above into the browser's local storage.
+    localStorage.setItem("selectedArmorItemIdForEnchant", armor.id.toString());
+    localStorage.setItem(
+      "selectedArmorItemNameForEnchant",
+      armor.name.toString()
+    );
+    localStorage.setItem(
+      "selectedArmorItemImgForEnchant",
+      armor.image.toString()
+    );
+    localStorage.setItem(
+      "selectedArmorItemTierForEnchant",
+      armor.tier.toString()
+    );
+    localStorage.setItem(
+      "selectedArmorItemDefForEnchant",
+      armor.defLvl0.toString()
+    );
+  }
+  // FAKE FUNCTION TO UPDATA DATA ON LOAD, WORK THE SAME LIKE 'ENCHANTPERCLICK'
+  //!! BUT VALUE NOT SAVED IN LOCALSTORAGE !!
+  //armor
+  function FakeUpdateToRefreshTheArmorData(armorIndex: any) {
+    const item = ArmorImageAndNameAndCost[armorIndex];
+    const ArmorItemUpgradeName = `${item.name}`;
+    const savedArmorItemUpgrade = localStorage.getItem(ArmorItemUpgradeName);
+    const savedArmorItemUpgradeNumber = Number(savedArmorItemUpgrade);
+    const ArmorUpgradedValue =
+      savedArmorItemUpgradeNumber < 15 ? savedArmorItemUpgradeNumber : 15;
+
+    localStorage.setItem("ArmorUpgradedValue", ArmorUpgradedValue.toString());
+
+    localStorage.setItem(ArmorItemUpgradeName, ArmorUpgradedValue.toString());
+
+    const ArmorItemName = `+${ArmorUpgradedValue} ${item.name}`;
+
+    const upgradedArmorNames = [...UpgradedNamesArmor];
+    upgradedArmorNames[armorIndex] = ArmorItemName;
+
+    const itemSavedDefArmorKey = `selectedArmorItemDefForEnchant_${item.name}`;
+
+    const savedDefArmor =
+      localStorage.getItem(itemSavedDefArmorKey) || item.defLvl0;
+    setUpgradedDefArmor(savedDefArmor);
+  }
+  //=============================================================================
+  //shoes and dagger storage data and fake enchant
+  // Define a function named "GetIdPerClickHelmet" that takes an argument "index" of data type.
+  function GetIdPerClickHelmet(HelmetIndex: any) {
+    // Retrieve the item data at the given index from an array named "HelmetImageAndNameAndCost".
+    const Helmet = HelmetImageAndNameAndCost[HelmetIndex];
+
+    // Save the individual item data retrieved above into the browser's local storage.
+    localStorage.setItem(
+      "selectedHelmetItemIdForEnchant",
+      Helmet.id.toString()
+    );
+    localStorage.setItem(
+      "selectedHelmetItemNameForEnchant",
+      Helmet.name.toString()
+    );
+    localStorage.setItem(
+      "selectedHelmetItemImgForEnchant",
+      Helmet.image.toString()
+    );
+    localStorage.setItem(
+      "selectedHelmetItemTierForEnchant",
+      Helmet.tier.toString()
+    );
+    localStorage.setItem(
+      "selectedHelmetItemDefForEnchant",
+      Helmet.defLvl0.toString()
+    );
+  }
+  // FAKE FUNCTION TO UPDATA DATA ON LOAD, WORK THE SAME LIKE 'ENCHANTPERCLICK'
+  //!! BUT VALUE NOT SAVED IN LOCALSTORAGE !!
+  //Helmet
+  function FakeUpdateToRefreshTheHelmetData(HelmetIndex: any) {
+    const item = HelmetImageAndNameAndCost[HelmetIndex];
+    const HelmetItemUpgradeName = `${item.name}`;
+    const savedHelmetItemUpgrade = localStorage.getItem(HelmetItemUpgradeName);
+    const savedHelmetItemUpgradeNumber = Number(savedHelmetItemUpgrade);
+    const HelmetUpgradedValue =
+      savedHelmetItemUpgradeNumber < 15 ? savedHelmetItemUpgradeNumber : 15;
+
+    localStorage.setItem("HelmetUpgradedValue", HelmetUpgradedValue.toString());
+
+    localStorage.setItem(HelmetItemUpgradeName, HelmetUpgradedValue.toString());
+
+    const HelmetItemName = `+${HelmetUpgradedValue} ${item.name}`;
+
+    const upgradedHelmetNames = [...UpgradedNamesHelmet];
+    upgradedHelmetNames[HelmetIndex] = HelmetItemName;
+
+    const itemSavedDefHelmetKey = `selectedHelmetItemDefForEnchant_${item.name}`;
+
+    const savedDefHelmet =
+      localStorage.getItem(itemSavedDefHelmetKey) || item.defLvl0;
+    setUpgradedDefHelmet(savedDefHelmet);
+  }
+  //=============================================================================
+  //shoes and dagger storage data and fake enchant
+  // Define a function named "GetIdPerClickShoes" that takes an argument "index" of data type.
+  function GetIdPerClickShoes(ShoesIndex: any) {
+    // Retrieve the item data at the given index from an array named "ShoesImageAndNameAndCost".
+    const Shoes = ShoesImageAndNameAndCost[ShoesIndex];
+
+    // Save the individual item data retrieved above into the browser's local storage.
+    localStorage.setItem("selectedShoesItemIdForEnchant", Shoes.id.toString());
+    localStorage.setItem(
+      "selectedShoesItemNameForEnchant",
+      Shoes.name.toString()
+    );
+    localStorage.setItem(
+      "selectedShoesItemImgForEnchant",
+      Shoes.image.toString()
+    );
+    localStorage.setItem(
+      "selectedShoesItemTierForEnchant",
+      Shoes.tier.toString()
+    );
+    localStorage.setItem(
+      "selectedShoesItemDefForEnchant",
+      Shoes.defLvl0.toString()
+    );
+  }
+  // FAKE FUNCTION TO UPDATA DATA ON LOAD, WORK THE SAME LIKE 'ENCHANTPERCLICK'
+  //!! BUT VALUE NOT SAVED IN LOCALSTORAGE !!
+  //Shoes
+  function FakeUpdateToRefreshTheShoesData(ShoesIndex: any) {
+    const item = ShoesImageAndNameAndCost[ShoesIndex];
+    const ShoesItemUpgradeName = `${item.name}`;
+    const savedShoesItemUpgrade = localStorage.getItem(ShoesItemUpgradeName);
+    const savedShoesItemUpgradeNumber = Number(savedShoesItemUpgrade);
+    const ShoesUpgradedValue =
+      savedShoesItemUpgradeNumber < 15 ? savedShoesItemUpgradeNumber : 15;
+
+    localStorage.setItem("ShoesUpgradedValue", ShoesUpgradedValue.toString());
+
+    localStorage.setItem(ShoesItemUpgradeName, ShoesUpgradedValue.toString());
+
+    const ShoesItemName = `+${ShoesUpgradedValue} ${item.name}`;
+
+    const upgradedShoesNames = [...UpgradedNamesShoes];
+    upgradedShoesNames[ShoesIndex] = ShoesItemName;
+
+    const itemSavedDefShoesKey = `selectedShoesItemDefForEnchant_${item.name}`;
+
+    const savedDefShoes =
+      localStorage.getItem(itemSavedDefShoesKey) || item.defLvl0;
+    setUpgradedDefShoes(savedDefShoes);
+  }
   return (
     <>
       <div className="app-container">
@@ -221,7 +601,54 @@ const Inventory = ({
             return (
               <span
                 onContextMenu={(e) => {
-                  handleContextMenu(e, item);
+                  if (OpenAndCloseEqinEnchant === true) {
+                    if (item.type === "weapon") {
+                      HandleItemClick(mainWeaponData, item.id);
+                      setSelectedItemIndex(item.id);
+                      GetIdPerClick(item.id);
+                      FakeUpdateToRefreshTheData(item.id);
+                      console.log("w");
+                    } else if (item.type === "gloves") {
+                      HandleItemClick(GlovesData, item.id);
+                      setSelectedGlovesItemIndex(item.id - 3000);
+                      GetIdPerClickGloves(item.id - 3000);
+                      FakeUpdateToRefreshTheGlovesData(item.id - 3000);
+                      console.log("g");
+                      console.log("g", item.id);
+                    } else if (item.type === "shield") {
+                      HandleItemClick(ShieldAndDaggerData, item.id);
+                      setSelectedShieldAndDaggerItemIndex(item.id - 5000);
+                      GetIdPerClickShieldAndDagger(item.id - 5000);
+                      FakeUpdateToRefreshTheShieldAndDaggerData(item.id - 5000);
+                      console.log("shi");
+                    } else if (item.type === "dagger") {
+                      HandleItemClick(ShieldAndDaggerData, item.id);
+                      setSelectedShieldAndDaggerItemIndex(item.id - 5000);
+                      GetIdPerClickShieldAndDagger(item.id - 5000);
+                      FakeUpdateToRefreshTheShieldAndDaggerData(item.id - 5000);
+                      console.log("d");
+                    } else if (item.type === "Armor") {
+                      HandleItemClick(ArmorData, item.id);
+                      setSelectedArmorItemIndex(item.id - 2000);
+                      GetIdPerClickArmor(item.id - 2000);
+                      FakeUpdateToRefreshTheArmorData(item.id - 2000);
+                      console.log("a");
+                    } else if (item.type === "Shoes") {
+                      HandleItemClick(ShoesData, item.id);
+                      setSelectedShoesItemIndex(item.id - 4000);
+                      GetIdPerClickShoes(item.id - 4000);
+                      FakeUpdateToRefreshTheShoesData(item.id - 4000);
+                      console.log("s ", item.id);
+                    } else if (item.type === "helmet") {
+                      HandleItemClick(HelmetData, item.id);
+                      setSelectedHelmetItemIndex(item.id - 1000);
+                      GetIdPerClickHelmet(item.id - 1000);
+                      FakeUpdateToRefreshTheHelmetData(item.id - 1000);
+                      console.log("h");
+                    }
+                  } else {
+                    handleContextMenu(e, item);
+                  }
                 }}
                 key={`item-slot-${slot}`}
               >

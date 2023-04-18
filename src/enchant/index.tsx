@@ -41,6 +41,33 @@ const Enchant = ({
   UpgradedDefShieldAndDagger,
   setUpgradedDmgShieldAndDagger,
   UpgradedDmgShieldAndDagger,
+
+  OpenCloseEqinEnchant,
+
+  //2
+  itsMainWeapon,
+  selectedArmorItemIndex,
+  itsArmor,
+  itsHelmet,
+  selectedHelmetItemIndex,
+  itsShoes,
+  selectedShoesItemIndex,
+  itsGloves,
+  selectedGlovesItemIndex,
+  itsShieldAndDagger,
+  selectedShieldAndDaggerItemIndex,
+  savedImage,
+  savedName,
+  savedArmorImage,
+  savedArmorName,
+  savedHelmetImage,
+  savedHelmetName,
+  savedGlovesImage,
+  savedShieldAndDaggerImage,
+  upgradedValue,
+
+  selectedItemIndex,
+  savedShoesImage,
 }: {
   mainWeaponData: any;
   setUpgradedNamesMainWeapon: any;
@@ -75,236 +102,34 @@ const Enchant = ({
   UpgradedDefShieldAndDagger: any;
   setUpgradedDmgShieldAndDagger: any;
   UpgradedDmgShieldAndDagger: any;
+
+  OpenCloseEqinEnchant: any;
+
+  //2
+  itsMainWeapon: any;
+  selectedArmorItemIndex: any;
+  itsArmor: any;
+  itsHelmet: any;
+  selectedHelmetItemIndex: any;
+  itsShoes: any;
+  selectedShoesItemIndex: any;
+  itsGloves: any;
+  selectedGlovesItemIndex: any;
+  itsShieldAndDagger: any;
+  selectedShieldAndDaggerItemIndex: any;
+  savedImage: any;
+  savedName: any;
+  savedArmorImage: any;
+  savedArmorName: any;
+  savedHelmetImage: any;
+  savedHelmetName: any;
+  savedGlovesImage: any;
+  savedShieldAndDaggerImage: any;
+  upgradedValue: any;
+
+  selectedItemIndex: any;
+  savedShoesImage: any;
 }) => {
-  //MAIN WEAPON
-  /// load image form localstorage
-  const savedImage = localStorage.getItem("selectedItemImgForEnchant");
-  const savedName = localStorage.getItem("selectedItemNameForEnchant");
-  // Declare state to save selected damage value, initialized with null
-  const [, setSavedDmgMains] = useState<number | null>(null);
-
-  // Load selected damage value from local storage when component mounts
-  useEffect(() => {
-    const savedDmgMainFromLocalStorage = localStorage.getItem(
-      "selectedItemDmgForEnchant"
-    );
-    if (savedDmgMainFromLocalStorage) {
-      setSavedDmgMains(Number(savedDmgMainFromLocalStorage));
-    }
-  }, []);
-  // Declare state to save selected item index, initialized with 0
-  const [selectedItemIndex, setSelectedItemIndex] = useState<number>(0);
-
-  // Declare state to save saved item upgrade value, initialized with 0
-  const [savedItemUpgrade] = useState<number>(0);
-
-  // its weapon or armor ?
-  const [itsMainWeapon, setitsMainWeapon] = useState<boolean>(false);
-
-  const savedUpgradedValue = localStorage.getItem("upgradedValue");
-  const upgradedValue = savedUpgradedValue ? Number(savedUpgradedValue) : 0;
-
-  // to check the enchantment level
-  //armor
-  const savedArmorUpgradedValue = localStorage.getItem("ArmorUpgradedValue");
-  const ArmorupgradedValue = savedArmorUpgradedValue
-    ? Number(savedArmorUpgradedValue)
-    : 0;
-  //helmet
-  const savedHelmetUpgradedValue = localStorage.getItem("HelmetUpgradedValue");
-  const HelmetupgradedValue = savedHelmetUpgradedValue
-    ? Number(savedHelmetUpgradedValue)
-    : 0;
-  //Shoes
-  const savedShoesUpgradedValue = localStorage.getItem("ShoesUpgradedValue");
-  const ShoesupgradedValue = savedShoesUpgradedValue
-    ? Number(savedShoesUpgradedValue)
-    : 0;
-  //gloves
-  const savedGlovesUpgradedValue = localStorage.getItem("GlovesUpgradedValue");
-  const GlovesupgradedValue = savedGlovesUpgradedValue
-    ? Number(savedGlovesUpgradedValue)
-    : 0;
-  //gloves
-  const savedShieldAndDaggerUpgradedValue = localStorage.getItem(
-    "ShieldAndDaggerUpgradedValue"
-  );
-  const ShieldAndDaggerupgradedValue = savedShieldAndDaggerUpgradedValue
-    ? Number(savedShieldAndDaggerUpgradedValue)
-    : 0;
-  //=================================================================================
-  //ARMOR
-  /// load image form localstorage
-  const savedArmorImage = localStorage.getItem(
-    "selectedArmorItemImgForEnchant"
-  );
-  const savedArmorName = localStorage.getItem(
-    "selectedArmorItemNameForEnchant"
-  );
-
-  // Declare state to save selected damage value, initialized with null
-  const [, setSavedDefArmor] = useState<number | null>(null);
-
-  // Load selected damage value from local storage when component mounts
-  useEffect(() => {
-    const savedDefArmorFromLocalStorage = localStorage.getItem(
-      "selectedItemDefForEnchant"
-    );
-    if (savedDefArmorFromLocalStorage) {
-      setSavedDefArmor(Number(savedDefArmorFromLocalStorage));
-    }
-  }, []);
-
-  // Declare state to save selected item index, initialized with 0
-  const [selectedArmorItemIndex, setSelectedArmorItemIndex] =
-    useState<number>(0);
-
-  // Declare state to save saved item upgrade value, initialized with 0
-  const [savedArmorItemUpgrade] = useState<number>(0);
-  // its weapon or armor ?
-  const [itsArmor, setitsArmor] = useState<boolean>(false);
-
-  //=================================================================================
-  //HELMET
-  /// load image form localstorage
-  const savedHelmetImage = localStorage.getItem(
-    "selectedHelmetItemImgForEnchant"
-  );
-  const savedHelmetName = localStorage.getItem(
-    "selectedHelmetItemNameForEnchant"
-  );
-
-  // Declare state to save selected damage value, initialized with null
-  const [, setSavedDefHelmet] = useState<number | null>(null);
-
-  // Load selected damage value from local storage when component mounts
-  useEffect(() => {
-    const savedDefHelmetFromLocalStorage = localStorage.getItem(
-      "selectedItemDefForEnchant"
-    );
-    if (savedDefHelmetFromLocalStorage) {
-      setSavedDefHelmet(Number(savedDefHelmetFromLocalStorage));
-    }
-  }, []);
-
-  // Declare state to save selected item index, initialized with 0
-  const [selectedHelmetItemIndex, setSelectedHelmetItemIndex] =
-    useState<number>(0);
-  // Declare state to save saved item upgrade value, initialized with 0
-  const [savedHelmetItemUpgrade] = useState<number>(0);
-  // its weapon or armor ?
-  const [itsHelmet, setitsHelmet] = useState<boolean>(false);
-
-  //=================================================================================
-  //SHOES
-  /// load image form localstorage
-  const savedShoesImage = localStorage.getItem(
-    "selectedShoesItemImgForEnchant"
-  );
-  const savedShoesName = localStorage.getItem(
-    "selectedShoesItemNameForEnchant"
-  );
-
-  // Declare state to save selected damage value, initialized with null
-  const [, setSavedDefShoes] = useState<number | null>(null);
-
-  // Load selected damage value from local storage when component mounts
-  useEffect(() => {
-    const savedDefShoesFromLocalStorage = localStorage.getItem(
-      "selectedItemDefForEnchant"
-    );
-    if (savedDefShoesFromLocalStorage) {
-      setSavedDefShoes(Number(savedDefShoesFromLocalStorage));
-    }
-  }, []);
-
-  // Declare state to save selected item index, initialized with 0
-  const [selectedShoesItemIndex, setSelectedShoesItemIndex] =
-    useState<number>(0);
-  // Declare state to save saved item upgrade value, initialized with 0
-  const [savedShoesItemUpgrade] = useState<number>(0);
-  // its weapon or armor ?
-  const [itsShoes, setitsShoes] = useState<boolean>(false);
-
-  //=================================================================================
-  //ShieldAndDagger
-  /// load image form localstorage
-  const savedShieldAndDaggerImage = localStorage.getItem(
-    "selectedShieldAndDaggerItemImgForEnchant"
-  );
-  const savedShieldAndDaggerName = localStorage.getItem(
-    "selectedShieldAndDaggerItemNameForEnchant"
-  );
-  // Declare state to save selected damage value, initialized with null
-  const [, setSavedDefShieldAndDagger] = useState<number | null>(null);
-
-  // Load selected damage value from local storage when component mounts
-  useEffect(() => {
-    const savedDefShieldAndDaggerFromLocalStorage = localStorage.getItem(
-      "selectedItemDefForEnchant"
-    );
-    if (savedDefShieldAndDaggerFromLocalStorage) {
-      setSavedDefShieldAndDagger(
-        Number(savedDefShieldAndDaggerFromLocalStorage)
-      );
-    }
-  }, []);
-  // Declare state to save selected damage value, initialized with null
-  const [, setSavedDmgShieldAndDagger] = useState<number | null>(null);
-
-  // Load selected damage value from local storage when component mounts
-  useEffect(() => {
-    const savedDmgShieldAndDaggerFromLocalStorage = localStorage.getItem(
-      "selectedItemDmgForEnchant"
-    );
-    if (savedDmgShieldAndDaggerFromLocalStorage) {
-      setSavedDmgShieldAndDagger(
-        Number(savedDmgShieldAndDaggerFromLocalStorage)
-      );
-    }
-  }, []);
-  // Declare state to save selected item index, initialized with 0
-  const [
-    selectedShieldAndDaggerItemIndex,
-    setSelectedShieldAndDaggerItemIndex,
-  ] = useState<number>(0);
-  // Declare state to save saved item upgrade value, initialized with 0
-  const [savedShieldAndDaggerItemUpgrade] = useState<number>(0);
-  // its weapon or armor ?
-  const [itsShieldAndDagger, setitsShieldAndDagger] = useState<boolean>(false);
-
-  //=================================================================================
-  //Gloves
-  /// load image form localstorage
-  const savedGlovesImage = localStorage.getItem(
-    "selectedGlovesItemImgForEnchant"
-  );
-  const savedGlovesName = localStorage.getItem(
-    "selectedGlovesItemNameForEnchant"
-  );
-
-  // Declare state to save selected damage value, initialized with null
-  const [, setSavedDefGloves] = useState<number | null>(null);
-
-  // Load selected damage value from local storage when component mounts
-  useEffect(() => {
-    const savedDefGlovesFromLocalStorage = localStorage.getItem(
-      "selectedItemDefForEnchant"
-    );
-    if (savedDefGlovesFromLocalStorage) {
-      setSavedDefGloves(Number(savedDefGlovesFromLocalStorage));
-    }
-  }, []);
-
-  // Declare state to save selected item index, initialized with 0
-  const [selectedGlovesItemIndex, setSelectedGlovesItemIndex] =
-    useState<number>(0);
-  // Declare state to save saved item upgrade value, initialized with 0
-  const [savedGlovesItemUpgrade] = useState<number>(0);
-  // its weapon or armor ?
-  const [itsGloves, setitsGloves] = useState<boolean>(false);
-
-  //=================================================================================
   // Remove saved item image and name from local storage on component mount
   useEffect(() => {
     localStorage.removeItem("selectedItemImgForEnchant");
@@ -366,72 +191,25 @@ const Enchant = ({
             UpgradedDmgShieldAndDagger={UpgradedDmgShieldAndDagger}
           />
           <PutItemHere
-            mainWeaponData={mainWeaponData}
-            savedItemUpgrade={savedItemUpgrade}
-            UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
-            setSelectedItemIndex={setSelectedItemIndex}
-            setUpgradedDmgMainWeapon={setUpgradedDmgMainWeapon}
             savedImage={savedImage}
             savedName={savedName}
-            ArmorData={ArmorData}
             itsMainWeapon={itsMainWeapon}
-            setitsMainWeapon={setitsMainWeapon}
-            savedArmorItemUpgrade={savedArmorItemUpgrade}
-            UpgradedNamesArmor={UpgradedNamesArmor}
             savedArmorImage={savedArmorImage}
             savedArmorName={savedArmorName}
-            setSelectedArmorItemIndex={setSelectedArmorItemIndex}
-            setUpgradedDefArmor={setUpgradedDefArmor}
-            setitsArmor={setitsArmor}
             itsArmor={itsArmor}
-            HelmetData={HelmetData}
-            savedHelmetItemUpgrade={savedHelmetItemUpgrade}
-            UpgradedNamesHelmet={UpgradedNamesHelmet}
             savedHelmetImage={savedHelmetImage}
             savedHelmetName={savedHelmetName}
-            setSelectedHelmetItemIndex={setSelectedHelmetItemIndex}
-            setUpgradedDefHelmet={setUpgradedDefHelmet}
             itsHelmet={itsHelmet}
-            setitsHelmet={setitsHelmet}
-            ShoesData={ShoesData}
-            savedShoesItemUpgrade={savedShoesItemUpgrade}
-            UpgradedNamesShoes={UpgradedNamesShoes}
             savedShoesImage={savedShoesImage}
-            savedShoesName={savedShoesName}
-            setSelectedShoesItemIndex={setSelectedShoesItemIndex}
-            setUpgradedDefShoes={setUpgradedDefShoes}
             itsShoes={itsShoes}
-            setitsShoes={setitsShoes}
-            GlovesData={GlovesData}
-            savedGlovesItemUpgrade={savedGlovesItemUpgrade}
-            UpgradedNamesGloves={UpgradedNamesGloves}
             savedGlovesImage={savedGlovesImage}
-            savedGlovesName={savedGlovesName}
-            setSelectedGlovesItemIndex={setSelectedGlovesItemIndex}
-            setUpgradedDefGloves={setUpgradedDefGloves}
             itsGloves={itsGloves}
-            setitsGloves={setitsGloves}
-            ShieldAndDaggerData={ShieldAndDaggerData}
-            savedShieldAndDaggerItemUpgrade={savedShieldAndDaggerItemUpgrade}
-            UpgradedNamesShieldAndDagger={UpgradedNamesShieldAndDagger}
             savedShieldAndDaggerImage={savedShieldAndDaggerImage}
-            savedShieldAndDaggerName={savedShieldAndDaggerName}
-            setSelectedShieldAndDaggerItemIndex={
-              setSelectedShieldAndDaggerItemIndex
-            }
-            setUpgradedDefShieldAndDagger={setUpgradedDefShieldAndDagger}
             itsShieldAndDagger={itsShieldAndDagger}
-            setitsShieldAndDagger={setitsShieldAndDagger}
-            setUpgradedDmgShieldAndDagger={setUpgradedDmgShieldAndDagger}
-            UpgradedDmgShieldAndDagger={UpgradedDmgShieldAndDagger}
+            OpenCloseEqinEnchant={OpenCloseEqinEnchant}
           />
           <EnchantSucces
             upgradedValue={upgradedValue}
-            ArmorupgradedValue={ArmorupgradedValue}
-            HelmetupgradedValue={HelmetupgradedValue}
-            ShoesupgradedValue={ShoesupgradedValue}
-            GlovesupgradedValue={GlovesupgradedValue}
-            ShieldAndDaggerupgradedValue={ShieldAndDaggerupgradedValue}
             selectedItemIndex={selectedItemIndex}
             savedImage={savedImage}
             savedName={savedName}
@@ -453,19 +231,16 @@ const Enchant = ({
             UpgradedDefShoes={UpgradedDefShoes}
             selectedShoesItemIndex={selectedShoesItemIndex}
             savedShoesImage={savedShoesImage}
-            savedShoesName={savedShoesName}
             setUpgradedDefShoes={setUpgradedDefShoes}
             itsShoes={itsShoes}
             UpgradedDefGloves={UpgradedDefGloves}
             selectedGlovesItemIndex={selectedGlovesItemIndex}
             savedGlovesImage={savedGlovesImage}
-            savedGlovesName={savedGlovesName}
             setUpgradedDefGloves={setUpgradedDefGloves}
             itsGloves={itsGloves}
             UpgradedDefShieldAndDagger={UpgradedDefShieldAndDagger}
             selectedShieldAndDaggerItemIndex={selectedShieldAndDaggerItemIndex}
             savedShieldAndDaggerImage={savedShieldAndDaggerImage}
-            savedShieldAndDaggerName={savedShieldAndDaggerName}
             setUpgradedDefShieldAndDagger={setUpgradedDefShieldAndDagger}
             itsShieldAndDagger={itsShieldAndDagger}
             setUpgradedDmgShieldAndDagger={setUpgradedDmgShieldAndDagger}

@@ -28,9 +28,6 @@
   cursor: auto;
   flex-direction: column;
 }
-.test {
-  color: white;
-}
 
 .itemsForPurchasable {
   width: 80px;

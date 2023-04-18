@@ -43,6 +43,60 @@ const BlackSmith = ({
   UpgradedDefShieldAndDagger,
   setUpgradedDmgShieldAndDagger,
   UpgradedDmgShieldAndDagger,
+
+  setOpenAndCloseEqinEnchant,
+  OpenAndCloseEqinEnchant,
+  OpenCloseEqinEnchant,
+  //loop
+  savedItemUpgrade,
+  setSelectedItemIndex,
+  savedArmorItemUpgrade,
+  setSelectedArmorItemIndex,
+  setitsMainWeapon,
+  setitsArmor,
+  savedHelmetItemUpgrade,
+  setSelectedHelmetItemIndex,
+  setitsHelmet,
+  savedShoesItemUpgrade,
+  setSelectedShoesItemIndex,
+  setitsShoes,
+  savedGlovesItemUpgrade,
+  setSelectedGlovesItemIndex,
+  setitsGloves,
+  savedShieldAndDaggerItemUpgrade,
+  setSelectedShieldAndDaggerItemIndex,
+  setitsShieldAndDagger,
+  //2
+  itsMainWeapon,
+  selectedArmorItemIndex,
+  itsArmor,
+  itsHelmet,
+  selectedHelmetItemIndex,
+  itsShoes,
+  selectedShoesItemIndex,
+  itsGloves,
+  selectedGlovesItemIndex,
+  itsShieldAndDagger,
+  selectedShieldAndDaggerItemIndex,
+  savedImage,
+  savedName,
+  savedArmorImage,
+  savedArmorName,
+  savedHelmetImage,
+  savedHelmetName,
+  savedGlovesImage,
+  savedGlovesName,
+  savedShieldAndDaggerImage,
+  savedShieldAndDaggerName,
+  upgradedValue,
+  ArmorupgradedValue,
+  HelmetupgradedValue,
+  ShoesupgradedValue,
+  GlovesupgradedValue,
+  ShieldAndDaggerupgradedValue,
+  selectedItemIndex,
+  savedShoesImage,
+  savedShoesName,
 }: {
   BSO: boolean;
   setWSO: any;
@@ -83,6 +137,60 @@ const BlackSmith = ({
   UpgradedDefShieldAndDagger: any;
   setUpgradedDmgShieldAndDagger: any;
   UpgradedDmgShieldAndDagger: any;
+
+  setOpenAndCloseEqinEnchant: any;
+  OpenAndCloseEqinEnchant: any;
+  OpenCloseEqinEnchant: any;
+  //loop
+  savedItemUpgrade: any;
+  setSelectedItemIndex: any;
+  savedArmorItemUpgrade: any;
+  setSelectedArmorItemIndex: any;
+  setitsMainWeapon: any;
+  setitsArmor: any;
+  savedHelmetItemUpgrade: any;
+  setSelectedHelmetItemIndex: any;
+  setitsHelmet: any;
+  savedShoesItemUpgrade: any;
+  setSelectedShoesItemIndex: any;
+  setitsShoes: any;
+  savedGlovesItemUpgrade: any;
+  setSelectedGlovesItemIndex: any;
+  setitsGloves: any;
+  savedShieldAndDaggerItemUpgrade: any;
+  setSelectedShieldAndDaggerItemIndex: any;
+  setitsShieldAndDagger: any;
+  //2
+  itsMainWeapon: any;
+  selectedArmorItemIndex: any;
+  itsArmor: any;
+  itsHelmet: any;
+  selectedHelmetItemIndex: any;
+  itsShoes: any;
+  selectedShoesItemIndex: any;
+  itsGloves: any;
+  selectedGlovesItemIndex: any;
+  itsShieldAndDagger: any;
+  selectedShieldAndDaggerItemIndex: any;
+  savedImage: any;
+  savedName: any;
+  savedArmorImage: any;
+  savedArmorName: any;
+  savedHelmetImage: any;
+  savedHelmetName: any;
+  savedGlovesImage: any;
+  savedGlovesName: any;
+  savedShieldAndDaggerImage: any;
+  savedShieldAndDaggerName: any;
+  upgradedValue: any;
+  ArmorupgradedValue: any;
+  HelmetupgradedValue: any;
+  ShoesupgradedValue: any;
+  GlovesupgradedValue: any;
+  ShieldAndDaggerupgradedValue: any;
+  selectedItemIndex: any;
+  savedShoesImage: any;
+  savedShoesName: any;
 }) => {
   const [BlackSmitchIsOpen, setBlackSmitchIsOpen] = useState(true);
 
@@ -100,6 +208,7 @@ const BlackSmith = ({
         onClick={(e) => {
           e.stopPropagation();
           colseAll();
+          setOpenAndCloseEqinEnchant(false);
         }}
       >
         <div
@@ -143,6 +252,29 @@ const BlackSmith = ({
             setUpgradedNamesShieldAndDagger={setUpgradedNamesShieldAndDagger}
             setUpgradedDmgShieldAndDagger={setUpgradedDmgShieldAndDagger}
             UpgradedDmgShieldAndDagger={UpgradedDmgShieldAndDagger}
+            OpenCloseEqinEnchant={OpenCloseEqinEnchant}
+            itsMainWeapon={itsMainWeapon}
+            selectedArmorItemIndex={selectedArmorItemIndex}
+            itsArmor={itsArmor}
+            itsHelmet={itsHelmet}
+            selectedHelmetItemIndex={selectedHelmetItemIndex}
+            itsShoes={itsShoes}
+            selectedShoesItemIndex={selectedShoesItemIndex}
+            itsGloves={itsGloves}
+            selectedGlovesItemIndex={selectedGlovesItemIndex}
+            itsShieldAndDagger={itsShieldAndDagger}
+            selectedShieldAndDaggerItemIndex={selectedShieldAndDaggerItemIndex}
+            savedImage={savedImage}
+            savedName={savedName}
+            savedArmorImage={savedArmorImage}
+            savedArmorName={savedArmorName}
+            savedHelmetImage={savedHelmetImage}
+            savedHelmetName={savedHelmetName}
+            savedGlovesImage={savedGlovesImage}
+            savedShieldAndDaggerImage={savedShieldAndDaggerImage}
+            upgradedValue={upgradedValue}
+            selectedItemIndex={selectedItemIndex}
+            savedShoesImage={savedShoesImage}
           />
         </div>
       </div>
