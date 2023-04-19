@@ -6,10 +6,12 @@ const Clicker = ({
   setCount,
   count,
   FullCountPerClick,
+  handleButtonClick,
 }: {
   setCount: any;
   count: number;
   FullCountPerClick: number;
+  handleButtonClick: any;
 }) => {
   /*
   useEffect(() => {
@@ -32,7 +34,10 @@ const Clicker = ({
     <div id="SilverCountInfo">
       <p>{formatNumber(count)} silver</p>
       <button
-        onClick={() => setCount(count + FullCountPerClick + 10000)}
+        onClick={() => {
+          setCount(count + FullCountPerClick + 10000);
+          handleButtonClick();
+        }}
         id="Click"
       ></button>
     </div>

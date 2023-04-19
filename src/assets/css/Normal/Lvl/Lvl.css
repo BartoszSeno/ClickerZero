@@ -1,0 +1,32 @@
+.greyexp {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: gray;
+  display: flex;
+  width: 100%;
+  height: 7px;
+  border-top: 1px solid rgba(0, 0, 0, 0.452);
+  cursor: default;
+}
+
+.ActualLvl {
+  position: absolute;
+  margin-top: -50px;
+  margin-left: 15px;
+  font-size: 5vh;
+}
+
+.progress-lvl {
+  display: none;
+}
+
+.greyexp:hover .progress-lvl {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  margin-top: -15px;
+  width: 100%;
+  font-size: 2vh;
+}

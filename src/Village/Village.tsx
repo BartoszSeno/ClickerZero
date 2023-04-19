@@ -21,6 +21,7 @@ import Clicker from "../hook/ClickerCount";
 import Information from "../Information";
 import PerClickPoints from "../hook/PerClick";
 import UpdateLvlOne from "../Upgrade/UpgradeLvlOne";
+import Lvl from "../hook/Lvl";
 
 const MainIndexVillage = () => {
   // ARRAY OF THE ENTIRE ShieldAndDagger
@@ -681,6 +682,46 @@ const MainIndexVillage = () => {
   const [itsGloves, setitsGloves] = useState<boolean>(false);
 
   //=================================================================================
+  //===================================Leveling======================================
+  //=================================================================================
+  const [clickCount, setClickCount] = useState(
+    Number(localStorage.getItem("clickCount")) || 0
+  );
+  const [fillCount, setFillCount] = useState(
+    Number(localStorage.getItem("fillCount")) || 0
+  );
+  const [maxClicks, setMaxClicks] = useState(
+    Number(localStorage.getItem("maxClicks")) || 50
+  );
+  const [maxClicksCount, setMaxClicksCount] = useState(
+    Number(localStorage.getItem("maxClicksCount")) || 1
+  );
+  const clickIncrease = FullCountPerClick;
+
+  console.log(maxClicks);
+  function handleButtonClick() {
+    if (clickCount < maxClicks) {
+      setClickCount(clickCount + clickIncrease);
+      if (clickCount + clickIncrease >= maxClicks) {
+        setFillCount(fillCount + 1);
+        setClickCount(0);
+        if (fillCount + 1 === maxClicksCount) {
+          setMaxClicks(Number(maxClicks) * 1.8342);
+          setMaxClicksCount(maxClicksCount + 1);
+        }
+      }
+    }
+  }
+
+  useEffect(() => {
+    localStorage.setItem("fillCount", fillCount.toString());
+    localStorage.setItem("clickCount", clickCount.toString());
+    localStorage.setItem("maxClicks", maxClicks.toString());
+    localStorage.setItem("maxClicksCount", maxClicksCount.toString());
+  }, [fillCount, clickCount, maxClicks, maxClicksCount]);
+  //=================================================================================
+  //===================================Leveling======================================
+  //=================================================================================
   return (
     <>
       <div
@@ -701,6 +742,11 @@ const MainIndexVillage = () => {
             */}
           </div>
           <div className="midVillage">
+            <Lvl
+              clickCount={clickCount}
+              maxClicks={maxClicks}
+              fillCount={fillCount}
+            />
             <CharacterSelection />
             <MainEq
               mainWeaponData={mainWeaponData}
@@ -757,6 +803,7 @@ const MainIndexVillage = () => {
               setCount={setCount}
               count={count}
               FullCountPerClick={FullCountPerClick}
+              handleButtonClick={handleButtonClick}
             />
             <PerClickPoints
               FullCountPerClick={FullCountPerClick}
