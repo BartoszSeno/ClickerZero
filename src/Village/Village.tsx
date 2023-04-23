@@ -698,7 +698,6 @@ const MainIndexVillage = () => {
   );
   const clickIncrease = FullCountPerClick;
 
-  console.log(maxClicks);
   function handleButtonClick() {
     if (clickCount < maxClicks) {
       setClickCount(clickCount + clickIncrease);

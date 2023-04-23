@@ -8,6 +8,7 @@ const ShowShoes = ({
   ShoesDef,
   handleClickShoes,
   AoSoH,
+  FullInv,
 }: {
   ShoesData: any;
   count: number;
@@ -16,6 +17,7 @@ const ShowShoes = ({
   ShoesDef: any;
   handleClickShoes: any;
   AoSoH: any;
+  FullInv: any;
 }) => {
   return (
     <>
@@ -49,6 +51,11 @@ const ShowShoes = ({
               handleClickShoes(ShoesData[Number(idShoes)]);
               setCount(count - ShoesData[Number(idShoes)].cost);
             }}
+            disabled={
+              count < ShoesData[Number(idShoes)].cost ||
+              FullInv === true ||
+              ShoesData[Number(idShoes)].isBought === true
+            }
           >
             Purchase
           </button>

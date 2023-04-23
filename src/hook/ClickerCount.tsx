@@ -35,7 +35,7 @@ const Clicker = ({
       <p>{formatNumber(count)} silver</p>
       <button
         onClick={() => {
-          setCount(count + FullCountPerClick + 10000);
+          setCount(count + FullCountPerClick);
           handleButtonClick();
         }}
         id="Click"

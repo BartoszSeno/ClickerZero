@@ -122,11 +122,6 @@ const ShoesShop = ({
                         ? "flex"
                         : "none",
                   }}
-                  disabled={
-                    count < data.cost ||
-                    FullInv === true ||
-                    data.isBought === true
-                  }
                 >
                   {/*
               <div className="CostAndPrice">
@@ -172,6 +167,7 @@ const ShoesShop = ({
           ShoesDef={ShoesDef}
           handleClickShoes={handleClickShoes}
           AoSoH={AoSoH}
+          FullInv={FullInv}
         />
       </div>
     </>

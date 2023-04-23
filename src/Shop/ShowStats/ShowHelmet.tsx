@@ -8,6 +8,7 @@ const ShowHelmet = ({
   HelmetDef,
   handleClickHelmet,
   AoSoH,
+  FullInv,
 }: {
   HelmetData: any;
   count: number;
@@ -16,6 +17,7 @@ const ShowHelmet = ({
   HelmetDef: any;
   handleClickHelmet: any;
   AoSoH: any;
+  FullInv: any;
 }) => {
   return (
     <>
@@ -49,6 +51,11 @@ const ShowHelmet = ({
               handleClickHelmet(HelmetData[Number(idHelmet)]);
               setCount(count - HelmetData[Number(idHelmet)].cost);
             }}
+            disabled={
+              count < HelmetData[Number(idHelmet)].cost ||
+              FullInv === true ||
+              HelmetData[Number(idHelmet)].isBought === true
+            }
           >
             Purchase
           </button>

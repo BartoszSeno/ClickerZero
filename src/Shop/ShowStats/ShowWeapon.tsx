@@ -8,6 +8,7 @@ const ShowWeapon = ({
   MainWeaponDmg,
   handleClick,
   NoR,
+  FullInv,
 }: {
   mainWeaponData: any;
   count: number;
@@ -16,6 +17,7 @@ const ShowWeapon = ({
   MainWeaponDmg: any;
   handleClick: any;
   NoR: any;
+  FullInv: any;
 }) => {
   return (
     <>
@@ -75,6 +77,11 @@ const ShowWeapon = ({
                 handleClick(mainWeaponData[Number(idWeapon)]);
                 setCount(count - mainWeaponData[Number(idWeapon)].cost);
               }}
+              disabled={
+                count < mainWeaponData[Number(idWeapon)].cost ||
+                FullInv === true ||
+                mainWeaponData[Number(idWeapon)].isBought === true
+              }
             >
               Purchase
             </button>

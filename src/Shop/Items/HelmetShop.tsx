@@ -128,11 +128,6 @@ const HelmetShop = ({
                         ? "flex"
                         : "none",
                   }}
-                  disabled={
-                    count < data.cost ||
-                    FullInv === true ||
-                    data.isBought === true
-                  }
                 >
                   {/*
               <div className="CostAndPrice">
@@ -178,6 +173,7 @@ const HelmetShop = ({
           HelmetDef={HelmetDef}
           handleClickHelmet={handleClickHelmet}
           AoSoH={AoSoH}
+          FullInv={FullInv}
         />
       </div>
     </>

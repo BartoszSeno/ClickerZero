@@ -149,7 +149,18 @@ const ButtonForEnchant = ({
       let newSavedDmgMain = Number(
         localStorage.getItem(itemSavedDmgMainKey) || item.dmgLvl0
       );
-      newSavedDmgMain *= 2;
+      // Check the tier of the item and multiply the saved damage accordingly
+      if (item.tier === "green") {
+        newSavedDmgMain *= 1.2;
+      } else if (item.tier === "blue") {
+        newSavedDmgMain *= 1.7;
+      } else if (item.tier === "yellow") {
+        newSavedDmgMain *= 2.7;
+      } else if (item.tier === "red") {
+        newSavedDmgMain *= 3.4;
+      } else if (item.tier === "purple") {
+        newSavedDmgMain *= 5;
+      }
       localStorage.setItem(itemSavedDmgMainKey, newSavedDmgMain.toString());
       localStorage.setItem(
         `savedClicks_${item.name}`,

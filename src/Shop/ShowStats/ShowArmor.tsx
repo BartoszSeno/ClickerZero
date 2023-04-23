@@ -8,6 +8,7 @@ const ShowArmor = ({
   ArmorDef,
   handleClickArmor,
   AoSoH,
+  FullInv,
 }: {
   ArmorData: any;
   count: number;
@@ -16,6 +17,7 @@ const ShowArmor = ({
   ArmorDef: any;
   handleClickArmor: any;
   AoSoH: any;
+  FullInv: any;
 }) => {
   return (
     <>
@@ -50,6 +52,11 @@ const ShowArmor = ({
               handleClickArmor(ArmorData[Number(idArmor)]);
               setCount(count - ArmorData[Number(idArmor)].cost);
             }}
+            disabled={
+              count < ArmorData[Number(idArmor)].cost ||
+              FullInv === true ||
+              ArmorData[Number(idArmor)].isBought === true
+            }
           >
             Purchase
           </button>
