@@ -33,6 +33,7 @@ const ShowArmor = ({
             }}
           ></div>
           <div className="ArmorName">{ArmorData[Number(idArmor)].name}</div>
+          <span className="cost">Cost: {ArmorData[Number(idArmor)].cost}</span>
           <div className="ArmorDef">
             <span>DEf: </span>
             <span

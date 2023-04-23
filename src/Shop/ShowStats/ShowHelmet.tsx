@@ -32,6 +32,9 @@ const ShowHelmet = ({
             }}
           ></div>
           <div className="ArmorName">{HelmetData[Number(idHelmet)].name}</div>
+          <span className="cost">
+            Cost: {HelmetData[Number(idHelmet)].cost}
+          </span>
           <div className="ArmorDef">
             <span>DEf: </span>
             <span

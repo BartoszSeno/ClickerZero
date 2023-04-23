@@ -60,17 +60,22 @@ const ShowWeapon = ({
             {mainWeaponData[Number(idWeapon)].name}
           </div>
           <div className="WeaponDmg">
-            <span>DMG: </span>
-            <span
-              className="dmgCount"
-              style={{
-                color:
-                  mainWeaponData[Number(idWeapon)].dmgLvl0 > MainWeaponDmg
-                    ? "#33CC33"
-                    : "#EA0001",
-              }}
-            >
-              {formatNumber(mainWeaponData[Number(idWeapon)].dmgLvl0)}
+            <span>
+              DMG:{" "}
+              <span
+                className="dmgCount"
+                style={{
+                  color:
+                    mainWeaponData[Number(idWeapon)].dmgLvl0 > MainWeaponDmg
+                      ? "#33CC33"
+                      : "#EA0001",
+                }}
+              >
+                {formatNumber(mainWeaponData[Number(idWeapon)].dmgLvl0)}
+              </span>
+            </span>
+            <span className="WeaponCost">
+              Cost: {mainWeaponData[Number(idWeapon)].cost}
             </span>
             <button
               onClick={(e) => {
