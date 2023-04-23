@@ -803,14 +803,12 @@ const MainIndexVillage = () => {
               count={count}
               FullCountPerClick={FullCountPerClick}
               handleButtonClick={handleButtonClick}
-            />
-            <PerClickPoints
-              FullCountPerClick={FullCountPerClick}
               setFullCountPerClick={setFullCountPerClick}
               UpgradeOne={UpgradeOne}
               FullDmgValue={FullDmgValue}
               FullDefValue={FullDefValue}
             />
+
             <ClearLocalStorageButton />
             <UpdateLvlOne
               setCount={setCount}

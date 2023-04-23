@@ -1,13 +1,35 @@
 #Click {
-  background-image: url(../../../images/SpiritLvlOne.png);
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/fountain.gif);
   background-size: contain;
   background-repeat: no-repeat;
   border: none;
   background-color: transparent;
-  height: 200px;
-  width: 200px;
+  height: 450px;
+  width: 450px;
 }
 
 #Click:active {
   transform: scale(1.01);
+}
+
+.silver {
+  display: flex;
+  flex-direction: column;
+  margin-top: -99px;
+  font-size: 13px;
+  font-family: "Alagard";
+}
+
+.silver p {
+  margin: 4px;
+  padding: 4px;
+}
+
+.sc {
+  font-size: 25px;
+}
+
+.countPerClick {
+  margin-top: 3px;
+  font-family: "Alagard";
 }

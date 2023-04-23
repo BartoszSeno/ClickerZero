@@ -35,7 +35,7 @@ function PerClickPoints({
 
   return (
     <>
-      <div className="MainWeaponFullDmgText count per click">
+      <div className="countPerClick">
         Per Click: {formatNumber(FullCountPerClick.toFixed(0))}
       </div>
     </>

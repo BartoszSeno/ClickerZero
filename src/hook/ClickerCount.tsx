@@ -1,17 +1,26 @@
 import React, { useEffect } from "react";
 import "../assets/css/Normal/ClickerMain/clicker.css";
 import { formatNumber } from "./FormatNumber";
+import PerClickPoints from "./PerClick";
 
 const Clicker = ({
   setCount,
   count,
   FullCountPerClick,
   handleButtonClick,
+  setFullCountPerClick,
+  UpgradeOne,
+  FullDmgValue,
+  FullDefValue,
 }: {
   setCount: any;
   count: number;
   FullCountPerClick: number;
   handleButtonClick: any;
+  setFullCountPerClick: any;
+  UpgradeOne: number;
+  FullDmgValue: number;
+  FullDefValue: number;
 }) => {
   /*
   useEffect(() => {
@@ -32,14 +41,25 @@ const Clicker = ({
 
   return (
     <div id="SilverCountInfo">
-      <p>{formatNumber(count)} silver</p>
       <button
         onClick={() => {
           setCount(count + FullCountPerClick);
           handleButtonClick();
         }}
         id="Click"
-      ></button>
+      >
+        <span className="silver">
+          <p>Silver</p>
+          <p className="sc">{formatNumber(count)}</p>
+        </span>
+        <PerClickPoints
+          FullCountPerClick={FullCountPerClick}
+          setFullCountPerClick={setFullCountPerClick}
+          UpgradeOne={UpgradeOne}
+          FullDmgValue={FullDmgValue}
+          FullDefValue={FullDefValue}
+        />
+      </button>
     </div>
   );
 };
