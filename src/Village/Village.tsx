@@ -740,6 +740,8 @@ const MainIndexVillage = () => {
             */}
           </div>
           <div className="midVillage">
+            <ClearLocalStorageButton />
+
             <Lvl
               clickCount={clickCount}
               maxClicks={maxClicks}
@@ -808,8 +810,8 @@ const MainIndexVillage = () => {
               FullDmgValue={FullDmgValue}
               FullDefValue={FullDefValue}
             />
-
-            <ClearLocalStorageButton />
+            {/*
+            
             <UpdateLvlOne
               setCount={setCount}
               count={count}
@@ -818,6 +820,7 @@ const MainIndexVillage = () => {
               UpgradeOne={UpgradeOne}
               setUpgradeOne={setUpgradeOne}
             />
+            */}
           </div>
           <div className="rightVillage">
             <div
