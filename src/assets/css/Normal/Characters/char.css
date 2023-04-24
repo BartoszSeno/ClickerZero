@@ -125,3 +125,11 @@
   width: 150px;
   background-size: 200px;
 }
+
+.CharMainBox {
+  position: absolute;
+  display: flex;
+  margin-top: 200px;
+  margin-left: -490px;
+  z-index: 100;
+}

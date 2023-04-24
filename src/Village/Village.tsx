@@ -19,9 +19,9 @@ import { ShieldAndDaggerImageAndNameAndCost } from "../data/equipment/subWeapon"
 import ClearLocalStorageButton from "../hook/RemoveLS";
 import Clicker from "../hook/ClickerCount";
 import Information from "../Information";
-import PerClickPoints from "../hook/PerClick";
 import UpdateLvlOne from "../Upgrade/UpgradeLvlOne";
 import Lvl from "../hook/Lvl";
+import CharacterMain from "../Character/CharacterMain";
 
 const MainIndexVillage = () => {
   // ARRAY OF THE ENTIRE ShieldAndDagger
@@ -746,6 +746,7 @@ const MainIndexVillage = () => {
               maxClicks={maxClicks}
               fillCount={fillCount}
             />
+            <CharacterMain />
             <CharacterSelection />
             <MainEq
               mainWeaponData={mainWeaponData}
