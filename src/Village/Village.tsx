@@ -18,7 +18,6 @@ import { GlovesImageAndNameAndCost } from "../data/equipment/gloves";
 import { ShieldAndDaggerImageAndNameAndCost } from "../data/equipment/subWeapon";
 import ClearLocalStorageButton from "../hook/RemoveLS";
 import Clicker from "../hook/ClickerCount";
-import Information from "../Information";
 import UpdateLvlOne from "../Upgrade/UpgradeLvlOne";
 import Lvl from "../hook/Lvl";
 import CharacterMain from "../Character/CharacterMain";
