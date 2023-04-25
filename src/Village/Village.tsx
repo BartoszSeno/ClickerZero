@@ -718,15 +718,17 @@ const MainIndexVillage = () => {
     localStorage.setItem("maxClicksCount", maxClicksCount.toString());
   }, [fillCount, clickCount, maxClicks, maxClicksCount]);
   //=================================================================================
-  //===================================Leveling======================================
+  //=========================================================================
   //=================================================================================
+  const CharacterIsSelected = localStorage.getItem("ItsSelected");
+
   return (
     <>
       <div
         id="mainBGScrollHorizontal"
         ref={mainBGScrollHorizontalRef}
         onWheel={(e) => {
-          //e.preventDefault();
+          e.preventDefault();
           handleScroll(e.deltaY);
         }}
       >

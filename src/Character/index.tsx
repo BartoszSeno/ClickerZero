@@ -46,7 +46,7 @@ const CharacterSelection = () => {
     <>
       <div
         id="CharacterSlect"
-        style={{ display: ItsSelected ? "none" : "false" }}
+        style={{ display: ItsSelected ? "none" : "flex" }}
       >
         <div className="Arrow" onClick={() => handleArrowClick("left")}>
           {"<"}
