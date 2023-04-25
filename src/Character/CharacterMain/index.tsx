@@ -1,16 +1,27 @@
 /* eslint-disable array-callback-return */
 import "../../assets/css/Normal/Characters/char.css";
 import { CharacterSelectionStart } from "../../data/character/character";
+import UpgradeCharacter from "../../Upgrade/UpgradeCharacter";
 
-const CharacterMain = () => {
+const CharacterMain = ({
+  UpgradeCharacters,
+  setUpgradeCharacters,
+}: {
+  UpgradeCharacters: any;
+  setUpgradeCharacters: any;
+}) => {
   const savedIdCharacter = localStorage.getItem("selectedCharacterID");
+
+  function OpenUpChar() {
+    setUpgradeCharacters(true);
+  }
 
   return (
     <>
       {CharacterSelectionStart.filter(
         (data: any) => data.id === Number(savedIdCharacter)
       ).map((data: any) => (
-        <div className="CharMainBox">
+        <div className="CharMainBox" onClick={OpenUpChar}>
           <div
             className="CharacterImgEq"
             style={{
@@ -31,6 +42,10 @@ const CharacterMain = () => {
           ></div>
         </div>
       ))}
+      <UpgradeCharacter
+        UpgradeCharacters={UpgradeCharacters}
+        setUpgradeCharacters={setUpgradeCharacters}
+      />
     </>
   );
 };

@@ -119,6 +119,7 @@
 }
 
 .CharacterImgEq {
+  position: relative;
   background-position: center;
   background-repeat: no-repeat;
   height: 200px;

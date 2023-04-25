@@ -720,7 +720,7 @@ const MainIndexVillage = () => {
   //=================================================================================
   //=========================================================================
   //=================================================================================
-  const CharacterIsSelected = localStorage.getItem("ItsSelected");
+  const [UpgradeCharacters, setUpgradeCharacters] = useState<boolean>(false);
 
   return (
     <>
@@ -749,7 +749,10 @@ const MainIndexVillage = () => {
               maxClicks={maxClicks}
               fillCount={fillCount}
             />
-            <CharacterMain />
+            <CharacterMain
+              UpgradeCharacters={UpgradeCharacters}
+              setUpgradeCharacters={setUpgradeCharacters}
+            />
             <CharacterSelection />
             <MainEq
               mainWeaponData={mainWeaponData}
