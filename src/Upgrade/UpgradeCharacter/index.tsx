@@ -17,6 +17,7 @@ const UpgradeCharacter = ({
         id="CharacterUpgrade"
         style={{ display: UpgradeCharacters ? "flex" : "none" }}
       >
+        <div className="ChrUpg">Character Upgrade</div>
         <div className="CloseUC" onClick={CloseUpChar}></div>
       </div>
     </>

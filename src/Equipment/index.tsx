@@ -61,6 +61,7 @@ const MainEq = ({
   setUpgradedDefShieldAndDagger,
   setitsShieldAndDagger,
   setUpgradedDmgShieldAndDagger,
+  setUpgradeCharacters,
 }: {
   mainWeaponData: any;
   UpgradedNamesMainWeapon: any;
@@ -110,6 +111,7 @@ const MainEq = ({
   setUpgradedDefShieldAndDagger: any;
   setitsShieldAndDagger: any;
   setUpgradedDmgShieldAndDagger: any;
+  setUpgradeCharacters: any;
 }) => {
   //MAIN WEAPON
   //===========================================================================
@@ -226,6 +228,7 @@ const MainEq = ({
       OpenAndCloseInvEq();
       setCe(true);
       setInv(true);
+      setUpgradeCharacters(false);
       isKeyPressed = true;
     }
   });
@@ -446,6 +449,7 @@ const MainEq = ({
               : "none",
           }}
         >
+          <div className="inventoryTitle">Inventory</div>
           <div
             className="CloseInv"
             onClick={(e) => {
@@ -510,6 +514,7 @@ const MainEq = ({
             backgroundImage: ce ? "" : "none",
           }}
         >
+          <div className="EqTitle">Equipment</div>
           <div className="CloseEq" onClick={CloseEq}></div>
           <EquipContainer
             mainWeaponData={mainWeaponData}

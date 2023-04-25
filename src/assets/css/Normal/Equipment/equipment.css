@@ -32,7 +32,7 @@
   align-items: start;
   width: 480px;
   overflow: hidden;
-  z-index: 100;
+  z-index: 200;
   color: white;
   height: 314px;
   background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/invenory/invSlots.png);

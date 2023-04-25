@@ -9,11 +9,29 @@
   left: 50%;
   transform: translate(-50%, 0%);
   pointer-events: none;
+  z-index: 99;
+}
+.inventoryTitle,
+.EqTitle {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  height: 50px;
+  width: 395px;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+
+.EqTitle {
+  width: 310px;
+  margin-left: -1px;
+  margin-top: -312px;
 }
 
 #option-container {
   display: flex;
-  position: relative;
   margin-left: 150px;
   width: 455px;
   height: 626px;
@@ -21,7 +39,6 @@
   background-repeat: no-repeat;
   background-position: center;
   background-position-y: -12px;
-  z-index: 3;
   pointer-events: all;
 }
 #EqCharacters {

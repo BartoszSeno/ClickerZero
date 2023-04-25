@@ -804,6 +804,7 @@ const MainIndexVillage = () => {
               setUpgradedDefShieldAndDagger={setUpgradedDefShieldAndDagger}
               setitsShieldAndDagger={setitsShieldAndDagger}
               setUpgradedDmgShieldAndDagger={setUpgradedDmgShieldAndDagger}
+              setUpgradeCharacters={setUpgradeCharacters}
             />
             <Clicker
               setCount={setCount}
