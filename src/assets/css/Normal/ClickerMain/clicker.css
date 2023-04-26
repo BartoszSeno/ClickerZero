@@ -1,6 +1,8 @@
 #Click {
   background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/fountain.gif);
-  background-size: contain;
+  background-size: 440px;
+  background-position: 4.5px;
+  background-position-y: 5px;
   background-repeat: no-repeat;
   border: none;
   background-color: transparent;
@@ -9,15 +11,16 @@
   margin-top: -80px;
   margin-left: -135px;
   clip-path: polygon(
-    0 34%,
-    34% 0,
-    66% 0,
-    100% 34%,
-    100% 61%,
-    61% 100%,
-    39% 100%,
-    0 60%
+    1% 34%,
+    34% 1%,
+    66% 1%,
+    99% 34%,
+    99% 61%,
+    61% 99%,
+    39% 99%,
+    1% 60%
   );
+  cursor: pointer;
 }
 
 #Click:active {

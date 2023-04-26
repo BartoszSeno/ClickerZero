@@ -29,3 +29,17 @@
   height: 50px;
   margin-left: 30px;
 }
+
+.MainUpgradeBox {
+  position: absolute;
+  height: 680px;
+  margin-left: 30px;
+  width: 620px;
+  margin-top: 82px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  width: 200px;
+}
