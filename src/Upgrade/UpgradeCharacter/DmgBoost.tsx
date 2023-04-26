@@ -3,26 +3,16 @@ import { useEffect, useState } from "react";
 const DmgBoost = ({
   savePontsForUpgrade,
   setsavePontsForUpgrade,
+  MaxPoint,
+  setUpgradeCount,
+  upgradeCount,
 }: {
   savePontsForUpgrade: number;
   setsavePontsForUpgrade: any;
+  MaxPoint: number;
+  setUpgradeCount: any;
+  upgradeCount: number;
 }) => {
-  const MaxPoint = Number(localStorage.getItem("fillCount"));
-  const [upgradeCount, setUpgradeCount] = useState<number>(
-    Number(localStorage.getItem("upgradeCount")) || 0
-  );
-
-  const MainCount = MaxPoint - upgradeCount;
-
-  console.log("m ", MainCount);
-
-  setsavePontsForUpgrade(MainCount);
-
-  useEffect(() => {
-    localStorage.setItem("savePontsForUpgrade", savePontsForUpgrade.toString());
-    localStorage.setItem("upgradeCount", upgradeCount.toString());
-  }, [savePontsForUpgrade, upgradeCount]);
-
   function UpgradeDmg() {
     if (savePontsForUpgrade === 0) {
     } else {

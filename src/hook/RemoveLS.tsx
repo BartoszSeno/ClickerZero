@@ -8,7 +8,7 @@ const ClearLocalStorageButton = () => {
 
   return (
     <button
-      style={{ position: "absolute", marginLeft: "-135px" }}
+      style={{ position: "absolute", marginLeft: "-135px", marginTop: "550px" }}
       onClick={handleClick}
     >
       Clear Local Storage
