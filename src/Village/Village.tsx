@@ -20,6 +20,7 @@ import ClearLocalStorageButton from "../hook/RemoveLS";
 import Clicker from "../hook/ClickerCount";
 import UpdateLvlOne from "../Upgrade/UpgradeLvlOne";
 import Lvl from "../hook/Lvl";
+import UpgradeVillageAndClick from "../Upgrade/UpVillageAndClick";
 import CharacterMain from "../Character/CharacterMain";
 
 const MainIndexVillage = () => {
@@ -722,6 +723,8 @@ const MainIndexVillage = () => {
   //=================================================================================
   const [UpgradeCharacters, setUpgradeCharacters] = useState<boolean>(false);
 
+  const [UpgradeVillageAndClicks, setUpgradeVillageAndClicks] =
+    useState<boolean>(false);
   return (
     <>
       <div
@@ -752,8 +755,13 @@ const MainIndexVillage = () => {
             <CharacterMain
               UpgradeCharacters={UpgradeCharacters}
               setUpgradeCharacters={setUpgradeCharacters}
+              setUpgradeVillageAndClicks={setUpgradeVillageAndClicks}
             />
             <CharacterSelection />
+            <UpgradeVillageAndClick
+              setUpgradeVillageAndClicks={setUpgradeVillageAndClicks}
+              UpgradeVillageAndClicks={UpgradeVillageAndClicks}
+            />
             <MainEq
               mainWeaponData={mainWeaponData}
               UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
@@ -805,6 +813,7 @@ const MainIndexVillage = () => {
               setitsShieldAndDagger={setitsShieldAndDagger}
               setUpgradedDmgShieldAndDagger={setUpgradedDmgShieldAndDagger}
               setUpgradeCharacters={setUpgradeCharacters}
+              setUpgradeVillageAndClicks={setUpgradeVillageAndClicks}
             />
             <Clicker
               setCount={setCount}
@@ -815,6 +824,9 @@ const MainIndexVillage = () => {
               UpgradeOne={UpgradeOne}
               FullDmgValue={FullDmgValue}
               FullDefValue={FullDefValue}
+              setUpgradeVillageAndClicks={setUpgradeVillageAndClicks}
+              UpgradeVillageAndClicks={UpgradeVillageAndClicks}
+              setUpgradeCharacters={setUpgradeCharacters}
             />
             {/*
             

@@ -8,6 +8,16 @@
   width: 450px;
   margin-top: -80px;
   margin-left: -135px;
+  clip-path: polygon(
+    0 34%,
+    34% 0,
+    66% 0,
+    100% 34%,
+    100% 61%,
+    61% 100%,
+    39% 100%,
+    0 60%
+  );
 }
 
 #Click:active {

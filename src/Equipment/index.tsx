@@ -62,6 +62,7 @@ const MainEq = ({
   setitsShieldAndDagger,
   setUpgradedDmgShieldAndDagger,
   setUpgradeCharacters,
+  setUpgradeVillageAndClicks,
 }: {
   mainWeaponData: any;
   UpgradedNamesMainWeapon: any;
@@ -112,6 +113,7 @@ const MainEq = ({
   setitsShieldAndDagger: any;
   setUpgradedDmgShieldAndDagger: any;
   setUpgradeCharacters: any;
+  setUpgradeVillageAndClicks: any;
 }) => {
   //MAIN WEAPON
   //===========================================================================
@@ -229,6 +231,7 @@ const MainEq = ({
       setCe(true);
       setInv(true);
       setUpgradeCharacters(false);
+      setUpgradeVillageAndClicks(false);
       isKeyPressed = true;
     }
   });

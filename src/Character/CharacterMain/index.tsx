@@ -6,14 +6,17 @@ import UpgradeCharacter from "../../Upgrade/UpgradeCharacter";
 const CharacterMain = ({
   UpgradeCharacters,
   setUpgradeCharacters,
+  setUpgradeVillageAndClicks,
 }: {
-  UpgradeCharacters: any;
+  UpgradeCharacters: boolean;
   setUpgradeCharacters: any;
+  setUpgradeVillageAndClicks: any;
 }) => {
   const savedIdCharacter = localStorage.getItem("selectedCharacterID");
 
   function OpenUpChar() {
-    setUpgradeCharacters(true);
+    setUpgradeCharacters(!UpgradeCharacters);
+    setUpgradeVillageAndClicks(false);
   }
 
   return (

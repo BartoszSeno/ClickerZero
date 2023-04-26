@@ -12,6 +12,9 @@ const Clicker = ({
   UpgradeOne,
   FullDmgValue,
   FullDefValue,
+  setUpgradeVillageAndClicks,
+  UpgradeVillageAndClicks,
+  setUpgradeCharacters,
 }: {
   setCount: any;
   count: number;
@@ -21,6 +24,9 @@ const Clicker = ({
   UpgradeOne: number;
   FullDmgValue: number;
   FullDefValue: number;
+  setUpgradeVillageAndClicks: any;
+  UpgradeVillageAndClicks: boolean;
+  setUpgradeCharacters: any;
 }) => {
   /*
   useEffect(() => {
@@ -39,6 +45,19 @@ const Clicker = ({
     localStorage.setItem("count", count.toString());
   }, [count]);
 
+  function OpenUpgradeVillage() {
+    setUpgradeVillageAndClicks(!UpgradeVillageAndClicks);
+    setUpgradeCharacters(false);
+  }
+
+  const inventoryElement = document.querySelector("#SilverCountInfo");
+  if (inventoryElement) {
+    inventoryElement.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+      return false;
+    });
+  }
+
   return (
     <div id="SilverCountInfo">
       <button
@@ -46,6 +65,7 @@ const Clicker = ({
           setCount(count + FullCountPerClick);
           handleButtonClick();
         }}
+        onContextMenu={OpenUpgradeVillage}
         id="Click"
       >
         <span className="silver">
