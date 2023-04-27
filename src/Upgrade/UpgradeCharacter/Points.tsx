@@ -1,7 +1,10 @@
 const Points = ({ savePontsForUpgrade }: { savePontsForUpgrade: number }) => {
   return (
     <>
-      <div>Points {savePontsForUpgrade}</div>
+      <div className="PointCharacter">
+        <p>Points</p>
+        <p>{savePontsForUpgrade}</p>
+      </div>
     </>
   );
 };

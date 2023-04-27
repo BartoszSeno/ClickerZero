@@ -14,11 +14,11 @@ const UpgradeVillageAndClick = ({
   return (
     <>
       <div
-        id="CharacterUpgrade"
+        id="VillageUpgrade"
         style={{ display: UpgradeVillageAndClicks ? "flex" : "none" }}
       >
-        <div className="ChrUpg">Village Upgrade</div>
-        <div className="CloseUC" onClick={CloseUpgradeVillage}></div>
+        <div className="VilUpg">Village Upgrade</div>
+        <div className="CloseVil" onClick={CloseUpgradeVillage}></div>
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-#CharacterUpgrade {
+#VillageUpgrade {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -9,7 +9,7 @@
   z-index: 100;
 }
 
-.CloseUC {
+.CloseVil {
   position: absolute;
   height: 50px;
   width: 50px;
@@ -17,10 +17,9 @@
   margin-left: 600px;
   cursor: pointer;
   z-index: 101;
-  background-color: aqua;
 }
 
-.ChrUpg {
+.VilUpg {
   display: flex;
   justify-content: center;
   align-items: center;

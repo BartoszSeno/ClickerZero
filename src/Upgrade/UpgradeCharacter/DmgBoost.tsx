@@ -31,9 +31,16 @@ const DmgBoost = ({
 
   return (
     <div className="row">
-      <div onClick={DawngradeDmg}>-</div>
-      <div>DMG {upgradeCount}</div>
-      <div onClick={UpgradeDmg}>+</div>
+      <div onClick={DawngradeDmg} className="ClickUpgrade">
+        -
+      </div>
+      <div>
+        <p>DMG</p>
+        <p>{upgradeCount}</p>
+      </div>
+      <div onClick={UpgradeDmg} className="ClickUpgrade">
+        +
+      </div>
     </div>
   );
 };

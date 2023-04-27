@@ -28,9 +28,16 @@ const DefBoost = ({
   }
   return (
     <div className="row">
-      <div onClick={DawngradeDef}>-</div>
-      <div>DEF {upgradeCountDef}</div>
-      <div onClick={UpgradeDef}>+</div>
+      <div onClick={DawngradeDef} className="ClickUpgrade">
+        -
+      </div>
+      <div>
+        <p>DEF</p>
+        <p>{upgradeCountDef}</p>
+      </div>
+      <div onClick={UpgradeDef} className="ClickUpgrade">
+        +
+      </div>
     </div>
   );
 };
