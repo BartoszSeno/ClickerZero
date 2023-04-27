@@ -28,11 +28,6 @@ const UpgradeCharacter = ({
 
   const MainCount = MaxPoint - upgradeCount - upgradeCountDef;
 
-  console.log("u1 ", upgradeCount);
-  console.log("u2 ", upgradeCountDef);
-  console.log("3 ", MainCount);
-  console.log("mp ", MaxPoint);
-
   setsavePontsForUpgrade(MainCount);
 
   useEffect(() => {
