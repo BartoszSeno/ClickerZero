@@ -23,8 +23,11 @@ const DmgBoost = ({
 
   function DawngradeDmg() {
     if (MaxPoint === savePontsForUpgrade) {
-    } else {
+      // Perform the desired operation
+    } else if (savePontsForUpgrade > 0 && upgradeCount > 0) {
       setsavePontsForUpgrade(savePontsForUpgrade + 1);
+      setUpgradeCount(upgradeCount - 1);
+    } else if (savePontsForUpgrade === 0 && upgradeCount > 0) {
       setUpgradeCount(upgradeCount - 1);
     }
   }

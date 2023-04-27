@@ -21,11 +21,15 @@ const DefBoost = ({
 
   function DawngradeDef() {
     if (MaxPoint === savePontsForUpgrade) {
-    } else {
+      // Perform the desired operation
+    } else if (savePontsForUpgrade > 0 && upgradeCountDef > 0) {
       setsavePontsForUpgrade(savePontsForUpgrade + 1);
+      setUpgradeCountDef(upgradeCountDef - 1);
+    } else if (savePontsForUpgrade === 0 && upgradeCountDef > 0) {
       setUpgradeCountDef(upgradeCountDef - 1);
     }
   }
+
   return (
     <div className="row">
       <div onClick={DawngradeDef} className="ClickUpgrade">
