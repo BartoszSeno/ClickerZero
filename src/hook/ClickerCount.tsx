@@ -15,6 +15,7 @@ const Clicker = ({
   setUpgradeVillageAndClicks,
   UpgradeVillageAndClicks,
   setUpgradeCharacters,
+  DmgBoost,
 }: {
   setCount: any;
   count: number;
@@ -27,6 +28,7 @@ const Clicker = ({
   setUpgradeVillageAndClicks: any;
   UpgradeVillageAndClicks: boolean;
   setUpgradeCharacters: any;
+  DmgBoost: number;
 }) => {
   /*
   useEffect(() => {
@@ -62,7 +64,7 @@ const Clicker = ({
     <div id="SilverCountInfo">
       <button
         onClick={() => {
-          setCount(count + FullCountPerClick);
+          setCount(count + FullCountPerClick * DmgBoost);
           handleButtonClick();
         }}
         onContextMenu={OpenUpgradeVillage}

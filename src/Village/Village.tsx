@@ -697,7 +697,7 @@ const MainIndexVillage = () => {
   const [maxClicksCount, setMaxClicksCount] = useState(
     Number(localStorage.getItem("maxClicksCount")) || 1
   );
-  const clickIncrease = FullCountPerClick + 100;
+  const clickIncrease = FullCountPerClick;
 
   function handleButtonClick() {
     if (clickCount < maxClicks) {
@@ -730,7 +730,11 @@ const MainIndexVillage = () => {
 
   const [UpgradeVillageAndClicks, setUpgradeVillageAndClicks] =
     useState<boolean>(false);
-  console.log(savePontsForUpgrade);
+
+  const [DmgBoost, setDmgBoost] = useState<number>(
+    Number(localStorage.getItem("DmgBoost")) || 1
+  );
+
   return (
     <>
       <div
@@ -764,6 +768,8 @@ const MainIndexVillage = () => {
               setUpgradeVillageAndClicks={setUpgradeVillageAndClicks}
               savePontsForUpgrade={savePontsForUpgrade}
               setsavePontsForUpgrade={setsavePontsForUpgrade}
+              setDmgBoost={setDmgBoost}
+              DmgBoost={DmgBoost}
             />
             <CharacterSelection />
             <UpgradeVillageAndClick
@@ -835,6 +841,7 @@ const MainIndexVillage = () => {
               setUpgradeVillageAndClicks={setUpgradeVillageAndClicks}
               UpgradeVillageAndClicks={UpgradeVillageAndClicks}
               setUpgradeCharacters={setUpgradeCharacters}
+              DmgBoost={DmgBoost}
             />
             {/*
             

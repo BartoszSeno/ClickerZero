@@ -9,12 +9,16 @@ const CharacterMain = ({
   setUpgradeVillageAndClicks,
   savePontsForUpgrade,
   setsavePontsForUpgrade,
+  setDmgBoost,
+  DmgBoost,
 }: {
   UpgradeCharacters: boolean;
   setUpgradeCharacters: any;
   setUpgradeVillageAndClicks: any;
   savePontsForUpgrade: number;
   setsavePontsForUpgrade: any;
+  setDmgBoost: any;
+  DmgBoost: number;
 }) => {
   const savedIdCharacter = localStorage.getItem("selectedCharacterID");
 
@@ -54,6 +58,8 @@ const CharacterMain = ({
         setUpgradeCharacters={setUpgradeCharacters}
         savePontsForUpgrade={savePontsForUpgrade}
         setsavePontsForUpgrade={setsavePontsForUpgrade}
+        setDmgBoost={setDmgBoost}
+        DmgBoost={DmgBoost}
       />
     </>
   );

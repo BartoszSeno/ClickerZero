@@ -1,5 +1,5 @@
 import "../../assets/css/Normal/Update/UpgradeCharacter.css";
-import DmgBoost from "./DmgBoost";
+import DmgBoostt from "./DmgBoost";
 import DefBoost from "./DefBoost";
 import Points from "./Points";
 import { useEffect, useState } from "react";
@@ -9,11 +9,15 @@ const UpgradeCharacter = ({
   setUpgradeCharacters,
   savePontsForUpgrade,
   setsavePontsForUpgrade,
+  setDmgBoost,
+  DmgBoost,
 }: {
   UpgradeCharacters: any;
   setUpgradeCharacters: any;
   savePontsForUpgrade: number;
   setsavePontsForUpgrade: any;
+  setDmgBoost: any;
+  DmgBoost: number;
 }) => {
   function CloseUpChar() {
     setUpgradeCharacters(false);
@@ -31,10 +35,11 @@ const UpgradeCharacter = ({
   setsavePontsForUpgrade(MainCount);
 
   useEffect(() => {
+    localStorage.setItem("DmgBoost", DmgBoost.toString());
     localStorage.setItem("savePontsForUpgrade", savePontsForUpgrade.toString());
     localStorage.setItem("upgradeCount", upgradeCount.toString());
     localStorage.setItem("upgradeCountDef", upgradeCountDef.toString());
-  }, [savePontsForUpgrade, upgradeCount, upgradeCountDef]);
+  }, [savePontsForUpgrade, upgradeCount, upgradeCountDef, DmgBoost]);
 
   return (
     <>
@@ -46,12 +51,14 @@ const UpgradeCharacter = ({
         <div className="CloseUC" onClick={CloseUpChar}></div>
         <div className="MainUpgradeBox">
           <Points savePontsForUpgrade={savePontsForUpgrade} />
-          <DmgBoost
+          <DmgBoostt
             setsavePontsForUpgrade={setsavePontsForUpgrade}
             savePontsForUpgrade={savePontsForUpgrade}
             MaxPoint={MaxPoint}
             setUpgradeCount={setUpgradeCount}
             upgradeCount={upgradeCount}
+            setDmgBoost={setDmgBoost}
+            DmgBoost={DmgBoost}
           />
           <DefBoost
             setsavePontsForUpgrade={setsavePontsForUpgrade}
