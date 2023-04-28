@@ -29,6 +29,7 @@ const HealthBar = () => {
 
   return (
     <div className="HpBarContainer">
+      <div className="testhp"></div>
       <div className="hpBar">
         <div style={barStyles}>
           <p>{`${currentHP}/${maxHP} HP`}</p>

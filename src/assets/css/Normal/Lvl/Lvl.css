@@ -13,14 +13,11 @@
 
 .ActualLvl {
   position: absolute;
-  margin-top: -150px;
-  margin-left: 15px;
+  margin-top: -60px;
+  margin-left: 10px;
   font-size: 5vh;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/lvl.png?token=GHSAT0AAAAAACA775JH472DCNXFMZMSQX22ZCL7HWA);
-  background-repeat: no-repeat;
-  background-size: 140px;
-  width: 140px;
-  height: 140px;
+  width: 100px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
