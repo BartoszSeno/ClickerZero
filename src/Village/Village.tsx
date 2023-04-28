@@ -766,7 +766,7 @@ const MainIndexVillage = () => {
               maxClicks={maxClicks}
               fillCount={fillCount}
             />
-            <HpBarMain FullDefValue={FullDefValue} />
+            <HpBarMain FullDefValue={FullDefValue} DefBoosts={DefBoosts} />
             <CharacterMain
               UpgradeCharacters={UpgradeCharacters}
               setUpgradeCharacters={setUpgradeCharacters}

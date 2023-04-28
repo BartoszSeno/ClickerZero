@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "../assets/css/Normal/hpBar/hpbar.css";
 
-const HealthBar = ({ FullDefValue }: { FullDefValue: any }) => {
-  const maxHP = 100 + Number(FullDefValue);
+const HealthBar = ({
+  FullDefValue,
+  DefBoosts,
+}: {
+  FullDefValue: number;
+  DefBoosts: number;
+}) => {
+  const maxHP = (100 + Number(FullDefValue)) * DefBoosts;
   const [currentHP, setCurrentHP] = useState(100); // Inicjalne wartości currentHP
 
   const healthPercentage = (currentHP / maxHP) * 100;

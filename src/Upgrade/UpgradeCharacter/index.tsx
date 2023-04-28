@@ -39,11 +39,12 @@ const UpgradeCharacter = ({
   setsavePontsForUpgrade(MainCount);
 
   useEffect(() => {
+    localStorage.setItem("DefBoosts", DefBoosts.toString());
     localStorage.setItem("DmgBoost", DmgBoost.toString());
     localStorage.setItem("savePontsForUpgrade", savePontsForUpgrade.toString());
     localStorage.setItem("upgradeCount", upgradeCount.toString());
     localStorage.setItem("upgradeCountDef", upgradeCountDef.toString());
-  }, [savePontsForUpgrade, upgradeCount, upgradeCountDef, DmgBoost]);
+  }, [savePontsForUpgrade, upgradeCount, upgradeCountDef, DmgBoost, DefBoosts]);
 
   return (
     <>
