@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../assets/css/Normal/hpBar/hpbar.css";
 
-const HealthBar = () => {
-  const maxHP = 100;
+const HealthBar = ({ FullDefValue }: { FullDefValue: any }) => {
+  const maxHP = 100 + Number(FullDefValue);
   const [currentHP, setCurrentHP] = useState(100); // Inicjalne wartości currentHP
 
   const healthPercentage = (currentHP / maxHP) * 100;
@@ -15,6 +15,7 @@ const HealthBar = () => {
 
   const handleGetDmgClick = () => {
     if (currentHP === 0) {
+      // Obsługa braku HP
     } else {
       setCurrentHP((prevHP) => prevHP - 10); // Odejmowanie 10 od bieżącego HP
     }
@@ -22,17 +23,34 @@ const HealthBar = () => {
 
   const handleRegenHpClick = () => {
     if (maxHP === currentHP) {
+      // Obsługa pełnego HP
     } else {
-      setCurrentHP((prevHP) => prevHP + 10); // Odejmowanie 10 od bieżącego HP
+      setCurrentHP((prevHP) => prevHP + 10); // Dodawanie 10 do bieżącego HP
     }
   };
+
+  useEffect(() => {
+    if (currentHP > maxHP) {
+      setCurrentHP(maxHP);
+    }
+  }, [maxHP]);
+
+  useEffect(() => {
+    const regenInterval = setInterval(() => {
+      if (currentHP < maxHP) {
+        setCurrentHP((prevHP) => Math.min(prevHP + maxHP * 0.1, maxHP));
+      }
+    }, 5000);
+
+    return () => clearInterval(regenInterval); // Czyszczenie interwału przy odmontowaniu komponentu
+  }, [currentHP, maxHP]);
 
   return (
     <div className="HpBarContainer">
       <div className="testhp"></div>
       <div className="hpBar">
         <div style={barStyles}>
-          <p>{`${currentHP}/${maxHP} HP`}</p>
+          <p>{`${currentHP.toFixed(0)}/${maxHP.toFixed(0)} HP`}</p>
         </div>
       </div>
       <div className="GetDmg" onClick={handleGetDmgClick}>

@@ -22,7 +22,7 @@ import UpdateLvlOne from "../Upgrade/UpgradeLvlOne";
 import Lvl from "../hook/Lvl";
 import UpgradeVillageAndClick from "../Upgrade/UpVillageAndClick";
 import CharacterMain from "../Character/CharacterMain";
-import HpBarMain from "../hook";
+import HpBarMain from "../hook/hpBar";
 
 const MainIndexVillage = () => {
   // ARRAY OF THE ENTIRE ShieldAndDagger
@@ -766,7 +766,7 @@ const MainIndexVillage = () => {
               maxClicks={maxClicks}
               fillCount={fillCount}
             />
-            <HpBarMain />
+            <HpBarMain FullDefValue={FullDefValue} />
             <CharacterMain
               UpgradeCharacters={UpgradeCharacters}
               setUpgradeCharacters={setUpgradeCharacters}
