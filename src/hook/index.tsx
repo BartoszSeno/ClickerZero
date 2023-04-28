@@ -9,7 +9,6 @@ const HealthBar = () => {
 
   const barStyles = {
     width: `${healthPercentage}%`,
-    height: "30px",
     backgroundColor: "red",
     transition: "width 0.5s ease-in-out",
   };

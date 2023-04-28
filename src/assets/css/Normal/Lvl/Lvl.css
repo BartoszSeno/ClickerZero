@@ -13,9 +13,17 @@
 
 .ActualLvl {
   position: absolute;
-  margin-top: -50px;
+  margin-top: -150px;
   margin-left: 15px;
   font-size: 5vh;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/lvl.png?token=GHSAT0AAAAAACA775JH472DCNXFMZMSQX22ZCL7HWA);
+  background-repeat: no-repeat;
+  background-size: 140px;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .progress-lvl {
