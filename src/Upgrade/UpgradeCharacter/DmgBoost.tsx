@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const DmgBoostt = ({
   savePontsForUpgrade,
   setsavePontsForUpgrade,
