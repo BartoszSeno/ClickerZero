@@ -22,6 +22,7 @@ import UpdateLvlOne from "../Upgrade/UpgradeLvlOne";
 import Lvl from "../hook/Lvl";
 import UpgradeVillageAndClick from "../Upgrade/UpVillageAndClick";
 import CharacterMain from "../Character/CharacterMain";
+import HpBarMain from "../hook";
 
 const MainIndexVillage = () => {
   // ARRAY OF THE ENTIRE ShieldAndDagger
@@ -734,6 +735,9 @@ const MainIndexVillage = () => {
   const [DmgBoost, setDmgBoost] = useState<number>(
     Number(localStorage.getItem("DmgBoost")) || 1
   );
+  const [DefBoosts, setDefBoosts] = useState<number>(
+    Number(localStorage.getItem("DefBoosts")) || 1
+  );
 
   return (
     <>
@@ -762,6 +766,7 @@ const MainIndexVillage = () => {
               maxClicks={maxClicks}
               fillCount={fillCount}
             />
+            <HpBarMain />
             <CharacterMain
               UpgradeCharacters={UpgradeCharacters}
               setUpgradeCharacters={setUpgradeCharacters}
@@ -770,6 +775,8 @@ const MainIndexVillage = () => {
               setsavePontsForUpgrade={setsavePontsForUpgrade}
               setDmgBoost={setDmgBoost}
               DmgBoost={DmgBoost}
+              setDefBoosts={setDefBoosts}
+              DefBoosts={DefBoosts}
             />
             <CharacterSelection />
             <UpgradeVillageAndClick

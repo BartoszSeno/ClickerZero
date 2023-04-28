@@ -4,18 +4,23 @@ const DefBoost = ({
   MaxPoint,
   setUpgradeCountDef,
   upgradeCountDef,
+  setDefBoosts,
+  DefBoosts,
 }: {
   savePontsForUpgrade: number;
   setsavePontsForUpgrade: any;
   MaxPoint: number;
   setUpgradeCountDef: any;
   upgradeCountDef: number;
+  setDefBoosts: any;
+  DefBoosts: number;
 }) => {
   function UpgradeDef() {
     if (savePontsForUpgrade === 0) {
     } else {
       setsavePontsForUpgrade(savePontsForUpgrade - 1);
       setUpgradeCountDef(upgradeCountDef + 1);
+      setDefBoosts(DefBoosts + 0.02);
     }
   }
 
@@ -23,6 +28,7 @@ const DefBoost = ({
     if (MaxPoint === savePontsForUpgrade) {
       // Perform the desired operation
     } else if (savePontsForUpgrade > 0 && upgradeCountDef > 0) {
+      setDefBoosts(DefBoosts - 0.02);
       setsavePontsForUpgrade(savePontsForUpgrade + 1);
       setUpgradeCountDef(upgradeCountDef - 1);
     } else if (savePontsForUpgrade === 0 && upgradeCountDef > 0) {

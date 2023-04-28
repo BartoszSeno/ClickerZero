@@ -11,6 +11,8 @@ const UpgradeCharacter = ({
   setsavePontsForUpgrade,
   setDmgBoost,
   DmgBoost,
+  setDefBoosts,
+  DefBoosts,
 }: {
   UpgradeCharacters: any;
   setUpgradeCharacters: any;
@@ -18,6 +20,8 @@ const UpgradeCharacter = ({
   setsavePontsForUpgrade: any;
   setDmgBoost: any;
   DmgBoost: number;
+  setDefBoosts: any;
+  DefBoosts: number;
 }) => {
   function CloseUpChar() {
     setUpgradeCharacters(false);
@@ -66,6 +70,8 @@ const UpgradeCharacter = ({
             MaxPoint={MaxPoint}
             setUpgradeCountDef={setUpgradeCountDef}
             upgradeCountDef={upgradeCountDef}
+            setDefBoosts={setDefBoosts}
+            DefBoosts={DefBoosts}
           />
         </div>
       </div>

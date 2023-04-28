@@ -1,0 +1,45 @@
+.HpBarContainer {
+  background-color: aqua;
+  margin-top: 460px;
+  margin-left: -720px;
+  width: 300px;
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+.HpBarContainer p {
+  margin: 0;
+  width: 200px;
+  height: 20px;
+  margin-top: 9px;
+  margin-left: 10px;
+}
+
+.hpBar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 30px;
+  background-color: gray;
+}
+
+.GetDmg,
+.Regenhp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  background-color: aquamarine;
+  margin-top: -50px;
+}
+
+.Regenhp {
+  margin-left: 120px;
+}
