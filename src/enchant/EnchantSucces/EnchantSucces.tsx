@@ -466,9 +466,21 @@ const EnchantSucces = ({
                 ? null
                 : itsMainWeapon
                 ? "Dmg: "
-                : itsShieldAndDagger === selectedShieldAndDaggerItemIndex > 15
+                : itsArmor
+                ? "Def: "
+                : itsHelmet
+                ? "Def: "
+                : itsShoes
+                ? "Def: "
+                : itsGloves
+                ? "Def: "
+                : itsShieldAndDagger ===
+                    selectedShieldAndDaggerItemIndex > 15 &&
+                  selectedShieldAndDaggerItemIndex != 0
                 ? "Dmg: "
-                : "Def"}
+                : itsShieldAndDagger === selectedShieldAndDaggerItemIndex < 15
+                ? "Def: "
+                : ""}
             </span>
             {CurrentValueUpgrade >= 15
               ? null
