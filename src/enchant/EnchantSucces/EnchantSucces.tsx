@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-operators */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { MainWeaponImageAndNameAndCost } from "../../data/equipment/mainWeapon";
@@ -83,6 +84,7 @@ const EnchantSucces = ({
   setUpgradedDmgShieldAndDagger: any;
   UpgradedDmgShieldAndDagger: any;
 }) => {
+  const [CurrentValueUpgrade, setCurrentValueUpgrade] = useState<number>(0);
   // Declare state to save upgraded item name, initialized with an empty string
   const [UpgradedName, setUpgradedName] = useState<string>("");
   //armor
@@ -111,12 +113,14 @@ const EnchantSucces = ({
       ? Number(savedItemUpgradeFromLocalStorage)
       : 0;
 
+    setCurrentValueUpgrade(Number(savedItemUpgradeFromLocalStorage));
     // Set upgraded item name based on upgrade value, or set it to empty string if upgrade value is 15 or greater
     if (savedItemUpgradeValue < 15) {
       const itemName = `+${savedItemUpgradeValue + 1} ${item.name}`;
       setUpgradedName(itemName);
     } else {
-      setUpgradedName("");
+      const itemName = ""; // Set itemName to an empty string
+      setUpgradedName(itemName);
     }
 
     // Set upgraded damage value for the selected item, multiplying it by 2
@@ -124,9 +128,21 @@ const EnchantSucces = ({
     let newSavedDmgMain = Number(
       localStorage.getItem(itemSavedDmgMainKey) || item.dmgLvl0
     );
-    newSavedDmgMain *= 2;
+    if (item.tier === "green") {
+      newSavedDmgMain *= 1.2;
+    } else if (item.tier === "blue") {
+      newSavedDmgMain *= 1.7;
+    } else if (item.tier === "yellow") {
+      newSavedDmgMain *= 2.7;
+    } else if (item.tier === "red") {
+      newSavedDmgMain *= 3.4;
+    } else if (item.tier === "purple") {
+      newSavedDmgMain *= 5;
+    }
+
     setUpgradedDmgMainWeapon(newSavedDmgMain);
   }
+
   //armor======
   function ShowNameOnHoverForArmor(armorIndex: any) {
     // Get item from the list of weapon images and names at specified index
@@ -141,13 +157,15 @@ const EnchantSucces = ({
     const savedArmorItemUpgradeValue = savedArmorItemUpgradeFromLocalStorage
       ? Number(savedArmorItemUpgradeFromLocalStorage)
       : 0;
+    setCurrentValueUpgrade(Number(savedArmorItemUpgradeFromLocalStorage));
 
     // Set upgraded item name based on upgrade value, or set it to empty string if upgrade value is 15 or greater
     if (savedArmorItemUpgradeValue < 15) {
       const ArmorItemName = `+${savedArmorItemUpgradeValue + 1} ${armor.name}`;
       setUpgradedArmorName(ArmorItemName);
     } else {
-      setUpgradedArmorName("");
+      const ArmorItemName = ""; // Set ArmorItemName to an empty string
+      setUpgradedArmorName(ArmorItemName);
     }
 
     // Set upgraded damage value for the selected item, multiplying it by 2
@@ -173,6 +191,7 @@ const EnchantSucces = ({
     const savedHelmetItemUpgradeValue = savedHelmetItemUpgradeFromLocalStorage
       ? Number(savedHelmetItemUpgradeFromLocalStorage)
       : 0;
+    setCurrentValueUpgrade(Number(savedHelmetItemUpgradeFromLocalStorage));
 
     // Set upgraded item name based on upgrade value, or set it to empty string if upgrade value is 15 or greater
     if (savedHelmetItemUpgradeValue < 15) {
@@ -181,7 +200,8 @@ const EnchantSucces = ({
       }`;
       setUpgradedHelmetName(HelmetItemName);
     } else {
-      setUpgradedHelmetName("");
+      const HelmetItemName = ""; // Set HelmetItemName to an empty string
+      setUpgradedHelmetName(HelmetItemName);
     }
 
     // Set upgraded damage value for the selected item, multiplying it by 2
@@ -206,13 +226,15 @@ const EnchantSucces = ({
     const savedShoesItemUpgradeValue = savedShoesItemUpgradeFromLocalStorage
       ? Number(savedShoesItemUpgradeFromLocalStorage)
       : 0;
+    setCurrentValueUpgrade(Number(savedShoesItemUpgradeFromLocalStorage));
 
     // Set upgraded item name based on upgrade value, or set it to empty string if upgrade value is 15 or greater
     if (savedShoesItemUpgradeValue < 15) {
       const ShoesItemName = `+${savedShoesItemUpgradeValue + 1} ${Shoes.name}`;
       setUpgradedShoesName(ShoesItemName);
     } else {
-      setUpgradedShoesName("");
+      const ShoesItemName = ""; // Set ShoesItemName to an empty string
+      setUpgradedShoesName(ShoesItemName);
     }
 
     // Set upgraded damage value for the selected item, multiplying it by 2
@@ -238,6 +260,7 @@ const EnchantSucces = ({
     const savedGlovesItemUpgradeValue = savedGlovesItemUpgradeFromLocalStorage
       ? Number(savedGlovesItemUpgradeFromLocalStorage)
       : 0;
+    setCurrentValueUpgrade(Number(savedGlovesItemUpgradeFromLocalStorage));
 
     // Set upgraded item name based on upgrade value, or set it to empty string if upgrade value is 15 or greater
     if (savedGlovesItemUpgradeValue < 15) {
@@ -246,7 +269,8 @@ const EnchantSucces = ({
       }`;
       setUpgradedGlovesName(GlovesItemName);
     } else {
-      setUpgradedGlovesName("");
+      const GlovesItemName = ""; // Set GlovesItemName to an empty string
+      setUpgradedGlovesName(GlovesItemName);
     }
 
     // Set upgraded damage value for the selected item, multiplying it by 2
@@ -273,6 +297,9 @@ const EnchantSucces = ({
       savedShieldAndDaggerItemUpgradeFromLocalStorage
         ? Number(savedShieldAndDaggerItemUpgradeFromLocalStorage)
         : 0;
+    setCurrentValueUpgrade(
+      Number(savedShieldAndDaggerItemUpgradeFromLocalStorage)
+    );
 
     // Set upgraded item name based on upgrade value, or set it to empty string if upgrade value is 15 or greater
     if (savedShieldAndDaggerItemUpgradeValue < 15) {
@@ -281,7 +308,8 @@ const EnchantSucces = ({
       } ${ShieldAndDagger.name}`;
       setUpgradedShieldAndDaggerName(ShieldAndDaggerItemName);
     } else {
-      setUpgradedShieldAndDaggerName("");
+      const ShieldAndDaggerItemName = ""; // Set ShieldAndDaggerItemName to an empty string
+      setUpgradedShieldAndDaggerName(ShieldAndDaggerItemName);
     }
 
     // Set upgraded defence value for the selected item, multiplying it by 2
@@ -318,6 +346,8 @@ const EnchantSucces = ({
     }
   });
 
+  console.log("s ", selectedShieldAndDaggerItemIndex);
+
   return (
     <>
       <>
@@ -353,7 +383,9 @@ const EnchantSucces = ({
                 itsShoes === true ? "-20px" : itsHelmet === true ? "-20px" : "",
             }}
             src={
-              itsMainWeapon
+              CurrentValueUpgrade >= 15
+                ? "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
+                : itsMainWeapon
                 ? savedImage
                 : itsArmor
                 ? savedArmorImage
@@ -368,7 +400,9 @@ const EnchantSucces = ({
                 : "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/images/default.png"
             }
             alt={`${
-              itsMainWeapon
+              CurrentValueUpgrade >= 15
+                ? null
+                : itsMainWeapon
                 ? savedName
                 : itsArmor
                 ? savedArmorName
@@ -386,7 +420,9 @@ const EnchantSucces = ({
         </div>
         <div className="infoEnchant">
           <span className="UpgradeName">
-            {itsMainWeapon
+            {CurrentValueUpgrade >= 15
+              ? null
+              : itsMainWeapon
               ? UpgradedName
               : itsArmor
               ? UpgradedArmorName
@@ -404,7 +440,9 @@ const EnchantSucces = ({
             className="UpgradeImgs"
             style={{
               backgroundImage: `url(${
-                itsMainWeapon
+                CurrentValueUpgrade >= 15
+                  ? null
+                  : itsMainWeapon
                   ? savedImage
                   : itsArmor
                   ? savedArmorImage
@@ -424,9 +462,17 @@ const EnchantSucces = ({
           />
           <span className="UpgradeDmg">
             <span className="UpgradeDmgTitle">
-              {itsMainWeapon ? "Dmg: " : "Def: "}
+              {CurrentValueUpgrade >= 15
+                ? null
+                : itsMainWeapon
+                ? "Dmg: "
+                : itsShieldAndDagger === selectedShieldAndDaggerItemIndex > 15
+                ? "Dmg: "
+                : "Def"}
             </span>
-            {itsMainWeapon
+            {CurrentValueUpgrade >= 15
+              ? null
+              : itsMainWeapon
               ? formatNumber(UpgradedDmgMainWeapon)
               : itsArmor
               ? formatNumber(UpgradedDefArmor)
@@ -436,7 +482,7 @@ const EnchantSucces = ({
               ? formatNumber(UpgradedDefShoes)
               : itsGloves
               ? formatNumber(UpgradedDefGloves)
-              : itsShieldAndDagger
+              : itsShieldAndDagger === selectedShieldAndDaggerItemIndex <= 15
               ? formatNumber(UpgradedDefShieldAndDagger)
               : itsShieldAndDagger
               ? formatNumber(UpgradedDmgShieldAndDagger)

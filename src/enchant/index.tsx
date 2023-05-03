@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable array-callback-return */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../assets/css/Normal/enchant/enchant.css";
 import ButtonForEnchant from "./ButtonEnchant/button";
 import EnchantSucces from "./EnchantSucces/EnchantSucces";
