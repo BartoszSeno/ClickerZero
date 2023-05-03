@@ -1,6 +1,7 @@
 ## Inventory System
 - Fully functioning Drag and Drop system
 - Putting items on a character
+- Items can be unequip from the character
 - Purchased items appear in the inventory
 - Saving item position
 - Each item has different stats that work on HP or DMG/Per Click
@@ -21,5 +22,6 @@
 - ![img](https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/readme/enchant.gif)
 
 
-
-https://bartoszseno.github.io/ClickerZero/
+##Link To Demo Version
+- this is a working version and everything is subject to change
+- https://bartoszseno.github.io/ClickerZero/
