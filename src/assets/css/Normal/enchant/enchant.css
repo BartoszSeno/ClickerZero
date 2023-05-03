@@ -75,7 +75,7 @@
 .infoEnchant {
   display: flex;
   flex-direction: column;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/stats/weaponshow.png);
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/stats/enchantshow.png);
   background-repeat: no-repeat;
   position: absolute;
   height: 300px;
