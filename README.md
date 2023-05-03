@@ -22,6 +22,6 @@
 - ![img](https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/readme/enchant.gif)
 
 
-##Link To Demo Version
+## Link To Demo Version
 - this is a working version and everything is subject to change
 - https://bartoszseno.github.io/ClickerZero/
