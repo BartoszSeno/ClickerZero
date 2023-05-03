@@ -23,13 +23,11 @@
 }
 
 .leftVillage {
-  background-color: rgba(165, 42, 42, 0.116);
   height: 100%;
   width: 3000px;
 }
 
 .rightVillage {
-  background-color: rgba(0, 255, 255, 0.146);
   height: 100%;
   width: 3000px;
   display: flex;
@@ -37,7 +35,6 @@
 }
 
 .WeaponShop {
-  background-color: rgba(255, 0, 0, 0.5);
   height: 400px;
   width: 580px;
   margin-top: 220px;
@@ -46,7 +43,6 @@
 }
 
 .BlackSmith {
-  background-color: rgba(15, 15, 15, 0.5);
   height: 605px;
   width: 510px;
   margin-top: 33px;
@@ -55,7 +51,6 @@
 }
 
 .ArmorShop {
-  background-color: rgba(255, 255, 255, 0.5);
   height: 360px;
   width: 610px;
   margin-top: 260px;
@@ -64,7 +59,6 @@
 }
 
 .Motel {
-  background-color: rgba(83, 11, 11, 0.5);
   height: 430px;
   width: 620px;
   margin-top: 175px;

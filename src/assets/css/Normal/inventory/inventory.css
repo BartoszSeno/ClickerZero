@@ -47,8 +47,8 @@ span {
 
 .item-slot.being-dragged .content {
   background: rgba(255, 255, 255, 0.4);
-  margin-left: -930px;
-  margin-top: -147px;
+  margin-left: -395px;
+  margin-top: -120px;
   left: 50%;
   transform: translate(-50%, 0%);
 }
@@ -75,7 +75,6 @@ span {
 
 #statisticContainer {
   position: absolute;
-  background-color: aqua;
   height: 500px;
   width: 100px;
   margin-left: -80px;
@@ -83,10 +82,10 @@ span {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  display: none;
 }
 
 .fullStats {
-  background-color: red;
   text-align: center;
   height: 20px;
   width: 100%;
