@@ -33,6 +33,7 @@
 - :x: The ability to upgrade it and decorate the apartment, sleeping and cooking in it
 - :x: Add a park with mini games and free sleeping (regenerates less hp)
 - :x: add character walking features
+- :x: Adding animation to the whole game
 - ### Dungeon
 - :x: Adding multiple rooms/levels
 - :x: New items only available in the dungeon
