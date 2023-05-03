@@ -39,6 +39,10 @@
 - :x: Fighting an enemy lowers HP
 - :x: When it reaches 0 HP, it kicks you out of the dungeon
 
+## Graphics
+- All graphics are downloaded from free assets from the website: [itch.io](https://itch.io/game-assets/free/tag-pixel-art)
+- linking art creators in the future in the game
+
 ## Link To Demo Version
 - this is a working version and everything is subject to change
 - https://bartoszseno.github.io/ClickerZero/
