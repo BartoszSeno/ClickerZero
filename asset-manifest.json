@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/ClickerZero/static/css/main.2a5322c8.css",
-    "main.js": "/ClickerZero/static/js/main.732ad3cb.js",
+    "main.css": "/ClickerZero/static/css/main.e67a15f7.css",
+    "main.js": "/ClickerZero/static/js/main.abd33b25.js",
     "index.html": "/ClickerZero/index.html",
-    "main.2a5322c8.css.map": "/ClickerZero/static/css/main.2a5322c8.css.map",
-    "main.732ad3cb.js.map": "/ClickerZero/static/js/main.732ad3cb.js.map"
+    "main.e67a15f7.css.map": "/ClickerZero/static/css/main.e67a15f7.css.map",
+    "main.abd33b25.js.map": "/ClickerZero/static/js/main.abd33b25.js.map"
   },
   "entrypoints": [
-    "static/css/main.2a5322c8.css",
-    "static/js/main.732ad3cb.js"
+    "static/css/main.e67a15f7.css",
+    "static/js/main.abd33b25.js"
   ]
 }
