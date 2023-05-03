@@ -21,23 +21,23 @@
 - The item selection window is an inventory
 - ![img](https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/readme/enchant.gif)
 
-# In plans :white_check_mark: :x: :negative_squared_cross_mark:
+# In plans :white_check_mark: :x:
 
-- Time and day counter
-- Improving clicking / unlocking features (shop / enchant etc.)
-- Hotel sleeping function (cdr (sleeping restores all hp))
-- A pond where you can catch fish and sell them or eat them (hp regen)
-- Adding an inn where you can eat (for gets buffs)
-- Mini game where you can bet money (in inn)
-- Buying your own apartment
-- The ability to upgrade it and decorate the apartment, sleeping and cooking in it
-- Add a park with mini games and free sleeping (regenerates less hp)
-- add character walking features
+- :x: Time and day counter
+- :x: Improving clicking / unlocking features (shop / enchant etc.)
+- :x: Hotel sleeping function (cdr (sleeping restores all hp))
+- :x: A pond where you can catch fish and sell them or eat them (hp regen)
+- :x: Adding an inn where you can eat (for gets buffs)
+- :x: Mini game where you can bet money (in inn)
+- :x: Buying your own apartment
+- :x: The ability to upgrade it and decorate the apartment, sleeping and cooking in it
+- :x: Add a park with mini games and free sleeping (regenerates less hp)
+- :x: add character walking features
 - ### Dungeon
-- Adding multiple rooms/levels
-- New items only available in the dungeon
-- Fighting an enemy lowers HP
-- When it reaches 0 HP, it kicks you out of the dungeon
+- :x: Adding multiple rooms/levels
+- :x: New items only available in the dungeon
+- :x: Fighting an enemy lowers HP
+- :x: When it reaches 0 HP, it kicks you out of the dungeon
 
 ## Link To Demo Version
 - this is a working version and everything is subject to change
