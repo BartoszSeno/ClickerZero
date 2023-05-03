@@ -42,6 +42,7 @@
 
 ## Graphics
 - All graphics are downloaded from free assets from the website: [itch.io](https://itch.io/game-assets/free/tag-pixel-art)
+- Most of the graphics were modified by me
 - linking art creators in the future in the game
 
 ## Link To Demo Version
