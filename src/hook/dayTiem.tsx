@@ -42,10 +42,59 @@ const DayTime = () => {
     localStorage.setItem("minutes", minutes.toString());
   }, [days, hours, minutes]);
 
+  const Morning =
+    "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/DayNightCycle/dawn.gif";
+  const Afternoon =
+    "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/DayNightCycle/day.gif";
+  const Evening =
+    "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/DayNightCycle/noon.gif";
+  const Night =
+    "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/DayNightCycle/night.gif";
+
+  const [cycle, setCycle] = useState<string>(
+    localStorage.getItem("cycle") || Morning
+  );
+  const [previousCycle, setPreviousCycle] = useState("");
+
+  useEffect(() => {
+    if (hours === 6) {
+      setPreviousCycle(cycle);
+      setCycle(Morning);
+      localStorage.setItem("cycle", Morning.toString());
+    } else if (hours === 12) {
+      setPreviousCycle(cycle);
+      setCycle(Afternoon);
+      localStorage.setItem("cycle", Afternoon.toString());
+    } else if (hours === 18) {
+      setPreviousCycle(cycle);
+      setCycle(Evening);
+      localStorage.setItem("cycle", Evening.toString());
+    } else if (hours === 22) {
+      setPreviousCycle(cycle);
+      setCycle(Night);
+      localStorage.setItem("cycle", Night.toString());
+    }
+  }, [hours]);
+
   return (
     <div id="DayTimeContainer">
-      <div className="DayNightCycle"></div>
-      {days} Days, {hours}:{minutes}h
+      <div
+        className={`DayNightCycle ${
+          cycle !== previousCycle ? "transitioning" : ""
+        }`}
+        style={{
+          backgroundImage: `url(${cycle})`,
+          transition: "background-image 1s ease-in-out",
+        }}
+      ></div>
+      <div className="DaysTime">
+        <div className="DTC">
+          <p>{days} Days</p>
+          <p>
+            {hours}:{minutes}h
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
