@@ -1,0 +1,9 @@
+#DayTimeContainer {
+  position: fixed;
+  z-index: 900;
+  background-color: aqua;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+}

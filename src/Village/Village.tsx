@@ -23,6 +23,7 @@ import Lvl from "../hook/Lvl";
 import UpgradeVillageAndClick from "../Upgrade/UpVillageAndClick";
 import CharacterMain from "../Character/CharacterMain";
 import HpBarMain from "../hook/hpBar";
+import DayTime from "../hook/dayTiem";
 
 const MainIndexVillage = () => {
   // ARRAY OF THE ENTIRE ShieldAndDagger
@@ -760,7 +761,7 @@ const MainIndexVillage = () => {
           </div>
           <div className="midVillage">
             <ClearLocalStorageButton />
-
+            <DayTime />
             <Lvl
               clickCount={clickCount}
               maxClicks={maxClicks}

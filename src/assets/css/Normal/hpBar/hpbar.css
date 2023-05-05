@@ -1,15 +1,12 @@
 .HpBarContainer {
-  margin-top: 430px;
-  margin-left: -680px;
   width: 348px;
   height: 30px;
   display: flex;
   flex-direction: row;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
+  bottom: 30px;
+  left: 130px;
+  z-index: 0;
 }
 .HpBarContainer p {
   margin: 0;

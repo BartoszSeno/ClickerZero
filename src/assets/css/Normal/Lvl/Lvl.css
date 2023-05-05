@@ -12,9 +12,9 @@
 }
 
 .ActualLvl {
-  position: absolute;
-  margin-top: -60px;
-  margin-left: 10px;
+  position: fixed;
+  bottom: 10px;
+  left: 0;
   font-size: 5vh;
   width: 100px;
   height: 60px;
