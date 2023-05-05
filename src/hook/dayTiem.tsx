@@ -4,9 +4,15 @@ import { useEffect, useState } from "react";
 import "../assets/css/Normal/dayTime/dayTime.css";
 
 const DayTime = () => {
-  const [days, setDays] = useState(0);
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(0);
+  const [days, setDays] = useState(
+    parseInt(localStorage.getItem("days") ?? "") || 0
+  );
+  const [hours, setHours] = useState(
+    parseInt(localStorage.getItem("hours") ?? "") || 0
+  );
+  const [minutes, setMinutes] = useState(
+    parseInt(localStorage.getItem("minutes") ?? "") || 0
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -30,9 +36,16 @@ const DayTime = () => {
     }
   }, [hours]);
 
+  useEffect(() => {
+    localStorage.setItem("days", days.toString());
+    localStorage.setItem("hours", hours.toString());
+    localStorage.setItem("minutes", minutes.toString());
+  }, [days, hours, minutes]);
+
   return (
     <div id="DayTimeContainer">
-      {days} dni, {hours} godzin, {minutes} minut
+      <div className="DayNightCycle"></div>
+      {days} Days, {hours}:{minutes}h
     </div>
   );
 };
