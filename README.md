@@ -23,7 +23,7 @@
 
 # In plans :white_check_mark: :x:
 
-- :x: Time and day counter
+- :white_check_mark: Time and day counter
 - :x: Improving clicking / unlocking features (shop / enchant etc.)
 - :x: Hotel sleeping function (cdr (sleeping restores all hp))
 - :x: A pond where you can catch fish and sell them or eat them (hp regen)
