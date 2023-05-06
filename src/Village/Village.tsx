@@ -742,18 +742,29 @@ const MainIndexVillage = () => {
 
   //=================================================================
 
-  const [sleep, setSleep] = useState<boolean>(
-    Boolean(localStorage.getItem("sleep")) || false
+  const [sleep, setSleep] = useState(
+    localStorage.getItem("sleep") === "true" ? true : false
   );
 
+  const [sleepTimeout, setSleepTimeout] = useState(
+    localStorage.getItem("sleepTimeout") || null
+  );
+
+  const SleepHandleClick = () => {
+    setSleep(true);
+    const timeoutExpiresAt = Date.now() + 10000;
+    setSleepTimeout(String(timeoutExpiresAt));
+  };
+
   console.log("sleep ", sleep);
+  console.log("sleep ", sleepTimeout);
+
   return (
     <>
       <div
         id="mainBGScrollHorizontal"
         ref={mainBGScrollHorizontalRef}
         onWheel={(e) => {
-          e.preventDefault();
           handleScroll(e.deltaY);
         }}
       >
@@ -1055,6 +1066,9 @@ const MainIndexVillage = () => {
                 setMO={setMO}
                 setSleep={setSleep}
                 sleep={sleep}
+                SleepHandleClick={SleepHandleClick}
+                setSleepTimeout={setSleepTimeout}
+                sleepTimeout={sleepTimeout}
               />
             </div>
           </div>

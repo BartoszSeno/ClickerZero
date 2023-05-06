@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Motel = ({
   MO,
@@ -8,6 +8,9 @@ const Motel = ({
   setMO,
   setSleep,
   sleep,
+  SleepHandleClick,
+  sleepTimeout,
+  setSleepTimeout,
 }: {
   MO: boolean;
   setWSO: any;
@@ -16,6 +19,9 @@ const Motel = ({
   setMO: any;
   setSleep: any;
   sleep: boolean;
+  SleepHandleClick: any;
+  sleepTimeout: any;
+  setSleepTimeout: any;
 }) => {
   const [MotelIsOpen, setMotelIsOpen] = useState(true);
 
@@ -26,13 +32,33 @@ const Motel = ({
     setMO(false);
   }
 
-  function SleepFunction() {
-    setSleep(true);
-    setTimeout(() => {
-      setSleep(false);
-      console.log("u can sleep again");
-    }, 5000);
-  }
+  useEffect(() => {
+    localStorage.setItem("sleep", sleep.toString());
+    if (sleepTimeout) {
+      localStorage.setItem("sleepTimeout", sleepTimeout.toString());
+    } else {
+      localStorage.removeItem("sleepTimeout");
+    }
+  }, [sleep, sleepTimeout]);
+
+  useEffect(() => {
+    if (sleepTimeout) {
+      const remainingTime = Number(sleepTimeout) - Date.now();
+      if (remainingTime > 0) {
+        const timeoutId = setTimeout(() => {
+          setSleep(false);
+          console.log("u can sleep again");
+          setSleepTimeout(null);
+        }, remainingTime);
+        return () => clearTimeout(timeoutId);
+      } else {
+        setSleep(false);
+        setSleepTimeout(null);
+        console.log("u can sleep again");
+      }
+    }
+  }, [setSleep, setSleepTimeout, sleepTimeout]);
+
   return (
     <>
       <div
@@ -51,7 +77,13 @@ const Motel = ({
             setMotelIsOpen(true);
           }}
         >
-          <button className="SleepButton" onClick={SleepFunction}>
+          <button
+            className="SleepButton"
+            onClick={(e) => {
+              SleepHandleClick();
+            }}
+            disabled={sleep === true}
+          >
             Sleep
           </button>
         </div>
