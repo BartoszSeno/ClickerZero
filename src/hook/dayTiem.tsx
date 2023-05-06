@@ -17,7 +17,7 @@ const DayTime = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setMinutes((prevMinutes) => prevMinutes + 1);
-    }, 1000); // Czas w milisekundach, 60000ms = 1 minuta
+    }, 1666); // 1h in game = 1min if is 1000 (24h = 24min) / 1666 = 40 min
 
     return () => clearInterval(interval);
   }, []);
