@@ -724,6 +724,7 @@ const MainIndexVillage = () => {
   //=================================================================================
   //=========================================================================
   //=================================================================================
+
   const [savePontsForUpgrade, setsavePontsForUpgrade] = useState<number>(
     Number(localStorage.getItem("savePontsForUpgrade")) || 0
   );
@@ -739,6 +740,10 @@ const MainIndexVillage = () => {
   const [DefBoosts, setDefBoosts] = useState<number>(
     Number(localStorage.getItem("DefBoosts")) || 1
   );
+  //================================================================================
+
+  const maxHP = (100 + Number(FullDefValue)) * DefBoosts;
+  const [currentHP, setCurrentHP] = useState(100); // Inicjalne wartości currentHP
 
   //=================================================================
   const [days, setDays] = useState(
@@ -768,6 +773,7 @@ const MainIndexVillage = () => {
     setDays((prevDays: number) => prevDays + 1);
     setHours(6);
     setMinutes(0);
+    setCurrentHP(maxHP);
   };
 
   console.log("sleep ", sleep);
@@ -806,7 +812,11 @@ const MainIndexVillage = () => {
               maxClicks={maxClicks}
               fillCount={fillCount}
             />
-            <HpBarMain FullDefValue={FullDefValue} DefBoosts={DefBoosts} />
+            <HpBarMain
+              currentHP={currentHP}
+              maxHP={maxHP}
+              setCurrentHP={setCurrentHP}
+            />
             <CharacterMain
               UpgradeCharacters={UpgradeCharacters}
               setUpgradeCharacters={setUpgradeCharacters}

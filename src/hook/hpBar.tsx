@@ -3,15 +3,14 @@ import React, { useEffect, useState } from "react";
 import "../assets/css/Normal/hpBar/hpbar.css";
 
 const HealthBar = ({
-  FullDefValue,
-  DefBoosts,
+  currentHP,
+  maxHP,
+  setCurrentHP,
 }: {
-  FullDefValue: number;
-  DefBoosts: number;
+  currentHP: number;
+  maxHP: number;
+  setCurrentHP: any;
 }) => {
-  const maxHP = (100 + Number(FullDefValue)) * DefBoosts;
-  const [currentHP, setCurrentHP] = useState(100); // Inicjalne wartości currentHP
-
   const healthPercentage = (currentHP / maxHP) * 100;
 
   const barStyles = {
@@ -24,7 +23,7 @@ const HealthBar = ({
     if (currentHP === 0) {
       // Obsługa braku HP
     } else {
-      setCurrentHP((prevHP) => prevHP - 10); // Odejmowanie 10 od bieżącego HP
+      setCurrentHP((prevHP: number) => prevHP - 10); // Odejmowanie 10 od bieżącego HP
     }
   };
 
@@ -32,7 +31,7 @@ const HealthBar = ({
     if (maxHP === currentHP) {
       // Obsługa pełnego HP
     } else {
-      setCurrentHP((prevHP) => prevHP + 10); // Dodawanie 10 do bieżącego HP
+      setCurrentHP((prevHP: number) => prevHP + 10); // Dodawanie 10 do bieżącego HP
     }
   };
 
@@ -45,9 +44,9 @@ const HealthBar = ({
   useEffect(() => {
     const regenInterval = setInterval(() => {
       if (currentHP < maxHP) {
-        setCurrentHP((prevHP) => Math.min(prevHP + maxHP * 0.1, maxHP));
+        setCurrentHP((prevHP: number) => Math.min(prevHP + maxHP * 0.1, maxHP));
       }
-    }, 5000);
+    }, 500000);
 
     return () => clearInterval(regenInterval); // Czyszczenie interwału przy odmontowaniu komponentu
   }, [currentHP, maxHP]);
