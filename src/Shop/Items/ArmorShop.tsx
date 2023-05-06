@@ -93,7 +93,6 @@ const ArmorShop = ({
   const GetId = (selectedItem: any) => {
     const newArmorData = [...ArmorData];
     const index = newArmorData.findIndex((item) => item.id === selectedItem.id);
-    console.log(idArmor);
     setidArmor(index);
     setAoSoH("ShowStatsArmors");
   };

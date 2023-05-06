@@ -99,7 +99,6 @@ const HelmetShop = ({
     const index = newHelmetData.findIndex(
       (item) => item.id === selectedItem.id
     );
-    console.log(idHelmet);
     setidHelmet(index);
     setAoSoH("ShowStatsHelmet");
   };

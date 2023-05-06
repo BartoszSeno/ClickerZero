@@ -204,8 +204,6 @@ const Inventory = ({
   };
 
   const moveItemToSlot = (oldSlot: number, newSlot: number) => {
-    console.log(`move slot`, oldSlot, newSlot);
-
     setItems((currentState: any) => {
       let inventory = [...currentState];
 
@@ -607,44 +605,36 @@ const Inventory = ({
                       setSelectedItemIndex(item.id);
                       GetIdPerClick(item.id);
                       FakeUpdateToRefreshTheData(item.id);
-                      console.log("w");
                     } else if (item.type === "gloves") {
                       HandleItemClick(GlovesData, item.id);
                       setSelectedGlovesItemIndex(item.id - 3000);
                       GetIdPerClickGloves(item.id - 3000);
                       FakeUpdateToRefreshTheGlovesData(item.id - 3000);
-                      console.log("g");
-                      console.log("g", item.id);
                     } else if (item.type === "shield") {
                       HandleItemClick(ShieldAndDaggerData, item.id);
                       setSelectedShieldAndDaggerItemIndex(item.id - 5000);
                       GetIdPerClickShieldAndDagger(item.id - 5000);
                       FakeUpdateToRefreshTheShieldAndDaggerData(item.id - 5000);
-                      console.log("shi");
                     } else if (item.type === "dagger") {
                       HandleItemClick(ShieldAndDaggerData, item.id);
                       setSelectedShieldAndDaggerItemIndex(item.id - 5000);
                       GetIdPerClickShieldAndDagger(item.id - 5000);
                       FakeUpdateToRefreshTheShieldAndDaggerData(item.id - 5000);
-                      console.log("d");
                     } else if (item.type === "Armor") {
                       HandleItemClick(ArmorData, item.id);
                       setSelectedArmorItemIndex(item.id - 2000);
                       GetIdPerClickArmor(item.id - 2000);
                       FakeUpdateToRefreshTheArmorData(item.id - 2000);
-                      console.log("a");
                     } else if (item.type === "Shoes") {
                       HandleItemClick(ShoesData, item.id);
                       setSelectedShoesItemIndex(item.id - 4000);
                       GetIdPerClickShoes(item.id - 4000);
                       FakeUpdateToRefreshTheShoesData(item.id - 4000);
-                      console.log("s ", item.id);
                     } else if (item.type === "helmet") {
                       HandleItemClick(HelmetData, item.id);
                       setSelectedHelmetItemIndex(item.id - 1000);
                       GetIdPerClickHelmet(item.id - 1000);
                       FakeUpdateToRefreshTheHelmetData(item.id - 1000);
-                      console.log("h");
                     }
                   } else {
                     handleContextMenu(e, item);

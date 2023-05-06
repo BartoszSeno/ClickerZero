@@ -93,7 +93,6 @@ const ShoesShop = ({
   const GetId = (selectedItem: any) => {
     const newShoesData = [...ShoesData];
     const index = newShoesData.findIndex((item) => item.id === selectedItem.id);
-    console.log(idShoes);
     setidShoes(index);
     setAoSoH("ShowStatsShoes");
   };

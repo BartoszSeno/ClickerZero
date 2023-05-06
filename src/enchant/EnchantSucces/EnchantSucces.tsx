@@ -346,8 +346,6 @@ const EnchantSucces = ({
     }
   });
 
-  console.log("s ", selectedShieldAndDaggerItemIndex);
-
   return (
     <>
       <>

@@ -740,6 +740,13 @@ const MainIndexVillage = () => {
     Number(localStorage.getItem("DefBoosts")) || 1
   );
 
+  //=================================================================
+
+  const [sleep, setSleep] = useState<boolean>(
+    Boolean(localStorage.getItem("sleep")) || false
+  );
+
+  console.log("sleep ", sleep);
   return (
     <>
       <div
@@ -1046,6 +1053,8 @@ const MainIndexVillage = () => {
                 setBSO={setBSO}
                 setASO={setASO}
                 setMO={setMO}
+                setSleep={setSleep}
+                sleep={sleep}
               />
             </div>
           </div>

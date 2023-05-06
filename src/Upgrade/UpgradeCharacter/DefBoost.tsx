@@ -36,8 +36,6 @@ const DefBoost = ({
     }
   }
 
-  console.log("def ", DefBoosts);
-
   return (
     <div className="row">
       <div onClick={DawngradeDef} className="ClickUpgrade">

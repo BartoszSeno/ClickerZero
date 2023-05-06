@@ -99,7 +99,6 @@ const RedAndPurpleMainWeaponShop = ({
     const index = newMainWeaponData.findIndex(
       (item) => item.id === selectedItem.id
     );
-    console.log(idWeapon);
     setidWeapon(index);
     setNoR("ShowStatsWeaponRare");
   };

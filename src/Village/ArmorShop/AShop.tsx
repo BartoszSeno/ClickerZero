@@ -66,7 +66,6 @@ const ArmorShops = ({
   }
 
   const [AoSoH, setAoSoH] = useState<string>("");
-  console.log(AoSoH);
 
   return (
     <>

@@ -252,7 +252,6 @@ const MainEq = ({
 
   const handleContextMenu = (e: { preventDefault: () => void }, item: any) => {
     e.preventDefault();
-    console.log("Clicked item:", item);
 
     if (item.type === "weapon") {
       //===============
@@ -365,14 +364,12 @@ const MainEq = ({
 
   function CloseEq(index: any) {
     setCe(!ce);
-    console.log(ce);
   }
 
   const [Inv, setInv] = useState<boolean>(true);
 
   function CloseInv(index: any) {
     setInv(!Inv);
-    console.log(Inv);
     setopenInvAndEq(false);
   }
 

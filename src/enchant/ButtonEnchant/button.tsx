@@ -515,7 +515,6 @@ const ButtonForEnchant = ({
             EnchantPerClick(selectedItemIndex);
           } else if (itsArmor === true) {
             EnchantPerClickForArmor(selectedArmorItemIndex);
-            console.log("t");
           } else if (itsHelmet === true) {
             EnchantPerClickForHelmet(selectedHelmetItemIndex);
           } else if (itsShoes === true) {

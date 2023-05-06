@@ -38,8 +38,6 @@ const WeaponShop = ({
 
   const [NoR, setNoR] = useState();
 
-  console.log(NoR);
-
   return (
     <>
       <div

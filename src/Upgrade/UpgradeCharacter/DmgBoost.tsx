@@ -36,8 +36,6 @@ const DmgBoostt = ({
     }
   }
 
-  console.log("D ", DmgBoost);
-
   return (
     <div className="row">
       <div onClick={DawngradeDmg} className="ClickUpgrade">

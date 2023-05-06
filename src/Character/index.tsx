@@ -28,8 +28,6 @@ const CharacterSelection = () => {
     return <div>...</div>; // Render a loading message or spinner while data is being fetched
   }
 
-  console.log(selectedCharacterId);
-
   const characters = [...CharacterSelectionStart, ...CharacterSelectionStart];
 
   const handleArrowClick = (direction: string) => {

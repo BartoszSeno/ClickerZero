@@ -6,12 +6,16 @@ const Motel = ({
   setBSO,
   setASO,
   setMO,
+  setSleep,
+  sleep,
 }: {
   MO: boolean;
   setWSO: any;
   setBSO: any;
   setASO: any;
   setMO: any;
+  setSleep: any;
+  sleep: boolean;
 }) => {
   const [MotelIsOpen, setMotelIsOpen] = useState(true);
 
@@ -20,6 +24,14 @@ const Motel = ({
     setBSO(false);
     setASO(false);
     setMO(false);
+  }
+
+  function SleepFunction() {
+    setSleep(true);
+    setTimeout(() => {
+      setSleep(false);
+      console.log("u can sleep again");
+    }, 5000);
   }
   return (
     <>
@@ -32,14 +44,16 @@ const Motel = ({
         }}
       >
         <div
-          className="test"
+          id="MotelContainer"
           style={{ display: MotelIsOpen ? "flex" : "none" }}
           onClick={(e) => {
             e.stopPropagation();
             setMotelIsOpen(true);
           }}
         >
-          Motel
+          <button className="SleepButton" onClick={SleepFunction}>
+            Sleep
+          </button>
         </div>
       </div>
     </>
