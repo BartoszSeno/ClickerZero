@@ -741,7 +741,16 @@ const MainIndexVillage = () => {
   );
 
   //=================================================================
-
+  const [days, setDays] = useState(
+    parseInt(localStorage.getItem("days") ?? "") || 0
+  );
+  const [hours, setHours] = useState(
+    parseInt(localStorage.getItem("hours") ?? "") || 0
+  );
+  const [minutes, setMinutes] = useState(
+    parseInt(localStorage.getItem("minutes") ?? "") || 0
+  );
+  //=============================================================
   const [sleep, setSleep] = useState(
     localStorage.getItem("sleep") === "true" ? true : false
   );
@@ -750,14 +759,19 @@ const MainIndexVillage = () => {
     localStorage.getItem("sleepTimeout") || null
   );
 
+  const SleepCdr = 20; // value in minutes
+
   const SleepHandleClick = () => {
     setSleep(true);
-    const timeoutExpiresAt = Date.now() + 10000;
+    const timeoutExpiresAt = Date.now() + SleepCdr * 60000;
     setSleepTimeout(String(timeoutExpiresAt));
+    setDays((prevDays: number) => prevDays + 1);
+    setHours(6);
+    setMinutes(0);
   };
 
   console.log("sleep ", sleep);
-  console.log("sleep ", sleepTimeout);
+  console.log("sleep3 ", sleepTimeout);
 
   return (
     <>
@@ -779,7 +793,14 @@ const MainIndexVillage = () => {
           </div>
           <div className="midVillage">
             <ClearLocalStorageButton />
-            <DayTime />
+            <DayTime
+              setDays={setDays}
+              days={days}
+              hours={hours}
+              setHours={setHours}
+              setMinutes={setMinutes}
+              minutes={minutes}
+            />
             <Lvl
               clickCount={clickCount}
               maxClicks={maxClicks}

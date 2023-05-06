@@ -3,20 +3,24 @@
 import { useEffect, useState } from "react";
 import "../assets/css/Normal/dayTime/dayTime.css";
 
-const DayTime = () => {
-  const [days, setDays] = useState(
-    parseInt(localStorage.getItem("days") ?? "") || 0
-  );
-  const [hours, setHours] = useState(
-    parseInt(localStorage.getItem("hours") ?? "") || 0
-  );
-  const [minutes, setMinutes] = useState(
-    parseInt(localStorage.getItem("minutes") ?? "") || 0
-  );
-
+const DayTime = ({
+  setDays,
+  days,
+  hours,
+  setHours,
+  setMinutes,
+  minutes,
+}: {
+  setDays: any;
+  days: number;
+  hours: number;
+  setHours: any;
+  setMinutes: any;
+  minutes: number;
+}) => {
   useEffect(() => {
     const interval = setInterval(() => {
-      setMinutes((prevMinutes) => prevMinutes + 1);
+      setMinutes((prevMinutes: number) => prevMinutes + 1);
     }, 1666); // 1h in game = 1min if is 1000 (24h = 24min) / 1666 = 40 min
 
     return () => clearInterval(interval);
@@ -25,14 +29,14 @@ const DayTime = () => {
   useEffect(() => {
     if (minutes === 60) {
       setMinutes(0);
-      setHours((prevHours) => prevHours + 1);
+      setHours((prevHours: number) => prevHours + 1);
     }
   }, [minutes]);
 
   useEffect(() => {
     if (hours === 24) {
       setHours(0);
-      setDays((prevDays) => prevDays + 1);
+      setDays((prevDays: number) => prevDays + 1);
     }
   }, [hours]);
 
