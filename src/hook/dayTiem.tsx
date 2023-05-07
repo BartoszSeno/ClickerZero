@@ -111,6 +111,11 @@ const DayTime = ({
     localStorage.setItem("turn", JSON.stringify(!turn));
   }
 
+  const on =
+    "url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/any/On.png)";
+  const off =
+    "url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/any/off.png)";
+
   return (
     <div id="DayTimeContainer">
       <div
@@ -126,6 +131,7 @@ const DayTime = ({
       <div
         className={`Setings ${setings ? "show" : "hide"}`}
         onClick={TurnOnOff}
+        style={{ backgroundImage: turn ? on : off }}
       >
         {onOff}
       </div>
