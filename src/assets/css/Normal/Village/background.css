@@ -65,3 +65,13 @@
   margin-left: 120px;
   cursor: pointer;
 }
+
+.Cycle {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  pointer-events: none;
+  transition: background-color 1s ease-in-out;
+  opacity: 0.14;
+}

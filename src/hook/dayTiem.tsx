@@ -61,15 +61,15 @@ const DayTime = ({
   const [previousCycle, setPreviousCycle] = useState("");
 
   useEffect(() => {
-    if (hours === 6) {
+    if (hours >= 6 && hours <= 11) {
       setPreviousCycle(cycle);
       setCycle(Morning);
       localStorage.setItem("cycle", Morning.toString());
-    } else if (hours === 12) {
+    } else if (hours >= 12 && hours <= 17) {
       setPreviousCycle(cycle);
       setCycle(Afternoon);
       localStorage.setItem("cycle", Afternoon.toString());
-    } else if (hours === 18) {
+    } else if (hours >= 18 && hours <= 21) {
       setPreviousCycle(cycle);
       setCycle(Evening);
       localStorage.setItem("cycle", Evening.toString());

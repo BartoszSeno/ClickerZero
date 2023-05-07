@@ -24,6 +24,7 @@ import UpgradeVillageAndClick from "../Upgrade/UpVillageAndClick";
 import CharacterMain from "../Character/CharacterMain";
 import HpBarMain from "../hook/hpBar";
 import DayTime from "../hook/dayTiem";
+import TimeCycleBg from "../hook/TimeCycle";
 
 const MainIndexVillage = () => {
   // ARRAY OF THE ENTIRE ShieldAndDagger
@@ -776,9 +777,9 @@ const MainIndexVillage = () => {
     setCurrentHP(maxHP);
   };
 
-  console.log("sleep ", sleep);
-  console.log("sleep3 ", sleepTimeout);
+  //===============================
 
+  //#0000006c
   return (
     <>
       <div
@@ -789,6 +790,7 @@ const MainIndexVillage = () => {
         }}
       >
         <div className="GameMainWindow">
+          <TimeCycleBg hours={hours} />
           <div className="leftVillage">
             {/*
             <button className="InfoOpen" onClick={HandleInfoOpenAndClose}>

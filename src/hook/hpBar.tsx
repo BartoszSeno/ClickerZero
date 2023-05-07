@@ -41,15 +41,14 @@ const HealthBar = ({
     }
   }, [maxHP]);
 
-  useEffect(() => {
-    const regenInterval = setInterval(() => {
-      if (currentHP < maxHP) {
-        setCurrentHP((prevHP: number) => Math.min(prevHP + maxHP * 0.1, maxHP));
-      }
-    }, 500000);
-
-    return () => clearInterval(regenInterval); // Czyszczenie interwału przy odmontowaniu komponentu
-  }, [currentHP, maxHP]);
+  // useEffect(() => {
+  //    const regenInterval = setInterval(() => {
+  //     if (currentHP < maxHP) {
+  //       setCurrentHP((prevHP: number) => Math.min(prevHP + maxHP * 0.1, maxHP));
+  //     }
+  //   }, 5000);
+  //    return () => clearInterval(regenInterval); // Czyszczenie interwału przy odmontowaniu komponentu
+  //}, [currentHP, maxHP]);
 
   return (
     <div className="HpBarContainer">
