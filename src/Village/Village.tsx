@@ -778,6 +778,7 @@ const MainIndexVillage = () => {
   };
 
   //===============================
+  const [turn, setTurn] = useState<boolean>(true);
 
   //#0000006c
   return (
@@ -790,7 +791,7 @@ const MainIndexVillage = () => {
         }}
       >
         <div className="GameMainWindow">
-          <TimeCycleBg hours={hours} />
+          <TimeCycleBg hours={hours} turn={turn} />
           <div className="leftVillage">
             {/*
             <button className="InfoOpen" onClick={HandleInfoOpenAndClose}>
@@ -808,6 +809,8 @@ const MainIndexVillage = () => {
               setHours={setHours}
               setMinutes={setMinutes}
               minutes={minutes}
+              setTurn={setTurn}
+              turn={turn}
             />
             <Lvl
               clickCount={clickCount}

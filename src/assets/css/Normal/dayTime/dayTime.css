@@ -11,6 +11,7 @@
 }
 
 .DayNightCycle {
+  position: absolute;
   height: 140px;
   width: 150px;
   background-size: cover;
@@ -18,11 +19,9 @@
   background-repeat: no-repeat;
   transition: background-image 1s ease-in-out;
   background-size: 160px;
+  z-index: 1000;
 }
 
-.DayNightCycle.transitioning {
-  pointer-events: none;
-}
 .DaysTime {
   position: absolute;
   display: flex;
@@ -30,7 +29,6 @@
   justify-content: flex-end;
   align-items: center;
   top: 50px;
-  z-index: -1;
   background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/DayNightCycle/te.png);
   height: 200px;
   width: 100px;
@@ -49,4 +47,47 @@
   align-items: center;
   height: 105px;
   width: 100px;
+}
+
+.Setings {
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  margin-top: 100px;
+  margin-left: -160px;
+  display: none;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  cursor: pointer;
+}
+
+@keyframes SetingsOpen {
+  0% {
+    margin-top: 50px;
+    margin-left: 0px;
+  }
+}
+
+@keyframes SetingsClose {
+  0% {
+    margin-top: 90px;
+    margin-left: -150px;
+  }
+  100% {
+    margin-top: 50px;
+    margin-left: 0px;
+  }
+}
+
+.Setings.show {
+  display: flex;
+  animation-name: SetingsOpen;
+  animation-play-state: running;
+}
+
+.Setings.hide {
+  display: flex;
+  animation-name: SetingsClose;
+  animation-play-state: running;
 }

@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import "../assets/css/Normal/dayTime/dayTime.css";
-const TimeCycleBg = ({ hours }: { hours: number }) => {
+const TimeCycleBg = ({ hours, turn }: { hours: number; turn: any }) => {
   const [TimeCycleBg, setTimeCycleBg] = useState<string>("");
   const [OpacityCycleBg, setOpacityCycleBg] = useState<number>(0.14);
+
+  const storedTurns = localStorage.getItem("turn");
 
   useEffect(() => {
     const colors = [
@@ -45,9 +47,9 @@ const TimeCycleBg = ({ hours }: { hours: number }) => {
       <div
         className="Cycle"
         style={{
-          backgroundColor: TimeCycleBg,
+          backgroundColor: turn ? TimeCycleBg : "ffffff00",
           transition: "background-color 1s ease-in-out",
-          opacity: OpacityCycleBg,
+          opacity: turn ? OpacityCycleBg : "0",
         }}
       ></div>
     </>

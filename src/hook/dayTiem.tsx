@@ -10,6 +10,8 @@ const DayTime = ({
   setHours,
   setMinutes,
   minutes,
+  setTurn,
+  turn,
 }: {
   setDays: any;
   days: number;
@@ -17,6 +19,8 @@ const DayTime = ({
   setHours: any;
   setMinutes: any;
   minutes: number;
+  setTurn: any;
+  turn: boolean;
 }) => {
   useEffect(() => {
     const interval = setInterval(() => {
@@ -61,15 +65,15 @@ const DayTime = ({
   const [previousCycle, setPreviousCycle] = useState("");
 
   useEffect(() => {
-    if (hours >= 6 && hours <= 11) {
+    if (hours === 6) {
       setPreviousCycle(cycle);
       setCycle(Morning);
       localStorage.setItem("cycle", Morning.toString());
-    } else if (hours >= 12 && hours <= 17) {
+    } else if (hours === 12) {
       setPreviousCycle(cycle);
       setCycle(Afternoon);
       localStorage.setItem("cycle", Afternoon.toString());
-    } else if (hours >= 18 && hours <= 21) {
+    } else if (hours === 18) {
       setPreviousCycle(cycle);
       setCycle(Evening);
       localStorage.setItem("cycle", Evening.toString());
@@ -79,10 +83,38 @@ const DayTime = ({
       localStorage.setItem("cycle", Night.toString());
     }
   }, [hours]);
+  //======================
+  const [setings, setSetings] = useState<boolean>(false);
+  function OpenSetings() {
+    setSetings(!setings);
+  }
+
+  const [onOff, setOnOff] = useState("ON");
+
+  useEffect(() => {
+    const storedTurn = localStorage.getItem("turn");
+    if (storedTurn) {
+      setTurn(JSON.parse(storedTurn));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (turn === true) {
+      setOnOff("ON");
+    } else {
+      setOnOff("OFF");
+    }
+  });
+
+  function TurnOnOff() {
+    setTurn(!turn);
+    localStorage.setItem("turn", JSON.stringify(!turn));
+  }
 
   return (
     <div id="DayTimeContainer">
       <div
+        onClick={OpenSetings}
         className={`DayNightCycle ${
           cycle !== previousCycle ? "transitioning" : ""
         }`}
@@ -91,6 +123,12 @@ const DayTime = ({
           transition: "background-image 1s ease-in-out",
         }}
       ></div>
+      <div
+        className={`Setings ${setings ? "show" : "hide"}`}
+        onClick={TurnOnOff}
+      >
+        {onOff}
+      </div>
       <div className="DaysTime">
         <div className="DTC">
           <p>{days} Days</p>
