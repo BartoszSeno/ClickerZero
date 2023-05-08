@@ -25,8 +25,49 @@ import CharacterMain from "../Character/CharacterMain";
 import HpBarMain from "../hook/hpBar";
 import DayTime from "../hook/dayTiem";
 import TimeCycleBg from "../hook/TimeCycle";
+import { Link } from "react-router-dom";
 
-const MainIndexVillage = () => {
+const MainIndexVillage = ({
+  handleButtonClick,
+  FullDmgValue,
+  FullDefValue,
+  FullCountPerClick,
+  setFullCountPerClick,
+  setDays,
+  days,
+  hours,
+  setHours,
+  setMinutes,
+  minutes,
+  setTurn,
+  turn,
+  setCurrentHP,
+  maxHP,
+  setDmgBoost,
+  DmgBoost,
+  setDefBoosts,
+  DefBoosts,
+}: {
+  handleButtonClick: any;
+  FullDmgValue: number;
+  FullDefValue: number;
+  FullCountPerClick: number;
+  setFullCountPerClick: any;
+  setDays: any;
+  days: number;
+  hours: number;
+  setHours: any;
+  setMinutes: any;
+  minutes: number;
+  setTurn: any;
+  turn: boolean;
+  setCurrentHP: any;
+  maxHP: number;
+  setDmgBoost: any;
+  DmgBoost: number;
+  setDefBoosts: any;
+  DefBoosts: number;
+}) => {
   // ARRAY OF THE ENTIRE ShieldAndDagger
   const [ShieldAndDaggerData, setShieldAndDaggerData] = useState<any>(
     JSON.parse(
@@ -333,39 +374,7 @@ const MainIndexVillage = () => {
     Number(localStorage.getItem("UpgradeOneCount") || 0)
   );
 
-  //===================
-  // full Def Stats
-  const [FullDefValue, setFullDefValue] = useState<any>();
-
-  setTimeout(() => {
-    // export data from statistic
-    const FullDmgFromText = document.querySelector(
-      ".statsFullDef"
-    ) as HTMLElement;
-    //if the data exists, convert it to a text
-    const text = FullDmgFromText?.textContent;
-    setFullDefValue(text);
-  }, 10);
-  //==============
-  // full Dmg Stats
-  const [FullDmgValue, setFullDmgValue] = useState<any>();
-
-  setTimeout(() => {
-    // export data from statistic
-    const FullDmgFromText = document.querySelector(
-      ".statsFullDmg"
-    ) as HTMLElement;
-    //if the data exists, convert it to a text
-    const text = FullDmgFromText?.textContent;
-    setFullDmgValue(text);
-  }, 10);
-
-  //==============
-  // HERE NEW WARIABLES ARE ADDED WHICH ARE USED TO INCREASE POINTS PER CLICK
-  // full click from ( Upgrade lvl 1 & Main Weapon)
-  const [FullCountPerClick, setFullCountPerClick] = useState<number>(
-    UpgradeOne + (Number(FullDmgValue) || 0) + (Number(FullDefValue) || 0)
-  );
+  //===========
 
   // listing the levels from the first upgrade
   const [lvlOne, setLvlOne] = useState(() =>
@@ -684,48 +693,6 @@ const MainIndexVillage = () => {
   // its weapon or armor ?
   const [itsGloves, setitsGloves] = useState<boolean>(false);
 
-  //=================================================================================
-  //===================================Leveling======================================
-  //=================================================================================
-
-  const [clickCount, setClickCount] = useState(
-    Number(localStorage.getItem("clickCount")) || 0
-  );
-  const [fillCount, setFillCount] = useState(
-    Number(localStorage.getItem("fillCount")) || 0
-  );
-  const [maxClicks, setMaxClicks] = useState(
-    Number(localStorage.getItem("maxClicks")) || 50
-  );
-  const [maxClicksCount, setMaxClicksCount] = useState(
-    Number(localStorage.getItem("maxClicksCount")) || 1
-  );
-  const clickIncrease = FullCountPerClick;
-
-  function handleButtonClick() {
-    if (clickCount < maxClicks) {
-      setClickCount(clickCount + clickIncrease);
-      if (clickCount + clickIncrease >= maxClicks) {
-        setFillCount(fillCount + 1);
-        setClickCount(0);
-        if (fillCount + 1 === maxClicksCount) {
-          setMaxClicks(Number(maxClicks) * 1.8342);
-          setMaxClicksCount(maxClicksCount + 1);
-        }
-      }
-    }
-  }
-
-  useEffect(() => {
-    localStorage.setItem("fillCount", fillCount.toString());
-    localStorage.setItem("clickCount", clickCount.toString());
-    localStorage.setItem("maxClicks", maxClicks.toString());
-    localStorage.setItem("maxClicksCount", maxClicksCount.toString());
-  }, [fillCount, clickCount, maxClicks, maxClicksCount]);
-  //=================================================================================
-  //=========================================================================
-  //=================================================================================
-
   const [savePontsForUpgrade, setsavePontsForUpgrade] = useState<number>(
     Number(localStorage.getItem("savePontsForUpgrade")) || 0
   );
@@ -735,27 +702,10 @@ const MainIndexVillage = () => {
   const [UpgradeVillageAndClicks, setUpgradeVillageAndClicks] =
     useState<boolean>(false);
 
-  const [DmgBoost, setDmgBoost] = useState<number>(
-    Number(localStorage.getItem("DmgBoost")) || 1
-  );
-  const [DefBoosts, setDefBoosts] = useState<number>(
-    Number(localStorage.getItem("DefBoosts")) || 1
-  );
   //================================================================================
 
-  const maxHP = (100 + Number(FullDefValue)) * DefBoosts;
-  const [currentHP, setCurrentHP] = useState(100); // Inicjalne wartości currentHP
-
   //=================================================================
-  const [days, setDays] = useState(
-    parseInt(localStorage.getItem("days") ?? "") || 0
-  );
-  const [hours, setHours] = useState(
-    parseInt(localStorage.getItem("hours") ?? "") || 0
-  );
-  const [minutes, setMinutes] = useState(
-    parseInt(localStorage.getItem("minutes") ?? "") || 0
-  );
+
   //=============================================================
   const [sleep, setSleep] = useState(
     localStorage.getItem("sleep") === "true" ? true : false
@@ -778,7 +728,6 @@ const MainIndexVillage = () => {
   };
 
   //===============================
-  const [turn, setTurn] = useState<boolean>(true);
 
   //#0000006c
   return (
@@ -802,26 +751,7 @@ const MainIndexVillage = () => {
           </div>
           <div className="midVillage">
             <ClearLocalStorageButton />
-            <DayTime
-              setDays={setDays}
-              days={days}
-              hours={hours}
-              setHours={setHours}
-              setMinutes={setMinutes}
-              minutes={minutes}
-              setTurn={setTurn}
-              turn={turn}
-            />
-            <Lvl
-              clickCount={clickCount}
-              maxClicks={maxClicks}
-              fillCount={fillCount}
-            />
-            <HpBarMain
-              currentHP={currentHP}
-              maxHP={maxHP}
-              setCurrentHP={setCurrentHP}
-            />
+
             <CharacterMain
               UpgradeCharacters={UpgradeCharacters}
               setUpgradeCharacters={setUpgradeCharacters}
@@ -916,6 +846,7 @@ const MainIndexVillage = () => {
               setUpgradeOne={setUpgradeOne}
             />
             */}
+            <Link to="/Pond" className="PondTrawel"></Link>
           </div>
           <div className="rightVillage">
             <div

@@ -23,6 +23,7 @@
   background-size: 160px;
   z-index: 1000;
   border-radius: 120px;
+  cursor: pointer;
 }
 
 .DaysTime {

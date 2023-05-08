@@ -7,3 +7,10 @@
   align-items: center;
   flex-direction: column;
 }
+
+.PondTrawel {
+  position: absolute;
+  margin-top: 800px;
+  height: 150px;
+  width: 600px;
+}
