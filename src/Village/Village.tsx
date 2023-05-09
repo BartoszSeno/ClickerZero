@@ -18,12 +18,8 @@ import { GlovesImageAndNameAndCost } from "../data/equipment/gloves";
 import { ShieldAndDaggerImageAndNameAndCost } from "../data/equipment/subWeapon";
 import ClearLocalStorageButton from "../hook/RemoveLS";
 import Clicker from "../hook/ClickerCount";
-import UpdateLvlOne from "../Upgrade/UpgradeLvlOne";
-import Lvl from "../hook/Lvl";
 import UpgradeVillageAndClick from "../Upgrade/UpVillageAndClick";
 import CharacterMain from "../Character/CharacterMain";
-import HpBarMain from "../hook/hpBar";
-import DayTime from "../hook/dayTiem";
 import TimeCycleBg from "../hook/TimeCycle";
 import { Link } from "react-router-dom";
 
@@ -702,11 +698,7 @@ const MainIndexVillage = ({
   const [UpgradeVillageAndClicks, setUpgradeVillageAndClicks] =
     useState<boolean>(false);
 
-  //================================================================================
-
-  //=================================================================
-
-  //=============================================================
+  //==========================SLEEP===================================
   const [sleep, setSleep] = useState(
     localStorage.getItem("sleep") === "true" ? true : false
   );
@@ -727,9 +719,6 @@ const MainIndexVillage = ({
     setCurrentHP(maxHP);
   };
 
-  //===============================
-
-  //#0000006c
   return (
     <>
       <div
