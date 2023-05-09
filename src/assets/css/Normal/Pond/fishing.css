@@ -1,0 +1,43 @@
+#FishingContainer {
+  margin-top: 130px;
+  margin-left: 240px;
+  background-color: rgba(137, 43, 226, 0.253);
+  height: 600px;
+  width: 600px;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: end;
+  align-items: end;
+}
+
+.StartFishing {
+  background-color: aqua;
+  height: 270px;
+  width: 190px;
+}
+
+.FishingGame,
+.TimerFishing {
+  background-color: aqua;
+  height: 80px;
+  width: 400px;
+  margin-bottom: 10px;
+  margin-right: 100px;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.TimerFishing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+}
