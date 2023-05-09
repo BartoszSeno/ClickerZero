@@ -729,7 +729,6 @@ const MainIndexVillage = ({
         }}
       >
         <div className="GameMainWindow">
-          <TimeCycleBg hours={hours} turn={turn} />
           <div className="leftVillage">
             {/*
             <button className="InfoOpen" onClick={HandleInfoOpenAndClose}>
@@ -740,7 +739,6 @@ const MainIndexVillage = ({
           </div>
           <div className="midVillage">
             <ClearLocalStorageButton />
-
             <CharacterMain
               UpgradeCharacters={UpgradeCharacters}
               setUpgradeCharacters={setUpgradeCharacters}

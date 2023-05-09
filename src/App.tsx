@@ -6,6 +6,7 @@ import Lvl from "./hook/Lvl";
 import { useEffect, useState } from "react";
 import DayTime from "./hook/dayTiem";
 import HealthBar from "./hook/hpBar";
+import TimeCycleBg from "./hook/TimeCycle";
 
 function App() {
   //=========================DMG BOOST FOR CHARACTER UPGRADE=======================
@@ -114,6 +115,7 @@ function App() {
   return (
     <>
       <BrowserRouter basename="/ClickerZero">
+        <TimeCycleBg hours={hours} turn={turn} />
         <Routes>
           <Route
             path="/"
