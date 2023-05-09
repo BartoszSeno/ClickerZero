@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import "../assets/css/Normal/Pond/fishing.css";
 
-function Fishing() {
+function Fishing({
+  setFishCount,
+  FishCount,
+}: {
+  setFishCount: any;
+  FishCount: number;
+}) {
   const [FishingLetters, setFishingLetters] = useState<any>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
@@ -18,23 +24,26 @@ function Fishing() {
     setFishingLetters(randomLetters);
   }, []);
 
+  function setFishCountAndUpdateLocalStorage(count: number) {
+    setFishCount(count);
+    localStorage.setItem("fish", count.toString());
+  }
+
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       const { key } = event;
       const currentLetter = FishingLetters[currentIndex];
       //  the pressed button is changed to lower case
       if (key.toLowerCase() === currentLetter.toLowerCase()) {
-        // if all letters was corect
         if (currentIndex === FishingLetters.length - 1) {
           console.log("Game won!");
+          setFishCountAndUpdateLocalStorage(FishCount + 1);
           setIsGameOver(true);
           setStartGame(false);
         } else {
-          // adding current index to tracking letters
           setCurrentIndex((prevIndex) => prevIndex + 1);
         }
       } else {
-        // if letters was incorect
         console.log("Game over!");
         document.removeEventListener("keydown", handleKeyDown);
         setincorrectLetter(true);

@@ -1,7 +1,6 @@
 #FishingContainer {
   margin-top: 130px;
   margin-left: 240px;
-  background-color: rgba(137, 43, 226, 0.253);
   height: 600px;
   width: 600px;
   display: flex;
@@ -11,9 +10,9 @@
 }
 
 .StartFishing {
-  background-color: aqua;
   height: 270px;
   width: 190px;
+  cursor: pointer;
 }
 
 .FishingGame,

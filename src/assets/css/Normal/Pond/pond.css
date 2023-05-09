@@ -12,3 +12,16 @@
   height: 150px;
   width: 800px;
 }
+.FC p {
+  margin: 0;
+}
+.FC {
+  background-color: aqua;
+  height: 100px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  flex-direction: column;
+}
