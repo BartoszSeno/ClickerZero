@@ -110,6 +110,7 @@ function Fishing({
     }
   }, [StartGame, TimeToPlay, timeLeft]);
 
+  const progressValue = (timeLeft / 4) * 100;
   return (
     <>
       <div id="FishingContainer">
@@ -122,6 +123,7 @@ function Fishing({
           {FishingLetters.map((letter: string, index: number) => (
             <span
               key={index}
+              id="lettersGame"
               className={
                 index <= currentIndex - 1
                   ? "correct"
@@ -138,7 +140,11 @@ function Fishing({
           style={{ display: StartGame ? "flex" : "none" }}
           className="TimerFishing"
         >
-          {timeLeft.toFixed(1)}
+          <div className="container">
+            <div className="progress progress-striped">
+              <div className="progress-bar"></div>
+            </div>
+          </div>
         </span>
       </div>
       <div className="FishCollect">

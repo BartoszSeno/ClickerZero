@@ -15,15 +15,30 @@
   cursor: pointer;
 }
 
-.FishingGame,
 .TimerFishing {
   height: 80px;
   width: 400px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   margin-right: 100px;
   font-size: 40px;
+}
+
+#lettersGame {
   display: flex;
+  justify-content: center;
   align-items: center;
+}
+.FishingGame {
+  font-size: 40px;
+  margin-bottom: 50px;
+  margin-right: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/board.png?token=GHSAT0AAAAAACA775JGPZD6CR7A6S2GMO2OZC35BOA);
+  height: 100px;
+  background-size: 500px;
+  width: 500px;
 }
 
 .TimerFishing {
@@ -83,5 +98,53 @@
   }
   100% {
     opacity: 0;
+  }
+}
+
+.progress-bar {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 10px;
+  background-color: #ddd;
+  margin: 20px 0;
+}
+
+.progress-bar::-webkit-progress-value {
+  background-color: #4caf50;
+  transition: width 1s ease-in-out;
+}
+
+.progress-bar::-moz-progress-bar {
+  background-color: #4caf50;
+  transition: width 1s ease-in-out;
+}
+
+.container {
+  position: absolute;
+  margin-top: 300px;
+  margin-left: -200px;
+  width: 430px;
+  transform: rotate(180deg);
+}
+
+.progress-bar {
+  height: 5px;
+  border-radius: 4px;
+}
+
+.progress-striped .progress-bar {
+  background-color: #fcbc51;
+  width: 100%;
+  animation: progressAnimationStrike 4.2s;
+}
+
+@keyframes progressAnimationStrike {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
   }
 }
