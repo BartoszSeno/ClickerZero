@@ -1,4 +1,4 @@
-export const FishelectionStart = [
+export const FishArray = [
   {
     id: 1,
     image:

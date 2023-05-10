@@ -7,8 +7,289 @@ import { useEffect, useState } from "react";
 import DayTime from "./hook/dayTiem";
 import HealthBar from "./hook/hpBar";
 import TimeCycleBg from "./hook/TimeCycle";
+import { ShieldAndDaggerImageAndNameAndCost } from "./data/equipment/subWeapon";
+import { GlovesImageAndNameAndCost } from "./data/equipment/gloves";
+import { ShoesImageAndNameAndCost } from "./data/equipment/Shoes";
+import { MainWeaponImageAndNameAndCost } from "./data/equipment/mainWeapon";
+import { ArmorImageAndNameAndCost } from "./data/equipment/armor";
+import { HelmetImageAndNameAndCost } from "./data/equipment/helmet";
+import MainEq from "./Equipment";
 
 function App() {
+  // ARRAY OF THE ENTIRE ShieldAndDagger
+  const [ShieldAndDaggerData, setShieldAndDaggerData] = useState<any>(
+    JSON.parse(
+      localStorage.getItem("ShieldAndDaggerImageAndNameAndCost") ||
+        JSON.stringify(ShieldAndDaggerImageAndNameAndCost)
+    )
+  );
+  //==================
+  // GET UPGRADED ShieldAndDagger NAME FROM ENCHANT FUNCTION
+  const [UpgradedNamesShieldAndDagger, setUpgradedNamesShieldAndDagger] =
+    useState<any>(Array(ShieldAndDaggerData.length).fill(""));
+
+  //FUNCTION TO AUTOMATICALY REFRESH ShieldAndDagger STATS
+  // !! useState important for show the value points per click !!
+  const [selectedShieldAndDaggerItem, setSelectedShieldAndDaggerItem] =
+    useState(null);
+
+  // geting the id on click
+  const handleShieldAndDaggerItemSelect = (ShieldAndDaggerIndex: any) => {
+    setSelectedShieldAndDaggerItem(ShieldAndDaggerIndex);
+  };
+
+  //we get the id of the currently selected item (eq selected) which is saved in localstorage for update statistic DMG
+  const savedShieldAndDaggerId = localStorage.getItem(
+    "selectedShieldAndDaggerItemIdEquip"
+  );
+
+  //we add fake id to the selected item to make it refresh automatically
+  useEffect(() => {
+    handleShieldAndDaggerItemSelect(Number(savedShieldAndDaggerId));
+  });
+  // Declare state to save selected item index, initialized with 0
+  const [
+    selectedShieldAndDaggerItemIndex,
+    setSelectedShieldAndDaggerItemIndex,
+  ] = useState<number>(0);
+
+  // its weapon or armor ?
+  const [itsShieldAndDagger, setitsShieldAndDagger] = useState<boolean>(false);
+
+  //==================
+  // SAVES THE TRUE VALUE OF MAIN Gloves DEF
+  const [UpgradedDefShieldAndDagger, setUpgradedDefShieldAndDagger] =
+    useState<string>("");
+
+  // SAVES THE TRUE VALUE OF MAIN Gloves DMG
+  const [UpgradedDmgShieldAndDagger, setUpgradedDmgShieldAndDagger] =
+    useState<string>("");
+
+  //===========================GLOVES===============================
+
+  // ARRAY OF THE ENTIRE Gloves
+  const [GlovesData, setGlovesData] = useState<any>(
+    JSON.parse(
+      localStorage.getItem("GlovesImageAndNameAndCost") ||
+        JSON.stringify(GlovesImageAndNameAndCost)
+    )
+  );
+  //==================
+  // GET UPGRADED Gloves NAME FROM ENCHANT FUNCTION
+  const [UpgradedNamesGloves, setUpgradedNamesGloves] = useState<any>(
+    Array(GlovesData.length).fill("")
+  );
+
+  //FUNCTION TO AUTOMATICALY REFRESH Gloves STATS
+  // !! useState important for show the value points per click !!
+  const [selectedGlovesItem, setSelectedGlovesItem] = useState(null);
+
+  // geting the id on click
+  const handleGlovesItemSelect = (GlovesIndex: any) => {
+    setSelectedGlovesItem(GlovesIndex);
+  };
+
+  //we get the id of the currently selected item (eq selected) which is saved in localstorage for update statistic DMG
+  const savedGlovesId = localStorage.getItem("selectedGlovesItemIdEquip");
+
+  //we add fake id to the selected item to make it refresh automatically
+  useEffect(() => {
+    handleGlovesItemSelect(Number(savedGlovesId));
+  });
+  // Declare state to save selected item index, initialized with 0
+  const [selectedGlovesItemIndex, setSelectedGlovesItemIndex] =
+    useState<number>(0);
+  // its weapon or armor ?
+  const [itsGloves, setitsGloves] = useState<boolean>(false);
+
+  //==================
+  // SAVES THE TRUE VALUE OF MAIN Gloves DEF
+  const [UpgradedDefGloves, setUpgradedDefGloves] = useState<string>("");
+
+  //=====================SHOES============================
+
+  // ARRAY OF THE ENTIRE Shoes
+  const [ShoesData, setShoesData] = useState<any>(
+    JSON.parse(
+      localStorage.getItem("ShoesImageAndNameAndCost") ||
+        JSON.stringify(ShoesImageAndNameAndCost)
+    )
+  );
+  //==================
+  // GET UPGRADED Shoes NAME FROM ENCHANT FUNCTION
+  const [UpgradedNamesShoes, setUpgradedNamesShoes] = useState<any>(
+    Array(ShoesData.length).fill("")
+  );
+
+  //FUNCTION TO AUTOMATICALY REFRESH Shoes STATS
+  // !! useState important for show the value points per click !!
+  const [selectedShoesItem, setSelectedShoesItem] = useState(null);
+
+  // geting the id on click
+  const handleShoesItemSelect = (ShoesIndex: any) => {
+    setSelectedShoesItem(ShoesIndex);
+  };
+
+  //we get the id of the currently selected item (eq selected) which is saved in localstorage for update statistic DMG
+  const savedShoesId = localStorage.getItem("selectedShoesItemIdEquip");
+
+  //we add fake id to the selected item to make it refresh automatically
+  useEffect(() => {
+    handleShoesItemSelect(Number(savedShoesId));
+  });
+  // Declare state to save selected item index, initialized with 0
+  const [selectedShoesItemIndex, setSelectedShoesItemIndex] =
+    useState<number>(0);
+  // its weapon or armor ?
+  const [itsShoes, setitsShoes] = useState<boolean>(false);
+  //==================
+  // SAVES THE TRUE VALUE OF MAIN Shoes DEF
+  const [UpgradedDefShoes, setUpgradedDefShoes] = useState<string>("");
+
+  //================================HELMET========================
+
+  // ARRAY OF THE ENTIRE Helmet
+  const [HelmetData, setHelmetData] = useState<any>(
+    JSON.parse(
+      localStorage.getItem("HelmetImageAndNameAndCost") ||
+        JSON.stringify(HelmetImageAndNameAndCost)
+    )
+  );
+  //==================
+  // GET UPGRADED Helmet NAME FROM ENCHANT FUNCTION
+  const [UpgradedNamesHelmet, setUpgradedNamesHelmet] = useState<any>(
+    Array(HelmetData.length).fill("")
+  );
+
+  //==================
+
+  //FUNCTION TO AUTOMATICALY REFRESH Helmet STATS
+  // !! useState important for show the value points per click !!
+  const [selectedHelmetItem, setSelectedHelmetItem] = useState(null);
+
+  // geting the id on click
+  const handleHelmetItemSelect = (HelmetIndex: any) => {
+    setSelectedHelmetItem(HelmetIndex);
+  };
+
+  //we get the id of the currently selected item (eq selected) which is saved in localstorage for update statistic DMG
+  const savedHelmetId = localStorage.getItem("selectedHelmetItemIdEquip");
+
+  //we add fake id to the selected item to make it refresh automatically
+  useEffect(() => {
+    handleHelmetItemSelect(Number(savedHelmetId));
+  });
+  // Declare state to save selected item index, initialized with 0
+  const [selectedHelmetItemIndex, setSelectedHelmetItemIndex] =
+    useState<number>(0);
+  // its weapon or armor ?
+  const [itsHelmet, setitsHelmet] = useState<boolean>(false);
+  //==================
+  // SAVES THE TRUE VALUE OF MAIN Helmet DEF
+  const [UpgradedDefHelmet, setUpgradedDefHelmet] = useState<string>("");
+
+  //=======================ARMOR===========================
+
+  // ARRAY OF THE ENTIRE ARMOR
+  const [ArmorData, setArmorData] = useState<any>(
+    JSON.parse(
+      localStorage.getItem("ArmorImageAndNameAndCost") ||
+        JSON.stringify(ArmorImageAndNameAndCost)
+    )
+  );
+  //==================
+  // GET UPGRADED ARMOR NAME FROM ENCHANT FUNCTION
+  const [UpgradedNamesArmor, setUpgradedNamesArmor] = useState<any>(
+    Array(ArmorData.length).fill("")
+  );
+
+  //FUNCTION TO AUTOMATICALY REFRESH ARMOR STATS
+  // !! useState important for show the value points per click !!
+  const [selectedArmorItem, setSelectedArmorItem] = useState(null);
+
+  // geting the id on click
+  const handleArmorItemSelect = (armorIndex: any) => {
+    setSelectedArmorItem(armorIndex);
+  };
+
+  //we get the id of the currently selected item (eq selected) which is saved in localstorage for update statistic DMG
+  const savedArmorId = localStorage.getItem("selectedArmorItemIdEquip");
+
+  //we add fake id to the selected item to make it refresh automatically
+  useEffect(() => {
+    handleArmorItemSelect(Number(savedArmorId));
+  });
+
+  // Declare state to save selected item index, initialized with 0
+  const [selectedArmorItemIndex, setSelectedArmorItemIndex] =
+    useState<number>(0);
+
+  // its weapon or armor ?
+  const [itsArmor, setitsArmor] = useState<boolean>(false);
+
+  //==================
+  // SAVES THE TRUE VALUE OF MAIN ARMOR DEF
+  const [UpgradedDefArmor, setUpgradedDefArmor] = useState<string>("");
+
+  //===========================MAIN WEAPON=====================
+
+  // ARRAY OF THE ENTIRE MAIN WEAPON
+  const [mainWeaponData, setMainWeaponData] = useState<any>(
+    JSON.parse(
+      localStorage.getItem("MainWeaponImageAndNameAndCost") ||
+        JSON.stringify(MainWeaponImageAndNameAndCost)
+    )
+  );
+  //==================
+  // SAVES THE TRUE VALUE OF MAIN WEAPON DMG
+  const [UpgradedDmgMainWeapon, setUpgradedDmgMainWeapon] =
+    useState<string>("");
+
+  //==================
+  // GET UPGRADED NAME FROM ENCHANT FUNCTION
+  const [UpgradedNamesMainWeapon, setUpgradedNamesMainWeapon] = useState<any>(
+    Array(mainWeaponData.length).fill("")
+  );
+
+  //===============
+  //FUNCTION TO AUTOMATICALY REFRESH MAIN WEAPON STATS
+  // !! useState important for show the value points per click !!
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  // geting the id on click
+  const handleItemSelect = (index: any) => {
+    setSelectedItem(index);
+  };
+
+  //we get the id of the currently selected item (eq selected) which is saved in localstorage for update statistic DMG
+  const savedId = localStorage.getItem("selectedItemIdEquip");
+
+  //we add fake id to the selected item to make it refresh automatically
+  useEffect(() => {
+    handleItemSelect(Number(savedId));
+  });
+
+  // Declare state to save selected item index, initialized with 0
+  const [selectedItemIndex, setSelectedItemIndex] = useState<number>(0);
+
+  const [itsMainWeapon, setitsMainWeapon] = useState<boolean>(false);
+
+  //===================INVENTORY============================
+  const [FullInv, setFullInv] = useState<boolean>(false);
+
+  //=========================ENCHANT ================================
+
+  const [OpenAndCloseEqinEnchant, setOpenAndCloseEqinEnchant] =
+    useState<boolean>(false);
+  function OpenCloseEqinEnchant() {
+    setOpenAndCloseEqinEnchant(!OpenAndCloseEqinEnchant);
+  }
+
+  //=========================CHARACTER======================
+  const [UpgradeCharacters, setUpgradeCharacters] = useState<boolean>(false);
+
+  const [UpgradeVillageAndClicks, setUpgradeVillageAndClicks] =
+    useState<boolean>(false);
   //=========================DMG BOOST FOR CHARACTER UPGRADE=======================
   const [DmgBoost, setDmgBoost] = useState<number>(
     Number(localStorage.getItem("DmgBoost")) || 1
@@ -140,11 +421,139 @@ function App() {
                 DmgBoost={DmgBoost}
                 setDefBoosts={setDefBoosts}
                 DefBoosts={DefBoosts}
+                UpgradeCharacters={UpgradeCharacters}
+                setUpgradeCharacters={setUpgradeCharacters}
+                setUpgradeVillageAndClicks={setUpgradeVillageAndClicks}
+                UpgradeVillageAndClicks={UpgradeVillageAndClicks}
+                setMainWeaponData={setMainWeaponData}
+                FullInv={FullInv}
+                UpgradedDmgMainWeapon={UpgradedDmgMainWeapon}
+                setUpgradedDmgMainWeapon={setUpgradedDmgMainWeapon}
+                mainWeaponData={mainWeaponData}
+                setUpgradedNamesMainWeapon={setUpgradedNamesMainWeapon}
+                UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
+                UpgradedDefArmor={UpgradedDefArmor}
+                setUpgradedDefArmor={setUpgradedDefArmor}
+                ArmorData={ArmorData}
+                setUpgradedNamesArmor={setUpgradedNamesArmor}
+                UpgradedNamesArmor={UpgradedNamesArmor}
+                HelmetData={HelmetData}
+                UpgradedNamesHelmet={UpgradedNamesHelmet}
+                setUpgradedNamesHelmet={setUpgradedNamesHelmet}
+                setUpgradedDefHelmet={setUpgradedDefHelmet}
+                UpgradedDefHelmet={UpgradedDefHelmet}
+                ShoesData={ShoesData}
+                UpgradedNamesShoes={UpgradedNamesShoes}
+                setUpgradedNamesShoes={setUpgradedNamesShoes}
+                setUpgradedDefShoes={setUpgradedDefShoes}
+                UpgradedDefShoes={UpgradedDefShoes}
+                GlovesData={GlovesData}
+                UpgradedNamesGloves={UpgradedNamesGloves}
+                setUpgradedNamesGloves={setUpgradedNamesGloves}
+                setUpgradedDefGloves={setUpgradedDefGloves}
+                UpgradedDefGloves={UpgradedDefGloves}
+                ShieldAndDaggerData={ShieldAndDaggerData}
+                UpgradedNamesShieldAndDagger={UpgradedNamesShieldAndDagger}
+                setUpgradedDefShieldAndDagger={setUpgradedDefShieldAndDagger}
+                UpgradedDefShieldAndDagger={UpgradedDefShieldAndDagger}
+                setUpgradedNamesShieldAndDagger={
+                  setUpgradedNamesShieldAndDagger
+                }
+                setUpgradedDmgShieldAndDagger={setUpgradedDmgShieldAndDagger}
+                UpgradedDmgShieldAndDagger={UpgradedDmgShieldAndDagger}
+                setOpenAndCloseEqinEnchant={setOpenAndCloseEqinEnchant}
+                OpenAndCloseEqinEnchant={OpenAndCloseEqinEnchant}
+                OpenCloseEqinEnchant={OpenCloseEqinEnchant}
+                setSelectedItemIndex={setSelectedItemIndex}
+                setSelectedArmorItemIndex={setSelectedArmorItemIndex}
+                setitsMainWeapon={setitsMainWeapon}
+                setitsArmor={setitsArmor}
+                setSelectedHelmetItemIndex={setSelectedHelmetItemIndex}
+                setitsHelmet={setitsHelmet}
+                setSelectedShoesItemIndex={setSelectedShoesItemIndex}
+                setitsShoes={setitsShoes}
+                setSelectedGlovesItemIndex={setSelectedGlovesItemIndex}
+                setitsGloves={setitsGloves}
+                setSelectedShieldAndDaggerItemIndex={
+                  setSelectedShieldAndDaggerItemIndex
+                }
+                setitsShieldAndDagger={setitsShieldAndDagger}
+                selectedItemIndex={selectedItemIndex}
+                itsMainWeapon={itsMainWeapon}
+                selectedArmorItemIndex={selectedArmorItemIndex}
+                itsArmor={itsArmor}
+                itsHelmet={itsHelmet}
+                selectedHelmetItemIndex={selectedHelmetItemIndex}
+                itsShoes={itsShoes}
+                selectedShoesItemIndex={selectedShoesItemIndex}
+                itsGloves={itsGloves}
+                selectedGlovesItemIndex={selectedGlovesItemIndex}
+                itsShieldAndDagger={itsShieldAndDagger}
+                selectedShieldAndDaggerItemIndex={
+                  selectedShieldAndDaggerItemIndex
+                }
+                setHelmetData={setHelmetData}
+                setArmorData={setArmorData}
+                setGlovesData={setGlovesData}
+                setShoesData={setShoesData}
               />
             }
           ></Route>
           <Route path="/Pond" element={<Pond />}></Route>
         </Routes>
+        <MainEq
+          mainWeaponData={mainWeaponData}
+          UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
+          selectedItem={selectedItem}
+          ArmorData={ArmorData}
+          UpgradedNamesArmor={UpgradedNamesArmor}
+          selectedArmorItem={selectedArmorItem}
+          HelmetData={HelmetData}
+          UpgradedNamesHelmet={UpgradedNamesHelmet}
+          selectedHelmetItem={selectedHelmetItem}
+          ShoesData={ShoesData}
+          UpgradedNamesShoes={UpgradedNamesShoes}
+          selectedShoesItem={selectedShoesItem}
+          GlovesData={GlovesData}
+          UpgradedNamesGloves={UpgradedNamesGloves}
+          selectedGlovesItem={selectedGlovesItem}
+          ShieldAndDaggerData={ShieldAndDaggerData}
+          UpgradedNamesShieldAndDagger={UpgradedNamesShieldAndDagger}
+          selectedShieldAndDaggerItem={selectedShieldAndDaggerItem}
+          setGlovesData={setGlovesData}
+          setMainWeaponData={setMainWeaponData}
+          setArmorData={setArmorData}
+          setHelmetData={setHelmetData}
+          setShoesData={setShoesData}
+          setShieldAndDaggerData={setShieldAndDaggerData}
+          setFullInv={setFullInv}
+          FullInv={FullInv}
+          OpenAndCloseEqinEnchant={OpenAndCloseEqinEnchant}
+          setOpenAndCloseEqinEnchant={setOpenAndCloseEqinEnchant}
+          setSelectedItemIndex={setSelectedItemIndex}
+          setUpgradedDmgMainWeapon={setUpgradedDmgMainWeapon}
+          setSelectedArmorItemIndex={setSelectedArmorItemIndex}
+          setUpgradedDefArmor={setUpgradedDefArmor}
+          setitsMainWeapon={setitsMainWeapon}
+          setitsArmor={setitsArmor}
+          setSelectedHelmetItemIndex={setSelectedHelmetItemIndex}
+          setUpgradedDefHelmet={setUpgradedDefHelmet}
+          setitsHelmet={setitsHelmet}
+          setSelectedShoesItemIndex={setSelectedShoesItemIndex}
+          setUpgradedDefShoes={setUpgradedDefShoes}
+          setitsShoes={setitsShoes}
+          setSelectedGlovesItemIndex={setSelectedGlovesItemIndex}
+          setUpgradedDefGloves={setUpgradedDefGloves}
+          setitsGloves={setitsGloves}
+          setSelectedShieldAndDaggerItemIndex={
+            setSelectedShieldAndDaggerItemIndex
+          }
+          setUpgradedDefShieldAndDagger={setUpgradedDefShieldAndDagger}
+          setitsShieldAndDagger={setitsShieldAndDagger}
+          setUpgradedDmgShieldAndDagger={setUpgradedDmgShieldAndDagger}
+          setUpgradeCharacters={setUpgradeCharacters}
+          setUpgradeVillageAndClicks={setUpgradeVillageAndClicks}
+        />
         <Lvl
           clickCount={clickCount}
           maxClicks={maxClicks}
