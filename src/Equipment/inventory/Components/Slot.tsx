@@ -1,6 +1,14 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
-const ItemSlot = (props: { slot: any; data: { image: any } }) => {
+const ItemSlot = (props: {
+  slot: any;
+  data: {
+    catchCount: ReactNode;
+    image: any;
+    type: any;
+  };
+  catchCount: any;
+}) => {
   return (
     <>
       <div
@@ -14,8 +22,15 @@ const ItemSlot = (props: { slot: any; data: { image: any } }) => {
             className="img"
             style={{
               backgroundImage: `url("${props.data.image}")`,
+              backgroundSize: props.data.type === "Fish" ? "65px" : "",
             }}
           />
+        </div>
+        <div
+          className="FishCount"
+          style={{ display: props.data.type === "Fish" ? "flex" : "none" }}
+        >
+          {props.data.catchCount}
         </div>
       </div>
     </>

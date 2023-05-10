@@ -90,3 +90,12 @@ span {
   height: 20px;
   width: 100%;
 }
+
+.FishCount {
+  margin-top: -20px;
+  margin-left: 7px;
+  position: absolute;
+  width: 60px;
+  display: flex;
+  justify-content: end;
+}

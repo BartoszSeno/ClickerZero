@@ -13,6 +13,7 @@ import { ShoesImageAndNameAndCost } from "./data/equipment/Shoes";
 import { MainWeaponImageAndNameAndCost } from "./data/equipment/mainWeapon";
 import { ArmorImageAndNameAndCost } from "./data/equipment/armor";
 import { HelmetImageAndNameAndCost } from "./data/equipment/helmet";
+import { FishArray } from "./data/fish/fish";
 import MainEq from "./Equipment";
 
 function App() {
@@ -392,7 +393,10 @@ function App() {
 
   const maxHP = (100 + Number(FullDefValue)) * DefBoosts;
   const [currentHP, setCurrentHP] = useState(100); // Inicjalne wartości currentHP
-
+  //=================================================================================
+  const [FishData, setFishData] = useState<any>(
+    JSON.parse(localStorage.getItem("FishArray") || JSON.stringify(FishArray))
+  );
   return (
     <>
       <BrowserRouter basename="/ClickerZero">
@@ -499,7 +503,10 @@ function App() {
               />
             }
           ></Route>
-          <Route path="/Pond" element={<Pond />}></Route>
+          <Route
+            path="/Pond"
+            element={<Pond FishData={FishData} setFishData={setFishData} />}
+          ></Route>
         </Routes>
         <MainEq
           mainWeaponData={mainWeaponData}
@@ -553,6 +560,7 @@ function App() {
           setUpgradedDmgShieldAndDagger={setUpgradedDmgShieldAndDagger}
           setUpgradeCharacters={setUpgradeCharacters}
           setUpgradeVillageAndClicks={setUpgradeVillageAndClicks}
+          FishData={FishData}
         />
         <Lvl
           clickCount={clickCount}

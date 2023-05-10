@@ -2,25 +2,16 @@ import "../assets/css/Normal/Village/background.css";
 import "../assets/css/Normal/Village/midVillage.css";
 import "../assets/css/Normal/Village/rightVillage.css";
 import "../assets/css/Normal/shop/shop.css";
-import MainEq from "../Equipment";
 import CharacterSelection from "../Character";
-
 import React, { useEffect, useRef, useState } from "react";
 import WeaponShop from "./WeaponShop/WShop";
 import BlackSmith from "./BlackSmitch/BlackSmitch";
 import ArmorShops from "./ArmorShop/AShop";
 import Motel from "./Motel/Motel";
-import { MainWeaponImageAndNameAndCost } from "../data/equipment/mainWeapon";
-import { ArmorImageAndNameAndCost } from "../data/equipment/armor";
-import { HelmetImageAndNameAndCost } from "../data/equipment/helmet";
-import { ShoesImageAndNameAndCost } from "../data/equipment/Shoes";
-import { GlovesImageAndNameAndCost } from "../data/equipment/gloves";
-import { ShieldAndDaggerImageAndNameAndCost } from "../data/equipment/subWeapon";
 import ClearLocalStorageButton from "../hook/RemoveLS";
 import Clicker from "../hook/ClickerCount";
 import UpgradeVillageAndClick from "../Upgrade/UpVillageAndClick";
 import CharacterMain from "../Character/CharacterMain";
-import TimeCycleBg from "../hook/TimeCycle";
 import { Link } from "react-router-dom";
 
 const MainIndexVillage = ({
@@ -251,7 +242,7 @@ const MainIndexVillage = ({
 
   //FUNCTION TO AUTOMATICALY REFRESH Gloves STATS
   // !! useState important for show the value points per click !!
-  const [selectedGlovesItem, setSelectedGlovesItem] = useState(null);
+  const [, setSelectedGlovesItem] = useState(null);
 
   // geting the id on click
   const handleGlovesItemSelect = (GlovesIndex: any) => {

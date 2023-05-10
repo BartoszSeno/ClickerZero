@@ -51,6 +51,7 @@ const Inventory = ({
   setUpgradedDefHelmet,
   UpgradedNamesShoes,
   setUpgradedDefShoes,
+  FishData,
 }: {
   props: any;
   mainWeaponData: any;
@@ -90,6 +91,7 @@ const Inventory = ({
   setUpgradedDefHelmet: any;
   UpgradedNamesShoes: any;
   setUpgradedDefShoes: any;
+  FishData: any;
 }) => {
   const allItemsFromArray = [
     ...mainWeaponData,
@@ -98,6 +100,7 @@ const Inventory = ({
     ...GlovesData,
     ...ShoesData,
     ...ShieldAndDaggerData,
+    ...FishData,
   ];
 
   const [items, setItems] = useState(() => {
@@ -647,6 +650,7 @@ const Inventory = ({
                   data={getItemDataInSlot(slot) || null}
                   key={slot}
                   itemId={itemId}
+                  FishData={FishData}
                 />
               </span>
             );

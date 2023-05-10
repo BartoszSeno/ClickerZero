@@ -63,6 +63,7 @@ const MainEq = ({
   setUpgradedDmgShieldAndDagger,
   setUpgradeCharacters,
   setUpgradeVillageAndClicks,
+  FishData,
 }: {
   mainWeaponData: any;
   UpgradedNamesMainWeapon: any;
@@ -114,6 +115,7 @@ const MainEq = ({
   setUpgradedDmgShieldAndDagger: any;
   setUpgradeCharacters: any;
   setUpgradeVillageAndClicks: any;
+  FishData: any;
 }) => {
   //MAIN WEAPON
   //===========================================================================
@@ -500,6 +502,7 @@ const MainEq = ({
             setUpgradedDefHelmet={setUpgradedDefHelmet}
             UpgradedNamesShoes={UpgradedNamesShoes}
             setUpgradedDefShoes={setUpgradedDefShoes}
+            FishData={FishData}
           />
         </div>
         <div

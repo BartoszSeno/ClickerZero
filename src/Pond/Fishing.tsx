@@ -4,9 +4,13 @@ import "../assets/css/Normal/Pond/fishing.css";
 function Fishing({
   setFishCount,
   FishCount,
+  FishData,
+  setFishData,
 }: {
   setFishCount: any;
   FishCount: number;
+  FishData: any;
+  setFishData: any;
 }) {
   const [FishingLetters, setFishingLetters] = useState<any>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -15,9 +19,10 @@ function Fishing({
   const [incorrectLetter, setincorrectLetter] = useState<boolean>(false);
   const [TimeToPlay, setTimeToPlay] = useState<number>(4);
   const [timeLeft, setTimeLeft] = useState<number>(TimeToPlay);
+  const [LastCaughtFish, setLastCaughtFish] = useState(0);
 
   useEffect(() => {
-    const randomNumber = Math.floor(Math.random() * 10) + 5; // Random number form 5 to 14
+    const randomNumber = Math.floor(Math.random() * 10) + 5; // Random number from 5 to 14
     const randomLetters = Array(randomNumber)
       .fill("")
       .map(() => ["A", "W", "S", "D"][Math.floor(Math.random() * 4)]); // random render letters
@@ -25,8 +30,22 @@ function Fishing({
   }, []);
 
   function setFishCountAndUpdateLocalStorage(count: number) {
+    const randomId = Math.floor(Math.random() * 10) + 1; // Random id from 1 to 10
     setFishCount(count);
     localStorage.setItem("fish", count.toString());
+    const updatedFishArray = [...FishData]; // Create a copy of the original FishArray
+    const indexToUpdate = updatedFishArray.findIndex(
+      (fish) => fish.id === randomId
+    ); // Find the index of the fish with the random id
+    if (indexToUpdate !== -1) {
+      // If a fish with the random id is found
+      updatedFishArray[indexToUpdate].catchCount += 1; // Increment the catchCount of that fish
+      updatedFishArray[indexToUpdate].isBought = true; // Increment the catchCount of that fish
+      localStorage.setItem("FishArray", JSON.stringify(updatedFishArray)); // Update the FishArray in localStorage
+      setLastCaughtFish(randomId);
+    }
+    console.log(randomId);
+    console.log(FishData);
   }
 
   useEffect(() => {
@@ -121,6 +140,24 @@ function Fishing({
         >
           {timeLeft.toFixed(1)}
         </span>
+      </div>
+      <div className="FishCollect">
+        {FishData.map((data: any, index: number) => {
+          if (index === LastCaughtFish - 1) {
+            return (
+              <div className="fish-animation">
+                <div className="plus">+1</div>
+                <span
+                  className="ff"
+                  key={index}
+                  style={{ backgroundImage: `url(${data.image})` }}
+                ></span>
+              </div>
+            );
+          } else {
+            return null;
+          }
+        })}
       </div>
     </>
   );
