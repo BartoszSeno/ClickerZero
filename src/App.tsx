@@ -397,6 +397,7 @@ function App() {
   const [FishData, setFishData] = useState<any>(
     JSON.parse(localStorage.getItem("FishArray") || JSON.stringify(FishArray))
   );
+
   return (
     <>
       <BrowserRouter basename="/ClickerZero">
@@ -561,6 +562,7 @@ function App() {
           setUpgradeCharacters={setUpgradeCharacters}
           setUpgradeVillageAndClicks={setUpgradeVillageAndClicks}
           FishData={FishData}
+          setFishData={setFishData}
         />
         <Lvl
           clickCount={clickCount}

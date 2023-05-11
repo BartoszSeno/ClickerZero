@@ -8,11 +8,15 @@ function Fishing({
   FishCount,
   FishData,
   setFishData,
+  setLastCaughtFish,
+  LastCaughtFish,
 }: {
   setFishCount: any;
   FishCount: number;
   FishData: any;
   setFishData: any;
+  setLastCaughtFish: any;
+  LastCaughtFish: number;
 }) {
   const [FishingLetters, setFishingLetters] = useState<any>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -21,7 +25,6 @@ function Fishing({
   const [incorrectLetter, setincorrectLetter] = useState<boolean>(false);
   const [TimeToPlay, setTimeToPlay] = useState<number>(4);
   const [timeLeft, setTimeLeft] = useState<number>(TimeToPlay);
-  const [LastCaughtFish, setLastCaughtFish] = useState(0);
 
   useEffect(() => {
     const randomNumber = Math.floor(Math.random() * 10) + 5; // Random number from 5 to 14

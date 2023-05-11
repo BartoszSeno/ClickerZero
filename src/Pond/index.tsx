@@ -9,6 +9,8 @@ function Pond({ FishData, setFishData }: { FishData: any; setFishData: any }) {
     Number(localStorage.getItem("fish")) || 0
   );
 
+  const [LastCaughtFish, setLastCaughtFish] = useState(0);
+
   return (
     <>
       <div id="pond">
@@ -18,8 +20,10 @@ function Pond({ FishData, setFishData }: { FishData: any; setFishData: any }) {
           FishCount={FishCount}
           setFishData={setFishData}
           FishData={FishData}
+          setLastCaughtFish={setLastCaughtFish}
+          LastCaughtFish={LastCaughtFish}
         />
-        <SellFish />
+        <SellFish FishData={FishData} />
       </div>
     </>
   );

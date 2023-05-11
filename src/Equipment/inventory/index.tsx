@@ -11,6 +11,7 @@ import { ShieldAndDaggerImageAndNameAndCost } from "../../data/equipment/subWeap
 import { ArmorImageAndNameAndCost } from "../../data/equipment/armor";
 import { HelmetImageAndNameAndCost } from "../../data/equipment/helmet";
 import { ShoesImageAndNameAndCost } from "../../data/equipment/Shoes";
+import { FishArray } from "../../data/fish/fish";
 
 const Inventory = ({
   props,
@@ -507,6 +508,7 @@ const Inventory = ({
       Helmet.defLvl0.toString()
     );
   }
+
   // FAKE FUNCTION TO UPDATA DATA ON LOAD, WORK THE SAME LIKE 'ENCHANTPERCLICK'
   //!! BUT VALUE NOT SAVED IN LOCALSTORAGE !!
   //Helmet

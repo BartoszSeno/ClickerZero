@@ -38,3 +38,16 @@
   align-items: center;
   z-index: 1100;
 }
+
+.SellConteiner {
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Fish/sell.png);
+  height: 420px;
+  width: 370px;
+}
+
+.FishForSell {
+  background-color: aqua;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+}

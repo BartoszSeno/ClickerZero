@@ -11,6 +11,7 @@ import { ShoesImageAndNameAndCost } from "../data/equipment/Shoes";
 import { GlovesImageAndNameAndCost } from "../data/equipment/gloves";
 import { ShieldAndDaggerImageAndNameAndCost } from "../data/equipment/subWeapon";
 import Statistic from "./stats";
+import { FishArray } from "../data/fish/fish";
 
 const MainEq = ({
   mainWeaponData,
@@ -64,6 +65,7 @@ const MainEq = ({
   setUpgradeCharacters,
   setUpgradeVillageAndClicks,
   FishData,
+  setFishData,
 }: {
   mainWeaponData: any;
   UpgradedNamesMainWeapon: any;
@@ -116,6 +118,7 @@ const MainEq = ({
   setUpgradeCharacters: any;
   setUpgradeVillageAndClicks: any;
   FishData: any;
+  setFishData: any;
 }) => {
   //MAIN WEAPON
   //===========================================================================
@@ -147,6 +150,21 @@ const MainEq = ({
     // Save item information in local storage for later use
     localStorage.setItem("selectedHelmetItemIdEquip", item.id.toString());
     setwhatIsUse("helmet");
+
+    setTimeout(() => {
+      setSelectedItemIdEquip(null);
+    }, 10);
+  }
+  //Fish
+  //===========================================================================
+
+  function GetIdPerClickFish(index: any) {
+    const item = FishArray[index];
+    setSelectedItemIdEquip(index.id);
+
+    // Save item information in local storage for later use
+    localStorage.setItem("selectedFishItemId", item.id.toString());
+    setwhatIsUse("Fish");
 
     setTimeout(() => {
       setSelectedItemIdEquip(null);
@@ -213,10 +231,10 @@ const MainEq = ({
     setSelectedItemIdEquip(index.id);
 
     // Save item information in local storage for later use
-    localStorage.setItem(
-      "selectedShieldAndDaggerItemIdEquip",
-      item.id.toString()
-    );
+    // localStorage.setItem(
+    //   "selectedShieldAndDaggerItemIdEquip",
+    //   item.id.toString()
+    //  );
     setwhatIsUse("shield" || "dagger");
 
     setTimeout(() => {
@@ -252,6 +270,15 @@ const MainEq = ({
     });
   }
 
+  function NumberCheckBoxes(index: any) {
+    console.log("open box");
+    const item = FishData[index - 1];
+
+    console.log(item.catchCount);
+
+    GetIdPerClickFish(index - 1);
+  }
+
   const handleContextMenu = (e: { preventDefault: () => void }, item: any) => {
     e.preventDefault();
 
@@ -273,6 +300,8 @@ const MainEq = ({
       //===============
 
       GetIdPerClickMW(item.id);
+    } else if (item.type === "Fish") {
+      NumberCheckBoxes(item.id);
     } else if (item.type === "helmet") {
       //===============
       const newHelmetDatas = [...HelmetData];
@@ -460,7 +489,6 @@ const MainEq = ({
               setOpenAndCloseEqinEnchant();
             }}
           ></div>
-
           <Inventory
             props={""}
             mainWeaponData={mainWeaponData}

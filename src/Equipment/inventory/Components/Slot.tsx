@@ -1,4 +1,5 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState } from "react";
+import Slider from "@mui/material/Slider";
 
 const ItemSlot = (props: {
   slot: any;
@@ -9,6 +10,12 @@ const ItemSlot = (props: {
   };
   catchCount: any;
 }) => {
+  const [wartosc, setWartosc] = useState(10);
+
+  const handleChange = (event: any, newValue: any) => {
+    setWartosc(newValue);
+  };
+
   return (
     <>
       <div
@@ -28,10 +35,35 @@ const ItemSlot = (props: {
         </div>
         <div
           className="FishCount"
-          style={{ display: props.data.type === "Fish" ? "flex" : "none" }}
+          style={{
+            display:
+              props.data.catchCount === 1
+                ? "none"
+                : props.data.type === "Fish"
+                ? "flex"
+                : "none",
+          }}
         >
           {props.data.catchCount}
         </div>
+        {props.data.type === "Fish" && (
+          <div className="slider">
+            <Slider
+              min={1}
+              max={Number(props.data.catchCount)}
+              value={wartosc}
+              onChange={handleChange}
+              aria-labelledby="continuous-slider"
+              sx={{
+                color: "success.main",
+                "& .MuiSlider-thumb": {
+                  borderRadius: "0px",
+                },
+              }}
+            />
+            <div>wartoSC : {wartosc}</div>
+          </div>
+        )}
       </div>
     </>
   );
