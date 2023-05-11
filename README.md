@@ -29,7 +29,7 @@
 - :white_check_mark: Time and day counter
 - :x: Improving clicking / unlocking features (shop / enchant etc.)
 - :white_check_mark: Hotel sleeping function (cdr (sleeping restores all hp))
-- :x: A pond where you can catch fish and sell them or eat them (hp regen)
+- :white_check_mark: A pond where you can catch fish and :x: sell them or :x: eat them (hp regen)
 - :x: Adding an inn where you can eat (for gets buffs)
 - :x: Mini game where you can bet money (in inn)
 - :x: Buying your own apartment
