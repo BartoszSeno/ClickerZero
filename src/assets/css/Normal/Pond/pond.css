@@ -25,3 +25,16 @@
   font-size: 30px;
   flex-direction: column;
 }
+
+#SellShop {
+  display: flex;
+  position: absolute;
+  background-color: black;
+  margin-top: 50px;
+  margin-left: -1390px;
+  width: 400px;
+  height: 600px;
+  justify-content: center;
+  align-items: center;
+  z-index: 1100;
+}

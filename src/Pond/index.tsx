@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "../assets/css/Normal/Pond/pond.css";
 import Fishing from "./Fishing";
+import SellFish from "./SellFish/Sell";
 import { useState } from "react";
 
 function Pond({ FishData, setFishData }: { FishData: any; setFishData: any }) {
@@ -18,6 +19,7 @@ function Pond({ FishData, setFishData }: { FishData: any; setFishData: any }) {
           setFishData={setFishData}
           FishData={FishData}
         />
+        <SellFish />
       </div>
     </>
   );
