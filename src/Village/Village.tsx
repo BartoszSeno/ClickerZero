@@ -215,7 +215,6 @@ const MainIndexVillage = ({
     UpgradedShieldAndDaggerNamesOnMount();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  //==================
 
   //==================
 
@@ -276,7 +275,6 @@ const MainIndexVillage = ({
     UpgradedShoesNamesOnMount();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  //==================
 
   //====================================================================================================
 
@@ -319,9 +317,6 @@ const MainIndexVillage = ({
     UpgradedArmorNamesOnMount();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  //==================
-
-  //==================
 
   //==================
   // FULL NUMBER WHICH SAVES THE COUNT NUMBER OF MAIN POINTS 'count'

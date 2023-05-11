@@ -585,6 +585,9 @@ const Inventory = ({
       localStorage.getItem(itemSavedDefShoesKey) || item.defLvl0;
     setUpgradedDefShoes(savedDefShoes);
   }
+
+  const Silver = localStorage.getItem("count");
+
   return (
     <>
       <div className="app-container">
@@ -655,6 +658,9 @@ const Inventory = ({
               </span>
             );
           })}
+        </div>
+        <div className="InventoryStats">
+          <div className="Silver">Silver: {Silver}</div>
         </div>
       </div>
     </>

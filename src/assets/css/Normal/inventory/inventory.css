@@ -112,3 +112,8 @@ span {
   display: flex;
   justify-content: end;
 }
+
+.CharBox {
+  height: 302px;
+  width: 320px;
+}

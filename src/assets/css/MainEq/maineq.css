@@ -35,7 +35,7 @@
   margin-left: 150px;
   width: 455px;
   height: 626px;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/3c600cc1e2bf67cc9c4df207e30caf080ae463a9/src/assets/MainImg/invenory/Inventory.png);
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/invenory/Inventory3.png);
   background-repeat: no-repeat;
   background-position: center;
   background-position-y: -12px;
@@ -167,4 +167,14 @@
   cursor: pointer;
   margin-top: 19px;
   margin-left: 374px;
+}
+
+.InventoryStats {
+  background-color: #4299e1;
+  width: 391px;
+  height: 50px;
+  margin-top: 14px;
+  margin-left: 32px;
+  display: flex;
+  align-items: center;
 }
