@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import "../assets/css/Normal/Pond/fishing.css";
 
@@ -110,7 +112,6 @@ function Fishing({
     }
   }, [StartGame, TimeToPlay, timeLeft]);
 
-  const progressValue = (timeLeft / 4) * 100;
   return (
     <>
       <div id="FishingContainer">
