@@ -404,7 +404,6 @@ function App() {
   );
 
   //====
-  const [Inv, setInv] = useState<boolean>(true);
 
   return (
     <>

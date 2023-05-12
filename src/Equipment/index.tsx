@@ -231,10 +231,10 @@ const MainEq = ({
     setSelectedItemIdEquip(index.id);
 
     // Save item information in local storage for later use
-    // localStorage.setItem(
-    //   "selectedShieldAndDaggerItemIdEquip",
-    //   item.id.toString()
-    //  );
+    localStorage.setItem(
+      "selectedShieldAndDaggerItemIdEquip",
+      item.id.toString()
+    );
     setwhatIsUse("shield" || "dagger");
 
     setTimeout(() => {
