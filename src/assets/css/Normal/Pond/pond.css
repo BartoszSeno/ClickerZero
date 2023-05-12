@@ -51,20 +51,31 @@
 }
 .Slider {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
   margin-top: 150px;
-  height: 100px;
+  height: 250px;
 }
 
 .CatchValue {
-  background-color: rgb(66, 66, 186);
 }
 
 .FishForSell {
   height: 100px;
   width: 100px;
   position: absolute;
-  background-size: 100px, 105px;
+}
+
+.BS {
+  border-radius: 0;
+  width: 200px;
+  height: 50px;
+  border: 2px solid #3d2626;
+  background-color: #543628;
+  cursor: pointer;
+}
+
+.BS:active {
+  background-color: red;
 }

@@ -17,6 +17,11 @@ import { FishArray } from "./data/fish/fish";
 import MainEq from "./Equipment";
 
 function App() {
+  //==================
+  // FULL NUMBER WHICH SAVES THE COUNT NUMBER OF MAIN POINTS 'count'
+  const [count, setCount] = useState<number>(() =>
+    Number(localStorage.getItem("count") || 0)
+  );
   // ARRAY OF THE ENTIRE ShieldAndDagger
   const [ShieldAndDaggerData, setShieldAndDaggerData] = useState<any>(
     JSON.parse(
@@ -501,12 +506,21 @@ function App() {
                 setArmorData={setArmorData}
                 setGlovesData={setGlovesData}
                 setShoesData={setShoesData}
+                setCount={setCount}
+                count={count}
               />
             }
           ></Route>
           <Route
             path="/Pond"
-            element={<Pond FishData={FishData} setFishData={setFishData} />}
+            element={
+              <Pond
+                FishData={FishData}
+                setFishData={setFishData}
+                setCount={setCount}
+                count={count}
+              />
+            }
           ></Route>
         </Routes>
         <MainEq

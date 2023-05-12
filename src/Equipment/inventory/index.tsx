@@ -12,6 +12,7 @@ import { ArmorImageAndNameAndCost } from "../../data/equipment/armor";
 import { HelmetImageAndNameAndCost } from "../../data/equipment/helmet";
 import { ShoesImageAndNameAndCost } from "../../data/equipment/Shoes";
 import { FishArray } from "../../data/fish/fish";
+import { formatNumber } from "../../hook/FormatNumber";
 
 const Inventory = ({
   props,
@@ -662,7 +663,7 @@ const Inventory = ({
           })}
         </div>
         <div className="InventoryStats">
-          <div className="Silver">Silver: {Silver}</div>
+          <div className="Silver">Silver: {formatNumber(Silver)}</div>
         </div>
       </div>
     </>

@@ -103,6 +103,8 @@ const MainIndexVillage = ({
   setArmorData,
   setGlovesData,
   setShoesData,
+  setCount,
+  count,
 }: {
   handleButtonClick: any;
   FullDmgValue: number;
@@ -192,6 +194,8 @@ const MainIndexVillage = ({
   setArmorData: any;
   setGlovesData: any;
   setShoesData: any;
+  setCount: any;
+  count: number;
 }) => {
   // function in which we get data what object has a upgraded name (from enchant)
   function UpgradedShieldAndDaggerNamesOnMount() {
@@ -317,12 +321,6 @@ const MainIndexVillage = ({
     UpgradedArmorNamesOnMount();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  //==================
-  // FULL NUMBER WHICH SAVES THE COUNT NUMBER OF MAIN POINTS 'count'
-  const [count, setCount] = useState<number>(() =>
-    Number(localStorage.getItem("count") || 0)
-  );
 
   //===================
   //the amount you get after leveling up the first upgrades

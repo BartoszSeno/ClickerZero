@@ -4,7 +4,17 @@ import Fishing from "./Fishing";
 import SellFish from "./SellFish/Sell";
 import { useState } from "react";
 
-function Pond({ FishData, setFishData }: { FishData: any; setFishData: any }) {
+function Pond({
+  FishData,
+  setFishData,
+  setCount,
+  count,
+}: {
+  FishData: any;
+  setFishData: any;
+  setCount: any;
+  count: number;
+}) {
   const [FishCount, setFishCount] = useState<number>(
     Number(localStorage.getItem("fish")) || 0
   );
@@ -23,7 +33,12 @@ function Pond({ FishData, setFishData }: { FishData: any; setFishData: any }) {
           setLastCaughtFish={setLastCaughtFish}
           LastCaughtFish={LastCaughtFish}
         />
-        <SellFish FishData={FishData} />
+        <SellFish
+          FishData={FishData}
+          setFishData={setFishData}
+          setCount={setCount}
+          count={count}
+        />
       </div>
     </>
   );

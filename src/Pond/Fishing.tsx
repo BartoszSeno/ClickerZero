@@ -44,7 +44,7 @@ function Fishing({
     ); // Find the index of the fish with the random id
     if (indexToUpdate !== -1) {
       // If a fish with the random id is found
-      updatedFishArray[indexToUpdate].catchCount += 1; // Increment the catchCount of that fish
+      updatedFishArray[indexToUpdate].catchCount += 100; // Increment the catchCount of that fish
       updatedFishArray[indexToUpdate].isBought = true; // Increment the catchCount of that fish
       localStorage.setItem("FishArray", JSON.stringify(updatedFishArray)); // Update the FishArray in localStorage
       setLastCaughtFish(randomId);
