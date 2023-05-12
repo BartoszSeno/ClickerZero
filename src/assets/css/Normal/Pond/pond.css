@@ -16,7 +16,6 @@
   margin: 0;
 }
 .FC {
-  background-color: aqua;
   height: 100px;
   width: 100px;
   display: flex;
@@ -43,11 +42,29 @@
   background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Fish/sell.png);
   height: 420px;
   width: 370px;
+  display: flex;
+  justify-content: center;
 }
 
 .FishForSell {
-  background-color: aqua;
+  margin-top: 50px;
+}
+.Slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 150px;
+  height: 100px;
+}
+
+.CatchValue {
+  background-color: rgb(66, 66, 186);
+}
+
+.FishForSell {
   height: 100px;
   width: 100px;
   position: absolute;
+  background-size: 100px, 105px;
 }

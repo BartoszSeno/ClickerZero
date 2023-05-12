@@ -1,21 +1,19 @@
 import React, { ReactNode, useState } from "react";
 import Slider from "@mui/material/Slider";
+import { FishArray } from "../../../data/fish/fish";
 
-const ItemSlot = (props: {
-  slot: any;
-  data: {
-    catchCount: ReactNode;
-    image: any;
-    type: any;
-  };
-  catchCount: any;
-}) => {
-  const [wartosc, setWartosc] = useState(10);
-
-  const handleChange = (event: any, newValue: any) => {
-    setWartosc(newValue);
-  };
-
+const ItemSlot = (
+  props: {
+    slot: any;
+    data: {
+      catchCount: ReactNode;
+      image: any;
+      type: any;
+    };
+    catchCount: any;
+  },
+  FishData: any
+) => {
   return (
     <>
       <div
@@ -46,24 +44,6 @@ const ItemSlot = (props: {
         >
           {props.data.catchCount}
         </div>
-        {props.data.type === "Fish" && (
-          <div className="slider">
-            <Slider
-              min={1}
-              max={Number(props.data.catchCount)}
-              value={wartosc}
-              onChange={handleChange}
-              aria-labelledby="continuous-slider"
-              sx={{
-                color: "success.main",
-                "& .MuiSlider-thumb": {
-                  borderRadius: "0px",
-                },
-              }}
-            />
-            <div>wartoSC : {wartosc}</div>
-          </div>
-        )}
       </div>
     </>
   );

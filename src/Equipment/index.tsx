@@ -270,9 +270,14 @@ const MainEq = ({
     });
   }
 
+  const [OpenSliderFish, setOpenSliderFish] = useState<boolean>(false);
+
   function NumberCheckBoxes(index: any) {
     console.log("open box");
     const item = FishData[index - 1];
+
+    setOpenSliderFish(true);
+    localStorage.setItem("OSF", JSON.stringify(OpenSliderFish));
 
     console.log(item.catchCount);
 

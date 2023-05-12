@@ -1,3 +1,5 @@
+import SliderFish from "../../hook/Slider";
+
 function SellFish({ FishData }: { FishData: any }) {
   return (
     <>
@@ -11,13 +13,16 @@ function SellFish({ FishData }: { FishData: any }) {
                 <span
                   className="FishForSell"
                   key={index}
-                  style={{ backgroundImage: `url(${data.image})` }}
+                  style={{
+                    backgroundImage: `url(${data.image}), url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/invenory/emptSlot.png)`,
+                  }}
                 ></span>
               );
             } else {
               return null;
             }
           })}
+          <SliderFish FishData={FishData} />
         </div>
       </div>
     </>
