@@ -1,3 +1,4 @@
+import { useState } from "react";
 import SliderFish from "../../hook/Slider";
 
 function SellFish({
@@ -5,16 +6,50 @@ function SellFish({
   setFishData,
   setCount,
   count,
+  setopenSellShop,
+  openSellShop,
+  OpenAndCloseSellShop,
 }: {
   FishData: any;
   setFishData: any;
   setCount: any;
   count: number;
+  setopenSellShop: any;
+  openSellShop: boolean;
+  OpenAndCloseSellShop: any;
 }) {
+  function CloseSellShop() {
+    setopenSellShop(false);
+  }
+
+  const [SellIsOpen, setSellIsOpen] = useState<boolean>(true);
+
+  localStorage.setItem("SelIsOpen", openSellShop.toString());
+
   return (
     <>
-      <div id="SellShop">
-        <div className="SellConteiner">
+      <div
+        id="SellShop"
+        onClick={(e) => {
+          e.stopPropagation();
+          CloseSellShop();
+        }}
+      >
+        <div
+          className="openSellShop"
+          onClick={(e) => {
+            e.stopPropagation();
+            OpenAndCloseSellShop();
+          }}
+        ></div>
+        <div
+          className="SellConteiner"
+          onClick={(e) => {
+            e.stopPropagation();
+            setSellIsOpen(true);
+          }}
+          style={{ display: openSellShop && SellIsOpen ? "flex" : "none" }}
+        >
           {FishData.map((data: any, index: number) => {
             const FishId = localStorage.getItem("selectedFishItemId");
 

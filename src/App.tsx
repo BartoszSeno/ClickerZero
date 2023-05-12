@@ -403,6 +403,9 @@ function App() {
     JSON.parse(localStorage.getItem("FishArray") || JSON.stringify(FishArray))
   );
 
+  //====
+  const [Inv, setInv] = useState<boolean>(true);
+
   return (
     <>
       <BrowserRouter basename="/ClickerZero">

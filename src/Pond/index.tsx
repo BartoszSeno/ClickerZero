@@ -21,6 +21,13 @@ function Pond({
 
   const [LastCaughtFish, setLastCaughtFish] = useState(0);
 
+  const [openSellShop, setopenSellShop] = useState<boolean>(false);
+
+  function OpenAndCloseSellShop() {
+    setTimeout(() => {
+      setopenSellShop(!openSellShop);
+    }, 10);
+  }
   return (
     <>
       <div id="pond">
@@ -38,6 +45,9 @@ function Pond({
           setFishData={setFishData}
           setCount={setCount}
           count={count}
+          setopenSellShop={setopenSellShop}
+          openSellShop={openSellShop}
+          OpenAndCloseSellShop={OpenAndCloseSellShop}
         />
       </div>
     </>

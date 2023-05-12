@@ -21,6 +21,7 @@ function SliderFish({
   };
 
   const openSliderFishValue = localStorage.getItem("OSF");
+  const FishId = localStorage.getItem("selectedFishItemId");
 
   useEffect(() => {
     localStorage.setItem("count", count.toString());
@@ -42,6 +43,7 @@ function SliderFish({
         newFishData[index - 1].isBought = false;
         setFishData(newFishData);
         localStorage.setItem("FishArray", JSON.stringify(newFishData));
+        localStorage.setItem("selectedFishItemId", "0");
       } else {
       }
     } else {
@@ -51,8 +53,6 @@ function SliderFish({
   return (
     <div className="Slider">
       {FishData.map((data: any, index: number) => {
-        const FishId = localStorage.getItem("selectedFishItemId");
-
         if (index === Number(FishId) - 1) {
           return (
             <Slider
@@ -75,10 +75,14 @@ function SliderFish({
           return null;
         }
       })}
-      <div className="CatchValue">Wartość : {wartosc}</div>
+      <div
+        className="CatchValue"
+        style={{ display: Number(FishId) === 0 ? "none" : "flex" }}
+      >
+        Wartość : {wartosc}
+      </div>
       <div>
         {FishData.map((data: any, index: number) => {
-          const FishId = localStorage.getItem("selectedFishItemId");
           const FullSell = data.Cost * wartosc;
 
           if (index === Number(FishId) - 1) {

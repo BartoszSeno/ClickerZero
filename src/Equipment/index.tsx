@@ -460,6 +460,17 @@ const MainEq = ({
     }
   };
 
+  const Sell = localStorage.getItem("SelIsOpen");
+  const [selloc, setselloc] = useState<boolean>();
+
+  useEffect(() => {
+    if (Sell === "true") {
+      setselloc(true);
+    } else {
+      setselloc(false);
+    }
+  }, [Sell]);
+
   return (
     <>
       <div
@@ -542,6 +553,8 @@ const MainEq = ({
           id="EqCharacters"
           style={{
             display: OpenAndCloseEqinEnchant
+              ? "none"
+              : selloc
               ? "none"
               : openInvAndEq && Inv
               ? "flex"
