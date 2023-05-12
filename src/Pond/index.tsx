@@ -31,7 +31,11 @@ function Pond({
   return (
     <>
       <div id="pond">
-        <Link to="/" className="BackToVillage"></Link>
+        <Link
+          to="/"
+          className="BackToVillage"
+          onMouseEnter={OpenAndCloseSellShop}
+        ></Link>
         <Fishing
           setFishCount={setFishCount}
           FishCount={FishCount}
