@@ -66,6 +66,7 @@ const MainEq = ({
   setUpgradeVillageAndClicks,
   FishData,
   setFishData,
+  setfishId,
 }: {
   mainWeaponData: any;
   UpgradedNamesMainWeapon: any;
@@ -119,6 +120,7 @@ const MainEq = ({
   setUpgradeVillageAndClicks: any;
   FishData: any;
   setFishData: any;
+  setfishId: any;
 }) => {
   //MAIN WEAPON
   //===========================================================================
@@ -164,6 +166,7 @@ const MainEq = ({
 
     // Save item information in local storage for later use
     localStorage.setItem("selectedFishItemId", item.id.toString());
+    setfishId(item.id);
     setwhatIsUse("Fish");
 
     setTimeout(() => {

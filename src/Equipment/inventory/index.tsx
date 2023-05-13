@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from "react";
 import "../../assets/css/Normal/inventory/inventory.css";
 
@@ -171,7 +170,7 @@ const Inventory = ({
       // Update prevItemsRef with the current items value
       prevItemsRef.current = updatedItems;
     }
-  }, [allItemsFromArray, inventorySlots, items]);
+  }, [allItemsFromArray, inventorySlots, items, setFullInv]);
 
   //========================================================================================
 

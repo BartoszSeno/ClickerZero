@@ -20,7 +20,6 @@ function SliderFish({
     setWartosc(newValue);
   };
 
-  const openSliderFishValue = localStorage.getItem("OSF");
   const FishId = localStorage.getItem("selectedFishItemId");
 
   useEffect(() => {
@@ -32,6 +31,7 @@ function SliderFish({
     const newFishData = [...FishData];
     console.log(item.catchCount);
     if (newFishData[index - 1].catchCount > 0) {
+      setWartosc(1);
       newFishData[index - 1].catchCount =
         newFishData[index - 1].catchCount - wartosc;
       const FullSell = item.Cost * wartosc;
@@ -39,14 +39,16 @@ function SliderFish({
       setCount(count + FullSell);
       localStorage.setItem("FishArray", JSON.stringify(newFishData));
       if (newFishData[index - 1].catchCount === 0) {
+        setWartosc(1);
         console.log("sprzedane");
         newFishData[index - 1].isBought = false;
         setFishData(newFishData);
         localStorage.setItem("FishArray", JSON.stringify(newFishData));
         localStorage.setItem("selectedFishItemId", "0");
-      } else {
+      } else if (newFishData[index - 1].catchCount < 0) {
       }
     } else {
+      setWartosc(0);
     }
   }
 

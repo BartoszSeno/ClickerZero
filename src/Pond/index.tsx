@@ -9,11 +9,13 @@ function Pond({
   setFishData,
   setCount,
   count,
+  fishId,
 }: {
   FishData: any;
   setFishData: any;
   setCount: any;
   count: number;
+  fishId: any;
 }) {
   const [FishCount, setFishCount] = useState<number>(
     Number(localStorage.getItem("fish")) || 0
@@ -28,14 +30,14 @@ function Pond({
       setopenSellShop(!openSellShop);
     }, 10);
   }
+  function Close() {
+    setopenSellShop(false);
+  }
+
   return (
     <>
       <div id="pond">
-        <Link
-          to="/"
-          className="BackToVillage"
-          onMouseEnter={OpenAndCloseSellShop}
-        ></Link>
+        <Link to="/" className="BackToVillage" onMouseEnter={Close}></Link>
         <Fishing
           setFishCount={setFishCount}
           FishCount={FishCount}
@@ -52,6 +54,7 @@ function Pond({
           setopenSellShop={setopenSellShop}
           openSellShop={openSellShop}
           OpenAndCloseSellShop={OpenAndCloseSellShop}
+          fishId={fishId}
         />
       </div>
     </>

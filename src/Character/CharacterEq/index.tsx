@@ -1,5 +1,4 @@
 /* eslint-disable array-callback-return */
-import { useEffect, useState } from "react";
 import "../../assets/css/Normal/Characters/char.css";
 import { CharacterSelectionStart } from "../../data/character/character";
 

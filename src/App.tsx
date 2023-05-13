@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainIndexVillage from "./Village/Village";
@@ -52,7 +53,7 @@ function App() {
   //we add fake id to the selected item to make it refresh automatically
   useEffect(() => {
     handleShieldAndDaggerItemSelect(Number(savedShieldAndDaggerId));
-  });
+  }, []);
   // Declare state to save selected item index, initialized with 0
   const [
     selectedShieldAndDaggerItemIndex,
@@ -101,7 +102,7 @@ function App() {
   //we add fake id to the selected item to make it refresh automatically
   useEffect(() => {
     handleGlovesItemSelect(Number(savedGlovesId));
-  });
+  }, []);
   // Declare state to save selected item index, initialized with 0
   const [selectedGlovesItemIndex, setSelectedGlovesItemIndex] =
     useState<number>(0);
@@ -142,7 +143,7 @@ function App() {
   //we add fake id to the selected item to make it refresh automatically
   useEffect(() => {
     handleShoesItemSelect(Number(savedShoesId));
-  });
+  }, []);
   // Declare state to save selected item index, initialized with 0
   const [selectedShoesItemIndex, setSelectedShoesItemIndex] =
     useState<number>(0);
@@ -184,7 +185,7 @@ function App() {
   //we add fake id to the selected item to make it refresh automatically
   useEffect(() => {
     handleHelmetItemSelect(Number(savedHelmetId));
-  });
+  }, []);
   // Declare state to save selected item index, initialized with 0
   const [selectedHelmetItemIndex, setSelectedHelmetItemIndex] =
     useState<number>(0);
@@ -224,7 +225,7 @@ function App() {
   //we add fake id to the selected item to make it refresh automatically
   useEffect(() => {
     handleArmorItemSelect(Number(savedArmorId));
-  });
+  }, []);
 
   // Declare state to save selected item index, initialized with 0
   const [selectedArmorItemIndex, setSelectedArmorItemIndex] =
@@ -273,7 +274,7 @@ function App() {
   //we add fake id to the selected item to make it refresh automatically
   useEffect(() => {
     handleItemSelect(Number(savedId));
-  });
+  }, []);
 
   // Declare state to save selected item index, initialized with 0
   const [selectedItemIndex, setSelectedItemIndex] = useState<number>(0);
@@ -404,7 +405,7 @@ function App() {
   );
 
   //====
-
+  const [fishId, setfishId] = useState<number>();
   return (
     <>
       <BrowserRouter basename="/ClickerZero">
@@ -521,11 +522,13 @@ function App() {
                 setFishData={setFishData}
                 setCount={setCount}
                 count={count}
+                fishId={fishId}
               />
             }
           ></Route>
         </Routes>
         <MainEq
+          setfishId={setfishId}
           mainWeaponData={mainWeaponData}
           UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
           selectedItem={selectedItem}

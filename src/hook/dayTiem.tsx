@@ -104,7 +104,7 @@ const DayTime = ({
     } else {
       setOnOff("OFF");
     }
-  });
+  }, [turn]);
 
   function TurnOnOff() {
     setTurn(!turn);

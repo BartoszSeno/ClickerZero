@@ -9,6 +9,7 @@ function SellFish({
   setopenSellShop,
   openSellShop,
   OpenAndCloseSellShop,
+  fishId,
 }: {
   FishData: any;
   setFishData: any;
@@ -17,6 +18,7 @@ function SellFish({
   setopenSellShop: any;
   openSellShop: boolean;
   OpenAndCloseSellShop: any;
+  fishId: any;
 }) {
   function CloseSellShop() {
     setopenSellShop(false);
@@ -30,30 +32,28 @@ function SellFish({
     <>
       <div
         id="SellShop"
-        onClick={(e) => {
+        onMouseDown={(e) => {
           e.stopPropagation();
           CloseSellShop();
         }}
       >
         <div
           className="openSellShop"
-          onClick={(e) => {
+          onMouseDown={(e) => {
             e.stopPropagation();
             OpenAndCloseSellShop();
           }}
         ></div>
         <div
           className="SellConteiner"
-          onClick={(e) => {
+          onMouseDown={(e) => {
             e.stopPropagation();
             setSellIsOpen(true);
           }}
           style={{ display: openSellShop && SellIsOpen ? "flex" : "none" }}
         >
           {FishData.map((data: any, index: number) => {
-            const FishId = localStorage.getItem("selectedFishItemId");
-
-            if (index === Number(FishId) - 1) {
+            if (index === Number(fishId) - 1) {
               return (
                 <span
                   className="FishForSell"
@@ -61,7 +61,9 @@ function SellFish({
                   style={{
                     backgroundImage: `url(${data.image}), url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/invenory/FishEq.png)`,
                   }}
-                ></span>
+                >
+                  {data.id}
+                </span>
               );
             } else {
               return null;
