@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import "./assets/css/Normal/Cat/Cat.css";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainIndexVillage from "./Village/Village";
@@ -16,6 +17,7 @@ import { ArmorImageAndNameAndCost } from "./data/equipment/armor";
 import { HelmetImageAndNameAndCost } from "./data/equipment/helmet";
 import { FishArray } from "./data/fish/fish";
 import MainEq from "./Equipment";
+import SellFish from "./Pond/SellFish/Sell";
 
 function App() {
   //==================
@@ -406,6 +408,18 @@ function App() {
 
   //====
   const [fishId, setfishId] = useState<number>();
+  const [ValueCatch, setValueCatch] = useState(1);
+
+  //=================================================================================
+  //=================================================================================
+
+  const [SellFishByCat, setSellFishByCat] = useState<boolean>(false);
+
+  function OpenSellShop() {
+    setTimeout(() => {
+      setSellFishByCat(true);
+    }, 10);
+  }
   return (
     <>
       <BrowserRouter basename="/ClickerZero">
@@ -415,6 +429,7 @@ function App() {
             path="/"
             element={
               <MainIndexVillage
+                OpenSellShop={OpenSellShop}
                 handleButtonClick={handleButtonClick}
                 FullDmgValue={FullDmgValue}
                 FullDefValue={FullDefValue}
@@ -511,6 +526,7 @@ function App() {
                 setShoesData={setShoesData}
                 setCount={setCount}
                 count={count}
+                setSellFishByCat={setSellFishByCat}
               />
             }
           ></Route>
@@ -523,10 +539,23 @@ function App() {
                 setCount={setCount}
                 count={count}
                 fishId={fishId}
+                ValueCatch={ValueCatch}
+                setValueCatch={setValueCatch}
               />
             }
           ></Route>
         </Routes>
+        <SellFish
+          SellFishByCat={SellFishByCat}
+          FishData={FishData}
+          setFishData={setFishData}
+          setCount={setCount}
+          count={count}
+          fishId={fishId}
+          ValueCatch={ValueCatch}
+          setValueCatch={setValueCatch}
+          setSellFishByCat={setSellFishByCat}
+        />
         <MainEq
           setfishId={setfishId}
           mainWeaponData={mainWeaponData}
@@ -582,6 +611,7 @@ function App() {
           setUpgradeVillageAndClicks={setUpgradeVillageAndClicks}
           FishData={FishData}
           setFishData={setFishData}
+          setValueCatch={setValueCatch}
         />
         <Lvl
           clickCount={clickCount}

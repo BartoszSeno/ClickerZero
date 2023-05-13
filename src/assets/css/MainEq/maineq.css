@@ -168,13 +168,3 @@
   margin-top: 19px;
   margin-left: 374px;
 }
-
-.InventoryStats {
-  background-color: #4299e1;
-  width: 391px;
-  height: 50px;
-  margin-top: 14px;
-  margin-left: 32px;
-  display: flex;
-  align-items: center;
-}

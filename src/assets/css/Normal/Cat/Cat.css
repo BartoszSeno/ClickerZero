@@ -1,0 +1,33 @@
+.Cat-p1 {
+  height: 100px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: aqua;
+}
+
+/*positioning all cat*/
+
+.Cat-p1 {
+  margin-top: 35px;
+  margin-left: -350px;
+}
+
+.Cat {
+  background-position: center;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/cattest.png?token=GHSAT0AAAAAACA775JH2TRORN3U4PNDGFPQZC7X3UQ);
+  background-repeat: no-repeat;
+  height: 100px;
+  width: 100px;
+  background-size: 60px;
+}
+
+.ShopCat {
+  width: 250px;
+  height: 250px;
+  background-size: 250px;
+  position: absolute;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/cattest.png?token=GHSAT0AAAAAACA775JH2TRORN3U4PNDGFPQZC7X3UQ);
+}

@@ -67,6 +67,7 @@ const MainEq = ({
   FishData,
   setFishData,
   setfishId,
+  setValueCatch,
 }: {
   mainWeaponData: any;
   UpgradedNamesMainWeapon: any;
@@ -121,6 +122,7 @@ const MainEq = ({
   FishData: any;
   setFishData: any;
   setfishId: any;
+  setValueCatch: any;
 }) => {
   //MAIN WEAPON
   //===========================================================================
@@ -289,7 +291,7 @@ const MainEq = ({
 
   const handleContextMenu = (e: { preventDefault: () => void }, item: any) => {
     e.preventDefault();
-
+    setValueCatch(1);
     if (item.type === "weapon") {
       //===============
       const newWeaponData = [...mainWeaponData];
@@ -566,7 +568,9 @@ const MainEq = ({
             backgroundImage: ce ? "" : "none",
           }}
         >
-          <div className="EqTitle">Equipment</div>
+          <div className="EqTitle" style={{ display: ce ? "flex" : "none" }}>
+            Equipment
+          </div>
           <div className="CloseEq" onClick={CloseEq}></div>
           <EquipContainer
             mainWeaponData={mainWeaponData}

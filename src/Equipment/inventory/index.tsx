@@ -663,7 +663,8 @@ const Inventory = ({
         </div>
         <div className="InventoryStats">
           <div className="Silver">
-            Silver: {Number(Silver) !== 0 ? formatNumber(Silver) : "0"}
+            <div className="SilverCoin"></div>{" "}
+            {Number(Silver) !== 0 ? formatNumber(Silver) : "0"}
           </div>
         </div>
       </div>

@@ -117,3 +117,31 @@ span {
   height: 302px;
   width: 320px;
 }
+.Silver {
+  display: flex;
+  flex-direction: row;
+  width: 100px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.SilverCoin {
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/01.png?token=GHSAT0AAAAAACA775JHFAAZ5A7ZQD5OBTGYZC7JL5Q);
+  background-repeat: no-repeat;
+  background-size: 30px;
+  height: 30px;
+  width: 30px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
+.InventoryStats {
+  background-color: #4299e1;
+  width: 391px;
+  height: 50px;
+  margin-top: 14px;
+  margin-left: 32px;
+  display: flex;
+  align-items: center;
+}

@@ -8,16 +8,20 @@ function SliderFish({
   setFishData,
   setCount,
   count,
+  ValueCatch,
+  setValueCatch,
+  fishId,
 }: {
   FishData: any;
   setFishData: any;
   setCount: any;
   count: number;
+  ValueCatch: number;
+  setValueCatch: any;
+  fishId: number;
 }) {
-  const [wartosc, setWartosc] = useState(1);
-
   const handleChange = (event: any, newValue: any) => {
-    setWartosc(newValue);
+    setValueCatch(newValue);
   };
 
   const FishId = localStorage.getItem("selectedFishItemId");
@@ -31,24 +35,21 @@ function SliderFish({
     const newFishData = [...FishData];
     console.log(item.catchCount);
     if (newFishData[index - 1].catchCount > 0) {
-      setWartosc(1);
       newFishData[index - 1].catchCount =
-        newFishData[index - 1].catchCount - wartosc;
-      const FullSell = item.Cost * wartosc;
+        newFishData[index - 1].catchCount - ValueCatch;
+      const FullSell = item.Cost * ValueCatch;
       setFishData(newFishData);
       setCount(count + FullSell);
       localStorage.setItem("FishArray", JSON.stringify(newFishData));
       if (newFishData[index - 1].catchCount === 0) {
-        setWartosc(1);
         console.log("sprzedane");
         newFishData[index - 1].isBought = false;
         setFishData(newFishData);
         localStorage.setItem("FishArray", JSON.stringify(newFishData));
         localStorage.setItem("selectedFishItemId", "0");
-      } else if (newFishData[index - 1].catchCount < 0) {
+      } else {
       }
     } else {
-      setWartosc(0);
     }
   }
 
@@ -61,13 +62,59 @@ function SliderFish({
               key={index}
               min={1}
               max={Number(data.catchCount)}
-              value={wartosc}
+              value={ValueCatch}
               onChange={handleChange}
               aria-labelledby="continuous-slider"
+              valueLabelDisplay="on"
               sx={{
+                color: "#83a448",
                 width: "200px",
-                color: "success.main",
                 "& .MuiSlider-thumb": {
+                  borderRadius: "0px",
+                  color: "transparent",
+                  backgroundImage: `url(${data.image})`,
+                  backgroundPosition: "center",
+                  backgroundSize: `${
+                    ValueCatch > 300 ? "160" : 100 + Math.floor(ValueCatch / 5)
+                  }px`,
+                  transform: "rotate(20deg)",
+                  marginTop: "-45px",
+                  marginLeft: "-50px",
+                  width: "100px",
+                  height: "100px",
+                  "&:hover": {
+                    boxShadow: "none",
+                    border: "none",
+                    outline: "none",
+                  },
+                  "&:not(hover)": {
+                    boxShadow: "none",
+                    border: "none",
+                    outline: "none",
+                  },
+                  "&:before": {
+                    boxShadow: "none",
+                  },
+                  "& .MuiSlider-valueLabel": {
+                    backgroundColor: "transparent",
+                    height: "0px",
+                    transform: "rotate(-20deg)",
+                    top: "-30px",
+                    fontFamily: "Alagard",
+                    right: "68px",
+                    "& > span": {
+                      backgroundColor: "transparent",
+                      marginTop: "50px",
+                      height: "0px",
+                      fontSize: "20px",
+                      fontWeight: "bold",
+                      color: "#000",
+                      zIndex: "-1",
+                    },
+                  },
+                },
+                "& .MuiSlider-track": {
+                  color: "#667a31",
                   borderRadius: "0px",
                 },
               }}
@@ -77,37 +124,27 @@ function SliderFish({
           return null;
         }
       })}
-      <div
-        className="CatchValue"
-        style={{ display: Number(FishId) === 0 ? "none" : "flex" }}
-      >
-        Wartość : {wartosc}
-      </div>
-      <div>
-        {FishData.map((data: any, index: number) => {
-          const FullSell = data.Cost * wartosc;
 
-          if (index === Number(FishId) - 1) {
-            return (
-              <>
-                <div className="SilverAmounght">
-                  Silver: {formatNumber(FullSell)}
-                </div>
-                <button
-                  className="BS"
-                  onClick={(e) => {
-                    SellFish(data.id);
-                  }}
-                >
-                  SELL
-                </button>
-              </>
-            );
-          } else {
-            return null;
-          }
-        })}
-      </div>
+      {FishData.map((data: any, index: number) => {
+        const FullSell = data.Cost * ValueCatch;
+
+        if (index === Number(FishId) - 1) {
+          return (
+            <>
+              <button
+                className="BS"
+                onClick={(e) => {
+                  SellFish(data.id);
+                }}
+              >
+                SELL FOR: {formatNumber(FullSell)}
+              </button>
+            </>
+          );
+        } else {
+          return null;
+        }
+      })}
     </div>
   );
 }

@@ -10,12 +10,16 @@ function Pond({
   setCount,
   count,
   fishId,
+  ValueCatch,
+  setValueCatch,
 }: {
   FishData: any;
   setFishData: any;
   setCount: any;
   count: number;
   fishId: any;
+  ValueCatch: number;
+  setValueCatch: any;
 }) {
   const [FishCount, setFishCount] = useState<number>(
     Number(localStorage.getItem("fish")) || 0
@@ -45,16 +49,6 @@ function Pond({
           FishData={FishData}
           setLastCaughtFish={setLastCaughtFish}
           LastCaughtFish={LastCaughtFish}
-        />
-        <SellFish
-          FishData={FishData}
-          setFishData={setFishData}
-          setCount={setCount}
-          count={count}
-          setopenSellShop={setopenSellShop}
-          openSellShop={openSellShop}
-          OpenAndCloseSellShop={OpenAndCloseSellShop}
-          fishId={fishId}
         />
       </div>
     </>

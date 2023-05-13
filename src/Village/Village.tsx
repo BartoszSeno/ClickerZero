@@ -13,6 +13,7 @@ import Clicker from "../hook/ClickerCount";
 import UpgradeVillageAndClick from "../Upgrade/UpVillageAndClick";
 import CharacterMain from "../Character/CharacterMain";
 import { Link } from "react-router-dom";
+import Cat from "../hook/CAT";
 
 const MainIndexVillage = ({
   handleButtonClick,
@@ -105,6 +106,8 @@ const MainIndexVillage = ({
   setShoesData,
   setCount,
   count,
+  OpenSellShop,
+  setSellFishByCat,
 }: {
   handleButtonClick: any;
   FullDmgValue: number;
@@ -196,6 +199,8 @@ const MainIndexVillage = ({
   setShoesData: any;
   setCount: any;
   count: number;
+  OpenSellShop: any;
+  setSellFishByCat: any;
 }) => {
   // function in which we get data what object has a upgraded name (from enchant)
   function UpgradedShieldAndDaggerNamesOnMount() {
@@ -363,6 +368,7 @@ const MainIndexVillage = ({
   const handleScroll = (scrollOffset: number) => {
     if (mainBGScrollHorizontalRef.current) {
       mainBGScrollHorizontalRef.current.scrollLeft += scrollOffset;
+      setSellFishByCat(false);
     }
   };
 
@@ -858,6 +864,9 @@ const MainIndexVillage = ({
                 setSleepTimeout={setSleepTimeout}
                 sleepTimeout={sleepTimeout}
               />
+            </div>
+            <div className="Cat-p1" onClick={OpenSellShop}>
+              <Cat />
             </div>
           </div>
         </div>
