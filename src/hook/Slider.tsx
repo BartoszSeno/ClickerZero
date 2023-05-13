@@ -115,6 +115,7 @@ function SliderFish({
                 },
                 "& .MuiSlider-track": {
                   color: "#667a31",
+                  height: "8px",
                   borderRadius: "0px",
                 },
               }}
