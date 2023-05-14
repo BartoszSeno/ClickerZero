@@ -18,6 +18,7 @@ import { HelmetImageAndNameAndCost } from "./data/equipment/helmet";
 import { FishArray } from "./data/fish/fish";
 import MainEq from "./Equipment";
 import SellFish from "./Pond/SellFish/Sell";
+import { CatArray } from "./data/cat/cat";
 
 function App() {
   //==================
@@ -415,11 +416,14 @@ function App() {
 
   const [SellFishByCat, setSellFishByCat] = useState<boolean>(false);
 
+  const [CatUse, setCatUse] = useState<number>(1);
+
   function OpenSellShop() {
     setTimeout(() => {
       setSellFishByCat(true);
     }, 10);
   }
+
   return (
     <>
       <BrowserRouter basename="/ClickerZero">

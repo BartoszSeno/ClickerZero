@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SliderFish from "../../hook/Slider";
 import Cat from "../../hook/CAT";
+import { CatArray } from "../../data/cat/cat";
 
 function SellFish({
   FishData,
@@ -34,26 +35,37 @@ function SellFish({
           setSellFishByCat(false);
         }}
       >
-        <div
-          className="SellConteiner"
-          onMouseDown={(e) => {
-            e.stopPropagation();
-            setSellIsOpen(true);
-          }}
-          style={{ display: SellFishByCat ? "flex" : "none" }}
-        >
-          <div className="ShopCat"></div>
+        {CatArray.map((data: any, index: number) => {
+          if (index === 0) {
+            return (
+              <div
+                className="SellConteiner"
+                onMouseDown={(e) => {
+                  e.stopPropagation();
+                  setSellIsOpen(true);
+                }}
+                style={{
+                  display: SellFishByCat ? "flex" : "none",
+                  backgroundImage: `url(${data.BG})`,
+                }}
+              >
+                <div className="ShopCat"></div>
 
-          <SliderFish
-            FishData={FishData}
-            setFishData={setFishData}
-            setCount={setCount}
-            count={count}
-            ValueCatch={ValueCatch}
-            setValueCatch={setValueCatch}
-            fishId={fishId}
-          />
-        </div>
+                <SliderFish
+                  FishData={FishData}
+                  setFishData={setFishData}
+                  setCount={setCount}
+                  count={count}
+                  ValueCatch={ValueCatch}
+                  setValueCatch={setValueCatch}
+                  fishId={fishId}
+                />
+              </div>
+            );
+          } else {
+            return null;
+          }
+        })}
       </div>
     </>
   );
