@@ -7,9 +7,7 @@ export const CatArray = [
     BigSit:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Cat/Cat/Black/catSitBig.gif",
     Laight:
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Cat/Cat/Black/catLaing.gif",
-    Staing:
-      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Cat/Cat/Black/caStaing.gif",
+      "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Cat/Cat/Black/catT.gif",
     BG: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Cat/BgCat/bgp1.png",
     type: "Cat",
   },

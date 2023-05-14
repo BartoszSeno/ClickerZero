@@ -17,7 +17,7 @@ import { ArmorImageAndNameAndCost } from "./data/equipment/armor";
 import { HelmetImageAndNameAndCost } from "./data/equipment/helmet";
 import { FishArray } from "./data/fish/fish";
 import MainEq from "./Equipment";
-import SellFish from "./Pond/SellFish/Sell";
+import SellFish from "./hook/SellFish/Sell";
 import { CatArray } from "./data/cat/cat";
 
 function App() {

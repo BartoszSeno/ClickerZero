@@ -1,6 +1,6 @@
 import { useState } from "react";
-import SliderFish from "../../hook/Slider";
-import Cat from "../../hook/CAT";
+import SliderFish from "../Slider";
+import Cat from "../CAT";
 import { CatArray } from "../../data/cat/cat";
 
 function SellFish({

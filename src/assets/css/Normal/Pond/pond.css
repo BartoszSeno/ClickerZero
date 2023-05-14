@@ -78,18 +78,37 @@
   background-size: 130px;
   transform: rotate(40deg);
 }
+.BU {
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/ButtonUp.png?token=GHSAT0AAAAAACA775JH57YMGQN5HI5JV54AZDAQRQA),
+    url(https://raw.githubusercontent.com/BartoszSeno/learn/master/ButtonDown.png?token=GHSAT0AAAAAACA775JGHU7FQRXLLTTIM75KZDAQRPQ);
+  background-repeat: no-repeat;
+}
+.BU p {
+  margin: 0;
+  margin-top: -10px;
+  transition: 0.35s;
+}
+.BU:active p {
+  margin-top: 10px;
+}
+.BU:active {
+  background-position-y: 10px, 0px;
+}
 
-.BS {
+.BU {
   padding-top: 5px;
   border-radius: 0;
   width: 300px;
   height: 80px;
-  border: 4px solid #2d2214;
-  background-color: #493823;
+  border: 4px solid transparent;
+  background-color: transparent;
   cursor: pointer;
   font-size: 30px;
   font-family: "Alagard";
   transition: 0.35s;
+  color: goldenrod;
+  text-shadow: -3px 2px 0px rgba(0, 0, 0, 1), 2px 2px 0px rgba(0, 0, 0, 1),
+    -3px -2px 0px rgba(0, 0, 0, 1), 2px -2px 0px rgba(0, 0, 0, 1);
 }
 
 .BS:hover {

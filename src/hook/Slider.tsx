@@ -68,7 +68,8 @@ function SliderFish({
               valueLabelDisplay="on"
               sx={{
                 color: "#83a448",
-                width: "200px",
+                width: `160px`,
+                transform: "rotate(-10deg)",
                 "& .MuiSlider-thumb": {
                   borderRadius: "0px",
                   color: "transparent",
@@ -77,7 +78,7 @@ function SliderFish({
                   backgroundSize: `${
                     ValueCatch > 300 ? "160" : 100 + Math.floor(ValueCatch / 5)
                   }px`,
-                  transform: "rotate(20deg)",
+                  transform: "rotate(30deg)",
                   marginTop: "-45px",
                   marginLeft: "-50px",
                   width: "100px",
@@ -114,7 +115,7 @@ function SliderFish({
                   },
                 },
                 "& .MuiSlider-track": {
-                  color: "#667a31",
+                  color: "transparent",
                   height: "8px",
                   borderRadius: "0px",
                 },
@@ -133,12 +134,12 @@ function SliderFish({
           return (
             <>
               <button
-                className="BS"
+                className="BU"
                 onClick={(e) => {
                   SellFish(data.id);
                 }}
               >
-                SELL FOR: {formatNumber(FullSell)}
+                <p>SELL FOR: {formatNumber(FullSell)}</p>
               </button>
             </>
           );
