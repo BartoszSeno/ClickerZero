@@ -108,6 +108,7 @@ const MainIndexVillage = ({
   count,
   OpenSellShop,
   setSellFishByCat,
+  numberCatP,
 }: {
   handleButtonClick: any;
   FullDmgValue: number;
@@ -201,6 +202,7 @@ const MainIndexVillage = ({
   count: number;
   OpenSellShop: any;
   setSellFishByCat: any;
+  numberCatP: number;
 }) => {
   // function in which we get data what object has a upgraded name (from enchant)
   function UpgradedShieldAndDaggerNamesOnMount() {
@@ -818,6 +820,8 @@ const MainIndexVillage = ({
               }}
             >
               <ArmorShops
+                numberCatP={numberCatP}
+                OpenSellShop={OpenSellShop}
                 ASO={ASO}
                 setWSO={setWSO}
                 setBSO={setBSO}
@@ -865,9 +869,11 @@ const MainIndexVillage = ({
                 sleepTimeout={sleepTimeout}
               />
             </div>
-            <div className="Cat-p1" onClick={OpenSellShop}>
-              <Cat />
-            </div>
+            {numberCatP === 1 && (
+              <div className="Cat-p1" onClick={OpenSellShop}>
+                <Cat />
+              </div>
+            )}
           </div>
         </div>
       </div>

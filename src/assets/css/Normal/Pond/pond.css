@@ -34,7 +34,7 @@
   height: 970px;
   align-items: center;
   justify-content: center;
-  z-index: 10;
+  z-index: 2000;
   pointer-events: none;
 }
 
@@ -44,7 +44,6 @@
   width: 418px;
   display: flex;
   justify-content: center;
-  z-index: 10000;
   pointer-events: all;
 }
 
@@ -79,8 +78,8 @@
   transform: rotate(40deg);
 }
 .BU {
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/ButtonUp.png?token=GHSAT0AAAAAACA775JH57YMGQN5HI5JV54AZDAQRQA),
-    url(https://raw.githubusercontent.com/BartoszSeno/learn/master/ButtonDown.png?token=GHSAT0AAAAAACA775JGHU7FQRXLLTTIM75KZDAQRPQ);
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/any/ButtonUp.png),
+    url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/any/ButtonDown.png);
   background-repeat: no-repeat;
 }
 .BU p {

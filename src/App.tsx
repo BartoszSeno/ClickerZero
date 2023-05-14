@@ -415,7 +415,6 @@ function App() {
   //=================================================================================
 
   const [SellFishByCat, setSellFishByCat] = useState<boolean>(false);
-
   const [CatUse, setCatUse] = useState<number>(1);
 
   function OpenSellShop() {
@@ -423,6 +422,21 @@ function App() {
       setSellFishByCat(true);
     }, 10);
   }
+
+  //==
+  const [numberCatP, setNumberCatP] = useState(1);
+
+  useEffect(() => {
+    const catArrayLength = CatArray.length;
+
+    const intervalId = setInterval(() => {
+      // generate a random number between 1 and 10
+      const newNumber = Math.floor(Math.random() * catArrayLength + 1);
+      setNumberCatP(newNumber);
+    }, 5 * 60 * 1000); // run every 5 minutes
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <>
@@ -531,6 +545,7 @@ function App() {
                 setCount={setCount}
                 count={count}
                 setSellFishByCat={setSellFishByCat}
+                numberCatP={numberCatP}
               />
             }
           ></Route>
@@ -559,8 +574,10 @@ function App() {
           ValueCatch={ValueCatch}
           setValueCatch={setValueCatch}
           setSellFishByCat={setSellFishByCat}
+          numberCatP={numberCatP}
         />
         <MainEq
+          SellFishByCat={SellFishByCat}
           setfishId={setfishId}
           mainWeaponData={mainWeaponData}
           UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}

@@ -1,17 +1,12 @@
-.Cat-p1 {
-  height: 100px;
-  width: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
 /*positioning all cat*/
 
 .Cat-p1 {
   margin-top: 35px;
   margin-left: -350px;
+}
+.Cat-p2 {
+  margin-top: 172px;
+  margin-left: 470px;
 }
 
 .Cat {
@@ -21,6 +16,7 @@
   width: 100px;
   background-size: 60px;
   animation-play-state: paused;
+  cursor: pointer;
 }
 
 .ShopCat {
@@ -29,5 +25,4 @@
   margin-left: -50px;
   background-size: 300px;
   position: absolute;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Cat/Cat/Black/catSitBig.gif);
 }

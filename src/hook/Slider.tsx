@@ -57,82 +57,74 @@ function SliderFish({
     <div className="Slider">
       {FishData.map((data: any, index: number) => {
         if (index === Number(FishId) - 1) {
-          return (
-            <Slider
-              key={index}
-              min={1}
-              max={Number(data.catchCount)}
-              value={ValueCatch}
-              onChange={handleChange}
-              aria-labelledby="continuous-slider"
-              valueLabelDisplay="on"
-              sx={{
-                color: "#83a448",
-                width: `160px`,
-                transform: "rotate(-10deg)",
-                "& .MuiSlider-thumb": {
-                  borderRadius: "0px",
-                  color: "transparent",
-                  backgroundImage: `url(${data.image})`,
-                  backgroundPosition: "center",
-                  backgroundSize: `${
-                    ValueCatch > 300 ? "160" : 100 + Math.floor(ValueCatch / 5)
-                  }px`,
-                  transform: "rotate(30deg)",
-                  marginTop: "-45px",
-                  marginLeft: "-50px",
-                  width: "100px",
-                  height: "100px",
-                  "&:hover": {
-                    boxShadow: "none",
-                    border: "none",
-                    outline: "none",
-                  },
-                  "&:not(hover)": {
-                    boxShadow: "none",
-                    border: "none",
-                    outline: "none",
-                  },
-                  "&:before": {
-                    boxShadow: "none",
-                  },
-                  "& .MuiSlider-valueLabel": {
-                    backgroundColor: "transparent",
-                    height: "0px",
-                    transform: "rotate(-20deg)",
-                    top: "-30px",
-                    fontFamily: "Alagard",
-                    right: "68px",
-                    "& > span": {
-                      backgroundColor: "transparent",
-                      marginTop: "50px",
-                      height: "0px",
-                      fontSize: "20px",
-                      fontWeight: "bold",
-                      color: "#000",
-                      zIndex: "-1",
-                    },
-                  },
-                },
-                "& .MuiSlider-track": {
-                  color: "transparent",
-                  height: "8px",
-                  borderRadius: "0px",
-                },
-              }}
-            />
-          );
-        } else {
-          return null;
-        }
-      })}
-
-      {FishData.map((data: any, index: number) => {
-        const FullSell = data.Cost * ValueCatch;
-
-        if (index === Number(FishId) - 1) {
+          const FullSell = data.Cost * ValueCatch;
           return (
             <>
+              <Slider
+                key={index}
+                min={1}
+                max={Number(data.catchCount)}
+                value={ValueCatch}
+                onChange={handleChange}
+                aria-labelledby="continuous-slider"
+                valueLabelDisplay="on"
+                sx={{
+                  color: "#83a448",
+                  width: `160px`,
+                  transform: "rotate(-10deg)",
+                  "& .MuiSlider-thumb": {
+                    borderRadius: "0px",
+                    color: "transparent",
+                    backgroundImage: `url(${data.image})`,
+                    backgroundPosition: "center",
+                    backgroundSize: `${
+                      ValueCatch > 300
+                        ? "160"
+                        : 100 + Math.floor(ValueCatch / 5)
+                    }px`,
+                    transform: "rotate(30deg)",
+                    marginTop: "-45px",
+                    marginLeft: "-50px",
+                    width: "100px",
+                    height: "100px",
+                    "&:hover": {
+                      boxShadow: "none",
+                      border: "none",
+                      outline: "none",
+                    },
+                    "&:not(hover)": {
+                      boxShadow: "none",
+                      border: "none",
+                      outline: "none",
+                    },
+                    "&:before": {
+                      boxShadow: "none",
+                    },
+                    "& .MuiSlider-valueLabel": {
+                      backgroundColor: "transparent",
+                      height: "0px",
+                      transform: "rotate(-20deg)",
+                      top: "-30px",
+                      fontFamily: "Alagard",
+                      right: "68px",
+                      "& > span": {
+                        backgroundColor: "transparent",
+                        marginTop: "50px",
+                        height: "0px",
+                        fontSize: "20px",
+                        fontWeight: "bold",
+                        color: "#000",
+                        zIndex: "-1",
+                      },
+                    },
+                  },
+                  "& .MuiSlider-track": {
+                    color: "transparent",
+                    height: "8px",
+                    borderRadius: "0px",
+                  },
+                }}
+              />
               <button
                 className="BU"
                 onClick={(e) => {

@@ -3,8 +3,10 @@ import HelmetShop from "../../Shop/Items/HelmetShop";
 import ArmorShop from "../../Shop/Items/ArmorShop";
 import GlovesShop from "../../Shop/Items/GlovesShop";
 import ShoesShop from "../../Shop/Items/ShoesShop";
+import Cat from "../../hook/CAT";
 
 const ArmorShops = ({
+  OpenSellShop,
   ASO,
   setWSO,
   setBSO,
@@ -29,7 +31,9 @@ const ArmorShops = ({
 
   ShoesData,
   setShoesData,
+  numberCatP,
 }: {
+  OpenSellShop: any;
   ASO: boolean;
   setWSO: any;
   setBSO: any;
@@ -55,6 +59,7 @@ const ArmorShops = ({
 
   ShoesData: any;
   setShoesData: any;
+  numberCatP: number;
 }) => {
   const [ArmorShopIsOpen, setArmorShopIsOpen] = useState(true);
 
@@ -132,6 +137,18 @@ const ArmorShops = ({
               AoSoH={AoSoH}
             />
           </div>
+          {numberCatP === 2 && (
+            <div
+              className="Cat-p2"
+              onClick={OpenSellShop}
+              style={{
+                zIndex: OpenSellShop ? "10000" : "",
+                position: OpenSellShop ? "fixed" : "relative",
+              }}
+            >
+              <Cat />
+            </div>
+          )}
         </div>
       </div>
     </>

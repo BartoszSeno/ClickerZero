@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SliderFish from "../Slider";
 import Cat from "../CAT";
 import { CatArray } from "../../data/cat/cat";
 
 function SellFish({
+  numberCatP,
   FishData,
   setFishData,
   setCount,
@@ -14,6 +15,7 @@ function SellFish({
   SellFishByCat,
   setSellFishByCat,
 }: {
+  numberCatP: number;
   FishData: any;
   setFishData: any;
   setCount: any;
@@ -26,6 +28,20 @@ function SellFish({
 }) {
   const [SellIsOpen, setSellIsOpen] = useState<boolean>(true);
 
+  const catArrayLength = CatArray.length;
+
+  const [CatVariant, setCatVariant] = useState(1);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      // generate a random number between 1 and 10
+      const newNumber = Math.floor(Math.random() * catArrayLength);
+      setCatVariant(newNumber);
+    }, 5 * 60 * 100); // run every 5 minutes
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <>
       <div
@@ -36,7 +52,7 @@ function SellFish({
         }}
       >
         {CatArray.map((data: any, index: number) => {
-          if (index === 0) {
+          if (index + 1 === catArrayLength) {
             return (
               <div
                 className="SellConteiner"
@@ -49,8 +65,13 @@ function SellFish({
                   backgroundImage: `url(${data.BG})`,
                 }}
               >
-                <div className="ShopCat"></div>
-
+                {data.Name}
+                <div
+                  className="ShopCat"
+                  style={{
+                    backgroundImage: `url(${CatArray[numberCatP].BigSit})`,
+                  }}
+                ></div>
                 <SliderFish
                   FishData={FishData}
                   setFishData={setFishData}

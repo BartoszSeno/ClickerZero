@@ -14,6 +14,7 @@ import Statistic from "./stats";
 import { FishArray } from "../data/fish/fish";
 
 const MainEq = ({
+  SellFishByCat,
   mainWeaponData,
   UpgradedNamesMainWeapon,
   selectedItem,
@@ -69,6 +70,7 @@ const MainEq = ({
   setfishId,
   setValueCatch,
 }: {
+  SellFishByCat: boolean;
   mainWeaponData: any;
   UpgradedNamesMainWeapon: any;
   selectedItem: any;
@@ -559,7 +561,7 @@ const MainEq = ({
           style={{
             display: OpenAndCloseEqinEnchant
               ? "none"
-              : selloc
+              : SellFishByCat
               ? "none"
               : openInvAndEq && Inv
               ? "flex"
