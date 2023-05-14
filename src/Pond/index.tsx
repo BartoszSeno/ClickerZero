@@ -3,6 +3,7 @@ import "../assets/css/Normal/Pond/pond.css";
 import Fishing from "./Fishing";
 import SellFish from "../hook/SellFish/Sell";
 import { useState } from "react";
+import Cat from "../hook/CAT";
 
 function Pond({
   FishData,
@@ -12,6 +13,8 @@ function Pond({
   fishId,
   ValueCatch,
   setValueCatch,
+  OpenSellShop,
+  numberCatP,
 }: {
   FishData: any;
   setFishData: any;
@@ -20,6 +23,8 @@ function Pond({
   fishId: any;
   ValueCatch: number;
   setValueCatch: any;
+  OpenSellShop: any;
+  numberCatP: number;
 }) {
   const [FishCount, setFishCount] = useState<number>(
     Number(localStorage.getItem("fish")) || 0
@@ -50,6 +55,11 @@ function Pond({
           setLastCaughtFish={setLastCaughtFish}
           LastCaughtFish={LastCaughtFish}
         />
+        {numberCatP === 3 && (
+          <div className="Cat-p3" onClick={OpenSellShop}>
+            <Cat />
+          </div>
+        )}
       </div>
     </>
   );

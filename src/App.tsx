@@ -553,6 +553,8 @@ function App() {
             path="/Pond"
             element={
               <Pond
+                OpenSellShop={OpenSellShop}
+                numberCatP={numberCatP}
                 FishData={FishData}
                 setFishData={setFishData}
                 setCount={setCount}
