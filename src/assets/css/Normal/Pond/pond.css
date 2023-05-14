@@ -13,18 +13,6 @@
   width: 800px;
   z-index: 1000;
 }
-.FC p {
-  margin: 0;
-}
-.FC {
-  height: 100px;
-  width: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 30px;
-  flex-direction: column;
-}
 
 #SellShop {
   margin-top: -1000px;
@@ -55,28 +43,7 @@
   margin-top: 215px;
   height: 250px;
 }
-.CatchValue {
-  margin-top: -20px;
-  font-size: 30px;
-}
 
-.SilverAmounght {
-  margin-bottom: 20px;
-  margin-top: -20px;
-  font-size: 30px;
-  text-align: center;
-}
-
-.FishForSell {
-  background-position: center;
-  height: 100px;
-  width: 100px;
-  position: absolute;
-  margin-left: -30px;
-  margin-top: 180px;
-  background-size: 130px;
-  transform: rotate(40deg);
-}
 .BU {
   background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/any/ButtonUp.png),
     url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/any/ButtonDown.png);
@@ -114,11 +81,4 @@
 .BS:hover {
   background-color: #624a2c;
   border: 4px solid #40311e;
-}
-
-.openSellShop {
-  margin-top: -150px;
-  height: 820px;
-  width: 500px;
-  cursor: pointer;
 }

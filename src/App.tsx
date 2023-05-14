@@ -424,7 +424,9 @@ function App() {
   }
 
   //==
-  const [numberCatP, setNumberCatP] = useState(1);
+  const [numberCatP, setNumberCatP] = useState(
+    Math.floor(Math.random() * CatArray.length) + 1
+  );
 
   useEffect(() => {
     const catArrayLength = CatArray.length;
