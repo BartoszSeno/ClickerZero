@@ -1,7 +1,7 @@
 import Slider from "@mui/material/Slider";
-import { FishArray } from "../data/fish/fish";
+import { FishArray } from "../../data/fish/fish";
 import { useEffect, useState } from "react";
-import { formatNumber } from "./FormatNumber";
+import { formatNumber } from "../FormatNumber";
 
 function SliderFish({
   FishData,
@@ -69,7 +69,7 @@ function SliderFish({
                 aria-labelledby="continuous-slider"
                 valueLabelDisplay="on"
                 sx={{
-                  color: "#83a448",
+                  color: "transparent",
                   width: `160px`,
                   transform: "rotate(-10deg)",
                   "& .MuiSlider-thumb": {

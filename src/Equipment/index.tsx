@@ -488,7 +488,11 @@ const MainEq = ({
             : openInvAndEq && Inv
             ? "flex"
             : "none",
-          zIndex: OpenAndCloseEqinEnchant ? "10000" : "",
+          zIndex: OpenAndCloseEqinEnchant
+            ? "10000"
+            : SellFishByCat
+            ? "10000"
+            : "1000",
           marginLeft: OpenAndCloseEqinEnchant ? "-770px" : "",
           marginTop: OpenAndCloseEqinEnchant ? "-30px" : "",
         }}

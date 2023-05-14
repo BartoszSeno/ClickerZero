@@ -81,6 +81,7 @@
   background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/any/ButtonUp.png),
     url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/any/ButtonDown.png);
   background-repeat: no-repeat;
+  margin-left: -40px;
 }
 .BU p {
   margin: 0;

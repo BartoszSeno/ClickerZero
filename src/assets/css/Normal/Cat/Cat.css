@@ -22,7 +22,8 @@
 .ShopCat {
   width: 250px;
   height: 250px;
-  margin-left: -50px;
+  margin-top: -10px;
+  margin-left: -58px;
   background-size: 300px;
   position: absolute;
 }

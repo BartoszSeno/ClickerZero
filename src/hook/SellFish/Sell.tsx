@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import SliderFish from "../Slider";
+import SliderFish from "./Slider";
 import Cat from "../CAT";
 import { CatArray } from "../../data/cat/cat";
 
@@ -37,7 +37,7 @@ function SellFish({
       // generate a random number between 1 and 10
       const newNumber = Math.floor(Math.random() * catArrayLength);
       setCatVariant(newNumber);
-    }, 5 * 60 * 100); // run every 5 minutes
+    }, 5 * 60 * 1000); // run every 5 minutes
 
     return () => clearInterval(intervalId);
   }, []);
@@ -52,7 +52,7 @@ function SellFish({
         }}
       >
         {CatArray.map((data: any, index: number) => {
-          if (index + 1 === catArrayLength) {
+          if (index === CatVariant) {
             return (
               <div
                 className="SellConteiner"
@@ -62,14 +62,14 @@ function SellFish({
                 }}
                 style={{
                   display: SellFishByCat ? "flex" : "none",
-                  backgroundImage: `url(${data.BG})`,
+                  backgroundImage: `url(${CatArray[numberCatP - 1].BG})`,
                 }}
               >
                 {data.Name}
                 <div
                   className="ShopCat"
                   style={{
-                    backgroundImage: `url(${CatArray[numberCatP].BigSit})`,
+                    backgroundImage: `url(${data.BigSit})`,
                   }}
                 ></div>
                 <SliderFish
