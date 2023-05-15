@@ -13,11 +13,11 @@
   transform: translate(-50%, -50%);
 }
 .GameMainWindow {
-  width: 8000px;
+  width: 9200px;
   height: 100%;
-  background-size: 8000px;
+  background-size: 9200px;
   background-position-y: -10px;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/mainimg.png);
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/fianlbgT2.png?token=GHSAT0AAAAAACA775JHYGRWPSSA5NOJVKICZDCI2WA);
   display: flex;
   flex-direction: row;
 }
@@ -29,40 +29,43 @@
 
 .rightVillage {
   height: 100%;
-  width: 3000px;
+  width: 4200px;
   display: flex;
   flex-direction: row;
 }
 
 .WeaponShop {
-  height: 400px;
-  width: 580px;
-  margin-top: 220px;
-  margin-left: 215px;
+  height: 600px;
+  width: 1000px;
+  margin-top: 30px;
+  margin-left: 225px;
   cursor: pointer;
+  border-top-left-radius: 40%;
+  border-top-right-radius: 20%;
 }
 
 .BlackSmith {
   height: 605px;
-  width: 510px;
-  margin-top: 33px;
-  margin-left: 78px;
+  width: 620px;
+  margin-top: 40px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  margin-left: 80px;
   cursor: pointer;
 }
 
 .ArmorShop {
-  height: 360px;
-  width: 610px;
-  margin-top: 260px;
-  margin-left: 77px;
+  height: 500px;
+  width: 960px;
+  margin-top: 105px;
+  margin-left: 125px;
   cursor: pointer;
 }
 
 .Motel {
-  height: 430px;
-  width: 620px;
-  margin-top: 175px;
-  margin-left: 120px;
+  height: 530px;
+  width: 990px;
+  margin-left: 140px;
   cursor: pointer;
 }
 
