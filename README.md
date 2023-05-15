@@ -24,12 +24,22 @@
 - The item selection window is an inventory
 - ![img](https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/readme/enchant.gif)
 
+## Fishing
+
+- Mini-Game where you have to press the correctly keys ( W , A , S , D ) otherwise failed to catch
+- When you catch a fish, it appears in your inventory
+- The ability to sell fish to a Vendor who changes whereabouts
+- 10 types of fish
+- ![img](https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/readme/Fish.gif)
+
+
 # In plans :white_check_mark: :x:
 
 - :white_check_mark: Time and day counter
 - :x: Improving clicking / unlocking features (shop / enchant etc.)
 - :white_check_mark: Hotel sleeping function (cdr (sleeping restores all hp))
-- :white_check_mark: A pond where you can catch fish and :x: sell them or :x: eat them (hp regen)
+- :white_check_mark: A pond where you can catch fish and :x: :arrows_clockwise: sell them or :x: eat them (hp regen)
+- :arrows_clockwise: Added Vendor cat (appears in many places) where you can sell fish
 - :x: Adding an inn where you can eat (for gets buffs)
 - :x: Mini game where you can bet money (in inn)
 - :x: Buying your own apartment
