@@ -711,6 +711,7 @@ const MainIndexVillage = ({
                 setMO(false);
               }}
             >
+              <div className="BST">BLACKSMITH</div>
               <BlackSmith
                 BSO={BSO}
                 setWSO={setWSO}
@@ -856,6 +857,7 @@ const MainIndexVillage = ({
                 setMO(true);
               }}
             >
+              <div className="MT">M O T E L</div>
               <Motel
                 MO={MO}
                 setWSO={setWSO}

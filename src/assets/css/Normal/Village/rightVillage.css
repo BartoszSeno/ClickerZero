@@ -203,3 +203,28 @@
   margin-right: 200px;
   margin-top: 100px;
 }
+
+.BST {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  margin-top: 402px;
+  color: white;
+  text-shadow: -3px 2px 0px rgba(0, 0, 0, 1), 2px 2px 0px rgba(0, 0, 0, 1),
+    -3px -2px 0px rgba(0, 0, 0, 1), 2px -2px 0px rgba(0, 0, 0, 1);
+}
+
+.MT {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 365px;
+  margin-left: -30px;
+  font-size: 25px;
+  width: 20px;
+  color: red;
+  text-shadow: -3px 2px 0px rgba(0, 0, 0, 1), 2px 2px 0px rgba(0, 0, 0, 1),
+    -2px -2px 0px rgba(0, 0, 0, 1), 2px -2px 0px rgba(0, 0, 0, 1);
+}
