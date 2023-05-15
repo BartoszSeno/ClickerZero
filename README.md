@@ -38,8 +38,8 @@
 - :white_check_mark: Time and day counter
 - :x: Improving clicking / unlocking features (shop / enchant etc.)
 - :white_check_mark: Hotel sleeping function (cdr (sleeping restores all hp))
-- :white_check_mark: A pond where you can catch fish and :x: :arrows_clockwise: sell them or :x: eat them (hp regen)
-- :arrows_clockwise: Added Vendor cat (appears in many places) where you can sell fish
+- :white_check_mark: A pond where you can catch fish and :arrows_clockwise: sell them or :x: eat them (hp regen)
+- :white_check_mark: :arrows_clockwise: Added Vendor cat (appears in many places) where you can sell fish
 - :x: Adding an inn where you can eat (for gets buffs)
 - :x: Mini game where you can bet money (in inn)
 - :x: Buying your own apartment
