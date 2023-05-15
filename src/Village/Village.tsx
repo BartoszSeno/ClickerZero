@@ -687,6 +687,10 @@ const MainIndexVillage = ({
                 setMO(false);
               }}
             >
+              <div className="MWT">
+                <p className="WT">WEAPON</p>
+                <p className="WST">SHOP</p>
+              </div>
               <WeaponShop
                 WSO={WSO}
                 setWSO={setWSO}
@@ -820,6 +824,10 @@ const MainIndexVillage = ({
                 setMO(false);
               }}
             >
+              <div className="AST">
+                <p className="AT">Armor</p>
+                <p className="ST">Shop</p>
+              </div>
               <ArmorShops
                 numberCatP={numberCatP}
                 OpenSellShop={OpenSellShop}
