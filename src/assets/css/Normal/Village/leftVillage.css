@@ -1,0 +1,44 @@
+#InnC {
+  position: relative;
+  background-color: rgba(0, 255, 255, 0.313);
+  height: 680px;
+  width: 1350px;
+  margin-left: 600px;
+  /*/
+  clip-path: polygon(
+    30% 0%,
+    100% 0,
+    100% 37%,
+    73% 37%,
+    60% 74%,
+    30% 100%,
+    2% 100%,
+    0 0
+  );
+/*/
+  cursor: pointer;
+}
+
+#MainInn {
+  margin-top: -5px;
+  padding-bottom: 15px;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  background-color: black;
+  z-index: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+.InnG {
+  background-color: red;
+  height: 200px;
+  width: 200px;
+}

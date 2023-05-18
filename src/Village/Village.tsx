@@ -14,6 +14,7 @@ import UpgradeVillageAndClick from "../Upgrade/UpVillageAndClick";
 import CharacterMain from "../Character/CharacterMain";
 import { Link } from "react-router-dom";
 import Cat from "../hook/CAT";
+import InnC from "./Inn/Inn";
 
 const MainIndexVillage = ({
   handleButtonClick,
@@ -613,6 +614,14 @@ const MainIndexVillage = ({
     setCurrentHP(maxHP);
   };
 
+  //===========================  INN  ===================================
+
+  const [OpenInn, setOpenInn] = useState<boolean>(false);
+
+  function OpenAndCloseInn() {
+    setOpenInn(!OpenInn);
+  }
+
   return (
     <>
       <div
@@ -624,12 +633,15 @@ const MainIndexVillage = ({
       >
         <div className="GameMainWindow">
           <div className="leftVillage">
-            {/*
-            <button className="InfoOpen" onClick={HandleInfoOpenAndClose}>
-              Info
-            </button>
-            <Information infoOpenClose={infoOpenClose} />
-            */}
+            <div
+              id="InnC"
+              onClick={(e) => {
+                e.stopPropagation();
+                OpenAndCloseInn();
+              }}
+            >
+              <InnC OpenInn={OpenInn} setOpenInn={setOpenInn} />
+            </div>
           </div>
           <div className="midVillage">
             <ClearLocalStorageButton />
