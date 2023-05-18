@@ -639,6 +639,16 @@ const MainIndexVillage = ({
                 e.stopPropagation();
                 OpenAndCloseInn();
               }}
+              style={{
+                clipPath: OpenInn
+                  ? "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
+                  : "",
+                height: OpenInn ? "100%" : "",
+                width: OpenInn ? "100%" : "",
+                position: OpenInn ? "fixed" : "relative",
+                marginLeft: OpenInn ? "0px" : "",
+                zIndex: OpenInn ? "1001" : "",
+              }}
             >
               <InnC OpenInn={OpenInn} setOpenInn={setOpenInn} />
             </div>

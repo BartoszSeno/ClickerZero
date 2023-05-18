@@ -4,7 +4,6 @@
   height: 680px;
   width: 1350px;
   margin-left: 600px;
-  /*/
   clip-path: polygon(
     30% 0%,
     100% 0,
@@ -15,7 +14,6 @@
     2% 100%,
     0 0
   );
-/*/
   cursor: pointer;
 }
 
