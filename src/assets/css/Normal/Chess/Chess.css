@@ -26,8 +26,10 @@
 
 .ChessG {
   background-color: greenyellow;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/ChessBoard.png?token=GHSAT0AAAAAACA775JHHJ7MVWIFLPCR4SQMZDGL2QQ);
-  height: 800px;
-  width: 800px;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Chess/ChessBoard.png.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 770px;
+  width: 772px;
   cursor: auto;
 }
