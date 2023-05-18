@@ -1,23 +1,12 @@
-#InnC {
-  position: relative;
-  height: 680px;
-  width: 1350px;
-  margin-left: 600px;
-  clip-path: polygon(
-    30% 0%,
-    100% 0,
-    100% 37%,
-    73% 37%,
-    60% 74%,
-    30% 100%,
-    2% 100%,
-    0 0
-  );
+#ChessC {
+  height: 250px;
+  width: 410px;
+  margin-left: 1640px;
+  margin-top: -170px;
   cursor: pointer;
-  background-color: aqua;
 }
 
-#MainInn {
+#MainChess {
   margin-top: -5px;
   padding-bottom: 15px;
   height: 100%;
@@ -35,8 +24,9 @@
   z-index: 1001;
 }
 
-.InnG {
-  background-color: red;
+.ChessG {
+  background-color: greenyellow;
   height: 200px;
   width: 200px;
+  cursor: auto;
 }

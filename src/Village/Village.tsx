@@ -15,6 +15,7 @@ import CharacterMain from "../Character/CharacterMain";
 import { Link } from "react-router-dom";
 import Cat from "../hook/CAT";
 import InnC from "./Inn/Inn";
+import Chess from "../hook/Chess";
 
 const MainIndexVillage = ({
   handleButtonClick,
@@ -622,6 +623,14 @@ const MainIndexVillage = ({
     setOpenInn(!OpenInn);
   }
 
+  //===========================  CHESS ===================================
+
+  const [OpenChess, setOpenChess] = useState<boolean>(false);
+
+  function OpenAndCloseChess() {
+    setOpenChess(!OpenChess);
+  }
+
   return (
     <>
       <div
@@ -636,7 +645,6 @@ const MainIndexVillage = ({
             <div
               id="InnC"
               onClick={(e) => {
-                e.stopPropagation();
                 OpenAndCloseInn();
               }}
               style={{
@@ -651,6 +659,15 @@ const MainIndexVillage = ({
               }}
             >
               <InnC OpenInn={OpenInn} setOpenInn={setOpenInn} />
+            </div>
+            <div
+              id="ChessC"
+              onClick={(e) => {
+                e.stopPropagation();
+                OpenAndCloseChess();
+              }}
+            >
+              <Chess OpenChess={OpenChess} setOpenChess={setOpenChess} />
             </div>
           </div>
           <div className="midVillage">
