@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../../assets/css/Normal/Chess/Chess.css";
+import BoardChess from "./Board/board";
 
 function Chess({
   OpenChess,
@@ -32,7 +33,7 @@ function Chess({
             setChessIsOpen(true);
           }}
         >
-          <></>
+          <BoardChess />
         </div>
       </div>
     </>
