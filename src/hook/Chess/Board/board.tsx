@@ -6,6 +6,9 @@ import DragAndDropAPI from "./Components/DragAndDropAPI";
 import ItemSlot from "./Components/Slot";
 
 function BoardChess() {
+  const [itsWhite, setitsWhite] = useState<boolean>(true);
+  const [itsBlack, setitsBlack] = useState<boolean>(false);
+
   const [WhiteChessData, setWhiteChessData] = useState<any>(
     JSON.parse(localStorage.getItem("ChessWhite") || JSON.stringify(ChessWhite))
   );
@@ -167,24 +170,6 @@ function BoardChess() {
     });
   };
 
-  const moveItemToSlot = (oldSlot: number, newSlot: number) => {
-    setchess((currentState: any) => {
-      let inventory = [...currentState];
-
-      inventory.forEach((item, index) => {
-        if (item.slot === oldSlot) {
-          if (!isMoveInStraightLine(oldSlot, newSlot, item.id)) {
-            // Jeśli ruch jest niedozwolony dla danego przedmiotu, zakończ funkcję
-            return;
-          }
-
-          inventory[index].slot = newSlot;
-        }
-      });
-
-      return inventory;
-    });
-  };
   const isFirstMoveMap = new Map();
   isFirstMoveMap.set(10009, true);
   isFirstMoveMap.set(10010, true);
@@ -217,36 +202,26 @@ function BoardChess() {
     let maxDistance = 1;
 
     //BISHOP
-    if (
-      itemId === 10006 ||
-      itemId === 10003 ||
-      itemId === 20006 ||
-      itemId === 20003
-    ) {
+    if (itemId === 10006 || itemId === 10003) {
       const rowDiff = Math.abs(newRow - oldRow);
       const columnDiff = Math.abs(newColumn - oldColumn);
 
       return rowDiff === columnDiff; // Ruch w linii ukośnej
       //ROCK
-    } else if (
-      itemId === 10008 ||
-      itemId === 10001 ||
-      itemId === 20008 ||
-      itemId === 20001
-    ) {
+    } else if (itemId === 10008 || itemId === 10001) {
       return (
         oldRow === newRow || // Ruch w linii poziomej
         oldColumn === newColumn // Ruch w linii pionowej
       );
       //QUEEN
-    } else if (itemId === 10004 || itemId === 20004) {
+    } else if (itemId === 10004) {
       return (
         oldRow === newRow || // Ruch w linii poziomej
         oldColumn === newColumn || // Ruch w linii pionowej
         Math.abs(oldRow - newRow) === Math.abs(oldColumn - newColumn) // Ruch w linii ukośnej
       );
       //KING
-    } else if (itemId === 10005 || itemId === 20005) {
+    } else if (itemId === 10005) {
       const rowDiff = Math.abs(newRow - oldRow);
       const columnDiff = Math.abs(newColumn - oldColumn);
 
@@ -271,6 +246,58 @@ function BoardChess() {
       return (
         oldColumn === newColumn && newRow < oldRow && rowDiff <= maxDistance
       );
+    } else if (itemId === 10007 || itemId === 10002) {
+      const rowDiff = Math.abs(newRow - oldRow);
+      const columnDiff = Math.abs(newColumn - oldColumn);
+
+      return (
+        (rowDiff === 2 && columnDiff === 1) || // Ruch o 2 pola w pionie i 1 pole w poziomie
+        (rowDiff === 1 && columnDiff === 2) // Ruch o 2 pola w poziomie i 1 pole w pionie
+      );
+    }
+
+    return false; // Przedmiot o innym ID, ruch niedozwolony
+  };
+  ///=========
+
+  const isMoveInStraightLineBlack = (
+    oldSlot: number,
+    newSlot: number,
+    itemId: number
+  ) => {
+    const oldRow = Math.floor(oldSlot / 8);
+    const oldColumn = oldSlot % 8;
+    const newRow = Math.floor(newSlot / 8);
+    const newColumn = newSlot % 8;
+
+    let maxDistance = 1;
+
+    //BISHOP
+    if (itemId === 20006 || itemId === 20003) {
+      const rowDiff = Math.abs(newRow - oldRow);
+      const columnDiff = Math.abs(newColumn - oldColumn);
+
+      return rowDiff === columnDiff; // Ruch w linii ukośnej
+      //ROCK
+    } else if (itemId === 20008 || itemId === 20001) {
+      return (
+        oldRow === newRow || // Ruch w linii poziomej
+        oldColumn === newColumn // Ruch w linii pionowej
+      );
+      //QUEEN
+    } else if (itemId === 20004) {
+      return (
+        oldRow === newRow || // Ruch w linii poziomej
+        oldColumn === newColumn || // Ruch w linii pionowej
+        Math.abs(oldRow - newRow) === Math.abs(oldColumn - newColumn) // Ruch w linii ukośnej
+      );
+      //KING
+    } else if (itemId === 20005) {
+      const rowDiff = Math.abs(newRow - oldRow);
+      const columnDiff = Math.abs(newColumn - oldColumn);
+
+      return rowDiff <= 1 && columnDiff <= 1; // Ruch o jedno miejsce w dowolnym kierunku
+      //PAWN
     } else if (isFirstMoveMapBlack.has(itemId)) {
       let isFirstMoveBlack = isFirstMoveMapBlack.get(itemId);
 
@@ -290,12 +317,7 @@ function BoardChess() {
       return (
         oldColumn === newColumn && newRow > oldRow && rowDiff <= maxDistance
       );
-    } else if (
-      itemId === 10007 ||
-      itemId === 10002 ||
-      itemId === 20007 ||
-      itemId === 20002
-    ) {
+    } else if (itemId === 20007 || itemId === 20002) {
       const rowDiff = Math.abs(newRow - oldRow);
       const columnDiff = Math.abs(newColumn - oldColumn);
 
@@ -307,7 +329,34 @@ function BoardChess() {
 
     return false; // Przedmiot o innym ID, ruch niedozwolony
   };
+  let currentMoveValidator = isMoveInStraightLine; // Początkowo ustawiamy na isMoveInStraightLine
 
+  const moveItemToSlot = (oldSlot: number, newSlot: number) => {
+    setchess((currentState: any) => {
+      let inventory = [...currentState];
+
+      inventory.forEach((item, index) => {
+        if (item.slot === oldSlot) {
+          const isMoveValid = currentMoveValidator;
+
+          if (!isMoveValid(oldSlot, newSlot, item.id)) {
+            // Jeśli ruch jest niedozwolony dla danego przedmiotu, zakończ funkcję
+            return;
+          }
+
+          inventory[index].slot = newSlot;
+
+          // Przełącz między isMoveInStraightLine a isMoveInStraightLineBlack
+          currentMoveValidator =
+            currentMoveValidator === isMoveInStraightLine
+              ? isMoveInStraightLineBlack
+              : isMoveInStraightLine;
+        }
+      });
+
+      return inventory;
+    });
+  };
   const onInventoryItemDragged = ({ detail: eventData }: any) => {
     const oldSlot = parseInt(eventData.slot),
       newSlot = parseInt(eventData.destination.slot);
