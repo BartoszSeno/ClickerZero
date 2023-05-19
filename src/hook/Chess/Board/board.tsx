@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from "react";
 import { ChessBlack } from "../../../data/Chess/Black/Black";
 import { ChessWhite } from "../../../data/Chess/White/White";
@@ -12,7 +13,7 @@ function BoardChess() {
     JSON.parse(localStorage.getItem("ChessBlack") || JSON.stringify(ChessBlack))
   );
 
-  const allchessFromArray = [...WhiteChessData, ...BlackChessData];
+  const allchessFromArray = [...BlackChessData, ...WhiteChessData];
 
   const [chess, setchess] = useState(() => {
     const storedchess = localStorage.getItem("chess");
@@ -35,12 +36,14 @@ function BoardChess() {
   //========================================================================================
 
   const prevchessRef = useRef<any[]>([]);
+  const [initialPositioningApplied, setInitialPositioningApplied] =
+    useState(false);
 
   useEffect(() => {
     // Filter out chess that are not bought in allchessFromArray
     const updatedchess = allchessFromArray.map((item) => {
       // Check if the item is already present in the current chess state
-      const existingItem = chess.find((i: { id: any }) => i.id === item.id);
+      const existingItem = chess.find((i: any) => i.id === item.id);
       if (existingItem) {
         // Preserve the current slot value for the existing item
         item.slot = existingItem.slot;
@@ -61,10 +64,60 @@ function BoardChess() {
           item.slot = lastSlot + 1;
         }
       }
+      interface Moves {
+        [key: number]: number;
+      }
+
+      // Check if the item should be moved to a different slot
+      const moves: Moves = {
+        // ID: NewSlot
+        10001: 56,
+        10002: 57,
+        10003: 58,
+        10004: 59,
+        10005: 60,
+        10006: 61,
+        10007: 62,
+        10008: 63,
+        //black
+        20001: 0,
+        20002: 1,
+        20003: 2,
+        20004: 4,
+        20005: 3,
+        20006: 5,
+        20007: 6,
+        20008: 7,
+
+        //Pawn White Position
+        10009: 48,
+        10010: 49,
+        10011: 50,
+        10012: 51,
+        10013: 52,
+        10014: 53,
+        10015: 54,
+        10016: 55,
+        //black
+        20009: 8,
+        20010: 9,
+        20011: 10,
+        20012: 11,
+        20013: 12,
+        20014: 13,
+        20015: 14,
+        20016: 15,
+      };
+
+      if (!initialPositioningApplied && item.id in moves) {
+        item.slot = moves[item.id];
+      }
+
       return item;
     });
 
     if (updatedchess.length >= 64) {
+      // Handle the case when the number of chess items reaches the maximum limit
     }
 
     // Compare prevchessRef with current chess to avoid infinite loop
@@ -76,7 +129,8 @@ function BoardChess() {
       // Update prevchessRef with the current chess value
       prevchessRef.current = updatedchess;
     }
-  }, [allchessFromArray, inventorySlots, chess]);
+    setInitialPositioningApplied(true);
+  }, [allchessFromArray, inventorySlots, chess, initialPositioningApplied]);
 
   //========================================================================================
 
@@ -119,12 +173,139 @@ function BoardChess() {
 
       inventory.forEach((item, index) => {
         if (item.slot === oldSlot) {
+          if (!isMoveInStraightLine(oldSlot, newSlot, item.id)) {
+            // Jeśli ruch jest niedozwolony dla danego przedmiotu, zakończ funkcję
+            return;
+          }
+
           inventory[index].slot = newSlot;
         }
       });
 
       return inventory;
     });
+  };
+  const isFirstMoveMap = new Map();
+  isFirstMoveMap.set(10009, true);
+  isFirstMoveMap.set(10010, true);
+  isFirstMoveMap.set(10011, true);
+  isFirstMoveMap.set(10012, true);
+  isFirstMoveMap.set(10013, true);
+  isFirstMoveMap.set(10014, true);
+  isFirstMoveMap.set(10015, true);
+  isFirstMoveMap.set(10016, true);
+
+  const isFirstMoveMapBlack = new Map();
+  isFirstMoveMapBlack.set(20009, true);
+  isFirstMoveMapBlack.set(20010, true);
+  isFirstMoveMapBlack.set(20011, true);
+  isFirstMoveMapBlack.set(20012, true);
+  isFirstMoveMapBlack.set(20013, true);
+  isFirstMoveMapBlack.set(20014, true);
+  isFirstMoveMapBlack.set(20015, true);
+  isFirstMoveMapBlack.set(20016, true);
+  const isMoveInStraightLine = (
+    oldSlot: number,
+    newSlot: number,
+    itemId: number
+  ) => {
+    const oldRow = Math.floor(oldSlot / 8);
+    const oldColumn = oldSlot % 8;
+    const newRow = Math.floor(newSlot / 8);
+    const newColumn = newSlot % 8;
+
+    let maxDistance = 1;
+
+    //BISHOP
+    if (
+      itemId === 10006 ||
+      itemId === 10003 ||
+      itemId === 20006 ||
+      itemId === 20003
+    ) {
+      const rowDiff = Math.abs(newRow - oldRow);
+      const columnDiff = Math.abs(newColumn - oldColumn);
+
+      return rowDiff === columnDiff; // Ruch w linii ukośnej
+      //ROCK
+    } else if (
+      itemId === 10008 ||
+      itemId === 10001 ||
+      itemId === 20008 ||
+      itemId === 20001
+    ) {
+      return (
+        oldRow === newRow || // Ruch w linii poziomej
+        oldColumn === newColumn // Ruch w linii pionowej
+      );
+      //QUEEN
+    } else if (itemId === 10004 || itemId === 20004) {
+      return (
+        oldRow === newRow || // Ruch w linii poziomej
+        oldColumn === newColumn || // Ruch w linii pionowej
+        Math.abs(oldRow - newRow) === Math.abs(oldColumn - newColumn) // Ruch w linii ukośnej
+      );
+      //KING
+    } else if (itemId === 10005 || itemId === 20005) {
+      const rowDiff = Math.abs(newRow - oldRow);
+      const columnDiff = Math.abs(newColumn - oldColumn);
+
+      return rowDiff <= 1 && columnDiff <= 1; // Ruch o jedno miejsce w dowolnym kierunku
+      //PAWN
+    } else if (isFirstMoveMap.has(itemId)) {
+      let isFirstMove = isFirstMoveMap.get(itemId);
+
+      const rowDiff = Math.abs(newRow - oldRow);
+      const columnDiff = Math.abs(newColumn - oldColumn);
+
+      if (isFirstMove && (rowDiff === 2 || 1) && columnDiff === 0) {
+        maxDistance = 2 || 1;
+        isFirstMove = false;
+        isFirstMoveMap.set(itemId, isFirstMove); // Zaktualizuj wartość isFirstMove dla itemId w mapie
+      } else if (!isFirstMove && rowDiff === 1 && columnDiff === 0) {
+        maxDistance = 1;
+      } else {
+        return false;
+      }
+
+      return (
+        oldColumn === newColumn && newRow < oldRow && rowDiff <= maxDistance
+      );
+    } else if (isFirstMoveMapBlack.has(itemId)) {
+      let isFirstMoveBlack = isFirstMoveMapBlack.get(itemId);
+
+      const rowDiff = Math.abs(newRow - oldRow);
+      const columnDiff = Math.abs(newColumn - oldColumn);
+
+      if (isFirstMoveBlack && (rowDiff === 2 || 1) && columnDiff === 0) {
+        maxDistance = 2 || 1;
+        isFirstMoveBlack = false;
+        isFirstMoveMapBlack.set(itemId, isFirstMoveBlack); // Zaktualizuj wartość isFirstMove dla itemId w mapie
+      } else if (!isFirstMoveBlack && rowDiff === 1 && columnDiff === 0) {
+        maxDistance = 1;
+      } else {
+        return false;
+      }
+
+      return (
+        oldColumn === newColumn && newRow > oldRow && rowDiff <= maxDistance
+      );
+    } else if (
+      itemId === 10007 ||
+      itemId === 10002 ||
+      itemId === 20007 ||
+      itemId === 20002
+    ) {
+      const rowDiff = Math.abs(newRow - oldRow);
+      const columnDiff = Math.abs(newColumn - oldColumn);
+
+      return (
+        (rowDiff === 2 && columnDiff === 1) || // Ruch o 2 pola w pionie i 1 pole w poziomie
+        (rowDiff === 1 && columnDiff === 2) // Ruch o 2 pola w poziomie i 1 pole w pionie
+      );
+    }
+
+    return false; // Przedmiot o innym ID, ruch niedozwolony
   };
 
   const onInventoryItemDragged = ({ detail: eventData }: any) => {

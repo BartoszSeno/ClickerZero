@@ -105,7 +105,7 @@ export const ChessWhite = [
     color: "White",
   },
   {
-    id: 16,
+    id: 10016,
     image:
       "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Chess/White/PawnWhite.png",
     name: "Pawn",
