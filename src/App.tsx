@@ -19,6 +19,7 @@ import { FishArray } from "./data/fish/fish";
 import MainEq from "./Equipment";
 import SellFish from "./hook/SellFish/Sell";
 import { CatArray } from "./data/cat/cat";
+import BoardChessJs from "./hook/Chess/Chess";
 
 function App() {
   //==================
@@ -445,6 +446,7 @@ function App() {
       <BrowserRouter basename="/ClickerZero">
         <TimeCycleBg hours={hours} turn={turn} />
         <Routes>
+          <Route path="/Chess" element={<BoardChessJs />}></Route>
           <Route
             path="/"
             element={

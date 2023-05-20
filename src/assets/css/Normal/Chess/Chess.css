@@ -26,7 +26,6 @@
 
 .ChessG {
   background-color: greenyellow;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Chess/ChessBoard.png.png);
   background-repeat: no-repeat;
   background-position: center;
   height: 770px;
@@ -108,4 +107,9 @@
   background-size: 100px;
   margin-top: -90px;
   position: absolute;
+}
+
+.TestBoard {
+  height: 400px;
+  width: 400px;
 }
