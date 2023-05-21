@@ -32,6 +32,14 @@
 - 10 types of fish
 - ![img](https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/readme/Fish.gif)
 
+## Chess
+
+- Full Working chess
+- Surrender after 13 player moves
+- Restart the game at the end of the game
+- prizes are available for winning (exp / items / money)
+- ![img](https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/readme/chess.gif)
+
 
 # In plans :white_check_mark: :x:
 
@@ -40,11 +48,11 @@
 - :white_check_mark: Hotel sleeping function (cdr (sleeping restores all hp))
 - :white_check_mark: A pond where you can catch fish and :arrows_clockwise: sell them or :x: eat them (hp regen)
 - :white_check_mark: :arrows_clockwise: Added Vendor cat (appears in many places) where you can sell fish
-- :x: Adding an inn where you can eat (for gets buffs)
+- :white_check_mark: Adding an inn :x: where you can eat (for gets buffs)
 - :x: Mini game where you can bet money (in inn)
 - :x: Buying your own apartment
 - :x: The ability to upgrade it and decorate the apartment, sleeping and cooking in it
-- :x: Add a park with mini games and free sleeping (regenerates less hp)
+- :white_check_mark: Add a park with mini games :x: and free sleeping (regenerates less hp)
 - :x: add character walking features
 - :x: Adding animation to the whole game
 - ### Dungeon
