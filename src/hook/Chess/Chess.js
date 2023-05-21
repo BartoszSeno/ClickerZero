@@ -17,13 +17,16 @@ function ChessBoard() {
       return update;
     });
   }
+  const winner = game.turn() === "w" ? "Czarne" : "Białe";
 
   useEffect(() => {
+    console.log(game.turn());
     if (game.in_checkmate()) {
       setIsGameOver(true);
-      alert("Szach-mat! Koniec gry.");
+      alert(`Szach-mat! Wygrywają: ${winner}`);
     } else if (game.in_draw()) {
-      alert("Remis? Koniec gry.");
+      setIsGameOver(true);
+      alert(`Brak ruchu? Koniec gry. ${winner}`);
     }
   }, [game]);
 
@@ -446,7 +449,9 @@ function ChessBoard() {
   };
   return (
     <>
-      {isGameOver ? <div className="GameOver">Gra skończona</div> : null}{" "}
+      {isGameOver ? (
+        <div className="GameOver">Gra skończona, Wygrywają: {winner}</div>
+      ) : null}{" "}
       <Chessboard
         id="ClickToMove"
         boardWidth={770}
