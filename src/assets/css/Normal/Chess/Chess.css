@@ -37,11 +37,22 @@
 }
 
 .GameOver {
+  margin-top: -240px;
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   color: white;
   background-color: aqua;
-  height: 300px;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Chess/Board.png);
+  background-repeat: no-repeat;
+  background-size: 600px;
+  height: 150px;
   width: 600px;
   font-size: 30px;
   z-index: 1001;
+}
+.GameOver p {
+  margin: 0;
 }

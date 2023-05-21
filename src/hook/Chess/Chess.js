@@ -17,19 +17,37 @@ function ChessBoard() {
       return update;
     });
   }
-  const winner = game.turn() === "w" ? "Czarne" : "Białe";
+  const winner = game.turn() === "w" ? "Black" : "White";
 
+  function WiningRewards() {
+    console.log("nagroda");
+  }
+
+  function resetBoard() {
+    game.reset(); // Restart board to default
+  }
+
+  //Check who win and if its win or draw
   useEffect(() => {
     console.log(game.turn());
     if (game.in_checkmate()) {
       setIsGameOver(true);
       alert(`Szach-mat! Wygrywają: ${winner}`);
+      if (winner === "Białe") {
+        WiningRewards();
+      }
+      resetBoard();
     } else if (game.in_draw()) {
       setIsGameOver(true);
       alert(`Brak ruchu? Koniec gry. ${winner}`);
+      if (winner === "Białe") {
+        WiningRewards();
+      }
+      resetBoard();
     }
   }, [game]);
 
+  //move on click
   function getMoveOptions(square) {
     const moves = game.moves({
       square,
@@ -40,6 +58,7 @@ function ChessBoard() {
     }
 
     const newSquares = {};
+    //move dot
     moves.map((move) => {
       newSquares[move.to] = {
         background:
@@ -58,6 +77,7 @@ function ChessBoard() {
     return true;
   }
 
+  //bot move
   function makeRandomMove() {
     const possibleMoves = game.moves();
 
@@ -116,18 +136,6 @@ function ChessBoard() {
     setTimeout(makeRandomMove, 300);
     setMoveFrom("");
     setOptionSquares({});
-  }
-
-  function onSquareRightClick(square) {
-    const colour = "rgba(0, 0, 255, 0.4)";
-    setRightClickedSquares({
-      ...rightClickedSquares,
-      [square]:
-        rightClickedSquares[square] &&
-        rightClickedSquares[square].backgroundColor === colour
-          ? undefined
-          : { backgroundColor: colour },
-    });
   }
 
   const customPiecesx = {
@@ -449,8 +457,14 @@ function ChessBoard() {
   };
   return (
     <>
-      {isGameOver ? (
-        <div className="GameOver">Gra skończona, Wygrywają: {winner}</div>
+      {!isGameOver ? (
+        <div className="GameOver">
+          <p style={{ fontSize: "90px" }}>
+            {" "}
+            {winner === "White" ? "You Win" : "You Lose"}
+          </p>
+          <p> Winner: {winner}</p>
+        </div>
       ) : null}{" "}
       <Chessboard
         id="ClickToMove"
@@ -459,7 +473,6 @@ function ChessBoard() {
         arePiecesDraggable={false}
         position={game.fen()}
         onSquareClick={onSquareClick}
-        onSquareRightClick={onSquareRightClick}
         customBoardStyle={{
           borderRadius: "4px",
           boxShadow: "0 2px 10px rgba(0, 0, 0, 0.5)",
