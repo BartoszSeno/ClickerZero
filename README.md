@@ -24,6 +24,13 @@
 - The item selection window is an inventory
 - ![img](https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/readme/enchant.gif)
 
+## day Cycle
+- Counting how many days have passed
+- 1 day lasts 40 minutes
+- Day/noon/night light visible across the map
+- The ability to turn off the day/noon/night light
+![img](https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/readme/DayCycle.gif)
+
 ## Fishing
 
 - Mini-Game where you have to press the correctly keys ( W , A , S , D ) otherwise failed to catch
