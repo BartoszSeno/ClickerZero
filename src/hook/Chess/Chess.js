@@ -31,14 +31,12 @@ function ChessBoard() {
   useEffect(() => {
     if (game.in_checkmate()) {
       setIsGameOver(true);
-      alert(`Szach-mat! Wygrywają: ${winner}`);
       if (winner === "White") {
         WiningRewards();
       }
       resetBoard();
     } else if (game.in_draw()) {
       setIsGameOver(true);
-      alert(`Brak ruchu? Koniec gry. ${winner}`);
       if (winner === "White") {
         WiningRewards();
       }
@@ -473,7 +471,7 @@ function ChessBoard() {
         </div>
       ) : null}{" "}
       <Chessboard
-        id="ClickToMove"
+        id={707}
         boardWidth={770}
         animationDuration={200}
         arePiecesDraggable={false}
@@ -505,7 +503,7 @@ function ChessBoard() {
         }}
         customPieces={customPiecesx}
         showBoardNotation={false}
-      />{" "}
+      />
       <div className="SurrOrRestart">
         {game.history().length >= 26 && (
           <button
