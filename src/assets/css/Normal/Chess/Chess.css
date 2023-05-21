@@ -109,7 +109,16 @@
   position: absolute;
 }
 
-.TestBoard {
+.ChessBoard {
   height: 400px;
   width: 400px;
+}
+
+.chessboard-wrapper .square-light {
+  background-color: lightblue !important; /* Replace with your desired color or image URL */
+}
+
+/* Customize the dark squares */
+.chessboard-wrapper .square-dark {
+  background-color: lightgray; /* Replace with your desired color or image URL */
 }

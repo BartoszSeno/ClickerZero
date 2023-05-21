@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Chessboard } from "react-chessboard";
 import { Chess } from "chess.js";
 
-function App() {
+function ChessBoard() {
   const [game, setGame] = useState(new Chess());
+  const [isGameOver, setIsGameOver] = useState(false); // Dodatkowy stan dla sprawdzenia, czy gra jest skończona
   //Let's perform a function on the game state
 
   function safeGameMutate(modify) {
@@ -13,6 +14,14 @@ function App() {
       return update;
     });
   }
+
+  useEffect(() => {
+    if (game.in_checkmate()) {
+      setIsGameOver(true);
+      alert("Szach-mat! Koniec gry.");
+    }
+  }, [game]);
+
   //Movement of computer
   function makeRandomMove() {
     const possibleMove = game.moves();
@@ -46,11 +55,33 @@ function App() {
     setTimeout(makeRandomMove, 200);
     return true;
   }
+
+  const customBoardStyles = {
+    lightSquare: {
+      backgroundColor: "lightblue", // Replace with your desired color or image URL
+    },
+    darkSquare: {
+      backgroundColor: "red", // Replace with your desired color or image URL
+    },
+  };
   return (
-    <div className="app">
-      <Chessboard position={game.fen()} onPieceDrop={onDrop} />
+    <div className="ChessBoard">
+      {isGameOver ? <div>Gra skończona</div> : null}{" "}
+      <Chessboard
+        position={game.fen()}
+        onPieceDrop={onDrop}
+        customBoardStyle={{
+          borderRadius: "5px",
+        }}
+        customLightSquareStyle={{
+          backgroundColor: "red",
+        }}
+        customDarkSquareStyle={{
+          backgroundColor: "red",
+        }}
+      />
     </div>
   );
 }
 
-export default App;
+export default ChessBoard;

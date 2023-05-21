@@ -480,136 +480,143 @@ const MainEq = ({
 
   return (
     <>
-      <div
-        className="MainEqContainer"
-        style={{
-          display: OpenAndCloseEqinEnchant
-            ? "flex"
-            : openInvAndEq && Inv
-            ? "flex"
-            : "none",
-          zIndex: OpenAndCloseEqinEnchant
-            ? "10000"
-            : SellFishByCat
-            ? "10000"
-            : "1000",
-          marginLeft: OpenAndCloseEqinEnchant ? "-770px" : "",
-          marginTop: OpenAndCloseEqinEnchant ? "-30px" : "",
-        }}
-      >
-        <div
-          id="option-container"
-          style={{
-            display: OpenAndCloseEqinEnchant
-              ? "flex"
-              : openInvAndEq && Inv
-              ? "flex"
-              : "none",
-          }}
-        >
-          <div className="inventoryTitle">Inventory</div>
+      {openInvAndEq && (
+        <>
           <div
-            className="CloseInv"
-            onClick={(e) => {
-              //e.preventDefault();
-              CloseInv(e);
-              setOpenAndCloseEqinEnchant();
+            className="MainEqContainer"
+            style={{
+              display: OpenAndCloseEqinEnchant
+                ? "flex"
+                : openInvAndEq && Inv
+                ? "flex"
+                : "none",
+              zIndex: OpenAndCloseEqinEnchant
+                ? "10000"
+                : SellFishByCat
+                ? "10000"
+                : "1000",
+              marginLeft: OpenAndCloseEqinEnchant ? "-770px" : "",
+              marginTop: OpenAndCloseEqinEnchant ? "-30px" : "",
             }}
-          ></div>
-          <Inventory
-            props={""}
-            mainWeaponData={mainWeaponData}
-            GetIdPerClickMW={GetIdPerClickMW}
-            HelmetData={HelmetData}
-            GetIdPerClickH={GetIdPerClickH}
-            ArmorData={ArmorData}
-            GetIdPerClickA={GetIdPerClickA}
-            ShoesData={ShoesData}
-            GetIdPerClickS={GetIdPerClickS}
-            GlovesData={GlovesData}
-            GetIdPerClickG={GetIdPerClickG}
-            ShieldAndDaggerData={ShieldAndDaggerData}
-            GetIdPerClickSW={GetIdPerClickSW}
-            setGlovesData={setGlovesData}
-            setMainWeaponData={setMainWeaponData}
-            handleContextMenu={handleContextMenu}
-            setFullInv={setFullInv}
-            HandleItemClick={HandleItemClick}
-            OpenAndCloseEqinEnchant={OpenAndCloseEqinEnchant}
-            setSelectedItemIndex={setSelectedItemIndex}
-            setSelectedArmorItemIndex={setSelectedArmorItemIndex}
-            setSelectedGlovesItemIndex={setSelectedGlovesItemIndex}
-            setSelectedHelmetItemIndex={setSelectedHelmetItemIndex}
-            setSelectedShieldAndDaggerItemIndex={
-              setSelectedShieldAndDaggerItemIndex
-            }
-            setSelectedShoesItemIndex={setSelectedShoesItemIndex}
-            UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
-            setUpgradedDmgMainWeapon={setUpgradedDmgMainWeapon}
-            UpgradedNamesGloves={UpgradedNamesGloves}
-            setUpgradedDefGloves={setUpgradedDefGloves}
-            UpgradedNamesShieldAndDagger={UpgradedNamesShieldAndDagger}
-            setUpgradedDefShieldAndDagger={setUpgradedDefShieldAndDagger}
-            setUpgradedDmgShieldAndDagger={setUpgradedDmgShieldAndDagger}
-            UpgradedNamesArmor={UpgradedNamesArmor}
-            setUpgradedDefArmor={setUpgradedDefArmor}
-            UpgradedNamesHelmet={UpgradedNamesHelmet}
-            setUpgradedDefHelmet={setUpgradedDefHelmet}
-            UpgradedNamesShoes={UpgradedNamesShoes}
-            setUpgradedDefShoes={setUpgradedDefShoes}
-            FishData={FishData}
-          />
-        </div>
-        <div
-          id="EqCharacters"
-          style={{
-            display: OpenAndCloseEqinEnchant
-              ? "none"
-              : SellFishByCat
-              ? "none"
-              : openInvAndEq && Inv
-              ? "flex"
-              : "none",
-            pointerEvents: ce ? "all" : "none",
-            backgroundImage: ce ? "" : "none",
-          }}
-        >
-          <div className="EqTitle" style={{ display: ce ? "flex" : "none" }}>
-            Equipment
+          >
+            <div
+              id="option-container"
+              style={{
+                display: OpenAndCloseEqinEnchant
+                  ? "flex"
+                  : openInvAndEq && Inv
+                  ? "flex"
+                  : "none",
+              }}
+            >
+              <div className="inventoryTitle">Inventory</div>
+              <div
+                className="CloseInv"
+                onClick={(e) => {
+                  //e.preventDefault();
+                  CloseInv(e);
+                  setOpenAndCloseEqinEnchant();
+                }}
+              ></div>
+              <Inventory
+                props={""}
+                mainWeaponData={mainWeaponData}
+                GetIdPerClickMW={GetIdPerClickMW}
+                HelmetData={HelmetData}
+                GetIdPerClickH={GetIdPerClickH}
+                ArmorData={ArmorData}
+                GetIdPerClickA={GetIdPerClickA}
+                ShoesData={ShoesData}
+                GetIdPerClickS={GetIdPerClickS}
+                GlovesData={GlovesData}
+                GetIdPerClickG={GetIdPerClickG}
+                ShieldAndDaggerData={ShieldAndDaggerData}
+                GetIdPerClickSW={GetIdPerClickSW}
+                setGlovesData={setGlovesData}
+                setMainWeaponData={setMainWeaponData}
+                handleContextMenu={handleContextMenu}
+                setFullInv={setFullInv}
+                HandleItemClick={HandleItemClick}
+                OpenAndCloseEqinEnchant={OpenAndCloseEqinEnchant}
+                setSelectedItemIndex={setSelectedItemIndex}
+                setSelectedArmorItemIndex={setSelectedArmorItemIndex}
+                setSelectedGlovesItemIndex={setSelectedGlovesItemIndex}
+                setSelectedHelmetItemIndex={setSelectedHelmetItemIndex}
+                setSelectedShieldAndDaggerItemIndex={
+                  setSelectedShieldAndDaggerItemIndex
+                }
+                setSelectedShoesItemIndex={setSelectedShoesItemIndex}
+                UpgradedNamesMainWeapon={UpgradedNamesMainWeapon}
+                setUpgradedDmgMainWeapon={setUpgradedDmgMainWeapon}
+                UpgradedNamesGloves={UpgradedNamesGloves}
+                setUpgradedDefGloves={setUpgradedDefGloves}
+                UpgradedNamesShieldAndDagger={UpgradedNamesShieldAndDagger}
+                setUpgradedDefShieldAndDagger={setUpgradedDefShieldAndDagger}
+                setUpgradedDmgShieldAndDagger={setUpgradedDmgShieldAndDagger}
+                UpgradedNamesArmor={UpgradedNamesArmor}
+                setUpgradedDefArmor={setUpgradedDefArmor}
+                UpgradedNamesHelmet={UpgradedNamesHelmet}
+                setUpgradedDefHelmet={setUpgradedDefHelmet}
+                UpgradedNamesShoes={UpgradedNamesShoes}
+                setUpgradedDefShoes={setUpgradedDefShoes}
+                FishData={FishData}
+              />
+            </div>
+            <div
+              id="EqCharacters"
+              style={{
+                display: OpenAndCloseEqinEnchant
+                  ? "none"
+                  : SellFishByCat
+                  ? "none"
+                  : openInvAndEq && Inv
+                  ? "flex"
+                  : "none",
+                pointerEvents: ce ? "all" : "none",
+                backgroundImage: ce ? "" : "none",
+              }}
+            >
+              <div
+                className="EqTitle"
+                style={{ display: ce ? "flex" : "none" }}
+              >
+                Equipment
+              </div>
+              <div className="CloseEq" onClick={CloseEq}></div>
+              <EquipContainer
+                mainWeaponData={mainWeaponData}
+                HelmetData={HelmetData}
+                ArmorData={ArmorData}
+                ShoesData={ShoesData}
+                GlovesData={GlovesData}
+                ShieldAndDaggerData={ShieldAndDaggerData}
+                setGlovesData={setGlovesData}
+                setMainWeaponData={setMainWeaponData}
+                setArmorData={setArmorData}
+                setHelmetData={setHelmetData}
+                setShoesData={setShoesData}
+                setShieldAndDaggerData={setShieldAndDaggerData}
+                FullInv={FullInv}
+                ce={ce}
+              />
+            </div>
+            <Statistic
+              mainWeaponData={mainWeaponData}
+              selectedItem={selectedItem}
+              ShieldAndDaggerData={ShieldAndDaggerData}
+              selectedShieldAndDaggerItem={selectedShieldAndDaggerItem}
+              HelmetData={HelmetData}
+              selectedHelmetItem={selectedHelmetItem}
+              ArmorData={ArmorData}
+              selectedArmorItem={selectedArmorItem}
+              GlovesData={GlovesData}
+              selectedGlovesItem={selectedGlovesItem}
+              ShoesData={ShoesData}
+              selectedShoesItem={selectedShoesItem}
+            />
           </div>
-          <div className="CloseEq" onClick={CloseEq}></div>
-          <EquipContainer
-            mainWeaponData={mainWeaponData}
-            HelmetData={HelmetData}
-            ArmorData={ArmorData}
-            ShoesData={ShoesData}
-            GlovesData={GlovesData}
-            ShieldAndDaggerData={ShieldAndDaggerData}
-            setGlovesData={setGlovesData}
-            setMainWeaponData={setMainWeaponData}
-            setArmorData={setArmorData}
-            setHelmetData={setHelmetData}
-            setShoesData={setShoesData}
-            setShieldAndDaggerData={setShieldAndDaggerData}
-            FullInv={FullInv}
-            ce={ce}
-          />
-        </div>
-        <Statistic
-          mainWeaponData={mainWeaponData}
-          selectedItem={selectedItem}
-          ShieldAndDaggerData={ShieldAndDaggerData}
-          selectedShieldAndDaggerItem={selectedShieldAndDaggerItem}
-          HelmetData={HelmetData}
-          selectedHelmetItem={selectedHelmetItem}
-          ArmorData={ArmorData}
-          selectedArmorItem={selectedArmorItem}
-          GlovesData={GlovesData}
-          selectedGlovesItem={selectedGlovesItem}
-          ShoesData={ShoesData}
-          selectedShoesItem={selectedShoesItem}
-        />
-      </div>
+        </>
+      )}
     </>
   );
 };

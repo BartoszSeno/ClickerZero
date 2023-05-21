@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "../../assets/css/Normal/Chess/Chess.css";
-import BoardChess from "./Board/board";
-import BoardChessJs from "./Chess.js";
+import ChessBoard from "./Chess";
 
 function Chess({
   OpenChess,
@@ -34,7 +33,7 @@ function Chess({
             setChessIsOpen(true);
           }}
         >
-          <BoardChessJs />
+          <ChessBoard />
         </div>
       </div>
     </>
