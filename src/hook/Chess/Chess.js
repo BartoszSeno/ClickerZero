@@ -5,7 +5,10 @@ import { Chess } from "chess.js";
 function ChessBoard() {
   const [game, setGame] = useState(new Chess());
   const [isGameOver, setIsGameOver] = useState(false); // Dodatkowy stan dla sprawdzenia, czy gra jest skończona
-  //Let's perform a function on the game state
+  const [moveFrom, setMoveFrom] = useState("");
+  const [rightClickedSquares, setRightClickedSquares] = useState({});
+  const [moveSquares, setMoveSquares] = useState({});
+  const [optionSquares, setOptionSquares] = useState({});
 
   function safeGameMutate(modify) {
     setGame((g) => {
@@ -19,41 +22,109 @@ function ChessBoard() {
     if (game.in_checkmate()) {
       setIsGameOver(true);
       alert("Szach-mat! Koniec gry.");
+    } else if (game.in_draw()) {
+      alert("Remis? Koniec gry.");
     }
   }, [game]);
 
-  //Movement of computer
-  function makeRandomMove() {
-    const possibleMove = game.moves();
-
-    //exit if the game is over
-
-    if (game.game_over() || game.in_draw() || possibleMove.length === 0) return;
-    //select random move
-
-    const randomIndex = Math.floor(Math.random() * possibleMove.length);
-    //play random move
-    safeGameMutate((game) => {
-      game.move(possibleMove[randomIndex]);
+  function getMoveOptions(square) {
+    const moves = game.moves({
+      square,
+      verbose: true,
     });
+    if (moves.length === 0) {
+      return false;
+    }
+
+    const newSquares = {};
+    moves.map((move) => {
+      newSquares[move.to] = {
+        background:
+          game.get(move.to) &&
+          game.get(move.to).color !== game.get(square).color
+            ? "radial-gradient(circle, rgba(255,0,0,.5) 85%, transparent 85%)"
+            : "radial-gradient(circle, rgba(255,0,0,.5) 25%, transparent 25%)",
+        borderRadius: "50%",
+      };
+      return move;
+    });
+    newSquares[square] = {
+      background: "rgba(255, 255, 0, 0.4)",
+    };
+    setOptionSquares(newSquares);
+    return true;
   }
 
-  //Perform an action when a piece is droped by a user
+  function makeRandomMove() {
+    const possibleMoves = game.moves();
 
-  function onDrop(source, target) {
-    let move = null;
-    safeGameMutate((game) => {
-      move = game.move({
-        from: source,
-        to: target,
-        promotion: "q",
+    // exit if the game is over
+    if (game.game_over() || game.in_draw() || possibleMoves.length === 0)
+      return;
+
+    console.log(possibleMoves);
+
+    // Find move with letter "x" if it exists
+    const xMove = possibleMoves.find((move) => move.includes("x"));
+
+    if (xMove) {
+      safeGameMutate((game) => {
+        console.log(xMove);
+        game.move(xMove);
       });
+    } else {
+      const randomIndex = Math.floor(Math.random() * possibleMoves.length);
+      safeGameMutate((game) => {
+        console.log(possibleMoves[randomIndex]);
+        game.move(possibleMoves[randomIndex]);
+      });
+    }
+  }
+
+  function onSquareClick(square) {
+    setRightClickedSquares({});
+
+    function resetFirstMove(square) {
+      const hasOptions = getMoveOptions(square);
+      if (hasOptions) setMoveFrom(square);
+    }
+
+    // from square
+    if (!moveFrom) {
+      resetFirstMove(square);
+      return;
+    }
+
+    // attempt to make move
+    const gameCopy = { ...game };
+    const move = gameCopy.move({
+      from: moveFrom,
+      to: square,
+      promotion: "q", // always promote to a queen for example simplicity
     });
-    //illegal move
-    if (move == null) return false;
-    //valid move
-    setTimeout(makeRandomMove, 200);
-    return true;
+    setGame(gameCopy);
+
+    // if invalid, setMoveFrom and getMoveOptions
+    if (move === null) {
+      resetFirstMove(square);
+      return;
+    }
+
+    setTimeout(makeRandomMove, 300);
+    setMoveFrom("");
+    setOptionSquares({});
+  }
+
+  function onSquareRightClick(square) {
+    const colour = "rgba(0, 0, 255, 0.4)";
+    setRightClickedSquares({
+      ...rightClickedSquares,
+      [square]:
+        rightClickedSquares[square] &&
+        rightClickedSquares[square].backgroundColor === colour
+          ? undefined
+          : { backgroundColor: colour },
+    });
   }
 
   const customPiecesx = {
@@ -375,13 +446,26 @@ function ChessBoard() {
   };
   return (
     <>
-      {isGameOver ? <div>Gra skończona</div> : null}{" "}
+      {isGameOver ? <div className="GameOver">Gra skończona</div> : null}{" "}
       <Chessboard
-        position={game.fen()}
-        onPieceDrop={onDrop}
+        id="ClickToMove"
         boardWidth={770}
+        animationDuration={200}
+        arePiecesDraggable={false}
+        position={game.fen()}
+        onSquareClick={onSquareClick}
+        onSquareRightClick={onSquareRightClick}
         customBoardStyle={{
+          borderRadius: "4px",
+          boxShadow: "0 2px 10px rgba(0, 0, 0, 0.5)",
+        }}
+        customSquareStyles={{
+          ...moveSquares,
+          ...optionSquares,
+          ...rightClickedSquares,
+          border: "5px solid crimson",
           borderRadius: "5px",
+          opacity: isGameOver ? "0.5" : "1",
         }}
         customLightSquareStyle={{
           width: "96px",
@@ -396,7 +480,7 @@ function ChessBoard() {
             "url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Chess/BlackSquares.png)",
         }}
         customPieces={customPiecesx}
-      />
+      />{" "}
     </>
   );
 }
