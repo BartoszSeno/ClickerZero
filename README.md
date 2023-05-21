@@ -29,7 +29,7 @@
 - 1 day lasts 40 minutes
 - Day/noon/night light visible across the map
 - The ability to turn off the day/noon/night light
-![img](https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/readme/DayCycle.gif)
+- ![img](https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/readme/DayCycle.gif)
 
 ## Fishing
 
