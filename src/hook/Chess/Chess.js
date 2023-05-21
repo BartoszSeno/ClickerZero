@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 import { Chessboard } from "react-chessboard";
 import { Chess } from "chess.js";
@@ -19,33 +20,31 @@ function ChessBoard() {
   }
   const winner = game.turn() === "w" ? "Black" : "White";
 
-  function WiningRewards() {
-    console.log("nagroda");
-  }
+  function WiningRewards() {}
 
   function resetBoard() {
     game.reset(); // Restart board to default
+    game.undo();
   }
 
   //Check who win and if its win or draw
   useEffect(() => {
-    console.log(game.turn());
     if (game.in_checkmate()) {
       setIsGameOver(true);
       alert(`Szach-mat! Wygrywają: ${winner}`);
-      if (winner === "Białe") {
+      if (winner === "White") {
         WiningRewards();
       }
       resetBoard();
     } else if (game.in_draw()) {
       setIsGameOver(true);
       alert(`Brak ruchu? Koniec gry. ${winner}`);
-      if (winner === "Białe") {
+      if (winner === "White") {
         WiningRewards();
       }
       resetBoard();
     }
-  }, [game]);
+  }, [game, winner]);
 
   //move on click
   function getMoveOptions(square) {
@@ -85,20 +84,16 @@ function ChessBoard() {
     if (game.game_over() || game.in_draw() || possibleMoves.length === 0)
       return;
 
-    console.log(possibleMoves);
-
     // Find move with letter "x" if it exists
     const xMove = possibleMoves.find((move) => move.includes("x"));
 
     if (xMove) {
       safeGameMutate((game) => {
-        console.log(xMove);
         game.move(xMove);
       });
     } else {
       const randomIndex = Math.floor(Math.random() * possibleMoves.length);
       safeGameMutate((game) => {
-        console.log(possibleMoves[randomIndex]);
         game.move(possibleMoves[randomIndex]);
       });
     }
@@ -136,6 +131,17 @@ function ChessBoard() {
     setTimeout(makeRandomMove, 300);
     setMoveFrom("");
     setOptionSquares({});
+  }
+
+  function Surrender() {
+    game.reset();
+    setIsGameOver(false);
+  }
+
+  function Restart() {
+    game.reset(); // Restart board to default
+    game.undo();
+    setIsGameOver(false);
   }
 
   const customPiecesx = {
@@ -457,7 +463,7 @@ function ChessBoard() {
   };
   return (
     <>
-      {!isGameOver ? (
+      {isGameOver ? (
         <div className="GameOver">
           <p style={{ fontSize: "90px" }}>
             {" "}
@@ -498,7 +504,22 @@ function ChessBoard() {
             "url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Chess/BlackSquares.png)",
         }}
         customPieces={customPiecesx}
+        showBoardNotation={false}
       />{" "}
+      <div className="SurrOrRestart">
+        {game.history().length >= 26 && (
+          <button
+            onClick={() => (game.history().length >= 26 ? Surrender() : null)}
+          >
+            Surrender
+          </button>
+        )}
+        {isGameOver && (
+          <button onClick={() => (isGameOver ? Restart() : null)}>
+            Restart
+          </button>
+        )}
+      </div>
     </>
   );
 }

@@ -56,3 +56,50 @@
 .GameOver p {
   margin: 0;
 }
+
+.SurrOrRestart {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #301c21;
+  height: 65px;
+  margin-left: 550px;
+  transition: 0.35s;
+  z-index: -1;
+  clip-path: polygon(0 0, 91% 0, 100% 50%, 91% 100%, 0 100%, 0% 50%);
+}
+
+.SurrOrRestart button {
+  width: 200px;
+  border: none;
+  background-color: transparent;
+  height: 50px;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Chess/Board.png);
+  background-repeat: no-repeat;
+  background-size: 200px;
+  color: white;
+  font-size: 30px;
+  font-family: "Alagard";
+  font-weight: bold;
+  margin-right: 100px;
+  transition: 0.35s;
+  margin-top: -2px;
+  letter-spacing: 2px;
+}
+
+.SurrOrRestart:hover {
+  margin-left: 995px;
+  clip-path: polygon(0 0, 100% 0, 100% 99%, 0 100%);
+}
+
+.SurrOrRestart:hover button {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.SurrOrRestart button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
