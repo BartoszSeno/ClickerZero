@@ -35,7 +35,22 @@
 }
 
 .InnG {
-  background-color: red;
-  height: 700px;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/Inn/Inn.png);
+  height: 900px;
   width: 1400px;
+  cursor: auto;
+  clip-path: polygon(
+    0 10%,
+    35% 10%,
+    35% 0,
+    100% 0,
+    100% 89%,
+    39% 90%,
+    39% 100%,
+    36% 100%,
+    35.8% 71.5%,
+    33.4% 71.5%,
+    33.3% 100%,
+    0 100%
+  );
 }
