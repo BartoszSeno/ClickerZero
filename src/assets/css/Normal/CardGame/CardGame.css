@@ -1,0 +1,33 @@
+#CardGameC {
+  position: relative;
+  height: 200px;
+  width: 170px;
+  margin-top: 520px;
+  cursor: pointer;
+  background-color: gold;
+}
+
+#CardGame {
+  margin-top: -5px;
+  padding-bottom: 15px;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  background-color: rgb(0, 0, 0);
+  z-index: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+.CardGameG {
+  background-color: red;
+  height: 300px;
+  width: 300px;
+  cursor: auto;
+}
