@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import ShowWeapon from "../ShowStats/ShowWeapon";
 
-const MainWeaponShop = ({
+const MainWeaponShopTwo = ({
   mainWeaponData,
   setMainWeaponData,
   count,
@@ -40,7 +40,7 @@ const MainWeaponShop = ({
 
   const changeSelectedItemsN = () => {
     const randomIndexes: number[] = [];
-    while (randomIndexes.length < 3) {
+    while (randomIndexes.length < 5) {
       const randomIndex = Math.floor(Math.random() * mainWeaponData.length);
 
       if (!randomIndexes.includes(randomIndex)) {
@@ -49,7 +49,7 @@ const MainWeaponShop = ({
     }
     const selectedItemsN = randomIndexes.map((index) => mainWeaponData[index]);
     setselectedItemsN(selectedItemsN);
-    localStorage.setItem("selectedItemsN", JSON.stringify(selectedItemsN));
+    localStorage.setItem("selectedItemsN2", JSON.stringify(selectedItemsN));
     settimeLeft(5);
   };
 
@@ -58,7 +58,7 @@ const MainWeaponShop = ({
       changeSelectedItemsN();
     }, 5000);
 
-    const savedItems = localStorage.getItem("selectedItemsN");
+    const savedItems = localStorage.getItem("selectedItemsN2");
     if (savedItems) {
       setselectedItemsN(JSON.parse(savedItems));
     }
@@ -109,12 +109,12 @@ const MainWeaponShop = ({
       {Array.isArray(selectedItemsN) &&
         selectedItemsN
           .filter((data: any) => data.id > 1)
-          .slice(0, 3)
+          .slice(0, 5)
           .map((data: any, index: any) => {
             if (data.tier !== "purple" && data.tier !== "red") {
               return (
                 <button
-                  id={data.tier}
+                  id={`WeaponN${index}`}
                   className={`itemsForPurchasable ${index} `}
                   key={index}
                   onClick={(e) => {
@@ -167,4 +167,4 @@ const MainWeaponShop = ({
   );
 };
 
-export default MainWeaponShop;
+export default MainWeaponShopTwo;

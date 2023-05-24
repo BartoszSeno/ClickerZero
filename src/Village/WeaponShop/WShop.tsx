@@ -1,6 +1,7 @@
 import { useState } from "react";
 import MainWeaponShop from "../../Shop/Items/MainWeaponShop";
 import RedAndPurpleMainWeaponShop from "../../Shop/Items/RedAndPurpleWeapon";
+import MainWeaponShopTwo from "../../Shop/Items/MwShop2";
 
 const WeaponShop = ({
   WSO,
@@ -58,6 +59,18 @@ const WeaponShop = ({
         >
           <span className="WeaponWall">
             <MainWeaponShop
+              mainWeaponData={mainWeaponData}
+              setMainWeaponData={setMainWeaponData}
+              count={count}
+              setCount={setCount}
+              SelectedOption={SelectedOption}
+              FullInv={FullInv}
+              setNoR={setNoR}
+              NoR={NoR}
+            />
+          </span>
+          <span className="WeaponWall2">
+            <MainWeaponShopTwo
               mainWeaponData={mainWeaponData}
               setMainWeaponData={setMainWeaponData}
               count={count}

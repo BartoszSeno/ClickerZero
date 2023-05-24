@@ -23,10 +23,24 @@
   height: 900px;
   width: 1400px;
   display: flex;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/WeaponShop.gif?token=GHSAT0AAAAAACA775JHO7F7WRAOUDIWE2UKZDOFNLQ);
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/WeaponShop.gif);
   background-repeat: no-repeat;
   cursor: auto;
   flex-direction: column;
+  clip-path: polygon(
+    0 0,
+    42% 0,
+    42% 28%,
+    45% 28%,
+    45% 10%,
+    100% 10%,
+    100% 85%,
+    44.5% 85%,
+    44.5% 67%,
+    42.5% 67%,
+    42.5% 100%,
+    0 100%
+  );
 }
 
 .itemsForPurchasable {
@@ -46,23 +60,64 @@
 }
 
 .WeaponWall {
-  height: 200px;
-  width: 750px;
+  height: 90px;
+  width: 450px;
   margin-top: 45px;
-  margin-left: 100px;
+  margin-left: 70px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
+.WeaponWall2 {
+  position: relative;
+  height: 90px;
+  width: 630px;
+  margin-top: 25px;
+  margin-left: 700px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#WeaponN0 {
+  margin-top: -10px;
+}
+#WeaponN1 {
+  margin-top: 20px;
+}
+#WeaponN3 {
+  margin-top: 0px;
+}
+#WeaponN4 {
+  margin-top: 10px;
+}
+#WeaponN4 {
+  margin-top: 30px;
+}
 
 .RedAndPurple {
   height: 100px;
-  width: 330px;
-  margin-top: 60px;
-  margin-left: 512px;
+  width: 450px;
+  margin-top: 115px;
+  margin-left: 780px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+#Weapon0 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 100px;
+}
+#Weapon1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 100px;
+  margin-top: 30px;
 }
 
 .RAPitemsForPurchasable {

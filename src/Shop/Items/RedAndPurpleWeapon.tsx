@@ -113,8 +113,8 @@ const RedAndPurpleMainWeaponShop = ({
           .map((data: any, index: any) => {
             return (
               <button
-                id={data.tier}
-                className={`RAPitemsForPurchasable ${index} `}
+                id={`Weapon${index}`}
+                className={`RAPitemsForPurchasable ${index} Weapon${index}`}
                 key={index}
                 onClick={(e) => {
                   GetId(data);
