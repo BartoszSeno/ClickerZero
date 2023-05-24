@@ -658,7 +658,12 @@ const MainIndexVillage = ({
                 zIndex: OpenInn ? "1001" : "",
               }}
             >
-              <InnC OpenInn={OpenInn} setOpenInn={setOpenInn} />
+              <InnC
+                OpenInn={OpenInn}
+                setOpenInn={setOpenInn}
+                numberCatP={numberCatP}
+                OpenSellShop={OpenSellShop}
+              />
             </div>
             <div
               id="ChessC"
@@ -669,6 +674,11 @@ const MainIndexVillage = ({
             >
               <Chess OpenChess={OpenChess} setOpenChess={setOpenChess} />
             </div>
+            {numberCatP === 4 && (
+              <div className="Cat-p4" onClick={OpenSellShop}>
+                <Cat />
+              </div>
+            )}
           </div>
           <div className="midVillage">
             <ClearLocalStorageButton />

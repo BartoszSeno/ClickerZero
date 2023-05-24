@@ -1,8 +1,19 @@
 import { useState } from "react";
 import "../../assets/css/Normal/Village/leftVillage.css";
 import CardGame from "../../hook/CardGame";
+import Cat from "../../hook/CAT";
 
-function InnC({ OpenInn, setOpenInn }: { OpenInn: boolean; setOpenInn: any }) {
+function InnC({
+  OpenInn,
+  setOpenInn,
+  numberCatP,
+  OpenSellShop,
+}: {
+  OpenInn: boolean;
+  setOpenInn: any;
+  numberCatP: number;
+  OpenSellShop: any;
+}) {
   const [InIsOpen, setInIsOpen] = useState<boolean>(true);
   const [OpenCardGame, setOpenCardGame] = useState<boolean>(false);
 
@@ -40,6 +51,11 @@ function InnC({ OpenInn, setOpenInn }: { OpenInn: boolean; setOpenInn: any }) {
             setInIsOpen(true);
           }}
         >
+          {numberCatP === 5 && (
+            <div className="Cat-p5" onClick={OpenSellShop}>
+              <Cat />
+            </div>
+          )}
           <div id="CardGameC" onClick={OpenAndCloseCardGame} style={{}}>
             <CardGame
               OpenCardGame={OpenCardGame}

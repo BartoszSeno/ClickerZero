@@ -415,7 +415,6 @@ function App() {
   //=================================================================================
 
   const [SellFishByCat, setSellFishByCat] = useState<boolean>(false);
-  const [CatUse, setCatUse] = useState<number>(1);
 
   function OpenSellShop() {
     setTimeout(() => {
