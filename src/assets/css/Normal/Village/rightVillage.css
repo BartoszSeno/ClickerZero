@@ -96,28 +96,23 @@
 
 .RedAndPurple {
   height: 100px;
-  width: 450px;
+  width: 380px;
   margin-top: 115px;
-  margin-left: 780px;
+  margin-left: 826px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  transform: scale(1.2);
 }
 
 #Weapon0 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 60px;
+  margin-top: 2px;
   height: 100px;
 }
 #Weapon1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 120px;
+  width: 78px;
   height: 100px;
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 .RAPitemsForPurchasable {
@@ -133,7 +128,7 @@
   transform: rotate(90deg);
   position: relative;
   height: 100px;
-  transition: 0.1s;
+  transition: 0.35s;
 }
 
 .RAPitemsForPurchasable img:hover,
