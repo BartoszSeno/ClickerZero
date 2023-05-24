@@ -64,6 +64,7 @@ function Fishing({
           setFishCountAndUpdateLocalStorage(FishCount + 1);
           setIsGameOver(true);
           setStartGame(false);
+          document.removeEventListener("keydown", handleKeyDown);
         } else {
           setCurrentIndex((prevIndex) => prevIndex + 1);
         }
