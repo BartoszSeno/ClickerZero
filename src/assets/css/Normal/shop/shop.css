@@ -37,7 +37,7 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/babble.png?token=GHSAT0AAAAAACA775JHGYUEPJ6MON5I2U3CZDPN5BQ);
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/any/babble.png);
   background-repeat: no-repeat;
   height: 370px;
   width: 350px;
@@ -52,7 +52,7 @@
 .WeaponInfo {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 40px;
+  margin-top: -60px;
   margin-left: 30px;
   font-size: 20px;
   width: 280px;
@@ -72,8 +72,8 @@
 }
 
 #ShowStatsWeapon button {
-  margin-top: 20px;
-  padding-top: px;
+  position: absolute;
+  margin-top: 40px;
   height: 60px;
   width: 195px;
   font-size: 35px;
