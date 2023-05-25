@@ -99,7 +99,7 @@ const MainWeaponShopTwo = ({
       (item) => item.id === selectedItem.id
     );
     setidWeapon(index);
-    setNoR("ShowStatsWeapon");
+    setNoR("ShowStatsWeaponW2");
   };
 
   return (
@@ -145,11 +145,17 @@ const MainWeaponShopTwo = ({
             }
           })}
       <div
+        className="ShowW2"
         style={{
-          display: NoR === "ShowStatsWeaponRare" ? "none" : "",
+          display:
+            NoR === "ShowStatsWeaponRare"
+              ? "none"
+              : NoR === "ShowStatsWeapon"
+              ? "none"
+              : "",
           position: "absolute",
-          marginLeft: NoR === "ShowStatsWeapon" ? "843.5px" : "",
-          marginTop: NoR === "ShowStatsWeapon" ? "-45px" : "",
+          marginLeft: NoR === "ShowStatsWeaponW2" ? "-597px" : "",
+          marginTop: NoR === "ShowStatsWeaponW2" ? "-160px" : "",
         }}
       >
         <ShowWeapon

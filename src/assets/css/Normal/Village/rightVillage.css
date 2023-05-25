@@ -334,3 +334,19 @@
   margin-top: -10px;
   font-size: 20px;
 }
+
+.greenC {
+  color: #5fdd5f;
+}
+.blueC {
+  color: #4299e1;
+}
+.yellowC {
+  color: #d1a916;
+}
+.redC {
+  color: #f56565;
+}
+.purpleC {
+  color: purple;
+}

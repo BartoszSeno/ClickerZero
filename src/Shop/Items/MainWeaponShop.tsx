@@ -146,7 +146,12 @@ const MainWeaponShop = ({
           })}
       <div
         style={{
-          display: NoR === "ShowStatsWeaponRare" ? "none" : "",
+          display:
+            NoR === "ShowStatsWeaponRare"
+              ? "none"
+              : NoR === "ShowStatsWeaponW2"
+              ? "none"
+              : "",
           position: "absolute",
           marginLeft: NoR === "ShowStatsWeapon" ? "843.5px" : "",
           marginTop: NoR === "ShowStatsWeapon" ? "-45px" : "",
