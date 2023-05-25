@@ -142,31 +142,33 @@ const RedAndPurpleMainWeaponShop = ({
               </button>
             );
           })}
-      <div
-        style={{
-          display:
-            NoR === "ShowStatsWeapon"
-              ? "none"
-              : NoR === "ShowStatsWeaponW2"
-              ? "none"
-              : "",
-          position: "absolute",
-          marginLeft: NoR === "ShowStatsWeaponRare" ? "-59px" : "",
-          marginTop: NoR === "ShowStatsWeaponRare" ? "-296.5px" : "",
-          transform: NoR === "ShowStatsWeaponRare" ? "scale(0.835)" : "",
-        }}
-      >
-        <ShowWeapon
-          mainWeaponData={mainWeaponData}
-          count={count}
-          setCount={setCount}
-          idWeapon={idWeapon}
-          MainWeaponDmg={MainWeaponDmg}
-          handleClick={handleClick}
-          NoR={NoR}
-          FullInv={FullInv}
-        />
-      </div>
+      {NoR === null ? null : (
+        <div
+          style={{
+            display:
+              NoR === "ShowStatsWeapon"
+                ? "none"
+                : NoR === "ShowStatsWeaponW2"
+                ? "none"
+                : "",
+            position: "absolute",
+            marginLeft: NoR === "ShowStatsWeaponRare" ? "-59px" : "",
+            marginTop: NoR === "ShowStatsWeaponRare" ? "-296.5px" : "",
+            transform: NoR === "ShowStatsWeaponRare" ? "scale(0.835)" : "",
+          }}
+        >
+          <ShowWeapon
+            mainWeaponData={mainWeaponData}
+            count={count}
+            setCount={setCount}
+            idWeapon={idWeapon}
+            MainWeaponDmg={MainWeaponDmg}
+            handleClick={handleClick}
+            NoR={NoR}
+            FullInv={FullInv}
+          />
+        </div>
+      )}
     </>
   );
 };

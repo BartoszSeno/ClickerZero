@@ -37,7 +37,7 @@ const WeaponShop = ({
     setMO(false);
   }
 
-  const [NoR, setNoR] = useState();
+  const [NoR, setNoR] = useState<any>();
 
   return (
     <>
@@ -47,6 +47,7 @@ const WeaponShop = ({
         onClick={(e) => {
           e.stopPropagation();
           colseAll();
+          setNoR(null);
         }}
       >
         <div

@@ -144,30 +144,32 @@ const MainWeaponShop = ({
               );
             }
           })}
-      <div
-        style={{
-          display:
-            NoR === "ShowStatsWeaponRare"
-              ? "none"
-              : NoR === "ShowStatsWeaponW2"
-              ? "none"
-              : "",
-          position: "absolute",
-          marginLeft: NoR === "ShowStatsWeapon" ? "843.5px" : "",
-          marginTop: NoR === "ShowStatsWeapon" ? "-45px" : "",
-        }}
-      >
-        <ShowWeapon
-          mainWeaponData={mainWeaponData}
-          count={count}
-          setCount={setCount}
-          idWeapon={idWeapon}
-          MainWeaponDmg={MainWeaponDmg}
-          handleClick={handleClick}
-          NoR={NoR}
-          FullInv={FullInv}
-        />
-      </div>
+      {NoR === null ? null : (
+        <div
+          style={{
+            display:
+              NoR === "ShowStatsWeaponRare"
+                ? "none"
+                : NoR === "ShowStatsWeaponW2"
+                ? "none"
+                : "",
+            position: "absolute",
+            marginLeft: NoR === "ShowStatsWeapon" ? "843.5px" : "",
+            marginTop: NoR === "ShowStatsWeapon" ? "-45px" : "",
+          }}
+        >
+          <ShowWeapon
+            mainWeaponData={mainWeaponData}
+            count={count}
+            setCount={setCount}
+            idWeapon={idWeapon}
+            MainWeaponDmg={MainWeaponDmg}
+            handleClick={handleClick}
+            NoR={NoR}
+            FullInv={FullInv}
+          />
+        </div>
+      )}
     </>
   );
 };

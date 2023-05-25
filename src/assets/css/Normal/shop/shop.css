@@ -75,7 +75,8 @@
   position: absolute;
   margin-top: 40px;
   height: 60px;
-  width: 195px;
+  margin-left: 3px;
+  width: 200px;
   font-size: 35px;
   font-family: "Alagard";
   background-color: #cb5d48; /* Button background color */
