@@ -19,6 +19,7 @@ import { FishArray } from "./data/fish/fish";
 import MainEq from "./Equipment";
 import SellFish from "./hook/SellFish/Sell";
 import { CatArray } from "./data/cat/cat";
+import CardList from "./hook/CardGame/CardList";
 
 function App() {
   //==================
@@ -444,6 +445,7 @@ function App() {
       <BrowserRouter basename="/ClickerZero">
         <TimeCycleBg hours={hours} turn={turn} />
         <Routes>
+          <Route path="/Card" element={<CardList />}></Route>
           <Route
             path="/"
             element={
