@@ -5,8 +5,8 @@ import { EnemyCard } from "../../data/Card/Enemy";
 function CardList() {
   return (
     <div className="deckC">
-      {AllyCard.map((data: any) => (
-        <div className="CardConteiner">
+      {AllyCard.map((data: any, index: any) => (
+        <div className="CardConteiner" key={index}>
           <div className="ManaC">
             <div className="ManaPoints">{data.Mana}</div>
           </div>

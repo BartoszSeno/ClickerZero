@@ -155,7 +155,7 @@ export const AllyCard = [
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/15.gif",
     Atack: 5,
     Hp: 4,
-
+    Mana: 3,
     inTable: false,
     isKill: false,
   },
@@ -165,7 +165,7 @@ export const AllyCard = [
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/16.gif",
     Atack: 5,
     Hp: 4,
-
+    Mana: 3,
     inTable: false,
     isKill: false,
   },
