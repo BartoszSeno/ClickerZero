@@ -138,3 +138,14 @@
   background-size: 210px;
   z-index: 20;
 }
+
+.imgCardAbE {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/EnemyCard.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 210px;
+  z-index: 20;
+}
