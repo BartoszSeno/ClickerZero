@@ -37,7 +37,6 @@
   height: 100%;
   width: 92%;
   flex-wrap: wrap;
-  background-color: red;
 }
 
 .CardConteiner {
@@ -59,7 +58,7 @@
   background-repeat: no-repeat;
   background-position-x: center;
   background-size: 150px;
-  background-color: rgb(123, 24, 148);
+  background-color: #4f4656;
   height: 210px;
   width: 85%;
   clip-path: polygon(
@@ -133,7 +132,7 @@
   position: absolute;
   height: 100%;
   width: 100%;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/AllyCard.png?token=GHSAT0AAAAAACA775JGNXDVXY7ROVDJLGC6ZDQ4VSQ);
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/AllyCard.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 210px;
