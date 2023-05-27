@@ -1,7 +1,7 @@
 export const AllyCard = [
   {
     id: 1,
-    Name: "AnyName",
+    Name: "Shu",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/00.gif",
     Atack: 5,
     Hp: 4,
@@ -11,7 +11,7 @@ export const AllyCard = [
   },
   {
     id: 2,
-    Name: "AnyName",
+    Name: "Nihb",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/01.gif",
     Atack: 5,
     Hp: 4,
@@ -21,7 +21,7 @@ export const AllyCard = [
   },
   {
     id: 3,
-    Name: "AnyName",
+    Name: "Tony",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/02.gif",
     Atack: 5,
     Hp: 4,
@@ -31,7 +31,7 @@ export const AllyCard = [
   },
   {
     id: 4,
-    Name: "AnyName",
+    Name: "Yehlas",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/03.gif",
     Atack: 5,
     Hp: 4,
@@ -41,7 +41,7 @@ export const AllyCard = [
   },
   {
     id: 5,
-    Name: "AnyName",
+    Name: "Vruac",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/04.gif",
     Atack: 5,
     Hp: 4,
@@ -51,7 +51,7 @@ export const AllyCard = [
   },
   {
     id: 6,
-    Name: "AnyName",
+    Name: "Hector",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/05.gif",
     Atack: 5,
     Hp: 4,
@@ -61,7 +61,7 @@ export const AllyCard = [
   },
   {
     id: 7,
-    Name: "AnyName",
+    Name: "Hewitt",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/06.gif",
     Atack: 5,
     Hp: 4,
@@ -71,7 +71,7 @@ export const AllyCard = [
   },
   {
     id: 8,
-    Name: "AnyName",
+    Name: "Adkins",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/07.gif",
     Atack: 5,
     Hp: 4,
@@ -81,7 +81,7 @@ export const AllyCard = [
   },
   {
     id: 9,
-    Name: "AnyName",
+    Name: "Jolkurl",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/08.gif",
     Atack: 5,
     Hp: 4,
@@ -91,7 +91,7 @@ export const AllyCard = [
   },
   {
     id: 10,
-    Name: "AnyName",
+    Name: "Mulmia",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/09.gif",
     Atack: 5,
     Hp: 4,
@@ -101,7 +101,7 @@ export const AllyCard = [
   },
   {
     id: 11,
-    Name: "AnyName",
+    Name: "Sekhe",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/10.gif",
     Atack: 5,
     Hp: 4,
@@ -111,7 +111,7 @@ export const AllyCard = [
   },
   {
     id: 12,
-    Name: "AnyName",
+    Name: "Vika",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/11.gif",
     Atack: 5,
     Hp: 4,
@@ -121,7 +121,7 @@ export const AllyCard = [
   },
   {
     id: 13,
-    Name: "AnyName",
+    Name: "Upaix",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/12.gif",
     Atack: 5,
     Hp: 4,
@@ -131,7 +131,7 @@ export const AllyCard = [
   },
   {
     id: 14,
-    Name: "AnyName",
+    Name: "Mexoo",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/13.gif",
     Atack: 5,
     Hp: 4,
@@ -141,7 +141,7 @@ export const AllyCard = [
   },
   {
     id: 15,
-    Name: "AnyName",
+    Name: "Eannes",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/14.gif",
     Atack: 5,
     Hp: 4,
@@ -151,7 +151,7 @@ export const AllyCard = [
   },
   {
     id: 16,
-    Name: "AnyName",
+    Name: "Ambi",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/15.gif",
     Atack: 5,
     Hp: 4,
@@ -161,7 +161,7 @@ export const AllyCard = [
   },
   {
     id: 17,
-    Name: "AnyName",
+    Name: "Optahb",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/16.gif",
     Atack: 5,
     Hp: 4,
@@ -171,7 +171,7 @@ export const AllyCard = [
   },
   {
     id: 18,
-    Name: "AnyName",
+    Name: "Chitus",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/17.gif",
     Atack: 5,
     Hp: 4,
@@ -181,7 +181,7 @@ export const AllyCard = [
   },
   {
     id: 19,
-    Name: "AnyName",
+    Name: "Bruhdeth",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/18.gif",
     Atack: 5,
     Hp: 4,
@@ -191,7 +191,7 @@ export const AllyCard = [
   },
   {
     id: 20,
-    Name: "AnyName",
+    Name: "Kibraen",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/19.gif",
     Atack: 5,
     Hp: 4,
@@ -201,7 +201,7 @@ export const AllyCard = [
   },
   {
     id: 21,
-    Name: "AnyName",
+    Name: "Katsuo",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/20.gif",
     Atack: 5,
     Hp: 4,
@@ -211,7 +211,7 @@ export const AllyCard = [
   },
   {
     id: 22,
-    Name: "AnyName",
+    Name: "Nalgohic",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/21.gif",
     Atack: 5,
     Hp: 4,
