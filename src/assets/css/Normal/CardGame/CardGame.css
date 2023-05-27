@@ -26,10 +26,13 @@
 }
 
 .CardGameG {
-  background-color: red;
-  height: 300px;
-  width: 300px;
+  background-color: rgb(76, 121, 8);
+  height: 100%;
+  width: 100%;
   cursor: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .deckC {
@@ -148,4 +151,51 @@
   background-position: center;
   background-size: 210px;
   z-index: 20;
+}
+
+.CloseGameP {
+  position: absolute;
+
+  width: 100%;
+  height: 75px;
+  display: flex;
+  justify-content: end;
+  pointer-events: none;
+}
+.CloseGame {
+  background-color: aqua;
+  height: 50px;
+  width: 50px;
+  margin-top: 25px;
+  pointer-events: all;
+  cursor: pointer;
+  border: none;
+}
+
+.GameCP {
+  background-color: aquamarine;
+  height: 100%;
+  width: 1300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.AllyHandCard,
+.EnemyHandCard {
+  background-color: blueviolet;
+  width: 90%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scaleSize {
+  background-color: azure;
+  display: flex;
+  justify-content: center;
+  width: 250%;
+  transform: scale(0.6);
 }
