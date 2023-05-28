@@ -19,12 +19,17 @@ function TableAlly({
 
   const handlePlaceClick = (placeIndex: number) => {
     if (selectedItemId !== null) {
+      if (selectedItems[placeIndex] !== null) {
+        // Miejsce jest już zajęte, więc nie dodawaj przedmiotu
+        return;
+      }
+
       const updatedSelectedItems = [...selectedItems];
       updatedSelectedItems[placeIndex] = selectedItemId - 1;
       setSelectedItems(updatedSelectedItems);
       setSelectedItemId(null);
+      HandleUseCard();
     }
-    HandleUseCard();
   };
 
   return (

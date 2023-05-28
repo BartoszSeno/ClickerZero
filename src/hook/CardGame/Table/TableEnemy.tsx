@@ -19,12 +19,17 @@ function TableEnemy({
 
   const handlePlaceClick = (placeIndex: number) => {
     if (selectedItemIdE !== null) {
+      if (selectedItems[placeIndex] !== null) {
+        // Miejsce jest już zajęte, więc nie dodawaj przedmiotu
+        return;
+      }
+
       const updatedSelectedItems = [...selectedItems];
       updatedSelectedItems[placeIndex] = selectedItemIdE - 1;
       setSelectedItems(updatedSelectedItems);
       setSelectedItemIdE(null);
+      HandleUseCardE();
     }
-    HandleUseCardE();
   };
 
   return (
