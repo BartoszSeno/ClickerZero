@@ -4,20 +4,12 @@ import { EnemyCard } from "../../../data/Card/Enemy";
 function HandEnemy({
   randomItemsE,
   setEnemyIdSelected,
-  EnemyIdSelected,
+  HandleItemClickE,
 }: {
   randomItemsE: any;
   setEnemyIdSelected: any;
-  EnemyIdSelected: any;
+  HandleItemClickE: any;
 }) {
-  const HandleIemClick = (itemId: number) => {
-    if (EnemyIdSelected.includes(itemId)) {
-      // Przedmiot już istnieje, więc nie dodawaj go ponownie
-      return;
-    }
-    setEnemyIdSelected([...EnemyIdSelected, itemId]);
-  };
-
   return (
     <>
       <div className="EnemyHandCard">
@@ -26,7 +18,7 @@ function HandEnemy({
             <div
               className="CardConteiner"
               key={index}
-              onClick={() => HandleIemClick(data.id)}
+              onClick={() => HandleItemClickE(data.id)}
             >
               <div className="imgCardAb"></div>
               <div className="ManaC">

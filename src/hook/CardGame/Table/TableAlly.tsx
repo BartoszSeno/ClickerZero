@@ -18,10 +18,10 @@ function TableAlly({ selectedItemId }: { selectedItemId: any }) {
   };
 
   return (
-    <div className="AllyBoard">
+    <div className="Board">
       {selectedItems.map((itemId, index) => (
         <div
-          className="AllyCardOnBoard"
+          className="CardOnBoard"
           key={index}
           onClick={() => handlePlaceClick(index)}
         >
@@ -34,99 +34,87 @@ function TableAlly({ selectedItemId }: { selectedItemId: any }) {
                   backgroundImage: `url(${AllyCard[itemId].img})`,
                   backgroundPositionY:
                     AllyCard[itemId].id === 1
-                      ? "-30px"
+                      ? "10px"
                       : AllyCard[itemId].id === 2
-                      ? "65px"
+                      ? "30px"
                       : AllyCard[itemId].id === 3
-                      ? "47px"
+                      ? "35px"
                       : AllyCard[itemId].id === 4
-                      ? "80px"
+                      ? "30px"
                       : AllyCard[itemId].id === 5
                       ? "55px"
                       : AllyCard[itemId].id === 6
-                      ? "30px"
+                      ? "-40px"
                       : AllyCard[itemId].id === 7
-                      ? "65px"
+                      ? "50px"
                       : AllyCard[itemId].id === 8
                       ? "70px"
                       : AllyCard[itemId].id === 9
                       ? "67px"
                       : AllyCard[itemId].id === 10
-                      ? "0px"
+                      ? "70px"
                       : AllyCard[itemId].id === 11
-                      ? "15px"
+                      ? "55px"
                       : AllyCard[itemId].id === 12
                       ? "40px"
                       : AllyCard[itemId].id === 13
                       ? "65px"
                       : AllyCard[itemId].id === 14
-                      ? "90px"
+                      ? "50px"
                       : AllyCard[itemId].id === 15
-                      ? "70px"
+                      ? "30px"
                       : AllyCard[itemId].id === 16
                       ? "25px"
                       : AllyCard[itemId].id === 17
                       ? "50px"
                       : AllyCard[itemId].id === 18
-                      ? "65px"
+                      ? "15px"
                       : AllyCard[itemId].id === 19
                       ? "50px"
                       : AllyCard[itemId].id === 20
                       ? "65px"
                       : AllyCard[itemId].id === 21
-                      ? "32px"
+                      ? "62px"
                       : AllyCard[itemId].id === 22
-                      ? "50px"
+                      ? "30px"
                       : "",
                   backgroundSize:
                     AllyCard[itemId].id === 1
-                      ? "300px"
+                      ? "200px"
                       : AllyCard[itemId].id === 2
-                      ? "120px"
+                      ? "200px"
                       : AllyCard[itemId].id === 3
                       ? "200px"
                       : AllyCard[itemId].id === 5
-                      ? "160px"
+                      ? "230px"
                       : AllyCard[itemId].id === 6
-                      ? "150px"
+                      ? "250px"
                       : AllyCard[itemId].id === 8
                       ? "200px"
                       : AllyCard[itemId].id === 10
-                      ? "200px"
-                      : AllyCard[itemId].id === 11
-                      ? "250px"
+                      ? "100px"
                       : AllyCard[itemId].id === 12
                       ? "200px"
                       : AllyCard[itemId].id === 14
-                      ? "100px"
-                      : AllyCard[itemId].id === 15
-                      ? "150px"
-                      : AllyCard[itemId].id === 16
                       ? "200px"
-                      : AllyCard[itemId].id === 17
-                      ? "160px"
-                      : AllyCard[itemId].id === 18
-                      ? "160px"
-                      : AllyCard[itemId].id === 19
+                      : AllyCard[itemId].id === 15
+                      ? "260px"
+                      : AllyCard[itemId].id === 16
                       ? "150px"
-                      : AllyCard[itemId].id === 20
-                      ? "180px"
-                      : AllyCard[itemId].id === 21
-                      ? "230px"
+                      : AllyCard[itemId].id === 17
+                      ? "120px"
+                      : AllyCard[itemId].id === 18
+                      ? "250px"
+                      : AllyCard[itemId].id === 19
+                      ? "220px"
                       : "",
                   backgroundPositionX:
                     AllyCard[itemId].id === 1
-                      ? "-25px"
-                      : AllyCard[itemId].id === 4
-                      ? "-25px"
+                      ? "25px"
                       : AllyCard[itemId].id === 15
-                      ? "10px"
-                      : AllyCard[itemId].id === 16
-                      ? "30px"
+                      ? "-20px"
                       : AllyCard[itemId].id === 20
-                      ? "5px"
-                      : AllyCard[itemId].id === 21
-                      ? "-10px"
+                      ? "25px"
                       : "",
                 }}
               ></div>

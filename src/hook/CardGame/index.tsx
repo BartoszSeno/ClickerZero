@@ -184,9 +184,6 @@ function CardGame({
     }
   };
   //=======================================
-  const [EnemyIdSelected, setEnemyIdSelected] = useState<number[]>([]);
-
-  console.log(EnemyIdSelected);
 
   const [AllyIdSelected, setAllyIdSelected] = useState<number>(0);
   const [selectedItemId, setSelectedItemId] = useState<number | null>(null);
@@ -194,6 +191,14 @@ function CardGame({
   const HandleItemClick = (itemId: number) => {
     setAllyIdSelected(itemId);
     setSelectedItemId(itemId);
+  };
+  //==========
+  const [EnemyIdSelected, setEnemyIdSelected] = useState<number>(0);
+  const [selectedItemIdE, setSelectedItemIdE] = useState<number | null>(null);
+
+  const HandleItemClickE = (itemId: number) => {
+    setAllyIdSelected(itemId);
+    setSelectedItemIdE(itemId);
   };
   return (
     <>
@@ -228,10 +233,12 @@ function CardGame({
             <HandEnemy
               randomItemsE={randomItemsE}
               setEnemyIdSelected={setEnemyIdSelected}
-              EnemyIdSelected={EnemyIdSelected}
+              HandleItemClickE={HandleItemClickE}
             />
-            <TableEnemy EnemyIdSelected={EnemyIdSelected} />
+            <TableEnemy selectedItemIdE={selectedItemIdE} />
+
             <button onClick={addRandomItemWithoutRepetition}>Next Round</button>
+
             <TableAlly selectedItemId={selectedItemId} />
             <HandAlly
               HandleItemClick={HandleItemClick}
