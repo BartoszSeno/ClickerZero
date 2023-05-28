@@ -164,6 +164,7 @@ function CardGame({
       setclickCountE((prevCount) => prevCount + 1);
     }
     const newItem = getRandomItem();
+    //================
     if (newItem) {
       setRandomItems((prevItems: any) => [...prevItems, newItem]);
       setRemainingItems((prevIndexes) => {
@@ -183,12 +184,17 @@ function CardGame({
     }
   };
   //=======================================
-  const [AllyIdSelected, setAllyIdSelected] = useState<number[]>([]);
   const [EnemyIdSelected, setEnemyIdSelected] = useState<number[]>([]);
 
-  console.log(AllyIdSelected);
   console.log(EnemyIdSelected);
 
+  const [AllyIdSelected, setAllyIdSelected] = useState<number>(0);
+  const [selectedItemId, setSelectedItemId] = useState<number | null>(null);
+
+  const HandleItemClick = (itemId: number) => {
+    setAllyIdSelected(itemId);
+    setSelectedItemId(itemId);
+  };
   return (
     <>
       <div
@@ -226,10 +232,10 @@ function CardGame({
             />
             <TableEnemy EnemyIdSelected={EnemyIdSelected} />
             <button onClick={addRandomItemWithoutRepetition}>Next Round</button>
-            <TableAlly AllyIdSelected={AllyIdSelected} />
+            <TableAlly selectedItemId={selectedItemId} />
             <HandAlly
+              HandleItemClick={HandleItemClick}
               randomItems={randomItems}
-              AllyIdSelected={AllyIdSelected}
               setAllyIdSelected={setAllyIdSelected}
             />
           </div>

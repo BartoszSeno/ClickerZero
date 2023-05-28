@@ -17,6 +17,7 @@ function HandEnemy({
     }
     setEnemyIdSelected([...EnemyIdSelected, itemId]);
   };
+
   return (
     <>
       <div className="EnemyHandCard">

@@ -4,19 +4,12 @@ import { AllyCard } from "../../../data/Card/Ally";
 function HandAlly({
   randomItems,
   setAllyIdSelected,
-  AllyIdSelected,
+  HandleItemClick,
 }: {
   randomItems: any;
   setAllyIdSelected: any;
-  AllyIdSelected: any;
+  HandleItemClick: any;
 }) {
-  const HandleIemClick = (itemId: number) => {
-    if (AllyIdSelected.includes(itemId)) {
-      // Przedmiot już istnieje, więc nie dodawaj go ponownie
-      return;
-    }
-    setAllyIdSelected([...AllyIdSelected, itemId]);
-  };
   //console.log(remainingItems);
   return (
     <>
@@ -26,7 +19,7 @@ function HandAlly({
             <div
               className="CardConteiner"
               key={index}
-              onClick={() => HandleIemClick(data.id)}
+              onClick={() => HandleItemClick(data.id)}
             >
               <div className="imgCardAb"></div>
               <div className="ManaC">
