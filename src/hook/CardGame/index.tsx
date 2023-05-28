@@ -4,6 +4,8 @@ import HandAlly from "./HandCard/HandAlly";
 import HandEnemy from "./HandCard/HandEnemy";
 import { EnemyCard } from "../../data/Card/Enemy";
 import { AllyCard } from "../../data/Card/Ally";
+import TableAlly from "./Table/TableAlly";
+import TableEnemy from "./Table/TableEnemy";
 
 function CardGame({
   OpenCardGame,
@@ -180,6 +182,13 @@ function CardGame({
       setClickCount((prevCount) => prevCount + 1);
     }
   };
+  //=======================================
+  const [AllyIdSelected, setAllyIdSelected] = useState<number[]>([]);
+  const [EnemyIdSelected, setEnemyIdSelected] = useState<number[]>([]);
+
+  console.log(AllyIdSelected);
+  console.log(EnemyIdSelected);
+
   return (
     <>
       <div
@@ -210,9 +219,19 @@ function CardGame({
             </button>
           </div>
           <div className="GameCP">
-            <HandEnemy randomItemsE={randomItemsE} />
+            <HandEnemy
+              randomItemsE={randomItemsE}
+              setEnemyIdSelected={setEnemyIdSelected}
+              EnemyIdSelected={EnemyIdSelected}
+            />
+            <TableEnemy EnemyIdSelected={EnemyIdSelected} />
             <button onClick={addRandomItemWithoutRepetition}>Next Round</button>
-            <HandAlly randomItems={randomItems} />
+            <TableAlly AllyIdSelected={AllyIdSelected} />
+            <HandAlly
+              randomItems={randomItems}
+              AllyIdSelected={AllyIdSelected}
+              setAllyIdSelected={setAllyIdSelected}
+            />
           </div>
         </div>
       </div>

@@ -1,14 +1,33 @@
 import { useEffect, useState } from "react";
 import { AllyCard } from "../../../data/Card/Ally";
 
-function HandAlly({ randomItems }: { randomItems: any }) {
+function HandAlly({
+  randomItems,
+  setAllyIdSelected,
+  AllyIdSelected,
+}: {
+  randomItems: any;
+  setAllyIdSelected: any;
+  AllyIdSelected: any;
+}) {
+  const HandleIemClick = (itemId: number) => {
+    if (AllyIdSelected.includes(itemId)) {
+      // Przedmiot już istnieje, więc nie dodawaj go ponownie
+      return;
+    }
+    setAllyIdSelected([...AllyIdSelected, itemId]);
+  };
   //console.log(remainingItems);
   return (
     <>
       <div className="AllyHandCard">
         <div className="scaleSize">
           {randomItems.map((data: any, index: any) => (
-            <div className="CardConteiner" key={index}>
+            <div
+              className="CardConteiner"
+              key={index}
+              onClick={() => HandleIemClick(data.id)}
+            >
               <div className="imgCardAb"></div>
               <div className="ManaC">
                 <div className="ManaPoints">{data.Mana}</div>
