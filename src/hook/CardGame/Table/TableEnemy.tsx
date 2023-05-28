@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 import { EnemyCard } from "../../../data/Card/Enemy";
 
-function TableEnemy({ selectedItemIdE }: { selectedItemIdE: any }) {
+function TableEnemy({
+  selectedItemIdE,
+  setSelectedItemIdE,
+  HandleUseCardE,
+}: {
+  selectedItemIdE: any;
+  setSelectedItemIdE: any;
+  HandleUseCardE: any;
+}) {
   const [selectedItems, setSelectedItems] = useState<(number | null)[]>([
     null,
     null,
@@ -14,7 +22,9 @@ function TableEnemy({ selectedItemIdE }: { selectedItemIdE: any }) {
       const updatedSelectedItems = [...selectedItems];
       updatedSelectedItems[placeIndex] = selectedItemIdE - 1;
       setSelectedItems(updatedSelectedItems);
+      setSelectedItemIdE(null);
     }
+    HandleUseCardE();
   };
 
   return (

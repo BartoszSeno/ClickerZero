@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 import { AllyCard } from "../../../data/Card/Ally";
 
-function TableAlly({ selectedItemId }: { selectedItemId: any }) {
+function TableAlly({
+  selectedItemId,
+  setSelectedItemId,
+  HandleUseCard,
+}: {
+  selectedItemId: any;
+  setSelectedItemId: any;
+  HandleUseCard: any;
+}) {
   const [selectedItems, setSelectedItems] = useState<(number | null)[]>([
     null,
     null,
@@ -14,7 +22,9 @@ function TableAlly({ selectedItemId }: { selectedItemId: any }) {
       const updatedSelectedItems = [...selectedItems];
       updatedSelectedItems[placeIndex] = selectedItemId - 1;
       setSelectedItems(updatedSelectedItems);
+      setSelectedItemId(null);
     }
+    HandleUseCard();
   };
 
   return (
