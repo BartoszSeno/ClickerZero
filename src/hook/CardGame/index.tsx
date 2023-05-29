@@ -252,6 +252,8 @@ function CardGame({
     }
   }
 
+  const [CanBeUse, setCanBeUse] = useState<any>();
+  console.log(CanBeUse);
   return (
     <>
       <div
@@ -294,6 +296,8 @@ function CardGame({
               setGetEAP={setGetEAP}
               setGetEHP={setGetEHP}
               RoundFor={RoundFor}
+              CanBeUse={CanBeUse}
+              setCanBeUse={setCanBeUse}
             />
 
             <button onClick={addRandomItemWithoutRepetition}>
@@ -307,6 +311,7 @@ function CardGame({
               setGetAP={setGetAP}
               setGetHP={setGetHP}
               RoundFor={RoundFor}
+              setCanBeUse={setCanBeUse}
             />
             <HandAlly
               HandleItemClick={HandleItemClick}

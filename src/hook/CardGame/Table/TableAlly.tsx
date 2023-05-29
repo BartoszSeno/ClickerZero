@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { AllyCard } from "../../../data/Card/Ally";
 
@@ -8,6 +9,7 @@ function TableAlly({
   setGetAP,
   setGetHP,
   RoundFor,
+  setCanBeUse,
 }: {
   selectedItemId: any;
   setSelectedItemId: any;
@@ -15,6 +17,7 @@ function TableAlly({
   setGetAP: any;
   setGetHP: any;
   RoundFor: any;
+  setCanBeUse: any;
 }) {
   const [selectedItems, setSelectedItems] = useState<(number | null)[]>([
     null,
@@ -38,15 +41,6 @@ function TableAlly({
     }
   };
 
-  const handleGetAP = (Ap: number) => {
-    console.log(Ap);
-    setGetAP(Ap);
-  };
-
-  const handleGetHP = (Hp: number) => {
-    console.log(Hp);
-    setGetHP(Hp);
-  };
   const [allayAtack, setAllayAtack] = useState<any>([]);
   const [selectedCard, setselectedCard] = useState<any>();
 
@@ -60,29 +54,40 @@ function TableAlly({
   }, [selectedCard]);
 
   const handleHeck = (index: number) => {
-    if (allayAtack[index] !== undefined) {
-      const selectedIndex = allayAtack.findIndex(
-        (value: boolean) => value === true
-      );
+    if (RoundFor === "ally") {
+      if (allayAtack[index] !== undefined) {
+        const selectedIndex = allayAtack.findIndex(
+          (value: boolean) => value === true
+        );
+        console.log(index, selectedIndex);
+        setAllayAtack((prevArray: any) => {
+          const newArray = [...prevArray];
+          if (selectedIndex !== -1) {
+            newArray[selectedIndex] = false;
+          }
+          newArray[index] = true;
 
-      if (selectedIndex !== -1) {
-        setAllayAtack((prevArray: any) => {
-          const newArray = [...prevArray];
-          newArray[selectedIndex] = false;
-          newArray[index] = true;
+          if (newArray[index]) {
+            // Wykonaj funkcję, jeśli element jest ustawiony na true
+            // Tu możesz dodać swoją własną funkcję
+            setCanBeUse("AllyAtackEnemy");
+            console.log("Wykonaj funkcję dla elementu o indeksie", index);
+          }
+
           return newArray;
         });
-        setselectedCard(selectedItems[index]);
-      } else {
-        setAllayAtack((prevArray: any) => {
-          const newArray = [...prevArray];
-          newArray[index] = true;
-          return newArray;
-        });
+
         setselectedCard(selectedItems[index]);
       }
     }
   };
+  useEffect(() => {
+    if (RoundFor === "enemy") {
+      setAllayAtack(Array(selectedItems.length).fill(false));
+      setselectedCard(undefined);
+      setCanBeUse("s");
+    }
+  }, [RoundFor]);
 
   return (
     <div className="Board">
@@ -92,8 +97,6 @@ function TableAlly({
           key={index}
           onClick={() => {
             handlePlaceClick(index);
-            handleGetAP(AllyCard[index].Atack);
-            handleGetHP(AllyCard[index].Hp);
             handleHeck(index);
           }}
         >
@@ -103,7 +106,7 @@ function TableAlly({
               <div
                 className="CardChar"
                 style={{
-                  backgroundColor: allayAtack[index] ? "green" : "red",
+                  backgroundColor: allayAtack[index] ? "green" : "",
                   backgroundImage: `url(${AllyCard[itemId].img})`,
                   backgroundPositionY:
                     AllyCard[itemId].id === 1

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { EnemyCard } from "../../../data/Card/Enemy";
 
@@ -8,6 +9,8 @@ function TableEnemy({
   setGetEAP,
   setGetEHP,
   RoundFor,
+  CanBeUse,
+  setCanBeUse,
 }: {
   selectedItemIdE: any;
   setSelectedItemIdE: any;
@@ -15,6 +18,8 @@ function TableEnemy({
   setGetEAP: any;
   setGetEHP: any;
   RoundFor: any;
+  CanBeUse: any;
+  setCanBeUse: any;
 }) {
   const [selectedItems, setSelectedItems] = useState<(number | null)[]>([
     null,
@@ -38,18 +43,10 @@ function TableEnemy({
     }
   };
 
-  const handleGetEAP = (Ap: number) => {
-    console.log(Ap);
-    setGetEAP(Ap);
-  };
-
-  const handleGetEHP = (Hp: number) => {
-    console.log(Hp);
-    setGetEHP(Hp);
-  };
   //====
   const [EnemyAtack, setEnemyAtack] = useState<any>([]);
   const [selectedCard, setselectedCard] = useState<any>();
+  const [IndexSave, setIndexSave] = useState<any>();
 
   useEffect(() => {
     setEnemyAtack(Array(selectedItems.length).fill(false));
@@ -60,30 +57,76 @@ function TableEnemy({
     console.log("Wybrany przedmiot:", EnemyCard[selectedCard]);
   }, [selectedCard]);
 
-  const handleHeck = (index: number) => {
-    if (EnemyAtack[index] !== undefined) {
-      const selectedIndex = EnemyAtack.findIndex(
-        (value: boolean) => value === true
-      );
+  useEffect(() => {
+    console.log(IndexSave);
+  }, [IndexSave]);
 
-      if (selectedIndex !== -1) {
+  const handleHeck = (index: number) => {
+    setIndexSave(index);
+
+    if (RoundFor === "enemy") {
+      if (EnemyAtack[index] !== undefined) {
+        const selectedIndex = EnemyAtack.findIndex(
+          (value: boolean) => value === true
+        );
+
         setEnemyAtack((prevArray: any) => {
           const newArray = [...prevArray];
-          newArray[selectedIndex] = false;
+          if (selectedIndex !== -1) {
+            newArray[selectedIndex] = false;
+          }
           newArray[index] = true;
+          if (newArray[index]) {
+            // Wykonaj funkcję, jeśli element jest ustawiony na true
+            // Tu możesz dodać swoją własną funkcję
+            console.log("Wykonaj funkcję dla elementu o indeksie", index);
+          }
           return newArray;
         });
-        setselectedCard(selectedItems[index]);
-      } else {
-        setEnemyAtack((prevArray: any) => {
-          const newArray = [...prevArray];
-          newArray[index] = true;
-          return newArray;
-        });
+
         setselectedCard(selectedItems[index]);
       }
     }
   };
+  const [AllyAtackEnemy, setAllyAtackEnemy] = useState<any>([]);
+
+  useEffect(() => {
+    setAllyAtackEnemy(Array(selectedItems.length).fill(false));
+  }, [selectedItems]);
+
+  useEffect(() => {
+    if (CanBeUse === "AllyAtackEnemy") {
+      if (AllyAtackEnemy[IndexSave] !== undefined) {
+        const selectedIndex = AllyAtackEnemy.findIndex(
+          (value: boolean) => value === true
+        );
+
+        setAllyAtackEnemy((prevArray: any) => {
+          const newArray = [...prevArray];
+          if (selectedIndex !== -1) {
+            newArray[selectedIndex] = false;
+          }
+          newArray[IndexSave] = true;
+          if (newArray[IndexSave]) {
+            // Wykonaj funkcję, jeśli element jest ustawiony na true
+            // Tu możesz dodać swoją własną funkcję
+            console.log("wybierz przeciwnika", IndexSave);
+          }
+          console.log(newArray[IndexSave]);
+          return newArray;
+        });
+      }
+    }
+    console.log("a");
+  }, [IndexSave, CanBeUse]);
+  useEffect(() => {
+    if (RoundFor === "ally") {
+      setEnemyAtack(Array(selectedItems.length).fill(false));
+      setselectedCard(undefined);
+      setAllyAtackEnemy(Array(selectedItems.length).fill(false));
+      setIndexSave(-1);
+    }
+  }, [RoundFor]);
 
   return (
     <div className="Board">
@@ -93,8 +136,6 @@ function TableEnemy({
           key={index}
           onClick={() => {
             handlePlaceClick(index);
-            handleGetEAP(EnemyCard[index].Atack);
-            handleGetEHP(EnemyCard[index].Hp);
             handleHeck(index);
           }}
         >
@@ -104,7 +145,11 @@ function TableEnemy({
               <div
                 className="CardChar"
                 style={{
-                  backgroundColor: EnemyAtack[index] ? "green" : "red",
+                  backgroundColor: EnemyAtack[index]
+                    ? "green"
+                    : CanBeUse === "AllyAtackEnemy" && AllyAtackEnemy[index]
+                    ? "blue"
+                    : "",
                   backgroundImage: `url(${EnemyCard[itemId].img})`,
                   backgroundPositionY:
                     EnemyCard[itemId].id === 1
