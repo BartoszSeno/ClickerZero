@@ -5,10 +5,16 @@ function TableAlly({
   selectedItemId,
   setSelectedItemId,
   HandleUseCard,
+  setGetAP,
+  setGetHP,
+  RoundFor,
 }: {
   selectedItemId: any;
   setSelectedItemId: any;
   HandleUseCard: any;
+  setGetAP: any;
+  setGetHP: any;
+  RoundFor: any;
 }) {
   const [selectedItems, setSelectedItems] = useState<(number | null)[]>([
     null,
@@ -32,13 +38,65 @@ function TableAlly({
     }
   };
 
+  const handleGetAP = (Ap: number) => {
+    console.log(Ap);
+    setGetAP(Ap);
+  };
+
+  const handleGetHP = (Hp: number) => {
+    console.log(Hp);
+    setGetHP(Hp);
+  };
+  const [allayAtack, setAllayAtack] = useState<any>([]);
+  const [selectedCard, setselectedCard] = useState<any>();
+
+  useEffect(() => {
+    setAllayAtack(Array(selectedItems.length).fill(false));
+  }, [selectedItems]);
+
+  useEffect(() => {
+    console.log(selectedCard);
+    console.log("Wybrany przedmiot:", AllyCard[selectedCard]);
+  }, [selectedCard]);
+
+  const handleHeck = (index: number) => {
+    if (allayAtack[index] !== undefined) {
+      const selectedIndex = allayAtack.findIndex(
+        (value: boolean) => value === true
+      );
+
+      if (selectedIndex !== -1) {
+        setAllayAtack((prevArray: any) => {
+          const newArray = [...prevArray];
+          newArray[selectedIndex] = false;
+          newArray[index] = true;
+          return newArray;
+        });
+        setselectedCard(selectedItems[index]);
+      } else {
+        setAllayAtack((prevArray: any) => {
+          const newArray = [...prevArray];
+          newArray[index] = true;
+          return newArray;
+        });
+        setselectedCard(selectedItems[index]);
+      }
+    }
+  };
+
+  console.log(allayAtack);
   return (
     <div className="Board">
       {selectedItems.map((itemId, index) => (
         <div
           className="CardOnBoard"
           key={index}
-          onClick={() => handlePlaceClick(index)}
+          onClick={() => {
+            handlePlaceClick(index);
+            handleGetAP(AllyCard[index].Atack);
+            handleGetHP(AllyCard[index].Hp);
+            handleHeck(index);
+          }}
         >
           Miejsce {index + 1}:{" "}
           {itemId !== null ? (
@@ -46,6 +104,7 @@ function TableAlly({
               <div
                 className="CardChar"
                 style={{
+                  backgroundColor: allayAtack[index] ? "green" : "red",
                   backgroundImage: `url(${AllyCard[itemId].img})`,
                   backgroundPositionY:
                     AllyCard[itemId].id === 1

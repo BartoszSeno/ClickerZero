@@ -1,14 +1,21 @@
 import { useEffect, useState } from "react";
 import { EnemyCard } from "../../../data/Card/Enemy";
+import { AllyCard } from "../../../data/Card/Ally";
 
 function TableEnemy({
   selectedItemIdE,
   setSelectedItemIdE,
   HandleUseCardE,
+  setGetEAP,
+  setGetEHP,
+  RoundFor,
 }: {
   selectedItemIdE: any;
   setSelectedItemIdE: any;
   HandleUseCardE: any;
+  setGetEAP: any;
+  setGetEHP: any;
+  RoundFor: any;
 }) {
   const [selectedItems, setSelectedItems] = useState<(number | null)[]>([
     null,
@@ -32,13 +39,26 @@ function TableEnemy({
     }
   };
 
+  const handleGetEAP = (Ap: number) => {
+    console.log(Ap);
+    setGetEAP(Ap);
+  };
+
+  const handleGetEHP = (Hp: number) => {
+    console.log(Hp);
+    setGetEHP(Hp);
+  };
   return (
     <div className="Board">
       {selectedItems.map((itemId, index) => (
         <div
           className="CardOnBoard"
           key={index}
-          onClick={() => handlePlaceClick(index)}
+          onClick={() => {
+            handlePlaceClick(index);
+            handleGetEAP(EnemyCard[index].Atack);
+            handleGetEHP(EnemyCard[index].Hp);
+          }}
         >
           Miejsce {index + 1}:{" "}
           {itemId !== null ? (
@@ -46,6 +66,8 @@ function TableEnemy({
               <div
                 className="CardChar"
                 style={{
+                  backgroundColor: RoundFor === "enemy" ? "green" : "red",
+
                   backgroundImage: `url(${EnemyCard[itemId].img})`,
                   backgroundPositionY:
                     EnemyCard[itemId].id === 1

@@ -19,7 +19,11 @@ function CardGame({
   function CloseCardGame() {
     setOpenCardGame(false);
   }
-  //=====================
+
+  //=======================================
+  const [RoundFor, setRoundFor] = useState<string>("enemy");
+  //=======================================
+
   const [randomItemsE, setrandomItemsE] = useState<any>([]);
   const [remainingItemsE, setremainingItemsE] = useState<number[]>([]);
   const [clickCountE, setclickCountE] = useState<number>(0);
@@ -162,6 +166,9 @@ function CardGame({
         return newIndexes;
       });
       setclickCountE((prevCount) => prevCount + 1);
+      if (RoundFor === "ally") {
+        setRoundFor("enemy");
+      }
     }
     const newItem = getRandomItem();
     //================
@@ -181,39 +188,70 @@ function CardGame({
         return newIndexes;
       });
       setClickCount((prevCount) => prevCount + 1);
+      if (RoundFor === "enemy") {
+        setRoundFor("ally");
+      }
     }
+    console.log(RoundFor);
   };
-  //=======================================
 
   const [AllyIdSelected, setAllyIdSelected] = useState<number>(0);
   const [selectedItemId, setSelectedItemId] = useState<number | null>(null);
+  const [selectedAllyItemId, setSelectedAllyItemId] = useState<number | null>(
+    null
+  );
+
+  const [getAP, setGetAP] = useState<number>(0);
+  const [getHP, setGetHP] = useState<number>(0);
 
   const HandleItemClick = (itemId: number) => {
-    setAllyIdSelected(itemId);
-    setSelectedItemId(itemId);
+    if (RoundFor === "ally") {
+      setAllyIdSelected(itemId);
+      setSelectedItemId(itemId);
+    }
   };
 
   const HandleUseCard = (itemId: number) => {
-    const updatedRandomItems = randomItems.filter(
-      (item: any) => item.id !== selectedItemId
-    );
-    setRandomItems(updatedRandomItems);
+    if (RoundFor === "ally") {
+      const updatedRandomItems = randomItems.filter(
+        (item: any) => item.id !== selectedItemId
+      );
+      setRandomItems(updatedRandomItems);
+    }
   };
   //==========
   const [EnemyIdSelected, setEnemyIdSelected] = useState<number>(0);
   const [selectedItemIdE, setSelectedItemIdE] = useState<number | null>(null);
+  const [selectedEnemyItemId, setSelectedEnemyItemId] = useState<number | null>(
+    null
+  );
+
+  const [getEAP, setGetEAP] = useState<number>(0);
+  const [getEHP, setGetEHP] = useState<number>(0);
 
   const HandleItemClickE = (itemId: number) => {
-    setAllyIdSelected(itemId);
-    setSelectedItemIdE(itemId);
+    if (RoundFor === "enemy") {
+      setAllyIdSelected(itemId);
+      setSelectedItemIdE(itemId);
+    }
   };
 
   const HandleUseCardE = (itemId: number) => {
-    const updatedRandomItems = randomItemsE.filter(
-      (item: any) => item.id !== selectedItemIdE
-    );
-    setrandomItemsE(updatedRandomItems);
+    if (RoundFor === "enemy") {
+      const updatedRandomItems = randomItemsE.filter(
+        (item: any) => item.id !== selectedItemIdE
+      );
+      setrandomItemsE(updatedRandomItems);
+    }
   };
+
+  function AtackCard() {
+    if (RoundFor === "enemy") {
+    }
+    if (RoundFor === "ally") {
+    }
+  }
+
   return (
     <>
       <div
@@ -253,14 +291,22 @@ function CardGame({
               selectedItemIdE={selectedItemIdE}
               setSelectedItemIdE={setSelectedItemIdE}
               HandleUseCardE={HandleUseCardE}
+              setGetEAP={setGetEAP}
+              setGetEHP={setGetEHP}
+              RoundFor={RoundFor}
             />
 
-            <button onClick={addRandomItemWithoutRepetition}>Next Round</button>
+            <button onClick={addRandomItemWithoutRepetition}>
+              Next Round Move for:{RoundFor}
+            </button>
 
             <TableAlly
               selectedItemId={selectedItemId}
               setSelectedItemId={setSelectedItemId}
               HandleUseCard={HandleUseCard}
+              setGetAP={setGetAP}
+              setGetHP={setGetHP}
+              RoundFor={RoundFor}
             />
             <HandAlly
               HandleItemClick={HandleItemClick}
