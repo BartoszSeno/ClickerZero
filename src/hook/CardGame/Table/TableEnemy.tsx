@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { EnemyCard } from "../../../data/Card/Enemy";
-import { AllyCard } from "../../../data/Card/Ally";
 
 function TableEnemy({
   selectedItemIdE,
@@ -58,7 +57,7 @@ function TableEnemy({
 
   useEffect(() => {
     console.log(selectedCard);
-    console.log("Wybrany przedmiot:", AllyCard[selectedCard]);
+    console.log("Wybrany przedmiot:", EnemyCard[selectedCard]);
   }, [selectedCard]);
 
   const handleHeck = (index: number) => {

@@ -84,7 +84,6 @@ function TableAlly({
     }
   };
 
-  console.log(allayAtack);
   return (
     <div className="Board">
       {selectedItems.map((itemId, index) => (
