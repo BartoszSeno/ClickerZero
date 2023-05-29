@@ -10,6 +10,7 @@ function TableAlly({
   setGetHP,
   RoundFor,
   setCanBeUse,
+  CanBeUse,
 }: {
   selectedItemId: any;
   setSelectedItemId: any;
@@ -18,6 +19,7 @@ function TableAlly({
   setGetHP: any;
   RoundFor: any;
   setCanBeUse: any;
+  CanBeUse: any;
 }) {
   const [selectedItems, setSelectedItems] = useState<(number | null)[]>([
     null,
@@ -43,6 +45,7 @@ function TableAlly({
 
   const [allayAtack, setAllayAtack] = useState<any>([]);
   const [selectedCard, setselectedCard] = useState<any>();
+  const [IndexSave, setIndexSave] = useState<any>();
 
   useEffect(() => {
     setAllayAtack(Array(selectedItems.length).fill(false));
@@ -53,7 +56,13 @@ function TableAlly({
     console.log("Wybrany przedmiot:", AllyCard[selectedCard]);
   }, [selectedCard]);
 
+  useEffect(() => {
+    console.log(IndexSave);
+  }, [IndexSave]);
+
   const handleHeck = (index: number) => {
+    setIndexSave(index);
+
     if (RoundFor === "ally") {
       if (allayAtack[index] !== undefined) {
         const selectedIndex = allayAtack.findIndex(
@@ -81,11 +90,46 @@ function TableAlly({
       }
     }
   };
+  //=======
+  const [EnemyAtackAlly, setEnemyAtackAlly] = useState<any>([]);
+
+  useEffect(() => {
+    setEnemyAtackAlly(Array(selectedItems.length).fill(false));
+  }, [selectedItems]);
+
+  useEffect(() => {
+    if (CanBeUse === "EnemyAtackAlly") {
+      if (EnemyAtackAlly[IndexSave] !== undefined) {
+        const selectedIndex = EnemyAtackAlly.findIndex(
+          (value: boolean) => value === true
+        );
+
+        setEnemyAtackAlly((prevArray: any) => {
+          const newArray = [...prevArray];
+          if (selectedIndex !== -1) {
+            newArray[selectedIndex] = false;
+          }
+          newArray[IndexSave] = true;
+          if (newArray[IndexSave]) {
+            // Wykonaj funkcję, jeśli element jest ustawiony na true
+            // Tu możesz dodać swoją własną funkcję
+            console.log("wybierz przeciwnika", IndexSave);
+          }
+          console.log(newArray[IndexSave]);
+          return newArray;
+        });
+      }
+    }
+    console.log("a");
+  }, [IndexSave, CanBeUse]);
+  //=======
   useEffect(() => {
     if (RoundFor === "enemy") {
       setAllayAtack(Array(selectedItems.length).fill(false));
       setselectedCard(undefined);
       setCanBeUse("s");
+      setEnemyAtackAlly(Array(selectedItems.length).fill(false));
+      setIndexSave(-1);
     }
   }, [RoundFor]);
 
@@ -106,7 +150,11 @@ function TableAlly({
               <div
                 className="CardChar"
                 style={{
-                  backgroundColor: allayAtack[index] ? "green" : "",
+                  backgroundColor: allayAtack[index]
+                    ? "green"
+                    : CanBeUse === "EnemyAtackAlly" && EnemyAtackAlly[index]
+                    ? "blue"
+                    : "",
                   backgroundImage: `url(${AllyCard[itemId].img})`,
                   backgroundPositionY:
                     AllyCard[itemId].id === 1

@@ -79,6 +79,8 @@ function TableEnemy({
           if (newArray[index]) {
             // Wykonaj funkcję, jeśli element jest ustawiony na true
             // Tu możesz dodać swoją własną funkcję
+            setCanBeUse("EnemyAtackAlly");
+
             console.log("Wykonaj funkcję dla elementu o indeksie", index);
           }
           return newArray;
@@ -119,10 +121,12 @@ function TableEnemy({
     }
     console.log("a");
   }, [IndexSave, CanBeUse]);
+
   useEffect(() => {
     if (RoundFor === "ally") {
       setEnemyAtack(Array(selectedItems.length).fill(false));
       setselectedCard(undefined);
+      setCanBeUse("s");
       setAllyAtackEnemy(Array(selectedItems.length).fill(false));
       setIndexSave(-1);
     }

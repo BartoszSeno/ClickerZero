@@ -311,6 +311,7 @@ function CardGame({
               setGetAP={setGetAP}
               setGetHP={setGetHP}
               RoundFor={RoundFor}
+              CanBeUse={CanBeUse}
               setCanBeUse={setCanBeUse}
             />
             <HandAlly
