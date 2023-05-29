@@ -48,6 +48,44 @@ function TableEnemy({
     console.log(Hp);
     setGetEHP(Hp);
   };
+  //====
+  const [EnemyAtack, setEnemyAtack] = useState<any>([]);
+  const [selectedCard, setselectedCard] = useState<any>();
+
+  useEffect(() => {
+    setEnemyAtack(Array(selectedItems.length).fill(false));
+  }, [selectedItems]);
+
+  useEffect(() => {
+    console.log(selectedCard);
+    console.log("Wybrany przedmiot:", AllyCard[selectedCard]);
+  }, [selectedCard]);
+
+  const handleHeck = (index: number) => {
+    if (EnemyAtack[index] !== undefined) {
+      const selectedIndex = EnemyAtack.findIndex(
+        (value: boolean) => value === true
+      );
+
+      if (selectedIndex !== -1) {
+        setEnemyAtack((prevArray: any) => {
+          const newArray = [...prevArray];
+          newArray[selectedIndex] = false;
+          newArray[index] = true;
+          return newArray;
+        });
+        setselectedCard(selectedItems[index]);
+      } else {
+        setEnemyAtack((prevArray: any) => {
+          const newArray = [...prevArray];
+          newArray[index] = true;
+          return newArray;
+        });
+        setselectedCard(selectedItems[index]);
+      }
+    }
+  };
+
   return (
     <div className="Board">
       {selectedItems.map((itemId, index) => (
@@ -58,6 +96,7 @@ function TableEnemy({
             handlePlaceClick(index);
             handleGetEAP(EnemyCard[index].Atack);
             handleGetEHP(EnemyCard[index].Hp);
+            handleHeck(index);
           }}
         >
           Miejsce {index + 1}:{" "}
@@ -66,8 +105,7 @@ function TableEnemy({
               <div
                 className="CardChar"
                 style={{
-                  backgroundColor: RoundFor === "enemy" ? "green" : "red",
-
+                  backgroundColor: EnemyAtack[index] ? "green" : "red",
                   backgroundImage: `url(${EnemyCard[itemId].img})`,
                   backgroundPositionY:
                     EnemyCard[itemId].id === 1
