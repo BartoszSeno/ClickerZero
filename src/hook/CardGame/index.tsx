@@ -14,6 +14,10 @@ function CardGame({
   OpenCardGame: boolean;
   setOpenCardGame: any;
 }) {
+  const [AllyData, setAllyData] = useState<any>(
+    JSON.parse(localStorage.getItem("AllyCard") || JSON.stringify(AllyCard))
+  );
+
   const [CardGameIsOpen, setCardGameIsOpen] = useState<boolean>(true);
 
   function CloseCardGame() {
@@ -245,15 +249,15 @@ function CardGame({
     }
   };
 
-  function AtackCard() {
-    if (RoundFor === "enemy") {
-    }
-    if (RoundFor === "ally") {
-    }
-  }
+  //=============================================
+
+  const [AllyTrue, setAllyTrue] = useState<boolean>(false);
+  const [AllyAtackEnemyTrue, setAllyAtackEnemyTrue] = useState<boolean>(false);
 
   const [CanBeUse, setCanBeUse] = useState<any>();
-  console.log(CanBeUse);
+
+  const [IdCardA, setIdCardA] = useState<any>();
+
   return (
     <>
       <div
@@ -298,6 +302,8 @@ function CardGame({
               RoundFor={RoundFor}
               CanBeUse={CanBeUse}
               setCanBeUse={setCanBeUse}
+              setAllyAtackEnemyTrue={setAllyAtackEnemyTrue}
+              IdCardA={IdCardA}
             />
 
             <button onClick={addRandomItemWithoutRepetition}>
@@ -313,6 +319,8 @@ function CardGame({
               RoundFor={RoundFor}
               CanBeUse={CanBeUse}
               setCanBeUse={setCanBeUse}
+              setAllyTrue={setAllyTrue}
+              setIdCardA={setIdCardA}
             />
             <HandAlly
               HandleItemClick={HandleItemClick}

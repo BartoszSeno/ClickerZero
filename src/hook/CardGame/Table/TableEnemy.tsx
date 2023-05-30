@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { EnemyCard } from "../../../data/Card/Enemy";
+import { AllyCard } from "../../../data/Card/Ally";
 
 function TableEnemy({
   selectedItemIdE,
@@ -11,6 +12,8 @@ function TableEnemy({
   RoundFor,
   CanBeUse,
   setCanBeUse,
+  setAllyAtackEnemyTrue,
+  IdCardA,
 }: {
   selectedItemIdE: any;
   setSelectedItemIdE: any;
@@ -20,6 +23,8 @@ function TableEnemy({
   RoundFor: any;
   CanBeUse: any;
   setCanBeUse: any;
+  setAllyAtackEnemyTrue: any;
+  IdCardA: any;
 }) {
   const [selectedItems, setSelectedItems] = useState<(number | null)[]>([
     null,
@@ -46,7 +51,7 @@ function TableEnemy({
   //====
   const [EnemyAtack, setEnemyAtack] = useState<any>([]);
   const [selectedCard, setselectedCard] = useState<any>();
-  const [IndexSave, setIndexSave] = useState<any>();
+  const [IndexSaveE, setIndexSaveE] = useState<any>();
 
   useEffect(() => {
     setEnemyAtack(Array(selectedItems.length).fill(false));
@@ -58,11 +63,11 @@ function TableEnemy({
   }, [selectedCard]);
 
   useEffect(() => {
-    console.log(IndexSave);
-  }, [IndexSave]);
+    console.log(IndexSaveE);
+  }, [IndexSaveE]);
 
   const handleHeck = (index: number) => {
-    setIndexSave(index);
+    setIndexSaveE(index);
 
     if (RoundFor === "enemy") {
       if (EnemyAtack[index] !== undefined) {
@@ -96,9 +101,10 @@ function TableEnemy({
     setAllyAtackEnemy(Array(selectedItems.length).fill(false));
   }, [selectedItems]);
 
+  //do podswietlania przeciwnika
   useEffect(() => {
     if (CanBeUse === "AllyAtackEnemy") {
-      if (AllyAtackEnemy[IndexSave] !== undefined) {
+      if (AllyAtackEnemy[IndexSaveE] !== undefined) {
         const selectedIndex = AllyAtackEnemy.findIndex(
           (value: boolean) => value === true
         );
@@ -108,19 +114,65 @@ function TableEnemy({
           if (selectedIndex !== -1) {
             newArray[selectedIndex] = false;
           }
-          newArray[IndexSave] = true;
-          if (newArray[IndexSave]) {
+          newArray[IndexSaveE] = true;
+          if (newArray[IndexSaveE]) {
             // Wykonaj funkcję, jeśli element jest ustawiony na true
             // Tu możesz dodać swoją własną funkcję
-            console.log("wybierz przeciwnika", IndexSave);
+            console.log("wybierz przeciwnika", IndexSaveE);
+            const CaedIdE = selectedItems[IndexSaveE];
+            console.log(
+              AllyCard[IdCardA].Name,
+              " Atack ",
+              EnemyCard[Number(CaedIdE)].Name
+            );
+
+            if (AllyCard[IdCardA].Atack > EnemyCard[Number(CaedIdE)].Hp) {
+              console.log(
+                AllyCard[IdCardA].Name,
+                " Zaatakował przeciwnika ",
+                EnemyCard[Number(CaedIdE)].Name,
+                "pokonał go i zadał ",
+                AllyCard[IdCardA].Atack,
+                " Obrażeń"
+              );
+            }
+            if (AllyCard[IdCardA].Atack - EnemyCard[Number(CaedIdE)].Hp === 0) {
+              console.log(
+                EnemyCard[Number(CaedIdE)].Name,
+                " Stracił wsyzstkie punkty życia"
+              );
+            }
+            if (
+              AllyCard[IdCardA].Atack - EnemyCard[Number(CaedIdE)].Hp > 0 &&
+              AllyCard[IdCardA].Hp - EnemyCard[Number(CaedIdE)].Atack < 0
+            ) {
+              console.log(
+                AllyCard[IdCardA].Name,
+                " Zaatakował przeciwnika ",
+                EnemyCard[Number(CaedIdE)].Name,
+                "ale przeciwnik miał wiecej obrażeń i zabił go "
+              );
+            }
+            if (
+              AllyCard[IdCardA].Atack < EnemyCard[Number(CaedIdE)].Hp &&
+              AllyCard[IdCardA].Hp > EnemyCard[Number(CaedIdE)].Atack
+            ) {
+              console.log(
+                "Wszyscy sie zaatakowali ale nikt nie poniusł szkody"
+              );
+            }
+            if (EnemyCard[Number(CaedIdE)].Atack > AllyCard[IdCardA].Hp) {
+              console.log("przeciwnik miałwiecej obrażeń");
+            }
+            setAllyAtackEnemyTrue(true);
           }
-          console.log(newArray[IndexSave]);
+
+          console.log(newArray[IndexSaveE]);
           return newArray;
         });
       }
     }
-    console.log("a");
-  }, [IndexSave, CanBeUse]);
+  }, [IndexSaveE, CanBeUse]);
 
   useEffect(() => {
     if (RoundFor === "ally") {
@@ -128,7 +180,7 @@ function TableEnemy({
       setselectedCard(undefined);
       setCanBeUse("s");
       setAllyAtackEnemy(Array(selectedItems.length).fill(false));
-      setIndexSave(-1);
+      setIndexSaveE(-1);
     }
   }, [RoundFor]);
 

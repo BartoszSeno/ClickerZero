@@ -11,6 +11,8 @@ function TableAlly({
   RoundFor,
   setCanBeUse,
   CanBeUse,
+  setAllyTrue,
+  setIdCardA,
 }: {
   selectedItemId: any;
   setSelectedItemId: any;
@@ -20,6 +22,8 @@ function TableAlly({
   RoundFor: any;
   setCanBeUse: any;
   CanBeUse: any;
+  setAllyTrue: any;
+  setIdCardA: any;
 }) {
   const [selectedItems, setSelectedItems] = useState<(number | null)[]>([
     null,
@@ -51,15 +55,6 @@ function TableAlly({
     setAllayAtack(Array(selectedItems.length).fill(false));
   }, [selectedItems]);
 
-  useEffect(() => {
-    console.log(selectedCard);
-    console.log("Wybrany przedmiot:", AllyCard[selectedCard]);
-  }, [selectedCard]);
-
-  useEffect(() => {
-    console.log(IndexSave);
-  }, [IndexSave]);
-
   const handleHeck = (index: number) => {
     setIndexSave(index);
 
@@ -68,35 +63,36 @@ function TableAlly({
         const selectedIndex = allayAtack.findIndex(
           (value: boolean) => value === true
         );
-        console.log(index, selectedIndex);
         setAllayAtack((prevArray: any) => {
           const newArray = [...prevArray];
           if (selectedIndex !== -1) {
             newArray[selectedIndex] = false;
           }
+
           newArray[index] = true;
 
           if (newArray[index]) {
             // Wykonaj funkcję, jeśli element jest ustawiony na true
             // Tu możesz dodać swoją własną funkcję
             setCanBeUse("AllyAtackEnemy");
-            console.log("Wykonaj funkcję dla elementu o indeksie", index);
+            setAllyTrue(true);
           }
-
           return newArray;
         });
-
+        setIdCardA(selectedItems[index]);
         setselectedCard(selectedItems[index]);
       }
     }
   };
   //=======
+
   const [EnemyAtackAlly, setEnemyAtackAlly] = useState<any>([]);
 
   useEffect(() => {
     setEnemyAtackAlly(Array(selectedItems.length).fill(false));
   }, [selectedItems]);
 
+  //do podswietlania przeciwnika
   useEffect(() => {
     if (CanBeUse === "EnemyAtackAlly") {
       if (EnemyAtackAlly[IndexSave] !== undefined) {
@@ -113,14 +109,12 @@ function TableAlly({
           if (newArray[IndexSave]) {
             // Wykonaj funkcję, jeśli element jest ustawiony na true
             // Tu możesz dodać swoją własną funkcję
-            console.log("wybierz przeciwnika", IndexSave);
+            // console.log("wybierz przeciwnika", IndexSave);
           }
-          console.log(newArray[IndexSave]);
           return newArray;
         });
       }
     }
-    console.log("a");
   }, [IndexSave, CanBeUse]);
   //=======
   useEffect(() => {
