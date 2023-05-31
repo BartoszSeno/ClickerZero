@@ -14,6 +14,9 @@ function TableEnemy({
   setCanBeUse,
   setAllyAtackEnemyTrue,
   IdCardA,
+  setselectedItemsA,
+  IndexSaveA,
+  selectedCardA,
 }: {
   selectedItemIdE: any;
   setSelectedItemIdE: any;
@@ -25,6 +28,9 @@ function TableEnemy({
   setCanBeUse: any;
   setAllyAtackEnemyTrue: any;
   IdCardA: any;
+  setselectedItemsA: any;
+  IndexSaveA: any;
+  selectedCardA: any;
 }) {
   const [selectedItems, setSelectedItems] = useState<(number | null)[]>([
     null,
@@ -152,6 +158,20 @@ function TableEnemy({
                 EnemyCard[Number(CaedIdE)].Name,
                 "ale przeciwnik miał wiecej obrażeń i zabił go "
               );
+              setselectedItemsA((prevItems: any[]) => {
+                const newItems = [...prevItems];
+                newItems[IndexSaveA] = null;
+                return newItems;
+              });
+            }
+
+            if (EnemyCard[Number(CaedIdE)].Atack > AllyCard[IdCardA].Hp) {
+              console.log("przeciwnik miałwiecej obrażeń");
+              setselectedItemsA((prevItems: any[]) => {
+                const newItems = [...prevItems];
+                newItems[IndexSaveA] = null;
+                return newItems;
+              });
             }
             if (
               AllyCard[IdCardA].Atack < EnemyCard[Number(CaedIdE)].Hp &&
@@ -160,10 +180,14 @@ function TableEnemy({
               console.log(
                 "Wszyscy sie zaatakowali ale nikt nie poniusł szkody"
               );
+              //  const selectedCardHp = AllyCard[selectedCardA].Hp; // Pobranie HP dla wybranego przedmiotu
+              //  if (selectedCardHp >= 2) {
+              //   AllyCard[selectedCardA].Hp -= 2; // Odejmowanie 2 HP od wybranego przedmiotu
+              //    return;
+              //  }
+              //  return;
             }
-            if (EnemyCard[Number(CaedIdE)].Atack > AllyCard[IdCardA].Hp) {
-              console.log("przeciwnik miałwiecej obrażeń");
-            }
+
             setAllyAtackEnemyTrue(true);
           }
 

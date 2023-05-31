@@ -257,7 +257,17 @@ function CardGame({
   const [CanBeUse, setCanBeUse] = useState<any>();
 
   const [IdCardA, setIdCardA] = useState<any>();
+  //======
+  const [selectedItemsA, setselectedItemsA] = useState<(number | null)[]>([
+    null,
+    null,
+    null,
+    null,
+  ]);
+  const [IndexSaveA, setIndexSaveA] = useState<any>();
+  const [selectedCardA, setselectedCardA] = useState<any>();
 
+  //====
   return (
     <>
       <div
@@ -304,6 +314,9 @@ function CardGame({
               setCanBeUse={setCanBeUse}
               setAllyAtackEnemyTrue={setAllyAtackEnemyTrue}
               IdCardA={IdCardA}
+              setselectedItemsA={setselectedItemsA}
+              IndexSaveA={IndexSaveA}
+              selectedCardA={selectedCardA}
             />
 
             <button onClick={addRandomItemWithoutRepetition}>
@@ -321,6 +334,12 @@ function CardGame({
               setCanBeUse={setCanBeUse}
               setAllyTrue={setAllyTrue}
               setIdCardA={setIdCardA}
+              selectedItemsA={selectedItemsA}
+              setselectedItemsA={setselectedItemsA}
+              setIndexSaveA={setIndexSaveA}
+              IndexSaveA={IndexSaveA}
+              setselectedCardA={setselectedCardA}
+              selectedCardA={selectedCardA}
             />
             <HandAlly
               HandleItemClick={HandleItemClick}

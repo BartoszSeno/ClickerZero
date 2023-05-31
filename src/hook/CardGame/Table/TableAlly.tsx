@@ -13,6 +13,12 @@ function TableAlly({
   CanBeUse,
   setAllyTrue,
   setIdCardA,
+  selectedItemsA,
+  setselectedItemsA,
+  setIndexSaveA,
+  IndexSaveA,
+  setselectedCardA,
+  selectedCardA,
 }: {
   selectedItemId: any;
   setSelectedItemId: any;
@@ -24,42 +30,38 @@ function TableAlly({
   CanBeUse: any;
   setAllyTrue: any;
   setIdCardA: any;
+  selectedItemsA: any;
+  setselectedItemsA: any;
+  setIndexSaveA: any;
+  IndexSaveA: any;
+  setselectedCardA: any;
+  selectedCardA: any;
 }) {
-  const [selectedItems, setSelectedItems] = useState<(number | null)[]>([
-    null,
-    null,
-    null,
-    null,
-  ]);
-
   const handlePlaceClick = (placeIndex: number) => {
     if (selectedItemId !== null) {
-      if (selectedItems[placeIndex] !== null) {
+      if (selectedItemsA[placeIndex] !== null) {
         // Miejsce jest już zajęte, więc nie dodawaj przedmiotu
         return;
       }
 
-      const updatedSelectedItems = [...selectedItems];
-      updatedSelectedItems[placeIndex] = selectedItemId - 1;
-      setSelectedItems(updatedSelectedItems);
+      const updatedselectedItemsA = [...selectedItemsA];
+      updatedselectedItemsA[placeIndex] = selectedItemId - 1;
+      setselectedItemsA(updatedselectedItemsA);
       setSelectedItemId(null);
       HandleUseCard();
     }
   };
 
   const [allayAtack, setAllayAtack] = useState<any>([]);
-  const [selectedCard, setselectedCard] = useState<any>();
-  const [IndexSave, setIndexSave] = useState<any>();
-
   useEffect(() => {
-    setAllayAtack(Array(selectedItems.length).fill(false));
-  }, [selectedItems]);
+    setAllayAtack(Array(selectedItemsA.length).fill(false));
+  }, [selectedItemsA]);
 
   const handleHeck = (index: number) => {
-    setIndexSave(index);
+    setIndexSaveA(index);
 
     if (RoundFor === "ally") {
-      if (selectedItems[index] !== null && !allayAtack[index]) {
+      if (selectedItemsA[index] !== null && !allayAtack[index]) {
         const selectedIndex = allayAtack.findIndex(
           (value: boolean) => value === true
         );
@@ -72,31 +74,31 @@ function TableAlly({
           newArray[index] = true;
 
           if (newArray[index]) {
-            // Wykonaj funkcję, jeśli element jest ustawiony na true
-            // Tu możesz dodać swoją własną funkcję
             setCanBeUse("AllyAtackEnemy");
             setAllyTrue(true);
           }
           return newArray;
         });
-        setIdCardA(selectedItems[index]);
-        setselectedCard(selectedItems[index]);
+        setIdCardA(selectedItemsA[index]);
+        setselectedCardA(selectedItemsA[index]);
       }
     }
   };
+
+  //====
 
   //=======
 
   const [EnemyAtackAlly, setEnemyAtackAlly] = useState<any>([]);
 
   useEffect(() => {
-    setEnemyAtackAlly(Array(selectedItems.length).fill(false));
-  }, [selectedItems]);
+    setEnemyAtackAlly(Array(selectedItemsA.length).fill(false));
+  }, [selectedItemsA]);
 
   //do podswietlania przeciwnika
   useEffect(() => {
     if (CanBeUse === "EnemyAtackAlly") {
-      if (EnemyAtackAlly[IndexSave] !== undefined) {
+      if (EnemyAtackAlly[IndexSaveA] !== undefined) {
         const selectedIndex = EnemyAtackAlly.findIndex(
           (value: boolean) => value === true
         );
@@ -106,11 +108,11 @@ function TableAlly({
           if (selectedIndex !== -1) {
             newArray[selectedIndex] = false;
           }
-          newArray[IndexSave] = true;
-          if (newArray[IndexSave]) {
+          newArray[IndexSaveA] = true;
+          if (newArray[IndexSaveA]) {
             // Wykonaj funkcję, jeśli element jest ustawiony na true
             // Tu możesz dodać swoją własną funkcję
-            // console.log("wybierz przeciwnika", IndexSave);
+            // console.log("wybierz przeciwnika", IndexSaveA);
           }
           return newArray;
         });
@@ -118,21 +120,21 @@ function TableAlly({
     } else {
       return;
     }
-  }, [IndexSave, CanBeUse]);
+  }, [IndexSaveA, CanBeUse]);
   //=======
   useEffect(() => {
     if (RoundFor === "enemy") {
-      setAllayAtack(Array(selectedItems.length).fill(false));
-      setselectedCard(undefined);
+      setAllayAtack(Array(selectedItemsA.length).fill(false));
+      setselectedCardA(undefined);
       setCanBeUse("s");
-      setEnemyAtackAlly(Array(selectedItems.length).fill(false));
-      setIndexSave(-1);
+      setEnemyAtackAlly(Array(selectedItemsA.length).fill(false));
+      setIndexSaveA(-1);
     }
   }, [RoundFor]);
 
   return (
     <div className="Board">
-      {selectedItems.map((itemId, index) => (
+      {selectedItemsA.map((itemId: any, index: any) => (
         <div
           className="CardOnBoard"
           key={index}
