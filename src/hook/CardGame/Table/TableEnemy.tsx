@@ -70,7 +70,7 @@ function TableEnemy({
     setIndexSaveE(index);
 
     if (RoundFor === "enemy") {
-      if (EnemyAtack[index] !== undefined) {
+      if (selectedItems[index] !== null && !EnemyAtack[index]) {
         const selectedIndex = EnemyAtack.findIndex(
           (value: boolean) => value === true
         );
@@ -171,6 +171,8 @@ function TableEnemy({
           return newArray;
         });
       }
+    } else {
+      return;
     }
   }, [IndexSaveE, CanBeUse]);
 

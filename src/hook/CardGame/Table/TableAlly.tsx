@@ -59,7 +59,7 @@ function TableAlly({
     setIndexSave(index);
 
     if (RoundFor === "ally") {
-      if (allayAtack[index] !== undefined) {
+      if (selectedItems[index] !== null && !allayAtack[index]) {
         const selectedIndex = allayAtack.findIndex(
           (value: boolean) => value === true
         );
@@ -84,6 +84,7 @@ function TableAlly({
       }
     }
   };
+
   //=======
 
   const [EnemyAtackAlly, setEnemyAtackAlly] = useState<any>([]);
@@ -114,6 +115,8 @@ function TableAlly({
           return newArray;
         });
       }
+    } else {
+      return;
     }
   }, [IndexSave, CanBeUse]);
   //=======
