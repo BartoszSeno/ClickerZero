@@ -107,6 +107,72 @@ function TableEnemy({
     setAllyAtackEnemy(Array(selectedItems.length).fill(false));
   }, [selectedItems]);
 
+  const AttackOrDef = () => {
+    const CaedIdE = selectedItems[IndexSaveE];
+
+    if (AllyCard[selectedCardA].Hp > EnemyCard[Number(CaedIdE)].Atack) {
+      AllyCard[selectedCardA].Hp -= EnemyCard[Number(CaedIdE)].Atack / 2;
+    }
+    if (EnemyCard[Number(CaedIdE)].Hp > AllyCard[selectedCardA].Atack) {
+      EnemyCard[Number(CaedIdE)].Hp -= AllyCard[selectedCardA].Atack;
+    }
+
+    if (AllyCard[IdCardA].Atack > EnemyCard[Number(CaedIdE)].Hp) {
+      console.log(
+        AllyCard[IdCardA].Name,
+        " Zaatakował przeciwnika ",
+        EnemyCard[Number(CaedIdE)].Name,
+        " pokonał go i zadał ",
+        AllyCard[IdCardA].Atack,
+        " Obrażeń"
+      );
+      setSelectedItems((prevItems: any[]) => {
+        const newItems = [...prevItems];
+        newItems[IndexSaveE] = null;
+        return newItems;
+      });
+    }
+
+    if (AllyCard[IdCardA].Atack - EnemyCard[Number(CaedIdE)].Hp === 0) {
+      console.log(
+        EnemyCard[Number(CaedIdE)].Name,
+        " Stracił wszystkie punkty życia"
+      );
+
+      setSelectedItems((prevItems: any[]) => {
+        const newItems = [...prevItems];
+        newItems[IndexSaveE] = null;
+        return newItems;
+      });
+    }
+
+    if (
+      AllyCard[IdCardA].Atack - EnemyCard[Number(CaedIdE)].Hp > 0 &&
+      AllyCard[IdCardA].Hp - EnemyCard[Number(CaedIdE)].Atack < 0
+    ) {
+      console.log(
+        AllyCard[IdCardA].Name,
+        " Zaatakował przeciwnika ",
+        EnemyCard[Number(CaedIdE)].Name,
+        " ale przeciwnik miał więcej obrażeń i zabił go"
+      );
+      setselectedItemsA((prevItems: any[]) => {
+        const newItems = [...prevItems];
+        newItems[IndexSaveA] = null;
+        return newItems;
+      });
+    }
+
+    if (EnemyCard[Number(CaedIdE)].Atack > AllyCard[IdCardA].Hp) {
+      console.log("Przeciwnik miał więcej obrażeń");
+      setselectedItemsA((prevItems: any[]) => {
+        const newItems = [...prevItems];
+        newItems[IndexSaveA] = null;
+        return newItems;
+      });
+    }
+  };
+
   //do podswietlania przeciwnika
   useEffect(() => {
     if (CanBeUse === "AllyAtackEnemy") {
@@ -122,76 +188,16 @@ function TableEnemy({
           }
           newArray[IndexSaveE] = true;
           if (newArray[IndexSaveE]) {
-            // Wykonaj funkcję, jeśli element jest ustawiony na true
-            // Tu możesz dodać swoją własną funkcję
-            console.log("wybierz przeciwnika", IndexSaveE);
-            const CaedIdE = selectedItems[IndexSaveE];
-            console.log(
-              AllyCard[IdCardA].Name,
-              " Atack ",
-              EnemyCard[Number(CaedIdE)].Name
-            );
-
-            if (AllyCard[IdCardA].Atack > EnemyCard[Number(CaedIdE)].Hp) {
-              console.log(
-                AllyCard[IdCardA].Name,
-                " Zaatakował przeciwnika ",
-                EnemyCard[Number(CaedIdE)].Name,
-                "pokonał go i zadał ",
-                AllyCard[IdCardA].Atack,
-                " Obrażeń"
-              );
-            }
-            if (AllyCard[IdCardA].Atack - EnemyCard[Number(CaedIdE)].Hp === 0) {
-              console.log(
-                EnemyCard[Number(CaedIdE)].Name,
-                " Stracił wsyzstkie punkty życia"
-              );
-            }
-            if (
-              AllyCard[IdCardA].Atack - EnemyCard[Number(CaedIdE)].Hp > 0 &&
-              AllyCard[IdCardA].Hp - EnemyCard[Number(CaedIdE)].Atack < 0
-            ) {
-              console.log(
-                AllyCard[IdCardA].Name,
-                " Zaatakował przeciwnika ",
-                EnemyCard[Number(CaedIdE)].Name,
-                "ale przeciwnik miał wiecej obrażeń i zabił go "
-              );
-              setselectedItemsA((prevItems: any[]) => {
-                const newItems = [...prevItems];
-                newItems[IndexSaveA] = null;
-                return newItems;
-              });
-            }
-
-            if (EnemyCard[Number(CaedIdE)].Atack > AllyCard[IdCardA].Hp) {
-              console.log("przeciwnik miałwiecej obrażeń");
-              setselectedItemsA((prevItems: any[]) => {
-                const newItems = [...prevItems];
-                newItems[IndexSaveA] = null;
-                return newItems;
-              });
-            }
-            if (
-              AllyCard[IdCardA].Atack < EnemyCard[Number(CaedIdE)].Hp &&
-              AllyCard[IdCardA].Hp > EnemyCard[Number(CaedIdE)].Atack
-            ) {
-              console.log(
-                "Wszyscy sie zaatakowali ale nikt nie poniusł szkody"
-              );
-              //  const selectedCardHp = AllyCard[selectedCardA].Hp; // Pobranie HP dla wybranego przedmiotu
-              //  if (selectedCardHp >= 2) {
-              //   AllyCard[selectedCardA].Hp -= 2; // Odejmowanie 2 HP od wybranego przedmiotu
-              //    return;
-              //  }
-              //  return;
-            }
+            AttackOrDef();
 
             setAllyAtackEnemyTrue(true);
+            setTimeout(() => {
+              setAllyAtackEnemy(Array(selectedItems.length).fill(false));
+              setAllyAtackEnemyTrue(false);
+              setCanBeUse("s");
+            }, 3000);
           }
 
-          console.log(newArray[IndexSaveE]);
           return newArray;
         });
       }
