@@ -107,72 +107,6 @@ function TableEnemy({
     setAllyAtackEnemy(Array(selectedItems.length).fill(false));
   }, [selectedItems]);
 
-  const AttackOrDef = () => {
-    const CaedIdE = selectedItems[IndexSaveE];
-
-    if (AllyCard[selectedCardA].Hp > EnemyCard[Number(CaedIdE)].Atack) {
-      AllyCard[selectedCardA].Hp -= EnemyCard[Number(CaedIdE)].Atack / 2;
-    }
-    if (EnemyCard[Number(CaedIdE)].Hp > AllyCard[selectedCardA].Atack) {
-      EnemyCard[Number(CaedIdE)].Hp -= AllyCard[selectedCardA].Atack;
-    }
-
-    if (AllyCard[IdCardA].Atack > EnemyCard[Number(CaedIdE)].Hp) {
-      console.log(
-        AllyCard[IdCardA].Name,
-        " Zaatakował przeciwnika ",
-        EnemyCard[Number(CaedIdE)].Name,
-        " pokonał go i zadał ",
-        AllyCard[IdCardA].Atack,
-        " Obrażeń"
-      );
-      setSelectedItems((prevItems: any[]) => {
-        const newItems = [...prevItems];
-        newItems[IndexSaveE] = null;
-        return newItems;
-      });
-    }
-
-    if (AllyCard[IdCardA].Atack - EnemyCard[Number(CaedIdE)].Hp === 0) {
-      console.log(
-        EnemyCard[Number(CaedIdE)].Name,
-        " Stracił wszystkie punkty życia"
-      );
-
-      setSelectedItems((prevItems: any[]) => {
-        const newItems = [...prevItems];
-        newItems[IndexSaveE] = null;
-        return newItems;
-      });
-    }
-
-    if (
-      AllyCard[IdCardA].Atack - EnemyCard[Number(CaedIdE)].Hp > 0 &&
-      AllyCard[IdCardA].Hp - EnemyCard[Number(CaedIdE)].Atack < 0
-    ) {
-      console.log(
-        AllyCard[IdCardA].Name,
-        " Zaatakował przeciwnika ",
-        EnemyCard[Number(CaedIdE)].Name,
-        " ale przeciwnik miał więcej obrażeń i zabił go"
-      );
-      setselectedItemsA((prevItems: any[]) => {
-        const newItems = [...prevItems];
-        newItems[IndexSaveA] = null;
-        return newItems;
-      });
-    }
-
-    if (EnemyCard[Number(CaedIdE)].Atack > AllyCard[IdCardA].Hp) {
-      console.log("Przeciwnik miał więcej obrażeń");
-      setselectedItemsA((prevItems: any[]) => {
-        const newItems = [...prevItems];
-        newItems[IndexSaveA] = null;
-        return newItems;
-      });
-    }
-  };
-
   //do podswietlania przeciwnika
   useEffect(() => {
     if (CanBeUse === "AllyAtackEnemy") {
@@ -188,14 +122,57 @@ function TableEnemy({
           }
           newArray[IndexSaveE] = true;
           if (newArray[IndexSaveE]) {
-            AttackOrDef();
-
             setAllyAtackEnemyTrue(true);
-            setTimeout(() => {
-              setAllyAtackEnemy(Array(selectedItems.length).fill(false));
-              setAllyAtackEnemyTrue(false);
-              setCanBeUse("s");
-            }, 3000);
+            const CaedIdE = selectedItems[IndexSaveE];
+
+            if (
+              AllyCard[IdCardA].Atack < EnemyCard[Number(CaedIdE)].Hp &&
+              AllyCard[IdCardA].Hp > EnemyCard[Number(CaedIdE)].Atack
+            ) {
+              //
+              //tak
+              console.log("kazdy ma wiecej");
+              //
+              EnemyCard[Number(CaedIdE)].Hp -=
+                AllyCard[selectedCardA].Atack / 2;
+              AllyCard[selectedCardA].Hp -=
+                EnemyCard[Number(CaedIdE)].Atack / 2;
+            } else {
+              if (AllyCard[IdCardA].Atack > EnemyCard[Number(CaedIdE)].Hp) {
+                //
+                //ally wiecej obrazen niz enemy ma hp
+                console.log("allay zabił");
+                EnemyCard[Number(CaedIdE)].Hp -=
+                  AllyCard[selectedCardA].Atack / 2;
+                AllyCard[selectedCardA].Hp -=
+                  EnemyCard[Number(CaedIdE)].Atack / 2;
+                //
+                setSelectedItems((prevItems: any[]) => {
+                  const newItems = [...prevItems];
+                  newItems[IndexSaveE] = null;
+                  return newItems;
+                });
+              } else {
+                if (EnemyCard[Number(CaedIdE)].Atack > AllyCard[IdCardA].Hp) {
+                  //
+                  //tak
+                  console.log("enemy zabił");
+                  EnemyCard[Number(CaedIdE)].Hp -=
+                    AllyCard[selectedCardA].Atack / 2;
+                  AllyCard[selectedCardA].Hp -=
+                    EnemyCard[Number(CaedIdE)].Atack / 2;
+
+                  //
+                  setselectedItemsA((prevItems: any[]) => {
+                    const newItems = [...prevItems];
+                    newItems[IndexSaveA] = null;
+                    return newItems;
+                  });
+                } else {
+                  console.log("nic");
+                }
+              }
+            }
           }
 
           return newArray;
