@@ -54,7 +54,8 @@
   align-items: center;
 }
 
-.CardChar {
+.CardChar,
+.CardCharIG {
   position: absolute;
   z-index: 10;
   display: flex;
@@ -75,6 +76,18 @@
     7% 40%
   );
   pointer-events: none;
+}
+.CardCharIG {
+  clip-path: polygon(
+    40% 20%,
+    60% 20%,
+    90% 39%,
+    85% 80%,
+    66% 90%,
+    24% 90%,
+    12% 77%,
+    7% 40%
+  );
 }
 .CardName {
   position: absolute;
@@ -215,4 +228,15 @@
   height: 100%;
   width: 250px;
   margin-left: 5px;
+}
+
+.InGameCard {
+  position: absolute;
+  background-repeat: no-repeat;
+  margin-top: 20px;
+  z-index: 1000;
+  background-size: 160px;
+  height: 220px;
+  width: 160px;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/inGameCard.png);
 }

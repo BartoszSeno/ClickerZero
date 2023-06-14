@@ -171,8 +171,9 @@ function TableAlly({
           Miejsce {index + 1}:{" "}
           {itemId !== null ? (
             <div className="CardConteiner" key={itemId}>
+              <div className="InGameCard"></div>
               <div
-                className="CardChar"
+                className="CardCharIG"
                 style={{
                   backgroundColor: allayAtack[index]
                     ? "green"
