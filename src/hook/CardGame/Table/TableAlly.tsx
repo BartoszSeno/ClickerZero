@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { AllyCard } from "../../../data/Card/Ally";
+import { EnemyCard } from "../../../data/Card/Enemy";
 
 function TableAlly({
   selectedItemId,
@@ -19,6 +20,10 @@ function TableAlly({
   IndexSaveA,
   setselectedCardA,
   selectedCardA,
+  setSelectedItems,
+  selectedItems,
+  IndexSaveE,
+  selectedCard,
 }: {
   selectedItemId: any;
   setSelectedItemId: any;
@@ -36,6 +41,10 @@ function TableAlly({
   IndexSaveA: any;
   setselectedCardA: any;
   selectedCardA: any;
+  setSelectedItems: any;
+  selectedItems: any;
+  IndexSaveE: any;
+  selectedCard: any;
 }) {
   const handlePlaceClick = (placeIndex: number) => {
     if (selectedItemId !== null) {
@@ -110,9 +119,25 @@ function TableAlly({
           }
           newArray[IndexSaveA] = true;
           if (newArray[IndexSaveA]) {
-            // Wykonaj funkcję, jeśli element jest ustawiony na true
-            // Tu możesz dodać swoją własną funkcję
-            // console.log("wybierz przeciwnika", IndexSaveA);
+            const CaedIdA = selectedItemsA[IndexSaveA];
+
+            EnemyCard[selectedCard].Hp -= AllyCard[Number(CaedIdA)].Atack;
+            AllyCard[Number(CaedIdA)].Hp -= EnemyCard[selectedCard].Atack;
+
+            if (EnemyCard[selectedCard].Hp <= 0) {
+              setSelectedItems((prevItems: any[]) => {
+                const newItems = [...prevItems];
+                newItems[IndexSaveE] = null;
+                return newItems;
+              });
+            }
+            if (AllyCard[Number(CaedIdA)].Hp <= 0) {
+              setselectedItemsA((prevItems: any[]) => {
+                const newItems = [...prevItems];
+                newItems[IndexSaveA] = null;
+                return newItems;
+              });
+            }
           }
           return newArray;
         });

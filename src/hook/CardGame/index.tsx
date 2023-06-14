@@ -268,6 +268,15 @@ function CardGame({
   const [selectedCardA, setselectedCardA] = useState<any>();
 
   //====
+  const [selectedItems, setSelectedItems] = useState<(number | null)[]>([
+    null,
+    null,
+    null,
+    null,
+  ]);
+  const [IndexSaveE, setIndexSaveE] = useState<any>();
+  const [selectedCard, setselectedCard] = useState<any>();
+
   return (
     <>
       <div
@@ -317,6 +326,12 @@ function CardGame({
               setselectedItemsA={setselectedItemsA}
               IndexSaveA={IndexSaveA}
               selectedCardA={selectedCardA}
+              setSelectedItems={setSelectedItems}
+              selectedItems={selectedItems}
+              setIndexSaveE={setIndexSaveE}
+              IndexSaveE={IndexSaveE}
+              setselectedCard={setselectedCard}
+              selectedCard={selectedCard}
             />
 
             <button onClick={addRandomItemWithoutRepetition}>
@@ -340,6 +355,10 @@ function CardGame({
               IndexSaveA={IndexSaveA}
               setselectedCardA={setselectedCardA}
               selectedCardA={selectedCardA}
+              setSelectedItems={setSelectedItems}
+              selectedItems={selectedItems}
+              IndexSaveE={IndexSaveE}
+              selectedCard={selectedCard}
             />
             <HandAlly
               HandleItemClick={HandleItemClick}

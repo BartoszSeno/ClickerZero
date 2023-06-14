@@ -17,6 +17,12 @@ function TableEnemy({
   setselectedItemsA,
   IndexSaveA,
   selectedCardA,
+  setSelectedItems,
+  selectedItems,
+  setIndexSaveE,
+  IndexSaveE,
+  setselectedCard,
+  selectedCard,
 }: {
   selectedItemIdE: any;
   setSelectedItemIdE: any;
@@ -31,14 +37,13 @@ function TableEnemy({
   setselectedItemsA: any;
   IndexSaveA: any;
   selectedCardA: any;
+  setSelectedItems: any;
+  selectedItems: any;
+  setIndexSaveE: any;
+  IndexSaveE: any;
+  setselectedCard: any;
+  selectedCard: any;
 }) {
-  const [selectedItems, setSelectedItems] = useState<(number | null)[]>([
-    null,
-    null,
-    null,
-    null,
-  ]);
-
   const handlePlaceClick = (placeIndex: number) => {
     if (selectedItemIdE !== null) {
       if (selectedItems[placeIndex] !== null) {
@@ -56,8 +61,6 @@ function TableEnemy({
 
   //====
   const [EnemyAtack, setEnemyAtack] = useState<any>([]);
-  const [selectedCard, setselectedCard] = useState<any>();
-  const [IndexSaveE, setIndexSaveE] = useState<any>();
 
   useEffect(() => {
     setEnemyAtack(Array(selectedItems.length).fill(false));
@@ -125,53 +128,22 @@ function TableEnemy({
             setAllyAtackEnemyTrue(true);
             const CaedIdE = selectedItems[IndexSaveE];
 
-            if (
-              AllyCard[IdCardA].Atack < EnemyCard[Number(CaedIdE)].Hp &&
-              AllyCard[IdCardA].Hp > EnemyCard[Number(CaedIdE)].Atack
-            ) {
-              //
-              //tak
-              console.log("kazdy ma wiecej");
-              //
-              EnemyCard[Number(CaedIdE)].Hp -=
-                AllyCard[selectedCardA].Atack / 2;
-              AllyCard[selectedCardA].Hp -=
-                EnemyCard[Number(CaedIdE)].Atack / 2;
-            } else {
-              if (AllyCard[IdCardA].Atack > EnemyCard[Number(CaedIdE)].Hp) {
-                //
-                //ally wiecej obrazen niz enemy ma hp
-                console.log("allay zabił");
-                EnemyCard[Number(CaedIdE)].Hp -=
-                  AllyCard[selectedCardA].Atack / 2;
-                AllyCard[selectedCardA].Hp -=
-                  EnemyCard[Number(CaedIdE)].Atack / 2;
-                //
-                setSelectedItems((prevItems: any[]) => {
-                  const newItems = [...prevItems];
-                  newItems[IndexSaveE] = null;
-                  return newItems;
-                });
-              } else {
-                if (EnemyCard[Number(CaedIdE)].Atack > AllyCard[IdCardA].Hp) {
-                  //
-                  //tak
-                  console.log("enemy zabił");
-                  EnemyCard[Number(CaedIdE)].Hp -=
-                    AllyCard[selectedCardA].Atack / 2;
-                  AllyCard[selectedCardA].Hp -=
-                    EnemyCard[Number(CaedIdE)].Atack / 2;
+            EnemyCard[Number(CaedIdE)].Hp -= AllyCard[selectedCardA].Atack / 2;
+            AllyCard[selectedCardA].Hp -= EnemyCard[Number(CaedIdE)].Atack / 2;
 
-                  //
-                  setselectedItemsA((prevItems: any[]) => {
-                    const newItems = [...prevItems];
-                    newItems[IndexSaveA] = null;
-                    return newItems;
-                  });
-                } else {
-                  console.log("nic");
-                }
-              }
+            if (EnemyCard[Number(CaedIdE)].Hp <= 0) {
+              setSelectedItems((prevItems: any[]) => {
+                const newItems = [...prevItems];
+                newItems[IndexSaveE] = null;
+                return newItems;
+              });
+            }
+            if (AllyCard[selectedCardA].Hp <= 0) {
+              setselectedItemsA((prevItems: any[]) => {
+                const newItems = [...prevItems];
+                newItems[IndexSaveA] = null;
+                return newItems;
+              });
             }
           }
 
@@ -195,7 +167,7 @@ function TableEnemy({
 
   return (
     <div className="Board">
-      {selectedItems.map((itemId, index) => (
+      {selectedItems.map((itemId: any, index: any) => (
         <div
           className="CardOnBoard"
           key={index}
