@@ -81,7 +81,6 @@ function CardGame({
       (index) => !isItemAlreadySelectedE(EnemyCard[index])
     );
     if (availableIndexes.length === 0) {
-      console.log("Brak dostępnych przedmiotów.");
       return undefined;
     }
     const randomIndex = Math.floor(Math.random() * availableIndexes.length);
@@ -144,7 +143,6 @@ function CardGame({
       (index) => !isItemAlreadySelected(AllyCard[index])
     );
     if (availableIndexes.length === 0) {
-      console.log("Brak dostępnych przedmiotów.");
       return undefined;
     }
     const randomIndex = Math.floor(Math.random() * availableIndexes.length);
@@ -196,7 +194,6 @@ function CardGame({
         setRoundFor("ally");
       }
     }
-    console.log(RoundFor);
   };
 
   const [AllyIdSelected, setAllyIdSelected] = useState<number>(0);
@@ -274,7 +271,6 @@ function CardGame({
   const [IndexSaveE, setIndexSaveE] = useState<any>();
   const [selectedCard, setselectedCard] = useState<any>();
 
-  console.log(selectedItems);
   return (
     <>
       <div

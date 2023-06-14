@@ -89,11 +89,7 @@ function TableEnemy({
           }
           newArray[index] = true;
           if (newArray[index]) {
-            // Wykonaj funkcję, jeśli element jest ustawiony na true
-            // Tu możesz dodać swoją własną funkcję
             setCanBeUse("EnemyAtackAlly");
-
-            console.log("Wykonaj funkcję dla elementu o indeksie", index);
           }
           return newArray;
         });
