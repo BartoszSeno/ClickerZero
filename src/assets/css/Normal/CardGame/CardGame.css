@@ -233,7 +233,7 @@
 .InGameCard {
   position: absolute;
   background-repeat: no-repeat;
-  margin-top: 20px;
+  margin-top: 19px;
   z-index: 1000;
   background-size: 160px;
   height: 220px;

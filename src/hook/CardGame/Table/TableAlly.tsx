@@ -121,22 +121,24 @@ function TableAlly({
           if (newArray[IndexSaveA]) {
             const CaedIdA = selectedItemsA[IndexSaveA];
 
-            EnemyCard[selectedCard].Hp -= AllyCard[Number(CaedIdA)].Atack;
-            AllyCard[Number(CaedIdA)].Hp -= EnemyCard[selectedCard].Atack;
+            if (selectedItemsA[IndexSaveA] !== null) {
+              EnemyCard[selectedCard].Hp -= AllyCard[Number(CaedIdA)].Atack;
+              AllyCard[Number(CaedIdA)].Hp -= EnemyCard[selectedCard].Atack;
 
-            if (EnemyCard[selectedCard].Hp <= 0) {
-              setSelectedItems((prevItems: any[]) => {
-                const newItems = [...prevItems];
-                newItems[IndexSaveE] = null;
-                return newItems;
-              });
-            }
-            if (AllyCard[Number(CaedIdA)].Hp <= 0) {
-              setselectedItemsA((prevItems: any[]) => {
-                const newItems = [...prevItems];
-                newItems[IndexSaveA] = null;
-                return newItems;
-              });
+              if (EnemyCard[selectedCard].Hp <= 0) {
+                setSelectedItems((prevItems: any[]) => {
+                  const newItems = [...prevItems];
+                  newItems[IndexSaveE] = null;
+                  return newItems;
+                });
+              }
+              if (AllyCard[Number(CaedIdA)].Hp <= 0) {
+                setselectedItemsA((prevItems: any[]) => {
+                  const newItems = [...prevItems];
+                  newItems[IndexSaveA] = null;
+                  return newItems;
+                });
+              }
             }
           }
           return newArray;

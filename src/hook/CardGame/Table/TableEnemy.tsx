@@ -128,22 +128,26 @@ function TableEnemy({
             setAllyAtackEnemyTrue(true);
             const CaedIdE = selectedItems[IndexSaveE];
 
-            EnemyCard[Number(CaedIdE)].Hp -= AllyCard[selectedCardA].Atack / 2;
-            AllyCard[selectedCardA].Hp -= EnemyCard[Number(CaedIdE)].Atack / 2;
+            if (selectedItems[IndexSaveE] !== null) {
+              EnemyCard[Number(CaedIdE)].Hp -=
+                AllyCard[selectedCardA].Atack / 2;
+              AllyCard[selectedCardA].Hp -=
+                EnemyCard[Number(CaedIdE)].Atack / 2;
 
-            if (EnemyCard[Number(CaedIdE)].Hp <= 0) {
-              setSelectedItems((prevItems: any[]) => {
-                const newItems = [...prevItems];
-                newItems[IndexSaveE] = null;
-                return newItems;
-              });
-            }
-            if (AllyCard[selectedCardA].Hp <= 0) {
-              setselectedItemsA((prevItems: any[]) => {
-                const newItems = [...prevItems];
-                newItems[IndexSaveA] = null;
-                return newItems;
-              });
+              if (EnemyCard[Number(CaedIdE)].Hp <= 0) {
+                setSelectedItems((prevItems: any[]) => {
+                  const newItems = [...prevItems];
+                  newItems[IndexSaveE] = null;
+                  return newItems;
+                });
+              }
+              if (AllyCard[selectedCardA].Hp <= 0) {
+                setselectedItemsA((prevItems: any[]) => {
+                  const newItems = [...prevItems];
+                  newItems[IndexSaveA] = null;
+                  return newItems;
+                });
+              }
             }
           }
 
@@ -153,7 +157,7 @@ function TableEnemy({
     } else {
       return;
     }
-  }, [IndexSaveE, CanBeUse]);
+  }, [IndexSaveE, CanBeUse, selectedItems]);
 
   useEffect(() => {
     if (RoundFor === "ally") {

@@ -277,6 +277,7 @@ function CardGame({
   const [IndexSaveE, setIndexSaveE] = useState<any>();
   const [selectedCard, setselectedCard] = useState<any>();
 
+  console.log(selectedItems);
   return (
     <>
       <div
