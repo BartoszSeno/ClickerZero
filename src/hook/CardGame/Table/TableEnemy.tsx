@@ -180,7 +180,6 @@ function TableEnemy({
             handleHeck(index);
           }}
         >
-          Miejsce {index + 1}:{" "}
           {itemId !== null ? (
             <div className="CardConteiner" key={itemId}>
               <div className="InGameCard"></div>
@@ -291,14 +290,13 @@ function TableEnemy({
                       : "",
                 }}
               ></div>
-              <div className="CardName">{EnemyCard[itemId].Name}</div>
-              <div className="CardStats">
+              <div className="CardStatsIG">
                 <div className="AtackPoints">{EnemyCard[itemId].Atack}</div>
                 <div className="HpPoints">{EnemyCard[itemId].Hp}</div>
               </div>
             </div>
           ) : (
-            "Puste"
+            <></>
           )}
         </div>
       ))}

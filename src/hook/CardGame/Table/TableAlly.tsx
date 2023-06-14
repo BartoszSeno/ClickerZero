@@ -170,7 +170,6 @@ function TableAlly({
             handleHeck(index);
           }}
         >
-          Miejsce {index + 1}:{" "}
           {itemId !== null ? (
             <div className="CardConteiner" key={itemId}>
               <div className="InGameCard"></div>
@@ -269,14 +268,13 @@ function TableAlly({
                       : "",
                 }}
               ></div>
-              <div className="CardName">{AllyCard[itemId].Name}</div>
-              <div className="CardStats">
+              <div className="CardStatsIG">
                 <div className="AtackPoints">{AllyCard[itemId].Atack}</div>
                 <div className="HpPoints">{AllyCard[itemId].Hp}</div>
               </div>
             </div>
           ) : (
-            "Puste"
+            <></>
           )}
         </div>
       ))}
