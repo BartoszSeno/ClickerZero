@@ -251,9 +251,6 @@ function CardGame({
 
   //=============================================
 
-  const [AllyTrue, setAllyTrue] = useState<boolean>(false);
-  const [AllyAtackEnemyTrue, setAllyAtackEnemyTrue] = useState<boolean>(false);
-
   const [CanBeUse, setCanBeUse] = useState<any>();
 
   const [IdCardA, setIdCardA] = useState<any>();
@@ -322,7 +319,6 @@ function CardGame({
               RoundFor={RoundFor}
               CanBeUse={CanBeUse}
               setCanBeUse={setCanBeUse}
-              setAllyAtackEnemyTrue={setAllyAtackEnemyTrue}
               IdCardA={IdCardA}
               setselectedItemsA={setselectedItemsA}
               IndexSaveA={IndexSaveA}
@@ -348,7 +344,6 @@ function CardGame({
               RoundFor={RoundFor}
               CanBeUse={CanBeUse}
               setCanBeUse={setCanBeUse}
-              setAllyTrue={setAllyTrue}
               setIdCardA={setIdCardA}
               selectedItemsA={selectedItemsA}
               setselectedItemsA={setselectedItemsA}

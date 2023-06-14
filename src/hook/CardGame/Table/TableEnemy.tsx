@@ -12,7 +12,6 @@ function TableEnemy({
   RoundFor,
   CanBeUse,
   setCanBeUse,
-  setAllyAtackEnemyTrue,
   IdCardA,
   setselectedItemsA,
   IndexSaveA,
@@ -32,7 +31,6 @@ function TableEnemy({
   RoundFor: any;
   CanBeUse: any;
   setCanBeUse: any;
-  setAllyAtackEnemyTrue: any;
   IdCardA: any;
   setselectedItemsA: any;
   IndexSaveA: any;
@@ -125,15 +123,16 @@ function TableEnemy({
           }
           newArray[IndexSaveE] = true;
           if (newArray[IndexSaveE]) {
-            setAllyAtackEnemyTrue(true);
             const CaedIdE = selectedItems[IndexSaveE];
-
             if (selectedItems[IndexSaveE] !== null) {
-              EnemyCard[Number(CaedIdE)].Hp -=
-                AllyCard[selectedCardA].Atack / 2;
-              AllyCard[selectedCardA].Hp -=
-                EnemyCard[Number(CaedIdE)].Atack / 2;
-
+              EnemyCard[Number(CaedIdE)].Hp -= AllyCard[selectedCardA].Atack;
+              AllyCard[selectedCardA].Hp -= EnemyCard[Number(CaedIdE)].Atack;
+              //
+              setEnemyAtack(Array(selectedItems.length).fill(false));
+              setselectedCard(undefined);
+              setAllyAtackEnemy(Array(selectedItems.length).fill(false));
+              setIndexSaveE(-1);
+              //
               if (EnemyCard[Number(CaedIdE)].Hp <= 0) {
                 setSelectedItems((prevItems: any[]) => {
                   const newItems = [...prevItems];

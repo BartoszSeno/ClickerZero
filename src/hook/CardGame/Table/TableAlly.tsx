@@ -12,7 +12,6 @@ function TableAlly({
   RoundFor,
   setCanBeUse,
   CanBeUse,
-  setAllyTrue,
   setIdCardA,
   selectedItemsA,
   setselectedItemsA,
@@ -33,7 +32,6 @@ function TableAlly({
   RoundFor: any;
   setCanBeUse: any;
   CanBeUse: any;
-  setAllyTrue: any;
   setIdCardA: any;
   selectedItemsA: any;
   setselectedItemsA: any;
@@ -84,7 +82,6 @@ function TableAlly({
 
           if (newArray[index]) {
             setCanBeUse("AllyAtackEnemy");
-            setAllyTrue(true);
           }
           return newArray;
         });
@@ -124,7 +121,12 @@ function TableAlly({
             if (selectedItemsA[IndexSaveA] !== null) {
               EnemyCard[selectedCard].Hp -= AllyCard[Number(CaedIdA)].Atack;
               AllyCard[Number(CaedIdA)].Hp -= EnemyCard[selectedCard].Atack;
-
+              //
+              setAllayAtack(Array(selectedItemsA.length).fill(false));
+              setselectedCardA(undefined);
+              setEnemyAtackAlly(Array(selectedItemsA.length).fill(false));
+              setIndexSaveA(-1);
+              //
               if (EnemyCard[selectedCard].Hp <= 0) {
                 setSelectedItems((prevItems: any[]) => {
                   const newItems = [...prevItems];
