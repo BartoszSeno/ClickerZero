@@ -326,10 +326,19 @@ function CardGame({
               setselectedCard={setselectedCard}
               selectedCard={selectedCard}
             />
+            <div className="mainMenu">
+              <div className="MainCharCon">
+                <div className="mainCharacter Enem">Enemy</div>
+                <div className="mainCharacter All">All</div>
+              </div>
 
-            <button onClick={addRandomItemWithoutRepetition}>
-              Next Round Move for:{RoundFor}
-            </button>
+              <button
+                className="NextRound"
+                onClick={addRandomItemWithoutRepetition}
+              >
+                Next Round Move for:{RoundFor}
+              </button>
+            </div>
 
             <TableAlly
               selectedItemId={selectedItemId}

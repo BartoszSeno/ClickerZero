@@ -27,12 +27,13 @@
 
 .CardGameG {
   background-color: rgb(76, 121, 8);
-  height: 100%;
-  width: 100%;
+  height: 1000px;
+  width: 1900px;
   cursor: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/CardBoard.png?token=GHSAT0AAAAAACA775JGVI6T6GY4PODAIGF2ZELLYBA);
 }
 
 .deckC {
@@ -248,4 +249,31 @@
   height: 220px;
   width: 160px;
   background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/inTable.png);
+}
+
+.mainMenu {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  height: 400px;
+  width: 1700px;
+}
+.NextRound {
+  background-color: #4f4656;
+  height: 100px;
+  color: white;
+}
+
+.MainCharCon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+}
+.mainCharacter {
+  height: 100px;
+  width: 100px;
+  background-color: goldenrod;
 }
