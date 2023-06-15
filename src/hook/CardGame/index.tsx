@@ -257,12 +257,14 @@ function CardGame({
     null,
     null,
     null,
+    null,
   ]);
   const [IndexSaveA, setIndexSaveA] = useState<any>();
   const [selectedCardA, setselectedCardA] = useState<any>();
 
   //====
   const [selectedItems, setSelectedItems] = useState<(number | null)[]>([
+    null,
     null,
     null,
     null,

@@ -33,7 +33,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url(https://raw.githubusercontent.com/BartoszSeno/learn/master/CardBoard.png?token=GHSAT0AAAAAACA775JGVI6T6GY4PODAIGF2ZELLYBA);
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/CardBoard.png);
 }
 
 .deckC {
@@ -194,7 +194,7 @@
 }
 
 .GameCP {
-  background-color: aquamarine;
+  margin-left: -25px;
   height: 100%;
   width: 1300px;
   display: flex;
@@ -205,33 +205,36 @@
 
 .AllyHandCard,
 .EnemyHandCard {
-  background-color: blueviolet;
   width: 90%;
-  height: 200px;
+  height: 250px;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.scaleSize {
-  background-color: azure;
-  display: flex;
-  justify-content: center;
-  width: 250%;
   transform: scale(0.6);
 }
 
+.scaleSize {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1200px;
+}
+.CardConteiner {
+  padding: 0;
+  margin: 0;
+}
+
 .Board {
-  background-color: red;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   height: 250px;
+  z-index: 2000;
 }
 
 .CardOnBoard {
-  background-color: aqua;
   width: 250px;
   margin-left: 5px;
   display: flex;
