@@ -6,6 +6,7 @@ import { EnemyCard } from "../../data/Card/Enemy";
 import { AllyCard } from "../../data/Card/Ally";
 import TableAlly from "./Table/TableAlly";
 import TableEnemy from "./Table/TableEnemy";
+import { CharacterSelectionStart } from "../../data/character/character";
 
 function CardGame({
   OpenCardGame,
@@ -14,10 +15,6 @@ function CardGame({
   OpenCardGame: boolean;
   setOpenCardGame: any;
 }) {
-  const [AllyData, setAllyData] = useState<any>(
-    JSON.parse(localStorage.getItem("AllyCard") || JSON.stringify(AllyCard))
-  );
-
   const [CardGameIsOpen, setCardGameIsOpen] = useState<boolean>(true);
 
   function CloseCardGame() {
@@ -273,6 +270,8 @@ function CardGame({
   const [IndexSaveE, setIndexSaveE] = useState<any>();
   const [selectedCard, setselectedCard] = useState<any>();
 
+  const savedIdCharacter = localStorage.getItem("selectedCharacterID");
+
   return (
     <>
       <div
@@ -331,7 +330,46 @@ function CardGame({
             <div className="mainMenu">
               <div className="MainCharCon">
                 <div className="mainCharacter Enem">Enemy</div>
-                <div className="mainCharacter All">All</div>
+                <div className="mainCharacter All">
+                  {CharacterSelectionStart.filter(
+                    (data: any) => data.id === Number(savedIdCharacter)
+                  ).map((data: any) => (
+                    <div className="CharCGBox">
+                      <div
+                        className="CharacterImgEqCG"
+                        style={{
+                          backgroundImage: `url(${data.image})`,
+                          backgroundSize:
+                            data.name === "Joanna"
+                              ? "400px"
+                              : data.name === "Zephyr"
+                              ? "400px"
+                              : data.name === "Nightfall"
+                              ? "300px"
+                              : data.name === "Merlin"
+                              ? "300px"
+                              : data.name === "Luna"
+                              ? "300px"
+                              : data.name === "Takeshi"
+                              ? "280px"
+                              : "",
+                          backgroundPositionY:
+                            data.name === "Joanna"
+                              ? "-20px"
+                              : data.name === "Zephyr"
+                              ? "30px"
+                              : data.name === "Merlin"
+                              ? "20px"
+                              : data.name === "Takeshi"
+                              ? "20px"
+                              : "",
+                          backgroundPositionX:
+                            data.name === "Takeshi" ? "-80px" : "",
+                        }}
+                      ></div>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               <button
