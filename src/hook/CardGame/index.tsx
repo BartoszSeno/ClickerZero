@@ -329,7 +329,9 @@ function CardGame({
             />
             <div className="mainMenu">
               <div className="MainCharCon">
-                <div className="mainCharacter Enem">Enemy</div>
+                <div className="mainCharacter Enem">
+                  <div className="EnemyChar"></div>
+                </div>
                 <div className="mainCharacter All">
                   {CharacterSelectionStart.filter(
                     (data: any) => data.id === Number(savedIdCharacter)

@@ -4,7 +4,6 @@
   width: 170px;
   margin-top: 520px;
   cursor: pointer;
-  background-color: gold;
 }
 
 #CardGame {
@@ -290,5 +289,14 @@
   background-position: center;
   background-size: 550px;
   background-position-y: -50px;
+  background-repeat: no-repeat;
+}
+
+.EnemyChar {
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/CardGuy.gif);
+  height: 100%;
+  width: 100%;
+  background-size: 300px;
+  background-position: -60px 30px;
   background-repeat: no-repeat;
 }
