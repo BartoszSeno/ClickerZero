@@ -277,6 +277,10 @@ function CardGame({
   const [EnemyHp, setEnemyHp] = useState<number>(20);
   const [AllyHp, setAllyHp] = useState<number>(20);
 
+  const hasNonNullValueE = selectedItems.some((item) => item !== null);
+
+  const hasNonNullValueA = selectedItemsA.some((item) => item !== null);
+
   const HandleClickEnemyHp = () => {
     const CaedIdA = selectedItemsA[IndexSaveA];
     const AllyAtack = AllyCard[Number(CaedIdA)].Atack;
@@ -299,6 +303,7 @@ function CardGame({
     } else {
     }
   }, [AllyHp, EnemyHp]);
+
   //========
   return (
     <>
@@ -361,7 +366,11 @@ function CardGame({
                   <div className="BorderMC">
                     <div className="MCHP">{EnemyHp}</div>
                   </div>
-                  <button className="buttonTest" onClick={HandleClickEnemyHp}>
+                  <button
+                    className="buttonTest"
+                    onClick={HandleClickEnemyHp}
+                    disabled={hasNonNullValueE === true}
+                  >
                     test
                   </button>
                   <div className="EnemyChar"></div>
@@ -370,7 +379,11 @@ function CardGame({
                   <div className="BorderMC">
                     <div className="MCHP">{AllyHp}</div>
                   </div>
-                  <button className="buttonTest" onClick={HandleClickAllyHp}>
+                  <button
+                    className="buttonTest"
+                    onClick={HandleClickAllyHp}
+                    disabled={hasNonNullValueA === true}
+                  >
                     test
                   </button>
 
