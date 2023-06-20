@@ -7,6 +7,7 @@ import { AllyCard } from "../../data/Card/Ally";
 import TableAlly from "./Table/TableAlly";
 import TableEnemy from "./Table/TableEnemy";
 import { CharacterSelectionStart } from "../../data/character/character";
+import { Console } from "console";
 
 function CardGame({
   OpenCardGame,
@@ -272,6 +273,33 @@ function CardGame({
 
   const savedIdCharacter = localStorage.getItem("selectedCharacterID");
 
+  //==========
+  const [EnemyHp, setEnemyHp] = useState<number>(20);
+  const [AllyHp, setAllyHp] = useState<number>(20);
+
+  const HandleClickEnemyHp = () => {
+    const CaedIdA = selectedItemsA[IndexSaveA];
+    const AllyAtack = AllyCard[Number(CaedIdA)].Atack;
+
+    setEnemyHp((prevHp) => prevHp - AllyAtack);
+  };
+
+  const HandleClickAllyHp = () => {
+    const CaedIdE = selectedItems[IndexSaveE];
+    const EnemyAtack = EnemyCard[Number(CaedIdE)].Atack;
+
+    setAllyHp((prevHp) => prevHp - EnemyAtack);
+  };
+
+  useEffect(() => {
+    if (EnemyHp <= 0) {
+      console.log("Ally win");
+    } else if (AllyHp <= 0) {
+      console.log("Emeny win");
+    } else {
+    }
+  }, [AllyHp, EnemyHp]);
+  //========
   return (
     <>
       <div
@@ -330,9 +358,22 @@ function CardGame({
             <div className="mainMenu">
               <div className="MainCharCon">
                 <div className="mainCharacter Enem">
+                  <div className="BorderMC">
+                    <div className="MCHP">{EnemyHp}</div>
+                  </div>
+                  <button className="buttonTest" onClick={HandleClickEnemyHp}>
+                    test
+                  </button>
                   <div className="EnemyChar"></div>
                 </div>
                 <div className="mainCharacter All">
+                  <div className="BorderMC">
+                    <div className="MCHP">{AllyHp}</div>
+                  </div>
+                  <button className="buttonTest" onClick={HandleClickAllyHp}>
+                    test
+                  </button>
+
                   {CharacterSelectionStart.filter(
                     (data: any) => data.id === Number(savedIdCharacter)
                   ).map((data: any) => (

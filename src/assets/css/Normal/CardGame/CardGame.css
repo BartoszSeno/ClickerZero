@@ -274,13 +274,27 @@
   height: 1600px;
 }
 .mainCharacter {
-  height: 250px;
-  width: 200px;
-  background-color: goldenrod;
+  height: 270px;
+  width: 220px;
 }
 
 .CharCGBox {
   height: 100%;
+  background-color: aqua;
+  clip-path: polygon(
+    4% 17%,
+    4% 9%,
+    33% 9%,
+    90% 9%,
+    95% 15%,
+    95% 50%,
+    95% 85%,
+    93% 91%,
+    59% 92%,
+    41% 92%,
+    11% 92%,
+    4% 86%
+  );
 }
 
 .CharacterImgEqCG {
@@ -292,6 +306,22 @@
   background-repeat: no-repeat;
 }
 
+.BorderMC {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/MCBorder.png);
+  height: 270px;
+  width: 220px;
+  z-index: 10000;
+}
+
+.MCHP {
+  color: white;
+  font-size: 30px;
+  margin-top: 14px;
+  margin-left: 5px;
+}
 .EnemyChar {
   background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/CardGuy.gif);
   height: 100%;
@@ -299,4 +329,24 @@
   background-size: 300px;
   background-position: -60px 30px;
   background-repeat: no-repeat;
+  background-color: aqua;
+  clip-path: polygon(
+    4% 17%,
+    4% 9%,
+    33% 9%,
+    90% 9%,
+    95% 15%,
+    95% 50%,
+    95% 85%,
+    93% 91%,
+    59% 92%,
+    41% 92%,
+    11% 92%,
+    4% 86%
+  );
+}
+
+.buttonTest {
+  position: absolute;
+  z-index: 10000;
 }
