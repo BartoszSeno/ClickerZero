@@ -285,14 +285,18 @@ function CardGame({
     const CaedIdA = selectedItemsA[IndexSaveA];
     const AllyAtack = AllyCard[Number(CaedIdA)].Atack;
 
-    setEnemyHp((prevHp) => prevHp - AllyAtack);
+    if (CanBeUse === "AllyAtackEnemy") {
+      setEnemyHp((prevHp) => prevHp - AllyAtack);
+    }
   };
 
   const HandleClickAllyHp = () => {
     const CaedIdE = selectedItems[IndexSaveE];
     const EnemyAtack = EnemyCard[Number(CaedIdE)].Atack;
 
-    setAllyHp((prevHp) => prevHp - EnemyAtack);
+    if (CanBeUse === "EnemyAtackAlly") {
+      setAllyHp((prevHp) => prevHp - EnemyAtack);
+    }
   };
 
   useEffect(() => {
