@@ -286,7 +286,9 @@ function CardGame({
     const AllyAtack = AllyCard[Number(CaedIdA)].Atack;
 
     if (CanBeUse === "AllyAtackEnemy") {
-      setEnemyHp((prevHp) => prevHp - AllyAtack);
+      if (ACA === true) {
+        setEnemyHp((prevHp) => prevHp - AllyAtack);
+      }
     }
   };
 
@@ -295,7 +297,9 @@ function CardGame({
     const EnemyAtack = EnemyCard[Number(CaedIdE)].Atack;
 
     if (CanBeUse === "EnemyAtackAlly") {
-      setAllyHp((prevHp) => prevHp - EnemyAtack);
+      if (ECA === true) {
+        setAllyHp((prevHp) => prevHp - EnemyAtack);
+      }
     }
   };
 
@@ -307,6 +311,17 @@ function CardGame({
     } else {
     }
   }, [AllyHp, EnemyHp]);
+
+  const [ACA, setACA] = useState<boolean>(false);
+  const [ECA, setECA] = useState<boolean>(false);
+
+  const Test = () => {
+    setACA(false);
+  };
+
+  const EA = () => {
+    setECA(false);
+  };
 
   //========
   return (
@@ -363,6 +378,7 @@ function CardGame({
               IndexSaveE={IndexSaveE}
               setselectedCard={setselectedCard}
               selectedCard={selectedCard}
+              setECA={setECA}
             />
             <div className="mainMenu">
               <div className="MainCharCon">
@@ -372,10 +388,13 @@ function CardGame({
                   </div>
                   <button
                     className="buttonTest"
-                    onClick={HandleClickEnemyHp}
-                    disabled={hasNonNullValueE === true}
+                    onClick={(e) => {
+                      Test();
+                      HandleClickEnemyHp();
+                    }}
+                    disabled={hasNonNullValueE === true && ACA === false}
                   >
-                    test
+                    tests
                   </button>
                   <div className="EnemyChar"></div>
                 </div>
@@ -385,7 +404,10 @@ function CardGame({
                   </div>
                   <button
                     className="buttonTest"
-                    onClick={HandleClickAllyHp}
+                    onClick={(e) => {
+                      EA();
+                      HandleClickAllyHp();
+                    }}
                     disabled={hasNonNullValueA === true}
                   >
                     test
@@ -460,6 +482,7 @@ function CardGame({
               selectedItems={selectedItems}
               IndexSaveE={IndexSaveE}
               selectedCard={selectedCard}
+              setACA={setACA}
             />
             <HandAlly
               HandleItemClick={HandleItemClick}

@@ -22,6 +22,7 @@ function TableEnemy({
   IndexSaveE,
   setselectedCard,
   selectedCard,
+  setECA,
 }: {
   selectedItemIdE: any;
   setSelectedItemIdE: any;
@@ -41,6 +42,7 @@ function TableEnemy({
   IndexSaveE: any;
   setselectedCard: any;
   selectedCard: any;
+  setECA: any;
 }) {
   const handlePlaceClick = (placeIndex: number) => {
     if (selectedItemIdE !== null) {
@@ -90,6 +92,7 @@ function TableEnemy({
           newArray[index] = true;
           if (newArray[index]) {
             setCanBeUse("EnemyAtackAlly");
+            setECA(true);
           }
           return newArray;
         });
