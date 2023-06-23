@@ -23,7 +23,8 @@ function TableEnemy({
   setselectedCard,
   selectedCard,
   setECA,
-  setTestAEA,
+  setOneTimeAAE,
+  setOneTimeAEA,
 }: {
   selectedItemIdE: any;
   setSelectedItemIdE: any;
@@ -44,7 +45,8 @@ function TableEnemy({
   setselectedCard: any;
   selectedCard: any;
   setECA: any;
-  setTestAEA: any;
+  setOneTimeAAE: any;
+  setOneTimeAEA: any;
 }) {
   const handlePlaceClick = (placeIndex: number) => {
     if (selectedItemIdE !== null) {
@@ -102,6 +104,24 @@ function TableEnemy({
       }
     }
   };
+
+  const HandleTestClick = (index: number) => {
+    if (selectedItemIdE !== null) {
+      if (selectedItems[index] !== null) {
+        // Miejsce jest już zajęte, więc nie dodawaj przedmiotu
+        return;
+      }
+
+      setOneTimeAEA((prevArray: any) => {
+        const newArray = [...prevArray];
+        newArray[index] = true;
+        return newArray;
+      });
+    }
+
+    console.log(index, "s");
+  };
+
   const [AllyAtackEnemy, setAllyAtackEnemy] = useState<any>([]);
 
   useEffect(() => {
@@ -149,7 +169,7 @@ function TableEnemy({
               }
             }
 
-            setTestAEA((prevArray: any) => {
+            setOneTimeAAE((prevArray: any) => {
               const newArray = [...prevArray];
               newArray[IndexSaveA] = false;
               return newArray;
@@ -183,6 +203,7 @@ function TableEnemy({
           onClick={() => {
             handlePlaceClick(index);
             handleHeck(index);
+            HandleTestClick(index);
           }}
         >
           {itemId !== null ? (

@@ -24,7 +24,8 @@ function TableAlly({
   IndexSaveE,
   selectedCard,
   setACA,
-  setTestAEA,
+  setOneTimeAAE,
+  setOneTimeAEA,
 }: {
   selectedItemId: any;
   setSelectedItemId: any;
@@ -46,7 +47,8 @@ function TableAlly({
   IndexSaveE: any;
   selectedCard: any;
   setACA: any;
-  setTestAEA: any;
+  setOneTimeAAE: any;
+  setOneTimeAEA: any;
 }) {
   const handlePlaceClick = (placeIndex: number) => {
     if (selectedItemId !== null) {
@@ -104,7 +106,7 @@ function TableAlly({
         return;
       }
 
-      setTestAEA((prevArray: any) => {
+      setOneTimeAAE((prevArray: any) => {
         const newArray = [...prevArray];
         newArray[index] = true;
         return newArray;
@@ -161,6 +163,11 @@ function TableAlly({
                   return newItems;
                 });
               }
+              setOneTimeAEA((prevArray: any) => {
+                const newArray = [...prevArray];
+                newArray[IndexSaveE] = false;
+                return newArray;
+              });
             }
           }
           return newArray;

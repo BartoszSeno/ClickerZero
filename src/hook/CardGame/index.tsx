@@ -277,7 +277,8 @@ function CardGame({
   const [EnemyHp, setEnemyHp] = useState<number>(20);
   const [AllyHp, setAllyHp] = useState<number>(20);
 
-  const [TestAEA, setTestAEA] = useState<any>([]);
+  const [OneTimeAAE, setOneTimeAAE] = useState<any>([]);
+  const [OneTimeAEA, setOneTimeAEA] = useState<any>([]);
 
   const hasNonNullValueE = selectedItems.some((item) => item !== null);
 
@@ -289,14 +290,13 @@ function CardGame({
 
     if (CanBeUse === "AllyAtackEnemy") {
       if (ACA === true) {
-        setTestAEA((prevArray: any) => {
+        setOneTimeAAE((prevArray: any) => {
           const newArray = [...prevArray];
           newArray[IndexSaveA] = false;
           return newArray;
         });
 
-        if (TestAEA[IndexSaveA] !== false) {
-          // Sprawdź wartość TestAEA dla konkretnego indeksu
+        if (OneTimeAAE[IndexSaveA] !== false) {
           setEnemyHp((prevHp) => prevHp - AllyAtack);
         }
       }
@@ -309,7 +309,14 @@ function CardGame({
 
     if (CanBeUse === "EnemyAtackAlly") {
       if (ECA === true) {
-        setAllyHp((prevHp) => prevHp - EnemyAtack);
+        setOneTimeAEA((prevArray: any) => {
+          const newArray = [...prevArray];
+          newArray[IndexSaveE] = false;
+          return newArray;
+        });
+        if (OneTimeAEA[IndexSaveE] !== false) {
+          setAllyHp((prevHp) => prevHp - EnemyAtack);
+        }
       }
     }
   };
@@ -335,7 +342,7 @@ function CardGame({
   };
 
   //========
-  console.log(TestAEA);
+  console.log(OneTimeAEA);
   return (
     <>
       <div
@@ -391,7 +398,8 @@ function CardGame({
               setselectedCard={setselectedCard}
               selectedCard={selectedCard}
               setECA={setECA}
-              setTestAEA={setTestAEA}
+              setOneTimeAAE={setOneTimeAAE}
+              setOneTimeAEA={setOneTimeAEA}
             />
             <div className="mainMenu">
               <div className="MainCharCon">
@@ -496,7 +504,8 @@ function CardGame({
               IndexSaveE={IndexSaveE}
               selectedCard={selectedCard}
               setACA={setACA}
-              setTestAEA={setTestAEA}
+              setOneTimeAAE={setOneTimeAAE}
+              setOneTimeAEA={setOneTimeAEA}
             />
             <HandAlly
               HandleItemClick={HandleItemClick}
