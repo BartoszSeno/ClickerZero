@@ -289,7 +289,16 @@ function CardGame({
 
     if (CanBeUse === "AllyAtackEnemy") {
       if (ACA === true) {
-        setEnemyHp((prevHp) => prevHp - AllyAtack);
+        setTestAEA((prevArray: any) => {
+          const newArray = [...prevArray];
+          newArray[IndexSaveA] = false;
+          return newArray;
+        });
+
+        if (TestAEA[IndexSaveA] !== false) {
+          // Sprawdź wartość TestAEA dla konkretnego indeksu
+          setEnemyHp((prevHp) => prevHp - AllyAtack);
+        }
       }
     }
   };
