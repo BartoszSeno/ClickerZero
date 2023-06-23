@@ -277,6 +277,8 @@ function CardGame({
   const [EnemyHp, setEnemyHp] = useState<number>(20);
   const [AllyHp, setAllyHp] = useState<number>(20);
 
+  const [TestAEA, setTestAEA] = useState<any>([]);
+
   const hasNonNullValueE = selectedItems.some((item) => item !== null);
 
   const hasNonNullValueA = selectedItemsA.some((item) => item !== null);
@@ -324,6 +326,7 @@ function CardGame({
   };
 
   //========
+  console.log(TestAEA);
   return (
     <>
       <div
@@ -379,6 +382,7 @@ function CardGame({
               setselectedCard={setselectedCard}
               selectedCard={selectedCard}
               setECA={setECA}
+              setTestAEA={setTestAEA}
             />
             <div className="mainMenu">
               <div className="MainCharCon">
@@ -483,6 +487,7 @@ function CardGame({
               IndexSaveE={IndexSaveE}
               selectedCard={selectedCard}
               setACA={setACA}
+              setTestAEA={setTestAEA}
             />
             <HandAlly
               HandleItemClick={HandleItemClick}

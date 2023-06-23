@@ -24,6 +24,7 @@ function TableAlly({
   IndexSaveE,
   selectedCard,
   setACA,
+  setTestAEA,
 }: {
   selectedItemId: any;
   setSelectedItemId: any;
@@ -45,6 +46,7 @@ function TableAlly({
   IndexSaveE: any;
   selectedCard: any;
   setACA: any;
+  setTestAEA: any;
 }) {
   const handlePlaceClick = (placeIndex: number) => {
     if (selectedItemId !== null) {
@@ -95,7 +97,22 @@ function TableAlly({
   };
 
   //====
+  const HandleTestClick = (index: number) => {
+    if (selectedItemId !== null) {
+      if (selectedItemsA[index] !== null) {
+        // Miejsce jest już zajęte, więc nie dodawaj przedmiotu
+        return;
+      }
 
+      setTestAEA((prevArray: any) => {
+        const newArray = [...prevArray];
+        newArray[index] = true;
+        return newArray;
+      });
+    }
+
+    console.log(index, "s");
+  };
   //=======
 
   const [EnemyAtackAlly, setEnemyAtackAlly] = useState<any>([]);
@@ -173,6 +190,7 @@ function TableAlly({
           onClick={() => {
             handlePlaceClick(index);
             handleHeck(index);
+            HandleTestClick(index);
           }}
         >
           {itemId !== null ? (

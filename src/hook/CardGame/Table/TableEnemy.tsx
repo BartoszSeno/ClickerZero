@@ -23,6 +23,7 @@ function TableEnemy({
   setselectedCard,
   selectedCard,
   setECA,
+  setTestAEA,
 }: {
   selectedItemIdE: any;
   setSelectedItemIdE: any;
@@ -43,6 +44,7 @@ function TableEnemy({
   setselectedCard: any;
   selectedCard: any;
   setECA: any;
+  setTestAEA: any;
 }) {
   const handlePlaceClick = (placeIndex: number) => {
     if (selectedItemIdE !== null) {
@@ -77,7 +79,6 @@ function TableEnemy({
 
   const handleHeck = (index: number) => {
     setIndexSaveE(index);
-
     if (RoundFor === "enemy") {
       if (selectedItems[index] !== null && !EnemyAtack[index]) {
         const selectedIndex = EnemyAtack.findIndex(
@@ -147,6 +148,12 @@ function TableEnemy({
                 });
               }
             }
+
+            setTestAEA((prevArray: any) => {
+              const newArray = [...prevArray];
+              newArray[IndexSaveA] = false;
+              return newArray;
+            });
           }
 
           return newArray;
