@@ -151,45 +151,49 @@ function CardGame({
   const addRandomItemWithoutRepetition = () => {
     const newItemE = getRandomItemE();
     if (newItemE) {
-      setrandomItemsE((prevItems: any) => [...prevItems, newItemE]);
-      setremainingItemsE((prevIndexes) => {
-        const newIndexes = [...prevIndexes];
-        const itemIndex = EnemyCard.findIndex((item) => item === newItemE);
-        if (itemIndex !== -1) {
-          const remainingIndex = newIndexes.findIndex(
-            (index) => index === itemIndex
-          );
-          if (remainingIndex !== -1) {
-            newIndexes.splice(remainingIndex, 1);
-          }
-        }
-        return newIndexes;
-      });
-      setclickCountE((prevCount) => prevCount + 1);
       if (RoundFor === "ally") {
-        setRoundFor("enemy");
+        setrandomItemsE((prevItems: any) => [...prevItems, newItemE]);
+        setremainingItemsE((prevIndexes) => {
+          const newIndexes = [...prevIndexes];
+          const itemIndex = EnemyCard.findIndex((item) => item === newItemE);
+          if (itemIndex !== -1) {
+            const remainingIndex = newIndexes.findIndex(
+              (index) => index === itemIndex
+            );
+            if (remainingIndex !== -1) {
+              newIndexes.splice(remainingIndex, 1);
+            }
+          }
+          return newIndexes;
+        });
+        setclickCountE((prevCount) => prevCount + 1);
+        if (RoundFor === "ally") {
+          setRoundFor("enemy");
+        }
       }
     }
     const newItem = getRandomItem();
     //================
     if (newItem) {
-      setRandomItems((prevItems: any) => [...prevItems, newItem]);
-      setRemainingItems((prevIndexes) => {
-        const newIndexes = [...prevIndexes];
-        const itemIndex = AllyCard.findIndex((item) => item === newItem);
-        if (itemIndex !== -1) {
-          const remainingIndex = newIndexes.findIndex(
-            (index) => index === itemIndex
-          );
-          if (remainingIndex !== -1) {
-            newIndexes.splice(remainingIndex, 1);
-          }
-        }
-        return newIndexes;
-      });
-      setClickCount((prevCount) => prevCount + 1);
       if (RoundFor === "enemy") {
-        setRoundFor("ally");
+        setRandomItems((prevItems: any) => [...prevItems, newItem]);
+        setRemainingItems((prevIndexes) => {
+          const newIndexes = [...prevIndexes];
+          const itemIndex = AllyCard.findIndex((item) => item === newItem);
+          if (itemIndex !== -1) {
+            const remainingIndex = newIndexes.findIndex(
+              (index) => index === itemIndex
+            );
+            if (remainingIndex !== -1) {
+              newIndexes.splice(remainingIndex, 1);
+            }
+          }
+          return newIndexes;
+        });
+        setClickCount((prevCount) => prevCount + 1);
+        if (RoundFor === "enemy") {
+          setRoundFor("ally");
+        }
       }
     }
   };
