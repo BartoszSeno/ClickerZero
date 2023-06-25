@@ -171,6 +171,7 @@ function CardGame({
           setRoundFor("enemy");
         }
       }
+      setOneTimeAEA(Array(selectedItems.length).fill(true));
     }
     const newItem = getRandomItem();
     //================
@@ -195,6 +196,7 @@ function CardGame({
           setRoundFor("ally");
         }
       }
+      setOneTimeAAE(Array(selectedItems.length).fill(true));
     }
   };
 
@@ -306,7 +308,6 @@ function CardGame({
       }
     }
   };
-
   const HandleClickAllyHp = () => {
     const CaedIdE = selectedItems[IndexSaveE];
     const EnemyAtack = EnemyCard[Number(CaedIdE)].Atack;
@@ -346,7 +347,9 @@ function CardGame({
   };
 
   //========
+  console.log(OneTimeAAE);
   console.log(OneTimeAEA);
+
   return (
     <>
       <div
