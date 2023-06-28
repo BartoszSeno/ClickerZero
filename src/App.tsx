@@ -23,7 +23,7 @@ import CardList from "./hook/CardGame/CardList";
 
 function App() {
   //==================
-  // FULL NUMBER WHICH SAVES THE COUNT NUMBER OF MAIN POINTS 'count'
+  // FULL NUMBER WHICH SAVES THE COUNT NUMBER OF MAIN POINTS 'count'.
   const [count, setCount] = useState<number>(() =>
     Number(localStorage.getItem("count") || 0)
   );
