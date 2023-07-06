@@ -350,3 +350,9 @@
   position: absolute;
   z-index: 10000;
 }
+
+.Mana {
+  background-color: red;
+  display: flex;
+  justify-content: center;
+}

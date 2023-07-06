@@ -30,6 +30,10 @@ function CardGame({
   const [remainingItemsE, setremainingItemsE] = useState<number[]>([]);
   const [clickCountE, setclickCountE] = useState<number>(0);
 
+  //=======================================
+  const [MaxMana, setMaxMana] = useState<number>(3);
+  //=======================================
+
   useEffect(() => {
     const initialIndexes = Array.from({ length: 7 }, (_, index) => index);
     setremainingItemsE(initialIndexes);
@@ -37,10 +41,14 @@ function CardGame({
 
   useEffect(() => {
     if (clickCountE === 3) {
+      setMaxMana(4);
       setremainingItemsE((prevremainingItemsE) => {
         const additionalIndexes = [7, 8, 9];
         return [...prevremainingItemsE, ...additionalIndexes];
       });
+    }
+    if (clickCountE === 5) {
+      setMaxMana(5);
     }
     if (clickCountE === 6) {
       setremainingItemsE((prevremainingItemsE) => {
@@ -48,11 +56,18 @@ function CardGame({
         return [...prevremainingItemsE, ...additionalIndexes];
       });
     }
+    if (clickCountE === 7) {
+      setMaxMana(6);
+    }
     if (clickCountE === 9) {
+      setMaxMana(7);
       setremainingItemsE((prevremainingItemsE) => {
         const additionalIndexes = [13, 14, 15];
         return [...prevremainingItemsE, ...additionalIndexes];
       });
+    }
+    if (clickCountE === 11) {
+      setMaxMana(8);
     }
     if (clickCountE === 12) {
       setremainingItemsE((prevremainingItemsE) => {
@@ -60,7 +75,11 @@ function CardGame({
         return [...prevremainingItemsE, ...additionalIndexes];
       });
     }
+    if (clickCountE === 13) {
+      setMaxMana(9);
+    }
     if (clickCountE === 15) {
+      setMaxMana(10);
       setremainingItemsE((prevremainingItemsE) => {
         const additionalIndexes = [19, 20, 21];
         return [...prevremainingItemsE, ...additionalIndexes];
@@ -99,10 +118,14 @@ function CardGame({
 
   useEffect(() => {
     if (clickCount === 3) {
+      setMaxMana(4);
       setRemainingItems((prevRemainingItems) => {
         const additionalIndexes = [7, 8, 9];
         return [...prevRemainingItems, ...additionalIndexes];
       });
+    }
+    if (clickCountE === 5) {
+      setMaxMana(5);
     }
     if (clickCount === 6) {
       setRemainingItems((prevRemainingItems) => {
@@ -110,11 +133,18 @@ function CardGame({
         return [...prevRemainingItems, ...additionalIndexes];
       });
     }
+    if (clickCountE === 7) {
+      setMaxMana(6);
+    }
     if (clickCount === 9) {
+      setMaxMana(7);
       setRemainingItems((prevRemainingItems) => {
         const additionalIndexes = [13, 14, 15];
         return [...prevRemainingItems, ...additionalIndexes];
       });
+    }
+    if (clickCountE === 11) {
+      setMaxMana(8);
     }
     if (clickCount === 12) {
       setRemainingItems((prevRemainingItems) => {
@@ -122,7 +152,11 @@ function CardGame({
         return [...prevRemainingItems, ...additionalIndexes];
       });
     }
+    if (clickCountE === 13) {
+      setMaxMana(9);
+    }
     if (clickCount === 15) {
+      setMaxMana(10);
       setRemainingItems((prevRemainingItems) => {
         const additionalIndexes = [19, 20, 21];
         return [...prevRemainingItems, ...additionalIndexes];
@@ -481,13 +515,15 @@ function CardGame({
                   ))}
                 </div>
               </div>
-
-              <button
-                className="NextRound"
-                onClick={addRandomItemWithoutRepetition}
-              >
-                Next Round Move for:{RoundFor}
-              </button>
+              <div>
+                <button
+                  className="NextRound"
+                  onClick={addRandomItemWithoutRepetition}
+                >
+                  Next Round Move for:{RoundFor}
+                </button>
+                <div className="Mana">1/{MaxMana}</div>
+              </div>
             </div>
 
             <TableAlly
