@@ -32,6 +32,7 @@ function CardGame({
 
   //=======================================
   const [MaxMana, setMaxMana] = useState<number>(3);
+  const [CurrentMana, setCurrentMana] = useState<number>(1);
   //=======================================
 
   useEffect(() => {
@@ -203,6 +204,7 @@ function CardGame({
         setclickCountE((prevCount) => prevCount + 1);
         if (RoundFor === "ally") {
           setRoundFor("enemy");
+          setCurrentMana((prevCM) => (prevCM === MaxMana ? prevCM : MaxMana));
         }
       }
       setOneTimeAEA(Array(selectedItems.length).fill(true));
@@ -228,11 +230,16 @@ function CardGame({
         setClickCount((prevCount) => prevCount + 1);
         if (RoundFor === "enemy") {
           setRoundFor("ally");
+          setCurrentMana((prevCM) => (prevCM === MaxMana ? prevCM : MaxMana));
         }
       }
       setOneTimeAAE(Array(selectedItems.length).fill(true));
     }
   };
+
+  useEffect(() => {
+    setCurrentMana((prevCM) => (prevCM === MaxMana ? prevCM : MaxMana));
+  }, [MaxMana]);
 
   const [AllyIdSelected, setAllyIdSelected] = useState<number>(0);
   const [selectedItemId, setSelectedItemId] = useState<number | null>(null);
@@ -380,10 +387,6 @@ function CardGame({
     setECA(false);
   };
 
-  //========
-  console.log(OneTimeAAE);
-  console.log(OneTimeAEA);
-
   return (
     <>
       <div
@@ -441,6 +444,9 @@ function CardGame({
               setECA={setECA}
               setOneTimeAAE={setOneTimeAAE}
               setOneTimeAEA={setOneTimeAEA}
+              EnemyIdSelected={EnemyIdSelected}
+              CurrentMana={CurrentMana}
+              setCurrentMana={setCurrentMana}
             />
             <div className="mainMenu">
               <div className="MainCharCon">
@@ -522,7 +528,9 @@ function CardGame({
                 >
                   Next Round Move for:{RoundFor}
                 </button>
-                <div className="Mana">1/{MaxMana}</div>
+                <div className="Mana">
+                  {CurrentMana}/{MaxMana}
+                </div>
               </div>
             </div>
 
@@ -549,6 +557,9 @@ function CardGame({
               setACA={setACA}
               setOneTimeAAE={setOneTimeAAE}
               setOneTimeAEA={setOneTimeAEA}
+              CurrentMana={CurrentMana}
+              setCurrentMana={setCurrentMana}
+              AllyIdSelected={AllyIdSelected}
             />
             <HandAlly
               HandleItemClick={HandleItemClick}

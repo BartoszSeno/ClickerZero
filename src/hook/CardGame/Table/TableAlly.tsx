@@ -26,6 +26,9 @@ function TableAlly({
   setACA,
   setOneTimeAAE,
   setOneTimeAEA,
+  CurrentMana,
+  setCurrentMana,
+  AllyIdSelected,
 }: {
   selectedItemId: any;
   setSelectedItemId: any;
@@ -49,19 +52,27 @@ function TableAlly({
   setACA: any;
   setOneTimeAAE: any;
   setOneTimeAEA: any;
+  CurrentMana: any;
+  setCurrentMana: any;
+  AllyIdSelected: any;
 }) {
   const handlePlaceClick = (placeIndex: number) => {
     if (selectedItemId !== null) {
-      if (selectedItemsA[placeIndex] !== null) {
-        // Miejsce jest już zajęte, więc nie dodawaj przedmiotu
-        return;
-      }
+      if (CurrentMana >= AllyCard[AllyIdSelected].Mana) {
+        if (selectedItemsA[placeIndex] !== null) {
+          // Miejsce jest już zajęte, więc nie dodawaj przedmiotu
+          return;
+        }
 
-      const updatedselectedItemsA = [...selectedItemsA];
-      updatedselectedItemsA[placeIndex] = selectedItemId - 1;
-      setselectedItemsA(updatedselectedItemsA);
-      setSelectedItemId(null);
-      HandleUseCard();
+        const updatedselectedItemsA = [...selectedItemsA];
+        updatedselectedItemsA[placeIndex] = selectedItemId - 1;
+        setselectedItemsA(updatedselectedItemsA);
+        setSelectedItemId(null);
+        HandleUseCard();
+        setCurrentMana(
+          (prevCM: number) => prevCM - AllyCard[AllyIdSelected].Mana
+        );
+      }
     }
   };
 
@@ -112,8 +123,6 @@ function TableAlly({
         return newArray;
       });
     }
-
-    console.log(index, "s");
   };
   //=======
 

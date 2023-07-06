@@ -25,6 +25,9 @@ function TableEnemy({
   setECA,
   setOneTimeAAE,
   setOneTimeAEA,
+  CurrentMana,
+  setCurrentMana,
+  EnemyIdSelected,
 }: {
   selectedItemIdE: any;
   setSelectedItemIdE: any;
@@ -47,19 +50,27 @@ function TableEnemy({
   setECA: any;
   setOneTimeAAE: any;
   setOneTimeAEA: any;
+  CurrentMana: any;
+  setCurrentMana: any;
+  EnemyIdSelected: any;
 }) {
   const handlePlaceClick = (placeIndex: number) => {
     if (selectedItemIdE !== null) {
-      if (selectedItems[placeIndex] !== null) {
-        // Miejsce jest już zajęte, więc nie dodawaj przedmiotu
-        return;
-      }
+      if (CurrentMana >= EnemyCard[EnemyIdSelected].Mana) {
+        if (selectedItems[placeIndex] !== null) {
+          // Miejsce jest już zajęte, więc nie dodawaj przedmiotu
+          return;
+        }
 
-      const updatedSelectedItems = [...selectedItems];
-      updatedSelectedItems[placeIndex] = selectedItemIdE - 1;
-      setSelectedItems(updatedSelectedItems);
-      setSelectedItemIdE(null);
-      HandleUseCardE();
+        const updatedSelectedItems = [...selectedItems];
+        updatedSelectedItems[placeIndex] = selectedItemIdE - 1;
+        setSelectedItems(updatedSelectedItems);
+        setSelectedItemIdE(null);
+        HandleUseCardE();
+        setCurrentMana(
+          (prevCM: number) => prevCM - EnemyCard[EnemyIdSelected].Mana
+        );
+      }
     }
   };
 
