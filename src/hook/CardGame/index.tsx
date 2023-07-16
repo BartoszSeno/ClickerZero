@@ -526,7 +526,8 @@ function CardGame({
                   className="NextRound"
                   onClick={addRandomItemWithoutRepetition}
                 >
-                  Next Round Move for:{RoundFor}
+                  <p>Roun For:</p>
+                  <p className="Btext">{RoundFor}</p>
                 </button>
                 <div className="Mana">
                   {CurrentMana}/{MaxMana}

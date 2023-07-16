@@ -262,11 +262,26 @@
   width: 1700px;
 }
 .NextRound {
-  background-color: #4f4656;
-  height: 100px;
-  color: white;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/bUp.png);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: 180px;
+  border: none;
+  height: 200px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: "Alagard";
+  font-size: 25px;
 }
-
+.NextRound:active {
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/bDown.png);
+}
+.NextRound p {
+  margin-top: -30px;
+}
 .MainCharCon {
   display: flex;
   flex-direction: column;
