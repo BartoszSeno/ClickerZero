@@ -265,10 +265,12 @@
   background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/bUp.png);
   background-repeat: no-repeat;
   background-color: transparent;
-  background-size: 180px;
+  background-size: 120px;
   border: none;
   height: 200px;
   width: 180px;
+  margin-top: 100px;
+  margin-left: 68px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -280,7 +282,8 @@
   background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/bDown.png);
 }
 .NextRound p {
-  margin-top: -30px;
+  margin-top: -90px;
+  margin-left: -58px;
 }
 .MainCharCon {
   display: flex;
@@ -367,7 +370,30 @@
 }
 
 .Mana {
-  background-color: red;
   display: flex;
   justify-content: center;
+  height: 530px;
+  width: 300px;
+  background-position-y: -90px;
+  background-position-x: -230px;
+  display: flex;
+  background-size: 750px;
+  position: absolute;
+  z-index: 10;
+  margin-left: -270px;
+  margin-top: -170px;
+}
+
+.crystal0 {
+  position: absolute;
+  height: 530px;
+  width: 300px;
+  background-image: url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Crystal/0on10.gif);
+  background-position-x: -230px;
+  background-position-y: -90px;
+  display: flex;
+  background-size: 750px;
+  z-index: 9;
+  margin-left: -270px;
+  margin-top: -170px;
 }

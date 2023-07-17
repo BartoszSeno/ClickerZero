@@ -522,16 +522,20 @@ function CardGame({
                 </div>
               </div>
               <div>
-                <button
-                  className="NextRound"
-                  onClick={addRandomItemWithoutRepetition}
+                <div
+                  className="Mana"
+                  style={{
+                    backgroundImage: `url(https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Crystal/${CurrentMana}on10.gif)`,
+                  }}
                 >
-                  <p>Roun For:</p>
-                  <p className="Btext">{RoundFor}</p>
-                </button>
-                <div className="Mana">
-                  {CurrentMana}/{MaxMana}
+                  <button
+                    className="NextRound"
+                    onClick={addRandomItemWithoutRepetition}
+                  >
+                    <p>Next</p>
+                  </button>
                 </div>
+                <div className="crystal0"></div>
               </div>
             </div>
 
