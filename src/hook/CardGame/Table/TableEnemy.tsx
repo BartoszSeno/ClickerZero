@@ -87,7 +87,7 @@ function TableEnemy({
   }, [selectedCard]);
 
   useEffect(() => {
-    console.log(IndexSaveE);
+    // console.log(IndexSaveE);
   }, [IndexSaveE]);
 
   const handleHeck = (index: number) => {

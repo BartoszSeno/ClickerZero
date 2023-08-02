@@ -190,11 +190,9 @@ function CardGame({
     const newItemE = getRandomItemE();
     if (newItemE) {
       if (RoundFor === "ally") {
-        //enemy casting random card
         setTimeout(() => {
           assignRandomValueToNull();
         }, 300);
-        //ally
         setrandomItemsE((prevItems: any) => [...prevItems, newItemE]);
         setremainingItemsE((prevIndexes) => {
           const newIndexes = [...prevIndexes];
@@ -420,7 +418,9 @@ function CardGame({
 
     const randomIndex =
       freeIndexes[Math.floor(Math.random() * freeIndexes.length)];
-    const randomValue = randomItemsE[randomValueCard].id - 1;
+    const updateArray = [...randomItemsE];
+    let randomValue = updateArray[randomValueCard].id - 1;
+
     setBotSelectCard(randomValue);
 
     const updatedItems = [...selectedItems];
@@ -428,13 +428,24 @@ function CardGame({
     setSelectedItems(updatedItems);
     //console.log(`Przypisano wartość ${randomValue} do indeksu ${randomIndex}.`);
 
-    console.log(randomItemsE[randomValueCard].id + "n");
-    console.log(randomItemsE[randomValueCard]);
-
-    console.log(randomValueCard);
+    //console.log(randomItemsE[randomValueCard].id - 1);
+    console.log(randomItemsE[randomValueCard].id);
   };
+  //========================================================
+  const idToRemove = BotSelectCard + 1;
 
-  console.log(BotSelectCard, "us");
+  // Szukamy indeksu elementu o podanym id
+  const indexToRemove = randomItemsE.findIndex(
+    (item: { id: number }) => item.id === idToRemove
+  );
+
+  // Jeśli znaleziono element o podanym id, usuwamy go z tablicy
+  if (indexToRemove !== -1) {
+    randomItemsE.splice(indexToRemove, 1);
+  }
+
+  console.log(BotSelectCard, " bid");
+  console.log(idToRemove);
 
   return (
     <>
