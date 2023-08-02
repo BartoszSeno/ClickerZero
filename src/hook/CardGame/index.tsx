@@ -444,8 +444,20 @@ function CardGame({
     randomItemsE.splice(indexToRemove, 1);
   }
 
-  console.log(BotSelectCard, " bid");
-  console.log(idToRemove);
+  //==== random number from ally table
+  const [randomN, setRandomN] = useState<any>();
+
+  // Funkcja, która wypisuje losową liczbę z dostępnych elementów tablicy.
+  function wypiszLosowaLiczbeZTablicy(tablica: any[]) {
+    // Generujemy losowy indeks od 0 do 4 (czyli długość tablicy minus 1).
+    const losowyIndeksT = Math.floor(Math.random() * tablica.length);
+    setRandomN(losowyIndeksT);
+  }
+  useEffect(() => {
+    wypiszLosowaLiczbeZTablicy(selectedItemsA);
+  }, [selectedItemsA]);
+
+  console.log(randomN, " s");
 
   return (
     <>
