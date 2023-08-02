@@ -190,8 +190,11 @@ function CardGame({
     const newItemE = getRandomItemE();
     if (newItemE) {
       if (RoundFor === "ally") {
-        assignRandomValueToNull();
-
+        //enemy casting random card
+        setTimeout(() => {
+          assignRandomValueToNull();
+        }, 300);
+        //ally
         setrandomItemsE((prevItems: any) => [...prevItems, newItemE]);
         setremainingItemsE((prevIndexes) => {
           const newIndexes = [...prevIndexes];
@@ -394,7 +397,14 @@ function CardGame({
 
   //=========bot
 
+  const [BotSelectCard, setBotSelectCard] = useState<any>();
+
   const assignRandomValueToNull = () => {
+    const minValue = 0;
+    const maxValue = itemCount;
+    const randomValueCard =
+      Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
+
     const freeIndexes = selectedItems.reduce(
       (acc: any, item: any, index: any) => {
         if (item === null) acc.push(index);
@@ -404,21 +414,27 @@ function CardGame({
     );
 
     if (freeIndexes.length === 0) {
-      console.log("Brak wolnych miejsc do przypisania.");
+      //console.log("Brak wolnych miejsc do przypisania.");
       return;
     }
 
     const randomIndex =
       freeIndexes[Math.floor(Math.random() * freeIndexes.length)];
-    const randomValue = itemCount;
+    const randomValue = randomItemsE[randomValueCard].id - 1;
+    setBotSelectCard(randomValue);
 
     const updatedItems = [...selectedItems];
     updatedItems[randomIndex] = randomValue;
     setSelectedItems(updatedItems);
-    console.log(`Przypisano wartość ${randomValue} do indeksu ${randomIndex}.`);
+    //console.log(`Przypisano wartość ${randomValue} do indeksu ${randomIndex}.`);
+
+    console.log(randomItemsE[randomValueCard].id + "n");
+    console.log(randomItemsE[randomValueCard]);
+
+    console.log(randomValueCard);
   };
 
-  console.log(RoundFor);
+  console.log(BotSelectCard, "us");
 
   return (
     <>
