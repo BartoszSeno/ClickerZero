@@ -380,8 +380,8 @@
   background-size: 750px;
   position: absolute;
   z-index: 10;
-  margin-left: -270px;
-  margin-top: -170px;
+  margin-left: -268px;
+  margin-top: -262px;
 }
 
 .crystal0 {
@@ -394,6 +394,6 @@
   display: flex;
   background-size: 750px;
   z-index: 9;
-  margin-left: -270px;
-  margin-top: -170px;
+  margin-left: -268px;
+  margin-top: -262px;
 }

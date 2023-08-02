@@ -10,7 +10,6 @@ function HandAlly({
   setAllyIdSelected: any;
   HandleItemClick: any;
 }) {
-  //console.log(remainingItems);
   return (
     <>
       <div className="AllyHandCard">

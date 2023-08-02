@@ -35,6 +35,9 @@ function CardGame({
   const [CurrentMana, setCurrentMana] = useState<number>(1);
   //=======================================
 
+  const itemCount = randomItemsE.length;
+
+  //==============
   useEffect(() => {
     const initialIndexes = Array.from({ length: 7 }, (_, index) => index);
     setremainingItemsE(initialIndexes);
@@ -187,6 +190,8 @@ function CardGame({
     const newItemE = getRandomItemE();
     if (newItemE) {
       if (RoundFor === "ally") {
+        assignRandomValueToNull();
+
         setrandomItemsE((prevItems: any) => [...prevItems, newItemE]);
         setremainingItemsE((prevIndexes) => {
           const newIndexes = [...prevIndexes];
@@ -387,6 +392,34 @@ function CardGame({
     setECA(false);
   };
 
+  //=========bot
+
+  const assignRandomValueToNull = () => {
+    const freeIndexes = selectedItems.reduce(
+      (acc: any, item: any, index: any) => {
+        if (item === null) acc.push(index);
+        return acc;
+      },
+      []
+    );
+
+    if (freeIndexes.length === 0) {
+      console.log("Brak wolnych miejsc do przypisania.");
+      return;
+    }
+
+    const randomIndex =
+      freeIndexes[Math.floor(Math.random() * freeIndexes.length)];
+    const randomValue = itemCount;
+
+    const updatedItems = [...selectedItems];
+    updatedItems[randomIndex] = randomValue;
+    setSelectedItems(updatedItems);
+    console.log(`Przypisano wartość ${randomValue} do indeksu ${randomIndex}.`);
+  };
+
+  console.log(RoundFor);
+
   return (
     <>
       <div
@@ -530,7 +563,9 @@ function CardGame({
                 >
                   <button
                     className="NextRound"
-                    onClick={addRandomItemWithoutRepetition}
+                    onClick={(e) => {
+                      addRandomItemWithoutRepetition();
+                    }}
                   >
                     <p>Next</p>
                   </button>
