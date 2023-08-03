@@ -396,6 +396,7 @@ function CardGame({
   //=========bot
 
   const [BotSelectCard, setBotSelectCard] = useState<any>();
+  const [EnemyAtack, setEnemyAtack] = useState<any>([]);
 
   const assignRandomValueToNull = () => {
     const minValue = 0;
@@ -457,7 +458,44 @@ function CardGame({
     wypiszLosowaLiczbeZTablicy(selectedItemsA);
   }, [selectedItemsA]);
 
-  console.log(randomN, " s");
+  //==== random number from enemy table
+  const [randomNE, setRandomNE] = useState<any>();
+
+  // Funkcja, która wypisuje losową liczbę z dostępnych elementów tablicy.
+  function wypiszLosowaLiczbeZTablicyE(tablica: any[]) {
+    // Generujemy losowy indeks od 0 do 4 (czyli długość tablicy minus 1).
+    const losowyIndeksE = Math.floor(Math.random() * tablica.length);
+    setRandomNE(losowyIndeksE);
+  }
+  useEffect(() => {
+    wypiszLosowaLiczbeZTablicyE(selectedItems);
+    const index: number = randomNE;
+
+    setIndexSaveE(index);
+    if (RoundFor === "enemy") {
+      if (selectedItems[index] !== null && !EnemyAtack[index]) {
+        const selectedIndex = EnemyAtack.findIndex(
+          (value: boolean) => value === true
+        );
+
+        setEnemyAtack((prevArray: any) => {
+          const newArray = [...prevArray];
+          if (selectedIndex !== -1) {
+            newArray[selectedIndex] = false;
+          }
+          newArray[index] = true;
+          if (newArray[index]) {
+            setCanBeUse("EnemyAtackAlly");
+            setECA(true);
+          }
+          return newArray;
+        });
+
+        setselectedCard(selectedItems[index]);
+      }
+    }
+    console.log("fasdfasdfdsa");
+  }, [selectedItems, selectedItemsA]);
 
   return (
     <>
@@ -519,6 +557,8 @@ function CardGame({
               EnemyIdSelected={EnemyIdSelected}
               CurrentMana={CurrentMana}
               setCurrentMana={setCurrentMana}
+              setEnemyAtack={setEnemyAtack}
+              EnemyAtack={EnemyAtack}
             />
             <div className="mainMenu">
               <div className="MainCharCon">

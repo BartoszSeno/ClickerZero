@@ -28,6 +28,8 @@ function TableEnemy({
   CurrentMana,
   setCurrentMana,
   EnemyIdSelected,
+  setEnemyAtack,
+  EnemyAtack,
 }: {
   selectedItemIdE: any;
   setSelectedItemIdE: any;
@@ -53,6 +55,8 @@ function TableEnemy({
   CurrentMana: any;
   setCurrentMana: any;
   EnemyIdSelected: any;
+  setEnemyAtack: any;
+  EnemyAtack: any;
 }) {
   const handlePlaceClick = (placeIndex: number) => {
     if (selectedItemIdE !== null) {
@@ -75,7 +79,6 @@ function TableEnemy({
   };
 
   //====
-  const [EnemyAtack, setEnemyAtack] = useState<any>([]);
 
   useEffect(() => {
     setEnemyAtack(Array(selectedItems.length).fill(false));
@@ -89,32 +92,6 @@ function TableEnemy({
   useEffect(() => {
     // console.log(IndexSaveE);
   }, [IndexSaveE]);
-
-  const handleHeck = (index: number) => {
-    setIndexSaveE(index);
-    if (RoundFor === "enemy") {
-      if (selectedItems[index] !== null && !EnemyAtack[index]) {
-        const selectedIndex = EnemyAtack.findIndex(
-          (value: boolean) => value === true
-        );
-
-        setEnemyAtack((prevArray: any) => {
-          const newArray = [...prevArray];
-          if (selectedIndex !== -1) {
-            newArray[selectedIndex] = false;
-          }
-          newArray[index] = true;
-          if (newArray[index]) {
-            setCanBeUse("EnemyAtackAlly");
-            setECA(true);
-          }
-          return newArray;
-        });
-
-        setselectedCard(selectedItems[index]);
-      }
-    }
-  };
 
   const HandleTestClick = (index: number) => {
     if (selectedItemIdE !== null) {
@@ -213,7 +190,6 @@ function TableEnemy({
           key={index}
           onClick={() => {
             handlePlaceClick(index);
-            handleHeck(index);
             HandleTestClick(index);
           }}
         >
