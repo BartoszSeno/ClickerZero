@@ -495,7 +495,7 @@ function CardGame({
       }
     }
     console.log("fasdfasdfdsa");
-  }, [selectedItems, selectedItemsA]);
+  }, [EnemyAtack, RoundFor, randomNE, selectedItems]);
 
   return (
     <>
