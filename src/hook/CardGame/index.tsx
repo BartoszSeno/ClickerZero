@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import "../../assets/css/Normal/CardGame/CardGame.css";
 import HandAlly from "./HandCard/HandAlly";
@@ -488,6 +489,7 @@ function CardGame({
             setCanBeUse("EnemyAtackAlly");
             setECA(true);
           }
+          BotAtackEnemy();
           return newArray;
         });
 
@@ -496,6 +498,67 @@ function CardGame({
     }
     console.log("fasdfasdfdsa");
   }, [EnemyAtack, RoundFor, randomNE, selectedItems]);
+
+  // bot atack enemy
+
+  const [EnemyAtackAlly, setEnemyAtackAlly] = useState<any>([]);
+  const [allayAtack, setAllayAtack] = useState<any>([]);
+
+  const BotAtackEnemy = () => {
+    const indexBotAllySelect = randomNE;
+
+    if (CanBeUse === "EnemyAtackAlly") {
+      if (EnemyAtackAlly[indexBotAllySelect] !== undefined) {
+        const selectedIndex = EnemyAtackAlly.findIndex(
+          (value: boolean) => value === true
+        );
+
+        setEnemyAtackAlly((prevArray: any) => {
+          const newArray = [...prevArray];
+          if (selectedIndex !== -1) {
+            newArray[selectedIndex] = false;
+          }
+          newArray[indexBotAllySelect] = true;
+          if (newArray[indexBotAllySelect]) {
+            const CaedIdA = selectedItemsA[indexBotAllySelect];
+
+            if (selectedItemsA[indexBotAllySelect] !== null) {
+              EnemyCard[selectedCard].Hp -= AllyCard[Number(CaedIdA)].Atack;
+              AllyCard[Number(CaedIdA)].Hp -= EnemyCard[selectedCard].Atack;
+              //
+              setAllayAtack(Array(selectedItemsA.length).fill(false));
+              setselectedCardA(undefined);
+              setEnemyAtackAlly(Array(selectedItemsA.length).fill(false));
+              setIndexSaveA(-1);
+              //
+              if (EnemyCard[selectedCard].Hp <= 0) {
+                setSelectedItems((prevItems: any[]) => {
+                  const newItems = [...prevItems];
+                  newItems[IndexSaveE] = null;
+                  return newItems;
+                });
+              }
+              if (AllyCard[Number(CaedIdA)].Hp <= 0) {
+                setselectedItemsA((prevItems: any[]) => {
+                  const newItems = [...prevItems];
+                  newItems[indexBotAllySelect] = null;
+                  return newItems;
+                });
+              }
+              setOneTimeAEA((prevArray: any) => {
+                const newArray = [...prevArray];
+                newArray[IndexSaveE] = false;
+                return newArray;
+              });
+            }
+          }
+          return newArray;
+        });
+      }
+    } else {
+      return;
+    }
+  };
 
   return (
     <>
@@ -679,6 +742,10 @@ function CardGame({
               CurrentMana={CurrentMana}
               setCurrentMana={setCurrentMana}
               AllyIdSelected={AllyIdSelected}
+              EnemyAtackAlly={EnemyAtackAlly}
+              setEnemyAtackAlly={setEnemyAtackAlly}
+              allayAtack={allayAtack}
+              setAllayAtack={setAllayAtack}
             />
             <HandAlly
               HandleItemClick={HandleItemClick}

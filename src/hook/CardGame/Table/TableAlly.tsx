@@ -29,6 +29,10 @@ function TableAlly({
   CurrentMana,
   setCurrentMana,
   AllyIdSelected,
+  EnemyAtackAlly,
+  setEnemyAtackAlly,
+  allayAtack,
+  setAllayAtack,
 }: {
   selectedItemId: any;
   setSelectedItemId: any;
@@ -55,6 +59,10 @@ function TableAlly({
   CurrentMana: any;
   setCurrentMana: any;
   AllyIdSelected: any;
+  EnemyAtackAlly: any;
+  setEnemyAtackAlly: any;
+  allayAtack: any;
+  setAllayAtack: any;
 }) {
   const handlePlaceClick = (placeIndex: number) => {
     if (selectedItemId !== null) {
@@ -76,7 +84,6 @@ function TableAlly({
     }
   };
 
-  const [allayAtack, setAllayAtack] = useState<any>([]);
   useEffect(() => {
     setAllayAtack(Array(selectedItemsA.length).fill(false));
   }, [selectedItemsA]);
@@ -125,8 +132,6 @@ function TableAlly({
     }
   };
   //=======
-
-  const [EnemyAtackAlly, setEnemyAtackAlly] = useState<any>([]);
 
   useEffect(() => {
     setEnemyAtackAlly(Array(selectedItemsA.length).fill(false));
