@@ -8,7 +8,6 @@ import { AllyCard } from "../../data/Card/Ally";
 import TableAlly from "./Table/TableAlly";
 import TableEnemy from "./Table/TableEnemy";
 import { CharacterSelectionStart } from "../../data/character/character";
-import { Console } from "console";
 
 function CardGame({
   OpenCardGame,
@@ -242,6 +241,13 @@ function CardGame({
       }
       setOneTimeAAE(Array(selectedItems.length).fill(true));
     }
+    setAllayAtack(Array(selectedItemsA.length).fill(false));
+    setEnemyAtack(Array(selectedItems.length).fill(false));
+    setIndexSaveE(-1);
+    setselectedCardA(undefined);
+    setCanBeUse("s");
+    setEnemyAtackAlly(Array(selectedItemsA.length).fill(false));
+    setIndexSaveA(-1);
   };
 
   useEffect(() => {
@@ -431,7 +437,7 @@ function CardGame({
     //console.log(`Przypisano wartość ${randomValue} do indeksu ${randomIndex}.`);
 
     //console.log(randomItemsE[randomValueCard].id - 1);
-    console.log(randomItemsE[randomValueCard].id);
+    console.log(randomItemsE[randomValueCard].id + "T");
   };
   //========================================================
   const idToRemove = BotSelectCard + 1;
@@ -496,7 +502,6 @@ function CardGame({
         setselectedCard(selectedItems[index]);
       }
     }
-    console.log("fasdfasdfdsa");
   }, [EnemyAtack, RoundFor, randomNE, selectedItems]);
 
   // bot atack enemy
@@ -526,10 +531,7 @@ function CardGame({
               EnemyCard[selectedCard].Hp -= AllyCard[Number(CaedIdA)].Atack;
               AllyCard[Number(CaedIdA)].Hp -= EnemyCard[selectedCard].Atack;
               //
-              setAllayAtack(Array(selectedItemsA.length).fill(false));
-              setselectedCardA(undefined);
-              setEnemyAtackAlly(Array(selectedItemsA.length).fill(false));
-              setIndexSaveA(-1);
+
               //
               if (EnemyCard[selectedCard].Hp <= 0) {
                 setSelectedItems((prevItems: any[]) => {
@@ -559,6 +561,8 @@ function CardGame({
       return;
     }
   };
+
+  console.log(selectedCard);
 
   return (
     <>

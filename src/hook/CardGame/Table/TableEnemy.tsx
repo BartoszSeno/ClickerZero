@@ -58,40 +58,44 @@ function TableEnemy({
   setEnemyAtack: any;
   EnemyAtack: any;
 }) {
-  const handlePlaceClick = (placeIndex: number) => {
-    if (selectedItemIdE !== null) {
-      if (CurrentMana >= EnemyCard[EnemyIdSelected].Mana) {
-        if (selectedItems[placeIndex] !== null) {
-          // Miejsce jest już zajęte, więc nie dodawaj przedmiotu
-          return;
-        }
-
-        const updatedSelectedItems = [...selectedItems];
-        updatedSelectedItems[placeIndex] = selectedItemIdE - 1;
-        setSelectedItems(updatedSelectedItems);
-        setSelectedItemIdE(null);
-        HandleUseCardE();
-        setCurrentMana(
-          (prevCM: number) => prevCM - EnemyCard[EnemyIdSelected].Mana
-        );
-      }
-    }
-  };
-
   //====
 
   useEffect(() => {
     setEnemyAtack(Array(selectedItems.length).fill(false));
   }, [selectedItems]);
-
   useEffect(() => {
     console.log(selectedCard);
     console.log("Wybrany przedmiot:", EnemyCard[selectedCard]);
   }, [selectedCard]);
-
   useEffect(() => {
     // console.log(IndexSaveE);
   }, [IndexSaveE]);
+
+  const handleHeck = (index: number) => {
+    setIndexSaveE(index);
+    if (RoundFor === "enemy") {
+      if (selectedItems[index] !== null && !EnemyAtack[index]) {
+        const selectedIndex = EnemyAtack.findIndex(
+          (value: boolean) => value === true
+        );
+
+        setEnemyAtack((prevArray: any) => {
+          const newArray = [...prevArray];
+          if (selectedIndex !== -1) {
+            newArray[selectedIndex] = false;
+          }
+          newArray[index] = true;
+          if (newArray[index]) {
+            setCanBeUse("EnemyAtackAlly");
+            setECA(true);
+          }
+          return newArray;
+        });
+
+        setselectedCard(selectedItems[index]);
+      }
+    }
+  };
 
   const HandleTestClick = (index: number) => {
     if (selectedItemIdE !== null) {
@@ -99,23 +103,18 @@ function TableEnemy({
         // Miejsce jest już zajęte, więc nie dodawaj przedmiotu
         return;
       }
-
       setOneTimeAEA((prevArray: any) => {
         const newArray = [...prevArray];
         newArray[index] = true;
         return newArray;
       });
     }
-
     console.log(index, "s");
   };
-
   const [AllyAtackEnemy, setAllyAtackEnemy] = useState<any>([]);
-
   useEffect(() => {
     setAllyAtackEnemy(Array(selectedItems.length).fill(false));
   }, [selectedItems]);
-
   //do podswietlania przeciwnika
   useEffect(() => {
     if (CanBeUse === "AllyAtackEnemy") {
@@ -123,7 +122,6 @@ function TableEnemy({
         const selectedIndex = AllyAtackEnemy.findIndex(
           (value: boolean) => value === true
         );
-
         setAllyAtackEnemy((prevArray: any) => {
           const newArray = [...prevArray];
           if (selectedIndex !== -1) {
@@ -156,14 +154,12 @@ function TableEnemy({
                 });
               }
             }
-
             setOneTimeAAE((prevArray: any) => {
               const newArray = [...prevArray];
               newArray[IndexSaveA] = false;
               return newArray;
             });
           }
-
           return newArray;
         });
       }
@@ -171,7 +167,6 @@ function TableEnemy({
       return;
     }
   }, [IndexSaveE, CanBeUse, selectedItems]);
-
   useEffect(() => {
     if (RoundFor === "ally") {
       setEnemyAtack(Array(selectedItems.length).fill(false));
@@ -181,7 +176,6 @@ function TableEnemy({
       setIndexSaveE(-1);
     }
   }, [RoundFor]);
-
   return (
     <div className="Board">
       {selectedItems.map((itemId: any, index: any) => (
@@ -189,7 +183,7 @@ function TableEnemy({
           className="CardOnBoard"
           key={index}
           onClick={() => {
-            handlePlaceClick(index);
+            handleHeck(index);
             HandleTestClick(index);
           }}
         >

@@ -137,60 +137,6 @@ function TableAlly({
     setEnemyAtackAlly(Array(selectedItemsA.length).fill(false));
   }, [selectedItemsA]);
 
-  //do podswietlania przeciwnika
-  useEffect(() => {
-    if (CanBeUse === "EnemyAtackAlly") {
-      if (EnemyAtackAlly[IndexSaveA] !== undefined) {
-        const selectedIndex = EnemyAtackAlly.findIndex(
-          (value: boolean) => value === true
-        );
-
-        setEnemyAtackAlly((prevArray: any) => {
-          const newArray = [...prevArray];
-          if (selectedIndex !== -1) {
-            newArray[selectedIndex] = false;
-          }
-          newArray[IndexSaveA] = true;
-          if (newArray[IndexSaveA]) {
-            const CaedIdA = selectedItemsA[IndexSaveA];
-
-            if (selectedItemsA[IndexSaveA] !== null) {
-              EnemyCard[selectedCard].Hp -= AllyCard[Number(CaedIdA)].Atack;
-              AllyCard[Number(CaedIdA)].Hp -= EnemyCard[selectedCard].Atack;
-              //
-              setAllayAtack(Array(selectedItemsA.length).fill(false));
-              setselectedCardA(undefined);
-              setEnemyAtackAlly(Array(selectedItemsA.length).fill(false));
-              setIndexSaveA(-1);
-              //
-              if (EnemyCard[selectedCard].Hp <= 0) {
-                setSelectedItems((prevItems: any[]) => {
-                  const newItems = [...prevItems];
-                  newItems[IndexSaveE] = null;
-                  return newItems;
-                });
-              }
-              if (AllyCard[Number(CaedIdA)].Hp <= 0) {
-                setselectedItemsA((prevItems: any[]) => {
-                  const newItems = [...prevItems];
-                  newItems[IndexSaveA] = null;
-                  return newItems;
-                });
-              }
-              setOneTimeAEA((prevArray: any) => {
-                const newArray = [...prevArray];
-                newArray[IndexSaveE] = false;
-                return newArray;
-              });
-            }
-          }
-          return newArray;
-        });
-      }
-    } else {
-      return;
-    }
-  }, [IndexSaveA, CanBeUse]);
   //=======
   useEffect(() => {
     if (RoundFor === "enemy") {
