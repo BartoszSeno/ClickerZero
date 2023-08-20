@@ -64,7 +64,6 @@ function TableEnemy({
     setEnemyAtack(Array(selectedItems.length).fill(false));
   }, [selectedItems]);
   useEffect(() => {
-    console.log(selectedCard);
     console.log("Wybrany przedmiot:", EnemyCard[selectedCard]);
   }, [selectedCard]);
   useEffect(() => {
@@ -263,6 +262,7 @@ function TableEnemy({
               <div className="CardStatsIG">
                 <div className="AtackPoints">{EnemyCard[itemId].Atack}</div>
                 <div className="HpPoints">{EnemyCard[itemId].Hp}</div>
+                <div>{EnemyCard[itemId].Name}</div>
               </div>
             </div>
           ) : (

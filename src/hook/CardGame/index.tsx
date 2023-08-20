@@ -186,6 +186,9 @@ function CardGame({
     return AllyCard[index];
   };
 
+  //check than bot have turn
+  const [hasCodeExecuted, setHasCodeExecuted] = useState<number>(0);
+
   const addRandomItemWithoutRepetition = () => {
     const newItemE = getRandomItemE();
     if (newItemE) {
@@ -248,6 +251,7 @@ function CardGame({
     setCanBeUse("s");
     setEnemyAtackAlly(Array(selectedItemsA.length).fill(false));
     setIndexSaveA(-1);
+    setHasCodeExecuted(0);
   };
 
   useEffect(() => {
@@ -474,6 +478,7 @@ function CardGame({
     const losowyIndeksE = Math.floor(Math.random() * tablica.length);
     setRandomNE(losowyIndeksE);
   }
+
   useEffect(() => {
     wypiszLosowaLiczbeZTablicyE(selectedItems);
     const index: number = randomNE;
@@ -495,13 +500,17 @@ function CardGame({
             setECA(true);
           }
           BotAtackEnemy();
+          console.log("trest");
           return newArray;
         });
 
         setselectedCard(selectedItems[index]);
       }
     }
-  }, [EnemyAtack, RoundFor, randomNE, selectedItems]);
+
+    // Inkrementuj runCount, gdy useEffect zostanie uruchomiony
+  }, [RoundFor, randomNE, selectedItems]);
+  console.log(hasCodeExecuted);
 
   // bot atack enemy
 
@@ -511,57 +520,60 @@ function CardGame({
   const BotAtackEnemy = () => {
     const indexBotAllySelect = randomNE;
 
-    if (CanBeUse === "EnemyAtackAlly") {
-      if (EnemyAtackAlly[indexBotAllySelect] !== undefined) {
-        const selectedIndex = EnemyAtackAlly.findIndex(
-          (value: boolean) => value === true
-        );
+    if (hasCodeExecuted < 1) {
+      if (CanBeUse === "EnemyAtackAlly") {
+        if (EnemyAtackAlly[indexBotAllySelect] !== undefined) {
+          const selectedIndex = EnemyAtackAlly.findIndex(
+            (value: boolean) => value === true
+          );
 
-        setEnemyAtackAlly((prevArray: any) => {
-          const newArray = [...prevArray];
-          if (selectedIndex !== -1) {
-            newArray[selectedIndex] = false;
-          }
-          newArray[indexBotAllySelect] = true;
-          if (newArray[indexBotAllySelect]) {
-            const CaedIdA = selectedItemsA[indexBotAllySelect];
-
-            if (selectedItemsA[indexBotAllySelect] !== null) {
-              EnemyCard[selectedCard].Hp -= AllyCard[Number(CaedIdA)].Atack;
-              AllyCard[Number(CaedIdA)].Hp -= EnemyCard[selectedCard].Atack;
-              //
-
-              //
-              if (EnemyCard[selectedCard].Hp <= 0) {
-                setSelectedItems((prevItems: any[]) => {
-                  const newItems = [...prevItems];
-                  newItems[IndexSaveE] = null;
-                  return newItems;
-                });
-              }
-              if (AllyCard[Number(CaedIdA)].Hp <= 0) {
-                setselectedItemsA((prevItems: any[]) => {
-                  const newItems = [...prevItems];
-                  newItems[indexBotAllySelect] = null;
-                  return newItems;
-                });
-              }
-              setOneTimeAEA((prevArray: any) => {
-                const newArray = [...prevArray];
-                newArray[IndexSaveE] = false;
-                return newArray;
-              });
+          setEnemyAtackAlly((prevArray: any) => {
+            const newArray = [...prevArray];
+            if (selectedIndex !== -1) {
+              newArray[selectedIndex] = false;
             }
-          }
-          return newArray;
-        });
+            newArray[indexBotAllySelect] = true;
+            if (newArray[indexBotAllySelect]) {
+              const CaedIdA = selectedItemsA[indexBotAllySelect];
+              console.log(
+                EnemyCard[selectedCard].Name + AllyCard[indexBotAllySelect].Name
+              );
+              if (selectedItemsA[indexBotAllySelect] !== null) {
+                EnemyCard[selectedCard].Hp -= AllyCard[Number(CaedIdA)].Atack;
+                AllyCard[Number(CaedIdA)].Hp -= EnemyCard[selectedCard].Atack;
+                //
+
+                //
+                if (EnemyCard[selectedCard].Hp <= 0) {
+                  setSelectedItems((prevItems: any[]) => {
+                    const newItems = [...prevItems];
+                    newItems[IndexSaveE] = null;
+                    return newItems;
+                  });
+                }
+                if (AllyCard[Number(CaedIdA)].Hp <= 0) {
+                  setselectedItemsA((prevItems: any[]) => {
+                    const newItems = [...prevItems];
+                    newItems[indexBotAllySelect] = null;
+                    return newItems;
+                  });
+                }
+                setOneTimeAEA((prevArray: any) => {
+                  const newArray = [...prevArray];
+                  newArray[IndexSaveE] = false;
+                  return newArray;
+                });
+              }
+            }
+            setHasCodeExecuted((prevCount) => prevCount + 1);
+            return newArray;
+          });
+        }
+      } else {
+        return;
       }
-    } else {
-      return;
     }
   };
-
-  console.log(EnemyCard[selectedCard] + "IndexSaveE");
 
   return (
     <>
@@ -763,3 +775,5 @@ function CardGame({
 }
 
 export default CardGame;
+
+// do zatrzymania funkcja jakas ktora powtarza wybrany przedmiot zawsze atakuje pierwszy wybrany
