@@ -73,44 +73,8 @@ function TableEnemy({
 
   const handleHeck = (index: number) => {
     setIndexSaveE(index);
-    if (RoundFor === "enemy") {
-      if (selectedItems[index] !== null && !EnemyAtack[index]) {
-        const selectedIndex = EnemyAtack.findIndex(
-          (value: boolean) => value === true
-        );
-
-        setEnemyAtack((prevArray: any) => {
-          const newArray = [...prevArray];
-          if (selectedIndex !== -1) {
-            newArray[selectedIndex] = false;
-          }
-          newArray[index] = true;
-          if (newArray[index]) {
-            setCanBeUse("EnemyAtackAlly");
-            setECA(true);
-          }
-          return newArray;
-        });
-
-        setselectedCard(selectedItems[index]);
-      }
-    }
   };
 
-  const HandleTestClick = (index: number) => {
-    if (selectedItemIdE !== null) {
-      if (selectedItems[index] !== null) {
-        // Miejsce jest już zajęte, więc nie dodawaj przedmiotu
-        return;
-      }
-      setOneTimeAEA((prevArray: any) => {
-        const newArray = [...prevArray];
-        newArray[index] = true;
-        return newArray;
-      });
-    }
-    console.log(index, "s");
-  };
   const [AllyAtackEnemy, setAllyAtackEnemy] = useState<any>([]);
   useEffect(() => {
     setAllyAtackEnemy(Array(selectedItems.length).fill(false));
@@ -184,7 +148,6 @@ function TableEnemy({
           key={index}
           onClick={() => {
             handleHeck(index);
-            HandleTestClick(index);
           }}
         >
           {itemId !== null ? (

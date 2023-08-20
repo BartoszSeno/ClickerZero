@@ -478,7 +478,6 @@ function CardGame({
     wypiszLosowaLiczbeZTablicyE(selectedItems);
     const index: number = randomNE;
 
-    setIndexSaveE(index);
     if (RoundFor === "enemy") {
       if (selectedItems[index] !== null && !EnemyAtack[index]) {
         const selectedIndex = EnemyAtack.findIndex(
@@ -562,7 +561,7 @@ function CardGame({
     }
   };
 
-  console.log(selectedCard);
+  console.log(EnemyCard[selectedCard] + "IndexSaveE");
 
   return (
     <>
