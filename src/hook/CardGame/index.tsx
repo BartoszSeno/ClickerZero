@@ -523,60 +523,59 @@ function CardGame({
   const [allayAtack, setAllayAtack] = useState<any>([]);
 
   const BotAtackEnemy = () => {
+    // naprawic to by bot atakował
     const indexBotAllySelect = randomNE;
     console.log(CanBeUse);
-    if (hasCodeExecuted < 2) {
-      if (CanBeUse === "EnemyAtackAlly") {
-        if (EnemyAtackAlly[indexBotAllySelect] !== undefined) {
-          const selectedIndex = EnemyAtackAlly.findIndex(
-            (value: boolean) => value === true
-          );
+    if (CanBeUse === "EnemyAtackAlly") {
+      if (EnemyAtackAlly[indexBotAllySelect] !== undefined) {
+        const selectedIndex = EnemyAtackAlly.findIndex(
+          (value: boolean) => value === true
+        );
 
-          setEnemyAtackAlly((prevArray: any) => {
-            const newArray = [...prevArray];
-            if (selectedIndex !== -1) {
-              newArray[selectedIndex] = false;
-            }
-            newArray[indexBotAllySelect] = true;
-            if (newArray[indexBotAllySelect]) {
-              const CaedIdA = selectedItemsA[indexBotAllySelect];
-              console.log(
-                EnemyCard[selectedCard].Name + AllyCard[indexBotAllySelect].Name
-              );
-              if (selectedItemsA[indexBotAllySelect] !== null) {
-                EnemyCard[selectedCard].Hp -= AllyCard[Number(CaedIdA)].Atack;
-                AllyCard[Number(CaedIdA)].Hp -= EnemyCard[selectedCard].Atack;
-                //
+        setEnemyAtackAlly((prevArray: any) => {
+          const newArray = [...prevArray];
+          if (selectedIndex !== -1) {
+            newArray[selectedIndex] = false;
+          }
+          newArray[indexBotAllySelect] = true;
+          if (newArray[indexBotAllySelect]) {
+            const CaedIdA = selectedItemsA[indexBotAllySelect];
+            console.log(
+              EnemyCard[selectedCard].Name + AllyCard[indexBotAllySelect].Name
+            );
+            if (selectedItemsA[indexBotAllySelect] !== null) {
+              EnemyCard[selectedCard].Hp -= AllyCard[Number(CaedIdA)].Atack;
+              AllyCard[Number(CaedIdA)].Hp -= EnemyCard[selectedCard].Atack;
+              //
 
-                //
-                if (EnemyCard[selectedCard].Hp <= 0) {
-                  setSelectedItems((prevItems: any[]) => {
-                    const newItems = [...prevItems];
-                    newItems[IndexSaveE] = null;
-                    return newItems;
-                  });
-                }
-                if (AllyCard[Number(CaedIdA)].Hp <= 0) {
-                  setselectedItemsA((prevItems: any[]) => {
-                    const newItems = [...prevItems];
-                    newItems[indexBotAllySelect] = null;
-                    return newItems;
-                  });
-                }
-                setOneTimeAEA((prevArray: any) => {
-                  const newArray = [...prevArray];
-                  newArray[IndexSaveE] = false;
-                  return newArray;
+              //
+              if (EnemyCard[selectedCard].Hp <= 0) {
+                setSelectedItems((prevItems: any[]) => {
+                  const newItems = [...prevItems];
+                  newItems[IndexSaveE] = null;
+                  return newItems;
                 });
               }
+              if (AllyCard[Number(CaedIdA)].Hp <= 0) {
+                setselectedItemsA((prevItems: any[]) => {
+                  const newItems = [...prevItems];
+                  newItems[indexBotAllySelect] = null;
+                  return newItems;
+                });
+              }
+              setOneTimeAEA((prevArray: any) => {
+                const newArray = [...prevArray];
+                newArray[IndexSaveE] = false;
+                return newArray;
+              });
             }
-            setHasCodeExecuted((prevCount) => prevCount + 1);
-            return newArray;
-          });
-        }
-      } else {
-        return;
+          }
+          setHasCodeExecuted((prevCount) => prevCount + 1);
+          return newArray;
+        });
       }
+    } else {
+      return;
     }
   };
 
