@@ -188,6 +188,7 @@ function CardGame({
 
   //check than bot have turn
   const [hasCodeExecuted, setHasCodeExecuted] = useState<number>(0);
+  const [wylosowanoLiczbe, setWylosowanoLiczbe] = useState(false); // Dodajemy stan do śledzenia, czy już wylosowano liczbę
 
   const addRandomItemWithoutRepetition = () => {
     const newItemE = getRandomItemE();
@@ -252,6 +253,7 @@ function CardGame({
     setEnemyAtackAlly(Array(selectedItemsA.length).fill(false));
     setIndexSaveA(-1);
     setHasCodeExecuted(0);
+    setWylosowanoLiczbe(false);
   };
 
   useEffect(() => {
@@ -475,42 +477,45 @@ function CardGame({
   // Funkcja, która wypisuje losową liczbę z dostępnych elementów tablicy.
   function wypiszLosowaLiczbeZTablicyE(tablica: any[]) {
     // Generujemy losowy indeks od 0 do 4 (czyli długość tablicy minus 1).
-    const losowyIndeksE = Math.floor(Math.random() * tablica.length);
-    setRandomNE(losowyIndeksE);
+    if (!wylosowanoLiczbe) {
+      // Sprawdzamy, czy jeszcze nie wylosowano liczby
+      const losowyIndeksE = Math.floor(Math.random() * tablica.length);
+      setRandomNE(losowyIndeksE);
+      setWylosowanoLiczbe(true); // Ustawiamy stan, że wylosowano liczbę
+    }
   }
+
+  const [numberForColor, setNumberForColor] = useState<number>();
 
   useEffect(() => {
     wypiszLosowaLiczbeZTablicyE(selectedItems);
-    const index: number = randomNE;
+    if (hasCodeExecuted < 1) {
+      if (RoundFor === "enemy") {
+        setNumberForColor(randomNE);
+        if (selectedItems[randomNE] !== null && !EnemyAtack[randomNE]) {
+          const selectedIndex = EnemyAtack.findIndex(
+            (value: boolean) => value === true
+          );
 
-    if (RoundFor === "enemy") {
-      if (selectedItems[index] !== null && !EnemyAtack[index]) {
-        const selectedIndex = EnemyAtack.findIndex(
-          (value: boolean) => value === true
-        );
-
-        setEnemyAtack((prevArray: any) => {
-          const newArray = [...prevArray];
-          if (selectedIndex !== -1) {
-            newArray[selectedIndex] = false;
-          }
-          newArray[index] = true;
-          if (newArray[index]) {
-            setCanBeUse("EnemyAtackAlly");
-            setECA(true);
-          }
-          BotAtackEnemy();
-          console.log("trest");
-          return newArray;
-        });
-
-        setselectedCard(selectedItems[index]);
+          setEnemyAtack((prevArray: any) => {
+            const newArray = [...prevArray];
+            if (selectedIndex !== -1) {
+              newArray[selectedIndex] = false;
+            }
+            newArray[randomNE] = true;
+            if (newArray[randomNE]) {
+              setCanBeUse("EnemyAtackAlly");
+              setECA(true);
+            }
+            BotAtackEnemy();
+            console.log("trest");
+            return newArray;
+          });
+          setselectedCard(selectedItems[randomNE]);
+        }
       }
     }
-
-    // Inkrementuj runCount, gdy useEffect zostanie uruchomiony
-  }, [RoundFor, randomNE, selectedItems]);
-  console.log(hasCodeExecuted);
+  }, [RoundFor]);
 
   // bot atack enemy
 
@@ -519,8 +524,8 @@ function CardGame({
 
   const BotAtackEnemy = () => {
     const indexBotAllySelect = randomNE;
-
-    if (hasCodeExecuted < 1) {
+    console.log(CanBeUse);
+    if (hasCodeExecuted < 2) {
       if (CanBeUse === "EnemyAtackAlly") {
         if (EnemyAtackAlly[indexBotAllySelect] !== undefined) {
           const selectedIndex = EnemyAtackAlly.findIndex(
@@ -637,6 +642,7 @@ function CardGame({
               setCurrentMana={setCurrentMana}
               setEnemyAtack={setEnemyAtack}
               EnemyAtack={EnemyAtack}
+              randomNE={randomNE}
             />
             <div className="mainMenu">
               <div className="MainCharCon">
