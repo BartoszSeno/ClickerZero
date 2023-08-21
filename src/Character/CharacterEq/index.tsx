@@ -12,6 +12,7 @@ const CharacterSelectionEq = ({ ce }: { ce: any }) => {
       ).map((data: any) => (
         <div
           className="CharBox"
+          key={data.id}
           style={{
             display: ce ? "flex" : "none",
 

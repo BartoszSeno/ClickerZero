@@ -55,6 +55,7 @@ function SellFish({
           if (index === CatVariant) {
             return (
               <div
+                key={data.id}
                 className="SellConteiner"
                 onMouseDown={(e) => {
                   e.stopPropagation();

@@ -8,6 +8,7 @@ const Cat = () => {
           return (
             <div
               className="Cat"
+              key={data.id}
               style={{ backgroundImage: `url(${data.Laight})` }}
             ></div>
           );

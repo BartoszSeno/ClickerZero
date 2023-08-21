@@ -36,7 +36,7 @@ const CharacterMain = ({
       {CharacterSelectionStart.filter(
         (data: any) => data.id === Number(savedIdCharacter)
       ).map((data: any) => (
-        <div className="CharMainBox" onClick={OpenUpChar}>
+        <div className="CharMainBox" key={data.id} onClick={OpenUpChar}>
           <div
             className="CharacterImgEq"
             style={{

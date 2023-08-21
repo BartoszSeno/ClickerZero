@@ -55,6 +55,7 @@ const CharacterSelection = () => {
         {characters.slice(currentIndex, currentIndex + 4).map((data: any) => (
           <div
             className="Border"
+            key={data.id}
             onClick={() => handleCharacterClick(data.id)}
             style={{
               backgroundColor:

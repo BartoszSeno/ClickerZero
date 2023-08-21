@@ -680,7 +680,7 @@ function CardGame({
                   {CharacterSelectionStart.filter(
                     (data: any) => data.id === Number(savedIdCharacter)
                   ).map((data: any) => (
-                    <div className="CharCGBox">
+                    <div className="CharCGBox" key={data.id}>
                       <div
                         className="CharacterImgEqCG"
                         style={{
@@ -781,5 +781,3 @@ function CardGame({
 }
 
 export default CardGame;
-
-// do zatrzymania funkcja jakas ktora powtarza wybrany przedmiot zawsze atakuje pierwszy wybrany
