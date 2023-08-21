@@ -505,17 +505,17 @@ function CardGame({
             newArray[randomNE] = true;
             if (newArray[randomNE]) {
               setCanBeUse("EnemyAtackAlly");
+              //BotAtackEnemy();
               setECA(true);
             }
-            BotAtackEnemy();
-            console.log("trest");
             return newArray;
           });
+
           setselectedCard(selectedItems[randomNE]);
         }
       }
     }
-  }, [RoundFor]);
+  }, [RoundFor, randomNE]);
 
   // bot atack enemy
 
@@ -523,9 +523,7 @@ function CardGame({
   const [allayAtack, setAllayAtack] = useState<any>([]);
 
   const BotAtackEnemy = () => {
-    // naprawic to by bot atakował
     const indexBotAllySelect = randomNE;
-    console.log(CanBeUse);
     if (CanBeUse === "EnemyAtackAlly") {
       if (EnemyAtackAlly[indexBotAllySelect] !== undefined) {
         const selectedIndex = EnemyAtackAlly.findIndex(
@@ -541,7 +539,9 @@ function CardGame({
           if (newArray[indexBotAllySelect]) {
             const CaedIdA = selectedItemsA[indexBotAllySelect];
             console.log(
-              EnemyCard[selectedCard].Name + AllyCard[indexBotAllySelect].Name
+              EnemyCard[selectedCard].Name,
+              " zaatakował ",
+              AllyCard[indexBotAllySelect].Name
             );
             if (selectedItemsA[indexBotAllySelect] !== null) {
               EnemyCard[selectedCard].Hp -= AllyCard[Number(CaedIdA)].Atack;
@@ -575,6 +575,7 @@ function CardGame({
         });
       }
     } else {
+      console.log("dsads");
       return;
     }
   };
