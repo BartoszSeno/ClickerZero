@@ -194,9 +194,6 @@ function CardGame({
     const newItemE = getRandomItemE();
     if (newItemE) {
       if (RoundFor === "ally") {
-        setTimeout(() => {
-          assignRandomValueToNull();
-        }, 300);
         setrandomItemsE((prevItems: any) => [...prevItems, newItemE]);
         setremainingItemsE((prevIndexes) => {
           const newIndexes = [...prevIndexes];
@@ -255,6 +252,14 @@ function CardGame({
     setHasCodeExecuted(0);
     setWylosowanoLiczbe(false);
   };
+
+  useEffect(() => {
+    if (RoundFor === "enemy") {
+      setTimeout(() => {
+        assignRandomValueToNull();
+      }, 300);
+    }
+  }, [RoundFor]);
 
   useEffect(() => {
     setCurrentMana((prevCM) => (prevCM === MaxMana ? prevCM : MaxMana));
@@ -432,19 +437,29 @@ function CardGame({
 
     const randomIndex =
       freeIndexes[Math.floor(Math.random() * freeIndexes.length)];
-    const updateArray = [...randomItemsE];
+
+    // Create deep copies of updateArray and randomItemsE
+    const updateArray = [...randomItemsE.map((item: any) => ({ ...item }))];
+    const randomItemsECopy = [
+      ...randomItemsE.map((item: any) => ({ ...item })),
+    ];
+
     let randomValue = updateArray[randomValueCard].id - 1;
 
     setBotSelectCard(randomValue);
 
     const updatedItems = [...selectedItems];
     updatedItems[randomIndex] = randomValue;
+
+    console.log(updatedItems);
+
     setSelectedItems(updatedItems);
     //console.log(`Przypisano wartość ${randomValue} do indeksu ${randomIndex}.`);
 
-    //console.log(randomItemsE[randomValueCard].id - 1);
-    console.log(randomItemsE[randomValueCard].id + "T");
+    //console.log(randomItemsECopy[randomValueCard].id - 1);
+    console.log(randomItemsECopy[randomValueCard].id + "T");
   };
+
   //========================================================
   const idToRemove = BotSelectCard + 1;
 
