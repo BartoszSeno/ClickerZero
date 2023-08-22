@@ -540,61 +540,64 @@ function CardGame({
   const [allayAtack, setAllayAtack] = useState<any>([]);
 
   const BotAtackEnemy = () => {
-    const indexBotAllySelect = randomNE;
-    if (CanBeUse === "EnemyAtackAlly") {
-      if (EnemyAtackAlly[indexBotAllySelect] !== undefined) {
-        const selectedIndex = EnemyAtackAlly.findIndex(
-          (value: boolean) => value === true
-        );
+    setTimeout(() => {
+      const indexBotAllySelect = randomNE;
+      if (CanBeUse === "EnemyAtackAlly") {
+        if (EnemyAtackAlly[indexBotAllySelect] !== undefined) {
+          const selectedIndex = EnemyAtackAlly.findIndex(
+            (value: boolean) => value === true
+          );
 
-        setEnemyAtackAlly((prevArray: any) => {
-          const newArray = [...prevArray];
-          if (selectedIndex !== -1) {
-            newArray[selectedIndex] = false;
-          }
-          newArray[indexBotAllySelect] = true;
-          if (newArray[indexBotAllySelect]) {
-            const CaedIdA = selectedItemsA[indexBotAllySelect];
-            console.log(
-              EnemyCard[selectedCard].Name,
-              " zaatakował ",
-              AllyCard[indexBotAllySelect].Name
-            );
-            if (selectedItemsA[indexBotAllySelect] !== null) {
-              EnemyCard[selectedCard].Hp -= AllyCard[Number(CaedIdA)].Atack;
-              AllyCard[Number(CaedIdA)].Hp -= EnemyCard[selectedCard].Atack;
-              //
-
-              //
-              if (EnemyCard[selectedCard].Hp <= 0) {
-                setSelectedItems((prevItems: any[]) => {
-                  const newItems = [...prevItems];
-                  newItems[IndexSaveE] = null;
-                  return newItems;
-                });
-              }
-              if (AllyCard[Number(CaedIdA)].Hp <= 0) {
-                setselectedItemsA((prevItems: any[]) => {
-                  const newItems = [...prevItems];
-                  newItems[indexBotAllySelect] = null;
-                  return newItems;
-                });
-              }
-              setOneTimeAEA((prevArray: any) => {
-                const newArray = [...prevArray];
-                newArray[IndexSaveE] = false;
-                return newArray;
-              });
+          setEnemyAtackAlly((prevArray: any) => {
+            const newArray = [...prevArray];
+            if (selectedIndex !== -1) {
+              newArray[selectedIndex] = false;
             }
-          }
-          setHasCodeExecuted((prevCount) => prevCount + 1);
-          return newArray;
-        });
+            newArray[indexBotAllySelect] = true;
+            if (newArray[indexBotAllySelect]) {
+              const CaedIdA = selectedItemsA[indexBotAllySelect];
+              console.log(
+                EnemyCard[selectedCard].Name,
+                " zaatakował ",
+                AllyCard[indexBotAllySelect].Name
+              );
+              if (selectedItemsA[indexBotAllySelect] !== null) {
+                EnemyCard[selectedCard].Hp -= AllyCard[Number(CaedIdA)].Atack;
+                AllyCard[Number(CaedIdA)].Hp -= EnemyCard[selectedCard].Atack;
+                //
+                //
+                if (EnemyCard[selectedCard].Hp <= 0) {
+                  setSelectedItems((prevItems: any[]) => {
+                    const newItems = [...prevItems];
+                    newItems[IndexSaveE] = null;
+                    console.log("2");
+
+                    return newItems;
+                  });
+                }
+                if (AllyCard[Number(CaedIdA)].Hp <= 0) {
+                  setselectedItemsA((prevItems: any[]) => {
+                    const newItems = [...prevItems];
+                    newItems[indexBotAllySelect] = null;
+                    return newItems;
+                  });
+                }
+                setOneTimeAEA((prevArray: any) => {
+                  const newArray = [...prevArray];
+                  newArray[IndexSaveE] = false;
+                  return newArray;
+                });
+              }
+            }
+            setHasCodeExecuted((prevCount) => prevCount + 1);
+            return newArray;
+          });
+        }
+      } else {
+        console.log("dsads");
+        return;
       }
-    } else {
-      console.log("dsads");
-      return;
-    }
+    }, 700);
   };
 
   return (
