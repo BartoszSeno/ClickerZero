@@ -503,33 +503,35 @@ function CardGame({
   const [numberForColor, setNumberForColor] = useState<number>();
 
   useEffect(() => {
-    wypiszLosowaLiczbeZTablicyE(selectedItems);
-    if (hasCodeExecuted < 1) {
-      if (RoundFor === "enemy") {
-        setNumberForColor(randomNE);
-        if (selectedItems[randomNE] !== null && !EnemyAtack[randomNE]) {
-          const selectedIndex = EnemyAtack.findIndex(
-            (value: boolean) => value === true
-          );
+    setTimeout(() => {
+      wypiszLosowaLiczbeZTablicyE(selectedItems);
+      if (hasCodeExecuted < 1) {
+        if (RoundFor === "enemy") {
+          setNumberForColor(randomNE);
+          if (selectedItems[randomNE] !== null && !EnemyAtack[randomNE]) {
+            const selectedIndex = EnemyAtack.findIndex(
+              (value: boolean) => value === true
+            );
 
-          setEnemyAtack((prevArray: any) => {
-            const newArray = [...prevArray];
-            if (selectedIndex !== -1) {
-              newArray[selectedIndex] = false;
-            }
-            newArray[randomNE] = true;
-            if (newArray[randomNE]) {
-              setCanBeUse("EnemyAtackAlly");
-              //BotAtackEnemy();
-              setECA(true);
-            }
-            return newArray;
-          });
+            setEnemyAtack((prevArray: any) => {
+              const newArray = [...prevArray];
+              if (selectedIndex !== -1) {
+                newArray[selectedIndex] = false;
+              }
+              newArray[randomNE] = true;
+              if (newArray[randomNE]) {
+                setCanBeUse("EnemyAtackAlly");
+                BotAtackEnemy();
+                setECA(true);
+              }
+              return newArray;
+            });
 
-          setselectedCard(selectedItems[randomNE]);
+            setselectedCard(selectedItems[randomNE]);
+          }
         }
       }
-    }
+    }, 500);
   }, [RoundFor, randomNE]);
 
   // bot atack enemy
