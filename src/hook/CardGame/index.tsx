@@ -489,6 +489,7 @@ function CardGame({
         dostepneIndeksy[Math.floor(Math.random() * dostepneIndeksy.length)];
       setRandomIndex(losowyIndeks);
     } else {
+      //tutaj dodac funkcje ktora atakuje główną postać
       setRandomIndex(null); // W przypadku, gdy nie ma dostępnych elementów.
     }
   }
@@ -501,17 +502,39 @@ function CardGame({
 
   const [BotAtackAllay, setBotAtackAllay] = useState<boolean>(false);
 
-  const [randomNEC, setRandomNEC] = useState<any>();
+  const [randomIndexEnemy, setRandomIndexEnemy] = useState<any>();
+
+  function wypiszLosowyIndeksZTablicyEnemy(tablica: any[]) {
+    // Filtrujemy tablicę, aby uzyskać indeksy dostępnych elementów (nie-null).
+    const dostepneIndeksy = tablica
+      .map((element, index) => (element !== null ? index : null))
+      .filter((index) => index !== null) as number[];
+
+    if (dostepneIndeksy.length > 0) {
+      // Generujemy losowy indeks z dostępnych indeksów.
+      const losowyIndeks =
+        dostepneIndeksy[Math.floor(Math.random() * dostepneIndeksy.length)];
+      setRandomIndexEnemy(losowyIndeks);
+    } else {
+      //tutaj dodac funkcje ktora atakuje główną postać
+      setRandomIndexEnemy(null); // W przypadku, gdy nie ma dostępnych elementów.
+    }
+  }
+
+  useEffect(() => {
+    wypiszLosowyIndeksZTablicyEnemy(selectedItems);
+  }, [selectedItems]);
 
   useEffect(() => {
     setTimeout(() => {
       if (hasCodeExecuted < 1) {
         if (RoundFor === "enemy") {
-          const randomNE = Math.floor(Math.random() * selectedItems.length);
-          setRandomNEC(randomNE);
-          console.log(randomNEC, "1");
-          setNumberForColor(randomNE);
-          if (selectedItems[randomNE] !== null && !EnemyAtack[randomNE]) {
+          console.log(randomIndexEnemy, "1");
+          setNumberForColor(randomIndexEnemy);
+          if (
+            selectedItems[randomIndexEnemy] !== null &&
+            !EnemyAtack[randomIndexEnemy]
+          ) {
             const selectedIndex = EnemyAtack.findIndex(
               (value: boolean) => value === true
             );
@@ -521,13 +544,14 @@ function CardGame({
               if (selectedIndex !== -1) {
                 newArray[selectedIndex] = false;
               }
-              newArray[randomNE] = true;
-              if (newArray[randomNE]) {
+              newArray[randomIndexEnemy] = true;
+              if (newArray[randomIndexEnemy]) {
                 setCanBeUse("EnemyAtackAlly");
                 setECA(true);
-                setselectedCard(selectedItems[randomNE]);
+                setselectedCard(selectedItems[randomIndexEnemy]);
                 setBotAtackAllay(true);
               }
+              console.log(randomIndexEnemy, "2");
               return newArray;
             });
           }
@@ -535,7 +559,6 @@ function CardGame({
       }
     }, 500);
   }, [RoundFor]);
-  console.log(selectedItemsA, "2", randomIndex);
 
   // bot atack enemy
 
