@@ -474,39 +474,42 @@ function CardGame({
   }
 
   //==== random number from ally table
-  const [randomN, setRandomN] = useState<any>();
+  const [randomIndex, setRandomIndex] = useState<any>();
 
-  // Funkcja, która wypisuje losową liczbę z dostępnych elementów tablicy.
-  function wypiszLosowaLiczbeZTablicy(tablica: any[]) {
-    // Generujemy losowy indeks od 0 do 4 (czyli długość tablicy minus 1).
-    const losowyIndeksT = Math.floor(Math.random() * tablica.length);
-    setRandomN(losowyIndeksT);
-  }
-  useEffect(() => {
-    wypiszLosowaLiczbeZTablicy(selectedItemsA);
-  }, [selectedItemsA]);
+  // Funkcja, która wypisuje losowy indeks dostępnego elementu z tablicy.
+  function wypiszLosowyIndeksZTablicy(tablica: any[]) {
+    // Filtrujemy tablicę, aby uzyskać indeksy dostępnych elementów (nie-null).
+    const dostepneIndeksy = tablica
+      .map((element, index) => (element !== null ? index : null))
+      .filter((index) => index !== null) as number[];
 
-  //==== random number from enemy table
-  const [randomNE, setRandomNE] = useState<any>();
-
-  // Funkcja, która wypisuje losową liczbę z dostępnych elementów tablicy.
-  function wypiszLosowaLiczbeZTablicyE(tablica: any[]) {
-    // Generujemy losowy indeks od 0 do 4 (czyli długość tablicy minus 1).
-    if (!wylosowanoLiczbe) {
-      // Sprawdzamy, czy jeszcze nie wylosowano liczby
-      const losowyIndeksE = Math.floor(Math.random() * tablica.length);
-      setRandomNE(losowyIndeksE);
-      setWylosowanoLiczbe(true); // Ustawiamy stan, że wylosowano liczbę
+    if (dostepneIndeksy.length > 0) {
+      // Generujemy losowy indeks z dostępnych indeksów.
+      const losowyIndeks =
+        dostepneIndeksy[Math.floor(Math.random() * dostepneIndeksy.length)];
+      setRandomIndex(losowyIndeks);
+    } else {
+      setRandomIndex(null); // W przypadku, gdy nie ma dostępnych elementów.
     }
   }
 
+  useEffect(() => {
+    wypiszLosowyIndeksZTablicy(selectedItemsA);
+  }, [selectedItemsA]);
+
   const [numberForColor, setNumberForColor] = useState<number>();
+
+  const [BotAtackAllay, setBotAtackAllay] = useState<boolean>(false);
+
+  const [randomNEC, setRandomNEC] = useState<any>();
 
   useEffect(() => {
     setTimeout(() => {
-      wypiszLosowaLiczbeZTablicyE(selectedItems);
       if (hasCodeExecuted < 1) {
         if (RoundFor === "enemy") {
+          const randomNE = Math.floor(Math.random() * selectedItems.length);
+          setRandomNEC(randomNE);
+          console.log(randomNEC, "1");
           setNumberForColor(randomNE);
           if (selectedItems[randomNE] !== null && !EnemyAtack[randomNE]) {
             const selectedIndex = EnemyAtack.findIndex(
@@ -521,27 +524,27 @@ function CardGame({
               newArray[randomNE] = true;
               if (newArray[randomNE]) {
                 setCanBeUse("EnemyAtackAlly");
-                BotAtackEnemy();
                 setECA(true);
+                setselectedCard(selectedItems[randomNE]);
+                setBotAtackAllay(true);
               }
               return newArray;
             });
-
-            setselectedCard(selectedItems[randomNE]);
           }
         }
       }
     }, 500);
-  }, [RoundFor, randomNE]);
+  }, [RoundFor]);
+  console.log(selectedItemsA, "2", randomIndex);
 
   // bot atack enemy
 
   const [EnemyAtackAlly, setEnemyAtackAlly] = useState<any>([]);
   const [allayAtack, setAllayAtack] = useState<any>([]);
 
-  const BotAtackEnemy = () => {
-    setTimeout(() => {
-      const indexBotAllySelect = randomNE;
+  useEffect(() => {
+    if (BotAtackAllay === true) {
+      const indexBotAllySelect = randomIndex;
       if (CanBeUse === "EnemyAtackAlly") {
         if (EnemyAtackAlly[indexBotAllySelect] !== undefined) {
           const selectedIndex = EnemyAtackAlly.findIndex(
@@ -590,6 +593,7 @@ function CardGame({
               }
             }
             setHasCodeExecuted((prevCount) => prevCount + 1);
+            setBotAtackAllay(false);
             return newArray;
           });
         }
@@ -597,8 +601,8 @@ function CardGame({
         console.log("dsads");
         return;
       }
-    }, 700);
-  };
+    }
+  }, [BotAtackAllay]);
 
   return (
     <>
@@ -662,7 +666,6 @@ function CardGame({
               setCurrentMana={setCurrentMana}
               setEnemyAtack={setEnemyAtack}
               EnemyAtack={EnemyAtack}
-              randomNE={randomNE}
             />
             <div className="mainMenu">
               <div className="MainCharCon">

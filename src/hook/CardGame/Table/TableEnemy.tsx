@@ -30,7 +30,6 @@ function TableEnemy({
   EnemyIdSelected,
   setEnemyAtack,
   EnemyAtack,
-  randomNE,
 }: {
   selectedItemIdE: any;
   setSelectedItemIdE: any;
@@ -58,7 +57,6 @@ function TableEnemy({
   EnemyIdSelected: any;
   setEnemyAtack: any;
   EnemyAtack: any;
-  randomNE: number;
 }) {
   //====
 
