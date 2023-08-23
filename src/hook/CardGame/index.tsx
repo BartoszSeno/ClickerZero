@@ -528,10 +528,6 @@ function CardGame({
     wypiszLosowyIndeksZTablicyEnemy(selectedItems);
   }, [selectedItems]);
 
-  //
-  const [useBotAtack, setUseBotAtack] = useState<number>(1);
-  //
-
   useEffect(() => {
     setTimeout(() => {
       if (hasCodeExecuted < 1) {
@@ -555,7 +551,6 @@ function CardGame({
                 setCanBeUse("EnemyAtackAlly");
                 setECA(true);
                 setselectedCard(selectedItems[randomIndexEnemy]);
-                setUseBotAtack((prevCount) => prevCount + 1);
                 setBotAtackAllay(true);
               }
               return newArray;
@@ -571,71 +566,67 @@ function CardGame({
   const [EnemyAtackAlly, setEnemyAtackAlly] = useState<any>([]);
   const [allayAtack, setAllayAtack] = useState<any>([]);
 
+  console.log(selectedItems);
   useEffect(() => {
     const indexBotAllySelect = randomIndex;
     const indexBotEnemySelect = randomIndexEnemy;
 
-    if (selectedItems.some((item) => item !== null)) {
+    if (selectedItemsA.some((item) => item !== null)) {
       console.log("1");
-      if (useBotAtack >= 9) {
-        // do zmiany | to change
-        //if its bellow than 9 its crashed
-        if (CanBeUse === "EnemyAtackAlly") {
-          if (EnemyAtackAlly[indexBotEnemySelect] !== undefined) {
-            const selectedIndex = EnemyAtackAlly.findIndex(
-              (value: boolean) => value === true
-            );
 
-            setEnemyAtackAlly((prevArray: any) => {
-              const newArray = [...prevArray];
-              if (selectedIndex !== -1) {
-                newArray[selectedIndex] = false;
-              }
-              newArray[indexBotAllySelect] = true;
-              if (newArray[indexBotAllySelect]) {
-                //
-                const CaedIdA = selectedItemsA[indexBotAllySelect];
-                const cardIdE = selectedItems[indexBotEnemySelect];
-                //
-                if (selectedItemsA[indexBotAllySelect] !== null) {
-                  EnemyCard[Number(cardIdE)].Hp -=
-                    AllyCard[Number(CaedIdA)].Atack / 2;
-                  AllyCard[Number(CaedIdA)].Hp -=
-                    EnemyCard[Number(cardIdE)].Atack / 2;
+      if (CanBeUse === "EnemyAtackAlly") {
+        if (EnemyAtackAlly[indexBotEnemySelect] !== undefined) {
+          const selectedIndex = EnemyAtackAlly.findIndex(
+            (value: boolean) => value === true
+          );
 
-                  if (EnemyCard[Number(cardIdE)].Hp <= 0) {
-                    setSelectedItems((prevItems: any[]) => {
-                      const newItemsE = [...prevItems];
-                      newItemsE[indexBotEnemySelect] = null;
-                      return newItemsE;
-                    });
-                  }
-                  if (AllyCard[Number(CaedIdA)].Hp <= 0) {
-                    setselectedItemsA((prevItems: any[]) => {
-                      const newItems = [...prevItems];
-                      newItems[indexBotAllySelect] = null;
-                      return newItems;
-                    });
-                  }
-                  setOneTimeAEA((prevArray: any) => {
-                    const newArray = [...prevArray];
-                    newArray[indexBotEnemySelect] = false;
-                    return newArray;
+          setEnemyAtackAlly((prevArray: any) => {
+            const newArray = [...prevArray];
+            if (selectedIndex !== -1) {
+              newArray[selectedIndex] = false;
+            }
+            newArray[indexBotAllySelect] = true;
+            if (newArray[indexBotAllySelect]) {
+              //
+              const CaedIdA = selectedItemsA[indexBotAllySelect];
+              const cardIdE = selectedItems[indexBotEnemySelect];
+              //
+              if (selectedItemsA[indexBotAllySelect] !== null) {
+                EnemyCard[Number(cardIdE)].Hp -=
+                  AllyCard[Number(CaedIdA)].Atack / 2;
+                AllyCard[Number(CaedIdA)].Hp -=
+                  EnemyCard[Number(cardIdE)].Atack / 2;
+
+                if (EnemyCard[Number(cardIdE)].Hp <= 0) {
+                  setSelectedItems((prevItems: any[]) => {
+                    const newItemsE = [...prevItems];
+                    newItemsE[indexBotEnemySelect] = null;
+                    return newItemsE;
                   });
                 }
+                if (AllyCard[Number(CaedIdA)].Hp <= 0) {
+                  setselectedItemsA((prevItems: any[]) => {
+                    const newItems = [...prevItems];
+                    newItems[indexBotAllySelect] = null;
+                    return newItems;
+                  });
+                }
+                setOneTimeAEA((prevArray: any) => {
+                  const newArray = [...prevArray];
+                  newArray[indexBotEnemySelect] = false;
+                  return newArray;
+                });
               }
-              setHasCodeExecuted((prevCount) => prevCount + 1);
-              setBotAtackAllay(false);
-              return newArray;
-            });
-          }
-        } else {
-          console.log("dsads");
-          return;
+            }
+            setHasCodeExecuted((prevCount) => prevCount + 1);
+            setBotAtackAllay(false);
+            return newArray;
+          });
         }
+      } else {
+        console.log("dsads");
+        return;
       }
-    } else {
-      console.log("2");
     }
   }, [BotAtackAllay]);
 
