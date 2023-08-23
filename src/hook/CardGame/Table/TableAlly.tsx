@@ -261,6 +261,7 @@ function TableAlly({
               <div className="CardStatsIG">
                 <div className="AtackPoints">{AllyCard[itemId].Atack}</div>
                 <div className="HpPoints">{AllyCard[itemId].Hp}</div>
+                <div className="HpPoints">{AllyCard[itemId].Name}</div>
               </div>
             </div>
           ) : (
