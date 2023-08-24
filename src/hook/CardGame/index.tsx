@@ -417,6 +417,7 @@ function CardGame({
 
   const [BotSelectCard, setBotSelectCard] = useState<any>();
   const [EnemyAtack, setEnemyAtack] = useState<any>([]);
+  const [NoMana, setNoMana] = useState(true);
 
   const assignRandomValueToNull = () => {
     const minValue = 0;
@@ -434,7 +435,6 @@ function CardGame({
 
     if (freeIndexes.length === 0) {
       //console.log("Brak wolnych miejsc do przypisania.");
-
       return;
     }
 
@@ -443,21 +443,33 @@ function CardGame({
 
     // Create deep copies of updateArray and randomItemsE
     const updateArray = [...randomItemsE.map((item: any) => ({ ...item }))];
-    const randomItemsECopy = [
-      ...randomItemsE.map((item: any) => ({ ...item })),
-    ];
 
-    let randomValue = updateArray[randomValueCard].id - 1;
+    // Sprawdź, czy istnieją przedmioty w updateArray z wystarczającą ilością Many
+    const itemsWithEnoughMana = updateArray.filter(
+      (item) => item.Mana <= CurrentMana
+    );
 
-    setBotSelectCard(randomValue);
+    if (itemsWithEnoughMana.length > 0) {
+      // Jeśli są dostępne przedmioty z wystarczającą ilością Many
+      const randomItem =
+        itemsWithEnoughMana[
+          Math.floor(Math.random() * itemsWithEnoughMana.length)
+        ];
 
-    const updatedItems = [...selectedItems];
-    updatedItems[randomIndex] = randomValue;
+      const randomValue = randomItem.id - 1;
 
-    setSelectedItems(updatedItems);
-    //console.log(`Przypisano wartość ${randomValue} do indeksu ${randomIndex}.`);
+      setBotSelectCard(randomValue);
 
-    //console.log(randomItemsECopy[randomValueCard].id - 1);
+      const updatedItems = [...selectedItems];
+      updatedItems[randomIndex] = randomValue;
+
+      setCurrentMana((prevCM: number) => prevCM - randomItem.Mana);
+      setSelectedItems(updatedItems);
+      setNoMana(false);
+    } else {
+      setNoMana(true);
+      console.log("brak many");
+    }
   };
 
   //========================================================
@@ -614,6 +626,10 @@ function CardGame({
               }
             }
             setHasCodeExecuted((prevCount) => prevCount + 1);
+            if (hasCodeExecuted <= 5) {
+              NextMoveBot();
+              setHasCodeExecuted(0);
+            }
             setBotAtackAllay(false);
             return newArray;
           });
@@ -623,6 +639,19 @@ function CardGame({
       }
     }
   }, [BotAtackAllay]);
+
+  useEffect(() => {
+    NextMoveBot();
+  }, [NoMana]);
+
+  function NextMoveBot() {
+    setTimeout(() => {
+      if (NoMana === false) {
+        assignRandomValueToNull();
+        setBotAtackAllay(!BotAtackAllay);
+      }
+    }, 1000);
+  }
 
   return (
     <>
