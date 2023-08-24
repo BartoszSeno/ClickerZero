@@ -375,8 +375,10 @@ function CardGame({
       }
     }
   };
+
   const HandleClickAllyHp = () => {
-    const CaedIdE = selectedItems[IndexSaveE];
+    const CaedIdE = EnemyCard[selectedCard].id - 1;
+    console.log(EnemyCard[selectedCard].id);
     const EnemyAtack = EnemyCard[Number(CaedIdE)].Atack;
 
     if (CanBeUse === "EnemyAtackAlly") {
@@ -514,8 +516,9 @@ function CardGame({
 
   const [BotAtackAllay, setBotAtackAllay] = useState<boolean>(false);
 
+  const [randomIndexEnemy, setRandomIndexEnemy] = useState<any>(); // bot index
+
   //==== random number from enemy table
-  const [randomIndexEnemy, setRandomIndexEnemy] = useState<any>();
 
   function wypiszLosowyIndeksZTablicyEnemy(tablica: any[]) {
     // Filtrujemy tablicę, aby uzyskać indeksy dostępnych elementów (nie-null).
