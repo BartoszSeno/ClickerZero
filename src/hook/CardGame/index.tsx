@@ -422,7 +422,7 @@ function CardGame({
     const minValue = 0;
     const maxValue = itemCount;
     const randomValueCard =
-      Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
+      Math.floor(Math.random() * (maxValue - minValue)) + minValue;
 
     const freeIndexes = selectedItems.reduce(
       (acc: any, item: any, index: any) => {
@@ -434,6 +434,7 @@ function CardGame({
 
     if (freeIndexes.length === 0) {
       //console.log("Brak wolnych miejsc do przypisania.");
+
       return;
     }
 
@@ -453,13 +454,10 @@ function CardGame({
     const updatedItems = [...selectedItems];
     updatedItems[randomIndex] = randomValue;
 
-    console.log(updatedItems);
-
     setSelectedItems(updatedItems);
     //console.log(`Przypisano wartość ${randomValue} do indeksu ${randomIndex}.`);
 
     //console.log(randomItemsECopy[randomValueCard].id - 1);
-    console.log(randomItemsECopy[randomValueCard].id + "T");
   };
 
   //========================================================
@@ -566,14 +564,11 @@ function CardGame({
   const [EnemyAtackAlly, setEnemyAtackAlly] = useState<any>([]);
   const [allayAtack, setAllayAtack] = useState<any>([]);
 
-  console.log(selectedItems);
   useEffect(() => {
     const indexBotAllySelect = randomIndex;
     const indexBotEnemySelect = randomIndexEnemy;
 
     if (selectedItemsA.some((item) => item !== null)) {
-      console.log("1");
-
       if (CanBeUse === "EnemyAtackAlly") {
         if (EnemyAtackAlly[indexBotEnemySelect] !== undefined) {
           const selectedIndex = EnemyAtackAlly.findIndex(
@@ -624,7 +619,6 @@ function CardGame({
           });
         }
       } else {
-        console.log("dsads");
         return;
       }
     }
