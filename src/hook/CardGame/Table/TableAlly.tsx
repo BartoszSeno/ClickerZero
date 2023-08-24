@@ -77,6 +77,9 @@ function TableAlly({
         setselectedItemsA(updatedselectedItemsA);
         setSelectedItemId(null);
         HandleUseCard();
+        setCurrentMana(
+          (prevCM: number) => prevCM - AllyCard[AllyIdSelected].Mana
+        );
       }
     }
   };

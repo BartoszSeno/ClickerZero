@@ -855,7 +855,6 @@ function CardGame({
 export default CardGame;
 
 // do naprawy złe odejmowanie hp
-// dodać do bota uzywanie many i sprawdzenie czy posiada mane na kolejny ruch
 // dodać atakowanie głownej postaci
 // tabliczke wygrana / przegrana
 // dodać nagrody za wygraną
