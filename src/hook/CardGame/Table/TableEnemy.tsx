@@ -295,7 +295,6 @@ function TableEnemy({
               <div className="CardStatsIG">
                 <div className="AtackPoints">{EnemyCard[itemId].Atack}</div>
                 <div className="HpPoints">{EnemyCard[itemId].Hp}</div>
-                <div>{EnemyCard[itemId].id}</div>
               </div>
             </div>
           ) : (
