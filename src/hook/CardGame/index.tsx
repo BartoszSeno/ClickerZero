@@ -543,6 +543,7 @@ function CardGame({
 
   useEffect(() => {
     setTimeout(() => {
+      const allNull = selectedItemsA.every((item) => item === null);
       if (hasCodeExecuted < 1) {
         if (RoundFor === "enemy") {
           setNumberForColor(randomIndexEnemy);
@@ -568,6 +569,9 @@ function CardGame({
               }
               return newArray;
             });
+          }
+          if (allNull) {
+            //tutaj jedna z opcji atakowania
           }
         }
       }
@@ -636,6 +640,7 @@ function CardGame({
             setBotAtackAllay(false);
             return newArray;
           });
+        } else {
         }
       } else {
         return;

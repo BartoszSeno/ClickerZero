@@ -165,97 +165,99 @@ function TableEnemy({
                   backgroundPositionY:
                     EnemyCard[itemId].id === 1
                       ? "-30px"
-                      : EnemyCard[itemId].id === 2
-                      ? "65px"
                       : EnemyCard[itemId].id === 3
-                      ? "47px"
+                      ? "65px"
                       : EnemyCard[itemId].id === 4
-                      ? "80px"
+                      ? "47px"
                       : EnemyCard[itemId].id === 5
-                      ? "55px"
+                      ? "80px"
                       : EnemyCard[itemId].id === 6
-                      ? "30px"
-                      : EnemyCard[itemId].id === 7
-                      ? "65px"
+                      ? "55px"
                       : EnemyCard[itemId].id === 8
-                      ? "70px"
+                      ? "30px"
                       : EnemyCard[itemId].id === 9
-                      ? "67px"
-                      : EnemyCard[itemId].id === 10
-                      ? "0px"
-                      : EnemyCard[itemId].id === 11
-                      ? "15px"
-                      : EnemyCard[itemId].id === 12
                       ? "40px"
-                      : EnemyCard[itemId].id === 13
-                      ? "65px"
-                      : EnemyCard[itemId].id === 14
-                      ? "90px"
-                      : EnemyCard[itemId].id === 15
+                      : EnemyCard[itemId].id === 10
                       ? "70px"
-                      : EnemyCard[itemId].id === 16
-                      ? "25px"
-                      : EnemyCard[itemId].id === 17
+                      : EnemyCard[itemId].id === 11
+                      ? "67px"
+                      : EnemyCard[itemId].id === 13
                       ? "50px"
-                      : EnemyCard[itemId].id === 18
+                      : EnemyCard[itemId].id === 14
+                      ? "15px"
+                      : EnemyCard[itemId].id === 15
+                      ? "20px"
+                      : EnemyCard[itemId].id === 16
                       ? "65px"
+                      : EnemyCard[itemId].id === 17
+                      ? "30px"
+                      : EnemyCard[itemId].id === 18
+                      ? "70px"
                       : EnemyCard[itemId].id === 19
                       ? "50px"
-                      : EnemyCard[itemId].id === 20
-                      ? "65px"
                       : EnemyCard[itemId].id === 21
-                      ? "32px"
+                      ? "50px"
                       : EnemyCard[itemId].id === 22
+                      ? "20px"
+                      : EnemyCard[itemId].id === 23
+                      ? "50px"
+                      : EnemyCard[itemId].id === 25
+                      ? "65px"
+                      : EnemyCard[itemId].id === 26
+                      ? "32px"
+                      : EnemyCard[itemId].id === 27
                       ? "50px"
                       : "",
                   backgroundSize:
                     EnemyCard[itemId].id === 1
                       ? "300px"
-                      : EnemyCard[itemId].id === 2
-                      ? "120px"
                       : EnemyCard[itemId].id === 3
+                      ? "120px"
+                      : EnemyCard[itemId].id === 4
                       ? "200px"
-                      : EnemyCard[itemId].id === 5
-                      ? "160px"
                       : EnemyCard[itemId].id === 6
-                      ? "150px"
+                      ? "160px"
                       : EnemyCard[itemId].id === 8
-                      ? "200px"
-                      : EnemyCard[itemId].id === 10
+                      ? "150px"
+                      : EnemyCard[itemId].id === 9
                       ? "200px"
                       : EnemyCard[itemId].id === 11
-                      ? "250px"
-                      : EnemyCard[itemId].id === 12
+                      ? "200px"
+                      : EnemyCard[itemId].id === 13
                       ? "200px"
                       : EnemyCard[itemId].id === 14
-                      ? "100px"
-                      : EnemyCard[itemId].id === 15
-                      ? "150px"
-                      : EnemyCard[itemId].id === 16
                       ? "200px"
+                      : EnemyCard[itemId].id === 15
+                      ? "250px"
+                      : EnemyCard[itemId].id === 16
+                      ? "150px"
                       : EnemyCard[itemId].id === 17
-                      ? "160px"
+                      ? "200px"
                       : EnemyCard[itemId].id === 18
                       ? "160px"
                       : EnemyCard[itemId].id === 19
-                      ? "150px"
-                      : EnemyCard[itemId].id === 20
-                      ? "180px"
+                      ? "130px"
                       : EnemyCard[itemId].id === 21
+                      ? "150px"
+                      : EnemyCard[itemId].id === 22
+                      ? "180px"
+                      : EnemyCard[itemId].id === 23
                       ? "230px"
                       : "",
                   backgroundPositionX:
                     EnemyCard[itemId].id === 1
                       ? "-25px"
-                      : EnemyCard[itemId].id === 4
+                      : EnemyCard[itemId].id === 5
                       ? "-25px"
-                      : EnemyCard[itemId].id === 15
+                      : EnemyCard[itemId].id === 18
                       ? "10px"
-                      : EnemyCard[itemId].id === 16
-                      ? "30px"
-                      : EnemyCard[itemId].id === 20
+                      : EnemyCard[itemId].id === 19
+                      ? "10px"
+                      : EnemyCard[itemId].id === 22
+                      ? "20px"
+                      : EnemyCard[itemId].id === 24
                       ? "5px"
-                      : EnemyCard[itemId].id === 21
+                      : EnemyCard[itemId].id === 25
                       ? "-10px"
                       : "",
                 }}
@@ -263,7 +265,7 @@ function TableEnemy({
               <div className="CardStatsIG">
                 <div className="AtackPoints">{EnemyCard[itemId].Atack}</div>
                 <div className="HpPoints">{EnemyCard[itemId].Hp}</div>
-                <div>{EnemyCard[itemId].Name}</div>
+                <div>{EnemyCard[itemId].id}</div>
               </div>
             </div>
           ) : (

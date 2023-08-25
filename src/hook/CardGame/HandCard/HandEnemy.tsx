@@ -31,97 +31,99 @@ function HandEnemy({
                   backgroundPositionY:
                     data.id === 1
                       ? "-30px"
-                      : data.id === 2
-                      ? "65px"
                       : data.id === 3
-                      ? "47px"
+                      ? "65px"
                       : data.id === 4
-                      ? "80px"
+                      ? "47px"
                       : data.id === 5
-                      ? "55px"
+                      ? "80px"
                       : data.id === 6
-                      ? "30px"
-                      : data.id === 7
-                      ? "65px"
+                      ? "55px"
                       : data.id === 8
-                      ? "70px"
+                      ? "30px"
                       : data.id === 9
-                      ? "67px"
-                      : data.id === 10
-                      ? "0px"
-                      : data.id === 11
-                      ? "15px"
-                      : data.id === 12
                       ? "40px"
-                      : data.id === 13
-                      ? "65px"
-                      : data.id === 14
-                      ? "90px"
-                      : data.id === 15
+                      : data.id === 10
                       ? "70px"
-                      : data.id === 16
-                      ? "25px"
-                      : data.id === 17
+                      : data.id === 11
+                      ? "67px"
+                      : data.id === 13
                       ? "50px"
-                      : data.id === 18
+                      : data.id === 14
+                      ? "15px"
+                      : data.id === 15
+                      ? "20px"
+                      : data.id === 16
                       ? "65px"
+                      : data.id === 17
+                      ? "30px"
+                      : data.id === 18
+                      ? "70px"
                       : data.id === 19
                       ? "50px"
-                      : data.id === 20
-                      ? "65px"
                       : data.id === 21
-                      ? "32px"
+                      ? "50px"
                       : data.id === 22
+                      ? "20px"
+                      : data.id === 23
+                      ? "50px"
+                      : data.id === 25
+                      ? "65px"
+                      : data.id === 26
+                      ? "32px"
+                      : data.id === 27
                       ? "50px"
                       : "",
                   backgroundSize:
                     data.id === 1
                       ? "300px"
-                      : data.id === 2
-                      ? "120px"
                       : data.id === 3
+                      ? "120px"
+                      : data.id === 4
                       ? "200px"
-                      : data.id === 5
-                      ? "160px"
                       : data.id === 6
-                      ? "150px"
+                      ? "160px"
                       : data.id === 8
-                      ? "200px"
-                      : data.id === 10
+                      ? "150px"
+                      : data.id === 9
                       ? "200px"
                       : data.id === 11
-                      ? "250px"
-                      : data.id === 12
+                      ? "200px"
+                      : data.id === 13
                       ? "200px"
                       : data.id === 14
-                      ? "100px"
-                      : data.id === 15
-                      ? "150px"
-                      : data.id === 16
                       ? "200px"
+                      : data.id === 15
+                      ? "250px"
+                      : data.id === 16
+                      ? "150px"
                       : data.id === 17
-                      ? "160px"
+                      ? "200px"
                       : data.id === 18
                       ? "160px"
                       : data.id === 19
-                      ? "150px"
-                      : data.id === 20
-                      ? "180px"
+                      ? "130px"
                       : data.id === 21
+                      ? "150px"
+                      : data.id === 22
+                      ? "180px"
+                      : data.id === 23
                       ? "230px"
                       : "",
                   backgroundPositionX:
                     data.id === 1
                       ? "-25px"
-                      : data.id === 4
+                      : data.id === 5
                       ? "-25px"
-                      : data.id === 15
+                      : data.id === 18
                       ? "10px"
-                      : data.id === 16
-                      ? "30px"
-                      : data.id === 20
+                      : data.id === 19
+                      ? "10px"
+                      : data.id === 22
+                      ? "20px"
+                      : data.id === 24
                       ? "5px"
-                      : data.id === 21
+                      : data.id === 25
                       ? "-10px"
                       : "",
                 }}
@@ -130,6 +132,7 @@ function HandEnemy({
               <div className="CardStats">
                 <div className="AtackPoints">{data.Atack}</div>
                 <div className="HpPoints">{data.Hp}</div>
+                <div>{data.id}</div>
               </div>
             </div>
           ))}
