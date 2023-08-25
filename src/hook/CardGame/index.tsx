@@ -89,6 +89,12 @@ function CardGame({
         return [...prevremainingItemsE, ...additionalIndexes];
       });
     }
+    if (clickCountE === 16) {
+      setremainingItemsE((prevremainingItemsE) => {
+        const additionalIndexes = [22, 23, 24, 25, 26, 27, 28, 29, 30];
+        return [...prevremainingItemsE, ...additionalIndexes];
+      });
+    }
   }, [clickCountE]);
 
   // Sprawdzenie, czy przedmiot już został wylosowany
@@ -163,6 +169,12 @@ function CardGame({
       setMaxMana(10);
       setRemainingItems((prevRemainingItems) => {
         const additionalIndexes = [19, 20, 21];
+        return [...prevRemainingItems, ...additionalIndexes];
+      });
+    }
+    if (clickCount === 16) {
+      setRemainingItems((prevRemainingItems) => {
+        const additionalIndexes = [22, 23, 24, 25, 26, 27, 28, 29, 30];
         return [...prevRemainingItems, ...additionalIndexes];
       });
     }

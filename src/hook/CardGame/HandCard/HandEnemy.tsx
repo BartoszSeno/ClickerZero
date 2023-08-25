@@ -31,6 +31,8 @@ function HandEnemy({
                   backgroundPositionY:
                     data.id === 1
                       ? "-30px"
+                      : data.id === 2
+                      ? "0px"
                       : data.id === 3
                       ? "65px"
                       : data.id === 4
@@ -39,14 +41,18 @@ function HandEnemy({
                       ? "80px"
                       : data.id === 6
                       ? "55px"
+                      : data.id === 7
+                      ? "30px"
                       : data.id === 8
                       ? "30px"
                       : data.id === 9
                       ? "40px"
                       : data.id === 10
-                      ? "70px"
+                      ? "60px"
                       : data.id === 11
                       ? "67px"
+                      : data.id === 12
+                      ? "57px"
                       : data.id === 13
                       ? "50px"
                       : data.id === 14
@@ -54,12 +60,14 @@ function HandEnemy({
                       : data.id === 15
                       ? "20px"
                       : data.id === 16
-                      ? "65px"
+                      ? "45px"
                       : data.id === 17
                       ? "30px"
                       : data.id === 18
                       ? "70px"
                       : data.id === 19
+                      ? "50px"
+                      : data.id === 20
                       ? "50px"
                       : data.id === 21
                       ? "50px"
@@ -67,15 +75,25 @@ function HandEnemy({
                       ? "20px"
                       : data.id === 23
                       ? "50px"
+                      : data.id === 24
+                      ? "40px"
                       : data.id === 25
                       ? "65px"
                       : data.id === 26
                       ? "32px"
                       : data.id === 27
                       ? "50px"
+                      : data.id === 28
+                      ? "20px"
+                      : data.id === 29
+                      ? "60px"
+                      : data.id === 30
+                      ? "40px"
                       : "",
                   backgroundSize:
                     data.id === 1
+                      ? "300px"
+                      : data.id === 2
                       ? "300px"
                       : data.id === 3
                       ? "120px"
@@ -83,6 +101,8 @@ function HandEnemy({
                       ? "200px"
                       : data.id === 6
                       ? "160px"
+                      : data.id === 7
+                      ? "200px"
                       : data.id === 8
                       ? "150px"
                       : data.id === 9
@@ -108,11 +128,17 @@ function HandEnemy({
                       : data.id === 22
                       ? "180px"
                       : data.id === 23
+                      ? "160px"
+                      : data.id === 28
                       ? "230px"
+                      : data.id === 29
+                      ? "130px"
                       : "",
                   backgroundPositionX:
                     data.id === 1
                       ? "-25px"
+                      : data.id === 2
+                      ? "-55px"
                       : data.id === 5
                       ? "-25px"
                       : data.id === 18
@@ -124,7 +150,11 @@ function HandEnemy({
                       : data.id === 24
                       ? "5px"
                       : data.id === 25
+                      ? "10px"
+                      : data.id === 28
                       ? "-10px"
+                      : data.id === 29
+                      ? "21px"
                       : "",
                 }}
               ></div>

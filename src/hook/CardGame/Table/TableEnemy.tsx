@@ -165,6 +165,8 @@ function TableEnemy({
                   backgroundPositionY:
                     EnemyCard[itemId].id === 1
                       ? "-30px"
+                      : EnemyCard[itemId].id === 2
+                      ? "0px"
                       : EnemyCard[itemId].id === 3
                       ? "65px"
                       : EnemyCard[itemId].id === 4
@@ -173,14 +175,18 @@ function TableEnemy({
                       ? "80px"
                       : EnemyCard[itemId].id === 6
                       ? "55px"
+                      : EnemyCard[itemId].id === 7
+                      ? "30px"
                       : EnemyCard[itemId].id === 8
                       ? "30px"
                       : EnemyCard[itemId].id === 9
                       ? "40px"
                       : EnemyCard[itemId].id === 10
-                      ? "70px"
+                      ? "60px"
                       : EnemyCard[itemId].id === 11
                       ? "67px"
+                      : EnemyCard[itemId].id === 12
+                      ? "57px"
                       : EnemyCard[itemId].id === 13
                       ? "50px"
                       : EnemyCard[itemId].id === 14
@@ -188,12 +194,14 @@ function TableEnemy({
                       : EnemyCard[itemId].id === 15
                       ? "20px"
                       : EnemyCard[itemId].id === 16
-                      ? "65px"
+                      ? "45px"
                       : EnemyCard[itemId].id === 17
                       ? "30px"
                       : EnemyCard[itemId].id === 18
                       ? "70px"
                       : EnemyCard[itemId].id === 19
+                      ? "50px"
+                      : EnemyCard[itemId].id === 20
                       ? "50px"
                       : EnemyCard[itemId].id === 21
                       ? "50px"
@@ -201,15 +209,25 @@ function TableEnemy({
                       ? "20px"
                       : EnemyCard[itemId].id === 23
                       ? "50px"
+                      : EnemyCard[itemId].id === 24
+                      ? "40px"
                       : EnemyCard[itemId].id === 25
                       ? "65px"
                       : EnemyCard[itemId].id === 26
                       ? "32px"
                       : EnemyCard[itemId].id === 27
                       ? "50px"
+                      : EnemyCard[itemId].id === 28
+                      ? "20px"
+                      : EnemyCard[itemId].id === 29
+                      ? "60px"
+                      : EnemyCard[itemId].id === 30
+                      ? "40px"
                       : "",
                   backgroundSize:
                     EnemyCard[itemId].id === 1
+                      ? "300px"
+                      : EnemyCard[itemId].id === 2
                       ? "300px"
                       : EnemyCard[itemId].id === 3
                       ? "120px"
@@ -217,6 +235,8 @@ function TableEnemy({
                       ? "200px"
                       : EnemyCard[itemId].id === 6
                       ? "160px"
+                      : EnemyCard[itemId].id === 7
+                      ? "200px"
                       : EnemyCard[itemId].id === 8
                       ? "150px"
                       : EnemyCard[itemId].id === 9
@@ -242,11 +262,17 @@ function TableEnemy({
                       : EnemyCard[itemId].id === 22
                       ? "180px"
                       : EnemyCard[itemId].id === 23
+                      ? "160px"
+                      : EnemyCard[itemId].id === 28
                       ? "230px"
+                      : EnemyCard[itemId].id === 29
+                      ? "130px"
                       : "",
                   backgroundPositionX:
                     EnemyCard[itemId].id === 1
                       ? "-25px"
+                      : EnemyCard[itemId].id === 2
+                      ? "-55px"
                       : EnemyCard[itemId].id === 5
                       ? "-25px"
                       : EnemyCard[itemId].id === 18
@@ -258,7 +284,11 @@ function TableEnemy({
                       : EnemyCard[itemId].id === 24
                       ? "5px"
                       : EnemyCard[itemId].id === 25
+                      ? "10px"
+                      : EnemyCard[itemId].id === 28
                       ? "-10px"
+                      : EnemyCard[itemId].id === 29
+                      ? "21px"
                       : "",
                 }}
               ></div>

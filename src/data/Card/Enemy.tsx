@@ -12,7 +12,7 @@ export const EnemyCard = [
   {
     id: 2,
     Name: "Grimper",
-    img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Enemy/00.5.gif",
+    img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Enemy/0.5.gif",
     Atack: 1,
     Hp: 1,
     Mana: 1,
