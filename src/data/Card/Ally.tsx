@@ -122,7 +122,7 @@ export const AllyCard = [
   {
     id: 13,
     Name: "---",
-    img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/07.5.gif",
+    img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/7.5.gif",
     Atack: 5,
     Hp: 4,
     Mana: 3,
@@ -295,7 +295,7 @@ export const AllyCard = [
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/21.gif",
     Atack: 5,
     Hp: 4,
-    Mana: 3,
+    Mana: 1,
     inTable: false,
     isKill: false,
   },

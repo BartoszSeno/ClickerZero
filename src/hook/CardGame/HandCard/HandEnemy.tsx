@@ -1,6 +1,3 @@
-import { useEffect, useState } from "react";
-import { EnemyCard } from "../../../data/Card/Enemy";
-
 function HandEnemy({
   randomItemsE,
   setEnemyIdSelected,

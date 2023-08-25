@@ -178,44 +178,58 @@ function TableAlly({
                       : AllyCard[itemId].id === 2
                       ? "30px"
                       : AllyCard[itemId].id === 3
-                      ? "35px"
-                      : AllyCard[itemId].id === 4
-                      ? "30px"
-                      : AllyCard[itemId].id === 5
-                      ? "55px"
-                      : AllyCard[itemId].id === 6
-                      ? "-40px"
-                      : AllyCard[itemId].id === 7
-                      ? "50px"
-                      : AllyCard[itemId].id === 8
-                      ? "70px"
-                      : AllyCard[itemId].id === 9
-                      ? "67px"
-                      : AllyCard[itemId].id === 10
-                      ? "70px"
-                      : AllyCard[itemId].id === 11
-                      ? "55px"
-                      : AllyCard[itemId].id === 12
                       ? "40px"
-                      : AllyCard[itemId].id === 13
-                      ? "65px"
-                      : AllyCard[itemId].id === 14
-                      ? "50px"
-                      : AllyCard[itemId].id === 15
+                      : AllyCard[itemId].id === 4
+                      ? "35px"
+                      : AllyCard[itemId].id === 5
+                      ? "45px"
+                      : AllyCard[itemId].id === 6
                       ? "30px"
+                      : AllyCard[itemId].id === 7
+                      ? "40px"
+                      : AllyCard[itemId].id === 8
+                      ? "50px"
+                      : AllyCard[itemId].id === 10
+                      ? "50px"
+                      : AllyCard[itemId].id === 11
+                      ? "50px"
+                      : AllyCard[itemId].id === 12
+                      ? "60px"
+                      : AllyCard[itemId].id === 13
+                      ? "60px"
+                      : AllyCard[itemId].id === 14
+                      ? "67px"
+                      : AllyCard[itemId].id === 15
+                      ? "40px"
                       : AllyCard[itemId].id === 16
-                      ? "25px"
+                      ? "40px"
                       : AllyCard[itemId].id === 17
-                      ? "50px"
+                      ? "40px"
                       : AllyCard[itemId].id === 18
-                      ? "15px"
-                      : AllyCard[itemId].id === 19
-                      ? "50px"
-                      : AllyCard[itemId].id === 20
                       ? "65px"
+                      : AllyCard[itemId].id === 19
+                      ? "28px"
+                      : AllyCard[itemId].id === 20
+                      ? "50px"
                       : AllyCard[itemId].id === 21
-                      ? "62px"
+                      ? "30px"
                       : AllyCard[itemId].id === 22
+                      ? "25px"
+                      : AllyCard[itemId].id === 23
+                      ? "50px"
+                      : AllyCard[itemId].id === 24
+                      ? "-19px"
+                      : AllyCard[itemId].id === 25
+                      ? "15px"
+                      : AllyCard[itemId].id === 26
+                      ? "40px"
+                      : AllyCard[itemId].id === 27
+                      ? "65px"
+                      : AllyCard[itemId].id === 28
+                      ? "62px"
+                      : AllyCard[itemId].id === 29
+                      ? "42px"
+                      : AllyCard[itemId].id === 30
                       ? "30px"
                       : "",
                   backgroundSize:
@@ -224,36 +238,54 @@ function TableAlly({
                       : AllyCard[itemId].id === 2
                       ? "200px"
                       : AllyCard[itemId].id === 3
+                      ? "100px"
+                      : AllyCard[itemId].id === 4
                       ? "200px"
-                      : AllyCard[itemId].id === 5
-                      ? "230px"
                       : AllyCard[itemId].id === 6
+                      ? "150px"
+                      : AllyCard[itemId].id === 7
                       ? "250px"
                       : AllyCard[itemId].id === 8
+                      ? "120px"
+                      : AllyCard[itemId].id === 9
                       ? "200px"
-                      : AllyCard[itemId].id === 10
+                      : AllyCard[itemId].id === 11
                       ? "100px"
                       : AllyCard[itemId].id === 12
                       ? "200px"
                       : AllyCard[itemId].id === 14
                       ? "200px"
-                      : AllyCard[itemId].id === 15
-                      ? "260px"
                       : AllyCard[itemId].id === 16
-                      ? "150px"
+                      ? "170px"
                       : AllyCard[itemId].id === 17
-                      ? "120px"
+                      ? "180px"
                       : AllyCard[itemId].id === 18
-                      ? "250px"
+                      ? "150px"
                       : AllyCard[itemId].id === 19
+                      ? "130px"
+                      : AllyCard[itemId].id === 20
+                      ? "180px"
+                      : AllyCard[itemId].id === 21
+                      ? "250px"
+                      : AllyCard[itemId].id === 22
+                      ? "140px"
+                      : AllyCard[itemId].id === 25
                       ? "220px"
+                      : AllyCard[itemId].id === 26
+                      ? "220px"
+                      : AllyCard[itemId].id === 28
+                      ? "130px"
                       : "",
                   backgroundPositionX:
                     AllyCard[itemId].id === 1
                       ? "25px"
-                      : AllyCard[itemId].id === 15
+                      : AllyCard[itemId].id === 7
                       ? "-20px"
-                      : AllyCard[itemId].id === 20
+                      : AllyCard[itemId].id === 21
+                      ? "-20px"
+                      : AllyCard[itemId].id === 26
+                      ? "-25px"
+                      : AllyCard[itemId].id === 27
                       ? "25px"
                       : "",
                 }}
@@ -261,7 +293,7 @@ function TableAlly({
               <div className="CardStatsIG">
                 <div className="AtackPoints">{AllyCard[itemId].Atack}</div>
                 <div className="HpPoints">{AllyCard[itemId].Hp}</div>
-                <div className="HpPoints">{AllyCard[itemId].Name}</div>
+                <div className="HpPoints">{AllyCard[itemId].id}</div>
               </div>
             </div>
           ) : (
