@@ -169,7 +169,10 @@ function TableAlly({
               className="CardConteiner"
               key={itemId}
               id={`Slot${index}AtackSlot${EnemyIndexForAnimation}Ally${
-                allayAtack[index] ? "Active" : "inactive"
+                allayAtack[index] &&
+                selectedItems[EnemyIndexForAnimation] != null
+                  ? "Active"
+                  : "inactive"
               }`}
             >
               <div className="InGameCard"></div>

@@ -192,7 +192,9 @@ function TableEnemy({
               className="CardConteiner"
               key={itemId}
               id={`Slot${index}AtackSlot${AllyIndexForAnimation}Enemy${
-                EnemyAtack[index] ? "Active" : "inactive"
+                EnemyAtack[index] && RoundFor === "enemy"
+                  ? "Active"
+                  : "inactive"
               }`}
             >
               <div className="InGameCard"></div>

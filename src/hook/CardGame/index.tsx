@@ -625,9 +625,7 @@ function CardGame({
     const CaedIdA = selectedItemsA[indexBotAllySelect];
     const cardIdE = selectedItems[indexBotEnemySelect];
     setAllyIndexForAnimation(indexBotAllySelect);
-    setTimeout(() => {
-      setAllyIndexForAnimation(undefined);
-    }, 2000);
+
     setTimeout(() => {
       if (selectedItemsA.some((item) => item !== null)) {
         if (CanBeUse === "EnemyAtackAlly") {
@@ -684,6 +682,9 @@ function CardGame({
                   setselectedCard(undefined);
                   setIndexSaveE(undefined);
                   setRandomIndexEnemy(undefined);
+                  setTimeout(() => {
+                    setAllyIndexForAnimation(undefined);
+                  }, 2000);
                   return newArray;
                 });
               } else {
@@ -694,7 +695,7 @@ function CardGame({
           }
         }
       }
-    }, 1000);
+    }, 500);
   }, [BotAtackAllay]);
 
   useEffect(() => {
