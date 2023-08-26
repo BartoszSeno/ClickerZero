@@ -97,7 +97,7 @@ function TableEnemy({
   useEffect(() => {
     if (CanBeUse === "AllyAtackEnemy") {
       if (IndexSaveA !== undefined) {
-        if (!isIndexSaveAUsed(IndexSaveA)) {
+        if (!isIndexSaveAUsed(AllyCard[selectedCardA])) {
           if (AllyAtackEnemy[IndexSaveE] !== undefined) {
             const selectedIndex = AllyAtackEnemy.findIndex(
               (value: boolean) => value === true
@@ -145,7 +145,10 @@ function TableEnemy({
               }
               setIndexSaveA(undefined);
               setselectedCardA(undefined);
-              setUsedIndexSaveAValues([...usedIndexSaveAValues, IndexSaveA]);
+              setUsedIndexSaveAValues([
+                ...usedIndexSaveAValues,
+                AllyCard[selectedCardA],
+              ]);
               return newArray;
             });
           }
@@ -155,7 +158,7 @@ function TableEnemy({
       }
     }
   }, [IndexSaveE, CanBeUse, selectedItems]);
-  console.log(usedIndexSaveAValues);
+
   useEffect(() => {
     if (RoundFor === "ally") {
       setEnemyAtack(Array(selectedItems.length).fill(false));
