@@ -180,8 +180,12 @@ function TableEnemy({
           className="CardOnBoard"
           key={index}
           onClick={() => {
-            handleHeck(index);
-            setEnemyIndexForAnimation(index);
+            if (IndexSaveA !== undefined) {
+              if (!isIndexSaveAUsed(AllyCard[selectedCardA])) {
+                handleHeck(index);
+                setEnemyIndexForAnimation(index);
+              }
+            }
             setTimeout(() => {
               setEnemyIndexForAnimation(null);
             }, 2000);
