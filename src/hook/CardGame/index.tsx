@@ -608,6 +608,18 @@ function CardGame({
   }
 
   useEffect(() => {
+    const allNull = selectedItemsA.every((item) => item === null);
+
+    if (RoundFor === "enemy") {
+      if (allNull) {
+        setTimeout(() => {
+          HandleClickAllyHp();
+        }, 1000);
+      }
+    }
+  }, [RoundFor, CanBeUse]);
+
+  useEffect(() => {
     const indexBotAllySelect = randomIndex;
     const indexBotEnemySelect = randomIndexEnemy;
     const CaedIdA = selectedItemsA[indexBotAllySelect];
