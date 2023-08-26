@@ -34,6 +34,8 @@ function TableEnemy({
   EnemyAtack,
   setUsedIndexSaveAValues,
   usedIndexSaveAValues,
+  setEnemyIndexForAnimation,
+  AllyIndexForAnimation,
 }: {
   selectedItemIdE: any;
   setSelectedItemIdE: any;
@@ -65,6 +67,8 @@ function TableEnemy({
   EnemyAtack: any;
   setUsedIndexSaveAValues: any;
   usedIndexSaveAValues: any;
+  setEnemyIndexForAnimation: any;
+  AllyIndexForAnimation: any;
 }) {
   //====
 
@@ -93,69 +97,70 @@ function TableEnemy({
   }
 
   useEffect(() => {
-    if (CanBeUse === "AllyAtackEnemy") {
-      if (IndexSaveA !== undefined) {
-        if (!isIndexSaveAUsed(AllyCard[selectedCardA])) {
-          console.log(IndexSaveA);
-          if (AllyAtackEnemy[IndexSaveE] !== undefined) {
-            const selectedIndex = AllyAtackEnemy.findIndex(
-              (value: boolean) => value === true
-            );
+    setTimeout(() => {
+      if (CanBeUse === "AllyAtackEnemy") {
+        if (IndexSaveA !== undefined) {
+          if (!isIndexSaveAUsed(AllyCard[selectedCardA])) {
+            if (AllyAtackEnemy[IndexSaveE] !== undefined) {
+              const selectedIndex = AllyAtackEnemy.findIndex(
+                (value: boolean) => value === true
+              );
 
-            setAllyAtackEnemy((prevArray: any) => {
-              const newArray = [...prevArray];
-              if (selectedIndex !== -1) {
-                newArray[selectedIndex] = false;
-              }
-              newArray[IndexSaveE] = true;
-              if (newArray[IndexSaveE]) {
-                const CaedIdE = selectedItems[IndexSaveE];
-                if (selectedItems[IndexSaveE] !== null) {
-                  EnemyCard[Number(CaedIdE)].Hp -=
-                    AllyCard[selectedCardA].Atack;
-                  AllyCard[selectedCardA].Hp -=
-                    EnemyCard[Number(CaedIdE)].Atack;
-                  //
-                  setEnemyAtack(Array(selectedItems.length).fill(false));
-                  setselectedCard(undefined);
-                  setAllyAtackEnemy(Array(selectedItems.length).fill(false));
-                  setIndexSaveE(-1);
-                  //
-                  if (EnemyCard[Number(CaedIdE)].Hp <= 0) {
-                    setSelectedItems((prevItems: any[]) => {
-                      const newItems = [...prevItems];
-                      newItems[IndexSaveE] = null;
-                      return newItems;
-                    });
-                  }
-                  if (AllyCard[selectedCardA].Hp <= 0) {
-                    setselectedItemsA((prevItems: any[]) => {
-                      const newItems = [...prevItems];
-                      newItems[IndexSaveA] = null;
-                      return newItems;
-                    });
-                  }
+              setAllyAtackEnemy((prevArray: any) => {
+                const newArray = [...prevArray];
+                if (selectedIndex !== -1) {
+                  newArray[selectedIndex] = false;
                 }
-                setOneTimeAAE((prevArray: any) => {
-                  const newArray = [...prevArray];
-                  newArray[IndexSaveA] = false;
-                  return newArray;
-                });
-              }
-              setIndexSaveA(undefined);
-              setselectedCardA(undefined);
-              setUsedIndexSaveAValues([
-                ...usedIndexSaveAValues,
-                AllyCard[selectedCardA],
-              ]);
-              return newArray;
-            });
+                newArray[IndexSaveE] = true;
+                if (newArray[IndexSaveE]) {
+                  const CaedIdE = selectedItems[IndexSaveE];
+                  if (selectedItems[IndexSaveE] !== null) {
+                    EnemyCard[Number(CaedIdE)].Hp -=
+                      AllyCard[selectedCardA].Atack;
+                    AllyCard[selectedCardA].Hp -=
+                      EnemyCard[Number(CaedIdE)].Atack;
+                    //
+                    setEnemyAtack(Array(selectedItems.length).fill(false));
+                    setselectedCard(undefined);
+                    setAllyAtackEnemy(Array(selectedItems.length).fill(false));
+                    setIndexSaveE(-1);
+                    //
+                    if (EnemyCard[Number(CaedIdE)].Hp <= 0) {
+                      setSelectedItems((prevItems: any[]) => {
+                        const newItems = [...prevItems];
+                        newItems[IndexSaveE] = null;
+                        return newItems;
+                      });
+                    }
+                    if (AllyCard[selectedCardA].Hp <= 0) {
+                      setselectedItemsA((prevItems: any[]) => {
+                        const newItems = [...prevItems];
+                        newItems[IndexSaveA] = null;
+                        return newItems;
+                      });
+                    }
+                  }
+                  setOneTimeAAE((prevArray: any) => {
+                    const newArray = [...prevArray];
+                    newArray[IndexSaveA] = false;
+                    return newArray;
+                  });
+                }
+                setIndexSaveA(undefined);
+                setselectedCardA(undefined);
+                setUsedIndexSaveAValues([
+                  ...usedIndexSaveAValues,
+                  AllyCard[selectedCardA],
+                ]);
+                return newArray;
+              });
+            }
+          } else {
+            return;
           }
-        } else {
-          return;
         }
       }
-    }
+    }, 500);
   }, [IndexSaveE, CanBeUse, selectedItems]);
 
   useEffect(() => {
@@ -176,10 +181,20 @@ function TableEnemy({
           key={index}
           onClick={() => {
             handleHeck(index);
+            setEnemyIndexForAnimation(index);
+            setTimeout(() => {
+              setEnemyIndexForAnimation(null);
+            }, 2000);
           }}
         >
           {itemId !== null ? (
-            <div className="CardConteiner" key={itemId}>
+            <div
+              className="CardConteiner"
+              key={itemId}
+              id={`Slot${index}AtackSlot${AllyIndexForAnimation}Enemy${
+                EnemyAtack[index] ? "Active" : "inactive"
+              }`}
+            >
               <div className="InGameCard"></div>
               <div
                 className="CardCharIG"
