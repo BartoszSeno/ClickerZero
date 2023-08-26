@@ -254,6 +254,7 @@ function CardGame({
         });
         setClickCount((prevCount) => prevCount + 1);
         if (RoundFor === "enemy") {
+          setRandomIndexEnemy(undefined);
           setRoundFor("ally");
           setCurrentMana((prevCM) => (prevCM === MaxMana ? prevCM : MaxMana));
         }
@@ -395,8 +396,7 @@ function CardGame({
   };
 
   const HandleClickAllyHp = () => {
-    const CaedIdE = EnemyCard[selectedCard].id - 1;
-    console.log(EnemyCard[selectedCard].id);
+    const CaedIdE = EnemyCard[randomIndexEnemy].id - 1;
     const EnemyAtack = EnemyCard[Number(CaedIdE)].Atack;
 
     if (CanBeUse === "EnemyAtackAlly") {
@@ -554,10 +554,10 @@ function CardGame({
       setRandomIndexEnemy(null); // W przypadku, gdy nie ma dostępnych elementów.
     }
   }
-
+  console.log(randomIndexEnemy);
   useEffect(() => {
     wypiszLosowyIndeksZTablicyEnemy(selectedItems);
-  }, [selectedItems]);
+  }, [RoundFor === "enemy"]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -618,7 +618,6 @@ function CardGame({
       }
     }
   }, [RoundFor, CanBeUse]);
-
   useEffect(() => {
     const indexBotAllySelect = randomIndex;
     const indexBotEnemySelect = randomIndexEnemy;
@@ -628,15 +627,20 @@ function CardGame({
 
     setTimeout(() => {
       if (selectedItemsA.some((item) => item !== null)) {
+        console.log("1");
         if (CanBeUse === "EnemyAtackAlly") {
+          console.log(indexBotEnemySelect);
           if (indexBotEnemySelect !== undefined) {
+            console.log("13");
             if (!isIndexSaveEUsed(EnemyCard[Number(cardIdE)])) {
-              if (EnemyAtackAlly[indexBotEnemySelect] !== undefined) {
-                const selectedIndex = EnemyAtackAlly.findIndex(
+              console.log("14");
+              if (EnemyAtack[indexBotEnemySelect] !== undefined) {
+                console.log("15");
+                const selectedIndex = EnemyAtack.findIndex(
                   (value: boolean) => value === true
                 );
 
-                setEnemyAtackAlly((prevArray: any) => {
+                setEnemyAtack((prevArray: any) => {
                   const newArray = [...prevArray];
                   if (selectedIndex !== -1) {
                     newArray[selectedIndex] = false;
@@ -784,6 +788,7 @@ function CardGame({
               usedIndexSaveAValues={usedIndexSaveAValues}
               setEnemyIndexForAnimation={setEnemyIndexForAnimation}
               AllyIndexForAnimation={AllyIndexForAnimation}
+              randomIndexEnemy={randomIndexEnemy}
             />
             <div className="mainMenu">
               <div className="MainCharCon">

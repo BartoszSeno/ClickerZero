@@ -36,6 +36,7 @@ function TableEnemy({
   usedIndexSaveAValues,
   setEnemyIndexForAnimation,
   AllyIndexForAnimation,
+  randomIndexEnemy,
 }: {
   selectedItemIdE: any;
   setSelectedItemIdE: any;
@@ -69,15 +70,14 @@ function TableEnemy({
   usedIndexSaveAValues: any;
   setEnemyIndexForAnimation: any;
   AllyIndexForAnimation: any;
+  randomIndexEnemy: any;
 }) {
   //====
 
   useEffect(() => {
     setEnemyAtack(Array(selectedItems.length).fill(false));
   }, [selectedItems]);
-  useEffect(() => {
-    console.log("Wybrany przedmiot:", EnemyCard[selectedCard]);
-  }, [selectedCard]);
+
   useEffect(() => {
     // console.log(IndexSaveE);
   }, [IndexSaveE]);
@@ -196,7 +196,7 @@ function TableEnemy({
               className="CardConteiner"
               key={itemId}
               id={`Slot${index}AtackSlot${AllyIndexForAnimation}Enemy${
-                EnemyAtack[index] && RoundFor === "enemy"
+                index === randomIndexEnemy && RoundFor === "enemy"
                   ? "Active"
                   : "inactive"
               }`}
@@ -205,11 +205,12 @@ function TableEnemy({
               <div
                 className="CardCharIG"
                 style={{
-                  backgroundColor: EnemyAtack[index]
-                    ? "green"
-                    : CanBeUse === "AllyAtackEnemy" && AllyAtackEnemy[index]
-                    ? "blue"
-                    : "",
+                  backgroundColor:
+                    index === randomIndexEnemy && RoundFor === "enemy"
+                      ? "green"
+                      : CanBeUse === "AllyAtackEnemy" && AllyAtackEnemy[index]
+                      ? "blue"
+                      : "",
                   backgroundImage: `url(${EnemyCard[itemId].img})`,
                   backgroundPositionY:
                     EnemyCard[itemId].id === 1
