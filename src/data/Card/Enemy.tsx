@@ -61,7 +61,7 @@ export const EnemyCard = [
   },
   {
     id: 7,
-    Name: "---",
+    Name: "Wold",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Enemy/04.5.gif",
     Atack: 2,
     Hp: 2,
@@ -91,7 +91,7 @@ export const EnemyCard = [
   },
   {
     id: 10,
-    Name: "---",
+    Name: "Drigo",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Enemy/06.5.gif",
     Atack: 4,
     Hp: 2,
@@ -111,7 +111,7 @@ export const EnemyCard = [
   },
   {
     id: 12,
-    Name: "---",
+    Name: "Arhi",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Enemy/07.5.gif",
     Atack: 3,
     Hp: 1,
@@ -191,7 +191,7 @@ export const EnemyCard = [
   },
   {
     id: 20,
-    Name: "---",
+    Name: "Zembin",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Enemy/13.5.gif",
     Atack: 6,
     Hp: 3,
@@ -231,7 +231,7 @@ export const EnemyCard = [
   },
   {
     id: 24,
-    Name: "---",
+    Name: "Nino",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Enemy/16.5.gif",
     Atack: 2,
     Hp: 11,
@@ -281,7 +281,7 @@ export const EnemyCard = [
   },
   {
     id: 29,
-    Name: "---",
+    Name: "Cymon",
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Enemy/20.5.gif",
     Atack: 5,
     Hp: 10,
