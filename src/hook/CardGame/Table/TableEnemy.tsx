@@ -15,7 +15,9 @@ function TableEnemy({
   IdCardA,
   setselectedItemsA,
   IndexSaveA,
+  setIndexSaveA,
   selectedCardA,
+  setselectedCardA,
   setSelectedItems,
   selectedItems,
   setIndexSaveE,
@@ -30,6 +32,8 @@ function TableEnemy({
   EnemyIdSelected,
   setEnemyAtack,
   EnemyAtack,
+  setUsedIndexSaveAValues,
+  usedIndexSaveAValues,
 }: {
   selectedItemIdE: any;
   setSelectedItemIdE: any;
@@ -42,7 +46,9 @@ function TableEnemy({
   IdCardA: any;
   setselectedItemsA: any;
   IndexSaveA: any;
+  setIndexSaveA: any;
   selectedCardA: any;
+  setselectedCardA: any;
   setSelectedItems: any;
   selectedItems: any;
   setIndexSaveE: any;
@@ -57,6 +63,8 @@ function TableEnemy({
   EnemyIdSelected: any;
   setEnemyAtack: any;
   EnemyAtack: any;
+  setUsedIndexSaveAValues: any;
+  usedIndexSaveAValues: any;
 }) {
   //====
 
@@ -74,62 +82,80 @@ function TableEnemy({
     setIndexSaveE(index);
   };
 
+  console.log(IndexSaveA);
+
   const [AllyAtackEnemy, setAllyAtackEnemy] = useState<any>([]);
   useEffect(() => {
     setAllyAtackEnemy(Array(selectedItems.length).fill(false));
   }, [selectedItems]);
   //do podswietlania przeciwnika
+
+  function isIndexSaveAUsed(value: any) {
+    return usedIndexSaveAValues.includes(value);
+  }
+
   useEffect(() => {
     if (CanBeUse === "AllyAtackEnemy") {
-      if (AllyAtackEnemy[IndexSaveE] !== undefined) {
-        const selectedIndex = AllyAtackEnemy.findIndex(
-          (value: boolean) => value === true
-        );
-        setAllyAtackEnemy((prevArray: any) => {
-          const newArray = [...prevArray];
-          if (selectedIndex !== -1) {
-            newArray[selectedIndex] = false;
-          }
-          newArray[IndexSaveE] = true;
-          if (newArray[IndexSaveE]) {
-            const CaedIdE = selectedItems[IndexSaveE];
-            if (selectedItems[IndexSaveE] !== null) {
-              EnemyCard[Number(CaedIdE)].Hp -= AllyCard[selectedCardA].Atack;
-              AllyCard[selectedCardA].Hp -= EnemyCard[Number(CaedIdE)].Atack;
-              //
-              setEnemyAtack(Array(selectedItems.length).fill(false));
-              setselectedCard(undefined);
-              setAllyAtackEnemy(Array(selectedItems.length).fill(false));
-              setIndexSaveE(-1);
-              //
-              if (EnemyCard[Number(CaedIdE)].Hp <= 0) {
-                setSelectedItems((prevItems: any[]) => {
-                  const newItems = [...prevItems];
-                  newItems[IndexSaveE] = null;
-                  return newItems;
-                });
-              }
-              if (AllyCard[selectedCardA].Hp <= 0) {
-                setselectedItemsA((prevItems: any[]) => {
-                  const newItems = [...prevItems];
-                  newItems[IndexSaveA] = null;
-                  return newItems;
-                });
-              }
-            }
-            setOneTimeAAE((prevArray: any) => {
+      if (IndexSaveA !== undefined) {
+        if (!isIndexSaveAUsed(IndexSaveA)) {
+          if (AllyAtackEnemy[IndexSaveE] !== undefined) {
+            const selectedIndex = AllyAtackEnemy.findIndex(
+              (value: boolean) => value === true
+            );
+
+            setAllyAtackEnemy((prevArray: any) => {
               const newArray = [...prevArray];
-              newArray[IndexSaveA] = false;
+              if (selectedIndex !== -1) {
+                newArray[selectedIndex] = false;
+              }
+              newArray[IndexSaveE] = true;
+              if (newArray[IndexSaveE]) {
+                const CaedIdE = selectedItems[IndexSaveE];
+                if (selectedItems[IndexSaveE] !== null) {
+                  EnemyCard[Number(CaedIdE)].Hp -=
+                    AllyCard[selectedCardA].Atack;
+                  AllyCard[selectedCardA].Hp -=
+                    EnemyCard[Number(CaedIdE)].Atack;
+                  //
+                  setEnemyAtack(Array(selectedItems.length).fill(false));
+                  setselectedCard(undefined);
+                  setAllyAtackEnemy(Array(selectedItems.length).fill(false));
+                  setIndexSaveE(-1);
+                  //
+                  if (EnemyCard[Number(CaedIdE)].Hp <= 0) {
+                    setSelectedItems((prevItems: any[]) => {
+                      const newItems = [...prevItems];
+                      newItems[IndexSaveE] = null;
+                      return newItems;
+                    });
+                  }
+                  if (AllyCard[selectedCardA].Hp <= 0) {
+                    setselectedItemsA((prevItems: any[]) => {
+                      const newItems = [...prevItems];
+                      newItems[IndexSaveA] = null;
+                      return newItems;
+                    });
+                  }
+                }
+                setOneTimeAAE((prevArray: any) => {
+                  const newArray = [...prevArray];
+                  newArray[IndexSaveA] = false;
+                  return newArray;
+                });
+              }
+              setIndexSaveA(undefined);
+              setselectedCardA(undefined);
+              setUsedIndexSaveAValues([...usedIndexSaveAValues, IndexSaveA]);
               return newArray;
             });
           }
-          return newArray;
-        });
+        } else {
+          return;
+        }
       }
-    } else {
-      return;
     }
   }, [IndexSaveE, CanBeUse, selectedItems]);
+  console.log(usedIndexSaveAValues);
   useEffect(() => {
     if (RoundFor === "ally") {
       setEnemyAtack(Array(selectedItems.length).fill(false));

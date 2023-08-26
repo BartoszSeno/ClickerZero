@@ -35,6 +35,9 @@ function CardGame({
   const [CurrentMana, setCurrentMana] = useState<number>(1);
   //=======================================
 
+  //for block move the same card multiple times
+  const [usedIndexSaveAValues, setUsedIndexSaveAValues] = useState<any>([]);
+
   const itemCount = randomItemsE.length;
 
   //==============
@@ -265,6 +268,7 @@ function CardGame({
     setIndexSaveA(-1);
     setHasCodeExecuted(0);
     setWylosowanoLiczbe(false);
+    setUsedIndexSaveAValues([]);
   };
 
   useEffect(() => {
@@ -720,7 +724,9 @@ function CardGame({
               IdCardA={IdCardA}
               setselectedItemsA={setselectedItemsA}
               IndexSaveA={IndexSaveA}
+              setIndexSaveA={setIndexSaveA}
               selectedCardA={selectedCardA}
+              setselectedCardA={setselectedCardA}
               setSelectedItems={setSelectedItems}
               selectedItems={selectedItems}
               setIndexSaveE={setIndexSaveE}
@@ -735,6 +741,8 @@ function CardGame({
               setCurrentMana={setCurrentMana}
               setEnemyAtack={setEnemyAtack}
               EnemyAtack={EnemyAtack}
+              setUsedIndexSaveAValues={setUsedIndexSaveAValues}
+              usedIndexSaveAValues={usedIndexSaveAValues}
             />
             <div className="mainMenu">
               <div className="MainCharCon">
