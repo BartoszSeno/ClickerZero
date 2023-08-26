@@ -82,8 +82,6 @@ function TableEnemy({
     setIndexSaveE(index);
   };
 
-  console.log(IndexSaveA);
-
   const [AllyAtackEnemy, setAllyAtackEnemy] = useState<any>([]);
   useEffect(() => {
     setAllyAtackEnemy(Array(selectedItems.length).fill(false));
@@ -98,6 +96,7 @@ function TableEnemy({
     if (CanBeUse === "AllyAtackEnemy") {
       if (IndexSaveA !== undefined) {
         if (!isIndexSaveAUsed(AllyCard[selectedCardA])) {
+          console.log(IndexSaveA);
           if (AllyAtackEnemy[IndexSaveE] !== undefined) {
             const selectedIndex = AllyAtackEnemy.findIndex(
               (value: boolean) => value === true
