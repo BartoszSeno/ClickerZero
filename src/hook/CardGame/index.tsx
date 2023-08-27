@@ -201,7 +201,6 @@ function CardGame({
     const index = availableIndexes[randomIndex];
     return AllyCard[index];
   };
-
   //check than bot have turn
   const [hasCodeExecuted, setHasCodeExecuted] = useState<number>(0);
   const [wylosowanoLiczbe, setWylosowanoLiczbe] = useState(false); // Dodajemy stan do śledzenia, czy już wylosowano liczbę
@@ -213,22 +212,24 @@ function CardGame({
       if (RoundFor === "ally") {
         if (randomItemsE.length <= 5) {
           setrandomItemsE((prevItems: any) => [...prevItems, newItemE]);
+          setremainingItemsE((prevIndexes) => {
+            const newIndexes = [...prevIndexes];
+            const itemIndex = EnemyCard.findIndex((item) => item === newItemE);
+            if (itemIndex !== -1) {
+              const remainingIndex = newIndexes.findIndex(
+                (index) => index === itemIndex
+              );
+              if (remainingIndex !== -1) {
+                newIndexes.splice(remainingIndex, 1);
+              }
+              console.log(remainingIndex, "Sss");
+            }
+            return newIndexes;
+          });
         } else {
         }
         setBotAtackAllay(false);
-        setremainingItemsE((prevIndexes) => {
-          const newIndexes = [...prevIndexes];
-          const itemIndex = EnemyCard.findIndex((item) => item === newItemE);
-          if (itemIndex !== -1) {
-            const remainingIndex = newIndexes.findIndex(
-              (index) => index === itemIndex
-            );
-            if (remainingIndex !== -1) {
-              newIndexes.splice(remainingIndex, 1);
-            }
-          }
-          return newIndexes;
-        });
+
         setclickCountE((prevCount) => prevCount + 1);
         if (RoundFor === "ally") {
           setRoundFor("enemy");
@@ -244,21 +245,22 @@ function CardGame({
       if (RoundFor === "enemy") {
         if (randomItems.length <= 5) {
           setRandomItems((prevItems: any) => [...prevItems, newItem]);
+          setRemainingItems((prevIndexes) => {
+            const newIndexes = [...prevIndexes];
+            const itemIndex = AllyCard.findIndex((item) => item === newItem);
+            if (itemIndex !== -1) {
+              const remainingIndex = newIndexes.findIndex(
+                (index) => index === itemIndex
+              );
+              if (remainingIndex !== -1) {
+                newIndexes.splice(remainingIndex, 1);
+              }
+            }
+            return newIndexes;
+          });
         } else {
         }
-        setRemainingItems((prevIndexes) => {
-          const newIndexes = [...prevIndexes];
-          const itemIndex = AllyCard.findIndex((item) => item === newItem);
-          if (itemIndex !== -1) {
-            const remainingIndex = newIndexes.findIndex(
-              (index) => index === itemIndex
-            );
-            if (remainingIndex !== -1) {
-              newIndexes.splice(remainingIndex, 1);
-            }
-          }
-          return newIndexes;
-        });
+
         setClickCount((prevCount) => prevCount + 1);
         if (RoundFor === "enemy") {
           setRandomIndexEnemy(undefined);
@@ -624,6 +626,9 @@ function CardGame({
       }
     }
   }, [RoundFor, CanBeUse]);
+
+  const [itsFirstRoudn, setItsFirstRound] = useState<boolean>(true);
+
   useEffect(() => {
     const indexBotAllySelect = randomIndex;
     const indexBotEnemySelect = randomIndexEnemy;
@@ -634,70 +639,73 @@ function CardGame({
     setTimeout(() => {
       if (selectedItemsA.some((item) => item !== null)) {
         if (CanBeUse === "EnemyAtackAlly") {
-          if (indexBotEnemySelect !== undefined) {
-            if (!isIndexSaveEUsed(EnemyCard[Number(cardIdE)])) {
-              if (EnemyAtack[indexBotEnemySelect] !== undefined) {
-                const selectedIndex = EnemyAtack.findIndex(
-                  (value: boolean) => value === true
-                );
+          if (itsFirstRoudn === false) {
+            if (indexBotEnemySelect !== undefined) {
+              if (!isIndexSaveEUsed(EnemyCard[Number(cardIdE)])) {
+                if (EnemyAtack[indexBotEnemySelect] !== undefined) {
+                  const selectedIndex = EnemyAtack.findIndex(
+                    (value: boolean) => value === true
+                  );
 
-                setEnemyAtack((prevArray: any) => {
-                  const newArray = [...prevArray];
-                  if (selectedIndex !== -1) {
-                    newArray[selectedIndex] = false;
-                  }
-                  newArray[indexBotAllySelect] = true;
-                  if (newArray[indexBotAllySelect]) {
-                    //
-
-                    //
-                    if (selectedItemsA[indexBotAllySelect] !== null) {
-                      EnemyCard[Number(cardIdE)].Hp -=
-                        AllyCard[Number(CaedIdA)].Atack;
-                      AllyCard[Number(CaedIdA)].Hp -=
-                        EnemyCard[Number(cardIdE)].Atack;
-
-                      if (EnemyCard[Number(cardIdE)].Hp <= 0) {
-                        setSelectedItems((prevItems: any[]) => {
-                          const newItemsE = [...prevItems];
-                          newItemsE[indexBotEnemySelect] = null;
-                          return newItemsE;
-                        });
-                      }
-                      if (AllyCard[Number(CaedIdA)].Hp <= 0) {
-                        setselectedItemsA((prevItems: any[]) => {
-                          const newItems = [...prevItems];
-                          newItems[indexBotAllySelect] = null;
-                          return newItems;
-                        });
-                      }
-                      setOneTimeAEA((prevArray: any) => {
-                        const newArray = [...prevArray];
-                        newArray[indexBotEnemySelect] = false;
-                        return newArray;
-                      });
+                  setEnemyAtack((prevArray: any) => {
+                    const newArray = [...prevArray];
+                    if (selectedIndex !== -1) {
+                      newArray[selectedIndex] = false;
                     }
-                  }
-                  setHasCodeExecuted((prevCount) => prevCount + 1);
-                  if (hasCodeExecuted <= 5) {
-                    NextMoveBot();
-                    setHasCodeExecuted(0);
-                  }
-                  setBotAtackAllay(false);
-                  setselectedCard(undefined);
-                  setIndexSaveE(undefined);
-                  setRandomIndexEnemy(undefined);
-                  setTimeout(() => {
-                    setAllyIndexForAnimation(undefined);
-                  }, 2000);
-                  return newArray;
-                });
+                    newArray[indexBotAllySelect] = true;
+                    if (newArray[indexBotAllySelect]) {
+                      //
+
+                      //
+                      if (selectedItemsA[indexBotAllySelect] !== null) {
+                        EnemyCard[Number(cardIdE)].Hp -=
+                          AllyCard[Number(CaedIdA)].Atack;
+                        AllyCard[Number(CaedIdA)].Hp -=
+                          EnemyCard[Number(cardIdE)].Atack;
+
+                        if (EnemyCard[Number(cardIdE)].Hp <= 0) {
+                          setSelectedItems((prevItems: any[]) => {
+                            const newItemsE = [...prevItems];
+                            newItemsE[indexBotEnemySelect] = null;
+                            return newItemsE;
+                          });
+                        }
+                        if (AllyCard[Number(CaedIdA)].Hp <= 0) {
+                          setselectedItemsA((prevItems: any[]) => {
+                            const newItems = [...prevItems];
+                            newItems[indexBotAllySelect] = null;
+                            return newItems;
+                          });
+                        }
+                        setOneTimeAEA((prevArray: any) => {
+                          const newArray = [...prevArray];
+                          newArray[indexBotEnemySelect] = false;
+                          return newArray;
+                        });
+                      }
+                    }
+                    setHasCodeExecuted((prevCount) => prevCount + 1);
+                    if (hasCodeExecuted <= 5) {
+                      NextMoveBot();
+                      setHasCodeExecuted(0);
+                    }
+                    setBotAtackAllay(false);
+                    setselectedCard(undefined);
+                    setIndexSaveE(undefined);
+                    setRandomIndexEnemy(undefined);
+                    setTimeout(() => {
+                      setAllyIndexForAnimation(undefined);
+                    }, 2000);
+                    return newArray;
+                  });
+                } else {
+                }
               } else {
+                return;
               }
-            } else {
-              return;
             }
           }
+          setItsFirstRound(false);
         }
       }
     }, 500);
