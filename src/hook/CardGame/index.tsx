@@ -43,59 +43,59 @@ function CardGame({
 
   //==============
   useEffect(() => {
-    const initialIndexes = Array.from({ length: 7 }, (_, index) => index);
+    const initialIndexes = Array.from({ length: 9 }, (_, index) => index);
     setremainingItemsE(initialIndexes);
   }, []);
 
   useEffect(() => {
-    if (clickCountE === 3) {
+    if (clickCountE === 5) {
       setMaxMana(4);
       setremainingItemsE((prevremainingItemsE) => {
-        const additionalIndexes = [7, 8, 9];
-        return [...prevremainingItemsE, ...additionalIndexes];
-      });
-    }
-    if (clickCountE === 5) {
-      setMaxMana(5);
-    }
-    if (clickCountE === 6) {
-      setremainingItemsE((prevremainingItemsE) => {
-        const additionalIndexes = [10, 11, 12];
+        const additionalIndexes = [9, 10, 11, 12, 13];
         return [...prevremainingItemsE, ...additionalIndexes];
       });
     }
     if (clickCountE === 7) {
-      setMaxMana(6);
+      setMaxMana(5);
     }
     if (clickCountE === 9) {
-      setMaxMana(7);
       setremainingItemsE((prevremainingItemsE) => {
-        const additionalIndexes = [13, 14, 15];
+        const additionalIndexes = [14, 15, 16, 17];
         return [...prevremainingItemsE, ...additionalIndexes];
       });
     }
     if (clickCountE === 11) {
-      setMaxMana(8);
+      setMaxMana(6);
     }
-    if (clickCountE === 12) {
+    if (clickCountE === 13) {
+      setMaxMana(7);
       setremainingItemsE((prevremainingItemsE) => {
-        const additionalIndexes = [16, 17, 18];
+        const additionalIndexes = [18, 19, 20];
         return [...prevremainingItemsE, ...additionalIndexes];
       });
     }
-    if (clickCountE === 13) {
+    if (clickCountE === 15) {
+      setMaxMana(8);
+    }
+    if (clickCountE === 17) {
+      setremainingItemsE((prevremainingItemsE) => {
+        const additionalIndexes = [21, 22, 23];
+        return [...prevremainingItemsE, ...additionalIndexes];
+      });
+    }
+    if (clickCountE === 18) {
       setMaxMana(9);
     }
-    if (clickCountE === 15) {
+    if (clickCountE === 20) {
       setMaxMana(10);
       setremainingItemsE((prevremainingItemsE) => {
-        const additionalIndexes = [19, 20, 21];
+        const additionalIndexes = [24, 25, 26];
         return [...prevremainingItemsE, ...additionalIndexes];
       });
     }
     if (clickCountE === 16) {
       setremainingItemsE((prevremainingItemsE) => {
-        const additionalIndexes = [22, 23, 24, 25, 26, 27, 28, 29, 30];
+        const additionalIndexes = [27, 28, 29, 30];
         return [...prevremainingItemsE, ...additionalIndexes];
       });
     }
@@ -126,7 +126,7 @@ function CardGame({
 
   useEffect(() => {
     const allyCardItems = AllyCard;
-    const initialIndexes = Array.from({ length: 7 }, (_, index) => index);
+    const initialIndexes = Array.from({ length: 9 }, (_, index) => index);
     setRemainingItems(initialIndexes);
   }, []);
 
@@ -134,7 +134,7 @@ function CardGame({
     if (clickCount === 3) {
       setMaxMana(4);
       setRemainingItems((prevRemainingItems) => {
-        const additionalIndexes = [7, 8, 9];
+        const additionalIndexes = [9, 10, 11, 12, 13];
         return [...prevRemainingItems, ...additionalIndexes];
       });
     }
@@ -143,7 +143,7 @@ function CardGame({
     }
     if (clickCount === 6) {
       setRemainingItems((prevRemainingItems) => {
-        const additionalIndexes = [10, 11, 12];
+        const additionalIndexes = [14, 15, 16, 17];
         return [...prevRemainingItems, ...additionalIndexes];
       });
     }
@@ -153,7 +153,7 @@ function CardGame({
     if (clickCount === 9) {
       setMaxMana(7);
       setRemainingItems((prevRemainingItems) => {
-        const additionalIndexes = [13, 14, 15];
+        const additionalIndexes = [18, 19, 20];
         return [...prevRemainingItems, ...additionalIndexes];
       });
     }
@@ -162,7 +162,7 @@ function CardGame({
     }
     if (clickCount === 12) {
       setRemainingItems((prevRemainingItems) => {
-        const additionalIndexes = [16, 17, 18];
+        const additionalIndexes = [21, 22, 23];
         return [...prevRemainingItems, ...additionalIndexes];
       });
     }
@@ -172,13 +172,13 @@ function CardGame({
     if (clickCount === 15) {
       setMaxMana(10);
       setRemainingItems((prevRemainingItems) => {
-        const additionalIndexes = [19, 20, 21];
+        const additionalIndexes = [24, 25, 26];
         return [...prevRemainingItems, ...additionalIndexes];
       });
     }
     if (clickCount === 16) {
       setRemainingItems((prevRemainingItems) => {
-        const additionalIndexes = [22, 23, 24, 25, 26, 27, 28, 29, 30];
+        const additionalIndexes = [27, 28, 29, 30];
         return [...prevRemainingItems, ...additionalIndexes];
       });
     }
@@ -209,10 +209,13 @@ function CardGame({
   const addRandomItemWithoutRepetition = () => {
     const newItemE = getRandomItemE();
     if (newItemE) {
+      //rounnd for Enemy
       if (RoundFor === "ally") {
+        if (randomItemsE.length <= 5) {
+          setrandomItemsE((prevItems: any) => [...prevItems, newItemE]);
+        } else {
+        }
         setBotAtackAllay(false);
-
-        setrandomItemsE((prevItems: any) => [...prevItems, newItemE]);
         setremainingItemsE((prevIndexes) => {
           const newIndexes = [...prevIndexes];
           const itemIndex = EnemyCard.findIndex((item) => item === newItemE);
@@ -236,9 +239,13 @@ function CardGame({
     }
     const newItem = getRandomItem();
     //================
+    //Round for ally
     if (newItem) {
       if (RoundFor === "enemy") {
-        setRandomItems((prevItems: any) => [...prevItems, newItem]);
+        if (randomItems.length <= 5) {
+          setRandomItems((prevItems: any) => [...prevItems, newItem]);
+        } else {
+        }
         setRemainingItems((prevIndexes) => {
           const newIndexes = [...prevIndexes];
           const itemIndex = AllyCard.findIndex((item) => item === newItem);
@@ -554,7 +561,6 @@ function CardGame({
       setRandomIndexEnemy(null); // W przypadku, gdy nie ma dostępnych elementów.
     }
   }
-  console.log(randomIndexEnemy);
   useEffect(() => {
     wypiszLosowyIndeksZTablicyEnemy(selectedItems);
   }, [RoundFor === "enemy"]);
@@ -627,15 +633,10 @@ function CardGame({
 
     setTimeout(() => {
       if (selectedItemsA.some((item) => item !== null)) {
-        console.log("1");
         if (CanBeUse === "EnemyAtackAlly") {
-          console.log(indexBotEnemySelect);
           if (indexBotEnemySelect !== undefined) {
-            console.log("13");
             if (!isIndexSaveEUsed(EnemyCard[Number(cardIdE)])) {
-              console.log("14");
               if (EnemyAtack[indexBotEnemySelect] !== undefined) {
-                console.log("15");
                 const selectedIndex = EnemyAtack.findIndex(
                   (value: boolean) => value === true
                 );
