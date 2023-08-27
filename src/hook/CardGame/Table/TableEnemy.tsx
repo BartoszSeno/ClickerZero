@@ -37,6 +37,7 @@ function TableEnemy({
   setEnemyIndexForAnimation,
   AllyIndexForAnimation,
   randomIndexEnemy,
+  AllyCanBeAttack,
 }: {
   selectedItemIdE: any;
   setSelectedItemIdE: any;
@@ -71,6 +72,7 @@ function TableEnemy({
   setEnemyIndexForAnimation: any;
   AllyIndexForAnimation: any;
   randomIndexEnemy: any;
+  AllyCanBeAttack: any;
 }) {
   //====
 
@@ -199,7 +201,7 @@ function TableEnemy({
                 index === randomIndexEnemy && RoundFor === "enemy"
                   ? "Active"
                   : "inactive"
-              }`}
+              }${AllyCanBeAttack ? "AllyCanBeAttack" : ""}`}
             >
               <div className="InGameCard"></div>
               <div

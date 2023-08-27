@@ -622,6 +622,11 @@ function CardGame({
       if (allNull) {
         setTimeout(() => {
           HandleClickAllyHp();
+          setAllyCanBeAttack(true);
+          setTimeout(() => {
+            HandleClickAllyHp();
+            setAllyCanBeAttack(false);
+          }, 2000);
         }, 1000);
       }
     }
@@ -731,8 +736,11 @@ function CardGame({
 
   // enemy char
   const allNullChar = selectedItems.every((item) => item === null);
+  const allNullCharE = selectedItemsA.every((item) => item === null);
 
   const [EnemyCanBeAttack, setEnemyCanBeAttack] = useState<boolean>(false);
+  const [AllyCanBeAttack, setAllyCanBeAttack] = useState<boolean>(false);
+
   return (
     <>
       <div
@@ -802,6 +810,7 @@ function CardGame({
               setEnemyIndexForAnimation={setEnemyIndexForAnimation}
               AllyIndexForAnimation={AllyIndexForAnimation}
               randomIndexEnemy={randomIndexEnemy}
+              AllyCanBeAttack={AllyCanBeAttack}
             />
             <div className="mainMenu">
               <div className="MainCharCon">
@@ -831,7 +840,15 @@ function CardGame({
                   ></button>
                   <div className="EnemyChar"></div>
                 </div>
-                <div className="mainCharacter All">
+                <div
+                  className="mainCharacter All"
+                  id={AllyCanBeAttack ? "EnemyCanBeAttack" : ""}
+                  style={{
+                    animationName: allNullCharE ? "CanAtack" : "",
+                    animationDuration: allNullCharE ? "2s" : "",
+                    animationIterationCount: allNullCharE ? "infinite" : "",
+                  }}
+                >
                   <div className="BorderMC">
                     <div className="MCHP">{AllyHp}</div>
                   </div>

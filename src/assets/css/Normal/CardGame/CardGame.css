@@ -918,3 +918,108 @@
     /* Stan końcowy */
   }
 }
+
+#Slot0AtackSlotnullEnemyActiveAllyCanBeAttack,
+#Slot0AtackSlotundefinedEnemyActiveAllyCanBeAttack {
+  animation-name: Slot0AtackEC;
+  animation-duration: 1s;
+  position: relative;
+}
+
+@keyframes Slot0AtackEC {
+  0% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1.2);
+    margin-top: 350px;
+    margin-left: -450px;
+  }
+  100% {
+    /* Stan końcowy */
+  }
+}
+
+#Slot1AtackSlotnullEnemyActiveAllyCanBeAttack,
+#Slot1AtackSlotundefinedEnemyActiveAllyCanBeAttack {
+  animation-name: Slot1AtackEC;
+  animation-duration: 1s;
+  position: relative;
+}
+
+@keyframes Slot1AtackEC {
+  0% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1.2);
+    margin-top: 350px;
+    margin-left: -950px;
+  }
+  100% {
+    /* Stan końcowy */
+  }
+}
+
+#Slot2AtackSlotnullEnemyActiveAllyCanBeAttack,
+#Slot2AtackSlotundefinedEnemyActiveAllyCanBeAttack {
+  animation-name: Slot2AtackEC;
+  animation-duration: 1s;
+  position: relative;
+}
+
+@keyframes Slot2AtackEC {
+  0% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1.2);
+    margin-top: 350px;
+    margin-left: -1450px;
+  }
+  100% {
+    /* Stan końcowy */
+  }
+}
+
+#Slot3AtackSlotnullEnemyActiveAllyCanBeAttack,
+#Slot3AtackSlotundefinedEnemyActiveAllyCanBeAttack {
+  animation-name: Slot3AtackEC;
+  animation-duration: 1s;
+  position: relative;
+}
+
+@keyframes Slot3AtackEC {
+  0% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1.2);
+    margin-top: 350px;
+    margin-left: -1950px;
+  }
+  100% {
+    /* Stan końcowy */
+  }
+}
+
+#Slot4AtackSlotnullEnemyActiveAllyCanBeAttack,
+#Slot4AtackSlotundefinedEnemyActiveAllyCanBeAttack {
+  animation-name: Slot4AtackEC;
+  animation-duration: 1s;
+  position: relative;
+}
+
+@keyframes Slot4AtackEC {
+  0% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1.2);
+    margin-top: 350px;
+    margin-left: -2450px;
+  }
+  100% {
+    /* Stan końcowy */
+  }
+}
