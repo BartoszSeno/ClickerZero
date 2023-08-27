@@ -633,7 +633,6 @@ function CardGame({
   }, [RoundFor, CanBeUse]);
 
   const [itsFirstRoudn, setItsFirstRound] = useState<boolean>(true);
-
   useEffect(() => {
     const indexBotAllySelect = randomIndex;
     const indexBotEnemySelect = randomIndexEnemy;
@@ -643,15 +642,21 @@ function CardGame({
 
     setTimeout(() => {
       if (selectedItemsA.some((item) => item !== null)) {
-        if (CanBeUse === "EnemyAtackAlly") {
+        console.log("1");
+        if (RoundFor === "enemy") {
+          console.log("2");
           if (itsFirstRoudn === false) {
+            console.log("3");
             if (indexBotEnemySelect !== undefined) {
+              console.log("4");
               if (!isIndexSaveEUsed(EnemyCard[Number(cardIdE)])) {
+                console.log("5");
                 if (EnemyAtack[indexBotEnemySelect] !== undefined) {
                   const selectedIndex = EnemyAtack.findIndex(
                     (value: boolean) => value === true
                   );
 
+                  console.log("6");
                   setEnemyAtack((prevArray: any) => {
                     const newArray = [...prevArray];
                     if (selectedIndex !== -1) {

@@ -174,6 +174,8 @@ function TableAlly({
                 allayAtack[index] &&
                 selectedItems[EnemyIndexForAnimation] != null
                   ? "Active"
+                  : allayAtack[index] && EnemyCanBeAttack
+                  ? "Active"
                   : "inactive"
               }${EnemyCanBeAttack ? "EnemyCanBeAttack" : ""}`}
             >

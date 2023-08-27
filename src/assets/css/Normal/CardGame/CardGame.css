@@ -814,8 +814,10 @@
   }
 }
 
-#Slot0AtackSlotnullAllyinactiveEnemyCanBeAttack,
-#Slot0AtackSlotundefinedAllyinactiveEnemyCanBeAttack {
+/*=============Animation that can attack enemy mc===================*/
+
+#Slot0AtackSlotnullAllyActiveEnemyCanBeAttack,
+#Slot0AtackSlotundefinedAllyActiveEnemyCanBeAttack {
   animation-name: Slot0AtackMC;
   animation-duration: 1s;
   position: relative;
@@ -835,8 +837,8 @@
   }
 }
 
-#Slot1AtackSlotnullAllyinactiveEnemyCanBeAttack,
-#Slot1AtackSlotundefinedAllyinactiveEnemyCanBeAttack {
+#Slot1AtackSlotnullAllyActiveEnemyCanBeAttack,
+#Slot1AtackSlotundefinedAllyActiveEnemyCanBeAttack {
   animation-name: Slot1AtackMC;
   animation-duration: 1s;
   position: relative;
@@ -856,8 +858,8 @@
   }
 }
 
-#Slot2AtackSlotnullAllyinactiveEnemyCanBeAttack,
-#Slot2AtackSlotundefinedAllyinactiveEnemyCanBeAttack {
+#Slot2AtackSlotnullAllyActiveEnemyCanBeAttack,
+#Slot2AtackSlotundefinedAllyActiveEnemyCanBeAttack {
   animation-name: Slot2AtackMC;
   animation-duration: 1s;
   position: relative;
@@ -877,8 +879,8 @@
   }
 }
 
-#Slot3AtackSlotnullAllyinactiveEnemyCanBeAttack,
-#Slot3AtackSlotundefinedAllyinactiveEnemyCanBeAttack {
+#Slot3AtackSlotnullAllyActiveEnemyCanBeAttack,
+#Slot3AtackSlotundefinedAllyActiveEnemyCanBeAttack {
   animation-name: Slot3AtackMC;
   animation-duration: 1s;
   position: relative;
@@ -898,8 +900,8 @@
   }
 }
 
-#Slot4AtackSlotnullAllyinactiveEnemyCanBeAttack,
-#Slot4AtackSlotundefinedAllyinactiveEnemyCanBeAttack {
+#Slot4AtackSlotnullAllyActiveEnemyCanBeAttack,
+#Slot4AtackSlotundefinedAllyActiveEnemyCanBeAttack {
   animation-name: Slot4AtackMC;
   animation-duration: 1s;
   position: relative;
@@ -918,6 +920,8 @@
     /* Stan końcowy */
   }
 }
+
+/*=============Animation that can attack ally mc===================*/
 
 #Slot0AtackSlotnullEnemyActiveAllyCanBeAttack,
 #Slot0AtackSlotundefinedEnemyActiveAllyCanBeAttack {
