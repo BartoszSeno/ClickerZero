@@ -398,6 +398,26 @@
   margin-top: -262px;
 }
 
+.AtackEnemyMC {
+  position: absolute;
+  height: 280px;
+  width: 240px;
+  z-index: 10001;
+  background-color: transparent;
+  border: none;
+}
+
+@keyframes CanAtack {
+  0% {
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    /* Stan końcowy */
+  }
+}
+
 /*=============Animation right to left ally===================*/
 #Slot0AtackSlot0AllyActive,
 #Slot1AtackSlot1AllyActive,
@@ -788,6 +808,111 @@
     transform: scale(1.2);
     margin-top: 200px;
     margin-left: -2000px;
+  }
+  100% {
+    /* Stan końcowy */
+  }
+}
+
+#Slot0AtackSlotnullAllyinactiveEnemyCanBeAttack,
+#Slot0AtackSlotundefinedAllyinactiveEnemyCanBeAttack {
+  animation-name: Slot0AtackMC;
+  animation-duration: 1s;
+  position: relative;
+}
+
+@keyframes Slot0AtackMC {
+  0% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1.2);
+    margin-top: -650px;
+    margin-left: -450px;
+  }
+  100% {
+    /* Stan końcowy */
+  }
+}
+
+#Slot1AtackSlotnullAllyinactiveEnemyCanBeAttack,
+#Slot1AtackSlotundefinedAllyinactiveEnemyCanBeAttack {
+  animation-name: Slot1AtackMC;
+  animation-duration: 1s;
+  position: relative;
+}
+
+@keyframes Slot1AtackMC {
+  0% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1.2);
+    margin-top: -650px;
+    margin-left: -950px;
+  }
+  100% {
+    /* Stan końcowy */
+  }
+}
+
+#Slot2AtackSlotnullAllyinactiveEnemyCanBeAttack,
+#Slot2AtackSlotundefinedAllyinactiveEnemyCanBeAttack {
+  animation-name: Slot2AtackMC;
+  animation-duration: 1s;
+  position: relative;
+}
+
+@keyframes Slot2AtackMC {
+  0% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1.2);
+    margin-top: -650px;
+    margin-left: -1450px;
+  }
+  100% {
+    /* Stan końcowy */
+  }
+}
+
+#Slot3AtackSlotnullAllyinactiveEnemyCanBeAttack,
+#Slot3AtackSlotundefinedAllyinactiveEnemyCanBeAttack {
+  animation-name: Slot3AtackMC;
+  animation-duration: 1s;
+  position: relative;
+}
+
+@keyframes Slot3AtackMC {
+  0% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1.2);
+    margin-top: -650px;
+    margin-left: -1950px;
+  }
+  100% {
+    /* Stan końcowy */
+  }
+}
+
+#Slot4AtackSlotnullAllyinactiveEnemyCanBeAttack,
+#Slot4AtackSlotundefinedAllyinactiveEnemyCanBeAttack {
+  animation-name: Slot4AtackMC;
+  animation-duration: 1s;
+  position: relative;
+}
+
+@keyframes Slot4AtackMC {
+  0% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1.2);
+    margin-top: -650px;
+    margin-left: -2450px;
   }
   100% {
     /* Stan końcowy */

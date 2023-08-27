@@ -729,6 +729,10 @@ function CardGame({
 
   const [AllyIndexForAnimation, setAllyIndexForAnimation] = useState<number>();
 
+  // enemy char
+  const allNullChar = selectedItems.every((item) => item === null);
+
+  const [EnemyCanBeAttack, setEnemyCanBeAttack] = useState<boolean>(false);
   return (
     <>
       <div
@@ -801,20 +805,30 @@ function CardGame({
             />
             <div className="mainMenu">
               <div className="MainCharCon">
-                <div className="mainCharacter Enem">
+                <div
+                  className="mainCharacter Enem"
+                  id={EnemyCanBeAttack ? "EnemyCanBeAttack" : ""}
+                  style={{
+                    animationName: allNullChar ? "CanAtack" : "",
+                    animationDuration: allNullChar ? "2s" : "",
+                    animationIterationCount: allNullChar ? "infinite" : "",
+                  }}
+                >
                   <div className="BorderMC">
                     <div className="MCHP">{EnemyHp}</div>
                   </div>
                   <button
-                    className="buttonTest"
+                    className="AtackEnemyMC"
                     onClick={(e) => {
                       Test();
                       HandleClickEnemyHp();
+                      setEnemyCanBeAttack(true);
+                      setTimeout(() => {
+                        setEnemyCanBeAttack(false);
+                      }, 2000);
                     }}
                     disabled={hasNonNullValueE === true && ACA === false}
-                  >
-                    tests
-                  </button>
+                  ></button>
                   <div className="EnemyChar"></div>
                 </div>
                 <div className="mainCharacter All">
@@ -914,6 +928,7 @@ function CardGame({
               setAllayAtack={setAllayAtack}
               EnemyIndexForAnimation={EnemyIndexForAnimation}
               setAllyIndexForAnimation={setAllyIndexForAnimation}
+              EnemyCanBeAttack={EnemyCanBeAttack}
             />
             <HandAlly
               HandleItemClick={HandleItemClick}
