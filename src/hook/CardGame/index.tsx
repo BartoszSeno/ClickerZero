@@ -125,7 +125,6 @@ function CardGame({
   const [clickCount, setClickCount] = useState<number>(0);
 
   useEffect(() => {
-    const allyCardItems = AllyCard;
     const initialIndexes = Array.from({ length: 9 }, (_, index) => index);
     setRemainingItems(initialIndexes);
   }, []);
@@ -633,6 +632,7 @@ function CardGame({
   }, [RoundFor, CanBeUse]);
 
   const [itsFirstRoudn, setItsFirstRound] = useState<boolean>(true);
+
   useEffect(() => {
     const indexBotAllySelect = randomIndex;
     const indexBotEnemySelect = randomIndexEnemy;
@@ -644,6 +644,9 @@ function CardGame({
       if (selectedItemsA.some((item) => item !== null)) {
         console.log("1");
         if (RoundFor === "enemy") {
+          setTimeout(() => {
+            setItsFirstRound(false);
+          }, 1000);
           console.log("2");
           if (itsFirstRoudn === false) {
             console.log("3");
@@ -715,7 +718,6 @@ function CardGame({
               }
             }
           }
-          setItsFirstRound(false);
         }
       }
     }, 500);
@@ -966,7 +968,6 @@ function CardGame({
 
 export default CardGame;
 
-// do naprawy złe odejmowanie hp
-// dodać atakowanie głownej postaci
+// naprawic uzywanie kilku ruchów bota
 // tabliczke wygrana / przegrana
 // dodać nagrody za wygraną
