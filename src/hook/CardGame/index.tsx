@@ -717,147 +717,62 @@ function CardGame({
 
   const [AllyIndexForAnimation, setAllyIndexForAnimation] = useState<number>();
 
-  function test() {
-    assignRandomValueToNull();
-    wypiszLosowyIndeksZTablicy(selectedItemsA);
-    wypiszLosowyIndeksZTablicyEnemy(selectedItems);
-    setTimeout(() => {
-      const allNull = selectedItemsA.every((item) => item === null);
-      if (hasCodeExecuted < 1) {
-        if (RoundFor === "enemy") {
-          setNumberForColor(randomIndexEnemy);
-          if (
-            selectedItems[randomIndexEnemy] !== null &&
-            !EnemyAtack[randomIndexEnemy]
-          ) {
-            const selectedIndex = EnemyAtack.findIndex(
-              (value: boolean) => value === true
-            );
-
-            setEnemyAtack((prevArray: any) => {
-              const newArray = [...prevArray];
-              if (selectedIndex !== -1) {
-                newArray[selectedIndex] = false;
-              }
-              newArray[randomIndexEnemy] = true;
-              if (newArray[randomIndexEnemy]) {
-                setCanBeUse("EnemyAtackAlly");
-                setECA(true);
-                setselectedCard(selectedItems[randomIndexEnemy]);
-                setBotAtackAllay(true);
-              }
-              return newArray;
-            });
-          }
-          if (allNull) {
-            //tutaj jedna z opcji atakowania
-          }
-        }
-      }
-    }, 500);
-    const allNull = selectedItemsA.every((item) => item === null);
-
-    if (allNull) {
-      setTimeout(() => {
-        HandleClickAllyHp();
-        setAllyCanBeAttack(true);
-        setTimeout(() => {
-          HandleClickAllyHp();
-          setAllyCanBeAttack(false);
-        }, 2000);
-      }, 700);
-    }
-    const indexBotAllySelect = randomIndex;
-    const indexBotEnemySelect = randomIndexEnemy;
-    const CaedIdA = selectedItemsA[indexBotAllySelect];
-    const cardIdE = selectedItems[indexBotEnemySelect];
-    setAllyIndexForAnimation(indexBotAllySelect);
-
-    setTimeout(() => {
-      if (selectedItemsA.some((item) => item !== null)) {
-        console.log("1");
-        if (RoundFor === "enemy") {
-          setTimeout(() => {
-            setItsFirstRound(false);
-          }, 1000);
-          console.log("2");
-          if (itsFirstRoudn === false) {
-            console.log("3");
-            if (indexBotEnemySelect !== undefined) {
-              console.log("4");
-              if (!isIndexSaveEUsed(EnemyCard[Number(cardIdE)])) {
-                console.log("5");
-                if (EnemyAtack[indexBotEnemySelect] !== undefined) {
-                  const selectedIndex = EnemyAtack.findIndex(
-                    (value: boolean) => value === true
-                  );
-
-                  console.log("6");
-                  setEnemyAtack((prevArray: any) => {
-                    const newArray = [...prevArray];
-                    if (selectedIndex !== -1) {
-                      newArray[selectedIndex] = false;
-                    }
-                    newArray[indexBotAllySelect] = true;
-                    if (newArray[indexBotAllySelect]) {
-                      //
-
-                      //
-                      if (selectedItemsA[indexBotAllySelect] !== null) {
-                        EnemyCard[Number(cardIdE)].Hp -=
-                          AllyCard[Number(CaedIdA)].Atack;
-                        AllyCard[Number(CaedIdA)].Hp -=
-                          EnemyCard[Number(cardIdE)].Atack;
-
-                        if (EnemyCard[Number(cardIdE)].Hp <= 0) {
-                          setSelectedItems((prevItems: any[]) => {
-                            const newItemsE = [...prevItems];
-                            newItemsE[indexBotEnemySelect] = null;
-                            return newItemsE;
-                          });
-                        }
-                        if (AllyCard[Number(CaedIdA)].Hp <= 0) {
-                          setselectedItemsA((prevItems: any[]) => {
-                            const newItems = [...prevItems];
-                            newItems[indexBotAllySelect] = null;
-                            return newItems;
-                          });
-                        }
-                        setOneTimeAEA((prevArray: any) => {
-                          const newArray = [...prevArray];
-                          newArray[indexBotEnemySelect] = false;
-                          return newArray;
-                        });
-                      }
-                    }
-                    setHasCodeExecuted((prevCount) => prevCount + 1);
-                    setBotAtackAllay(false);
-                    setselectedCard(undefined);
-                    setIndexSaveE(undefined);
-                    setRandomIndexEnemy(undefined);
-                    setTimeout(() => {
-                      setAllyIndexForAnimation(undefined);
-                    }, 2000);
-                    return newArray;
-                  });
-                } else {
-                }
-              } else {
-                return;
-              }
-            }
-          }
-        }
-      }
-    }, 1000);
-  }
-
   // enemy char
   const allNullChar = selectedItems.every((item) => item === null);
   const allNullCharE = selectedItemsA.every((item) => item === null);
 
   const [EnemyCanBeAttack, setEnemyCanBeAttack] = useState<boolean>(false);
   const [AllyCanBeAttack, setAllyCanBeAttack] = useState<boolean>(false);
+
+  //========================================================================
+
+  function test() {
+    const freeIndexes = selectedItems.reduce(
+      (acc: any, item: any, index: any) => {
+        if (item === null) acc.push(index);
+        return acc;
+      },
+      []
+    );
+
+    if (freeIndexes.length === 0) {
+      //console.log("Brak wolnych miejsc do przypisania.");
+      return;
+    }
+
+    const randomIndex =
+      freeIndexes[Math.floor(Math.random() * freeIndexes.length)];
+
+    // Create deep copies of updateArray and randomItemsE
+    const updateArray = [...randomItemsE.map((item: any) => ({ ...item }))];
+
+    // Sprawdź, czy istnieją przedmioty w updateArray z wystarczającą ilością Many
+    const itemsWithEnoughMana = updateArray.filter(
+      (item) => item.Mana <= CurrentMana
+    );
+
+    if (itemsWithEnoughMana.length > 0) {
+      // Jeśli są dostępne przedmioty z wystarczającą ilością Many
+      const randomItem =
+        itemsWithEnoughMana[
+          Math.floor(Math.random() * itemsWithEnoughMana.length)
+        ];
+
+      const randomValue = randomItem.id - 1;
+
+      setBotSelectCard(randomValue);
+
+      const updatedItems = [...selectedItems];
+      updatedItems[randomIndex] = randomValue;
+
+      setCurrentMana((prevCM: number) => prevCM - randomItem.Mana);
+      setSelectedItems(updatedItems);
+      setNoMana(false);
+    } else {
+      setNoMana(true);
+      console.log("brak many");
+    }
+  }
 
   return (
     <>
