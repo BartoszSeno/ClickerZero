@@ -182,7 +182,6 @@ function CardGame({
       });
     }
   }, [clickCount]);
-  console.log(remainingItems, "ally");
   // Sprawdzenie, czy przedmiot już został wylosowany
   const isItemAlreadySelected = (item: any): boolean => {
     return randomItems.includes(item);
@@ -635,24 +634,18 @@ function CardGame({
 
     setTimeout(() => {
       if (selectedItemsA.some((item) => item !== null)) {
-        console.log("1");
         if (RoundFor === "enemy") {
           setTimeout(() => {
             setItsFirstRound(false);
           }, 1000);
-          console.log("2");
           if (itsFirstRoudn === false) {
-            console.log("3");
             if (indexBotEnemySelect !== undefined) {
-              console.log("4");
               if (!isIndexSaveEUsed(EnemyCard[Number(cardIdE)])) {
-                console.log("5");
                 if (EnemyAtack[indexBotEnemySelect] !== undefined) {
                   const selectedIndex = EnemyAtack.findIndex(
                     (value: boolean) => value === true
                   );
 
-                  console.log("6");
                   setEnemyAtack((prevArray: any) => {
                     const newArray = [...prevArray];
                     if (selectedIndex !== -1) {
@@ -726,52 +719,38 @@ function CardGame({
 
   //========================================================================
 
-  function test() {
-    const freeIndexes = selectedItems.reduce(
-      (acc: any, item: any, index: any) => {
-        if (item === null) acc.push(index);
-        return acc;
-      },
-      []
-    );
+  function FirstMove() {
+    const newItemE = getRandomItemE();
+    if (newItemE) {
+      //rounnd for Enemy
 
-    if (freeIndexes.length === 0) {
-      //console.log("Brak wolnych miejsc do przypisania.");
-      return;
+      if (RoundFor === "ally") {
+        setBotAtackAllay(false);
+        setRoundFor("enemy");
+      }
+      setOneTimeAEA(Array(selectedItems.length).fill(true));
     }
-
-    const randomIndex =
-      freeIndexes[Math.floor(Math.random() * freeIndexes.length)];
-
-    // Create deep copies of updateArray and randomItemsE
-    const updateArray = [...randomItemsE.map((item: any) => ({ ...item }))];
-
-    // Sprawdź, czy istnieją przedmioty w updateArray z wystarczającą ilością Many
-    const itemsWithEnoughMana = updateArray.filter(
-      (item) => item.Mana <= CurrentMana
-    );
-
-    if (itemsWithEnoughMana.length > 0) {
-      // Jeśli są dostępne przedmioty z wystarczającą ilością Many
-      const randomItem =
-        itemsWithEnoughMana[
-          Math.floor(Math.random() * itemsWithEnoughMana.length)
-        ];
-
-      const randomValue = randomItem.id - 1;
-
-      setBotSelectCard(randomValue);
-
-      const updatedItems = [...selectedItems];
-      updatedItems[randomIndex] = randomValue;
-
-      setCurrentMana((prevCM: number) => prevCM - randomItem.Mana);
-      setSelectedItems(updatedItems);
-      setNoMana(false);
-    } else {
-      setNoMana(true);
-      console.log("brak many");
+    const newItem = getRandomItem();
+    //================
+    //Round for ally
+    if (newItem) {
+      if (RoundFor === "enemy") {
+        setRandomIndexEnemy(undefined);
+        setRoundFor("ally");
+      }
+      setOneTimeAAE(Array(selectedItems.length).fill(true));
     }
+    setAllayAtack(Array(selectedItemsA.length).fill(false));
+    setEnemyAtack(Array(selectedItems.length).fill(false));
+    setIndexSaveE(-1);
+    setselectedCardA(undefined);
+    setCanBeUse("s");
+    setEnemyAtackAlly(Array(selectedItemsA.length).fill(false));
+    setIndexSaveA(-1);
+    setHasCodeExecuted(0);
+    setWylosowanoLiczbe(false);
+    setUsedIndexSaveAValues([]);
+    setUsedIndexSaveEValues([]);
   }
 
   return (
@@ -944,7 +923,7 @@ function CardGame({
                   <button
                     className="NextRound"
                     onClick={(e) => {
-                      test();
+                      FirstMove();
                     }}
                   >
                     <p>test</p>
