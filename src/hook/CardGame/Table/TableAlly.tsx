@@ -72,7 +72,7 @@ function TableAlly({
 }) {
   const handlePlaceClick = (placeIndex: number) => {
     if (selectedItemId !== null) {
-      if (CurrentMana >= AllyCard[AllyIdSelected].Mana) {
+      if (CurrentMana >= AllyCard[AllyIdSelected - 1].Mana) {
         if (selectedItemsA[placeIndex] !== null) {
           // Miejsce jest już zajęte, więc nie dodawaj przedmiotu
           return;
@@ -84,11 +84,13 @@ function TableAlly({
         setSelectedItemId(null);
         HandleUseCard();
         setCurrentMana(
-          (prevCM: number) => prevCM - AllyCard[AllyIdSelected].Mana
+          (prevCM: number) => prevCM - AllyCard[AllyIdSelected - 1].Mana
         );
       }
     }
   };
+
+  console.log(AllyIdSelected);
 
   useEffect(() => {
     setAllayAtack(Array(selectedItemsA.length).fill(false));
