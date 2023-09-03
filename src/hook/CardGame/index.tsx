@@ -419,8 +419,9 @@ function CardGame({
   };
 
   const HandleClickAllyHp = () => {
-    const CaedIdE = EnemyCard[randomIndexEnemy].id - 1;
-    const EnemyAtack = EnemyCard[Number(CaedIdE)].Atack;
+    const indexBotEnemySelect = randomIndexEnemy;
+    const cardIdE = selectedItems[indexBotEnemySelect];
+    const EnemyAtack = EnemyCard[Number(cardIdE)].Atack;
 
     if (CanBeUse === "EnemyAtackAlly") {
       if (ECA === true) {
@@ -648,7 +649,6 @@ function CardGame({
           HandleClickAllyHp();
           setAllyCanBeAttack(true);
           setTimeout(() => {
-            HandleClickAllyHp();
             setAllyCanBeAttack(false);
           }, 2000);
         }, 1000);
