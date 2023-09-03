@@ -277,7 +277,17 @@ function CardGame({
     setHasCodeExecuted(0);
     setWylosowanoLiczbe(false);
     setUsedIndexSaveAValues([]);
-    setUsedIndexSaveEValues(Array(5).fill(null));
+
+    const updatedUsedIndexSaveEValues = usedIndexSaveEValues.map(
+      (value, index) => {
+        if (selectedItems[index] !== null) {
+          return false;
+        }
+        return value;
+      }
+    );
+
+    setUsedIndexSaveEValues(updatedUsedIndexSaveEValues);
   };
 
   useEffect(() => {
@@ -408,9 +418,10 @@ function CardGame({
 
     if (CanBeUse === "EnemyAttackAlly") {
       if (ECA === true) {
+        // Sprawdź, czy wartość dla konkretnego indeksu jest równa false lub null
         if (
-          usedIndexSaveEValues.includes(false) ||
-          usedIndexSaveEValues.includes(null)
+          usedIndexSaveEValues[selectedIndexBTM] === false ||
+          usedIndexSaveEValues[selectedIndexBTM] === null
         ) {
           console.log("test");
           // Stwórz nową kopię tablicy usedIndexSaveEValues
@@ -419,7 +430,6 @@ function CardGame({
           updatedValues[selectedIndexBTM] = true;
           // Zaktualizuj stan komponentu za pomocą setUsedIndexSaveEValues
           setUsedIndexSaveEValues(updatedValues);
-
           setAllyHp((prevHp) => prevHp - EnemyAttack);
         }
       }
@@ -479,7 +489,6 @@ function CardGame({
     );
 
     if (itemsWithEnoughMana.length > 0) {
-      const indexBotEnemySelect = randomIndexEnemy;
       // Jeśli są dostępne przedmioty z wystarczającą ilością Many
       const randomItem =
         itemsWithEnoughMana[
@@ -491,6 +500,12 @@ function CardGame({
 
       const updatedItems = [...selectedItems];
       updatedItems[randomIndex] = randomValue;
+
+      const updatedValues = [...usedIndexSaveEValues];
+      // Ustaw wartość na false tylko dla wybranego indeksu
+      updatedValues[randomIndex] = false;
+      // Zaktualizuj stan komponentu za pomocą setUsedIndexSaveEValues
+      setUsedIndexSaveEValues(updatedValues);
 
       setCurrentMana((prevCM: number) => prevCM - randomItem.Mana);
       setSelectedItems(updatedItems);
@@ -504,8 +519,8 @@ function CardGame({
         FirstMove();
       }, 3000);
     } else if (
-      !usedIndexSaveEValues.includes(false) ||
-      !usedIndexSaveEValues.includes(null)
+      !usedIndexSaveEValues[selectedIndexBTM] === false ||
+      !usedIndexSaveEValues[selectedIndexBTM] === null
     ) {
       console.log("brak ruchu");
       setShouldRepeat(false);
@@ -556,8 +571,6 @@ function CardGame({
     wypiszLosowyIndeksZTablicy(selectedItemsA);
   }, [selectedItemsA]);
 
-  const [numberForColor, setNumberForColor] = useState<number>();
-
   const [BotAttackAllay, setBotAttackAllay] = useState<boolean>(false);
 
   const [randomIndexEnemy, setRandomIndexEnemy] = useState<any>(); // bot index
@@ -591,7 +604,6 @@ function CardGame({
       const allNull = selectedItemsA.every((item) => item === null);
       if (hasCodeExecuted < 1) {
         if (RoundFor === "enemy") {
-          setNumberForColor(randomIndexEnemy);
           if (
             selectedItems[randomIndexEnemy] !== null &&
             !EnemyAttack[randomIndexEnemy]
@@ -663,8 +675,8 @@ function CardGame({
           if (itsFirstRoudn === false) {
             if (indexBotEnemySelect !== undefined) {
               if (
-                usedIndexSaveEValues.includes(false) ||
-                usedIndexSaveEValues.includes(null)
+                usedIndexSaveEValues[selectedIndexBTM] === false ||
+                usedIndexSaveEValues[selectedIndexBTM] === null
               ) {
                 if (EnemyAttack[indexBotEnemySelect] !== undefined) {
                   // Stwórz nową kopię tablicy usedIndexSaveEValues
@@ -766,6 +778,13 @@ function CardGame({
     setHasCodeExecuted(0);
     setWylosowanoLiczbe(false);
     setUsedIndexSaveAValues([]);
+    const selectedItemsIndexes = selectedItems
+      .map((item, index) => (item !== null ? index : null))
+      .filter((index) => index !== null);
+
+    selectedItemsIndexes.forEach((index: any) => {
+      usedIndexSaveEValues[index] = false;
+    });
   }
 
   useEffect(() => {
