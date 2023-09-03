@@ -444,6 +444,8 @@ function CardGame({
   const [EnemyAtack, setEnemyAtack] = useState<any>([]);
   const [NoMana, setNoMana] = useState(true);
 
+  const [shouldRepeat, setShouldRepeat] = useState(false);
+
   const assignRandomValueToNull = () => {
     const freeIndexes = selectedItems.reduce(
       (acc: any, item: any, index: any) => {
@@ -486,9 +488,12 @@ function CardGame({
       setCurrentMana((prevCM: number) => prevCM - randomItem.Mana);
       setSelectedItems(updatedItems);
       setNoMana(false);
+      setShouldRepeat(true);
+      FirstMove();
     } else {
       setNoMana(true);
       console.log("brak many");
+      setShouldRepeat(false);
     }
   };
 
@@ -720,26 +725,10 @@ function CardGame({
   //========================================================================
 
   function FirstMove() {
-    const newItemE = getRandomItemE();
-    if (newItemE) {
-      //rounnd for Enemy
-
-      if (RoundFor === "ally") {
-        setBotAtackAllay(false);
-        setRoundFor("enemy");
-      }
-      setOneTimeAEA(Array(selectedItems.length).fill(true));
-    }
-    const newItem = getRandomItem();
-    //================
-    //Round for ally
-    if (newItem) {
-      if (RoundFor === "enemy") {
-        setRandomIndexEnemy(undefined);
-        setRoundFor("ally");
-      }
-      setOneTimeAAE(Array(selectedItems.length).fill(true));
-    }
+    setRoundFor("ally");
+    setTimeout(() => {
+      setRoundFor("enemy");
+    }, 10);
     setAllayAtack(Array(selectedItemsA.length).fill(false));
     setEnemyAtack(Array(selectedItems.length).fill(false));
     setIndexSaveE(-1);
@@ -752,6 +741,18 @@ function CardGame({
     setUsedIndexSaveAValues([]);
     setUsedIndexSaveEValues([]);
   }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (shouldRepeat) {
+        assignRandomValueToNull();
+      } else {
+        clearInterval(interval);
+      }
+    }, 3000); // Tutaj można dostosować interwał czasowy
+
+    return () => clearInterval(interval);
+  }, [shouldRepeat]);
 
   return (
     <>
