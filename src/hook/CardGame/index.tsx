@@ -580,9 +580,11 @@ function CardGame({
   function wypiszLosowyIndeksZTablicyEnemy(tablica: any[]) {
     // Filtrujemy tablicę, aby uzyskać indeksy dostępnych elementów (nie-null).
     const dostepneIndeksy = tablica
-      .map((element, index) => (element !== null ? index : null))
+      .map((element, index) =>
+        element !== null && !usedIndexSaveEValues[index] ? index : null
+      )
       .filter((index) => index !== null) as number[];
-
+    console.log(dostepneIndeksy);
     if (dostepneIndeksy.length > 0) {
       // Generujemy losowy indeks z dostępnych indeksów.
       const losowyIndeks =
