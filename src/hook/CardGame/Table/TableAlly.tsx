@@ -90,8 +90,6 @@ function TableAlly({
     }
   };
 
-  console.log(AllyIdSelected);
-
   useEffect(() => {
     setAllayAtack(Array(selectedItemsA.length).fill(false));
   }, [selectedItemsA]);

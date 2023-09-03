@@ -37,9 +37,27 @@ function CardGame({
 
   //for block move the same card multiple times
   const [usedIndexSaveAValues, setUsedIndexSaveAValues] = useState<any>([]);
-  const [usedIndexSaveEValues, setUsedIndexSaveEValues] = useState<any>([]);
-
-  const itemCount = randomItemsE.length;
+  const [usedIndexSaveEValues, setUsedIndexSaveEValues] = useState<boolean[]>([
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+  function isIndexSaveEUsed(index: number) {
+    if (usedIndexSaveEValues[index] === false) {
+      // Stwórz nową kopię tablicy usedIndexSaveEValues
+      const updatedValues = [...usedIndexSaveEValues];
+      // Ustaw wartość na true tylko dla wybranego indeksu
+      updatedValues[index] = true;
+      setSelectedIndexBTM(index);
+      // Zaktualizuj stan komponentu za pomocą setUsedIndexSaveEValues
+      console.log(updatedValues, "updatedValuesupdatedValuesupdatedValues");
+      setUsedIndexSaveEValues(updatedValues);
+      return true;
+    }
+    return false;
+  }
 
   //==============
   useEffect(() => {
@@ -276,7 +294,7 @@ function CardGame({
     setHasCodeExecuted(0);
     setWylosowanoLiczbe(false);
     setUsedIndexSaveAValues([]);
-    setUsedIndexSaveEValues([]);
+    setUsedIndexSaveEValues(Array(5).fill(false));
   };
 
   useEffect(() => {
@@ -459,7 +477,6 @@ function CardGame({
       //console.log("Brak wolnych miejsc do przypisania.");
       return;
     }
-
     const randomIndex =
       freeIndexes[Math.floor(Math.random() * freeIndexes.length)];
 
@@ -472,6 +489,7 @@ function CardGame({
     );
 
     if (itemsWithEnoughMana.length > 0) {
+      const indexBotEnemySelect = randomIndexEnemy;
       // Jeśli są dostępne przedmioty z wystarczającą ilością Many
       const randomItem =
         itemsWithEnoughMana[
@@ -489,14 +507,27 @@ function CardGame({
       setSelectedItems(updatedItems);
       setNoMana(false);
       setShouldRepeat(true);
-      FirstMove();
-    } else {
+      setTimeout(() => {
+        if (indexBotEnemySelect !== undefined) {
+          if (!isIndexSaveEUsed(indexBotEnemySelect)) {
+            if (EnemyAtackAlly[indexBotEnemySelect] !== undefined) {
+              FirstMove();
+            }
+          }
+        }
+      }, 3000);
+    } else if (isIndexSaveEUsed(selectedIndexBTM)) {
+      console.log("brak ruchu");
+      setShouldRepeat(false);
+    } else if (randomItemsE.length <= 0) {
+      console.log("brak kart");
+      setShouldRepeat(false);
+    } else if (itemsWithEnoughMana.length <= 0) {
       setNoMana(true);
       console.log("brak many");
       setShouldRepeat(false);
     }
   };
-
   //========================================================
   const idToRemove = BotSelectCard + 1;
 
@@ -606,10 +637,7 @@ function CardGame({
   const [allayAtack, setAllayAtack] = useState<any>([]);
 
   // block bot move
-
-  function isIndexSaveEUsed(value: any) {
-    return usedIndexSaveEValues.includes(value);
-  }
+  const [selectedIndexBTM, setSelectedIndexBTM] = useState<any>();
 
   useEffect(() => {
     const allNull = selectedItemsA.every((item) => item === null);
@@ -636,6 +664,7 @@ function CardGame({
     const CaedIdA = selectedItemsA[indexBotAllySelect];
     const cardIdE = selectedItems[indexBotEnemySelect];
     setAllyIndexForAnimation(indexBotAllySelect);
+    console.log(!isIndexSaveEUsed(indexBotEnemySelect));
 
     setTimeout(() => {
       if (selectedItemsA.some((item) => item !== null)) {
@@ -645,7 +674,7 @@ function CardGame({
           }, 1000);
           if (itsFirstRoudn === false) {
             if (indexBotEnemySelect !== undefined) {
-              if (!isIndexSaveEUsed(EnemyCard[Number(cardIdE)])) {
+              if (!isIndexSaveEUsed(indexBotEnemySelect)) {
                 if (EnemyAtack[indexBotEnemySelect] !== undefined) {
                   const selectedIndex = EnemyAtack.findIndex(
                     (value: boolean) => value === true
@@ -739,7 +768,6 @@ function CardGame({
     setHasCodeExecuted(0);
     setWylosowanoLiczbe(false);
     setUsedIndexSaveAValues([]);
-    setUsedIndexSaveEValues([]);
   }
 
   useEffect(() => {
@@ -749,7 +777,7 @@ function CardGame({
       } else {
         clearInterval(interval);
       }
-    }, 3000); // Tutaj można dostosować interwał czasowy
+    }, 5000); // Tutaj można dostosować interwał czasowy
 
     return () => clearInterval(interval);
   }, [shouldRepeat]);
@@ -920,14 +948,6 @@ function CardGame({
                     }}
                   >
                     <p>Next</p>
-                  </button>
-                  <button
-                    className="NextRound"
-                    onClick={(e) => {
-                      FirstMove();
-                    }}
-                  >
-                    <p>test</p>
                   </button>
                 </div>
                 <div className="crystal0"></div>
