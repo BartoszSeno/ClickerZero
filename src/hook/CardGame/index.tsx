@@ -242,7 +242,7 @@ function CardGame({
           });
         } else {
         }
-        setBotAtackAllay(false);
+        setBotAttackAllay(false);
 
         setclickCountE((prevCount) => prevCount + 1);
         if (RoundFor === "ally") {
@@ -284,12 +284,12 @@ function CardGame({
       }
       setOneTimeAAE(Array(selectedItems.length).fill(true));
     }
-    setAllayAtack(Array(selectedItemsA.length).fill(false));
-    setEnemyAtack(Array(selectedItems.length).fill(false));
+    setAllayAttack(Array(selectedItemsA.length).fill(false));
+    setEnemyAttack(Array(selectedItems.length).fill(false));
     setIndexSaveE(-1);
     setselectedCardA(undefined);
     setCanBeUse("s");
-    setEnemyAtackAlly(Array(selectedItemsA.length).fill(false));
+    setEnemyAttackAlly(Array(selectedItemsA.length).fill(false));
     setIndexSaveA(-1);
     setHasCodeExecuted(0);
     setWylosowanoLiczbe(false);
@@ -401,9 +401,9 @@ function CardGame({
 
   const HandleClickEnemyHp = () => {
     const CaedIdA = selectedItemsA[IndexSaveA];
-    const AllyAtack = AllyCard[Number(CaedIdA)].Atack;
+    const AllyAttack = AllyCard[Number(CaedIdA)].Attack;
 
-    if (CanBeUse === "AllyAtackEnemy") {
+    if (CanBeUse === "AllyAttackEnemy") {
       if (ACA === true) {
         setOneTimeAAE((prevArray: any) => {
           const newArray = [...prevArray];
@@ -412,7 +412,7 @@ function CardGame({
         });
 
         if (OneTimeAAE[IndexSaveA] !== false) {
-          setEnemyHp((prevHp) => prevHp - AllyAtack);
+          setEnemyHp((prevHp) => prevHp - AllyAttack);
         }
       }
     }
@@ -421,9 +421,9 @@ function CardGame({
   const HandleClickAllyHp = () => {
     const indexBotEnemySelect = randomIndexEnemy;
     const cardIdE = selectedItems[indexBotEnemySelect];
-    const EnemyAtack = EnemyCard[Number(cardIdE)].Atack;
+    const EnemyAttack = EnemyCard[Number(cardIdE)].Attack;
 
-    if (CanBeUse === "EnemyAtackAlly") {
+    if (CanBeUse === "EnemyAttackAlly") {
       if (ECA === true) {
         setOneTimeAEA((prevArray: any) => {
           const newArray = [...prevArray];
@@ -431,7 +431,7 @@ function CardGame({
           return newArray;
         });
         if (OneTimeAEA[IndexSaveE] !== false) {
-          setAllyHp((prevHp) => prevHp - EnemyAtack);
+          setAllyHp((prevHp) => prevHp - EnemyAttack);
         }
       }
     }
@@ -460,7 +460,7 @@ function CardGame({
   //=========bot
 
   const [BotSelectCard, setBotSelectCard] = useState<any>();
-  const [EnemyAtack, setEnemyAtack] = useState<any>([]);
+  const [EnemyAttack, setEnemyAttack] = useState<any>([]);
   const [NoMana, setNoMana] = useState(true);
 
   const [shouldRepeat, setShouldRepeat] = useState(false);
@@ -511,7 +511,7 @@ function CardGame({
       setTimeout(() => {
         if (indexBotEnemySelect !== undefined) {
           if (!isIndexSaveEUsed(indexBotEnemySelect)) {
-            if (EnemyAtackAlly[indexBotEnemySelect] !== undefined) {
+            if (EnemyAttackAlly[indexBotEnemySelect] !== undefined) {
               FirstMove();
             }
           }
@@ -569,7 +569,7 @@ function CardGame({
 
   const [numberForColor, setNumberForColor] = useState<number>();
 
-  const [BotAtackAllay, setBotAtackAllay] = useState<boolean>(false);
+  const [BotAttackAllay, setBotAttackAllay] = useState<boolean>(false);
 
   const [randomIndexEnemy, setRandomIndexEnemy] = useState<any>(); // bot index
 
@@ -603,23 +603,23 @@ function CardGame({
           setNumberForColor(randomIndexEnemy);
           if (
             selectedItems[randomIndexEnemy] !== null &&
-            !EnemyAtack[randomIndexEnemy]
+            !EnemyAttack[randomIndexEnemy]
           ) {
-            const selectedIndex = EnemyAtack.findIndex(
+            const selectedIndex = EnemyAttack.findIndex(
               (value: boolean) => value === true
             );
 
-            setEnemyAtack((prevArray: any) => {
+            setEnemyAttack((prevArray: any) => {
               const newArray = [...prevArray];
               if (selectedIndex !== -1) {
                 newArray[selectedIndex] = false;
               }
               newArray[randomIndexEnemy] = true;
               if (newArray[randomIndexEnemy]) {
-                setCanBeUse("EnemyAtackAlly");
+                setCanBeUse("EnemyAttackAlly");
                 setECA(true);
                 setselectedCard(selectedItems[randomIndexEnemy]);
-                setBotAtackAllay(true);
+                setBotAttackAllay(true);
               }
               return newArray;
             });
@@ -632,10 +632,10 @@ function CardGame({
     }, 500);
   }, [RoundFor]);
 
-  // bot atack enemy
+  // bot Attack enemy
 
-  const [EnemyAtackAlly, setEnemyAtackAlly] = useState<any>([]);
-  const [allayAtack, setAllayAtack] = useState<any>([]);
+  const [EnemyAttackAlly, setEnemyAttackAlly] = useState<any>([]);
+  const [allayAttack, setAllayAttack] = useState<any>([]);
 
   // block bot move
   const [selectedIndexBTM, setSelectedIndexBTM] = useState<any>();
@@ -675,12 +675,12 @@ function CardGame({
           if (itsFirstRoudn === false) {
             if (indexBotEnemySelect !== undefined) {
               if (!isIndexSaveEUsed(indexBotEnemySelect)) {
-                if (EnemyAtack[indexBotEnemySelect] !== undefined) {
-                  const selectedIndex = EnemyAtack.findIndex(
+                if (EnemyAttack[indexBotEnemySelect] !== undefined) {
+                  const selectedIndex = EnemyAttack.findIndex(
                     (value: boolean) => value === true
                   );
 
-                  setEnemyAtack((prevArray: any) => {
+                  setEnemyAttack((prevArray: any) => {
                     const newArray = [...prevArray];
                     if (selectedIndex !== -1) {
                       newArray[selectedIndex] = false;
@@ -692,9 +692,9 @@ function CardGame({
                       //
                       if (selectedItemsA[indexBotAllySelect] !== null) {
                         EnemyCard[Number(cardIdE)].Hp -=
-                          AllyCard[Number(CaedIdA)].Atack;
+                          AllyCard[Number(CaedIdA)].Attack;
                         AllyCard[Number(CaedIdA)].Hp -=
-                          EnemyCard[Number(cardIdE)].Atack;
+                          EnemyCard[Number(cardIdE)].Attack;
 
                         if (EnemyCard[Number(cardIdE)].Hp <= 0) {
                           setSelectedItems((prevItems: any[]) => {
@@ -718,7 +718,7 @@ function CardGame({
                       }
                     }
                     setHasCodeExecuted((prevCount) => prevCount + 1);
-                    setBotAtackAllay(false);
+                    setBotAttackAllay(false);
                     setselectedCard(undefined);
                     setIndexSaveE(undefined);
                     setRandomIndexEnemy(undefined);
@@ -737,7 +737,7 @@ function CardGame({
         }
       }
     }, 500);
-  }, [BotAtackAllay]);
+  }, [BotAttackAllay]);
 
   const [EnemyIndexForAnimation, setEnemyIndexForAnimation] =
     useState<number>();
@@ -758,12 +758,12 @@ function CardGame({
     setTimeout(() => {
       setRoundFor("enemy");
     }, 10);
-    setAllayAtack(Array(selectedItemsA.length).fill(false));
-    setEnemyAtack(Array(selectedItems.length).fill(false));
+    setAllayAttack(Array(selectedItemsA.length).fill(false));
+    setEnemyAttack(Array(selectedItems.length).fill(false));
     setIndexSaveE(-1);
     setselectedCardA(undefined);
     setCanBeUse("s");
-    setEnemyAtackAlly(Array(selectedItemsA.length).fill(false));
+    setEnemyAttackAlly(Array(selectedItemsA.length).fill(false));
     setIndexSaveA(-1);
     setHasCodeExecuted(0);
     setWylosowanoLiczbe(false);
@@ -844,8 +844,8 @@ function CardGame({
               EnemyIdSelected={EnemyIdSelected}
               CurrentMana={CurrentMana}
               setCurrentMana={setCurrentMana}
-              setEnemyAtack={setEnemyAtack}
-              EnemyAtack={EnemyAtack}
+              setEnemyAttack={setEnemyAttack}
+              EnemyAttack={EnemyAttack}
               setUsedIndexSaveAValues={setUsedIndexSaveAValues}
               usedIndexSaveAValues={usedIndexSaveAValues}
               setEnemyIndexForAnimation={setEnemyIndexForAnimation}
@@ -859,7 +859,7 @@ function CardGame({
                   className="mainCharacter Enem"
                   id={EnemyCanBeAttack ? "EnemyCanBeAttack" : ""}
                   style={{
-                    animationName: allNullChar ? "CanAtack" : "",
+                    animationName: allNullChar ? "CanAttack" : "",
                     animationDuration: allNullChar ? "2s" : "",
                     animationIterationCount: allNullChar ? "infinite" : "",
                   }}
@@ -868,7 +868,7 @@ function CardGame({
                     <div className="MCHP">{EnemyHp}</div>
                   </div>
                   <button
-                    className="AtackEnemyMC"
+                    className="AttackEnemyMC"
                     onClick={(e) => {
                       Test();
                       HandleClickEnemyHp();
@@ -885,7 +885,7 @@ function CardGame({
                   className="mainCharacter All"
                   id={AllyCanBeAttack ? "EnemyCanBeAttack" : ""}
                   style={{
-                    animationName: allNullCharE ? "CanAtack" : "",
+                    animationName: allNullCharE ? "CanAttack" : "",
                     animationDuration: allNullCharE ? "2s" : "",
                     animationIterationCount: allNullCharE ? "infinite" : "",
                   }}
@@ -980,10 +980,10 @@ function CardGame({
               CurrentMana={CurrentMana}
               setCurrentMana={setCurrentMana}
               AllyIdSelected={AllyIdSelected}
-              EnemyAtackAlly={EnemyAtackAlly}
-              setEnemyAtackAlly={setEnemyAtackAlly}
-              allayAtack={allayAtack}
-              setAllayAtack={setAllayAtack}
+              EnemyAttackAlly={EnemyAttackAlly}
+              setEnemyAttackAlly={setEnemyAttackAlly}
+              allayAttack={allayAttack}
+              setAllayAttack={setAllayAttack}
               EnemyIndexForAnimation={EnemyIndexForAnimation}
               setAllyIndexForAnimation={setAllyIndexForAnimation}
               EnemyCanBeAttack={EnemyCanBeAttack}

@@ -29,10 +29,10 @@ function TableAlly({
   CurrentMana,
   setCurrentMana,
   AllyIdSelected,
-  EnemyAtackAlly,
-  setEnemyAtackAlly,
-  allayAtack,
-  setAllayAtack,
+  EnemyAttackAlly,
+  setEnemyAttackAlly,
+  allayAttack,
+  setAllayAttack,
   EnemyIndexForAnimation,
   setAllyIndexForAnimation,
   EnemyCanBeAttack,
@@ -62,10 +62,10 @@ function TableAlly({
   CurrentMana: any;
   setCurrentMana: any;
   AllyIdSelected: any;
-  EnemyAtackAlly: any;
-  setEnemyAtackAlly: any;
-  allayAtack: any;
-  setAllayAtack: any;
+  EnemyAttackAlly: any;
+  setEnemyAttackAlly: any;
+  allayAttack: any;
+  setAllayAttack: any;
   EnemyIndexForAnimation: any;
   setAllyIndexForAnimation: any;
   EnemyCanBeAttack: any;
@@ -91,18 +91,18 @@ function TableAlly({
   };
 
   useEffect(() => {
-    setAllayAtack(Array(selectedItemsA.length).fill(false));
+    setAllayAttack(Array(selectedItemsA.length).fill(false));
   }, [selectedItemsA]);
 
   const handleHeck = (index: number) => {
     setIndexSaveA(index);
 
     if (RoundFor === "ally") {
-      if (selectedItemsA[index] !== null && !allayAtack[index]) {
-        const selectedIndex = allayAtack.findIndex(
+      if (selectedItemsA[index] !== null && !allayAttack[index]) {
+        const selectedIndex = allayAttack.findIndex(
           (value: boolean) => value === true
         );
-        setAllayAtack((prevArray: any) => {
+        setAllayAttack((prevArray: any) => {
           const newArray = [...prevArray];
           if (selectedIndex !== -1) {
             newArray[selectedIndex] = false;
@@ -112,7 +112,7 @@ function TableAlly({
 
           if (newArray[index]) {
             setACA(true);
-            setCanBeUse("AllyAtackEnemy");
+            setCanBeUse("AllyAttackEnemy");
           }
           return newArray;
         });
@@ -140,16 +140,16 @@ function TableAlly({
   //=======
 
   useEffect(() => {
-    setEnemyAtackAlly(Array(selectedItemsA.length).fill(false));
+    setEnemyAttackAlly(Array(selectedItemsA.length).fill(false));
   }, [selectedItemsA]);
 
   //=======
   useEffect(() => {
     if (RoundFor === "enemy") {
-      setAllayAtack(Array(selectedItemsA.length).fill(false));
+      setAllayAttack(Array(selectedItemsA.length).fill(false));
       setselectedCardA(undefined);
       setCanBeUse("s");
-      setEnemyAtackAlly(Array(selectedItemsA.length).fill(false));
+      setEnemyAttackAlly(Array(selectedItemsA.length).fill(false));
       setIndexSaveA(-1);
     }
   }, [RoundFor]);
@@ -170,11 +170,11 @@ function TableAlly({
             <div
               className="CardConteiner"
               key={itemId}
-              id={`Slot${index}AtackSlot${EnemyIndexForAnimation}Ally${
-                allayAtack[index] &&
+              id={`Slot${index}AttackSlot${EnemyIndexForAnimation}Ally${
+                allayAttack[index] &&
                 selectedItems[EnemyIndexForAnimation] != null
                   ? "Active"
-                  : allayAtack[index] && EnemyCanBeAttack
+                  : allayAttack[index] && EnemyCanBeAttack
                   ? "Active"
                   : "inactive"
               }${EnemyCanBeAttack ? "EnemyCanBeAttack" : ""}`}
@@ -183,9 +183,9 @@ function TableAlly({
               <div
                 className="CardCharIG"
                 style={{
-                  backgroundColor: allayAtack[index]
+                  backgroundColor: allayAttack[index]
                     ? "green"
-                    : CanBeUse === "EnemyAtackAlly" && EnemyAtackAlly[index]
+                    : CanBeUse === "EnemyAttackAlly" && EnemyAttackAlly[index]
                     ? "blue"
                     : "",
                   backgroundImage: `url(${AllyCard[itemId].img})`,
@@ -308,7 +308,7 @@ function TableAlly({
                 }}
               ></div>
               <div className="CardStatsIG">
-                <div className="AtackPoints">{AllyCard[itemId].Atack}</div>
+                <div className="AttackPoints">{AllyCard[itemId].Attack}</div>
                 <div className="HpPoints">{AllyCard[itemId].Hp}</div>
               </div>
             </div>

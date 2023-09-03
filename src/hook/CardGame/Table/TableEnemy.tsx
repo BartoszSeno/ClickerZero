@@ -30,8 +30,8 @@ function TableEnemy({
   CurrentMana,
   setCurrentMana,
   EnemyIdSelected,
-  setEnemyAtack,
-  EnemyAtack,
+  setEnemyAttack,
+  EnemyAttack,
   setUsedIndexSaveAValues,
   usedIndexSaveAValues,
   setEnemyIndexForAnimation,
@@ -65,8 +65,8 @@ function TableEnemy({
   CurrentMana: any;
   setCurrentMana: any;
   EnemyIdSelected: any;
-  setEnemyAtack: any;
-  EnemyAtack: any;
+  setEnemyAttack: any;
+  EnemyAttack: any;
   setUsedIndexSaveAValues: any;
   usedIndexSaveAValues: any;
   setEnemyIndexForAnimation: any;
@@ -77,7 +77,7 @@ function TableEnemy({
   //====
 
   useEffect(() => {
-    setEnemyAtack(Array(selectedItems.length).fill(false));
+    setEnemyAttack(Array(selectedItems.length).fill(false));
   }, [selectedItems]);
 
   useEffect(() => {
@@ -88,9 +88,9 @@ function TableEnemy({
     setIndexSaveE(index);
   };
 
-  const [AllyAtackEnemy, setAllyAtackEnemy] = useState<any>([]);
+  const [AllyAttackEnemy, setAllyAttackEnemy] = useState<any>([]);
   useEffect(() => {
-    setAllyAtackEnemy(Array(selectedItems.length).fill(false));
+    setAllyAttackEnemy(Array(selectedItems.length).fill(false));
   }, [selectedItems]);
   //do podswietlania przeciwnika
 
@@ -100,15 +100,15 @@ function TableEnemy({
 
   useEffect(() => {
     setTimeout(() => {
-      if (CanBeUse === "AllyAtackEnemy") {
+      if (CanBeUse === "AllyAttackEnemy") {
         if (IndexSaveA !== undefined) {
           if (!isIndexSaveAUsed(AllyCard[selectedCardA])) {
-            if (AllyAtackEnemy[IndexSaveE] !== undefined) {
-              const selectedIndex = AllyAtackEnemy.findIndex(
+            if (AllyAttackEnemy[IndexSaveE] !== undefined) {
+              const selectedIndex = AllyAttackEnemy.findIndex(
                 (value: boolean) => value === true
               );
 
-              setAllyAtackEnemy((prevArray: any) => {
+              setAllyAttackEnemy((prevArray: any) => {
                 const newArray = [...prevArray];
                 if (selectedIndex !== -1) {
                   newArray[selectedIndex] = false;
@@ -118,13 +118,13 @@ function TableEnemy({
                   const CaedIdE = selectedItems[IndexSaveE];
                   if (selectedItems[IndexSaveE] !== null) {
                     EnemyCard[Number(CaedIdE)].Hp -=
-                      AllyCard[selectedCardA].Atack;
+                      AllyCard[selectedCardA].Attack;
                     AllyCard[selectedCardA].Hp -=
-                      EnemyCard[Number(CaedIdE)].Atack;
+                      EnemyCard[Number(CaedIdE)].Attack;
                     //
-                    setEnemyAtack(Array(selectedItems.length).fill(false));
+                    setEnemyAttack(Array(selectedItems.length).fill(false));
                     setselectedCard(undefined);
-                    setAllyAtackEnemy(Array(selectedItems.length).fill(false));
+                    setAllyAttackEnemy(Array(selectedItems.length).fill(false));
                     setIndexSaveE(-1);
                     //
                     if (EnemyCard[Number(CaedIdE)].Hp <= 0) {
@@ -167,10 +167,10 @@ function TableEnemy({
 
   useEffect(() => {
     if (RoundFor === "ally") {
-      setEnemyAtack(Array(selectedItems.length).fill(false));
+      setEnemyAttack(Array(selectedItems.length).fill(false));
       setselectedCard(undefined);
       setCanBeUse("s");
-      setAllyAtackEnemy(Array(selectedItems.length).fill(false));
+      setAllyAttackEnemy(Array(selectedItems.length).fill(false));
       setIndexSaveE(-1);
     }
   }, [RoundFor]);
@@ -197,7 +197,7 @@ function TableEnemy({
             <div
               className="CardConteiner"
               key={itemId}
-              id={`Slot${index}AtackSlot${AllyIndexForAnimation}Enemy${
+              id={`Slot${index}AttackSlot${AllyIndexForAnimation}Enemy${
                 index === randomIndexEnemy && RoundFor === "enemy"
                   ? "Active"
                   : "inactive"
@@ -210,7 +210,7 @@ function TableEnemy({
                   backgroundColor:
                     index === randomIndexEnemy && RoundFor === "enemy"
                       ? "green"
-                      : CanBeUse === "AllyAtackEnemy" && AllyAtackEnemy[index]
+                      : CanBeUse === "AllyAttackEnemy" && AllyAttackEnemy[index]
                       ? "blue"
                       : "",
                   backgroundImage: `url(${EnemyCard[itemId].img})`,
@@ -345,7 +345,7 @@ function TableEnemy({
                 }}
               ></div>
               <div className="CardStatsIG">
-                <div className="AtackPoints">{EnemyCard[itemId].Atack}</div>
+                <div className="AttackPoints">{EnemyCard[itemId].Attack}</div>
                 <div className="HpPoints">{EnemyCard[itemId].Hp}</div>
               </div>
             </div>

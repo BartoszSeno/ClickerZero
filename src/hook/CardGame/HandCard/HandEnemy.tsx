@@ -157,7 +157,7 @@ function HandEnemy({
               ></div>
               <div className="CardName">{data.Name}</div>
               <div className="CardStats">
-                <div className="AtackPoints">{data.Atack}</div>
+                <div className="AttackPoints">{data.Attack}</div>
                 <div className="HpPoints">{data.Hp}</div>
                 <div>{data.id}</div>
               </div>

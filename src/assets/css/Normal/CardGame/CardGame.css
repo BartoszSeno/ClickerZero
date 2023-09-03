@@ -119,7 +119,7 @@
   margin-top: 154px;
 }
 
-.AtackPoints,
+.AttackPoints,
 .HpPoints {
   height: 50px;
   width: 50px;
@@ -398,7 +398,7 @@
   margin-top: -262px;
 }
 
-.AtackEnemyMC {
+.AttackEnemyMC {
   position: absolute;
   height: 280px;
   width: 240px;
@@ -407,7 +407,7 @@
   border: none;
 }
 
-@keyframes CanAtack {
+@keyframes CanAttack {
   0% {
   }
   50% {
@@ -419,11 +419,11 @@
 }
 
 /*=============Animation right to left ally===================*/
-#Slot0AtackSlot0AllyActive,
-#Slot1AtackSlot1AllyActive,
-#Slot2AtackSlot2AllyActive,
-#Slot3AtackSlot3AllyActive,
-#Slot4AtackSlot4AllyActive {
+#Slot0AttackSlot0AllyActive,
+#Slot1AttackSlot1AllyActive,
+#Slot2AttackSlot2AllyActive,
+#Slot3AttackSlot3AllyActive,
+#Slot4AttackSlot4AllyActive {
   animation-name: OppositeEachOther;
   animation-duration: 1s;
   position: relative;
@@ -442,10 +442,10 @@
   }
 }
 
-#Slot0AtackSlot1AllyActive,
-#Slot1AtackSlot2AllyActive,
-#Slot2AtackSlot3AllyActive,
-#Slot3AtackSlot4AllyActive {
+#Slot0AttackSlot1AllyActive,
+#Slot1AttackSlot2AllyActive,
+#Slot2AttackSlot3AllyActive,
+#Slot3AttackSlot4AllyActive {
   animation-name: UpRightOneSlot;
   animation-duration: 1s;
   position: relative;
@@ -465,9 +465,9 @@
   }
 }
 
-#Slot0AtackSlot2AllyActive,
-#Slot1AtackSlot3AllyActive,
-#Slot2AtackSlot4AllyActive {
+#Slot0AttackSlot2AllyActive,
+#Slot1AttackSlot3AllyActive,
+#Slot2AttackSlot4AllyActive {
   animation-name: UpRightTwoSlot;
   animation-duration: 1s;
   position: relative;
@@ -487,8 +487,8 @@
   }
 }
 
-#Slot0AtackSlot3AllyActive,
-#Slot1AtackSlot4AllyActive {
+#Slot0AttackSlot3AllyActive,
+#Slot1AttackSlot4AllyActive {
   animation-name: UpRightThreeSlot;
   animation-duration: 1s;
   position: relative;
@@ -508,7 +508,7 @@
   }
 }
 
-#Slot0AtackSlot4AllyActive {
+#Slot0AttackSlot4AllyActive {
   animation-name: UpRightfourSlot;
   animation-duration: 1s;
   position: relative;
@@ -530,10 +530,10 @@
 
 /*=============Animation left to right ally===================*/
 
-#Slot4AtackSlot3AllyActive,
-#Slot3AtackSlot2AllyActive,
-#Slot2AtackSlot1AllyActive,
-#Slot1AtackSlot0AllyActive {
+#Slot4AttackSlot3AllyActive,
+#Slot3AttackSlot2AllyActive,
+#Slot2AttackSlot1AllyActive,
+#Slot1AttackSlot0AllyActive {
   animation-name: UpLeftOneSlot;
   animation-duration: 1s;
   position: relative;
@@ -553,9 +553,9 @@
   }
 }
 
-#Slot4AtackSlot2AllyActive,
-#Slot3AtackSlot1AllyActive,
-#Slot2AtackSlot0AllyActive {
+#Slot4AttackSlot2AllyActive,
+#Slot3AttackSlot1AllyActive,
+#Slot2AttackSlot0AllyActive {
   animation-name: UpLeftTwoSlot;
   animation-duration: 1s;
   position: relative;
@@ -575,8 +575,8 @@
   }
 }
 
-#Slot4AtackSlot1AllyActive,
-#Slot3AtackSlot0AllyActive {
+#Slot4AttackSlot1AllyActive,
+#Slot3AttackSlot0AllyActive {
   animation-name: UpLeftThreeSlot;
   animation-duration: 1s;
   position: relative;
@@ -596,7 +596,7 @@
   }
 }
 
-#Slot4AtackSlot0AllyActive {
+#Slot4AttackSlot0AllyActive {
   animation-name: UpLeftfourSlot;
   animation-duration: 1s;
   position: relative;
@@ -617,11 +617,11 @@
 }
 
 /*=============Animation right to left enemy===================*/
-#Slot0AtackSlot0EnemyActive,
-#Slot1AtackSlot1EnemyActive,
-#Slot2AtackSlot2EnemyActive,
-#Slot3AtackSlot3EnemyActive,
-#Slot4AtackSlot4EnemyActive {
+#Slot0AttackSlot0EnemyActive,
+#Slot1AttackSlot1EnemyActive,
+#Slot2AttackSlot2EnemyActive,
+#Slot3AttackSlot3EnemyActive,
+#Slot4AttackSlot4EnemyActive {
   animation-name: OppositeEachOtherE;
   animation-duration: 1s;
   position: relative;
@@ -640,10 +640,10 @@
   }
 }
 
-#Slot0AtackSlot1EnemyActive,
-#Slot1AtackSlot2EnemyActive,
-#Slot2AtackSlot3EnemyActive,
-#Slot3AtackSlot4EnemyActive {
+#Slot0AttackSlot1EnemyActive,
+#Slot1AttackSlot2EnemyActive,
+#Slot2AttackSlot3EnemyActive,
+#Slot3AttackSlot4EnemyActive {
   animation-name: UpRightOneSlotE;
   animation-duration: 1s;
   position: relative;
@@ -663,9 +663,9 @@
   }
 }
 
-#Slot0AtackSlot2EnemyActive,
-#Slot1AtackSlot3EnemyActive,
-#Slot2AtackSlot4EnemyActive {
+#Slot0AttackSlot2EnemyActive,
+#Slot1AttackSlot3EnemyActive,
+#Slot2AttackSlot4EnemyActive {
   animation-name: UpRightTwoSlotE;
   animation-duration: 1s;
   position: relative;
@@ -685,8 +685,8 @@
   }
 }
 
-#Slot0AtackSlot3EnemyActive,
-#Slot1AtackSlot4EnemyActive {
+#Slot0AttackSlot3EnemyActive,
+#Slot1AttackSlot4EnemyActive {
   animation-name: UpRightThreeSlotE;
   animation-duration: 1s;
   position: relative;
@@ -706,7 +706,7 @@
   }
 }
 
-#Slot0AtackSlot4EnemyActive {
+#Slot0AttackSlot4EnemyActive {
   animation-name: UpRightfourSlotE;
   animation-duration: 1s;
   position: relative;
@@ -728,10 +728,10 @@
 
 /*=============Animation left to right enemy===================*/
 
-#Slot4AtackSlot3EnemyActive,
-#Slot3AtackSlot2EnemyActive,
-#Slot2AtackSlot1EnemyActive,
-#Slot1AtackSlot0EnemyActive {
+#Slot4AttackSlot3EnemyActive,
+#Slot3AttackSlot2EnemyActive,
+#Slot2AttackSlot1EnemyActive,
+#Slot1AttackSlot0EnemyActive {
   animation-name: UpLeftOneSlotE;
   animation-duration: 1s;
   position: relative;
@@ -751,9 +751,9 @@
   }
 }
 
-#Slot4AtackSlot2EnemyActive,
-#Slot3AtackSlot1EnemyActive,
-#Slot2AtackSlot0EnemyActive {
+#Slot4AttackSlot2EnemyActive,
+#Slot3AttackSlot1EnemyActive,
+#Slot2AttackSlot0EnemyActive {
   animation-name: UpLeftTwoSlotE;
   animation-duration: 1s;
   position: relative;
@@ -773,8 +773,8 @@
   }
 }
 
-#Slot4AtackSlot1EnemyActive,
-#Slot3AtackSlot0EnemyActive {
+#Slot4AttackSlot1EnemyActive,
+#Slot3AttackSlot0EnemyActive {
   animation-name: UpLeftThreeSlotE;
   animation-duration: 1s;
   position: relative;
@@ -794,7 +794,7 @@
   }
 }
 
-#Slot4AtackSlot0EnemyActive {
+#Slot4AttackSlot0EnemyActive {
   animation-name: UpLeftfourSlotE;
   animation-duration: 1s;
   position: relative;
@@ -816,14 +816,14 @@
 
 /*=============Animation that can attack enemy mc===================*/
 
-#Slot0AtackSlotnullAllyActiveEnemyCanBeAttack,
-#Slot0AtackSlotundefinedAllyActiveEnemyCanBeAttack {
-  animation-name: Slot0AtackMC;
+#Slot0AttackSlotnullAllyActiveEnemyCanBeAttack,
+#Slot0AttackSlotundefinedAllyActiveEnemyCanBeAttack {
+  animation-name: Slot0AttackMC;
   animation-duration: 1s;
   position: relative;
 }
 
-@keyframes Slot0AtackMC {
+@keyframes Slot0AttackMC {
   0% {
     transform: scale(1.2);
   }
@@ -837,14 +837,14 @@
   }
 }
 
-#Slot1AtackSlotnullAllyActiveEnemyCanBeAttack,
-#Slot1AtackSlotundefinedAllyActiveEnemyCanBeAttack {
-  animation-name: Slot1AtackMC;
+#Slot1AttackSlotnullAllyActiveEnemyCanBeAttack,
+#Slot1AttackSlotundefinedAllyActiveEnemyCanBeAttack {
+  animation-name: Slot1AttackMC;
   animation-duration: 1s;
   position: relative;
 }
 
-@keyframes Slot1AtackMC {
+@keyframes Slot1AttackMC {
   0% {
     transform: scale(1.2);
   }
@@ -858,14 +858,14 @@
   }
 }
 
-#Slot2AtackSlotnullAllyActiveEnemyCanBeAttack,
-#Slot2AtackSlotundefinedAllyActiveEnemyCanBeAttack {
-  animation-name: Slot2AtackMC;
+#Slot2AttackSlotnullAllyActiveEnemyCanBeAttack,
+#Slot2AttackSlotundefinedAllyActiveEnemyCanBeAttack {
+  animation-name: Slot2AttackMC;
   animation-duration: 1s;
   position: relative;
 }
 
-@keyframes Slot2AtackMC {
+@keyframes Slot2AttackMC {
   0% {
     transform: scale(1.2);
   }
@@ -879,14 +879,14 @@
   }
 }
 
-#Slot3AtackSlotnullAllyActiveEnemyCanBeAttack,
-#Slot3AtackSlotundefinedAllyActiveEnemyCanBeAttack {
-  animation-name: Slot3AtackMC;
+#Slot3AttackSlotnullAllyActiveEnemyCanBeAttack,
+#Slot3AttackSlotundefinedAllyActiveEnemyCanBeAttack {
+  animation-name: Slot3AttackMC;
   animation-duration: 1s;
   position: relative;
 }
 
-@keyframes Slot3AtackMC {
+@keyframes Slot3AttackMC {
   0% {
     transform: scale(1.2);
   }
@@ -900,14 +900,14 @@
   }
 }
 
-#Slot4AtackSlotnullAllyActiveEnemyCanBeAttack,
-#Slot4AtackSlotundefinedAllyActiveEnemyCanBeAttack {
-  animation-name: Slot4AtackMC;
+#Slot4AttackSlotnullAllyActiveEnemyCanBeAttack,
+#Slot4AttackSlotundefinedAllyActiveEnemyCanBeAttack {
+  animation-name: Slot4AttackMC;
   animation-duration: 1s;
   position: relative;
 }
 
-@keyframes Slot4AtackMC {
+@keyframes Slot4AttackMC {
   0% {
     transform: scale(1.2);
   }
@@ -923,14 +923,14 @@
 
 /*=============Animation that can attack ally mc===================*/
 
-#Slot0AtackSlotnullEnemyActiveAllyCanBeAttack,
-#Slot0AtackSlotundefinedEnemyActiveAllyCanBeAttack {
-  animation-name: Slot0AtackEC;
+#Slot0AttackSlotnullEnemyActiveAllyCanBeAttack,
+#Slot0AttackSlotundefinedEnemyActiveAllyCanBeAttack {
+  animation-name: Slot0AttackEC;
   animation-duration: 1s;
   position: relative;
 }
 
-@keyframes Slot0AtackEC {
+@keyframes Slot0AttackEC {
   0% {
     transform: scale(1.2);
   }
@@ -944,14 +944,14 @@
   }
 }
 
-#Slot1AtackSlotnullEnemyActiveAllyCanBeAttack,
-#Slot1AtackSlotundefinedEnemyActiveAllyCanBeAttack {
-  animation-name: Slot1AtackEC;
+#Slot1AttackSlotnullEnemyActiveAllyCanBeAttack,
+#Slot1AttackSlotundefinedEnemyActiveAllyCanBeAttack {
+  animation-name: Slot1AttackEC;
   animation-duration: 1s;
   position: relative;
 }
 
-@keyframes Slot1AtackEC {
+@keyframes Slot1AttackEC {
   0% {
     transform: scale(1.2);
   }
@@ -965,14 +965,14 @@
   }
 }
 
-#Slot2AtackSlotnullEnemyActiveAllyCanBeAttack,
-#Slot2AtackSlotundefinedEnemyActiveAllyCanBeAttack {
-  animation-name: Slot2AtackEC;
+#Slot2AttackSlotnullEnemyActiveAllyCanBeAttack,
+#Slot2AttackSlotundefinedEnemyActiveAllyCanBeAttack {
+  animation-name: Slot2AttackEC;
   animation-duration: 1s;
   position: relative;
 }
 
-@keyframes Slot2AtackEC {
+@keyframes Slot2AttackEC {
   0% {
     transform: scale(1.2);
   }
@@ -986,14 +986,14 @@
   }
 }
 
-#Slot3AtackSlotnullEnemyActiveAllyCanBeAttack,
-#Slot3AtackSlotundefinedEnemyActiveAllyCanBeAttack {
-  animation-name: Slot3AtackEC;
+#Slot3AttackSlotnullEnemyActiveAllyCanBeAttack,
+#Slot3AttackSlotundefinedEnemyActiveAllyCanBeAttack {
+  animation-name: Slot3AttackEC;
   animation-duration: 1s;
   position: relative;
 }
 
-@keyframes Slot3AtackEC {
+@keyframes Slot3AttackEC {
   0% {
     transform: scale(1.2);
   }
@@ -1007,14 +1007,14 @@
   }
 }
 
-#Slot4AtackSlotnullEnemyActiveAllyCanBeAttack,
-#Slot4AtackSlotundefinedEnemyActiveAllyCanBeAttack {
-  animation-name: Slot4AtackEC;
+#Slot4AttackSlotnullEnemyActiveAllyCanBeAttack,
+#Slot4AttackSlotundefinedEnemyActiveAllyCanBeAttack {
+  animation-name: Slot4AttackEC;
   animation-duration: 1s;
   position: relative;
 }
 
-@keyframes Slot4AtackEC {
+@keyframes Slot4AttackEC {
   0% {
     transform: scale(1.2);
   }
