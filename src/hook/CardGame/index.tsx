@@ -512,36 +512,31 @@ function CardGame({
       setCurrentMana((prevCM: number) => prevCM - randomItem.Mana);
       setSelectedItems(updatedItems);
       setNoMana(false);
-      setShouldRepeat(true);
-      console.log(
-        usedIndexSaveEValues.includes(true),
-        usedIndexSaveEValues[SelectedIndexBTM]
-      );
-      setTimeout(() => {
-        console.log("test3");
+    } else if (
+      usedIndexSaveEValues[SelectedIndexBTM] === false ||
+      usedIndexSaveEValues[SelectedIndexBTM] === null
+    ) {
+      console.log("test3");
 
+      setTimeout(() => {
+        console.log("test4");
         FirstMove();
       }, 3000);
-      if (
-        usedIndexSaveEValues[SelectedIndexBTM] === false ||
-        usedIndexSaveEValues[SelectedIndexBTM] === null
-      ) {
-        console.log("test4");
-      } else {
-        console.log("test5");
-
-        if (randomItemsE.length <= 0) {
-          console.log("brak kart");
-          setShouldRepeat(false);
-        } else if (itemsWithEnoughMana.length <= 0) {
-          setNoMana(true);
-          console.log("brak many");
-          setShouldRepeat(false);
-        }
-      }
+    } else if (usedIndexSaveEValues[SelectedIndexBTM] === true) {
+      console.log("brak ruchy");
+      setShouldRepeat(false);
+    } else if (randomItemsE.length <= 0) {
+      setNoMana(true);
+      console.log("brak kart");
+      setShouldRepeat(false);
+    } else if (itemsWithEnoughMana.length <= 0) {
+      setNoMana(true);
+      console.log("brak many");
+      setShouldRepeat(false);
     }
   };
   //========================================================
+  console.log(usedIndexSaveEValues[SelectedIndexBTM]);
   const idToRemove = BotSelectCard + 1;
 
   // Szukamy indeksu elementu o podanym id
@@ -793,21 +788,23 @@ function CardGame({
   }
 
   const startInterval = () => {
-    const intervalId = setInterval(() => {
-      // Wywołaj funkcję assignRandomValueToNull
-      console.log("r");
-      FirstMove();
-
-      // Sprawdź, czy wszystkie wartości w usedIndexSaveEValues są równe true
-      const allTrue = usedIndexSaveEValues.every((value) => value !== false);
-
-      // Jeśli wszystkie wartości są true, zatrzymaj interwał
-      if (allTrue) {
-        console.log("r2");
-        clearInterval(intervalId);
-      }
-    }, 5000); // Wywołuj co 5 sekund (5000 milisekund)
+    const dostepneIndeksy = selectedItems
+      .map((element, index) =>
+        element !== null && !usedIndexSaveEValues[index] ? index : null
+      )
+      .filter((index) => index !== null) as number[];
+    if (dostepneIndeksy.length > 0) {
+      // Generujemy losowy indeks z dostępnych indeksów.
+      const losowyIndeks =
+        dostepneIndeksy[Math.floor(Math.random() * dostepneIndeksy.length)];
+      setSelectedIndexBTM(losowyIndeks);
+    } else {
+      //tutaj dodac funkcje ktora atakuje główną postać
+      setSelectedIndexBTM(null); // W przypadku, gdy nie ma dostępnych elementów.
+    }
   };
+
+  console.log(usedIndexSaveEValues);
 
   return (
     <>
@@ -980,6 +977,7 @@ function CardGame({
                     className="NextRound"
                     onClick={(e) => {
                       startInterval();
+                      assignRandomValueToNull();
                     }}
                   >
                     <p>test</p>
