@@ -36,7 +36,7 @@ function TableEnemy({
   usedIndexSaveAValues,
   setEnemyIndexForAnimation,
   AllyIndexForAnimation,
-  randomIndexEnemy,
+  SelectedIndexBTM,
   AllyCanBeAttack,
 }: {
   selectedItemIdE: any;
@@ -71,7 +71,7 @@ function TableEnemy({
   usedIndexSaveAValues: any;
   setEnemyIndexForAnimation: any;
   AllyIndexForAnimation: any;
-  randomIndexEnemy: any;
+  SelectedIndexBTM: any;
   AllyCanBeAttack: any;
 }) {
   //====
@@ -198,7 +198,7 @@ function TableEnemy({
               className="CardConteiner"
               key={itemId}
               id={`Slot${index}AttackSlot${AllyIndexForAnimation}Enemy${
-                index === randomIndexEnemy && RoundFor === "enemy"
+                index === SelectedIndexBTM && RoundFor === "enemy"
                   ? "Active"
                   : "inactive"
               }${AllyCanBeAttack ? "AllyCanBeAttack" : ""}`}
@@ -208,7 +208,7 @@ function TableEnemy({
                 className="CardCharIG"
                 style={{
                   backgroundColor:
-                    index === randomIndexEnemy && RoundFor === "enemy"
+                    index === SelectedIndexBTM && RoundFor === "enemy"
                       ? "green"
                       : CanBeUse === "AllyAttackEnemy" && AllyAttackEnemy[index]
                       ? "blue"
