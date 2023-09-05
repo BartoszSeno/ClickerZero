@@ -15,7 +15,7 @@ export const AllyCard = [
     img: "https://raw.githubusercontent.com/BartoszSeno/ClickerZero/main/src/assets/MainImg/CardGame/Ally/01.gif",
     Attack: 2,
     Hp: 1,
-    Mana: 10,
+    Mana: 1,
     inTable: false,
     isKill: false,
   },
