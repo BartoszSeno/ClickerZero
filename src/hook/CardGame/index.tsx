@@ -531,16 +531,6 @@ function CardGame({
         setShouldRepeat(false);
         addRandomItemWithoutRepetition();
       }
-      if (randomItemsE.length <= 0) {
-        setNoMana(true);
-        console.log("brak kart");
-        setShouldRepeat(false);
-      }
-      if (itemsWithEnoughMana.length <= 0) {
-        setNoMana(true);
-        console.log("brak many");
-        setShouldRepeat(false);
-      }
     }
   };
   //========================================================
