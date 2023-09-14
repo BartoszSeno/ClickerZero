@@ -527,19 +527,7 @@ function CardGame({
             FirstMove();
           }, 3000);
         }
-      } else if (
-        usedIndexSaveEValues.every((value) => value !== null) &&
-        usedIndexSaveEValues.every((value) => value === true || value === false)
-      ) {
-        console.log(
-          "Cała tablica jest wypełniona wartościami true lub false, bez wartości null."
-        );
-      } else if (
-        usedIndexSaveEValues.every((value) => value === true || value === null)
-      ) {
-        console.log("brak ruchu");
-        setShouldRepeat(false);
-        addRandomItemWithoutRepetition();
+      } else {
       }
     }
   };
@@ -548,6 +536,28 @@ function CardGame({
   useEffect(() => {
     assignRandomValueToNull();
   }, [selectedItems]);
+  useEffect(() => {
+    if (
+      usedIndexSaveEValues.every((value) => value !== null) &&
+      usedIndexSaveEValues.every((value) => value === true || value === false)
+    ) {
+      console.log(
+        "Cała tablica jest wypełniona wartościami true lub false, bez wartości null."
+      );
+      setTimeout(() => {
+        FirstMove();
+      }, 3000);
+    }
+  }, [usedIndexSaveEValues]);
+
+  useEffect(() => {
+    if (
+      usedIndexSaveEValues.every((value) => value === true || value === null)
+    ) {
+      console.log("brak ruchux2");
+      setShouldRepeat(false);
+    }
+  }, [usedIndexSaveEValues.every((value) => value === true || value === null)]);
 
   // Szukamy indeksu elementu o podanym id
   const indexToRemove = randomItemsE.findIndex(
@@ -608,7 +618,6 @@ function CardGame({
   useEffect(() => {
     wypiszLosowyIndeksZTablicyEnemy(selectedItems);
   }, [RoundFor === "enemy"]);
-  console.log(usedIndexSaveEValues);
   useEffect(() => {
     setTimeout(() => {
       const allNull = selectedItemsA.every((item) => item === null);
