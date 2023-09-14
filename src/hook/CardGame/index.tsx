@@ -519,15 +519,25 @@ function CardGame({
         setSelectedItems(updatedItems);
         setNoMana(false);
       }
-      if (usedIndexSaveEValues[SelectedIndexBTM] === false) {
-        setTimeout(() => {
-          FirstMove();
-        }, 3000);
-      }
-      if (
+
+      if (usedIndexSaveEValues.some((value) => value === false)) {
+        console.log("ruch moze jeszcze jakiś być");
+        if (usedIndexSaveEValues[SelectedIndexBTM] === false) {
+          setTimeout(() => {
+            FirstMove();
+          }, 3000);
+        }
+      } else if (
+        usedIndexSaveEValues.every((value) => value !== null) &&
+        usedIndexSaveEValues.every((value) => value === true || value === false)
+      ) {
+        console.log(
+          "Cała tablica jest wypełniona wartościami true lub false, bez wartości null."
+        );
+      } else if (
         usedIndexSaveEValues.every((value) => value === true || value === null)
       ) {
-        console.log("brak ruchy");
+        console.log("brak ruchu");
         setShouldRepeat(false);
         addRandomItemWithoutRepetition();
       }
@@ -535,7 +545,6 @@ function CardGame({
   };
   //========================================================
   const idToRemove = BotSelectCard + 1;
-  console.log(RoundFor);
   useEffect(() => {
     assignRandomValueToNull();
   }, [selectedItems]);
@@ -599,7 +608,7 @@ function CardGame({
   useEffect(() => {
     wypiszLosowyIndeksZTablicyEnemy(selectedItems);
   }, [RoundFor === "enemy"]);
-
+  console.log(usedIndexSaveEValues);
   useEffect(() => {
     setTimeout(() => {
       const allNull = selectedItemsA.every((item) => item === null);
