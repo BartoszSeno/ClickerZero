@@ -469,8 +469,6 @@ function CardGame({
   const [EnemyAttack, setEnemyAttack] = useState<any>([]);
   const [NoMana, setNoMana] = useState(true);
 
-  const [shouldRepeat, setShouldRepeat] = useState(false);
-
   const assignRandomValueToNull = () => {
     const freeIndexes = selectedItems.reduce(
       (acc: any, item: any, index: any) => {
@@ -550,12 +548,12 @@ function CardGame({
     }
   }, [usedIndexSaveEValues]);
 
+  console.log(RoundFor);
   useEffect(() => {
     if (
       usedIndexSaveEValues.every((value) => value === true || value === null)
     ) {
       console.log("brak ruchux2");
-      setShouldRepeat(false);
     }
   }, [usedIndexSaveEValues.every((value) => value === true || value === null)]);
 
@@ -598,26 +596,24 @@ function CardGame({
 
   //==== random number from enemy table
 
-  function wypiszLosowyIndeksZTablicyEnemy(tablica: any[]) {
+  useEffect(() => {
     // Filtrujemy tablicę, aby uzyskać indeksy dostępnych elementów (nie-null i nie true).
-    const dostepneIndeksy = tablica
+    const dostepneIndeksy = selectedItems
       .map((element, index) =>
         element !== null && !usedIndexSaveEValues[index] ? index : null
       )
       .filter((index) => index !== null) as number[];
+
     if (dostepneIndeksy.length > 0) {
       // Generujemy losowy indeks z dostępnych indeksów.
       const losowyIndeks =
         dostepneIndeksy[Math.floor(Math.random() * dostepneIndeksy.length)];
       setSelectedIndexBTM(losowyIndeks);
     } else {
-      //tutaj dodac funkcje ktora atakuje główną postać
-      setSelectedIndexBTM(null); // W przypadku, gdy nie ma dostępnych elementów.
+      setSelectedIndexBTM(null);
     }
-  }
-  useEffect(() => {
-    wypiszLosowyIndeksZTablicyEnemy(selectedItems);
-  }, [RoundFor === "enemy"]);
+  }, [selectedItems, usedIndexSaveEValues]);
+
   useEffect(() => {
     setTimeout(() => {
       const allNull = selectedItemsA.every((item) => item === null);
