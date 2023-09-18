@@ -45,6 +45,25 @@ function CardGame({
     (boolean | null)[]
   >([null, null, null, null, null]);
 
+  //======
+  const [selectedItemsA, setselectedItemsA] = useState<(number | null)[]>([
+    null,
+    null,
+    null,
+    null,
+    null,
+  ]);
+  const [IndexSaveA, setIndexSaveA] = useState<any>();
+  const [selectedCardA, setselectedCardA] = useState<any>();
+
+  //====
+  const [selectedItems, setSelectedItems] = useState<(number | null)[]>([
+    null,
+    null,
+    null,
+    null,
+    null,
+  ]);
   //==============
   useEffect(() => {
     const initialIndexes = Array.from({ length: 9 }, (_, index) => index);
@@ -235,7 +254,6 @@ function CardGame({
           setRoundFor("enemy");
           setRoundForNew("enemy");
           setButtonIsDisabled(true);
-
           setCurrentMana((prevCM) => (prevCM === MaxMana ? prevCM : MaxMana));
         }
       }
@@ -285,6 +303,8 @@ function CardGame({
     setHasCodeExecuted(0);
     setWylosowanoLiczbe(false);
     setUsedIndexSaveAValues([]);
+    console.log(selectedItems, " aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    // console.log(RoundFor, usedIndexSaveEValues);
 
     const updatedUsedIndexSaveEValues = usedIndexSaveEValues.map(
       (value, index) => {
@@ -365,25 +385,7 @@ function CardGame({
   const [CanBeUse, setCanBeUse] = useState<any>();
 
   const [IdCardA, setIdCardA] = useState<any>();
-  //======
-  const [selectedItemsA, setselectedItemsA] = useState<(number | null)[]>([
-    null,
-    null,
-    null,
-    null,
-    null,
-  ]);
-  const [IndexSaveA, setIndexSaveA] = useState<any>();
-  const [selectedCardA, setselectedCardA] = useState<any>();
 
-  //====
-  const [selectedItems, setSelectedItems] = useState<(number | null)[]>([
-    null,
-    null,
-    null,
-    null,
-    null,
-  ]);
   const [IndexSaveE, setIndexSaveE] = useState<any>();
   const [selectedCard, setselectedCard] = useState<any>();
 
@@ -523,6 +525,7 @@ function CardGame({
         if (usedIndexSaveEValues[SelectedIndexBTM] === false) {
           setTimeout(() => {
             FirstMove();
+            console.log("2");
           }, 3000);
         }
       } else {
@@ -534,6 +537,7 @@ function CardGame({
   useEffect(() => {
     assignRandomValueToNull();
   }, [selectedItems]);
+
   useEffect(() => {
     if (
       usedIndexSaveEValues.every((value) => value !== null) &&
@@ -544,16 +548,17 @@ function CardGame({
       );
       setTimeout(() => {
         FirstMove();
+        console.log("1");
       }, 3000);
     }
   }, [usedIndexSaveEValues]);
 
-  console.log(RoundFor);
   useEffect(() => {
     if (
       usedIndexSaveEValues.every((value) => value === true || value === null)
     ) {
       console.log("brak ruchux2");
+      addRandomItemWithoutRepetition();
     }
   }, [usedIndexSaveEValues.every((value) => value === true || value === null)]);
 
@@ -613,6 +618,8 @@ function CardGame({
       setSelectedIndexBTM(null);
     }
   }, [selectedItems, usedIndexSaveEValues]);
+
+  console.log(selectedItems, usedIndexSaveEValues, RoundFor, RoundForNew);
 
   useEffect(() => {
     setTimeout(() => {
@@ -775,7 +782,7 @@ function CardGame({
 
   function FirstMove() {
     if (RoundForNew === "enemy") {
-      setRoundFor("ally");
+      setRoundFor("none");
       setTimeout(() => {
         setRoundFor("enemy");
       }, 10);
