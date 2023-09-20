@@ -663,13 +663,11 @@ function CardGame({
           setAllyCanBeAttack(true);
           setTimeout(() => {
             setAllyCanBeAttack(false);
-          }, 600);
+          }, 1200);
         }, 600);
       }
     }
   }, [RoundFor, CanBeUse, BotAtackAgain]);
-
-  const [itsFirstRoudn, setItsFirstRound] = useState<boolean>(true);
 
   useEffect(() => {
     const indexBotAllySelect = randomIndex;
@@ -741,7 +739,7 @@ function CardGame({
                   setSelectedIndexBTM(undefined);
                   setTimeout(() => {
                     setAllyIndexForAnimation(undefined);
-                  }, 600);
+                  }, 630);
                   return newArray;
                 });
               } else {
@@ -774,7 +772,7 @@ function CardGame({
       setBotAtackAgain(true);
       setTimeout(() => {
         setBotAtackAgain(false);
-      }, 600);
+      }, 630);
       setAllayAttack(Array(selectedItemsA.length).fill(false));
       setEnemyAttack(Array(selectedItems.length).fill(false));
       setIndexSaveE(-1);
