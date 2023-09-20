@@ -223,6 +223,7 @@ function CardGame({
     return AllyCard[index];
   };
   //check than bot have turn
+  const [BotAtackAgain, setBotAtackAgain] = useState(false);
   const [hasCodeExecuted, setHasCodeExecuted] = useState<number>(0);
   const [wylosowanoLiczbe, setWylosowanoLiczbe] = useState(false); // Dodajemy stan do śledzenia, czy już wylosowano liczbę
   const addRandomItemWithoutRepetition = () => {
@@ -324,7 +325,7 @@ function CardGame({
         assignRandomValueToNull();
       }, 300);
     }
-  }, [RoundFor]);
+  }, [RoundFor, BotAtackAgain]);
 
   useEffect(() => {
     setCurrentMana((prevCM) => (prevCM === MaxMana ? prevCM : MaxMana));
@@ -470,6 +471,28 @@ function CardGame({
   const [BotSelectCard, setBotSelectCard] = useState<any>();
   const [EnemyAttack, setEnemyAttack] = useState<any>([]);
   const [NoMana, setNoMana] = useState(true);
+  const [buttonClickCount, setButtonClickCount] = useState(0);
+
+  const handleButtonClick = () => {
+    // Zwiększamy liczbę kliknięć po naciśnięciu guzika
+    setButtonClickCount(buttonClickCount + 1);
+  };
+
+  useEffect(() => {
+    const dostepneIndeksy = selectedItems
+      .map((element, index) =>
+        element !== null && !usedIndexSaveEValues[index] ? index : null
+      )
+      .filter((index) => index !== null) as number[];
+
+    if (dostepneIndeksy.length > 0) {
+      const losowyIndeks =
+        dostepneIndeksy[Math.floor(Math.random() * dostepneIndeksy.length)];
+      setSelectedIndexBTM(losowyIndeks);
+    } else {
+      setSelectedIndexBTM(null);
+    }
+  }, [buttonClickCount]);
 
   const assignRandomValueToNull = () => {
     const freeIndexes = selectedItems.reduce(
@@ -519,17 +542,6 @@ function CardGame({
         setSelectedItems(updatedItems);
         setNoMana(false);
       }
-
-      if (usedIndexSaveEValues.some((value) => value === false)) {
-        console.log("ruch moze jeszcze jakiś być");
-        if (usedIndexSaveEValues[SelectedIndexBTM] === false) {
-          setTimeout(() => {
-            FirstMove();
-            console.log("2");
-          }, 3000);
-        }
-      } else {
-      }
     }
   };
   //========================================================
@@ -539,26 +551,24 @@ function CardGame({
   }, [selectedItems]);
 
   useEffect(() => {
-    if (
-      usedIndexSaveEValues.every((value) => value !== null) &&
-      usedIndexSaveEValues.every((value) => value === true || value === false)
-    ) {
-      console.log(
-        "Cała tablica jest wypełniona wartościami true lub false, bez wartości null."
-      );
-      setTimeout(() => {
+    if (usedIndexSaveEValues.some((value) => value === false)) {
+      console.log("ruch moze jeszcze jakiś być");
+      if (usedIndexSaveEValues[SelectedIndexBTM] === false) {
         FirstMove();
-        console.log("1");
-      }, 3000);
+        console.log("2");
+      }
+    } else {
     }
-  }, [usedIndexSaveEValues]);
+  }, [usedIndexSaveEValues, buttonClickCount, SelectedIndexBTM]);
 
   useEffect(() => {
     if (
       usedIndexSaveEValues.every((value) => value === true || value === null)
     ) {
       console.log("brak ruchux2");
-      addRandomItemWithoutRepetition();
+      setTimeout(() => {
+        addRandomItemWithoutRepetition();
+      }, 1000);
     }
   }, [usedIndexSaveEValues.every((value) => value === true || value === null)]);
 
@@ -602,26 +612,6 @@ function CardGame({
   //==== random number from enemy table
 
   useEffect(() => {
-    // Filtrujemy tablicę, aby uzyskać indeksy dostępnych elementów (nie-null i nie true).
-    const dostepneIndeksy = selectedItems
-      .map((element, index) =>
-        element !== null && !usedIndexSaveEValues[index] ? index : null
-      )
-      .filter((index) => index !== null) as number[];
-
-    if (dostepneIndeksy.length > 0) {
-      // Generujemy losowy indeks z dostępnych indeksów.
-      const losowyIndeks =
-        dostepneIndeksy[Math.floor(Math.random() * dostepneIndeksy.length)];
-      setSelectedIndexBTM(losowyIndeks);
-    } else {
-      setSelectedIndexBTM(null);
-    }
-  }, [selectedItems, usedIndexSaveEValues]);
-
-  console.log(selectedItems, usedIndexSaveEValues, RoundFor, RoundForNew);
-
-  useEffect(() => {
     setTimeout(() => {
       const allNull = selectedItemsA.every((item) => item === null);
       if (hasCodeExecuted < 1) {
@@ -650,12 +640,11 @@ function CardGame({
             });
           }
           if (allNull) {
-            //tutaj jedna z opcji atakowania
           }
         }
       }
-    }, 500);
-  }, [RoundFor]);
+    }, 600);
+  }, [RoundFor, BotAtackAgain]);
 
   // bot Attack enemy
 
@@ -674,11 +663,11 @@ function CardGame({
           setAllyCanBeAttack(true);
           setTimeout(() => {
             setAllyCanBeAttack(false);
-          }, 2000);
-        }, 1000);
+          }, 600);
+        }, 600);
       }
     }
-  }, [RoundFor, CanBeUse]);
+  }, [RoundFor, CanBeUse, BotAtackAgain]);
 
   const [itsFirstRoudn, setItsFirstRound] = useState<boolean>(true);
 
@@ -752,7 +741,7 @@ function CardGame({
                   setSelectedIndexBTM(undefined);
                   setTimeout(() => {
                     setAllyIndexForAnimation(undefined);
-                  }, 2000);
+                  }, 600);
                   return newArray;
                 });
               } else {
@@ -763,8 +752,8 @@ function CardGame({
           }
         }
       }
-    }, 500);
-  }, [BotAttackAllay]);
+    }, 800);
+  }, [SelectedIndexBTM, buttonClickCount]);
 
   const [EnemyIndexForAnimation, setEnemyIndexForAnimation] =
     useState<number>();
@@ -782,10 +771,10 @@ function CardGame({
 
   function FirstMove() {
     if (RoundForNew === "enemy") {
-      setRoundFor("none");
+      setBotAtackAgain(true);
       setTimeout(() => {
-        setRoundFor("enemy");
-      }, 10);
+        setBotAtackAgain(false);
+      }, 600);
       setAllayAttack(Array(selectedItemsA.length).fill(false));
       setEnemyAttack(Array(selectedItems.length).fill(false));
       setIndexSaveE(-1);
@@ -960,12 +949,20 @@ function CardGame({
                 >
                   <button
                     className="NextRound"
-                    disabled={ButtonIsDisabled}
+                    //  disabled={ButtonIsDisabled}
                     onClick={(e) => {
                       addRandomItemWithoutRepetition();
                     }}
                   >
                     <p>Next</p>
+                  </button>
+                  <button
+                    className="NextRound"
+                    onClick={(e) => {
+                      handleButtonClick();
+                    }}
+                  >
+                    <p>test</p>
                   </button>
                 </div>
                 <div className="crystal0"></div>
@@ -1020,6 +1017,6 @@ function CardGame({
 
 export default CardGame;
 
-// naprawic uzywanie kilku ruchów bota
+// naprawic by bot nie miał podwojego ruchu
 // tabliczke wygrana / przegrana
 // dodać nagrody za wygraną
