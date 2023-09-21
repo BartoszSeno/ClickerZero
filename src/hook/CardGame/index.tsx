@@ -304,8 +304,6 @@ function CardGame({
     setHasCodeExecuted(0);
     setWylosowanoLiczbe(false);
     setUsedIndexSaveAValues([]);
-    console.log(selectedItems, " aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-    // console.log(RoundFor, usedIndexSaveEValues);
 
     const updatedUsedIndexSaveEValues = usedIndexSaveEValues.map(
       (value, index) => {
@@ -472,11 +470,16 @@ function CardGame({
   const [EnemyAttack, setEnemyAttack] = useState<any>([]);
   const [NoMana, setNoMana] = useState(true);
   const [buttonClickCount, setButtonClickCount] = useState(0);
+  const [IniciateBotMove, setIniciateBotMove] = useState(false);
 
   const handleButtonClick = () => {
     // Zwiększamy liczbę kliknięć po naciśnięciu guzika
     setButtonClickCount(buttonClickCount + 1);
   };
+
+  useEffect(() => {
+    setButtonClickCount(buttonClickCount + 1);
+  }, [IniciateBotMove]);
 
   useEffect(() => {
     const dostepneIndeksy = selectedItems
@@ -552,14 +555,17 @@ function CardGame({
 
   useEffect(() => {
     if (usedIndexSaveEValues.some((value) => value === false)) {
-      console.log("ruch moze jeszcze jakiś być");
+      // console.log("ruch moze jeszcze jakiś być");
       if (usedIndexSaveEValues[SelectedIndexBTM] === false) {
         FirstMove();
-        console.log("2");
+      } else {
+        setTimeout(() => {
+          setIniciateBotMove(!IniciateBotMove);
+        }, 1000);
       }
     } else {
     }
-  }, [usedIndexSaveEValues, buttonClickCount, SelectedIndexBTM]);
+  }, [usedIndexSaveEValues, IniciateBotMove]);
 
   useEffect(() => {
     if (
@@ -667,7 +673,7 @@ function CardGame({
         }, 600);
       }
     }
-  }, [RoundFor, CanBeUse, BotAtackAgain]);
+  }, [RoundFor, CanBeUse]);
 
   useEffect(() => {
     const indexBotAllySelect = randomIndex;
@@ -711,7 +717,15 @@ function CardGame({
                       AllyCard[Number(CaedIdA)].Hp -=
                         EnemyCard[Number(cardIdE)].Attack;
 
+                      console.log(
+                        EnemyCard[Number(cardIdE)].Hp,
+                        AllyCard[Number(CaedIdA)].Attack,
+                        AllyCard[Number(CaedIdA)].Hp,
+                        EnemyCard[Number(cardIdE)].Attack
+                      );
+
                       if (EnemyCard[Number(cardIdE)].Hp <= 0) {
+                        console.log("1");
                         setSelectedItems((prevItems: any[]) => {
                           const newItemsE = [...prevItems];
                           newItemsE[indexBotEnemySelect] = null;
@@ -719,6 +733,7 @@ function CardGame({
                         });
                       }
                       if (AllyCard[Number(CaedIdA)].Hp <= 0) {
+                        console.log("2");
                         setselectedItemsA((prevItems: any[]) => {
                           const newItems = [...prevItems];
                           newItems[indexBotAllySelect] = null;
@@ -750,8 +765,8 @@ function CardGame({
           }
         }
       }
-    }, 800);
-  }, [SelectedIndexBTM, buttonClickCount]);
+    }, 1000);
+  }, [IniciateBotMove]);
 
   const [EnemyIndexForAnimation, setEnemyIndexForAnimation] =
     useState<number>();
