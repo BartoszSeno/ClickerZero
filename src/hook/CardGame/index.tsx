@@ -681,6 +681,7 @@ function CardGame({
     const CaedIdA = selectedItemsA[indexBotAllySelect];
     const cardIdE = selectedItems[indexBotEnemySelect];
     setAllyIndexForAnimation(indexBotAllySelect);
+    console.log("test1");
     setTimeout(() => {
       if (selectedItemsA.some((item) => item !== null)) {
         if (RoundFor === "enemy") {
@@ -716,13 +717,7 @@ function CardGame({
                         AllyCard[Number(CaedIdA)].Attack;
                       AllyCard[Number(CaedIdA)].Hp -=
                         EnemyCard[Number(cardIdE)].Attack;
-
-                      console.log(
-                        EnemyCard[Number(cardIdE)].Hp,
-                        AllyCard[Number(CaedIdA)].Attack,
-                        AllyCard[Number(CaedIdA)].Hp,
-                        EnemyCard[Number(cardIdE)].Attack
-                      );
+                      console.log("test12");
 
                       if (EnemyCard[Number(cardIdE)].Hp <= 0) {
                         console.log("1");
