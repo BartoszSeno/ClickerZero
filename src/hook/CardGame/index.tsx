@@ -307,7 +307,9 @@ function CardGame({
 
     const updatedUsedIndexSaveEValues = usedIndexSaveEValues.map(
       (value, index) => {
-        if (selectedItems[index] !== null) {
+        if (selectedItems[index] === null) {
+          return null;
+        } else if (selectedItems[index] !== null) {
           return false;
         }
         return value;
@@ -324,6 +326,8 @@ function CardGame({
       }, 300);
     }
   }, [RoundFor, BotAtackAgain]);
+
+  console.log(usedIndexSaveEValues);
 
   useEffect(() => {
     setCurrentMana((prevCM) => (prevCM === MaxMana ? prevCM : MaxMana));
@@ -555,8 +559,13 @@ function CardGame({
 
   useEffect(() => {
     if (usedIndexSaveEValues.some((value) => value === false)) {
-      // console.log("ruch moze jeszcze jakiś być");
+      console.log(
+        "ruch moze jeszcze jakiś być",
+        usedIndexSaveEValues[SelectedIndexBTM] === false,
+        usedIndexSaveEValues
+      );
       if (usedIndexSaveEValues[SelectedIndexBTM] === false) {
+        console.log("test");
         FirstMove();
       } else {
         setTimeout(() => {
@@ -565,7 +574,7 @@ function CardGame({
       }
     } else {
     }
-  }, [usedIndexSaveEValues, IniciateBotMove]);
+  }, [usedIndexSaveEValues, SelectedIndexBTM]);
 
   useEffect(() => {
     if (
@@ -577,7 +586,6 @@ function CardGame({
       }, 1000);
     }
   }, [usedIndexSaveEValues.every((value) => value === true || value === null)]);
-
   // Szukamy indeksu elementu o podanym id
   const indexToRemove = randomItemsE.findIndex(
     (item: { id: number }) => item.id === idToRemove
@@ -761,7 +769,7 @@ function CardGame({
         }
       }
     }, 1000);
-  }, [IniciateBotMove]);
+  }, [BotAtackAgain]);
 
   const [EnemyIndexForAnimation, setEnemyIndexForAnimation] =
     useState<number>();
@@ -779,8 +787,11 @@ function CardGame({
 
   function FirstMove() {
     if (RoundForNew === "enemy") {
+      console.log("1");
       setBotAtackAgain(true);
       setTimeout(() => {
+        console.log("2");
+
         setBotAtackAgain(false);
       }, 630);
       setAllayAttack(Array(selectedItemsA.length).fill(false));
