@@ -557,6 +557,8 @@ function CardGame({
     assignRandomValueToNull();
   }, [selectedItems]);
 
+  const [StopSecoundAtack, setStopSecoundAtack] = useState<boolean>(false);
+
   useEffect(() => {
     if (usedIndexSaveEValues.some((value) => value === false)) {
       console.log(
@@ -566,7 +568,11 @@ function CardGame({
       );
       if (usedIndexSaveEValues[SelectedIndexBTM] === false) {
         console.log("test");
+        setStopSecoundAtack(true);
         FirstMove();
+        setTimeout(() => {
+          setStopSecoundAtack(false);
+        }, 100);
       } else {
         setTimeout(() => {
           setIniciateBotMove(!IniciateBotMove);
@@ -693,77 +699,79 @@ function CardGame({
     setTimeout(() => {
       if (selectedItemsA.some((item) => item !== null)) {
         if (RoundFor === "enemy") {
-          if (indexBotEnemySelect !== undefined) {
-            if (
-              usedIndexSaveEValues[SelectedIndexBTM] === false ||
-              usedIndexSaveEValues[SelectedIndexBTM] === null
-            ) {
-              if (EnemyAttack[indexBotEnemySelect] !== undefined) {
-                // Stwórz nową kopię tablicy usedIndexSaveEValues
-                const updatedValues = [...usedIndexSaveEValues];
-                // Ustaw wartość na true tylko dla wybranego indeksu
-                updatedValues[SelectedIndexBTM] = true;
-                // Zaktualizuj stan komponentu za pomocą setUsedIndexSaveEValues
-                setUsedIndexSaveEValues(updatedValues);
+          if (StopSecoundAtack === true) {
+            if (indexBotEnemySelect !== undefined) {
+              if (
+                usedIndexSaveEValues[SelectedIndexBTM] === false ||
+                usedIndexSaveEValues[SelectedIndexBTM] === null
+              ) {
+                if (EnemyAttack[indexBotEnemySelect] !== undefined) {
+                  // Stwórz nową kopię tablicy usedIndexSaveEValues
+                  const updatedValues = [...usedIndexSaveEValues];
+                  // Ustaw wartość na true tylko dla wybranego indeksu
+                  updatedValues[SelectedIndexBTM] = true;
+                  // Zaktualizuj stan komponentu za pomocą setUsedIndexSaveEValues
+                  setUsedIndexSaveEValues(updatedValues);
 
-                const selectedIndex = EnemyAttack.findIndex(
-                  (value: boolean) => value === true
-                );
+                  const selectedIndex = EnemyAttack.findIndex(
+                    (value: boolean) => value === true
+                  );
 
-                setEnemyAttack((prevArray: any) => {
-                  const newArray = [...prevArray];
-                  if (selectedIndex !== -1) {
-                    newArray[selectedIndex] = false;
-                  }
-                  newArray[indexBotAllySelect] = true;
-                  if (newArray[indexBotAllySelect]) {
-                    //
-
-                    //
-                    if (selectedItemsA[indexBotAllySelect] !== null) {
-                      EnemyCard[Number(cardIdE)].Hp -=
-                        AllyCard[Number(CaedIdA)].Attack;
-                      AllyCard[Number(CaedIdA)].Hp -=
-                        EnemyCard[Number(cardIdE)].Attack;
-                      console.log("test12");
-
-                      if (EnemyCard[Number(cardIdE)].Hp <= 0) {
-                        console.log("1");
-                        setSelectedItems((prevItems: any[]) => {
-                          const newItemsE = [...prevItems];
-                          newItemsE[indexBotEnemySelect] = null;
-                          return newItemsE;
-                        });
-                      }
-                      if (AllyCard[Number(CaedIdA)].Hp <= 0) {
-                        console.log("2");
-                        setselectedItemsA((prevItems: any[]) => {
-                          const newItems = [...prevItems];
-                          newItems[indexBotAllySelect] = null;
-                          return newItems;
-                        });
-                      }
-                      setOneTimeAEA((prevArray: any) => {
-                        const newArray = [...prevArray];
-                        newArray[indexBotEnemySelect] = false;
-                        return newArray;
-                      });
+                  setEnemyAttack((prevArray: any) => {
+                    const newArray = [...prevArray];
+                    if (selectedIndex !== -1) {
+                      newArray[selectedIndex] = false;
                     }
-                  }
-                  setHasCodeExecuted((prevCount) => prevCount + 1);
-                  setBotAttackAllay(false);
-                  setselectedCard(undefined);
-                  setIndexSaveE(undefined);
-                  setSelectedIndexBTM(undefined);
-                  setTimeout(() => {
-                    setAllyIndexForAnimation(undefined);
-                  }, 630);
-                  return newArray;
-                });
+                    newArray[indexBotAllySelect] = true;
+                    if (newArray[indexBotAllySelect]) {
+                      //
+
+                      //
+                      if (selectedItemsA[indexBotAllySelect] !== null) {
+                        EnemyCard[Number(cardIdE)].Hp -=
+                          AllyCard[Number(CaedIdA)].Attack / 2;
+                        AllyCard[Number(CaedIdA)].Hp -=
+                          EnemyCard[Number(cardIdE)].Attack / 2;
+                        console.log("test12");
+
+                        if (EnemyCard[Number(cardIdE)].Hp <= 0) {
+                          console.log("1");
+                          setSelectedItems((prevItems: any[]) => {
+                            const newItemsE = [...prevItems];
+                            newItemsE[indexBotEnemySelect] = null;
+                            return newItemsE;
+                          });
+                        }
+                        if (AllyCard[Number(CaedIdA)].Hp <= 0) {
+                          console.log("2");
+                          setselectedItemsA((prevItems: any[]) => {
+                            const newItems = [...prevItems];
+                            newItems[indexBotAllySelect] = null;
+                            return newItems;
+                          });
+                        }
+                        setOneTimeAEA((prevArray: any) => {
+                          const newArray = [...prevArray];
+                          newArray[indexBotEnemySelect] = false;
+                          return newArray;
+                        });
+                      }
+                    }
+                    setHasCodeExecuted((prevCount) => prevCount + 1);
+                    setBotAttackAllay(false);
+                    setselectedCard(undefined);
+                    setIndexSaveE(undefined);
+                    setSelectedIndexBTM(undefined);
+                    setTimeout(() => {
+                      setAllyIndexForAnimation(undefined);
+                    }, 630);
+                    return newArray;
+                  });
+                } else {
+                }
               } else {
+                return;
               }
-            } else {
-              return;
             }
           }
         }
