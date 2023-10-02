@@ -315,7 +315,7 @@ function CardGame({
         return value;
       }
     );
-
+    console.log("t1 ", usedIndexSaveEValues);
     setUsedIndexSaveEValues(updatedUsedIndexSaveEValues);
   };
 
@@ -327,7 +327,7 @@ function CardGame({
     }
   }, [RoundFor, BotAtackAgain]);
 
-  console.log(usedIndexSaveEValues);
+  //console.log(usedIndexSaveEValues);
 
   useEffect(() => {
     setCurrentMana((prevCM) => (prevCM === MaxMana ? prevCM : MaxMana));
@@ -441,6 +441,7 @@ function CardGame({
           // Ustaw wartość na true tylko dla wybranego indeksu
           updatedValues[SelectedIndexBTM] = true;
           // Zaktualizuj stan komponentu za pomocą setUsedIndexSaveEValues
+          console.log("t2 ", usedIndexSaveEValues);
           setUsedIndexSaveEValues(updatedValues);
           setAllyHp((prevHp) => prevHp - EnemyAttack);
         }
@@ -543,6 +544,7 @@ function CardGame({
         // Ustaw wartość na false tylko dla wybranego indeksu
         updatedValues[randomIndex] = false;
         // Zaktualizuj stan komponentu za pomocą setUsedIndexSaveEValues
+        console.log("t3 ", usedIndexSaveEValues);
         setUsedIndexSaveEValues(updatedValues);
 
         setCurrentMana((prevCM: number) => prevCM - randomItem.Mana);
@@ -567,7 +569,6 @@ function CardGame({
         usedIndexSaveEValues
       );
       if (usedIndexSaveEValues[SelectedIndexBTM] === false) {
-        console.log("test");
         setStopSecoundAtack(true);
         FirstMove();
         setTimeout(() => {
@@ -695,7 +696,6 @@ function CardGame({
     const CaedIdA = selectedItemsA[indexBotAllySelect];
     const cardIdE = selectedItems[indexBotEnemySelect];
     setAllyIndexForAnimation(indexBotAllySelect);
-    console.log("test1");
     setTimeout(() => {
       if (selectedItemsA.some((item) => item !== null)) {
         if (RoundFor === "enemy") {
@@ -711,6 +711,7 @@ function CardGame({
                   // Ustaw wartość na true tylko dla wybranego indeksu
                   updatedValues[SelectedIndexBTM] = true;
                   // Zaktualizuj stan komponentu za pomocą setUsedIndexSaveEValues
+                  console.log("t4 ", usedIndexSaveEValues);
                   setUsedIndexSaveEValues(updatedValues);
 
                   const selectedIndex = EnemyAttack.findIndex(
@@ -732,10 +733,8 @@ function CardGame({
                           AllyCard[Number(CaedIdA)].Attack / 2;
                         AllyCard[Number(CaedIdA)].Hp -=
                           EnemyCard[Number(cardIdE)].Attack / 2;
-                        console.log("test12");
 
                         if (EnemyCard[Number(cardIdE)].Hp <= 0) {
-                          console.log("1");
                           setSelectedItems((prevItems: any[]) => {
                             const newItemsE = [...prevItems];
                             newItemsE[indexBotEnemySelect] = null;
@@ -743,7 +742,6 @@ function CardGame({
                           });
                         }
                         if (AllyCard[Number(CaedIdA)].Hp <= 0) {
-                          console.log("2");
                           setselectedItemsA((prevItems: any[]) => {
                             const newItems = [...prevItems];
                             newItems[indexBotAllySelect] = null;
@@ -976,20 +974,12 @@ function CardGame({
                 >
                   <button
                     className="NextRound"
-                    //  disabled={ButtonIsDisabled}
+                    disabled={ButtonIsDisabled}
                     onClick={(e) => {
                       addRandomItemWithoutRepetition();
                     }}
                   >
                     <p>Next</p>
-                  </button>
-                  <button
-                    className="NextRound"
-                    onClick={(e) => {
-                      handleButtonClick();
-                    }}
-                  >
-                    <p>test</p>
                   </button>
                 </div>
                 <div className="crystal0"></div>
@@ -1044,6 +1034,6 @@ function CardGame({
 
 export default CardGame;
 
-// naprawic by bot nie miał podwojego ruchu
+// naprawic by nowo polozona karta bota mogła atakować
 // tabliczke wygrana / przegrana
 // dodać nagrody za wygraną
