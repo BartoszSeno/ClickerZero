@@ -315,19 +315,8 @@ function CardGame({
         return value;
       }
     );
-    console.log("t1 ", usedIndexSaveEValues);
     setUsedIndexSaveEValues(updatedUsedIndexSaveEValues);
   };
-
-  useEffect(() => {
-    if (RoundFor === "enemy") {
-      setTimeout(() => {
-        assignRandomValueToNull();
-      }, 300);
-    }
-  }, [RoundFor, BotAtackAgain]);
-
-  //console.log(usedIndexSaveEValues);
 
   useEffect(() => {
     setCurrentMana((prevCM) => (prevCM === MaxMana ? prevCM : MaxMana));
@@ -441,7 +430,6 @@ function CardGame({
           // Ustaw wartość na true tylko dla wybranego indeksu
           updatedValues[SelectedIndexBTM] = true;
           // Zaktualizuj stan komponentu za pomocą setUsedIndexSaveEValues
-          console.log("t2 ", usedIndexSaveEValues);
           setUsedIndexSaveEValues(updatedValues);
           setAllyHp((prevHp) => prevHp - EnemyAttack);
         }
@@ -544,7 +532,6 @@ function CardGame({
         // Ustaw wartość na false tylko dla wybranego indeksu
         updatedValues[randomIndex] = false;
         // Zaktualizuj stan komponentu za pomocą setUsedIndexSaveEValues
-        console.log("t3 ", usedIndexSaveEValues);
         setUsedIndexSaveEValues(updatedValues);
 
         setCurrentMana((prevCM: number) => prevCM - randomItem.Mana);
@@ -555,9 +542,14 @@ function CardGame({
   };
   //========================================================
   const idToRemove = BotSelectCard + 1;
+
   useEffect(() => {
-    assignRandomValueToNull();
-  }, [selectedItems]);
+    if (RoundFor === "enemy") {
+      setTimeout(() => {
+        assignRandomValueToNull();
+      }, 300);
+    }
+  }, [RoundFor, BotAtackAgain, selectedItems]);
 
   const [StopSecoundAtack, setStopSecoundAtack] = useState<boolean>(false);
 
@@ -707,12 +699,13 @@ function CardGame({
               ) {
                 if (EnemyAttack[indexBotEnemySelect] !== undefined) {
                   // Stwórz nową kopię tablicy usedIndexSaveEValues
-                  const updatedValues = [...usedIndexSaveEValues];
-                  // Ustaw wartość na true tylko dla wybranego indeksu
-                  updatedValues[SelectedIndexBTM] = true;
-                  // Zaktualizuj stan komponentu za pomocą setUsedIndexSaveEValues
-                  console.log("t4 ", usedIndexSaveEValues);
-                  setUsedIndexSaveEValues(updatedValues);
+                  setUsedIndexSaveEValues((prevValues) => {
+                    const updatedValues = [...prevValues];
+                    // Ustaw wartość na true tylko dla wybranego indeksu
+                    updatedValues[SelectedIndexBTM] = true;
+                    // Zaktualizuj stan komponentu za pomocą setUsedIndexSaveEValues
+                    return updatedValues;
+                  });
 
                   const selectedIndex = EnemyAttack.findIndex(
                     (value: boolean) => value === true
@@ -793,11 +786,8 @@ function CardGame({
 
   function FirstMove() {
     if (RoundForNew === "enemy") {
-      console.log("1");
       setBotAtackAgain(true);
       setTimeout(() => {
-        console.log("2");
-
         setBotAtackAgain(false);
       }, 630);
       setAllayAttack(Array(selectedItemsA.length).fill(false));
