@@ -891,12 +891,17 @@ function CardGame({
                   <button
                     className="AttackEnemyMC"
                     onClick={(e) => {
-                      Test();
-                      HandleClickEnemyHp();
-                      setEnemyCanBeAttack(true);
-                      setTimeout(() => {
-                        setEnemyCanBeAttack(false);
-                      }, 2000);
+                      if (hasNonNullValueE === true) {
+                        console.log("2");
+                      } else {
+                        console.log("1");
+                        Test();
+                        HandleClickEnemyHp();
+                        setEnemyCanBeAttack(true);
+                        setTimeout(() => {
+                          setEnemyCanBeAttack(false);
+                        }, 2000);
+                      }
                     }}
                     disabled={hasNonNullValueE === true && ACA === false}
                   ></button>
@@ -1024,6 +1029,5 @@ function CardGame({
 
 export default CardGame;
 
-// naprawic by nowo polozona karta bota mogła atakować
 // tabliczke wygrana / przegrana
 // dodać nagrody za wygraną
