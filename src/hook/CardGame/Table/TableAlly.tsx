@@ -36,6 +36,7 @@ function TableAlly({
   EnemyIndexForAnimation,
   setAllyIndexForAnimation,
   EnemyCanBeAttack,
+  Test,
 }: {
   selectedItemId: any;
   setSelectedItemId: any;
@@ -69,6 +70,7 @@ function TableAlly({
   EnemyIndexForAnimation: any;
   setAllyIndexForAnimation: any;
   EnemyCanBeAttack: any;
+  Test: any;
 }) {
   const handlePlaceClick = (placeIndex: number) => {
     if (selectedItemId !== null) {
@@ -107,7 +109,6 @@ function TableAlly({
           if (selectedIndex !== -1) {
             newArray[selectedIndex] = false;
           }
-
           newArray[index] = true;
 
           if (newArray[index]) {
@@ -164,6 +165,7 @@ function TableAlly({
             handlePlaceClick(index);
             handleHeck(index);
             HandleTestClick(index);
+            Test(index);
           }}
         >
           {itemId !== null ? (

@@ -296,6 +296,7 @@ function CardGame({
     }
     setAllayAttack(Array(selectedItemsA.length).fill(false));
     setEnemyAttack(Array(selectedItems.length).fill(false));
+    setClickedItems(Array(clickedItems.length).fill(false));
     setIndexSaveE(-1);
     setselectedCardA(undefined);
     setCanBeUse("s");
@@ -449,12 +450,19 @@ function CardGame({
   const [ACA, setACA] = useState<boolean>(false);
   const [ECA, setECA] = useState<boolean>(false);
 
-  const Test = () => {
-    setACA(false);
-  };
+  const [clickedItems, setClickedItems] = useState(
+    selectedItemsA.map((item) => item !== null)
+  );
 
-  const EA = () => {
-    setECA(false);
+  const Test = (index: any) => {
+    // Tworzymy kopię tablicy clickedItems, aby nie modyfikować jej bezpośrednio
+    const updatedClickedItems = [...clickedItems];
+
+    // Ustawiamy wartość dla danego elementu na true
+    updatedClickedItems[index] = true;
+
+    // Uaktualniamy stan clickedItems
+    setClickedItems(updatedClickedItems);
   };
 
   //=========bot
@@ -464,11 +472,6 @@ function CardGame({
   const [NoMana, setNoMana] = useState(true);
   const [buttonClickCount, setButtonClickCount] = useState(0);
   const [IniciateBotMove, setIniciateBotMove] = useState(false);
-
-  const handleButtonClick = () => {
-    // Zwiększamy liczbę kliknięć po naciśnięciu guzika
-    setButtonClickCount(buttonClickCount + 1);
-  };
 
   useEffect(() => {
     setButtonClickCount(buttonClickCount + 1);
@@ -792,6 +795,7 @@ function CardGame({
       }, 630);
       setAllayAttack(Array(selectedItemsA.length).fill(false));
       setEnemyAttack(Array(selectedItems.length).fill(false));
+      setClickedItems(Array(clickedItems.length).fill(false));
       setIndexSaveE(-1);
       setselectedCardA(undefined);
       setCanBeUse("s");
@@ -802,6 +806,8 @@ function CardGame({
       setUsedIndexSaveAValues([]);
     }
   }
+
+  console.log(clickedItems);
 
   return (
     <>
@@ -895,7 +901,6 @@ function CardGame({
                         console.log("2");
                       } else {
                         console.log("1");
-                        Test();
                         HandleClickEnemyHp();
                         setEnemyCanBeAttack(true);
                         setTimeout(() => {
@@ -1014,6 +1019,7 @@ function CardGame({
               EnemyIndexForAnimation={EnemyIndexForAnimation}
               setAllyIndexForAnimation={setAllyIndexForAnimation}
               EnemyCanBeAttack={EnemyCanBeAttack}
+              Test={Test}
             />
             <HandAlly
               HandleItemClick={HandleItemClick}
