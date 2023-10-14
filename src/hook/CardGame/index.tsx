@@ -1,3 +1,4 @@
+/* eslint-disable no-cond-assign */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import "../../assets/css/Normal/CardGame/CardGame.css";
@@ -401,7 +402,7 @@ function CardGame({
     const AllyAttack = AllyCard[Number(CaedIdA)].Attack;
 
     if (CanBeUse === "AllyAttackEnemy") {
-      if (ACA === true) {
+      if ((clickedItems[IndexSaveA] = true)) {
         setOneTimeAAE((prevArray: any) => {
           const newArray = [...prevArray];
           newArray[IndexSaveA] = false;
@@ -712,7 +713,7 @@ function CardGame({
     setTimeout(() => {
       if (selectedItemsA.some((item) => item !== null)) {
         if (RoundFor === "enemy") {
-          if (StopSecoundAtack === true) {
+          if ((clickedItems[IndexSaveA] = true)) {
             if (indexBotEnemySelect !== undefined) {
               if (
                 usedIndexSaveEValues[SelectedIndexBTM] === false ||
@@ -1032,6 +1033,7 @@ function CardGame({
               EnemyIndexForAnimation={EnemyIndexForAnimation}
               setAllyIndexForAnimation={setAllyIndexForAnimation}
               EnemyCanBeAttack={EnemyCanBeAttack}
+              clickedItems={clickedItems}
             />
             <HandAlly
               HandleItemClick={HandleItemClick}

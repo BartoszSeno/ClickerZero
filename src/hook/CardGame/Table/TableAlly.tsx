@@ -36,6 +36,7 @@ function TableAlly({
   EnemyIndexForAnimation,
   setAllyIndexForAnimation,
   EnemyCanBeAttack,
+  clickedItems,
 }: {
   selectedItemId: any;
   setSelectedItemId: any;
@@ -69,6 +70,7 @@ function TableAlly({
   EnemyIndexForAnimation: any;
   setAllyIndexForAnimation: any;
   EnemyCanBeAttack: any;
+  clickedItems: any;
 }) {
   const handlePlaceClick = (placeIndex: number) => {
     if (selectedItemId !== null) {
@@ -176,7 +178,11 @@ function TableAlly({
                   : allayAttack[index] && EnemyCanBeAttack
                   ? "Active"
                   : "inactive"
-              }${EnemyCanBeAttack ? "EnemyCanBeAttack" : ""}`}
+              }${
+                clickedItems[IndexSaveA] === false && EnemyCanBeAttack
+                  ? "EnemyCanBeAttack"
+                  : ""
+              }`}
             >
               <div className="InGameCard"></div>
               <div
