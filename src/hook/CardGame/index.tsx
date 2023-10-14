@@ -297,6 +297,7 @@ function CardGame({
     setAllayAttack(Array(selectedItemsA.length).fill(false));
     setEnemyAttack(Array(selectedItems.length).fill(false));
     setClickedItems(Array(clickedItems.length).fill(false));
+    setSelectedIndexBTM(null);
     setIndexSaveE(-1);
     setselectedCardA(undefined);
     setCanBeUse("s");
@@ -450,20 +451,37 @@ function CardGame({
   const [ACA, setACA] = useState<boolean>(false);
   const [ECA, setECA] = useState<boolean>(false);
 
-  const [clickedItems, setClickedItems] = useState(
+  const [clickedItems, setClickedItems] = useState<any>(
     selectedItemsA.map((item) => item !== null)
   );
 
-  const Test = (index: any) => {
-    // Tworzymy kopię tablicy clickedItems, aby nie modyfikować jej bezpośrednio
+  const [EnemyIndexForAnimation, setEnemyIndexForAnimation] =
+    useState<number>();
+
+  useEffect(() => {
+    if (typeof EnemyIndexForAnimation === "number") {
+      // Tworzymy kopię tablicy clickedItems, aby nie modyfikować jej bezpośrednio
+      const updatedClickedItems = [...clickedItems];
+
+      // Ustawiamy wartość dla danego elementu na true
+      updatedClickedItems[IndexSaveA] = true;
+
+      // Uaktualniamy stan clickedItems
+      setClickedItems(updatedClickedItems);
+    }
+  }, [IndexSaveA, EnemyIndexForAnimation]);
+
+  useEffect(() => {
     const updatedClickedItems = [...clickedItems];
 
-    // Ustawiamy wartość dla danego elementu na true
-    updatedClickedItems[index] = true;
-
-    // Uaktualniamy stan clickedItems
-    setClickedItems(updatedClickedItems);
-  };
+    const updatedSelectedItemsA = updatedClickedItems.map((value, index) => {
+      if (selectedItemsA[index] === null) {
+        return false;
+      }
+      return value;
+    });
+    setClickedItems(updatedSelectedItemsA);
+  }, [selectedItemsA]);
 
   //=========bot
 
@@ -773,9 +791,6 @@ function CardGame({
     }, 1000);
   }, [BotAtackAgain]);
 
-  const [EnemyIndexForAnimation, setEnemyIndexForAnimation] =
-    useState<number>();
-
   const [AllyIndexForAnimation, setAllyIndexForAnimation] = useState<number>();
 
   // enemy char
@@ -797,7 +812,6 @@ function CardGame({
       setEnemyAttack(Array(selectedItems.length).fill(false));
       setClickedItems(Array(clickedItems.length).fill(false));
       setIndexSaveE(-1);
-      setselectedCardA(undefined);
       setCanBeUse("s");
       setEnemyAttackAlly(Array(selectedItemsA.length).fill(false));
       setIndexSaveA(-1);
@@ -808,7 +822,6 @@ function CardGame({
   }
 
   console.log(clickedItems);
-
   return (
     <>
       <div
@@ -1019,7 +1032,6 @@ function CardGame({
               EnemyIndexForAnimation={EnemyIndexForAnimation}
               setAllyIndexForAnimation={setAllyIndexForAnimation}
               EnemyCanBeAttack={EnemyCanBeAttack}
-              Test={Test}
             />
             <HandAlly
               HandleItemClick={HandleItemClick}
@@ -1035,5 +1047,8 @@ function CardGame({
 
 export default CardGame;
 
+function isEqual(selectedItemsA: (number | null)[], prevSelectedItemsA: any) {
+  throw new Error("Function not implemented.");
+}
 // tabliczke wygrana / przegrana
 // dodać nagrody za wygraną
