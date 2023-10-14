@@ -402,7 +402,9 @@ function CardGame({
     const AllyAttack = AllyCard[Number(CaedIdA)].Attack;
 
     if (CanBeUse === "AllyAttackEnemy") {
-      if ((clickedItems[IndexSaveA] = true)) {
+      if (clickedItems[IndexSaveA] === false) {
+        console.log("dsfadfasd");
+
         setOneTimeAAE((prevArray: any) => {
           const newArray = [...prevArray];
           newArray[IndexSaveA] = false;
@@ -412,6 +414,15 @@ function CardGame({
         if (OneTimeAAE[IndexSaveA] !== false) {
           setEnemyHp((prevHp) => prevHp - AllyAttack);
         }
+        setTimeout(() => {
+          const updatedClickedItems = [...clickedItems];
+
+          // Ustawiamy wartość dla danego elementu na true
+          updatedClickedItems[IndexSaveA] = true;
+
+          // Uaktualniamy stan clickedItems
+          setClickedItems(updatedClickedItems);
+        }, 1000);
       }
     }
   };
@@ -470,7 +481,7 @@ function CardGame({
       // Uaktualniamy stan clickedItems
       setClickedItems(updatedClickedItems);
     }
-  }, [IndexSaveA, EnemyIndexForAnimation]);
+  }, [EnemyIndexForAnimation]);
 
   useEffect(() => {
     const updatedClickedItems = [...clickedItems];
@@ -912,9 +923,7 @@ function CardGame({
                     className="AttackEnemyMC"
                     onClick={(e) => {
                       if (hasNonNullValueE === true) {
-                        console.log("2");
                       } else {
-                        console.log("1");
                         HandleClickEnemyHp();
                         setEnemyCanBeAttack(true);
                         setTimeout(() => {
