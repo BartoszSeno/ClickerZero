@@ -247,6 +247,26 @@ function CardGame({
             }
             return newIndexes;
           });
+          if (clickCount % 3 === 0) {
+            const newItemE = getRandomItemE();
+
+            setrandomItemsE((prevItems: any) => [...prevItems, newItemE]);
+            setremainingItemsE((prevIndexes) => {
+              const newIndexes = [...prevIndexes];
+              const itemIndex = EnemyCard.findIndex(
+                (item) => item === newItemE
+              );
+              if (itemIndex !== -1) {
+                const remainingIndex = newIndexes.findIndex(
+                  (index) => index === itemIndex
+                );
+                if (remainingIndex !== -1) {
+                  newIndexes.splice(remainingIndex, 1);
+                }
+              }
+              return newIndexes;
+            });
+          }
         } else {
         }
         setBotAttackAllay(false);
@@ -281,6 +301,24 @@ function CardGame({
             }
             return newIndexes;
           });
+          if (clickCount % 3 === 0 && clickCount !== 0) {
+            const newItem = getRandomItem();
+
+            setRandomItems((prevItems: any) => [...prevItems, newItem]);
+            setRemainingItems((prevIndexes) => {
+              const newIndexes = [...prevIndexes];
+              const itemIndex = AllyCard.findIndex((item) => item === newItem);
+              if (itemIndex !== -1) {
+                const remainingIndex = newIndexes.findIndex(
+                  (index) => index === itemIndex
+                );
+                if (remainingIndex !== -1) {
+                  newIndexes.splice(remainingIndex, 1);
+                }
+              }
+              return newIndexes;
+            });
+          }
         } else {
         }
 
@@ -320,6 +358,8 @@ function CardGame({
     );
     setUsedIndexSaveEValues(updatedUsedIndexSaveEValues);
   };
+
+  console.log(clickCount);
 
   useEffect(() => {
     setCurrentMana((prevCM) => (prevCM === MaxMana ? prevCM : MaxMana));
@@ -588,11 +628,7 @@ function CardGame({
 
   useEffect(() => {
     if (usedIndexSaveEValues.some((value) => value === false)) {
-      console.log(
-        "ruch moze jeszcze jakiś być",
-        usedIndexSaveEValues[SelectedIndexBTM] === false,
-        usedIndexSaveEValues
-      );
+      console.log("ruch moze jeszcze jakiś być");
       if (usedIndexSaveEValues[SelectedIndexBTM] === false) {
         setStopSecoundAtack(true);
         FirstMove();
@@ -833,7 +869,6 @@ function CardGame({
     }
   }
 
-  console.log(clickedItems);
   return (
     <>
       <div
