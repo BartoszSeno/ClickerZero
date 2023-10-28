@@ -1027,3 +1027,53 @@
     /* Stan końcowy */
   }
 }
+
+.GameStatus {
+  height: 500px;
+  width: 1200px;
+  z-index: 10000;
+  position: absolute;
+  margin-left: -25px;
+  pointer-events: "none";
+}
+
+.GameBoard {
+  background-color: aqua;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 1200px;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  font-size: 250px;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(to bottom, #e8b23b 45%, #e1c589 10%, #c58700 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5); /* Cień pod tekstem */
+  pointer-events: "none";
+}
+
+.EndGameButton {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  margin-bottom: 50px;
+  background-color: red;
+}
+
+.EndGameButton button {
+  background-color: #e8b23b;
+  height: 60px;
+  width: 200px;
+  margin-left: 10px;
+  color: white;
+  font-size: 30px;
+  border: 2px solid #c58700;
+  font-family: "Alagard";
+}

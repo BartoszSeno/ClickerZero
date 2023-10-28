@@ -359,8 +359,6 @@ function CardGame({
     setUsedIndexSaveEValues(updatedUsedIndexSaveEValues);
   };
 
-  console.log(clickCount);
-
   useEffect(() => {
     setCurrentMana((prevCM) => (prevCM === MaxMana ? prevCM : MaxMana));
   }, [MaxMana]);
@@ -491,11 +489,18 @@ function CardGame({
     }
   };
 
+  const [WhoWin, setWhoWin] = useState<string>("");
+  const [gameEnd, setgameEnd] = useState<boolean>(false);
+
   useEffect(() => {
     if (EnemyHp <= 0) {
       console.log("Ally win");
+      setWhoWin("YOU WIN");
+      setgameEnd(true);
     } else if (AllyHp <= 0) {
       console.log("Emeny win");
+      setWhoWin("YOU LOSE");
+      setgameEnd(true);
     } else {
     }
   }, [AllyHp, EnemyHp]);
@@ -879,6 +884,17 @@ function CardGame({
           CloseCardGame();
         }}
       >
+        <div
+          className="GameStatus"
+          style={{ display: gameEnd ? "flex" : "none" }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="GameBoard">{WhoWin}</div>
+          <div className="EndGameButton">
+            <button>Play Again</button>
+            <button>Leave</button>
+          </div>
+        </div>
         <div
           className="CardGameG"
           style={{ display: CardGameIsOpen ? "flex" : "none" }}
