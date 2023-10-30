@@ -874,6 +874,16 @@ function CardGame({
     }
   }
 
+  function GameRestart() {
+    const initialIndexes = Array.from({ length: 9 }, (_, index) => index);
+    setRemainingItems(initialIndexes);
+    setMaxMana(3);
+    setClickCount(0);
+    //=============
+    const initialIndexesE = Array.from({ length: 9 }, (_, index) => index);
+    setremainingItemsE(initialIndexesE);
+  }
+
   return (
     <>
       <div
@@ -891,7 +901,13 @@ function CardGame({
         >
           <div className="GameBoard">{WhoWin}</div>
           <div className="EndGameButton">
-            <button>Play Again</button>
+            <button
+              onClick={(e) => {
+                GameRestart();
+              }}
+            >
+              Play Again
+            </button>
             <button>Leave</button>
           </div>
         </div>
