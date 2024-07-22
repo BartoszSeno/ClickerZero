@@ -553,7 +553,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="/Pond"
+            path="/Ponds"
             element={
               <Pond
                 OpenSellShop={OpenSellShop}
